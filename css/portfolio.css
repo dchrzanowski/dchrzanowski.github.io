@@ -1,0 +1,402 @@
+body {
+    overflow-x: hidden;
+    background: black;
+    color: #b5b5b5;
+}
+
+@font-face {
+    font-family: angular;
+    src: url("../fonts/TypoAngular.otf");
+}
+/* Side menu and toggle button wrapper STARTS HERE */
+#wrapper {
+    padding-left: 0;
+    transition: all 0.5s ease;
+}
+
+#wrapper.toggled {
+    padding-left: 250px;
+}
+
+#sidebar-wrapper {
+    z-index: 1000;
+    position: fixed;
+    left: 250px;
+    width: 0;
+    height: 100%;
+    margin-left: -250px;
+    overflow-y: auto;
+    background: #090909;
+    transition: all 0.5s ease;
+}
+
+#wrapper.toggled #sidebar-wrapper {
+    width: 250px;
+}
+
+#page-content-wrapper {
+    width: 100%;
+    position: absolute;
+    padding: 50px 15px;
+}
+
+#wrapper.toggled #page-content-wrapper {
+    position: absolute;
+    margin-right: -250px;
+}
+
+#menu-toggle {
+    position: absolute;
+    padding: 5px;
+    font-size: 20px;
+    transition: 0.5s;
+    top: 5px;
+    left: 5px;
+    color: white;
+}
+
+#menu-toggle.toggled {
+    transition: 0.5s;
+    top: 2px;
+    left: 2px;
+}
+
+#toggle-button-wrapper {
+    transition: 0.5s;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    height: 45px;
+    width: 100%;
+    background: #070707;
+    z-index: 9999;
+    box-shadow: 1px 1px 2px #222;
+}
+
+#toggle-button-wrapper.toggled {
+    transition: 0.5s;
+    left: 215px;
+    background: none;
+    box-shadow: none;
+}
+/* Side menu and toggle button wrapper ENDS HERE */
+
+/* Sidebar STARTS HERE*/
+.sidebar-nav {
+    position: absolute;
+    top: 0;
+    width: 250px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+li.active {
+    background: #2A2A2A;
+}
+
+.sidebar-nav li a.active {
+    color: white;
+}
+
+.sidebar-nav li {
+    /* text-indent: 20px; */
+    padding: 15px 0px 15px 20px;
+    transition: 0.2s;
+}
+
+.sidebar-nav li a {
+    display: block;
+    text-decoration: none;
+    color: #999999;
+}
+
+.sidebar-nav li:hover {
+    text-decoration: none;
+    color: #fff;
+    background: #2A2A2A;
+}
+
+.sidebar-nav li a:hover {
+    color: white;
+}
+.sidebar-nav li a:active,
+.sidebar-nav li a:focus {
+    text-decoration: none;
+}
+/* Sidebar ENDS HERE*/
+
+/* Desktop menu modifications STARTS HERE */
+@media(min-width:768px) {
+    #wrapper {
+        padding-left: 250px;
+    }
+
+    #wrapper.toggled {
+        padding-left: 0;
+    }
+
+    #sidebar-wrapper {
+        width: 250px;
+    }
+
+    #wrapper.toggled #sidebar-wrapper {
+        width: 0;
+    }
+
+    #page-content-wrapper {
+        padding: 50px 20px;
+        position: relative;
+    }
+
+    #wrapper.toggled #page-content-wrapper {
+        position: relative;
+        margin-right: 0;
+    }
+
+    #menu-toggle.toggled {
+        top: 5px;
+        color: white;
+    }
+
+    #menu-toggle {
+        top: 5px;
+        left: 0px;
+    }
+
+    #toggle-button-wrapper {
+        background: none;
+        left: 215px;
+        box-shadow: none;
+    }
+
+    #toggle-button-wrapper.toggled {
+        background: #070707;
+        left: 0px;
+        box-shadow: 1px 1px 2px #222;
+    }
+}
+/* Desktop menu modifications ENDS HERE */
+
+/* font awesome corrections STARTS HERE */
+.fa-university {
+    margin-left: 3px;
+}
+
+.fa-pencil-square-o {
+    margin-top: 3px;
+    margin-left: 2px;
+}
+
+.fa-fort-awesome {
+    margin-left: 3px;
+}
+
+.fa-arrow-right {
+    margin-left: 2px;
+}
+
+.fa-arrow-down {
+    margin-top: 2px;
+    margin-left: 1px;
+}
+
+.fa-arrow-left {
+    margin-left: -1px;
+}
+
+.fa-code {
+    margin-top: -2px;
+}
+/* font awesome corrections ENDS HERE */
+
+/* Globals STARTS HERE */
+.jumbotron {
+    background: black;
+}
+
+section {
+    margin: 30px 0px;
+}
+
+p {
+    font-size: 1.1em;
+}
+
+h1 {
+    font-family: angular;
+}
+
+.bigpic {
+    cursor: pointer;
+}
+
+hr {
+    display: block;
+    border-top: 1px solid gray;
+    opacity: 0.4;
+}
+
+.badge {
+    background: #444;
+    font-size: 0.7em;
+}
+
+.text-description {
+    font-style: italic;
+}
+
+.row-extra-margin {
+    margin: 60px 0px;
+}
+
+.text-muted {
+    color: #444;
+}
+
+@media(min-width:768px) {
+    section {
+        margin: 60px 0px;
+    }
+
+    h2 {
+        font-size: 3em;
+    }
+
+    h3 {
+        font-size: 2.2em;
+    }
+
+    h4 {
+        font-size: 1.7em;
+    }
+
+    p {
+        font-size: 1.3em;
+    }
+
+    .text-description {
+	font-size: 1.1em;
+    }
+
+    .list-group-item {
+        font-size: 1.3em;
+    }
+}
+/* Globals ENDS HERE */
+
+/* Media gallery STARTS HERE */
+svg, .img-center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.img-semi-rounded {
+    border-radius: 30%;
+}
+
+.img-border {
+    border: 1px solid gray;
+}
+
+#yt-vid {
+    cursor: pointer;
+}
+
+embed {
+    width: 100%;
+    height: 600px;
+}
+/* Media gallery ENDS HERE */
+
+/* home page STARTS HERE */
+li.list-group-item {
+    background: black;
+    border-style: hidden;
+    transition: 0.3s;
+}
+
+li.list-group-item:hover {
+    background: #131313;
+}
+
+.project-link {
+    text-decoration: none;
+    color: #8a6d3b;
+    transition: 0.5s;
+}
+
+.project-link:hover {
+    text-decoration: none;
+    color: white;
+    transition: 0.5s;
+}
+/* home page ENDS HERE */
+
+/* Maths STARTS HERE */
+select, .math-button {
+    background: #111;
+    color: white;
+    display: block;
+    margin: 20px 0px;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 0px 0px 10px white;
+    transition: 0.2s;
+}
+
+select:hover, .math-button:hover {
+    box-shadow: 0px 0px 20px white;
+    background: #333;
+}
+
+select {
+    padding: 10px;
+    font-size: 1.5em;
+    border: 2px solid white;
+}
+
+.math-button {
+    border: 1px solid white;
+    padding: 10px 40px 10px 40px;
+    font-size: 1.5em;
+}
+
+input {
+    color: black;
+    width: 70px;
+    transition: 0.2s;
+}
+
+input:focus {
+    border: 2px solid #000055;
+}
+
+#question {
+    display: block;
+    width: 50%;
+    margin: 20px 0px;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 1.5em;
+}
+
+#maths {
+    width: 100%;
+    margin: 30px 20px 0px 0px;
+}
+
+#math-cell1 {
+    width: 60%;
+}
+
+#math-cell2 {
+    width: 40%;
+}
+/* Maths ENDS HERE */
+
+/*----- HELPERS STARTS HERE -----*/
+.mt-1 {
+    margin-top: 1em;
+}
+/*----- HELPERS ENDS HERE -----*/
