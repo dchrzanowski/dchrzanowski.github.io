@@ -253,6 +253,14 @@ hr {
     color: #444;
 }
 
+.table tr td {
+    font-size: 1.2em;
+}
+
+.table tr th {
+    font-size: 1.4em;
+}
+
 @media(min-width:768px) {
     section {
         margin: 60px 0px;
@@ -398,5 +406,9 @@ input:focus {
 /*----- HELPERS STARTS HERE -----*/
 .mt-1 {
     margin-top: 1em;
+}
+
+.bt-none {
+    border-top: none !important;
 }
 /*----- HELPERS ENDS HERE -----*/
