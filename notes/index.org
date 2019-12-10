@@ -14,6 +14,8 @@
 
 [[file:y3/index.org][Year 3 Notes]]
 
+[[file:y4/index.org][Year 4 Notes]]
+
 [[file:resources/angular4/angular4.org][Angular]]
 
 [[file:resources/nativescript/nativescript.org][Nativescript]]
