@@ -211,9 +211,11 @@
    P (c|n) is the probability of an instance in a node n being of class c
 
    Example:
-   If a node /n/ consists of 2 instances of class /C1/ and 4 instances of /C2/ then:
-   P(C1|n) is 2/6 = 1 - (2/6)^2 - (4/6)^2 = 0.278
-   P(C2|n) is 6/6 = 1 - (6/6)^2 - (0/6)^2 = 0
+   If a node /n1/ consists of 2 instances of class /C1/ and 4 instances of /C2/ then:
+   GINI(n1) = 1 - (2/6)^2 - (4/6)^2 = 0.278
+
+   If a node /n2/ consists of 6 instances of class /C1/ and 0 instances of /C2/ then:
+   GINI(n2) = 1 - (6/6)^2 - (0/6)^2 = 0
    #+END_VERSE
    - GINI value is used to find node splits
    - *Weighted Average* of GINI of the child nodes is used to find the best split. Basically nodes with higher observation count are weighted higher
