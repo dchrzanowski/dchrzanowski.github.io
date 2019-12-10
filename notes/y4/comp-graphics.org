@@ -1,0 +1,78 @@
+#+TITLE: Computer Graphics
+#+DATE: [2019-09-09 Mon 11:54]
+#+AUTHOR: Damian Chrzanowski
+#+EMAIL: pjdamian.chrzanowski@gmail.com
+#+OPTIONS: TOC:2 num:2
+#+HTML_HEAD: <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="../assets/org.css"/>
+#+HTML_HEAD: <link rel="icon" href="../assets/favicon.ico">
+[[file:index.org][Home Page]]
+* Exam Question
+  - LZW
+  - Haar Decomposition
+  - Essay style question:
+    - Discovery Pipeline
+    - Case study question on the thesis
+    - Data Visualisation (no visualization process). Will ask visualisation pipeline, knowledge pipeline
+* Compression
+** Definition
+   #+begin_verse
+   Compression is the reduction in logical size of data to facilitate the transfer of data on a network.
+   #+end_verse
+** Types
+*** Lossy
+    - Information is lost during the compression process
+*** Lossless
+    - Information is maintained, 100%
+    - Examples of compression types: LZW, LZ77
+** LZW
+   #+begin_verse
+   Takes every letter and substitutes it as a number, all of the mappings are stored in a dictionary. Then every letter is found through the dictionary, if it is not there it is then added. With every letter found in the dictionary we take the next letter from the source and we add it to the dictionary.
+   #+end_verse
+* Exercise
+  - Original dictionary: A=1 B=2 C=3 D=4 E=5
+  | Step | P   | N |   | Dict      | Out  |
+  |------+-----+---+---+-----------+------|
+  |    1 | A   | A |   | AA (6)    | (1)  |
+  |    2 | AA  | B |   | AAB (7)   | (6)  |
+  |    3 | B   | B |   | BB (8)    | (2)  |
+  |    4 | B   | A |   | BA (9)    | (2)  |
+  |    5 | AA  | A |   | AAA (10)  | (6)  |
+  |    6 | AAA | B |   | AAAB (11) | (10) |
+  |    7 | B   | C |   | BC (12)   | (2)  |
+  |    8 | C   | C |   | CC (13)   | (3)  |
+  |    9 | C   | B |   | CB (14)   | (3)  |
+  |   10 | BA  | A |   | BAA (15)  | (9)  |
+  |   11 | AAB | C |   | AABC (16) | (7)  |
+  |   12 | C   | D |   | CD (17)   | (3)  |
+  |   13 | D   | D |   | DD (18)   | (4)  |
+  |   14 | DD  | B |   | DDB (19)  | (18) |
+  |   15 | BA  | B |   | BAB (20)  | (9)  |
+  |   16 | BC  | D |   | BCD (21)  | (12) |
+  |   17 | D   | E |   | DE (22)   | (4)  |
+  |   18 | E   | E |   | EE (23)   | (5)  |
+  |   19 | E   | D |   | ED (24)   | (5)  |
+  |   20 | D   | C |   | DC (25)   | (4)  |
+  |   21 | CB  | B |   | CBB (26)  | (14) |
+  |   22 | B   | D |   | BD (27)   | (2)  |
+  |   23 | DE  | B |   | DEB (28)  | (22) |
+* Assignment
+** Part 1 breakdown
+*** Gather a critical mass of tweets and create a static website out of the provided data to visualize it.
+    - use TweePy for tweets scraping
+    - use vaderSentiment to get the sentiment of the tweet
+    - use d3.js to visualize the data
+    - Remember to gather information out of tweets such as:
+      - Age
+      - Location
+      - Any additional demographic information that can be possibly extracted
+    - Once the data is displayed on the graph, it needs to be then "manipulatable", so that if a user clicks a type of sentiment (say positive) then the data is "crunched" and only positive is shown but with different demographics, perhaps show a breakdown of age, etc
+** Part 2 breakown
+*** Extend the above to drill down into the tweets on a chosen topic, visualise the current consensus on the topic by weighting the most recent tweets higher. Tweets should appear live on the given topic
+** Part 3 breakdown
+*** Allow the user to choose a two live topics to compare within the same domain ie trump and Norris, no prior knowledge of the topic should be supplied. A breakdown of demographics age, location etc should be provided for drill downs
+* Delete at the end
+  #+BEGIN_EXPORT html
+  <script src="../assets/jquery-3.3.1.min.js"></script>
+  <script src="../assets/notes.js"></script>
+  #+END_EXPORT

@@ -1,0 +1,477 @@
+#+TITLE: Web Development 3
+#+DATE: [2017-09-15 Fri 12:43]
+#+AUTHOR: Damian Chrzanowski
+#+EMAIL: pjdamian.chrzanowski@gmail.com
+#+OPTIONS: TOC:2 num:2
+#+HTML_HEAD: <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="../assets/org.css"/>
+#+HTML_HEAD: <link rel="icon" href="../assets/favicon.ico">
+
+[[file:index.org][Home Page]]
+
+* Rich Internet Applications (RIAs)
+  - *Rich Internet Applications* (RIAs) are being developed using technologies (such as Ajax) that have the look and feel of desktop software.
+  - Typically run on the web browser and do not require additional software
+  - Transfer the processing necessary for the UI to the client
+  - General benefits:
+    - Richer
+    - Responsive
+    - Client/Server balance
+    - Asynchronous Communication
+    - Network Efficiency
+  - Term *RIA* was introduced by Macromedia
+  - Is now widely used
+  - *AJAX* (Asynchronous JavaScript and XML): Allows partial page updates – meaning updates of individual pieces of a web page without having to reload the entire page. Technologies include (XHTML, CSS, JavaScript, the DOM, XML, and XMLHttpRequest object).
+    - XMLHttpRequest
+    - Fetch API (Promises)
+    - XML/JSON
+    - Serve Side
+    - Valid Markup
+    - CSS
+    - DOM Scripting
+
+** History of the Internet
+   - Late 1960’s , ARPA (Advanced Research Projects Agency) of the U.S Department of Defense implemented a network of computer systems (ARPANET) of about a dozen ARPA funded universities and research institutions.
+   - ARPA developed the TCP and IP protocols and the ARPANET evolved into today’s Internet
+   - In 1989, Tim Berners-Lee of CERN ( the European Organization for nuclear Research) began to develop a technology for sharing information via hyperlinked text documents. This was called HTML. He also wrote the Hypertext Transfer Protocol (HTTP).
+   - Web use exploded with the availability in 1993 of the Mosaic browser. The team that developed Mosaic, went on to found Netscape.
+   - In October 1994, Tim Berners-Lee founded an organization – called the World Wide Web consortium (W3C)
+   - Web technologies standardised by the W3C are called Recommendations. Recommendations include:
+     - XHTML
+     - CSS
+     - HTML
+     - XML
+     - HTML5
+
+** Architecture of a Web Application
+   [[file:images/Rich%20Internet%20Applications%20(RIAs)/screenshot_2018-12-09_13-41-48.png]]
+
+** Architecture of the Internet
+   [[file:images/Rich%20Internet%20Applications%20(RIAs)/screenshot_2018-12-09_13-42-24.png]]
+
+** Processing a Static Web Page
+   [[file:images/Rich%20Internet%20Applications%20(RIAs)/screenshot_2018-12-09_13-43-01.png]]
+
+** Processing a Dynamic Page
+   [[file:images/Rich%20Internet%20Applications%20(RIAs)/screenshot_2018-12-09_13-48-59.png]]
+
+** Request/Response Example
+
+*** Request
+    - Request line
+    - Headers
+    - Empty line
+    - Optional body
+    - Methods:
+      - HEAD (safe)
+      - GET (safe)
+      - POST
+      - PUT
+      - DELETE
+      - TRACE (safe)
+      - OPTIONS (safe)
+      - CONNECT
+    - Example GET
+    #+BEGIN_VERSE
+    ~GET / HTTP/1.1~
+    ~Host: www.example.com~
+    #+END_VERSE
+
+*** Response
+    #+BEGIN_VERSE
+    ~HTTP/1.1 200 OK~
+    ~Content-Type: text/html~
+    ~Content-Length: 136~
+    ~Server: Apache/2.2.3~
+
+    ~<html>~
+    ~.~
+    ~.~
+    ~.~
+    ~</html>~
+    #+END_VERSE
+
+*** Status Codes
+    - *Success*: 2xx
+    - *Redirection*: 3xx
+    - *Client-Side Error*: 4xx
+    - *Server-Side Error*: 5xx
+
+*** Session Options
+    - Cookies
+    - Sessions
+    - Hidden variables
+    - URL encoded params
+
+** What is Web 2.0?
+   - *Web1.0* was mainly focused on static *content* based websites with advertisement
+   - The term Web 2.0 was coined by Dale Dougherty of O’ Reilly Media in 2003 to describe this trend
+   - Companies use the web as a *platform* to create community based sites (social networks, blog, wikis, etc.)
+   - Is characterized by *participation*
+   - Some websites are built nearly entirely on *user-generated content*
+   - Web services allow to incorporate functionality in own applications, e.g. Amazon Web Services
+
+** Client/Server Roles
+
+*** Web 1.0
+    - Information stored as static pages on the server
+    - Client requests pages from the server and displays them
+    - User Interaction based on hyperlinks
+
+*** Web 2.0
+    - Data and Business logic on server
+    - Dynamic pages created on server in response to client requests. All processing on server.
+    - Data merged into page templates and sent to client for display
+    - User Interaction based on hyperlinks and form input
+    - Application sent from server to client as web page with embedded code
+    - Application running on client provides user with interactive interface
+    - Data and business logic on server
+    - Data sent by server in response to client requests
+    - Client uses data to update interface. Processing now on client side and on server.
+    - User interaction based on hyperlinks, form input, GUI controls
+
+* PHP
+
+** Data Types
+   - Integer
+   - Double
+   - Boolean
+   - String
+     - Can be ~null~
+   - Array
+   - Object
+
+** Common Methods
+   - ~number_format($number, $decimals)~ : format a number
+   - ~isset($var)~ : true if the ~$var~ has been set
+   - ~empty($var)~ : true if ~$var~ is empty
+   - ~is_numeric($var)~ : true if the ~$var~ is numeric
+   - ~include($path)~ : Insert and run the specified file. Continues operation in case of a failure.
+   - ~include_once($path)~ : Same as ~include~ but makes sure the file is only included once
+   - ~require($path)~ : Same as ~include~ but causes a critical error and the execution stops
+   - ~require_once($path)~ : Same as the ~include_once~, but with critical error
+   - ~exit([$status])~ : Exits the PHP script. If ~$status~ is not supplied, the brackets are optional. If ~$status~ is supplied, then the function sends the status to the browser before exiting.
+   - ~die([$status])~ : Same as ~exit~
+   - ~define('MAX_QTY', 100)~ : Defines a constant ~MAX_QTY~ with a value of 100
+   - ~date($format)~ : Get the current date, e.g. ~date('Y-m-d')~ => 2010-06-12
+   - ~array()~ : Create an array
+   - ~count($array_name)~ : Count the elements in the array
+
+** Processing Form Data
+   - With a form that has two inputs: ~first_name~ and ~last_name~
+
+*** With GET
+    - The URL generated would be: ~http://localhost/display.php?first_name=Joe&last_name=Bloggs~
+    - Generally used to retrieve data
+    - Retrieve it in PHP with
+    #+BEGIN_SRC php
+      $first_name = $_GET['first_name'];
+      $last_name = $_GET['last_name'];
+    #+END_SRC
+
+*** With POST
+    - Generally used to create or to modify data
+    - Also is more secure than GET (does not display the data in the URL)
+    - Retrieve it in PHP with
+    #+BEGIN_SRC php
+      $first_name = $_POST['first_name'];
+      $last_name = $_POST['last_name'];
+    #+END_SRC
+
+*** Accessing Form Data
+    - Use ~isset($_POST['checkbox'])~ to check checkboxes and radio buttons
+    - Can use ~<input type="checkbox" name="top[]" value="pep">~ to put all checkboxes into a ~top~ array. So now ~$toppings = $_POST['top']~ contains a numbered array
+
+** Connecting to MySQL
+   - Create the connection
+   #+BEGIN_SRC php
+     $dsn = 'mysql:host=localhost;dbname=my_db';
+     $username = 'username';
+     $password = 'password';
+     try {
+         $db = new PDO($dsn, $username, $password);
+     } catch (PDOException $e) {
+         $e_msg = $e->getMessage();
+         echo "Error $e_msg";
+     }
+   #+END_SRC
+   - Sample query
+   #+BEGIN_SRC php
+     $query = 'SELECT * FROM Users WHERE id = 1';
+     $users = $db->query($query);
+     $user = $users->fetch(PDO::FETCH_ASSOC);
+     $user = $users->fetchAll(PDO::FETCH_ASSOC); // to get all rows
+     $name = $user['first_name'];
+   #+END_SRC
+   - For modifying use ~$db->exec($query)~
+   - For grabbing the last id
+   #+BEGIN_SRC php
+     $users = $db->exec($query);
+     $user->id = $db->lastInsertId();
+   #+END_SRC
+
+** Arrays
+   - ~key()~ : Get the key from the internal array pointer
+   - ~current()~ : Get the value from the internal array pointer
+   - ~end(), reset(), next(), prev()~ : Move the internal pointer
+   - ~array_values()~ : Returns an array containing all the values of the array
+   - ~range(min, max)~ : Create an array from ~min~ to ~max~
+   - ~array_fill(from_idx, to_idx, fill_with)~ : Fill the array
+   - ~array_pad(array, size, value)~ : Input ~array~, the ~size~ to display, what ~value~ to add beyond original ~array~
+   - ~array_merge(array1, array2)~ : Return the two merged arrays
+   - ~implode(string, array)~ : Like ~Array.join()~ in most other languages
+   - ~array_slice(array, from)~ : Slice the array from index ~from~ (inclusive)
+   - ~array_sum(array)~ : Add all values together
+   - ~in_array(value, array)~ : Check if ~value~ in ~array~
+   - ~array_key_exists(key, array)~ : Check if ~key~ in ~array~
+   - ~array_count_values(array)~ : Gives back an associative array of values that are counted multiple times
+   - ~sort(array)~
+   - ~sort(array, SORT_NUMERIC)~
+   - ~rsort(array)~ : Reverse sort
+   - ~rsort(array, SORT_NUMERIC)~
+   - ~asort(array)~ : Associative array sorts by value, revers is ~arsort~
+   - ~ksort(array)~ : Associative array sorts by key, reverse is ~krsort~
+   - JS like functions:
+     - ~array_push($array, $value)~ : Add at the end
+     - ~array_pop($array)~ : Take from the end and return
+     - ~array_unshift($array, $value)~ : Add at the beginning
+     - ~array_shift($array)~ : Take from the beginning and return
+   - Standard for loop
+   #+BEGIN_SRC php
+     for ($i = 0; $i < count($rates); $i++) {
+         echo $rates[$i];
+     }
+   #+END_SRC
+   - For each loop
+   #+BEGIN_SRC php
+     foreach ($rates as $rate) {
+         echo $rate;
+     }
+   #+END_SRC
+   - String indexes
+   #+BEGIN_SRC php
+     $rates['One'] = 5.95;
+     $rates['Two'] = 5;
+     $rates['Three'] = 6.95;
+
+     foreach ($rates as $key=>$value) {
+         echo $key . '=' . $value;
+     }
+   #+END_SRC
+   - Add a value to the end of an array
+   #+BEGIN_SRC php
+     $letters = array('a', 'b');
+     $letters[] = 'c';
+   #+END_SRC
+   - Remove value
+   #+BEGIN_SRC php
+     $letters = array('a', 'b');
+     unset($letters[1]); // idx 1 is not NULL
+     unset($letters); // the whole array is now NULL
+     $letters = array_values($letters); // reindex (removes NULL values)
+   #+END_SRC
+   - Make an associative array
+   #+BEGIN_SRC php
+   $tax_rates = array('NC' => 7.75, 'CA' => 8.0);
+   // or
+   $tax_rates = array();
+   $tax_rates['NC'] = 7.75;
+   $tax_rates['CA'] = 8.0;
+   #+END_SRC
+
+** Slim
+   - Set a route path
+   #+BEGIN_SRC php
+     $app->get('/users/:id', 'getUser');
+     $app->post('/users', 'createUser');
+     $app->put('/users/:id', 'updateUser');
+     $app->delete('/users/:id', 'deleteUser');
+   #+END_SRC
+   - Get request body
+   #+BEGIN_SRC php
+     global $app;
+
+     $request = $app->request();
+     $user = json_decode($request->getBody());
+
+     $name = $user->name;
+     $address = $user->address;
+   #+END_SRC
+   - Response as JSON
+   #+BEGIN_SRC php
+     global $db;
+
+     $users = $db->query($query);
+     $users = $users->fetchAll(PDO::FETCH_ASSOC);
+
+     header("Content-Type: application/json", true);
+     echo '{"users": ' . json_encode($users) . '}';
+   #+END_SRC
+* Rest
+  - Use HTTP Methods and Response Codes
+  - Be Stateless and Cache-able
+  - Use Addressable Resources
+  - Support the transfer of Representations
+
+* Web Services
+  - Are software systems that are often designed to support machine-to-machine interaction over a network
+  - Web Services are often, simply just APIs
+  - Use XML or JSON
+  - Style is: RPC, SOAP or REST
+
+* DOM
+
+** DOM Tree Example
+   - Node Types
+   [[file:images/DOM/screenshot_2018-12-12_19-27-09.png]]
+   - Simple Diagram
+   [[file:images/DOM/screenshot_2018-12-12_19-00-14.png]]
+   - With Attributes
+   [[file:images/DOM/screenshot_2018-12-12_19-26-20.png]]
+
+
+** Common Properties Of The Node Interface
+   - nodeType
+   - nodeName
+   - nodeValue
+   - attributes
+   - parentNode
+   - childNodes
+   - firstChild
+   - lastChild
+
+** nodeType
+   - 1: Element
+   - 2: Attr
+   - 3: Text
+   - 8: Comment
+   - 9: Document
+
+** Handy Methods
+   - ~hasChildNodes()~
+   - ~hasAttributes()~
+   - ~hasAttribute()~
+   - ~getAttribute()~
+   - ~setAttribute()~
+   - ~removeAttribute()~
+   - ~getElementsByTagName()~
+   - ~getElementsByName()~
+
+** DOM Creation Methods
+   - ~createElement()~
+   - ~createTextNode()~
+   - ~appendChild()~
+   - ~removeChild()~
+   - ~setAttribute()~
+   - ~insertBefore()~
+
+** HTMLElement interface
+
+*** Built-im attribute references
+    - ~id~
+    - ~title~
+    - ~href~ (only on an anchor)
+    - ~src~ (only on an image)
+
+*** Default actions
+    - ~a~ : Load page in the ~href~ attribute
+    - ~input~ : Submit the form if the ~type~ attr is set to ~submit~
+    - ~input~ : Reset the form if the ~type~ attr is set to ~reset~
+    - ~button~ : Submit the form if the ~type~ attr is set to ~submit~
+    - ~button~ : Reset the form if the ~type~ attr is set to ~reset~
+    - ~return false;~ cancels the default action
+
+* AJAX
+  - *AJAX* (Asynchronous JavaScript and XML): Allows partial page updates – meaning updates of individual pieces of a web page without having to reload the entire page. Technologies include (XHTML, CSS, JavaScript, the DOM, XML, and XMLHttpRequest object).
+  - Components:
+    - XMLHttpRequest
+    - Fetch API (Promises)
+    - XML/JSON
+    - Serve Side
+    - Valid Markup
+    - CSS
+    - DOM Scripting
+
+** Using XMLHttpRequest
+   - ~readyState~ values
+     - 0 uninitialized
+     - 1 loading
+     - 2 loaded
+     - 3 interactive
+     - 4 complete
+   - Create the object
+   #+BEGIN_SRC js
+   var request = new XMLHttpRequest();
+   #+END_SRC
+   - Attach a listener to the state change
+   #+BEGIN_SRC js
+   request.onreadystatechange = function() {
+       // do something
+   };
+   #+END_SRC
+   - Send data
+   #+BEGIN_SRC js
+   // for get
+   request.open("GET", "url", true);  // the boolean true indicates "exute in async"
+   request.send(null);
+   // for post
+   request.open("POST", "url", true);  // the boolean true indicates "exute in async"
+   request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+   request.send("name=joe+bloggs&message=Hello+Everybody");
+   #+END_SRC
+   - Get data back (check for state 4)
+   #+BEGIN_SRC js
+     request.onreadystatechange = function() {
+         if (request.readyState == 4) {
+             // request.responseText for HTML and JSON
+             // request.responseXML for XML
+         }
+     };
+   #+END_SRC
+
+* JavaScript
+
+** Execution
+   - *First pass*:
+     - Declares and initializes function arguments
+     - Declares the local variables, including anonymous functions assigned to a local variable, but doesn't initialize them
+     - Declares and initializes functions
+   - *Second pass*:
+     - Execute code
+
+* jQuery
+  - Usually the starting point is:
+  #+BEGIN_SRC js
+  $(document).ready(function() {
+      // do something here
+  });
+  #+END_SRC
+
+** Selectors
+   - All ~p~ descendants of ~#faqs~, ~$("#faqs p")~
+   - Direct children : ~$("#faqs > p")~
+   - Adjacent siblings: ~$("#faqs + p")~
+   - General siblings: ~$("#faqs ~ p")~
+   - Multiple selectors with a comma : ~$("#faqs , p")~
+   - CSS pseudo like classes:
+     - ~$("#faqs li:first")~
+     - ~$("#faqs li:last")~
+     - ~$("#faqs li:odd")~
+     - ~$("#faqs li:even")~
+
+** AJAX
+   #+BEGIN_SRC js
+     $.ajax({
+         type: 'GET',
+         url: "url",
+         dataType: "json",
+         success: function(data) {
+             // do something with "data"
+         }
+     });
+   #+END_SRC
+
+   #+BEGIN_EXPORT html
+   <script src="../assets/jquery-3.3.1.min.js"></script>
+   <script src="../assets/notes.js"></script>
+   #+END_EXPORT

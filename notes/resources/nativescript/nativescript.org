@@ -1,0 +1,689 @@
+#+TITLE: Nativescript
+#+DATE: [2019-03-10 Sun 10:31]
+#+AUTHOR: Damian Chrzanowski
+#+EMAIL: pjdamian.chrzanowski@gmail.com
+#+OPTIONS: TOC:2 num:2
+#+HTML_HEAD: <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="../../assets/org.css"/>
+#+HTML_HEAD: <link rel="icon" href="../../assets/favicon.ico">
+[[file:../../index.org][Home Page]]
+* Setup
+  - Installing the Nativescript CLI
+  #+begin_src shell
+  npm i -g nativescript
+  #+end_src
+  - Verify installation
+  #+begin_src shell
+  tns
+  #+end_src
+  - Verify environment setup
+  #+begin_src shell
+  tns doctor
+  #+end_src
+  - Creating a project from a template
+  #+begin_src shell
+  tns create <APP NAME> --template <TEMPLATE NAME>
+  #+end_src
+  #+begin_verse
+  [[https://market.nativescript.org/?tab=templates&category=all_templates][Templates List]]
+  #+end_verse
+* Running
+  - Playground Integration
+  #+begin_src shell
+  tns preview
+  #+end_src
+  - Run Android or iOS
+  #+begin_src shell
+  tns run android
+  tns run ios
+  #+end_src
+* Debugging
+  - Use standard ~console.log()~ or ~console.dir()~ to output vars
+  - Run in debug mode
+  #+begin_src shell
+  tns debug android
+  tns debug ios
+  #+end_src
+* Samples
+  - [[https://market.nativescript.org/?tab=samples&framework=all_frameworks&category=all_samples][Features and code samples]]
+* Plugins
+  - Find plugins in the [[http://market.nativescript.org/?_ga=2.20034875.2035096062.1552165814-1266045410.1549810337][marketplace]]
+  - Install
+  #+begin_src shell
+  tns plugin add <PLUGIN NAME>
+  tns plugin add nativescript-camera
+  #+end_src
+  - Use
+  #+begin_src typescript
+    import * as camera from "nativescript-camera"; // Requiring the plugin module
+    camera.requestPermissions();
+
+    // or import only a specific class/method/property of the plugin
+    import { requestPermissions } from "nativescript-camera"; // Requiring only the needed code
+    requestPermissions();
+  #+end_src
+  - Remove
+  #+begin_src shell
+  tns plugin remove nativescript-camera
+  #+end_src
+* Important Module Imports
+  - ~NativeScriptFormsModule~: Two-way data binding (wrapper around Angular Forms)
+  #+begin_src typescript
+    import {NativeScriptFormsModule} from "nativescript-angular/forms"
+    @NgModule({
+        imports: [
+            NativeScriptFormsModule, // RIGHT HERE
+        ],
+    })
+  #+end_src
+  - ~NativeScriptHttpClientModule~: HTTP Client module (wrapper around Angular's HTTP Client)
+  #+begin_src typescript
+    import { NativeScriptHttpClientModule } from 'nativescript-angular/http-client';
+    @NgModule({
+        imports: [
+            NativeScriptHttpClientModule, // RIGHT HERE
+        ],
+    })
+  #+end_src
+  - ~NativeScriptCommonModule~: The Common module that contains directives and widgets. Only needed in sub-modules.
+  #+begin_src typescript
+    import { NativeScriptCommonModule } from "nativescript-angular/common";
+    @NgModule({
+        imports: [
+            NativeScriptHttpClientModule, // RIGHT HERE
+        ],
+    })
+  #+end_src
+  - ~NativeScriptRouterModule~: Routing module, used instead of the standard Angular routing module. Sample setup below:
+  #+begin_src typescript
+    import { NgModule } from "@angular/core";
+    import { Routes } from "@angular/router";
+    import { NativeScriptRouterModule } from "nativescript-angular/router";
+
+    const routes: Routes = [
+        { path: "", redirectTo: "/home", pathMatch: "full" },
+        { path: "home", loadChildren: "~/app/home/home.module#HomeModule" },
+        { path: "browse", loadChildren: "~/app/browse/browse.module#BrowseModule" }
+    ];
+
+    @NgModule({
+        imports: [NativeScriptRouterModule.forRoot(routes)],
+        exports: [NativeScriptRouterModule]
+    })
+    export class AppRoutingModule { }
+  #+end_src
+  - ~NativeScriptAnimationsModule~: Animations module. Only add to *AppModule*. Use only if you need Angular Animations.
+* Core Modules
+** [[https://docs.nativescript.org/angular/core-concepts/modules#core-modules][Full List Of Core Modules]]
+** [[https://docs.nativescript.org/ns-framework-modules/console][Console]]
+   - Standard console output
+   #+begin_src typescript
+     console.log("NativeScript Playground!");
+     console.log({ objProp: "I am Object!" });
+     console.info("NativeScript Rocks!");
+     console.warn("Low memory");
+     console.error("Uncaught Application Exception");
+     console.dir(jsonObj);
+   #+end_src
+   - Timing execution
+   #+begin_src typescript
+     // Begins counting a time span for a given name (key).
+     console.time("LoadTime");
+     // Ends a previously started time span through the time method.
+     console.timeEnd("LoadTime");
+   #+end_src
+** [[https://docs.nativescript.org/ns-framework-modules/application][Application]]
+   - Platform check
+   #+begin_src typescript
+     if (application.android) {
+         console.log("We are running on Android device!");
+     } else if (application.ios) {
+         console.log("We are running on iOS device");
+     }
+   #+end_src
+   - Android
+     - Accessing the Application Module
+     #+begin_src typescript
+       import { android as androidApp } from "tns-core-modules/application";
+
+       let isPaused = androidApp.paused; // e.g. false
+       let packageName = androidApp.packageName; // The package ID e.g. org.nativescript.nativescriptsdkexamplesng
+       let nativeApp = androidApp.nativeApp; // The native APplication reference
+       let foregroundActivity = androidApp.foregroundActivity; // The current Activity reference
+       let currentContext = androidApp.currentContext; // The current Android context
+       let context = androidApp.context; console.log(context); // The current Android context
+     #+end_src
+     - Registering events
+     #+begin_src typescript
+       launchListener = applicationModule.on(applicationModule.launchEvent, (args) => {
+           // The root view for this Window on iOS or Activity for Android.
+           // If not set a new Frame will be created as a root view in order to maintain backwards compatibility.
+           console.log("Root View: ", args.root);
+           console.log("The appication was launched!");
+           vm.set("resumeEvent", "The appication was launched!");
+       });
+     #+end_src
+     - Removing registered events
+     #+begin_src typescript
+       applicationModule.off(applicationModule.launchEvent, launchListener);
+     #+end_src
+   - iOS
+   #+begin_src typescript
+     import { ios as iosApp } from "tns-core-modules/application";
+
+     // https://developer.apple.com/documentation/uikit/uiapplicationdelegate?language=objc
+     let delegate = iosApp.delegate; // the iOS application delegate
+
+     let nativeApp = iosApp.nativeApp; // The native iOS app
+
+     // https://developer.apple.com/documentation/uikit/uiwindow/1621581-rootviewcontroller?language=objc
+     let rootController = iosApp.rootController; // the iOS rootViewController
+
+     let window = iosApp.window; // UIWindow
+   #+end_src
+** [[https://docs.nativescript.org/ns-framework-modules/application-settings][Application Settings]]
+   - Usage
+   #+begin_src typescript
+     import * as appSettings from "tns-core-modules/application-settings";
+
+     // booleans
+     const items = [];
+     appSettings.setBoolean("isTurnedOn", true);
+     // false is default if 'isTurnedOn' is not set
+     const isTurnedOn = appSettings.getBoolean("isTurnedOn", false);
+
+     // strings
+     appSettings.setString("username", "NickIliev");
+     const username = appSettings.getString("username");
+
+     // numbers
+     appSettings.setNumber("locationX", 54.321);
+     const locationX = parseFloat(appSettings.getNumber("locationX").toFixed(3));
+
+     // key check
+     // will return false if there is no "noBoolKey"
+     const noBoolKey = appSettings.hasKey("noBoolKey");
+
+     // will remove the setting for a key
+     appSettings.remove("keyToRemove");
+
+     // Removes all values.
+     appSettings.clear();
+   #+end_src
+** [[https://docs.nativescript.org/ns-framework-modules/timer][Timer]]
+   - Usage
+   #+begin_src typescript
+     import { setInterval, setTimeout, clearInterval } from "tns-core-modules/timer";
+
+     // Usage is the same as standard JS
+   #+end_src
+** [[https://docs.nativescript.org/ns-framework-modules/connectivity][Connectivity]]
+   - Usage
+   #+begin_src typescript
+     import { connectionType, getConnectionType, startMonitoring, stopMonitoring }from "tns-core-modules/connectivity";
+
+     // result is ConnectionType enumeration (none, wifi or mobile)
+     const myConnectionType = getConnectionType();
+
+     switch (myConnectionType) {
+         case connectionType.none:
+             // Denotes no Internet connection.
+             console.log("No connection");
+             break;
+         case connectionType.wifi:
+             // Denotes a WiFi connection.
+             console.log("WiFi connection");
+             break;
+         case connectionType.mobile:
+             // Denotes a mobile connection, i.e. cellular network or WAN.
+             console.log("Mobile connection");
+             break;
+         case connectionType.ethernet:
+             // Denotes a ethernet connection.
+             console.log("Ethernet connection");
+             break;
+         // Bluetooth functionality in master branch (to be released with 5.0.0)
+         // case connectionType.bluetooth:
+         //     // Denotes a ethernet connection.
+         //     console.log("Bluetooth connection");
+         //    //     break;
+         default:
+             break;
+     }
+   #+end_src
+   - Monitoring
+   #+begin_src typescript
+     startMonitoring((newConnectionType) => {
+         switch (newConnectionType) {
+             case connectionType.none:
+                 console.log("Connection type changed to none.");
+                 break;
+             case connectionType.wifi:
+                 console.log("Connection type changed to WiFi.");
+                 break;
+             case connectionType.mobile:
+                 console.log("Connection type changed to mobile.");
+                 break;
+             case connectionType.ethernet:
+                 console.log("Connection type changed to ethernet.");
+                 break;
+             // case connectionType.bluetooth:
+             //     // feature coming in NativeScript 5.0.0
+             //     console.log("Connection type changed to bluetooth.");
+             //     break;
+             default:
+                 break;
+         }
+     });
+
+     // Explicitly stopping the monitoring
+     stopMonitoring();
+   #+end_src
+   - NOTE: Android needs specific permission to access network information
+   #+begin_src xml
+     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+   #+end_src
+* Device Functionality Modules
+** [[https://docs.nativescript.org/ns-framework-modules/platform][Platform]]
+   - Get system info
+   #+begin_src typescript
+     export function onNavigatingTo(args) {
+         const page = <Page>args.object;
+         const vm = new Observable();
+         vm.set("deviceInformationmodel", device.model);
+         vm.set("deviceInformationdeviceType", device.deviceType);
+         vm.set("deviceInformationos", device.os);
+         vm.set("deviceInformationosVersion", device.osVersion);
+         vm.set("deviceInformationsdkVersion", device.sdkVersion);
+         vm.set("deviceInformationlanguage", device.language);
+         vm.set("deviceInformationmanufacturer", device.manufacturer);
+         vm.set("deviceInformationuuid", device.uuid);
+         vm.set("screenInformationheightDIPs", screen.mainScreen.heightDIPs);
+         vm.set("screenInformationheightPixels", screen.mainScreen.heightPixels);
+         vm.set("screenInformationscale", screen.mainScreen.scale);
+         vm.set("screenInformationwidthDIPs", screen.mainScreen.widthDIPs);
+         vm.set("screenInformationwidthPixels", screen.mainScreen.widthPixels);
+
+         vm.set("deviceInfoButton", "Show device info");
+         vm.set("screenInfoButton", "Show screen info");
+         vm.set("isItemVisible", false);
+         vm.set("isItemVisibleScreenInfo", false);
+         page.bindingContext = vm;
+     }
+
+
+     export function checkPlatformType(args) {
+         let message = "";
+         if (isAndroid) {
+             message = "You are using Android device";
+         } else if (isIOS) {
+             message = "You are using IOS device";
+         }
+         dialogs.alert(message)
+             .then(() => {
+                 console.log("Dialog closed!");
+             });
+     }
+
+     export function deviceInfo(args) {
+         const page: Page = <Page>args.object.page;
+         const vm = page.bindingContext;
+         const isItemVisible = vm.get("isItemVisible");
+         if (isItemVisible) {
+             vm.set("deviceInfoButton", "Show device info");
+         } else {
+             vm.set("deviceInfoButton", "Hide device info");
+         }
+         vm.set("isItemVisible", !isItemVisible);
+     }
+
+     export function screenInfo(args) {
+         const page: Page = <Page>args.object.page;
+         const vm = page.bindingContext;
+         const isItemVisibleScreenInfo = vm.get("isItemVisibleScreenInfo");
+         if (isItemVisibleScreenInfo) {
+             vm.set("screenInfoButton", "Show screen info");
+         } else {
+             vm.set("screenInfoButton", "Hide screen info");
+         }
+         vm.set("isItemVisibleScreenInfo", !isItemVisibleScreenInfo);
+     }
+   #+end_src
+** [[https://docs.nativescript.org/ns-framework-modules/file-system][File System]]
+   - Creation
+   #+begin_src typescript
+     import { knownFolders, Folder, File } from "tns-core-modules/file-system";
+
+     const documents: Folder = <Folder>knownFolders.documents();
+     const folder: Folder = <Folder>documents.getFolder(vm.get("folderName") || "testFolder");
+     const file: File = <File>folder.getFile(`${(vm.get("fileName") || "testFile")}` + `.txt`);
+
+     file.writeText(vm.get("fileTextContent") || "some random content")
+         .then(() => {
+             file.readText()
+                 .then((res) => {
+                     vm.set("successMessage", `Successfully saved in${file.path}`);
+                     vm.set("writtenContent", res);
+                     vm.set("isItemVisible", true);
+                 });
+         }).catch((err) => {
+             console.log(err);
+         });
+   #+end_src
+   - Deletion
+   #+begin_src typescript
+     file.remove()
+         .then((res) => {
+             // Success removing the file.
+             vm.set("resultMessage", "File successfully deleted!");
+         }).catch((err) => {
+             console.log(err.stack);
+         });
+   #+end_src
+   - Reading
+   #+begin_src typescript
+     file.readText()
+         .then((res) => {
+             vm.set("writtenContent", res);
+         }).catch((err) => {
+             console.log(err.stack);
+         });
+   #+end_src
+** [[https://docs.nativescript.org/ui/ns-ui-widgets/gestures][Gestures]]
+   - Tap on view
+   #+begin_src typescript
+     myView.on("tap", () => {
+         console.log("myView tapped!");
+     })
+   #+end_src
+   - Tap on element
+   #+begin_src xml
+     <Label text="Tap Me" (tap)="onTap()"/>
+   #+end_src
+   #+begin_src typescript
+     export function onTap(args) {
+         console.log("Label tapped!");
+     };
+   #+end_src
+   - Double Tap
+   #+begin_src xml
+     <Label text="Tap Me" (doubleTap)="onDoubleTap()"/>
+   #+end_src
+   #+begin_src typescript
+     export function onDoubleTap(args) {
+         console.log("Label tapped!");
+     };
+   #+end_src
+   - Long press
+   #+begin_src xml
+   <Label text="Long Press me!" longPress="onLongPress()"/>
+   #+end_src
+   - Pan
+   #+begin_src xml
+   <Label text="Pan me!" pan="onPan()"/>
+   #+end_src
+   #+begin_src typescript
+     import { PanGestureEventData } from "tns-core-modules/ui/gestures";
+
+     export function onPan(args: PanGestureEventData) {
+         // args is of type PanGestureEventData
+         console.log(`${args.eventName} event triggered for ${args.view}`);
+         console.log(`deltaX: ${args.deltaX}`);
+         console.log(`deltaY: ${args.deltaY}`);
+         console.log(`state: ${args.state}`);
+     }
+   #+end_src
+   - Pinch
+   #+begin_src xml
+     <Label text="Pinch me!" pinch="onPinch()" />
+   #+end_src
+   #+begin_src typescript
+     import { PinchGestureEventData } from "tns-core-modules/ui/gestures";
+
+     export function onPinch(args: PinchGestureEventData) {
+         // args is of type PinchGestureEventData
+         console.log(`scale: ${args.scale}`);
+         console.log(`tate: ${args.state}`);
+         console.log(`getFocusX(): ${args.getFocusX()}`);
+         console.log(`getFocusY(): ${args.getFocusY()}`);
+     }
+   #+end_src
+   - Rotation
+   #+begin_src xml
+     <Label text="Rotate me!" rotation="onRotation()"/>
+   #+end_src
+   #+begin_src typescript
+     import { RotationGestureEventData } from "tns-core-modules/ui/gestures";
+
+     export function onRotation(args: RotationGestureEventData) {
+         // args is of type RotationGestureEventData
+         console.log(`${args.eventName} event triggered for ${args.view}`);
+         console.log(`rotation:  ${args.rotation}`);
+         console.log(`state:  ${args.state}`);
+     }
+   #+end_src
+   - Swipe
+   #+begin_src xml
+     <Label text="Swipe me!" swipe="onSwipe()"/>
+   #+end_src
+   #+begin_src typescript
+     import { SwipeDirection, SwipeGestureEventData } from "tns-core-modules/ui/gestures";
+
+     export function onSwipe(args: SwipeGestureEventData) {
+         alert(`${args.eventName} event triggered for ${args.view}`);
+         let direction: SwipeDirection = args.direction;
+         console.log(`direction ${direction}`); // SwipeDirection enumeration: up, down, left, right
+     }
+   #+end_src
+* User Interface Modules
+** [[https://docs.nativescript.org/ui/ns-ui-widgets/frame][Frame]]
+   - Generally not needed when working with Angular
+** [[https://docs.nativescript.org/ui/ns-ui-widgets/page][Page]]
+   - Generally not needed when working with Angular, unless for binding the context
+** [[https://docs.nativescript.org/ns-framework-modules/color][Color]]
+   - Easily create colors
+   #+begin_src typescript
+     // Creates the red color
+     const color = new Color("#FF0000");
+
+     // Creates the color #FF8800
+     const color = new Color("#F80");
+
+     // Creates the color with 100 alpha, 255 red, 100 green, 100 blue
+     const color = new Color(100, 255, 100, 100);
+   #+end_src
+** [[https://docs.nativescript.org/ns-framework-modules/xml-parser][XML Parsing]]
+* Styling
+  - Measurement units
+    - *DIPs* (recommended): ~font-size: 20~
+    - *pixels*: ~font-size 20px~
+    - *percentages*: ~height: 20%~
+  - Allowed CSS properties
+    | CSS Property        | JS Property         | Description                                                                                                            |
+    |---------------------+---------------------+------------------------------------------------------------------------------------------------------------------------|
+    | color               | color               | Sets a solid-color value to the matched view’s foreground.                                                             |
+    | background          | background          | Sets a solid-color value or a linear gradient to the matched view’s background.                                        |
+    | background-color    | backgroundColor     | Sets a solid-color value to the matched view’s background.                                                             |
+    | placeholder-color   | placeholderColor    | Sets the placeholder (hint) font color to matched views.                                                               |
+    | background-image    | backgroundImage     | Sets a image url to the matched view’s background image.                                                               |
+    | background-repeat   | backgroundRepeat    | Sets if/how the background image should be repeated. Possible values: repeat, repeat-x, repeat-y, no-repeat            |
+    | background-position | backgroundPosition  | Sets the starting position of the background image.                                                                    |
+    | background-size     | backgroundSize      | Sets the size of the background image. Possible values: "length length", "percent% percent%", "cover" or "contain".    |
+    | border-color        | borderColor         | Sets border colors to the matched view’s.                                                                              |
+    | border-top-color    | borderTopColor      | Sets a top border color to the matched view’s.                                                                         |
+    | border-right-color  | borderRightColor    | Sets a right border color to the matched view’s.                                                                       |
+    | border-bottom-color | borderBottomColor   | Sets a bottom border color to the matched view’s.                                                                      |
+    | border-left-color   | borderLeftColor     | Sets a left border color to the matched view’s.                                                                        |
+    | border-width        | borderWidth         | Sets border widths to the matched view’s.                                                                              |
+    | border-top-width    | borderTopWidth      | Sets a top border width to the matched view’s.                                                                         |
+    | border-right-width  | borderRightWidth    | Sets a right border width to the matched view’s.                                                                       |
+    | border-bottom-width | borderBottomWidth   | Sets a bottom border width to the matched view’s.                                                                      |
+    | border-left-width   | borderLeftWidth     | Sets a left border width to the matched view’s.                                                                        |
+    | border-radius       | borderRadius        | Sets a border radius to the matched view’s.                                                                            |
+    | font                | font                | Sets the font properties (this includes font-family, font-size, font-style and font-weight) of the matched view.       |
+    | font-family         | fontFamily          | Sets the font family of the matched view.                                                                              |
+    | font-size           | fontSize            | Sets the font size of the matched view (only supports device-independent units).                                       |
+    | font-style          | fontStyle           | Sets the font style of the matched view. Possible values: italic, normal.                                              |
+    | font-weight         | fontWeight          | Sets the font weight of the matched view                                                                               |
+    | text-align          | textAlignment       | Sets text alignment in the matched view. Possible values: left , center, right.                                        |
+    | text-decoration     | textDecoration      | Sets the text formatting. Possible values: none, line-through, underline.                                              |
+    | text-transform      | textTransform       | Sets the text transform. Possible values: none, capitalize, uppercase, lowercase.                                      |
+    | letter-spacing      | letterSpacing       | Sets the text letter spacing. (On Android API Level 21 and above.)                                                     |
+    | line-height         | lineHeight          | Sets the text line height                                                                                              |
+    | z-index             | zIndex              | Sets the z-index. (On Android API Level 21 and above.)                                                                 |
+    | clip-path           | clip-path           | Sets the clip-path. Supported shapes are circle, ellipse, rect and polygon. You can define your own shape using clippy |
+    | vertical-align      | verticalAlignment   | Sets the vertical alignment of the current view within its parent. Possible values: top, center, bottom, stretch.      |
+    | horizontal-align    | horizontalAlignment | Sets the horizontal alignment of the current view within its parent. Possible values: left, center, right, stretch.    |
+    | margin              | margin              | Sets the margin of the view within its parent.                                                                         |
+    | margin-top          | marginTop           | Sets the top margin of the view within its parent.                                                                     |
+    | margin-right        | marginRight         | Sets the right margin of the view within its parent.                                                                   |
+    | margin-bottom       | marginBottom        | Sets the bottom margin of the view within its parent.                                                                  |
+    | margin-left         | marginLeft          | Sets the left margin of the view within its parent.                                                                    |
+    | width               | width               | Sets the view width.                                                                                                   |
+    | height              | height              | Sets the view height.                                                                                                  |
+    | min-width           | minWidth            | Sets the minimal view width.                                                                                           |
+    | min-height          | minHeight           | Sets the minimal view height.                                                                                          |
+    | padding             | padding             | Sets the distance between the boundaries of the layout container and its children.                                     |
+    | padding-top         | paddingTop          | Sets the top padding of a layout container.                                                                            |
+    | padding-right       | paddingRight        | Sets the right padding of a layout container.                                                                          |
+    | padding-bottom      | paddingBottom       | Sets the bottom padding of a layout container.                                                                         |
+    | padding-left        | paddingLeft         | Sets the left padding of a layout container.                                                                           |
+    | visibility          | visibility          | Sets the view visibility. Possible values: visible, collapse (or collapsed).                                           |
+    | opacity             | opacity             | Sets the view opacity. The value is in the [0, 1] range.                                                               |
+  - Nativescript specific CSS properties
+    | CSS Property                         | JS Property                      | Platform | Compatibility | Description                                                                                                            |
+    |--------------------------------------+----------------------------------+----------+---------------+------------------------------------------------------------------------------------------------------------------------|
+    | selected-tab-text-color              | selectedTabTextColor             | Both     | TabView       | Sets the color of the text, while selecting some of the tabs.                                                          |
+    | tab-background-color                 | tabBackgroundColor               | Both     | TabView       | Sets the background color of the tabs.                                                                                 |
+    | tab-text-font-size                   | tabTextFontSize                  | Both     | TabView       | Sets the tab titles font size, without changing the font size of all contents of the tab.                              |
+    | text-transform                       | textTransform                    | Both     | TabViewItem   | Sets the text transform individually for every TabViewItem. Value options: capitalize, lowercase, none, and uppercase. |
+    | android-selected-tab-highlight-color | androidSelectedTabHighlightColor | Android  | TabView       | Sets the underline color of the tabs in Android.                                                                       |
+* Themes
+  - [[https://docs.nativescript.org/ui/theme][Built-in themes]]
+  - [[https://docs.nativescript.org/ui/theme#class-names][Class names for widgets]]
+* [[https://docs.nativescript.org/angular/core-concepts/utils][Utils]]
+  - Import
+  #+begin_src typescript
+    import * as utils from "tns-core-modules/utils/utils";
+  #+end_src
+  - Methods:
+    - ~isFileOrResourcePath()~
+    - ~isDataURI()~
+    - ~openUrl()~
+    - ~escapeRegexSymbols()~
+    - ~convertString()~
+    - ~getDisplayDensity()~
+    - ~toDevicePixels()~
+    - ~toDeviceIndependentPixels()~
+    - ~round()~
+  - Android only methods:
+    - ~getApplication()~
+    - ~getApplicationContext()~
+    - ~getInputMethodManager()~
+    - ~showSoftInput()~
+    - ~dismissSoftInput()~
+    - ~stringArrayToStringSet()~
+    - ~stringSetToStringArray()~
+    - ~getDrawableId()~
+    - ~getStringId()~
+    - ~getId()~
+    - ~getPalleteColor()~
+  - iOS only methods:
+    - ~jsArrayToNSArray()~
+    - ~nsArrayToJSArray()~
+    - ~isLandscape()~
+    - ~MajorVersion()~
+    - ~openFile()~
+* [[https://docs.nativescript.org/angular/ui/layouts/layout-containers][Layouts]]
+** Stack Layout
+** Grid Layout
+** Absolute Layout
+** Wrap Layout
+** Dock Layout
+* Widgets
+** ActionBar
+** ActivityIndicator
+** Animations
+** Button
+** DatePicker
+** Dialogs
+** FormattedString
+** Gestures
+** HtmlView
+** Image
+** Label
+** Layouts
+** ListPicker
+** ListView
+** Progress
+** ScrollView
+** SearchBar
+** SegmentedBar
+** Slider
+** Styling
+** Switch
+** TabView
+** TextField
+** TextView
+** TimePicker
+** WebView
+** NG Directives
+** Icon Fonts
+* Navigation
+** Introduction
+   - Navigation is much the same as the standard Angular. A ~page-router-outlet~ is used in Nativescript to output the individual pages instead of ~router-outlet~
+   - A ~nsRouterLink~ is used instead of ~routerLink~ for navigating between pages. Please note the additional ~clearHistory~ and ~pageTransition~ parameters
+   #+begin_src xml
+    <Button text="Button" [nsRouterLink]="['/main']" pageTransition="slide" clearHistory="true"></Button>
+   #+end_src
+** Configuration
+   - Is basically the same as it is in Angular apart from the Router module import
+   - Declare routes
+   #+begin_src typescript
+     export const routes = [
+         { path: "login", component: LoginComponent },
+         { path: "groceries", component: GroceryListComponent },
+         { path: "grocery/:id", component: GroceryComponent }
+     ];
+   #+end_src
+   - Use the ~NativeScriptRouterModule~ to import the routes
+   #+begin_src typescript
+     import { NativeScriptRouterModule } from "nativescript-angular/router";
+
+     @NgModule({
+         bootstrap: [GroceriesApp],
+         imports: [
+             NativeScriptRouterModule,
+             NativeScriptRouterModule.forRoot(routes)
+         ]
+     })
+     export class GroceriesAppModule { }
+   #+end_src
+
+** ~RouterExtensions~
+   - ~RouterExtensions~ class is used instead of the ~Router~ class for imperative navigation
+   #+begin_src typescript
+    import { RouterExtensions } from "nativescript-angular/router";
+
+    @Component({
+        // ...
+    })
+    export class MainComponent {
+
+        constructor(private routerExtensions: RouterExtensions) {
+        }
+    }
+   #+end_src
+   - Available ~RouterExtensions~ methods:
+     - ~navigate()~
+     - ~navigateByUrl()~
+     - ~back()~
+     - ~canGoBack()~
+     - ~backToPreviousPage()~
+     - ~canGoBackToPreviousPage()~
+* [[https://docs.nativescript.org/angular/core-concepts/multithreading-model][Multithreading with workers]]
+* Delete Heading once notes are completed, leave exports behind
+  #+BEGIN_EXPORT html
+  <script src="../../assets/jquery-3.3.1.min.js"></script>
+  <script src="../../assets/notes.js"></script>
+  #+END_EXPORT

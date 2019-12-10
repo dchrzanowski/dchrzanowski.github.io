@@ -1,0 +1,2205 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2018-12-13 Thu 20:30 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Agile Methodologies</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="Damian Chrzanowski" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="../assets/org.css"/>
+<link rel="icon" href="../assets/favicon.ico">
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2018 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Agile Methodologies</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org8ffa8bb">1. Order of software development process</a></li>
+<li><a href="#org8139a80">2. Agile</a>
+<ul>
+<li><a href="#orgeead7b4">2.1. Agile methodologies comparison</a></li>
+<li><a href="#org6e57519">2.2. Definition</a></li>
+<li><a href="#org7e8c97c">2.3. Sprint</a></li>
+<li><a href="#org8e5e073">2.4. Principles of agile</a></li>
+</ul>
+</li>
+<li><a href="#org87b4c0e">3. Software</a>
+<ul>
+<li><a href="#orgd2abe6b">3.1. Software definition</a></li>
+<li><a href="#org5fe670f">3.2. Software Engineering</a></li>
+<li><a href="#org35f64c8">3.3. Software Products</a></li>
+<li><a href="#org61b50cc">3.4. Process description</a></li>
+<li><a href="#org20fe8b1">3.5. Software process</a></li>
+<li><a href="#org47ee2c2">3.6. Software Attributes</a></li>
+<li><a href="#orgd381a64">3.7. Design</a></li>
+<li><a href="#orgc09b95d">3.8. Quality Product</a></li>
+</ul>
+</li>
+<li><a href="#org87e13d5">4. Clean Code</a></li>
+<li><a href="#org8e5abfb">5. User Stories</a>
+<ul>
+<li><a href="#orgca84639">5.1. Definition and values</a></li>
+<li><a href="#org76aa9a3">5.2. Characteristics</a></li>
+<li><a href="#org755dca7">5.3. Explanation of user story questions</a></li>
+<li><a href="#orgfeecefe">5.4. Basic Template</a></li>
+<li><a href="#orgf2f1b00">5.5. Epics</a></li>
+<li><a href="#orgec0dad9">5.6. Acceptance Criteria</a></li>
+<li><a href="#org9552483">5.7. MoScoW rules</a></li>
+<li><a href="#org84a14ac">5.8. Backlog</a></li>
+</ul>
+</li>
+<li><a href="#org4d3e880">6. Scrum SDLC</a>
+<ul>
+<li><a href="#org7a6d930">6.1. Characteristics</a></li>
+<li><a href="#orgb7e26d8">6.2. Stages</a></li>
+<li><a href="#org351324c">6.3. Roles In Scrum</a></li>
+<li><a href="#org925656d">6.4. Extended Team Members</a></li>
+</ul>
+</li>
+<li><a href="#org8535910">7. Waterfall SDLC</a></li>
+<li><a href="#org0476d59">8. V-Model SDLC</a></li>
+<li><a href="#orgc07cdd2">9. Tests</a>
+<ul>
+<li><a href="#orgb31e660">9.1. Testing Observation</a></li>
+<li><a href="#org5ce618c">9.2. Test has the following characteristics</a></li>
+<li><a href="#orgadaa222">9.3. Execution of a test</a></li>
+<li><a href="#org1eed7ef">9.4. Expected output vs Actual output</a></li>
+<li><a href="#org1b4eedf">9.5. Debugging</a></li>
+<li><a href="#orgc8206bd">9.6. Error, defects, fails</a></li>
+<li><a href="#org1b9e183">9.7. Acceptance Testing</a></li>
+</ul>
+</li>
+<li><a href="#org2576dd0">10. Testing with Agile</a>
+<ul>
+<li><a href="#org6075a39">10.1. Dynamic Testing and SDLC</a></li>
+<li><a href="#org6e2f7ac">10.2. Static and Dynamic Testing</a></li>
+<li><a href="#org8df0b37">10.3. Role of testing</a></li>
+<li><a href="#org1aea943">10.4. Implement different test techniques (types of tests)</a></li>
+</ul>
+</li>
+<li><a href="#orgfd473c9">11. Test Case Design and Coverage Techniques</a>
+<ul>
+<li><a href="#org068c638">11.1. Coverage</a></li>
+<li><a href="#orgfb291b2">11.2. Typical Black Box</a></li>
+<li><a href="#orgae09c6a">11.3. Black Box</a></li>
+<li><a href="#org8cc7119">11.4. White Box</a></li>
+<li><a href="#org590da9c">11.5. Regression test</a></li>
+</ul>
+</li>
+<li><a href="#org01cd289">12. Test Driven Development</a>
+<ul>
+<li><a href="#org8dd7147">12.1. Unit Tests</a></li>
+<li><a href="#org23a7f0d">12.2. Unit Test Characteristics</a></li>
+<li><a href="#org4e0fc22">12.3. TDD Steps</a></li>
+</ul>
+</li>
+<li><a href="#org97663ed">13. JUnit</a></li>
+<li><a href="#org2560633">14. Configuration management</a>
+<ul>
+<li><a href="#orgfb75479">14.1. Version control</a></li>
+<li><a href="#orgeec69d7">14.2. Types of version control</a></li>
+<li><a href="#org1bd40b8">14.3. Git Project Structure</a></li>
+</ul>
+</li>
+<li><a href="#org2ad1e6d">15. Pair programming</a>
+<ul>
+<li><a href="#org97938d4">15.1. Roles</a></li>
+<li><a href="#org03f6986">15.2. Benefits</a></li>
+<li><a href="#orgc2bcd23">15.3. Process</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<p>
+<a href="index.html">Home Page</a>
+</p>
+
+<div id="outline-container-org8ffa8bb" class="outline-2">
+<h2 id="org8ffa8bb"><span class="section-number-2">1</span> Order of software development process</h2>
+<div class="outline-text-2" id="text-1">
+<ol class="org-ol">
+<li>User story, creates:</li>
+<li>Method Signature (name, inputs, return type)</li>
+<li>Black Box, employ test techniques (EP, BVA, CT, etc.)</li>
+<li>Test design</li>
+<li>Write the test code</li>
+<li>Write product code</li>
+<li>Run tests</li>
+<li>Fix code</li>
+<li>Run tests again</li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-org8139a80" class="outline-2">
+<h2 id="org8139a80"><span class="section-number-2">2</span> Agile</h2>
+<div class="outline-text-2" id="text-2">
+</div>
+<div id="outline-container-orgeead7b4" class="outline-3">
+<h3 id="orgeead7b4"><span class="section-number-3">2.1</span> Agile methodologies comparison</h3>
+<div class="outline-text-3" id="text-2-1">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left"><b>Agile Methodology</b></th>
+<th scope="col" class="org-left"><b>Emphasis</b></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Extreme Programming (XP)</td>
+<td class="org-left">Efficiency, customer focus and feedback, and quality</td>
+</tr>
+
+<tr>
+<td class="org-left">Scrum</td>
+<td class="org-left">Teaming, organizing work</td>
+</tr>
+
+<tr>
+<td class="org-left">Feature-Driven Development</td>
+<td class="org-left">Iterative development of user-focused features</td>
+</tr>
+
+<tr>
+<td class="org-left">Dynamic Systems Development Method (DSDM)</td>
+<td class="org-left">Structured approach to rapid development, collection of best practices</td>
+</tr>
+
+<tr>
+<td class="org-left">Lean Software Development</td>
+<td class="org-left">Eliminate work that does not create customer value</td>
+</tr>
+
+<tr>
+<td class="org-left">Kanban Method</td>
+<td class="org-left">Visualize and manage workflow, just-in-time development</td>
+</tr>
+
+<tr>
+<td class="org-left">Crystal Family</td>
+<td class="org-left">People, communication, process rigor maps to product and organizational dynamics</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-org6e57519" class="outline-3">
+<h3 id="org6e57519"><span class="section-number-3">2.2</span> Definition</h3>
+<div class="outline-text-3" id="text-2-2">
+<ul class="org-ul">
+<li>Agile organization is quite simply one that is adaptive to change</li>
+<li><b>Agile software development organization</b> is one that uses Agile tools, techniques and cultural norms to develop their products</li>
+<li>Becoming an agile organization is more of a journey than a destination</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org7e8c97c" class="outline-3">
+<h3 id="org7e8c97c"><span class="section-number-3">2.3</span> Sprint</h3>
+<div class="outline-text-3" id="text-2-3">
+<ul class="org-ul">
+<li>Single iteration of the Agile process two to four weeks maximum</li>
+<li>Design, Code, Test. Sprint is executed in a single increment.</li>
+<li>Sprint also develops <b>only</b> a subset of all the User Stories.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org8e5e073" class="outline-3">
+<h3 id="org8e5e073"><span class="section-number-3">2.4</span> Principles of agile</h3>
+<div class="outline-text-3" id="text-2-4">
+<ul class="org-ul">
+<li>Customers involvement</li>
+<li>Incremental delivery</li>
+<li>People not process</li>
+<li>Embrace change</li>
+<li>Maintain simplicity</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org87b4c0e" class="outline-2">
+<h2 id="org87b4c0e"><span class="section-number-2">3</span> Software</h2>
+<div class="outline-text-2" id="text-3">
+</div>
+<div id="outline-container-orgd2abe6b" class="outline-3">
+<h3 id="orgd2abe6b"><span class="section-number-3">3.1</span> Software definition</h3>
+<div class="outline-text-3" id="text-3-1">
+<p class="verse">
+Software comprises of:<br />
+</p>
+<ul class="org-ul">
+<li>Planning</li>
+<li>User requirements/user stories</li>
+<li>Design</li>
+<li>Coding</li>
+<li>Testing</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org5fe670f" class="outline-3">
+<h3 id="org5fe670f"><span class="section-number-3">3.2</span> Software Engineering</h3>
+<div class="outline-text-3" id="text-3-2">
+<ul class="org-ul">
+<li>Software: Computer program, documentation meets requirements</li>
+<li>Activities of software engineering: requirements, design, coding, testing</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org35f64c8" class="outline-3">
+<h3 id="org35f64c8"><span class="section-number-3">3.3</span> Software Products</h3>
+<div class="outline-text-3" id="text-3-3">
+<ul class="org-ul">
+<li>Generic products: stand alone, made for general public</li>
+<li>Customized: specific software e.g. embedded systems</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org61b50cc" class="outline-3">
+<h3 id="org61b50cc"><span class="section-number-3">3.4</span> Process description</h3>
+<div class="outline-text-3" id="text-3-4">
+<ul class="org-ul">
+<li>Products (outcomes)</li>
+<li>Roles (responsibilities)</li>
+<li>Pre and post conditions</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org20fe8b1" class="outline-3">
+<h3 id="org20fe8b1"><span class="section-number-3">3.5</span> Software process</h3>
+<div class="outline-text-3" id="text-3-5">
+<ul class="org-ul">
+<li>Specification</li>
+<li>Design</li>
+<li>Validation</li>
+<li>Evolution</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org47ee2c2" class="outline-3">
+<h3 id="org47ee2c2"><span class="section-number-3">3.6</span> Software Attributes</h3>
+<div class="outline-text-3" id="text-3-6">
+<ul class="org-ul">
+<li>Functional</li>
+<li>Non-Functional (availability, reliability, etc.)
+<ul class="org-ul">
+<li>Maintainability</li>
+<li>Dependability and Security</li>
+<li>Efficiency</li>
+<li>Acceptability</li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgd381a64" class="outline-3">
+<h3 id="orgd381a64"><span class="section-number-3">3.7</span> Design</h3>
+<div class="outline-text-3" id="text-3-7">
+<ul class="org-ul">
+<li>Describes how different functions come together</li>
+<li>Describes specifically how functions work</li>
+<li>Describes specifically what functions do and how they "look" like</li>
+<li>Sprint(development) has a low level design</li>
+<li>The general concept is the high level design</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgc09b95d" class="outline-3">
+<h3 id="orgc09b95d"><span class="section-number-3">3.8</span> Quality Product</h3>
+<div class="outline-text-3" id="text-3-8">
+<p class="verse">
+Must meet the customers criteria, meaning that it meets the product backlogs requirements<br />
+and the sprint backlog's requirements.<br />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org87e13d5" class="outline-2">
+<h2 id="org87e13d5"><span class="section-number-2">4</span> Clean Code</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+It consists of many principles, some involve:
+</p>
+<ul class="org-ul">
+<li>refactoring</li>
+<li>syntactically correct</li>
+<li>neat, elegant and efficient</li>
+<li>logic should be straightforward</li>
+<li>error handling strategies, exception handling</li>
+<li>good descriptions of variables, classes, methods</li>
+<li>dependencies minimal to ease maintenance</li>
+<li>clean code reads like well-written prose</li>
+<li>clean code is simple and correct</li>
+<li>runs and passes all the tests</li>
+<li>contains no duplicates</li>
+<li>make easy search-able variable/class/method names</li>
+<li>usually classes are names with a noun, methods with a verb</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org8e5abfb" class="outline-2">
+<h2 id="org8e5abfb"><span class="section-number-2">5</span> User Stories</h2>
+<div class="outline-text-2" id="text-5">
+</div>
+<div id="outline-container-orgca84639" class="outline-3">
+<h3 id="orgca84639"><span class="section-number-3">5.1</span> Definition and values</h3>
+<div class="outline-text-3" id="text-5-1">
+<ul class="org-ul">
+<li>In Scrum, the requirements are called user stories</li>
+<li>Have decent knowledge of the domain to produce decent user stories (eg. Game, Cloud, etc.).</li>
+<li>A user story, by definition, must be small enough so that it can be designed, coded, and tested within a single sprint</li>
+<li>A user story is a powerful combination of Who What and Why, so that when the team designs, they have much more to go on than the traditional way of documenting requirements</li>
+<li>The structure of a user story invites conversation and negotiation</li>
+<li>Can be modified over time</li>
+<li>Nouns in a user story imply a class, verbs imply methods</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org76aa9a3" class="outline-3">
+<h3 id="org76aa9a3"><span class="section-number-3">5.2</span> Characteristics</h3>
+<div class="outline-text-3" id="text-5-2">
+<p class="verse">
+It is said that: Product owners need to INVEST in a good user story.<br />
+The following characteristics help to measure how good a user story is:<br />
+- <b>I</b> ndependent, must be able to stand alone, must be unique, must be a feature or a component of a feature<br />
+- <b>N</b> egotiable, must be open to negotiation, it should not be strict<br />
+- <b>V</b> aluable, does it add value to the business, if not it is probably not worth it<br />
+- <b>E</b> stimatable, is it too big or too vague? The complexity and length of time must be reasonable<br />
+- <b>S</b> mall, should be small enough to be implemented within a single sprint<br />
+- <b>T</b> estable, is it enough of a feature that it can be tested and verified that it works correctly?<br />
+</p>
+</div>
+</div>
+
+<div id="outline-container-org755dca7" class="outline-3">
+<h3 id="org755dca7"><span class="section-number-3">5.3</span> Explanation of user story questions</h3>
+<div class="outline-text-3" id="text-5-3">
+<p class="verse">
+<b>Short and simple</b><br />
+</p>
+<ul class="org-ul">
+<li>What?, the requested feature or a component</li>
+<li>Who?, the perspective, who will benefit from the feature/component?</li>
+<li>Why?, the value of the user story</li>
+<li>When?, not often used but if the user story has a high priority then the <i>When?</i> should be used</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgfeecefe" class="outline-3">
+<h3 id="orgfeecefe"><span class="section-number-3">5.4</span> Basic Template</h3>
+<div class="outline-text-3" id="text-5-4">
+<p class="verse">
+As a <b>&lt;type of user&gt;</b><br />
+I want <b>&lt;some goal&gt;</b><br />
+So that <b>&lt;some reason&gt;</b><br />
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgf2f1b00" class="outline-3">
+<h3 id="orgf2f1b00"><span class="section-number-3">5.5</span> Epics</h3>
+<div class="outline-text-3" id="text-5-5">
+<ul class="org-ul">
+<li>Most of user stories start as epics, it is simply a user story that is too big. Epics are general user stories with bigger concepts and a broader spectrum</li>
+<li>Most of ideas start as epics (parent) and then further down the road they get broken down to regular (child) user stories</li>
+<li>It is OK for an epic to sit on the backlog for a long duration of time, however, after about six months (if the progress is decent), the product owner or the scrum master need to start breaking down that epic</li>
+<li>There are systems is place that help with tracking parent and child user stories, this allows for a better understanding of the features</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgec0dad9" class="outline-3">
+<h3 id="orgec0dad9"><span class="section-number-3">5.6</span> Acceptance Criteria</h3>
+<div class="outline-text-3" id="text-5-6">
+<ul class="org-ul">
+<li>These are the tests that the product owner will use to grade whether a user story's development is successful</li>
+<li>Acceptance criteria give the team much more information about the product owner's vision</li>
+<li>Conversations and discussion are strongly encouraged</li>
+<li>This part is really hard to be accomplished in a standard Waterfall model</li>
+<li>They allow to describe conditions that need to be fulfilled</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org9552483" class="outline-3">
+<h3 id="org9552483"><span class="section-number-3">5.7</span> MoScoW rules</h3>
+<div class="outline-text-3" id="text-5-7">
+<ul class="org-ul">
+<li>Must have: all features in this group must be implemented</li>
+<li>Should have: features of this priority are important but can be omitted due to time and resource constraints</li>
+<li>Could have: features that enhance the system with greater functionality but there is no strict delivery timeline</li>
+<li>Want to have: features that would assist only a limited group of users, thus their business value is much smaller</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org84a14ac" class="outline-3">
+<h3 id="org84a14ac"><span class="section-number-3">5.8</span> Backlog</h3>
+<div class="outline-text-3" id="text-5-8">
+<p class="verse">
+Collection of Epics and detailed User Stories<br />
+</p>
+
+
+<div class="figure">
+<p><img src="images/backlog_iceberg.jpg" alt="backlog_iceberg.jpg" />
+</p>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org4d3e880" class="outline-2">
+<h2 id="org4d3e880"><span class="section-number-2">6</span> Scrum SDLC</h2>
+<div class="outline-text-2" id="text-6">
+</div>
+<div id="outline-container-org7a6d930" class="outline-3">
+<h3 id="org7a6d930"><span class="section-number-3">6.1</span> Characteristics</h3>
+<div class="outline-text-3" id="text-6-1">
+<ul class="org-ul">
+<li>Focus on teaming and organizing work</li>
+<li>Despite huge popularity, many people are still uncertain about what it entails</li>
+<li>Emphasis on time constraints called <b>Time Boxes</b> which help organize time</li>
+<li>Usage of <b>sprints</b> for completing chunks of work</li>
+<li>Design, development, test and customer validation all done within a single sprint</li>
+<li>Progress tracking via <b>burn down</b> and <b>burn up</b> charts</li>
+<li>Daily stand-ups</li>
+</ul>
+
+
+<div class="figure">
+<p><img src="images/scrum.jpg" alt="scrum.jpg" />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgb7e26d8" class="outline-3">
+<h3 id="orgb7e26d8"><span class="section-number-3">6.2</span> Stages</h3>
+<div class="outline-text-3" id="text-6-2">
+</div>
+<div id="outline-container-orgae31878" class="outline-4">
+<h4 id="orgae31878">Stage I</h4>
+<div class="outline-text-4" id="text-orgae31878">
+<p class="verse">
+<b>Product Backlog</b><br />
+Start with a minimum of 5 user stories (hypothetically).<br />
+Product Backlog is divided into epics and user stories.<br />
+</p>
+</div>
+</div>
+
+<div id="outline-container-orge7de88e" class="outline-4">
+<h4 id="orge7de88e">Stage II</h4>
+<div class="outline-text-4" id="text-orge7de88e">
+<p class="verse">
+<b>Sprint Backlog</b><br />
+Spring backlog. It is a subset of the Product Backlog<br />
+It is a series of features to be implemented in the current sprint.<br />
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgad38c9f" class="outline-4">
+<h4 id="orgad38c9f">Stage III</h4>
+<div class="outline-text-4" id="text-orgad38c9f">
+<p class="verse">
+<b>Daily Scrum meetings</b><br />
+Usually 15 min long, happen every 24h.<br />
+(What have I done yesterday? What am I doing today? Any problems with the current task?)<br />
+Sprints 2-4 weeks duration.<br />
+Steps during a sprint:<br />
+</p>
+<ul class="org-ul">
+<li>Design</li>
+<li>Code</li>
+<li>Test</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org6afb105" class="outline-4">
+<h4 id="org6afb105">Stage IV</h4>
+<div class="outline-text-4" id="text-org6afb105">
+<p class="verse">
+<b>Potentially shippable product</b><br />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org351324c" class="outline-3">
+<h3 id="org351324c"><span class="section-number-3">6.3</span> Roles In Scrum</h3>
+<div class="outline-text-3" id="text-6-3">
+<ul class="org-ul">
+<li>Agile has a firm distinction between what the <b>Product Owner</b> owns and what the <b>Scrum Team</b> owns</li>
+<li><b>Product Owner</b> is responsible that the company builds the right product <i><b>The What</b></i></li>
+<li><b>The Scrum Team</b> is responsible for ensuring that the product is build correctly, or the right way <i><b>The How</b></i></li>
+</ul>
+</div>
+
+<div id="outline-container-org410743d" class="outline-4">
+<h4 id="org410743d">The product owner</h4>
+<div class="outline-text-4" id="text-org410743d">
+</div>
+<ul class="org-ul">
+<li><a id="org2b57c3c"></a>Satisfy the customer.<br />
+<div class="outline-text-5" id="text-org2b57c3c">
+<ul class="org-ul">
+<li>Active engagement from the "business" perspective</li>
+<li>Should own the product on behalf of the company</li>
+<li>Defines most of the <b>Requirements</b> and <b>User Stories</b></li>
+<li>Product Owner needs to be able to have the vision of what kind of product they want</li>
+<li><b>Product owner has the final say in the product</b></li>
+<li>Is responsible for and owns the <b>Product Backlog</b></li>
+<li>Prioritizes the User Stories according to the current situation (marketplace, competition, evolution)</li>
+</ul>
+</div>
+</li>
+
+<li><a id="org891411b"></a>Priorities of the product owner by business value:<br />
+<div class="outline-text-5" id="text-org891411b">
+<ul class="org-ul">
+<li>Increase revenue</li>
+<li>Expansion of addressable market</li>
+<li>Decrease cost</li>
+<li>Increase customer satisfaction</li>
+<li>Increase processing speed</li>
+<li>Increase stability of the application</li>
+<li>Improve usability</li>
+</ul>
+</div>
+</li>
+
+<li><a id="orgbdd4130"></a>Problems may occur for the product owner:<br />
+<div class="outline-text-5" id="text-orgbdd4130">
+<ul class="org-ul">
+<li>workplace politics</li>
+<li>pressure</li>
+<li>executive opinions</li>
+<li>etc.</li>
+</ul>
+</div>
+</li>
+
+<li><a id="org199daf4"></a>The product owner accepts the results of the sprint:<br />
+<div class="outline-text-5" id="text-org199daf4">
+<ul class="org-ul">
+<li>Avoid misinterpretation of User Stories</li>
+<li>Product owner may reject due to a lack of a "nice" design, missing expectations</li>
+</ul>
+</div>
+</li>
+
+<li><a id="org4974a0e"></a>Release Management<br />
+<div class="outline-text-5" id="text-org4974a0e">
+<p class="verse">
+Is a way of packaging different features or version of software into releases<br />
+</p>
+</div>
+</li>
+</ul>
+</div>
+
+<div id="outline-container-org3060051" class="outline-4">
+<h4 id="org3060051">Scrum Master</h4>
+<div class="outline-text-4" id="text-org3060051">
+</div>
+<ul class="org-ul">
+<li><a id="org84c0ef4"></a>Main roles<br />
+<div class="outline-text-5" id="text-org84c0ef4">
+<ul class="org-ul">
+<li>Leads the team and works through any issues during a sprint</li>
+<li>Specific responsibility varies depending on the size of the team and the experience of the team</li>
+<li>Suggested personality traits:
+<ul class="org-ul">
+<li>Willing to make decisions</li>
+<li>Actively work to remove any roadblocks or impediments</li>
+<li>High initiative</li>
+<li>Determination</li>
+<li>Stubbornness</li>
+</ul></li>
+</ul>
+</div>
+</li>
+
+<li><a id="org743d44d"></a>Impediments<br />
+<div class="outline-text-5" id="text-org743d44d">
+<ul class="org-ul">
+<li><b>Removing impediments</b> is especially crucial as it leads to increased work being done. Most of people do not like to be interrupted when working, and this comes with the so called <b>restart cost</b> after the interruption. Scrum Master attempts to minimize this effect, which leads to more work being done in a much smaller time frame.</li>
+</ul>
+</div>
+</li>
+
+<li><a id="orgc6570b2"></a>Stand ups<br />
+<div class="outline-text-5" id="text-orgc6570b2">
+<ul class="org-ul">
+<li>Scrum master <b>facilitates</b> the daily stand-up and is responsible that the meeting remains brief and focused and that all team members have a chance of contribution
+<ul class="org-ul">
+<li>Encourages a quiet teammate</li>
+<li>Prompts the active teammate to give everyone a chance</li>
+<li>Makes sure that all voices are heard</li>
+</ul></li>
+</ul>
+</div>
+</li>
+
+<li><a id="org2f341a0"></a>The link<br />
+<div class="outline-text-5" id="text-org2f341a0">
+<ul class="org-ul">
+<li>Scrum master is the <b>coordination link</b> between the <b>Team</b> and the <b>Product Owner</b>. Usually there are a lot of question regarding the product or the currently developed User Stories. Scrum master should have answers to all of those questions.</li>
+<li>Scrum master should be the first person that hears about a <b>change</b> and is responsible to notify the team about any changes</li>
+<li>Minimizes the <b>surprise</b> factor</li>
+</ul>
+</div>
+</li>
+<li><a id="orga1f430c"></a>Performance<br />
+<div class="outline-text-5" id="text-orga1f430c">
+<ul class="org-ul">
+<li>Address root causes of lack of performance (be it testing or incomplete documentation, coding issues)</li>
+<li>Holds people accountable for honoring their commitments</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+
+<div id="outline-container-orge58c6bf" class="outline-4">
+<h4 id="orge58c6bf">The Team</h4>
+<div class="outline-text-4" id="text-orge58c6bf">
+<ul class="org-ul">
+<li>Should consist of 5-9 people, bigger project might require two or more teams, which adds complexity</li>
+<li>Be transparent</li>
+<li>Be trust-worthy</li>
+<li>Be talented so that the workload is as even as possible</li>
+<li>Teamwork oriented</li>
+<li>Cross-functional so that the requirements can be designed, coded and tested within a single sprint</li>
+<li>As static as possible, the membership should not change, leads to potential changes in vibe, respect and trust, all of which affect the entire team and most importantly productivity</li>
+</ul>
+</div>
+
+<ul class="org-ul">
+<li><a id="org598ff55"></a>Working Agreement, creation and topics<br />
+<div class="outline-text-5" id="text-org598ff55">
+<ul class="org-ul">
+<li>Relationship definition via first point collaboration</li>
+<li>Reflects the values and commitments of the team</li>
+<li>Time and location of daily meetings</li>
+<li>Testing strategies</li>
+<li>Infrastructure plans</li>
+<li>Norms (estimates, be on time, help when needed)</li>
+<li>How to address bugs</li>
+<li>Product owner availability (phone, office hours, attendance etc.)</li>
+<li>Capacity plan for initial Sprints</li>
+</ul>
+</div>
+</li>
+
+<li><a id="orgc825f76"></a>Fist of Five<br />
+<div class="outline-text-5" id="text-orgc825f76">
+<ul class="org-ul">
+<li>Whenever there is a discussion where there are a lot of options, the team votes</li>
+<li>The general concept is that people vote with the amount of fingers on their hands:
+<ul class="org-ul">
+<li>5 fingers - I am all in</li>
+<li>4 fingers - I buy into the option and I support it</li>
+<li>3 fingers - I have reservations</li>
+<li>2 fingers - I have greater reservation and I need further discussion</li>
+<li>1 finger  - I do not support the vision</li>
+</ul></li>
+</ul>
+</div>
+</li>
+
+<li><a id="orgfb05748"></a>Self-Organizing<br />
+<div class="outline-text-5" id="text-orgfb05748">
+<p class="verse">
+The team decides how they will work together, but also are empowered to define and evolve their roles within the team.<br />
+Self-organizing teams can easily outperform bigger teams. This comes from the fact that people do what they are good at and not what they have been told to do (to an extent, obviously).<br />
+<br />
+Family-sized groups naturally self-organize:<br />
+</p>
+<ul class="org-ul">
+<li>Members are committed to clear, short-term goals</li>
+<li>Members gauge progression</li>
+<li>Members observe contribution</li>
+<li>Members give each other feedback</li>
+<li>Should be consistent in Membership
+<ul class="org-ul">
+<li>Better team vibe and understanding</li>
+<li>Better estimates</li>
+<li>New member needs to blend in and catch-up</li>
+</ul></li>
+</ul>
+</div>
+</li>
+
+<li><a id="org5f5b34c"></a>Task selection<br />
+<div class="outline-text-5" id="text-org5f5b34c">
+<ul class="org-ul">
+<li>In traditional Waterfall, often the manager assigns the tasks</li>
+<li>In Agile the team member picks his own task and is fully responsible for that task's completion and its ownership</li>
+<li>Picking own assignments leads to a better job satisfaction</li>
+<li>Promotes cross-training, less experienced people can pick new tasks for themselves and be mentored by more experienced members</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org925656d" class="outline-3">
+<h3 id="org925656d"><span class="section-number-3">6.4</span> Extended Team Members</h3>
+<div class="outline-text-3" id="text-6-4">
+</div>
+<div id="outline-container-orgd9d0577" class="outline-4">
+<h4 id="orgd9d0577">Standard/Core Roles</h4>
+<div class="outline-text-4" id="text-orgd9d0577">
+<ul class="org-ul">
+<li>Product Owner</li>
+<li>Scrum Master</li>
+<li>The Team</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org99ece89" class="outline-4">
+<h4 id="org99ece89">Extended contribution</h4>
+<div class="outline-text-4" id="text-org99ece89">
+<ul class="org-ul">
+<li>Project sponsors</li>
+<li>Stakeholders</li>
+<li>Project Manages</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org8535910" class="outline-2">
+<h2 id="org8535910"><span class="section-number-2">7</span> Waterfall SDLC</h2>
+<div class="outline-text-2" id="text-7">
+<ul class="org-ul">
+<li>Plan driven</li>
+<li>Simplistic model</li>
+<li>Assumes predefined user requirements</li>
+<li>Sequential model (one task needs to complete before moving onto the next one)</li>
+<li>One process is executed at a time</li>
+<li>The biggest cost is the repetition of previous steps if a flaw is found somewhere down the line</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org0476d59" class="outline-2">
+<h2 id="org0476d59"><span class="section-number-2">8</span> V-Model SDLC</h2>
+<div class="outline-text-2" id="text-8">
+<ul class="org-ul">
+<li>Plan driven</li>
+<li>Like the waterfall it assumes predefined user requirements</li>
+<li>Sequential model</li>
+<li>The V-Model tests on every process (step)</li>
+<li>Early tests help with estimation and understanding the user requirements better</li>
+<li>Tests are always performed against a particular object</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgc07cdd2" class="outline-2">
+<h2 id="orgc07cdd2"><span class="section-number-2">9</span> Tests</h2>
+<div class="outline-text-2" id="text-9">
+</div>
+<div id="outline-container-orgb31e660" class="outline-3">
+<h3 id="orgb31e660"><span class="section-number-3">9.1</span> Testing Observation</h3>
+<div class="outline-text-3" id="text-9-1">
+<ul class="org-ul">
+<li>Testing can show that defects are present, but cannot completely exclude them</li>
+<li>Testing reduces the probability of undiscovered defects</li>
+<li>All the defects are impossible to be found</li>
+<li>Poor testing can lead to none/few bugs found</li>
+<li>Exhaustive testing is not practiced, risk and priorities testing is normally implemented</li>
+<li>Testing should be <b>effective</b> and also <b>efficient</b> (not to repeat the same tests)</li>
+<li>Testing should start as early as possible (preferably during the requirements phase)</li>
+<li>Testing is context dependent</li>
+<li>Testing and the design criteria could be met perfectly, however there could be a mistake and the user can call it a failure due to incorrect specification</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org5ce618c" class="outline-3">
+<h3 id="org5ce618c"><span class="section-number-3">9.2</span> Test has the following characteristics</h3>
+<div class="outline-text-3" id="text-9-2">
+<ul class="org-ul">
+<li>object under tests</li>
+<li>test objective</li>
+<li>definition of the inputs</li>
+<li>definition of the expected outputs</li>
+<li>definition of the test environment</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgadaa222" class="outline-3">
+<h3 id="orgadaa222"><span class="section-number-3">9.3</span> Execution of a test</h3>
+<div class="outline-text-3" id="text-9-3">
+<ul class="org-ul">
+<li>Actual output is generated/observed</li>
+<li>Tester checks if the output is correct</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org1eed7ef" class="outline-3">
+<h3 id="org1eed7ef"><span class="section-number-3">9.4</span> Expected output vs Actual output</h3>
+<div class="outline-text-3" id="text-9-4">
+<ul class="org-ul">
+<li>Requirements define what the software is required to do</li>
+<li>Without requirements tests cannot be designed</li>
+<li>Requirements are necessary to write code</li>
+<li>Testers need requirements to:
+<ul class="org-ul">
+<li>Identify what tests are needed</li>
+<li>Compare test results with requirements</li>
+</ul></li>
+<li>If an expected result is not defined it can be misinterpreted as a fault and&#x2026;</li>
+<li>If an unexpected result is not defined it can be misinterpreted as a properly working code</li>
+<li>Expected results must be defined before the execution, derived from the specification documents, design document, or code</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org1b4eedf" class="outline-3">
+<h3 id="org1b4eedf"><span class="section-number-3">9.5</span> Debugging</h3>
+<div class="outline-text-3" id="text-9-5">
+<ul class="org-ul">
+<li>Is a development activity that identifies the causes of a defect</li>
+<li>Repairs the defects in the code</li>
+<li>Checks that the defect has been fixed correctly</li>
+<li>Retesting to ensure that the failure is resolved</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgc8206bd" class="outline-3">
+<h3 id="orgc8206bd"><span class="section-number-3">9.6</span> Error, defects, fails</h3>
+<div class="outline-text-3" id="text-9-6">
+<ul class="org-ul">
+<li>Developer makes an <b>ERROR</b></li>
+<li>&#x2026; and injects a <b>DEFECT</b> into the software&#x2026;</li>
+<li>&#x2026; and the fault causes the software to <b>FAIL</b></li>
+</ul>
+<p class="verse">
+Defects MAY result in failures, BUT not all defects do so!<br />
+</p>
+</div>
+
+<div id="outline-container-org857ec00" class="outline-4">
+<h4 id="org857ec00">Errors</h4>
+<div class="outline-text-4" id="text-org857ec00">
+<ul class="org-ul">
+<li>Software Engineer producing an incorrect result from <b>Requirements</b> or the <b>Design Document</b></li>
+<li>When errors are made they introduce defects into the code</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org13d5d1a" class="outline-4">
+<h4 id="org13d5d1a">Defects (aka Faults/Bugs)</h4>
+<div class="outline-text-4" id="text-org13d5d1a">
+<ul class="org-ul">
+<li>Manifestation of human error</li>
+<li>Caused by:
+<ul class="org-ul">
+<li>Requirements</li>
+<li>Design</li>
+<li>Coding errors</li>
+</ul></li>
+<li>Defects are static, they are characteristics of the code they exist in</li>
+<li>Discovered by inspection or by deducing their existence from failures&#x2026;</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orga770c8d" class="outline-4">
+<h4 id="orga770c8d">Failures</h4>
+<div class="outline-text-4" id="text-orga770c8d">
+<ul class="org-ul">
+<li>Deviation of the software from its expected delivery or service or when software does the 'wrong' thing</li>
+<li>Defects cause software failures when the program is executed with a set of inputs that expose the defect</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org1b9e183" class="outline-3">
+<h3 id="org1b9e183"><span class="section-number-3">9.7</span> Acceptance Testing</h3>
+<div class="outline-text-3" id="text-9-7">
+<ul class="org-ul">
+<li>Express the details that result from conversations about requirements</li>
+<li>One of the purposes is to fill in the details of a User Story</li>
+<li>Can provide basic criteria that provide verification guidelines, which in a consequence helps to put just the right amount of time into the test</li>
+<li>Provide a great deal of information that the coders can use</li>
+<li>Can work as reminders of what is the actual focus of a User Story</li>
+<li>Should be written before the coding starts to assist in the previous point</li>
+<li>Usually written at the following times:
+<ul class="org-ul">
+<li>Customer or the team talk about a user story and want to capture the details</li>
+<li>As part of a dedicated effort before the sprint starts</li>
+<li>Whenever new tests are discovered during programming a user story or even after programming the story</li>
+</ul></li>
+<li>Before coding a good idea is to ask:
+<ul class="org-ul">
+<li>What else do the programmers need to know about the story?</li>
+<li>What am I assuming about how the story will be implemented?</li>
+<li>Are there circumstances where this story might behave differently?</li>
+<li>What can go wrong during the story?</li>
+</ul></li>
+<li>Acceptance Tests need to be specified by the customer, as he has the final say in the product itself</li>
+<li>Customer can work with the team to seek assistance in designing the tests, but the idea itself must come from the customer</li>
+<li>With User Stories it is crucial to think of testing design as a part of the development, not something that is done after coding</li>
+<li>Product owner brings knowledge of the goals of the organization</li>
+<li>The Tester brings his suspicious mind-set</li>
+<li>Tests should keep on getting written for as long as they add value and clarification</li>
+<li>Minimally should be executed at the end of every sprint</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org2576dd0" class="outline-2">
+<h2 id="org2576dd0"><span class="section-number-2">10</span> Testing with Agile</h2>
+<div class="outline-text-2" id="text-10">
+<ul class="org-ul">
+<li>Design code that will be thoroughly tested to reduce the amount of mistakes.</li>
+<li>Design tests that will cover (hopefully) as many test cases as possible.</li>
+</ul>
+<p class="verse">
+<b>Testers Test</b><br />
+<b>Developers Debug</b><br />
+</p>
+</div>
+
+<div id="outline-container-org6075a39" class="outline-3">
+<h3 id="org6075a39"><span class="section-number-3">10.1</span> Dynamic Testing and SDLC</h3>
+<div class="outline-text-3" id="text-10-1">
+<p class="verse">
+From the lowest to the highest level:<br />
+</p>
+<ul class="org-ul">
+<li>Program (unit, component, module) testing: lowest level based on individual units and code (mostly white-box)</li>
+<li>Integration or Component Integration testing: test of communications of classes and modules</li>
+<li>System testing: tests of the entire system:
+<ul class="org-ul">
+<li>Non-functional (eg. performance, backup and recovery, stress)</li>
+<li>Functional, tests the functionality as a whole</li>
+</ul></li>
+<li>User acceptance testing: test with a live user</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org6e2f7ac" class="outline-3">
+<h3 id="org6e2f7ac"><span class="section-number-3">10.2</span> Static and Dynamic Testing</h3>
+<div class="outline-text-3" id="text-10-2">
+<ul class="org-ul">
+<li>Both can be used to achieve similar goals</li>
+<li>Both will provide information in order to improve the system</li>
+</ul>
+</div>
+
+<div id="outline-container-org59cc68c" class="outline-4">
+<h4 id="org59cc68c">Static</h4>
+<div class="outline-text-4" id="text-org59cc68c">
+<ul class="org-ul">
+<li>Static, testing software without executing it. Hand tracing etc.</li>
+<li>Reviewing documents (especially Requirements), source code and static analysis</li>
+<li>Dry testing, without the actual framework</li>
+<li>Static tests do not execute the software</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orge88919d" class="outline-4">
+<h4 id="orge88919d">Dynamic</h4>
+<div class="outline-text-4" id="text-orge88919d">
+<ul class="org-ul">
+<li>Dynamic, testing by executing the software.</li>
+<li>Testing on the actual framework</li>
+<li>Creating and executing test code to test parts or all of the system under test</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org8df0b37" class="outline-3">
+<h3 id="org8df0b37"><span class="section-number-3">10.3</span> Role of testing</h3>
+<div class="outline-text-3" id="text-10-3">
+<p class="verse">
+As there can be an infinite amount of tests, usually we have to focus on time management. Therefore we should specifically test around the business critical parts and the riskiest parts of the software.<br />
+</p>
+<ul class="org-ul">
+<li>Testing rigorously against the requirements and the design criteria and the documentation</li>
+<li>Assists in providing a better quality product
+<ul class="org-ul">
+<li>Employing tests to identify defects</li>
+<li>Fixing defects found</li>
+</ul></li>
+<li>Can be used to measure the quality of a product
+<ul class="org-ul">
+<li>Designing tests that find faults</li>
+<li>Counting the faults</li>
+<li>Objective assessment of the quality based on the tests and their results (faults found)</li>
+</ul></li>
+<li>May be required to meet contract requirements, legal requirements and/or industry standards</li>
+<li>Developer does not get paid until the software passes all the acceptance tests</li>
+<li>Acceptance tests help to determine whether the developers build the requirements correctly</li>
+<li>Software requirements may be imposed (testing can provide evidence of such):
+<ul class="org-ul">
+<li>Laws governing different industry domains must be obeyed</li>
+<li>Domain/industry regulations/standards must be adhered</li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org1aea943" class="outline-3">
+<h3 id="org1aea943"><span class="section-number-3">10.4</span> Implement different test techniques (types of tests)</h3>
+<div class="outline-text-3" id="text-10-4">
+<p class="verse">
+Both black box and white box belong to the dynamic testing.<br />
+</p>
+<ul class="org-ul">
+<li>Black box testing, design of testing of specification and requirements</li>
+<li>White box testing, design of testing the code</li>
+<li>In some cases people prioritize one or the other and focus on the difficult/risky parts first</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgfd473c9" class="outline-2">
+<h2 id="orgfd473c9"><span class="section-number-2">11</span> Test Case Design and Coverage Techniques</h2>
+<div class="outline-text-2" id="text-11">
+<ul class="org-ul">
+<li>Techniques are defined to help design test cases and to quantify the tests that need performing (coverage)</li>
+<li>These techniques allow to better understand the specification and comparison of software testing</li>
+<li>Usually try to achieve 100% coverage with each technique</li>
+</ul>
+</div>
+
+<div id="outline-container-org068c638" class="outline-3">
+<h3 id="org068c638"><span class="section-number-3">11.1</span> Coverage</h3>
+<div class="outline-text-3" id="text-11-1">
+<ul class="org-ul">
+<li><b>Coverage Item</b>: an entity or property that is being tested</li>
+<li><b>Coverage</b>: the degree, expressed in percents, which specifies to which extent the testing has been induced</li>
+<li><b>Coverage (measurement) Tool</b>: a tool that provides an objective measure of what elements have been exercised by a test suite</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgfb291b2" class="outline-3">
+<h3 id="orgfb291b2"><span class="section-number-3">11.2</span> Typical Black Box</h3>
+<div class="outline-text-3" id="text-11-2">
+<ul class="org-ul">
+<li>Inputs</li>
+<li>Processing</li>
+<li>Outputs</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgae09c6a" class="outline-3">
+<h3 id="orgae09c6a"><span class="section-number-3">11.3</span> Black Box</h3>
+<div class="outline-text-3" id="text-11-3">
+</div>
+<div id="outline-container-org3eb59ca" class="outline-4">
+<h4 id="org3eb59ca">Equivalence partitioning</h4>
+<div class="outline-text-4" id="text-org3eb59ca">
+</div>
+<ul class="org-ul">
+<li><a id="orgacf3951"></a>Design<br />
+<div class="outline-text-5" id="text-orgacf3951">
+<ul class="org-ul">
+<li>Based on a premise that the inputs and the outputs can be partitioned into classes that will be treated similarly, according to the component's specification.</li>
+<li>A test case may have any number of partitions.</li>
+<li>A test case needs to have the following:
+<ul class="org-ul">
+<li>the input(s) to the component</li>
+<li>the partitions exercised</li>
+<li>the expected outcome of the test case</li>
+</ul></li>
+</ul>
+</div>
+</li>
+
+<li><a id="org782a67c"></a>Steps<br />
+<div class="outline-text-5" id="text-org782a67c">
+<ul class="org-ul">
+<li>Identify variables and their types (values it takes)</li>
+<li>Identify range per variable (each range is a partition), negative and positive outcomes.
+<ul class="org-ul">
+<li>For instance the <code>int</code> type would have 3 partitions: positive numbers, negative numbers and zero</li>
+</ul></li>
+<li>Identify minimum amount of test cases</li>
+<li>Design test templates</li>
+</ul>
+</div>
+</li>
+
+<li><a id="org33ceaee"></a>Test Template<br />
+<div class="outline-text-5" id="text-org33ceaee">
+<p class="verse">
+Test number: addition001<br />
+Test object: adding two positive numbers<br />
+Input: numbers 5 and 5<br />
+Output: 10<br />
+</p>
+</div>
+</li>
+
+<li><a id="org4a14019"></a>Example<br />
+<div class="outline-text-5" id="text-org4a14019">
+<p class="verse">
+Example of a method that adds two numbers together (based on a user story which asks for addition of <b>two positive numbers</b>):<br />
+</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">&#xa0;</th>
+<th scope="col" class="org-left">Test 1</th>
+<th scope="col" class="org-left">Test 2</th>
+<th scope="col" class="org-left">Test 3</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><b>Partition</b></td>
+<td class="org-left">Positive</td>
+<td class="org-left">Zero</td>
+<td class="org-left">Negative</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left"><b>Input</b></td>
+<td class="org-left">5 and 5</td>
+<td class="org-left">0 and 0</td>
+<td class="org-left">-5 and 05</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left"><b>Expected</b></td>
+<td class="org-left">10</td>
+<td class="org-left">error</td>
+<td class="org-left">error</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li>
+</ul>
+</div>
+
+<div id="outline-container-org0193c99" class="outline-4">
+<h4 id="org0193c99">Boundary value analysis</h4>
+<div class="outline-text-4" id="text-org0193c99">
+</div>
+<ul class="org-ul">
+<li><a id="org1de68fb"></a>Design<br />
+<div class="outline-text-5" id="text-org1de68fb">
+<ul class="org-ul">
+<li><b>BVA</b> is a technique in which tests are designed to include representatives of boundary values</li>
+<li>Experience shows that there are usually problems at boundaries of equivalence partitions</li>
+<li>The MAX and MIN values of a partition are its boundary values as well</li>
+<li>Expected inputs and outputs should be taken from the specification, they are then grouped into partitions (using Equivalence Partitioning)</li>
+<li>Each partition or set should be processed the same way</li>
+<li>Always attempt to achieve 100% in BVA, especially when the partitions are number based</li>
+</ul>
+</div>
+</li>
+
+<li><a id="org4494b62"></a>Example<br />
+<div class="outline-text-5" id="text-org4494b62">
+<p class="verse">
+In the case of an <code>int</code> which has 3 partitions, there are 4 boundaries:<br />
+</p>
+<ul class="org-ul">
+<li>at <code>MIN_INT</code></li>
+<li>at -1</li>
+<li>at +1</li>
+<li>at <code>MAX_INT</code></li>
+</ul>
+<p class="verse">
+Each boundary should have 3 test, at the boundary itself and also just above and just below the boundary. It is data type dependant, eg. <code>String</code> would not have less than zero string length as one of the tests.<br />
+</p>
+</div>
+</li>
+</ul>
+</div>
+
+<div id="outline-container-org4241f14" class="outline-4">
+<h4 id="org4241f14">Classification Trees</h4>
+<div class="outline-text-4" id="text-org4241f14">
+</div>
+<ul class="org-ul">
+<li><a id="org9e3cdf9"></a>Design<br />
+<div class="outline-text-5" id="text-org9e3cdf9">
+<ul class="org-ul">
+<li>Appropriate where functionality depends on combinations of conditions</li>
+<li>Provides a systematic method to create test case specifications based on a problem definition</li>
+<li>Is a test that employs cross referencing</li>
+<li>Hypothetically if there is a method with 3 variables and 3 partitions per variable, then there are 27 possible tests to verify all the possibilities. However, some test might not have to be made to fully verify the method thanks to cross-referencing.</li>
+<li>Logic is applied to determine how many test cases are actually required, sometimes some variables exclude the usage of other variables and thus minifies the amount of test cases needed</li>
+</ul>
+</div>
+</li>
+
+<li><a id="orgdbc81a8"></a>Steps<br />
+<div class="outline-text-5" id="text-orgdbc81a8">
+<p class="verse">
+Two steps are generally defined in CT:<br />
+</p>
+<ol class="org-ol">
+<li>Identification of test relevant aspects and their corresponding values as well as</li>
+<li>Combination of different classes from all classifications into test cases</li>
+</ol>
+</div>
+</li>
+
+<li><a id="orgd712ef8"></a>Example<br />
+<div class="outline-text-5" id="text-orgd712ef8">
+<ul class="org-ul">
+<li>In the case below an assumption can be made that if someone has a severe offence they are unlikely to have a mortgage</li>
+<li>If you are 18 you are unlikely to have a mortgage</li>
+<li>So on&#x2026;..</li>
+</ul>
+
+
+<div class="figure">
+<p><img src="images/ct.png" alt="ct.png" />
+</p>
+</div>
+</div>
+</li>
+
+<li><a id="orgb8c0431"></a>Coverage<br />
+<div class="outline-text-5" id="text-orgb8c0431">
+<ul class="org-ul">
+<li><b>Maximum Criterion</b> is the maximum amount of test cases</li>
+<li>A reasonable amount of test cases lies somewhere in between the minimum and the maximum amount of test cases</li>
+<li>The objective is to determine a sufficient but minimum amount of test cases</li>
+<li>It is not necessary to create test for every combination</li>
+</ul>
+</div>
+</li>
+
+<li><a id="org9ccdcf9"></a>Benefits<br />
+<div class="outline-text-5" id="text-org9ccdcf9">
+<ul class="org-ul">
+<li>Simple way of organizing Equivalence Partitioning</li>
+<li>The test case matrix is an easier way of understanding and identifying conditions and duplicate tests</li>
+<li>Not really a method</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+
+<div id="outline-container-orgd08d037" class="outline-4">
+<h4 id="orgd08d037">State transition testing</h4>
+<div class="outline-text-4" id="text-orgd08d037">
+</div>
+<ul class="org-ul">
+<li><a id="org44c0aff"></a>Diagram and transition change tests<br />
+<div class="outline-text-5" id="text-org44c0aff">
+
+<div class="figure">
+<p><img src="images/state_transition_diagram.jpg" alt="state_transition_diagram.jpg" />
+</p>
+</div>
+<ul class="org-ul">
+<li><code>0-switch coverage</code> needs to cover one transition and two states</li>
+<li><code>1-switch coverage</code> needs to cover two transitions and three states (basically going from one state to another and then to the next one, for the above diagram it is 10 tests in total)</li>
+<li><code>2-switch coverage</code> needs to cover three transitions and four states</li>
+</ul>
+</div>
+</li>
+
+<li><a id="org8f03d9f"></a>State table<br />
+<div class="outline-text-5" id="text-org8f03d9f">
+<ul class="org-ul">
+<li>example of state change from S1 &#x2013; change-time &#x2013;&gt; S2 &#x2013; time-set &#x2013;&gt; S3</li>
+<li>verify the positive and negative tests</li>
+</ul>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Test Case</th>
+<th scope="col" class="org-left">1</th>
+<th scope="col" class="org-left">2</th>
+<th scope="col" class="org-right">3</th>
+<th scope="col" class="org-right">4</th>
+<th scope="col" class="org-right">5</th>
+<th scope="col" class="org-right">6</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Start State</td>
+<td class="org-left">S1</td>
+<td class="org-left">S2</td>
+<td class="org-right">&#xa0;</td>
+<td class="org-right">&#xa0;</td>
+<td class="org-right">&#xa0;</td>
+<td class="org-right">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">Input</td>
+<td class="org-left">CM</td>
+<td class="org-left">R</td>
+<td class="org-right">&#xa0;</td>
+<td class="org-right">&#xa0;</td>
+<td class="org-right">&#xa0;</td>
+<td class="org-right">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">Output</td>
+<td class="org-left">D</td>
+<td class="org-left">AT</td>
+<td class="org-right">&#xa0;</td>
+<td class="org-right">&#xa0;</td>
+<td class="org-right">&#xa0;</td>
+<td class="org-right">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">Next State</td>
+<td class="org-left">S2</td>
+<td class="org-left">S3</td>
+<td class="org-right">&#xa0;</td>
+<td class="org-right">&#xa0;</td>
+<td class="org-right">&#xa0;</td>
+<td class="org-right">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+
+<ul class="org-ul">
+<li>state change table</li>
+</ul>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">State</th>
+<th scope="col" class="org-left">CM</th>
+<th scope="col" class="org-left">R</th>
+<th scope="col" class="org-left">TS</th>
+<th scope="col" class="org-left">PS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">S1</td>
+<td class="org-left">S2/D</td>
+<td class="org-left">S3/AT</td>
+<td class="org-left">S1/null</td>
+<td class="org-left">S1/null</td>
+</tr>
+
+<tr>
+<td class="org-left">S2</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">S3</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">S4</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li>
+</ul>
+</div>
+
+<div id="outline-container-orga5251fc" class="outline-4">
+<h4 id="orga5251fc">Decision Table Testing</h4>
+<div class="outline-text-4" id="text-orga5251fc">
+</div>
+<ul class="org-ul">
+<li><a id="orgdb514c1"></a>Brief example<br />
+<div class="outline-text-5" id="text-orgdb514c1">
+<ul class="org-ul">
+<li>this type of testing is organised around testing conditions</li>
+<li>an example would be: "Apply a 5% discount to any order above 100eur, and a 12% discount to Premium customers. Premium customers get a free delivery. Orders by Premium customers above 100eur also cause for the Premium customer to receive a 30eur voucher". This implies two conditions don't apply a condition below 100eur and do apply a discount above 100eur</li>
+</ul>
+</div>
+</li>
+
+<li><a id="orgb829fc3"></a>Conditions<br />
+<div class="outline-text-5" id="text-orgb829fc3">
+<ol class="org-ol">
+<li>Premium Customer ?</li>
+<li>Order over 100eur ?</li>
+</ol>
+</div>
+</li>
+
+<li><a id="org94407a3"></a>Actions<br />
+<div class="outline-text-5" id="text-org94407a3">
+<ol class="org-ol">
+<li>5% discount</li>
+<li>12% discount</li>
+<li>Free delivery</li>
+<li>30eur voucher</li>
+</ol>
+</div>
+</li>
+
+<li><a id="org32b7610"></a>Table<br />
+<div class="outline-text-5" id="text-org32b7610">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Condition</th>
+<th scope="col" class="org-left">1</th>
+<th scope="col" class="org-left">2</th>
+<th scope="col" class="org-left">3</th>
+<th scope="col" class="org-left">4</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Premium Customer</td>
+<td class="org-left">T</td>
+<td class="org-left">T</td>
+<td class="org-left">F</td>
+<td class="org-left">F</td>
+</tr>
+
+<tr>
+<td class="org-left">Order &gt; 100eur</td>
+<td class="org-left">F</td>
+<td class="org-left">T</td>
+<td class="org-left">F</td>
+<td class="org-left">T</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">Actions</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">1. 5% discount</td>
+<td class="org-left">F</td>
+<td class="org-left">F</td>
+<td class="org-left">F</td>
+<td class="org-left">T</td>
+</tr>
+
+<tr>
+<td class="org-left">2. 12% discount</td>
+<td class="org-left">F</td>
+<td class="org-left">T</td>
+<td class="org-left">F</td>
+<td class="org-left">F</td>
+</tr>
+
+<tr>
+<td class="org-left">3. Free Delivery</td>
+<td class="org-left">T</td>
+<td class="org-left">T</td>
+<td class="org-left">F</td>
+<td class="org-left">F</td>
+</tr>
+
+<tr>
+<td class="org-left">4. 30eur voucher</td>
+<td class="org-left">F</td>
+<td class="org-left">T</td>
+<td class="org-left">F</td>
+<td class="org-left">F</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li>
+</ul>
+</div>
+</div>
+
+
+
+<div id="outline-container-org8cc7119" class="outline-3">
+<h3 id="org8cc7119"><span class="section-number-3">11.4</span> White Box</h3>
+<div class="outline-text-3" id="text-11-4">
+<ul class="org-ul">
+<li>Testing based on an analysis of the internal structure of the component or system</li>
+</ul>
+</div>
+
+<div id="outline-container-orgb121579" class="outline-4">
+<h4 id="orgb121579">Statement Coverage</h4>
+<div class="outline-text-4" id="text-orgb121579">
+<ul class="org-ul">
+<li>The purpose of the test is to run the code and check if all the statements execute at all</li>
+<li>ST does actually execute executable statements. Example of some of the statements are:
+<ul class="org-ul">
+<li>Assignments</li>
+<li>Loops and selections</li>
+<li>Procedures and function calls</li>
+<li>Variable declarations with explicit initialization</li>
+</ul></li>
+<li>Else, EndIfs do not count as executable statements</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org9a59619" class="outline-4">
+<h4 id="org9a59619">Branch (decision) Coverage</h4>
+<div class="outline-text-4" id="text-org9a59619">
+<ul class="org-ul">
+<li>Specifically designed to test branches</li>
+<li>100% branch <b>coverage</b> means that all the possible paths of the branches have been executed</li>
+<li>The purpose is very much alike the Statement Coverage Test, the main difference is that this test needs to run 2 tests per every <code>IF</code> statement to check for coverage</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org903ff3a" class="outline-4">
+<h4 id="org903ff3a">McCabe's Cyclomatic Complexity Metric</h4>
+<div class="outline-text-4" id="text-org903ff3a">
+<ul class="org-ul">
+<li>Checks all the possible paths within a program, however the depth can be specified</li>
+<li>The number of independent paths through a program is the <b>Cyclomatic Complexity (V)</b> and is defined as: <b>L - N + 2P</b>, where:
+<ul class="org-ul">
+<li><b>L</b> is the number of edges/links in a graph</li>
+<li><b>N</b> is the number of nodes in a graph</li>
+<li><b>P</b> is the number of disconnected parts of the graph (eg. a called method or a function)</li>
+</ul></li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org590da9c" class="outline-3">
+<h3 id="org590da9c"><span class="section-number-3">11.5</span> Regression test</h3>
+<div class="outline-text-3" id="text-11-5">
+<p>
+Rerun of the whole tests, after finding faults and fixing them
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org01cd289" class="outline-2">
+<h2 id="org01cd289"><span class="section-number-2">12</span> Test Driven Development</h2>
+<div class="outline-text-2" id="text-12">
+<ul class="org-ul">
+<li>Originated with XP and has become a widely adopted approach for developers</li>
+<li>In TDD the test code is written first and only then the product code is written to pass the written tests</li>
+<li>This approach encourages to focus on the requirements before writing code and thus the code written is exactly what it needs to be to pass the test</li>
+<li>Because of the mind set of the programmer the code passes a quality check while it is being written</li>
+</ul>
+</div>
+
+<div id="outline-container-org8dd7147" class="outline-3">
+<h3 id="org8dd7147"><span class="section-number-3">12.1</span> Unit Tests</h3>
+<div class="outline-text-3" id="text-12-1">
+<p class="verse">
+TDD revolves largely around writing Unit Tests before the coding starts<br />
+</p>
+<ul class="org-ul">
+<li>Create tests that demonstrate that the code works</li>
+<li>Create tests that hold their value over time</li>
+<li>Use existing tests to create new ones</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org23a7f0d" class="outline-3">
+<h3 id="org23a7f0d"><span class="section-number-3">12.2</span> Unit Test Characteristics</h3>
+<div class="outline-text-3" id="text-12-2">
+<ul class="org-ul">
+<li>Object under test: for example a method or a class</li>
+<li>Test environment: an IDE for example</li>
+<li>Inputs: specification based, values depend on the objectives</li>
+<li>Expected output: Determined by the input and the specification</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org4e0fc22" class="outline-3">
+<h3 id="org4e0fc22"><span class="section-number-3">12.3</span> TDD Steps</h3>
+<div class="outline-text-3" id="text-12-3">
+</div>
+<div id="outline-container-org933af58" class="outline-4">
+<h4 id="org933af58">Add a Test</h4>
+<div class="outline-text-4" id="text-org933af58">
+<ul class="org-ul">
+<li>Each new feature starts with a test</li>
+<li>This tests fails as it is written before the code</li>
+<li>Understand the specification and the requirements to write the test</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org27f4380" class="outline-4">
+<h4 id="org27f4380">Run all the tests and see the new test fail</h4>
+<div class="outline-text-4" id="text-org27f4380">
+<ul class="org-ul">
+<li>Validate that the code fails at the correct moments and does not pass mistakenly</li>
+<li>This step tests the test itself</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org1c0df0c" class="outline-4">
+<h4 id="org1c0df0c">Write the code</h4>
+<div class="outline-text-4" id="text-org1c0df0c">
+<ul class="org-ul">
+<li>Write code that will pass the test</li>
+<li>The code does not need to be perfect</li>
+<li>The code is only designed to pass the test, it should not have any extra untested functionality</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org69345a0" class="outline-4">
+<h4 id="org69345a0">Run the automated tests and see them succeed</h4>
+<div class="outline-text-4" id="text-org69345a0">
+<ul class="org-ul">
+<li>If all tests pass, the programmer is confident that the written code meets the requirements</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgc911e5b" class="outline-4">
+<h4 id="orgc911e5b">Refactor code</h4>
+<div class="outline-text-4" id="text-orgc911e5b">
+<ul class="org-ul">
+<li>Clean up the code, optimize for speed, efficiency and code readability</li>
+<li>Re-run tests to make sure that refactoring did not break any existing functionality</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgebb6230" class="outline-4">
+<h4 id="orgebb6230">Repeat Cycle</h4>
+<div class="outline-text-4" id="text-orgebb6230">
+<ul class="org-ul">
+<li>Start with a new test and proceed as before</li>
+<li>Adjust the size of steps if necessary, depending on confidence</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org97663ed" class="outline-2">
+<h2 id="org97663ed"><span class="section-number-2">13</span> JUnit</h2>
+<div class="outline-text-2" id="text-13">
+<p>
+Right click the class and make a new JUnit3 test.
+</p>
+
+<p>
+Throwing an error in the main code, in this the main code being a file with the add method, file <code>MyMath.java</code>
+</p>
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #51afef; font-style: italic;">public</span> <span style="color: #51afef; font-style: italic;">static</span> <span style="color: #ECBE7B;">int</span> <span style="color: #c678dd;">add</span><span style="color: #fff0f5;">(</span><span style="color: #ECBE7B;">int</span> <span style="color: #db5762;">a</span>, <span style="color: #ECBE7B;">int</span> <span style="color: #db5762;">b</span><span style="color: #fff0f5;">)</span> <span style="color: #51afef; font-style: italic;">throws</span> <span style="color: #ECBE7B;">Exception</span><span style="color: #fff0f5;">{</span>
+
+    <span style="color: #51afef; font-style: italic;">throw</span> <span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">RuntimeException</span><span style="color: #c678dd;">(</span><span style="color: #98be65;">"Message"</span><span style="color: #c678dd;">)</span>;
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+
+<p>
+In the junit (as comment) create the test templates as follows:
+</p>
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #51afef; font-style: italic;">public</span> <span style="color: #51afef; font-style: italic;">class</span> <span style="color: #ECBE7B;">MyMathTest</span> <span style="color: #51afef; font-style: italic;">extends</span> <span style="color: #ECBE7B;">TestCase</span> <span style="color: #fff0f5;">{</span>
+    <span style="color: #5B6268;">// </span><span style="color: #5B6268;">Test number: 1</span>
+    <span style="color: #5B6268;">// </span><span style="color: #5B6268;">Test objective: add two positive numbers</span>
+    <span style="color: #5B6268;">// </span><span style="color: #5B6268;">Inputs: number1 = 5, number2 = 12</span>
+    <span style="color: #5B6268;">// </span><span style="color: #5B6268;">Expected output: 17</span>
+    <span style="color: #51afef; font-style: italic;">public</span> <span style="color: #ECBE7B;">void</span> <span style="color: #c678dd;">testAdd001</span><span style="color: #c678dd;">()</span> <span style="color: #c678dd;">{</span>
+        <span style="color: #51afef; font-style: italic;">try</span> <span style="color: #98be65;">{</span>
+            assertEquals<span style="color: #00bfff;">(</span>17, MyMath<span style="color: #a9a1e1;">(</span>5, 12<span style="color: #a9a1e1;">)</span><span style="color: #00bfff;">)</span>;
+        <span style="color: #98be65;">}</span>
+        <span style="color: #51afef; font-style: italic;">catch</span> <span style="color: #98be65;">(</span><span style="color: #ECBE7B;">Exception</span> <span style="color: #db5762;">e</span><span style="color: #98be65;">)</span> <span style="color: #98be65;">{</span>
+            fail<span style="color: #00bfff;">(</span><span style="color: #98be65;">"Exception handling failure in the positive partition..."</span><span style="color: #00bfff;">)</span>;
+        <span style="color: #98be65;">}</span>
+    <span style="color: #c678dd;">}</span>
+
+    <span style="color: #5B6268;">// </span><span style="color: #5B6268;">Test number: 2</span>
+    <span style="color: #5B6268;">// </span><span style="color: #5B6268;">Test objective: add two zeroes</span>
+    <span style="color: #5B6268;">// </span><span style="color: #5B6268;">Inputs: number1 = 0, number2 = 0</span>
+    <span style="color: #5B6268;">// </span><span style="color: #5B6268;">Expected output: error msg = "Zero invalid"</span>
+    <span style="color: #51afef; font-style: italic;">public</span> <span style="color: #ECBE7B;">void</span> <span style="color: #c678dd;">testAdd002</span><span style="color: #c678dd;">()</span> <span style="color: #c678dd;">{</span>
+        <span style="color: #51afef; font-style: italic;">try</span> <span style="color: #98be65;">{</span>
+            <span style="color: #ECBE7B;">int</span> <span style="color: #db5762;">result</span> = MyMath.add<span style="color: #00bfff;">(</span>0, 0<span style="color: #00bfff;">)</span>;
+            fail<span style="color: #00bfff;">(</span><span style="color: #98be65;">"Exception handling error in the zero partition..."</span><span style="color: #00bfff;">)</span>;
+        <span style="color: #98be65;">}</span> <span style="color: #51afef; font-style: italic;">catch</span> <span style="color: #98be65;">(</span><span style="color: #ECBE7B;">Exception</span> <span style="color: #db5762;">e</span><span style="color: #98be65;">)</span> <span style="color: #98be65;">{</span>
+            assertEquals<span style="color: #00bfff;">(</span><span style="color: #98be65;">"Zero invalid"</span>, e.getMessage<span style="color: #a9a1e1;">()</span><span style="color: #00bfff;">)</span>;
+        <span style="color: #98be65;">}</span>
+    <span style="color: #c678dd;">}</span>
+
+    <span style="color: #5B6268;">// </span><span style="color: #5B6268;">Test number: 3</span>
+    <span style="color: #5B6268;">// </span><span style="color: #5B6268;">Test objective: add two negative numbers</span>
+    <span style="color: #5B6268;">// </span><span style="color: #5B6268;">Inputs: number1 = -5, number2 = -12</span>
+    <span style="color: #5B6268;">// </span><span style="color: #5B6268;">Expected output: error msg = "Negative values invalid"</span>
+    <span style="color: #51afef; font-style: italic;">public</span> <span style="color: #ECBE7B;">void</span> <span style="color: #c678dd;">testAdd003</span><span style="color: #c678dd;">()</span> <span style="color: #c678dd;">{</span>
+        <span style="color: #51afef; font-style: italic;">try</span> <span style="color: #98be65;">{</span>
+            <span style="color: #ECBE7B;">int</span> <span style="color: #db5762;">result</span> = MyMath.add<span style="color: #00bfff;">(</span>-5, -12<span style="color: #00bfff;">)</span>;
+            fail<span style="color: #00bfff;">(</span><span style="color: #98be65;">"Exception handling error in the negative numbers partition..."</span><span style="color: #00bfff;">)</span>;
+        <span style="color: #98be65;">}</span> <span style="color: #51afef; font-style: italic;">catch</span> <span style="color: #98be65;">(</span><span style="color: #ECBE7B;">Exception</span> <span style="color: #db5762;">e</span><span style="color: #98be65;">)</span> <span style="color: #98be65;">{</span>
+            assertEquals<span style="color: #00bfff;">(</span><span style="color: #98be65;">"Negative values invalid"</span>, e.getMessage<span style="color: #a9a1e1;">()</span><span style="color: #00bfff;">)</span>;
+        <span style="color: #98be65;">}</span>
+    <span style="color: #c678dd;">}</span>
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org2560633" class="outline-2">
+<h2 id="org2560633"><span class="section-number-2">14</span> Configuration management</h2>
+<div class="outline-text-2" id="text-14">
+<p class="verse">
+The purpose of version control is to keep older versions of the same file.<br />
+Basically the idea is to have a persistent history of the same file (like a persistent undo/redo).<br />
+</p>
+</div>
+
+<div id="outline-container-orgfb75479" class="outline-3">
+<h3 id="orgfb75479"><span class="section-number-3">14.1</span> Version control</h3>
+<div class="outline-text-3" id="text-14-1">
+<p class="verse">
+Is a system that records changes to a file or set of files over time so that you can recall specific version later.<br />
+It allows to revert files the their previous state.<br />
+It allows to revert an entire project to a previous state.<br />
+Allows to see who made any recent changes.<br />
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgeec69d7" class="outline-3">
+<h3 id="orgeec69d7"><span class="section-number-3">14.2</span> Types of version control</h3>
+<div class="outline-text-3" id="text-14-2">
+<ul class="org-ul">
+<li>Local, saved on a local computer</li>
+<li>Centralized Version Control System, it allows for all the management to be done on the server. Advantage is that many people can work on the same files. They can be then merged together later.
+<ul class="org-ul">
+<li>Uses a checkout system, which 'serves' files to users.</li>
+<li>If two users use a the same checked-out file it needs to be merged (potential issues via overwrite)</li>
+</ul></li>
+<li>Distributed Version Control Systems, is similar to VCS, but each user receives an entire copy(clone) of the repository
+<ul class="org-ul">
+<li>After changes have been made to a local repo, the repo then needs to be staged and then pushed to the server repo</li>
+<li>After changes have been pushed, they need to be merged with potential conflicts or the master branch</li>
+<li>Pull requests are then used to pull the changes back to the local repo</li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org1bd40b8" class="outline-3">
+<h3 id="org1bd40b8"><span class="section-number-3">14.3</span> Git Project Structure</h3>
+<div class="outline-text-3" id="text-14-3">
+<ul class="org-ul">
+<li>Unstaged, files being currently worked on</li>
+<li>Staged, files that will be committed to the repository</li>
+<li>Commit, files that have been 'version controlled' into the repo</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org2ad1e6d" class="outline-2">
+<h2 id="org2ad1e6d"><span class="section-number-2">15</span> Pair programming</h2>
+<div class="outline-text-2" id="text-15">
+<ul class="org-ul">
+<li>Method of programming in which two people work at a single keyboard</li>
+</ul>
+</div>
+
+<div id="outline-container-org97938d4" class="outline-3">
+<h3 id="org97938d4"><span class="section-number-3">15.1</span> Roles</h3>
+<div class="outline-text-3" id="text-15-1">
+<ul class="org-ul">
+<li>The driver, types on the keyboard</li>
+<li>The observer, observes the creation of code, checks for errors and overlooks the design. <b>Do not dictate the code</b></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org03f6986" class="outline-3">
+<h3 id="org03f6986"><span class="section-number-3">15.2</span> Benefits</h3>
+<div class="outline-text-3" id="text-15-2">
+<ul class="org-ul">
+<li>better code: simpler design, fewer bugs</li>
+<li>higher morale: more fun!</li>
+<li>shared knowledge</li>
+<li>better time management</li>
+<li>higher productivity</li>
+<li>builds trust</li>
+<li>better quality product</li>
+<li>both programmers are learning off each other</li>
+<li>leads to less of an overload during the code creation as only one person at a time needs to think about either the <b>small detail</b> or the <b>bigger picture</b></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgc2bcd23" class="outline-3">
+<h3 id="orgc2bcd23"><span class="section-number-3">15.3</span> Process</h3>
+<div class="outline-text-3" id="text-15-3">
+<ol class="org-ol">
+<li>Start with a reasonably well defined task (also relatively small) before sitting down, something that can be completed within an hour or two</li>
+<li>Might want to outline what you plan to do before coding</li>
+<li>Agree on a tiny goal at a time, something that can be completed quickly, it is to be a mutual decision</li>
+<li>Rely on your partner, support your partner
+<ol class="org-ol">
+<li><b>The driver</b> should forget about the bigger concept, should focus only on the small task assigned. Should trust that the observer has his back in terms of the bigger picture</li>
+<li><b>The observer</b> should constantly read the written code and think of possible larger issues, bugs and ways to simplify the code. When the observer notices that the code is unreadable, he/she should notify the driver right away!</li>
+</ol></li>
+<li>Talk a lot: ask for implementation ideas, ask how to solve the problem, bring up alternatives, clearer names for variables and subroutines, suggest smaller steps</li>
+<li>Sync up frequently: getting out of sync is very frequent, make sure that you constantly know what the current task is. More than five minutes of out of sync means that you are probably better of going solo, meaning BAD!</li>
+<li>Switch roles often - at least every half hour. This keeps both of the programmers engaged. Also driving for a long duration can be very tiring.</li>
+</ol>
+
+<script src="../assets/jquery-3.3.1.min.js"></script>
+<script src="../assets/notes.js"></script>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="date">Date: 2016-10-24 Mon 00:00</p>
+<p class="author">Author: Damian Chrzanowski</p>
+<p class="date">Created: 2018-12-13 Thu 20:30</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

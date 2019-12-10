@@ -1,0 +1,1461 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2018-12-15 Sat 20:49 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Software Cloud 3</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="Damian Chrzanowski" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="../assets/org.css"/>
+<link rel="icon" href="../assets/favicon.ico">
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2018 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Software Cloud 3</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orgf26de52">1. Properties</a>
+<ul>
+<li><a href="#orgc3479a5">1.1. Creation</a></li>
+<li><a href="#orge7056ca">1.2. Automatic Properties and Object Initializers</a></li>
+</ul>
+</li>
+<li><a href="#orga78751e">2. Extension Methods</a></li>
+<li><a href="#org902e65f">3. Delegates</a>
+<ul>
+<li><a href="#org4627269">3.1. Definition and Creation</a></li>
+<li><a href="#org1e4bb20">3.2. Lambda Expression example</a></li>
+<li><a href="#org3f21992">3.3. Example 1</a></li>
+</ul>
+</li>
+<li><a href="#org9219abb">4. Threading</a>
+<ul>
+<li><a href="#org9ceee79">4.1. Lifecycle</a></li>
+<li><a href="#orgbf5ad64">4.2. ThreadStart delegate</a></li>
+<li><a href="#org5d9231b">4.3. Example of a simple Thread</a></li>
+<li><a href="#orgf2f01ef">4.4. Locks and Synchronization via the <code>Monitor</code></a></li>
+</ul>
+</li>
+<li><a href="#org7e85a9c">5. Partial Classes</a></li>
+<li><a href="#org322eded">6. LINQ</a>
+<ul>
+<li><a href="#org3bc7a38">6.1. Query keywords</a></li>
+<li><a href="#org4b6bf7c">6.2. Available built-in functions</a></li>
+<li><a href="#orgafd97ad">6.3. Basic expression Syntax</a></li>
+<li><a href="#org07cd56f">6.4. Example, simple orderby with column selection and renaming</a></li>
+<li><a href="#orgcf33c94">6.5. Example with built-in functions</a></li>
+<li><a href="#orgced3041">6.6. More complicated examples with Grouping, Joining and Unions</a></li>
+<li><a href="#org11ef538">6.7. Using the dot notation</a></li>
+</ul>
+</li>
+<li><a href="#org3e1e9c4">7. .NET Remoting</a>
+<ul>
+<li><a href="#org87e46f0">7.1. Server Setup</a></li>
+<li><a href="#orgdd5ebe3">7.2. Client Setup</a></li>
+</ul>
+</li>
+<li><a href="#org37779d9">8. Indexers</a></li>
+<li><a href="#org3696730">9. Dynamic Types</a></li>
+<li><a href="#orgd7be50d">10. Design Patterns</a>
+<ul>
+<li><a href="#org5da3062">10.1. Adapter</a></li>
+<li><a href="#org9a087b0">10.2. Decorator</a></li>
+<li><a href="#org9e861a6">10.3. Factory</a></li>
+<li><a href="#org0762f2e">10.4. Singleton</a></li>
+<li><a href="#org1cd523e">10.5. Twin</a></li>
+<li><a href="#org95627e3">10.6. Visitor</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<p>
+<a href="index.html">Home Page</a>
+</p>
+
+<div id="outline-container-orgf26de52" class="outline-2">
+<h2 id="orgf26de52"><span class="section-number-2">1</span> Properties</h2>
+<div class="outline-text-2" id="text-1">
+</div>
+<div id="outline-container-orgc3479a5" class="outline-3">
+<h3 id="orgc3479a5"><span class="section-number-3">1.1</span> Creation</h3>
+<div class="outline-text-3" id="text-1-1">
+<div class="org-src-container">
+<pre class="src src-csharp"><span style="color: #51afef; font-style: italic;">class</span> <span style="color: #ECBE7B;">SomeClass</span> <span style="color: #fff0f5;">{</span>
+    <span style="color: #51afef; font-style: italic;">private</span> <span style="color: #ECBE7B;">int</span> <span style="color: #db5762;">numberTwo</span>;
+    <span style="color: #5B6268;">// </span><span style="color: #5B6268;">simple property</span>
+    <span style="color: #51afef; font-style: italic;">public</span> <span style="color: #ECBE7B;">int</span> <span style="color: #db5762;">Number</span> <span style="color: #c678dd;">{</span>
+        <span style="color: #51afef; font-style: italic;">get</span>;
+        <span style="color: #51afef; font-style: italic;">set</span>;
+    <span style="color: #c678dd;">}</span>
+    <span style="color: #5B6268;">// </span><span style="color: #5B6268;">assining logic to get and set</span>
+    <span style="color: #51afef; font-style: italic;">public</span> <span style="color: #ECBE7B;">int</span> <span style="color: #db5762;">NumberTwo</span> <span style="color: #c678dd;">{</span>
+        <span style="color: #51afef; font-style: italic;">get</span> <span style="color: #98be65;">{</span> <span style="color: #51afef; font-style: italic;">return</span> numberTwo; <span style="color: #98be65;">}</span>
+        <span style="color: #51afef; font-style: italic;">set</span> <span style="color: #98be65;">{</span> numberTwo = value; <span style="color: #98be65;">}</span> <span style="color: #5B6268;">// </span><span style="color: #5B6268;">"value" is a keyword</span>
+    <span style="color: #c678dd;">}</span>
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orge7056ca" class="outline-3">
+<h3 id="orge7056ca"><span class="section-number-3">1.2</span> Automatic Properties and Object Initializers</h3>
+<div class="outline-text-3" id="text-1-2">
+<div class="org-src-container">
+<pre class="src src-csharp"><span style="color: #51afef; font-style: italic;">class</span> <span style="color: #ECBE7B;">Counter</span> <span style="color: #fff0f5;">{</span>
+    <span style="color: #51afef; font-style: italic;">public</span> Counter<span style="color: #c678dd;">()</span> <span style="color: #c678dd;">{</span>
+        <span style="color: #5B6268;">// </span><span style="color: #5B6268;">automatic properties</span>
+        Name = <span style="color: #98be65;">"Weeks"</span>;
+        Number = 2;
+    <span style="color: #c678dd;">}</span>
+    <span style="color: #51afef; font-style: italic;">public</span> Counter<span style="color: #c678dd;">(</span><span style="color: #ECBE7B;">string</span> <span style="color: #db5762;">n</span>, <span style="color: #ECBE7B;">int</span> <span style="color: #db5762;">num</span><span style="color: #c678dd;">)</span> <span style="color: #c678dd;">{</span>
+        Name = n;
+        Number = num;
+    <span style="color: #c678dd;">}</span>
+
+    <span style="color: #51afef; font-style: italic;">public</span> <span style="color: #51afef; font-style: italic;">static</span> Main<span style="color: #c678dd;">()</span> <span style="color: #c678dd;">{</span>
+        <span style="color: #5B6268;">// </span><span style="color: #5B6268;">works even if there is a designated constructor</span>
+        <span style="color: #ECBE7B;">Counter</span> <span style="color: #db5762;">c</span> = <span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">Counter</span> <span style="color: #98be65;">{</span>
+            Name = <span style="color: #98be65;">"Days"</span>;
+            Number = 6;
+        <span style="color: #98be65;">}</span>
+    <span style="color: #c678dd;">}</span>
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orga78751e" class="outline-2">
+<h2 id="orga78751e"><span class="section-number-2">2</span> Extension Methods</h2>
+<div class="outline-text-2" id="text-2">
+<ul class="org-ul">
+<li>Given <code>Counter</code> class</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-csharp"><span style="color: #51afef; font-style: italic;">class</span> <span style="color: #ECBE7B;">Counter</span> <span style="color: #fff0f5;">{</span>
+    <span style="color: #51afef; font-style: italic;">public</span> <span style="color: #ECBE7B;">string</span> <span style="color: #db5762;">name</span>;
+    <span style="color: #51afef; font-style: italic;">public</span> <span style="color: #ECBE7B;">int</span> <span style="color: #db5762;">Number</span> <span style="color: #c678dd;">{</span> <span style="color: #51afef; font-style: italic;">get</span>; <span style="color: #51afef; font-style: italic;">set</span>; <span style="color: #c678dd;">}</span>
+    <span style="color: #51afef; font-style: italic;">public</span> <span style="color: #ECBE7B;">void</span> <span style="color: #c678dd;">increment</span><span style="color: #c678dd;">()</span> <span style="color: #c678dd;">{</span>
+        <span style="color: #51afef; font-style: italic;">this</span>.Number++;
+    <span style="color: #c678dd;">}</span>
+    <span style="color: #51afef; font-style: italic;">public</span> <span style="color: #ECBE7B;">int</span> <span style="color: #c678dd;">readValue</span><span style="color: #c678dd;">()</span> <span style="color: #c678dd;">{</span>
+        <span style="color: #51afef; font-style: italic;">return</span> <span style="color: #51afef; font-style: italic;">this</span>.Number;
+    <span style="color: #c678dd;">}</span>
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+<ul class="org-ul">
+<li>We can add additional methods to the <code>Counter</code> class via <b>Extension Methods</b></li>
+<li>Declare a <code>static class</code> called <code>Functions</code>, and pass in to the <code>static</code> methods <code>this ClassName</code> as the first parameter to extend the functions in this particular class</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-csharp"><span style="color: #51afef; font-style: italic;">static</span> <span style="color: #51afef; font-style: italic;">class</span> <span style="color: #ECBE7B;">Functions</span> <span style="color: #fff0f5;">{</span>
+    <span style="color: #51afef; font-style: italic;">public</span> <span style="color: #51afef; font-style: italic;">static</span> <span style="color: #ECBE7B;">bool</span> <span style="color: #c678dd;">isEven</span><span style="color: #c678dd;">(</span><span style="color: #51afef; font-style: italic;">this</span> Counter c<span style="color: #c678dd;">)</span> <span style="color: #c678dd;">{</span>
+        <span style="color: #51afef; font-style: italic;">if</span> <span style="color: #98be65;">(</span>c.Number % 2 == 0<span style="color: #98be65;">)</span>
+            <span style="color: #51afef; font-style: italic;">return</span> <span style="color: #a9a1e1;">true</span>;
+        <span style="color: #51afef; font-style: italic;">else</span>
+            <span style="color: #51afef; font-style: italic;">return</span> <span style="color: #a9a1e1;">false</span>;
+    <span style="color: #c678dd;">}</span>
+    <span style="color: #51afef; font-style: italic;">public</span> <span style="color: #51afef; font-style: italic;">static</span> <span style="color: #ECBE7B;">bool</span> <span style="color: #c678dd;">isEqual</span><span style="color: #c678dd;">(</span><span style="color: #51afef; font-style: italic;">this</span> Counter c, <span style="color: #ECBE7B;">int</span> <span style="color: #db5762;">val</span><span style="color: #c678dd;">)</span> <span style="color: #c678dd;">{</span>
+        <span style="color: #51afef; font-style: italic;">if</span> <span style="color: #98be65;">(</span>c.Number == val<span style="color: #98be65;">)</span>
+            <span style="color: #51afef; font-style: italic;">return</span> <span style="color: #a9a1e1;">true</span>;
+        <span style="color: #51afef; font-style: italic;">else</span>
+            <span style="color: #51afef; font-style: italic;">return</span> <span style="color: #a9a1e1;">false</span>;
+    <span style="color: #c678dd;">}</span>
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org902e65f" class="outline-2">
+<h2 id="org902e65f"><span class="section-number-2">3</span> Delegates</h2>
+<div class="outline-text-2" id="text-3">
+</div>
+<div id="outline-container-org4627269" class="outline-3">
+<h3 id="org4627269"><span class="section-number-3">3.1</span> Definition and Creation</h3>
+<div class="outline-text-3" id="text-3-1">
+<ul class="org-ul">
+<li>Allow to create a type definition for a method</li>
+<li>It enables C# to operate in a functional paradigm</li>
+<li>Delegate is declared with the keyword <code>delegate</code>
+<ul class="org-ul">
+<li><code>public delegate void Operation()</code>: Allows to create delegates that return no value and accept no parameters</li>
+<li><code>public delegate int Operation(string s)</code>: Allows to create delegates that return an integer as a value and accepts a string as a parameter</li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org1e4bb20" class="outline-3">
+<h3 id="org1e4bb20"><span class="section-number-3">3.2</span> Lambda Expression example</h3>
+<div class="outline-text-3" id="text-3-2">
+<ul class="org-ul">
+<li>Example on counting array values greater than 2</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-csharp"><span style="color: #ECBE7B;">int</span><span style="color: #fff0f5;">[]</span> <span style="color: #db5762;">a</span> = <span style="color: #fff0f5;">{</span> 2, 6, 4, 3 <span style="color: #fff0f5;">}</span>;
+<span style="color: #5B6268;">// </span><span style="color: #5B6268;">e =&gt; e &gt; 2; i.e. set of all e such that e &gt; 2</span>
+<span style="color: #ECBE7B;">int</span> <span style="color: #db5762;">output</span> = a.<span style="color: #c678dd;">Count</span><span style="color: #fff0f5;">(</span>e =&gt; e &gt; 2<span style="color: #fff0f5;">)</span>;
+Console.<span style="color: #c678dd;">WriteLine</span><span style="color: #fff0f5;">(</span><span style="color: #98be65;">"Output "</span> + output<span style="color: #fff0f5;">)</span>; <span style="color: #5B6268;">// </span><span style="color: #5B6268;">3</span>
+</pre>
+</div>
+<ul class="org-ul">
+<li>Example on filtering with <code>Where</code></li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-csharp"><span style="color: #ECBE7B;">int</span><span style="color: #fff0f5;">[]</span> <span style="color: #db5762;">a</span> = <span style="color: #fff0f5;">{</span> 2, 6, 4, 3 <span style="color: #fff0f5;">}</span>;
+<span style="color: #51afef; font-style: italic;">var</span> <span style="color: #db5762;">output</span> = a.<span style="color: #c678dd;">Where</span><span style="color: #fff0f5;">(</span>e =&gt; e &gt; 2<span style="color: #fff0f5;">)</span>;
+
+<span style="color: #51afef; font-style: italic;">foreach</span><span style="color: #fff0f5;">(</span><span style="color: #51afef; font-style: italic;">var</span> <span style="color: #db5762;">v</span> <span style="color: #51afef; font-style: italic;">in</span> output<span style="color: #fff0f5;">)</span>
+    Console.<span style="color: #c678dd;">WriteLine</span><span style="color: #fff0f5;">(</span><span style="color: #98be65;">"Val = "</span> + v<span style="color: #fff0f5;">)</span>;
+</pre>
+</div>
+<ul class="org-ul">
+<li>Example of implementing a filer</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-csharp"><span style="color: #51afef; font-style: italic;">delegate</span> <span style="color: #ECBE7B;">bool</span> DelFn<span style="color: #fff0f5;">(</span><span style="color: #ECBE7B;">int</span> <span style="color: #db5762;">a</span><span style="color: #fff0f5;">)</span>;
+<span style="color: #51afef; font-style: italic;">static</span> <span style="color: #51afef; font-style: italic;">class</span> <span style="color: #ECBE7B;">Functions</span> <span style="color: #fff0f5;">{</span>
+    <span style="color: #51afef; font-style: italic;">public</span> <span style="color: #51afef; font-style: italic;">static</span> <span style="color: #ECBE7B;">int</span><span style="color: #c678dd;">[]</span> <span style="color: #c678dd;">Filter</span><span style="color: #c678dd;">(</span><span style="color: #51afef; font-style: italic;">this</span> <span style="color: #ECBE7B;">int</span><span style="color: #98be65;">[]</span> arr, <span style="color: #ECBE7B;">DelFn</span> <span style="color: #db5762;">f</span><span style="color: #c678dd;">)</span> <span style="color: #c678dd;">{</span>
+        <span style="color: #ECBE7B;">ArrayList</span> <span style="color: #db5762;">res</span> = <span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">ArrayList</span><span style="color: #98be65;">()</span>;
+        <span style="color: #51afef; font-style: italic;">foreach</span> <span style="color: #98be65;">(</span><span style="color: #ECBE7B;">int</span> <span style="color: #db5762;">el</span> <span style="color: #51afef; font-style: italic;">in</span> arr<span style="color: #98be65;">)</span> <span style="color: #98be65;">{</span>
+            <span style="color: #51afef; font-style: italic;">if</span> <span style="color: #00bfff;">(</span>f<span style="color: #a9a1e1;">(</span><span style="color: #ECBE7B;">el</span><span style="color: #a9a1e1;">)</span><span style="color: #00bfff;">)</span>
+                res.<span style="color: #c678dd;">Add</span><span style="color: #00bfff;">(</span><span style="color: #ECBE7B;">el</span><span style="color: #00bfff;">)</span>;
+        <span style="color: #98be65;">}</span>
+        <span style="color: #51afef; font-style: italic;">return</span> res.OfType<span style="color: #98be65;">&lt;</span><span style="color: #ECBE7B;">int</span><span style="color: #98be65;">&gt;()</span>.<span style="color: #c678dd;">ToArray</span><span style="color: #98be65;">()</span>;  <span style="color: #5B6268;">// </span><span style="color: #5B6268;">cast back to int[]</span>
+    <span style="color: #c678dd;">}</span>
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org3f21992" class="outline-3">
+<h3 id="org3f21992"><span class="section-number-3">3.3</span> Example 1</h3>
+<div class="outline-text-3" id="text-3-3">
+<ul class="org-ul">
+<li>Task: extend an array with a sum function and create a delegate</li>
+<li>Step 1, create the max function</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-csharp"><span style="color: #51afef; font-style: italic;">delegate</span> <span style="color: #ECBE7B;">int</span> SumFn<span style="color: #fff0f5;">(</span><span style="color: #ECBE7B;">int</span> <span style="color: #db5762;">a</span><span style="color: #fff0f5;">)</span>;
+<span style="color: #51afef; font-style: italic;">static</span> <span style="color: #51afef; font-style: italic;">class</span> <span style="color: #ECBE7B;">Functions</span> <span style="color: #fff0f5;">{</span>
+    <span style="color: #5B6268;">// </span><span style="color: #5B6268;">Sum accepts the array and a delegate function</span>
+    <span style="color: #51afef; font-style: italic;">public</span> <span style="color: #51afef; font-style: italic;">static</span> <span style="color: #ECBE7B;">int</span> <span style="color: #c678dd;">Sum</span><span style="color: #c678dd;">(</span><span style="color: #51afef; font-style: italic;">this</span> <span style="color: #ECBE7B;">int</span> <span style="color: #98be65;">[]</span> a, <span style="color: #ECBE7B;">SumFn</span> <span style="color: #db5762;">fn</span><span style="color: #c678dd;">)</span> <span style="color: #c678dd;">{</span>
+        <span style="color: #ECBE7B;">int</span> <span style="color: #db5762;">sum</span> = 0;
+        <span style="color: #51afef; font-style: italic;">foreach</span><span style="color: #98be65;">(</span><span style="color: #ECBE7B;">int</span> <span style="color: #db5762;">el</span> <span style="color: #51afef; font-style: italic;">in</span> a<span style="color: #98be65;">)</span>
+            sum += fn<span style="color: #98be65;">(</span><span style="color: #ECBE7B;">el</span><span style="color: #98be65;">)</span>;  <span style="color: #5B6268;">// </span><span style="color: #5B6268;">apply the delegate function</span>
+        <span style="color: #51afef; font-style: italic;">return</span> sum;
+    <span style="color: #c678dd;">}</span>
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+<ul class="org-ul">
+<li>Step 2, provide a lambda expression for the <code>Sum</code> method that complies with the <code>SumFn</code> delegate</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-csharp"><span style="color: #51afef; font-style: italic;">class</span> <span style="color: #ECBE7B;">Program</span> <span style="color: #fff0f5;">{</span>
+    <span style="color: #51afef; font-style: italic;">static</span> <span style="color: #ECBE7B;">void</span> <span style="color: #c678dd;">Main</span><span style="color: #c678dd;">(</span><span style="color: #ECBE7B;">string</span><span style="color: #98be65;">[]</span> <span style="color: #db5762;">args</span><span style="color: #c678dd;">)</span> <span style="color: #c678dd;">{</span>
+        <span style="color: #ECBE7B;">int</span><span style="color: #98be65;">[]</span> <span style="color: #db5762;">a</span> = <span style="color: #98be65;">{</span> 2, 6, 4, 3 <span style="color: #98be65;">}</span>;
+        <span style="color: #ECBE7B;">int</span> <span style="color: #db5762;">output</span> = a.<span style="color: #c678dd;">Sum</span><span style="color: #98be65;">(</span>e =&gt; e * 2<span style="color: #98be65;">)</span>; <span style="color: #5B6268;">// </span><span style="color: #5B6268;">each element multiplied by 2</span>
+        Console.<span style="color: #c678dd;">WriteLine</span><span style="color: #98be65;">(</span><span style="color: #98be65;">"output = "</span> + output<span style="color: #98be65;">)</span>;
+    <span style="color: #c678dd;">}</span>
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org9219abb" class="outline-2">
+<h2 id="org9219abb"><span class="section-number-2">4</span> Threading</h2>
+<div class="outline-text-2" id="text-4">
+</div>
+<div id="outline-container-org9ceee79" class="outline-3">
+<h3 id="org9ceee79"><span class="section-number-3">4.1</span> Lifecycle</h3>
+<div class="outline-text-3" id="text-4-1">
+
+<div class="figure">
+<p><img src="images/Threading/screenshot_2018-12-15_15-10-39.png" alt="screenshot_2018-12-15_15-10-39.png" />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgbf5ad64" class="outline-3">
+<h3 id="orgbf5ad64"><span class="section-number-3">4.2</span> ThreadStart delegate</h3>
+<div class="outline-text-3" id="text-4-2">
+<ul class="org-ul">
+<li>Allows to use the <code>+</code> operator to "put" many threads together for execution. It basically works like any other delegate</li>
+<li>Allows to pass in data/arguments to a thread by the means of an anonymous function (lambda)</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-csharp"><span style="color: #51afef; font-style: italic;">class</span> <span style="color: #ECBE7B;">ThreadTest</span> <span style="color: #fff0f5;">{</span>
+    <span style="color: #51afef; font-style: italic;">static</span> <span style="color: #ECBE7B;">void</span> <span style="color: #c678dd;">Main</span><span style="color: #c678dd;">()</span> <span style="color: #c678dd;">{</span>
+        <span style="color: #5B6268;">// </span><span style="color: #5B6268;">create the delegate</span>
+        <span style="color: #ECBE7B;">ThreadStart</span> <span style="color: #db5762;">ts</span> = <span style="color: #98be65;">()</span> =&gt; <span style="color: #98be65;">{</span>
+            Console.<span style="color: #c678dd;">Write</span><span style="color: #00bfff;">(</span><span style="color: #98be65;">"y"</span><span style="color: #00bfff;">)</span>;  <span style="color: #5B6268;">// </span><span style="color: #5B6268;">can pass in arguments</span>
+        <span style="color: #98be65;">}</span>;
+        <span style="color: #5B6268;">// </span><span style="color: #5B6268;">Add another</span>
+        ts += <span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">ThreadStart</span><span style="color: #98be65;">(</span><span style="color: #ECBE7B;">WriteZ</span><span style="color: #98be65;">)</span>;
+        <span style="color: #5B6268;">// </span><span style="color: #5B6268;">Create the thread</span>
+        <span style="color: #ECBE7B;">Thread</span> <span style="color: #db5762;">t</span> = <span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">Thread</span><span style="color: #98be65;">(</span><span style="color: #ECBE7B;">ts</span><span style="color: #98be65;">)</span>;
+
+        t.<span style="color: #c678dd;">Start</span><span style="color: #98be65;">()</span>;
+        Console.<span style="color: #c678dd;">WriteLine</span><span style="color: #98be65;">()</span>;
+        Console.<span style="color: #c678dd;">WriteLine</span><span style="color: #98be65;">(</span><span style="color: #98be65;">"x"</span><span style="color: #98be65;">)</span>;
+    <span style="color: #c678dd;">}</span>
+
+    <span style="color: #51afef; font-style: italic;">static</span> <span style="color: #ECBE7B;">void</span> <span style="color: #c678dd;">WriteZ</span><span style="color: #c678dd;">()</span> <span style="color: #c678dd;">{</span>
+        Console.<span style="color: #c678dd;">Write</span><span style="color: #98be65;">(</span><span style="color: #98be65;">"z"</span><span style="color: #98be65;">)</span>;
+    <span style="color: #c678dd;">}</span>
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org5d9231b" class="outline-3">
+<h3 id="org5d9231b"><span class="section-number-3">4.3</span> Example of a simple Thread</h3>
+<div class="outline-text-3" id="text-4-3">
+<div class="org-src-container">
+<pre class="src src-csharp"><span style="color: #51afef; font-style: italic;">class</span> <span style="color: #ECBE7B;">Program</span> <span style="color: #fff0f5;">{</span>
+    <span style="color: #51afef; font-style: italic;">public</span> <span style="color: #51afef; font-style: italic;">static</span> <span style="color: #ECBE7B;">void</span> <span style="color: #c678dd;">Main</span><span style="color: #c678dd;">(</span><span style="color: #ECBE7B;">string</span><span style="color: #98be65;">[]</span> <span style="color: #db5762;">args</span><span style="color: #c678dd;">)</span> <span style="color: #c678dd;">{</span>
+        <span style="color: #ECBE7B;">Thread</span> <span style="color: #db5762;">t1</span> = <span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">Thread</span><span style="color: #98be65;">(</span><span style="color: #ECBE7B;">incrementer</span><span style="color: #98be65;">)</span>;  <span style="color: #5B6268;">// </span><span style="color: #5B6268;">pass in a method as an argument</span>
+        <span style="color: #ECBE7B;">Thread</span> <span style="color: #db5762;">t2</span> = <span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">Thread</span><span style="color: #98be65;">(</span><span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">ThreadStart</span><span style="color: #00bfff;">(</span><span style="color: #ECBE7B;">decrementer</span><span style="color: #00bfff;">)</span><span style="color: #98be65;">)</span>;  <span style="color: #5B6268;">// </span><span style="color: #5B6268;">or use ThreadStart</span>
+        t1.<span style="color: #c678dd;">Start</span><span style="color: #98be65;">()</span>;  <span style="color: #5B6268;">// </span><span style="color: #5B6268;">start the thread</span>
+        t2.<span style="color: #c678dd;">Start</span><span style="color: #98be65;">()</span>;
+
+        t1.<span style="color: #c678dd;">Join</span><span style="color: #98be65;">()</span>;  <span style="color: #5B6268;">// </span><span style="color: #5B6268;">wait for both threads to finish</span>
+        t2.<span style="color: #c678dd;">Join</span><span style="color: #98be65;">()</span>;
+    <span style="color: #c678dd;">}</span>
+    <span style="color: #51afef; font-style: italic;">static</span> <span style="color: #ECBE7B;">void</span> <span style="color: #c678dd;">incrementer</span><span style="color: #c678dd;">()</span> <span style="color: #c678dd;">{</span>
+        <span style="color: #51afef; font-style: italic;">for</span> <span style="color: #98be65;">(</span><span style="color: #ECBE7B;">int</span> <span style="color: #db5762;">i</span> = 0; i &lt; 6; i++<span style="color: #98be65;">)</span> <span style="color: #98be65;">{</span>
+            Console.<span style="color: #c678dd;">WriteLine</span><span style="color: #00bfff;">(</span><span style="color: #98be65;">"Incrementer:  {0}"</span>, <span style="color: #ECBE7B;">i</span><span style="color: #00bfff;">)</span>;
+            Thread.<span style="color: #c678dd;">Sleep</span><span style="color: #00bfff;">(</span>1000<span style="color: #00bfff;">)</span>;
+        <span style="color: #98be65;">}</span>
+    <span style="color: #c678dd;">}</span>
+    <span style="color: #51afef; font-style: italic;">static</span> <span style="color: #ECBE7B;">void</span> <span style="color: #c678dd;">decrementer</span><span style="color: #c678dd;">()</span> <span style="color: #c678dd;">{</span>
+        <span style="color: #51afef; font-style: italic;">for</span> <span style="color: #98be65;">(</span><span style="color: #ECBE7B;">int</span> <span style="color: #db5762;">i</span> = 6; i &gt; 0; i--<span style="color: #98be65;">)</span> <span style="color: #98be65;">{</span>
+            Console.<span style="color: #c678dd;">WriteLine</span><span style="color: #00bfff;">(</span><span style="color: #98be65;">"Decrementer:  {0}"</span>, <span style="color: #ECBE7B;">i</span><span style="color: #00bfff;">)</span>;
+            Thread.<span style="color: #c678dd;">Sleep</span><span style="color: #00bfff;">(</span>1000<span style="color: #00bfff;">)</span>;
+        <span style="color: #98be65;">}</span>
+    <span style="color: #c678dd;">}</span>
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgf2f01ef" class="outline-3">
+<h3 id="orgf2f01ef"><span class="section-number-3">4.4</span> Locks and Synchronization via the <code>Monitor</code></h3>
+<div class="outline-text-3" id="text-4-4">
+<ul class="org-ul">
+<li>Example on a Producer-Consumer type object</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-csharp"><span style="color: #51afef; font-style: italic;">class</span> <span style="color: #ECBE7B;">NumberStore</span> <span style="color: #fff0f5;">{</span>
+    <span style="color: #51afef; font-style: italic;">private</span> <span style="color: #ECBE7B;">int</span> <span style="color: #db5762;">contents</span> = 0;
+    <span style="color: #51afef; font-style: italic;">private</span> <span style="color: #ECBE7B;">Boolean</span> <span style="color: #db5762;">ready</span> = <span style="color: #a9a1e1;">false</span>;
+
+    <span style="color: #51afef; font-style: italic;">private</span> <span style="color: #ECBE7B;">object</span> <span style="color: #db5762;">theLock</span> = <span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">Object</span><span style="color: #c678dd;">()</span>;
+
+    <span style="color: #51afef; font-style: italic;">public</span> <span style="color: #ECBE7B;">int</span> <span style="color: #51afef; font-style: italic;">get</span><span style="color: #c678dd;">()</span> <span style="color: #c678dd;">{</span>
+        <span style="color: #5B6268;">// </span><span style="color: #5B6268;">block if theLock is used</span>
+        <span style="color: #51afef; font-style: italic;">lock</span> <span style="color: #98be65;">(</span>theLock<span style="color: #98be65;">)</span> <span style="color: #98be65;">{</span>
+            <span style="color: #51afef; font-style: italic;">while</span> <span style="color: #00bfff;">(</span>!ready<span style="color: #00bfff;">)</span> <span style="color: #00bfff;">{</span>
+                <span style="color: #5B6268;">// </span><span style="color: #5B6268;">Monitor.Wait just like Java's wait()</span>
+                Monitor.<span style="color: #c678dd;">Wait</span><span style="color: #a9a1e1;">(</span><span style="color: #ECBE7B;">theLock</span>, Timeout.<span style="color: #ECBE7B;">Infinite</span><span style="color: #a9a1e1;">)</span>;
+            <span style="color: #00bfff;">}</span>
+            ready = <span style="color: #a9a1e1;">false</span>;
+            <span style="color: #5B6268;">// </span><span style="color: #5B6268;">Monitor.Pulse just like Java's notify()</span>
+            <span style="color: #5B6268;">// </span><span style="color: #5B6268;">Monitor.PulseAll just like Java's notifyAll()</span>
+            Monitor.<span style="color: #c678dd;">Pulse</span><span style="color: #00bfff;">(</span><span style="color: #ECBE7B;">theLock</span><span style="color: #00bfff;">)</span>;
+            <span style="color: #51afef; font-style: italic;">return</span> contents;
+        <span style="color: #98be65;">}</span>
+    <span style="color: #c678dd;">}</span>
+
+    <span style="color: #51afef; font-style: italic;">public</span> <span style="color: #ECBE7B;">void</span> <span style="color: #c678dd;">put</span><span style="color: #c678dd;">(</span><span style="color: #ECBE7B;">int</span> <span style="color: #db5762;">value</span><span style="color: #c678dd;">)</span> <span style="color: #c678dd;">{</span>
+        <span style="color: #51afef; font-style: italic;">lock</span> <span style="color: #98be65;">(</span>theLock<span style="color: #98be65;">)</span> <span style="color: #98be65;">{</span>
+            <span style="color: #51afef; font-style: italic;">while</span> <span style="color: #00bfff;">(</span>ready<span style="color: #00bfff;">)</span> <span style="color: #00bfff;">{</span>
+                Monitor.<span style="color: #c678dd;">Wait</span><span style="color: #a9a1e1;">(</span><span style="color: #ECBE7B;">theLock</span>, Timeout.<span style="color: #ECBE7B;">Infinite</span><span style="color: #a9a1e1;">)</span>;
+            <span style="color: #00bfff;">}</span>
+
+            contents = value;
+            ready = <span style="color: #a9a1e1;">true</span>;
+            Monitor.<span style="color: #c678dd;">Pulse</span><span style="color: #00bfff;">(</span><span style="color: #ECBE7B;">theLock</span><span style="color: #00bfff;">)</span>;
+        <span style="color: #98be65;">}</span>
+    <span style="color: #c678dd;">}</span>
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org7e85a9c" class="outline-2">
+<h2 id="org7e85a9c"><span class="section-number-2">5</span> Partial Classes</h2>
+<div class="outline-text-2" id="text-5">
+<ul class="org-ul">
+<li>Allow to split a single class into multiple</li>
+<li>When instantiated it all compiles into a single class</li>
+<li><p>
+Best shown as an example, here as an <code>MoneyStore</code> class
+</p>
+<ul class="org-ul">
+<li>Part 1</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-csharp"><span style="color: #51afef; font-style: italic;">partial</span> <span style="color: #51afef; font-style: italic;">class</span> <span style="color: #ECBE7B;">MoneyStore</span> <span style="color: #fff0f5;">{</span>
+    <span style="color: #51afef; font-style: italic;">private</span> <span style="color: #ECBE7B;">int</span> <span style="color: #db5762;">balance</span> = 100;
+    <span style="color: #51afef; font-style: italic;">public</span> <span style="color: #ECBE7B;">void</span> <span style="color: #c678dd;">withdraw</span><span style="color: #c678dd;">(</span><span style="color: #ECBE7B;">int</span> <span style="color: #db5762;">amt</span><span style="color: #c678dd;">)</span> <span style="color: #c678dd;">{</span>
+        balance -= amt;
+    <span style="color: #c678dd;">}</span>
+    <span style="color: #51afef; font-style: italic;">public</span> <span style="color: #ECBE7B;">void</span> <span style="color: #c678dd;">print</span><span style="color: #c678dd;">()</span> <span style="color: #c678dd;">{</span>
+        Console.<span style="color: #c678dd;">WriteLine</span><span style="color: #98be65;">(</span><span style="color: #98be65;">"B:"</span> + balance<span style="color: #98be65;">)</span>;
+    <span style="color: #c678dd;">}</span>
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+<ul class="org-ul">
+<li>Part 2</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-csharp"><span style="color: #51afef; font-style: italic;">partial</span> <span style="color: #51afef; font-style: italic;">class</span> <span style="color: #ECBE7B;">MoneyStore</span> <span style="color: #fff0f5;">{</span>
+    <span style="color: #51afef; font-style: italic;">private</span> <span style="color: #ECBE7B;">int</span> <span style="color: #db5762;">limit</span> = 1000;
+    <span style="color: #51afef; font-style: italic;">public</span> <span style="color: #ECBE7B;">void</span> <span style="color: #c678dd;">deposit</span><span style="color: #c678dd;">(</span><span style="color: #ECBE7B;">int</span> <span style="color: #db5762;">amt</span><span style="color: #c678dd;">)</span> <span style="color: #c678dd;">{</span>
+        <span style="color: #51afef; font-style: italic;">if</span> <span style="color: #98be65;">(</span>balance + amt &gt; limit<span style="color: #98be65;">)</span>
+            Console.<span style="color: #c678dd;">WriteLine</span><span style="color: #98be65;">(</span><span style="color: #98be65;">"Error"</span><span style="color: #98be65;">)</span>;
+        <span style="color: #51afef; font-style: italic;">else</span>
+            balance += amt;
+    <span style="color: #c678dd;">}</span>
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org322eded" class="outline-2">
+<h2 id="org322eded"><span class="section-number-2">6</span> LINQ</h2>
+<div class="outline-text-2" id="text-6">
+</div>
+<div id="outline-container-org3bc7a38" class="outline-3">
+<h3 id="org3bc7a38"><span class="section-number-3">6.1</span> Query keywords</h3>
+<div class="outline-text-3" id="text-6-1">
+<ul class="org-ul">
+<li><code>from</code>: Specifies a data source and a range variable (similar to an iteration variable).</li>
+<li><code>where</code>: Filters source elements based on one or more Boolean expressions separated by logical AND and OR operators ( &amp;&amp; or || ).</li>
+<li><code>select</code>: Specifies the type and shape that the elements in the returned sequence will have when the query is executed.</li>
+<li><code>group</code>: Groups query results according to a specified key value.</li>
+<li><code>into</code>: Provides an identifier that can serve as a reference to the results of a join, group or select clause.</li>
+<li><code>orderby</code>: Sorts query results in ascending or descending order based on the default comparer for the element type.</li>
+<li><code>join</code>: Joins two data sources based on an equality comparison between two specified matching criteria.</li>
+<li><code>let</code>: Introduces a range variable to store sub-expression results in a query expression.</li>
+<li><code>in</code>: Contextual keyword in a join clause.</li>
+<li><code>on</code>: Contextual keyword in a join clause.</li>
+<li><code>equals</code>: Contextual keyword in a join clause.</li>
+<li><code>by</code>: Contextual keyword in a group clause.</li>
+<li><code>ascending</code>: Contextual keyword in an orderby clause.</li>
+<li><code>descending</code>: Contextual keyword in an orderby clause.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org4b6bf7c" class="outline-3">
+<h3 id="org4b6bf7c"><span class="section-number-3">6.2</span> Available built-in functions</h3>
+<div class="outline-text-3" id="text-6-2">
+<ul class="org-ul">
+<li><code>Max</code></li>
+<li><code>Min</code></li>
+<li><code>Average</code></li>
+<li><code>Count</code></li>
+<li><code>Sum</code></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgafd97ad" class="outline-3">
+<h3 id="orgafd97ad"><span class="section-number-3">6.3</span> Basic expression Syntax</h3>
+<div class="outline-text-3" id="text-6-3">
+<div class="org-src-container">
+<pre class="src src-csharp"><span style="color: #51afef; font-style: italic;">var</span> <span style="color: #db5762;">output</span> =
+    <span style="color: #51afef; font-style: italic;">from</span> <span style="color: #fff0f5;">&lt;</span>SELECTOR<span style="color: #fff0f5;">&gt;</span> <span style="color: #51afef; font-style: italic;">in</span> <span style="color: #fff0f5;">&lt;</span>INPUT_DATA<span style="color: #fff0f5;">&gt;</span>
+    <span style="color: #51afef; font-style: italic;">where</span> <span style="color: #fff0f5;">&lt;</span>EXPRESSION<span style="color: #fff0f5;">&gt;</span>
+    <span style="color: #51afef; font-style: italic;">select</span> <span style="color: #fff0f5;">&lt;</span>SELECTOR<span style="color: #fff0f5;">&gt;</span>;
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org07cd56f" class="outline-3">
+<h3 id="org07cd56f"><span class="section-number-3">6.4</span> Example, simple orderby with column selection and renaming</h3>
+<div class="outline-text-3" id="text-6-4">
+<ul class="org-ul">
+<li>Given the following data</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-csharp"><span style="color: #ECBE7B;">Player</span><span style="color: #fff0f5;">[]</span> <span style="color: #db5762;">plist</span> = <span style="color: #fff0f5;">{</span>
+    <span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">Player</span><span style="color: #c678dd;">{</span> Name = <span style="color: #98be65;">"Giggs"</span>, Age = 33, Team = <span style="color: #98be65;">"Manu"</span> <span style="color: #c678dd;">}</span>,
+    <span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">Player</span><span style="color: #c678dd;">{</span> Name = <span style="color: #98be65;">"Tevez"</span>, Age = 23, Team = <span style="color: #98be65;">"Manu"</span> <span style="color: #c678dd;">}</span>,
+    <span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">Player</span><span style="color: #c678dd;">{</span> Name = <span style="color: #98be65;">"Kuyt"</span>, Age = 29, Team = <span style="color: #98be65;">"Pool"</span> <span style="color: #c678dd;">}</span>,
+    <span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">Player</span><span style="color: #c678dd;">{</span> Name = <span style="color: #98be65;">"Torres"</span>, Age = 21, Team = <span style="color: #98be65;">"Pool"</span> <span style="color: #c678dd;">}</span>
+<span style="color: #fff0f5;">}</span>;
+</pre>
+</div>
+<ul class="org-ul">
+<li>Get all players above the age of 21, order by age and rename the <code>Name</code> attribute to <code>Player</code></li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-csharp"><span style="color: #51afef; font-style: italic;">var</span> <span style="color: #db5762;">players</span> =
+    <span style="color: #51afef; font-style: italic;">from</span> p <span style="color: #51afef; font-style: italic;">in</span> plist
+    <span style="color: #51afef; font-style: italic;">where</span> p.Age &gt; 21 <span style="color: #5B6268;">// </span><span style="color: #5B6268;">in betwen 21 and 25 (p.Age &gt; 21 &amp;&amp; p.age &lt; 25)</span>
+    <span style="color: #51afef; font-style: italic;">orderby</span> p.Age
+    <span style="color: #51afef; font-style: italic;">select</span> <span style="color: #51afef; font-style: italic;">new</span> <span style="color: #fff0f5;">{</span>
+    Player = p.Name,
+    Age = p.Age,
+    Team = p.Team
+<span style="color: #fff0f5;">}</span>;
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgcf33c94" class="outline-3">
+<h3 id="orgcf33c94"><span class="section-number-3">6.5</span> Example with built-in functions</h3>
+<div class="outline-text-3" id="text-6-5">
+<ul class="org-ul">
+<li>Given the same data as above</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-csharp"><span style="color: #51afef; font-style: italic;">var</span> <span style="color: #db5762;">maxAvg</span> = <span style="color: #51afef; font-style: italic;">new</span> <span style="color: #fff0f5;">{</span>
+    myMax = plist.<span style="color: #c678dd;">Max</span><span style="color: #c678dd;">(</span>w =&gt; w.Age<span style="color: #c678dd;">)</span>,
+    myAvg = plist.<span style="color: #c678dd;">Average</span><span style="color: #c678dd;">(</span>w =&gt; w.Value<span style="color: #c678dd;">)</span>
+<span style="color: #fff0f5;">}</span>
+Console.<span style="color: #c678dd;">WriteLine</span><span style="color: #fff0f5;">(</span><span style="color: #98be65;">"Max age {0}, Average age {1}"</span>, maxAvg.myMax, maxAvg.myAvg<span style="color: #fff0f5;">)</span>;
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgced3041" class="outline-3">
+<h3 id="orgced3041"><span class="section-number-3">6.6</span> More complicated examples with Grouping, Joining and Unions</h3>
+<div class="outline-text-3" id="text-6-6">
+<ul class="org-ul">
+<li>Given the following data</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-csharp"><span style="color: #ECBE7B;">Car</span><span style="color: #fff0f5;">[]</span> <span style="color: #db5762;">carList</span> = <span style="color: #fff0f5;">{</span>
+    <span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">Car</span> <span style="color: #c678dd;">{</span> Year = 1999, Price = 20000, Make = <span style="color: #98be65;">"VW"</span>, Model = <span style="color: #98be65;">"Passat"</span> <span style="color: #c678dd;">}</span>,
+    <span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">Car</span> <span style="color: #c678dd;">{</span> Year = 2005, Price = 30000, Make = <span style="color: #98be65;">"VW"</span>, Model = <span style="color: #98be65;">"Passat"</span> <span style="color: #c678dd;">}</span>,
+    <span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">Car</span> <span style="color: #c678dd;">{</span> Year = 2006, Price = 32000, Make = <span style="color: #98be65;">"VW"</span>, Model = <span style="color: #98be65;">"Boro"</span><span style="color: #c678dd;">}</span>,
+    <span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">Car</span> <span style="color: #c678dd;">{</span> Year = 1998, Price = 10000, Make = <span style="color: #98be65;">"Honda"</span>, Model = <span style="color: #98be65;">"Civic"</span><span style="color: #c678dd;">}</span>,
+    <span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">Car</span> <span style="color: #c678dd;">{</span> Year = 2007, Price = 30000, Make = <span style="color: #98be65;">"Honda"</span>, Model = <span style="color: #98be65;">"Civic"</span><span style="color: #c678dd;">}</span>,
+    <span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">Car</span> <span style="color: #c678dd;">{</span> Year = 2006, Price = 28000, Make = <span style="color: #98be65;">"Honda"</span>, Model = <span style="color: #98be65;">"Accord"</span><span style="color: #c678dd;">}</span>
+<span style="color: #fff0f5;">}</span>;
+<span style="color: #ECBE7B;">Bike</span><span style="color: #fff0f5;">[]</span> <span style="color: #db5762;">bikeList</span> = <span style="color: #fff0f5;">{</span>
+    <span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">Bike</span> <span style="color: #c678dd;">{</span>Year = 2002, Price = 9000, Make = <span style="color: #98be65;">"Yamaha"</span>, Model = <span style="color: #98be65;">"Silverado"</span><span style="color: #c678dd;">}</span>,
+    <span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">Bike</span> <span style="color: #c678dd;">{</span>Year = 2005, Price = 15000, Make = <span style="color: #98be65;">"Yamaha"</span>, Model = <span style="color: #98be65;">"Silverado"</span><span style="color: #c678dd;">}</span>,
+    <span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">Bike</span> <span style="color: #c678dd;">{</span>Year = 2006, Price = 20000, Make = <span style="color: #98be65;">"Yamaha"</span>, Model = <span style="color: #98be65;">"V-max"</span><span style="color: #c678dd;">}</span>,
+    <span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">Bike</span> <span style="color: #c678dd;">{</span>Year = 1997, Price = 1000, Make = <span style="color: #98be65;">"Honda"</span>, Model = <span style="color: #98be65;">"CRF150"</span><span style="color: #c678dd;">}</span>,
+    <span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">Bike</span> <span style="color: #c678dd;">{</span>Year = 2007, Price = 9000, Make = <span style="color: #98be65;">"Honda"</span>, Model = <span style="color: #98be65;">"CRF150"</span><span style="color: #c678dd;">}</span>,
+    <span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">Bike</span> <span style="color: #c678dd;">{</span>Year = 2006, Price = 18000, Make = <span style="color: #98be65;">"Honda"</span>, Model = <span style="color: #98be65;">"XR650"</span><span style="color: #c678dd;">}</span>
+<span style="color: #fff0f5;">}</span>;
+<span style="color: #ECBE7B;">Manufacturer</span><span style="color: #fff0f5;">[]</span> <span style="color: #db5762;">manufacturerList</span> = <span style="color: #fff0f5;">{</span>
+    <span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">Manufacturer</span> <span style="color: #c678dd;">{</span> Name = <span style="color: #98be65;">"VW"</span>, Nationality = <span style="color: #98be65;">"German"</span>, Year_founded = 1915 <span style="color: #c678dd;">}</span>,
+    <span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">Manufacturer</span> <span style="color: #c678dd;">{</span> Name = <span style="color: #98be65;">"Honda"</span>, Nationality = <span style="color: #98be65;">"Japan"</span>, Year_founded = 1925 <span style="color: #c678dd;">}</span>,
+    <span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">Manufacturer</span> <span style="color: #c678dd;">{</span> Name = <span style="color: #98be65;">"Yamaha"</span>, Nationality = <span style="color: #98be65;">"Japan"</span>, Year_founded = 1925 <span style="color: #c678dd;">}</span>
+<span style="color: #fff0f5;">}</span>;
+</pre>
+</div>
+<ul class="org-ul">
+<li>Grouping the <b>car</b> data</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-csharp"><span style="color: #51afef; font-style: italic;">var</span> <span style="color: #db5762;">carsGrouped</span> = <span style="color: #51afef; font-style: italic;">from</span> c <span style="color: #51afef; font-style: italic;">in</span> carList
+    group c by c.Make
+    into g
+    <span style="color: #51afef; font-style: italic;">select</span> <span style="color: #51afef; font-style: italic;">new</span> <span style="color: #fff0f5;">{</span>
+        Make = g.Key,
+        myDearest = g.<span style="color: #c678dd;">Max</span><span style="color: #c678dd;">(</span>w =&gt; w.Price<span style="color: #c678dd;">)</span>,
+        myCount = g.<span style="color: #c678dd;">Count</span><span style="color: #c678dd;">()</span>,
+        myAvg = g.<span style="color: #c678dd;">Average</span><span style="color: #c678dd;">(</span>w =&gt; w.Price<span style="color: #c678dd;">)</span>
+    <span style="color: #fff0f5;">}</span>;
+</pre>
+</div>
+<ul class="org-ul">
+<li>Joining <b>cars</b> and <b>manufacturers</b></li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-csharp"><span style="color: #51afef; font-style: italic;">var</span> <span style="color: #db5762;">carAndManufacturerJoin</span> = <span style="color: #51afef; font-style: italic;">from</span> c <span style="color: #51afef; font-style: italic;">in</span> carList
+    join m <span style="color: #51afef; font-style: italic;">in</span> manufacturerList
+        on c.Make equals m.Name
+    <span style="color: #51afef; font-style: italic;">select</span> <span style="color: #51afef; font-style: italic;">new</span> <span style="color: #fff0f5;">{</span>
+        Make = c.Make,
+        Year = c.Year,
+        Price = c.Price,
+        Name = m.Name,
+        Nationality = m.Nationality,
+        YearFounded = m.Year_founded
+    <span style="color: #fff0f5;">}</span>;
+</pre>
+</div>
+<ul class="org-ul">
+<li>Union, Intersection and Except of <b>cars</b> and <b>bikes</b></li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-csharp"><span style="color: #51afef; font-style: italic;">var</span> <span style="color: #db5762;">unionCar</span> = <span style="color: #51afef; font-style: italic;">from</span> c <span style="color: #51afef; font-style: italic;">in</span> carList
+    <span style="color: #51afef; font-style: italic;">where</span> <span style="color: #fff0f5;">(</span>c.Year &gt; 2000<span style="color: #fff0f5;">)</span>
+    <span style="color: #51afef; font-style: italic;">select</span> <span style="color: #51afef; font-style: italic;">new</span> <span style="color: #fff0f5;">{</span>
+        Year = c.Year,
+        Price = c.Price,
+        Model = c.Model
+    <span style="color: #fff0f5;">}</span>;
+<span style="color: #51afef; font-style: italic;">var</span> <span style="color: #db5762;">unionBike</span> = <span style="color: #51afef; font-style: italic;">from</span> b <span style="color: #51afef; font-style: italic;">in</span> bikeList
+    <span style="color: #51afef; font-style: italic;">where</span> <span style="color: #fff0f5;">(</span>b.Year &gt; 2000<span style="color: #fff0f5;">)</span>
+    <span style="color: #51afef; font-style: italic;">select</span> <span style="color: #51afef; font-style: italic;">new</span> <span style="color: #fff0f5;">{</span>
+        Year = b.Year,
+        Price = b.Price,
+        Model = b.Model
+    <span style="color: #fff0f5;">}</span>;
+<span style="color: #51afef; font-style: italic;">var</span> <span style="color: #db5762;">unionCarBike</span> = unionBike.<span style="color: #c678dd;">Union</span><span style="color: #fff0f5;">(</span>unionCar<span style="color: #fff0f5;">)</span>;
+<span style="color: #51afef; font-style: italic;">var</span> <span style="color: #db5762;">intersectionCarBike</span> = unionBike.<span style="color: #c678dd;">Intersect</span><span style="color: #fff0f5;">(</span>unionCar<span style="color: #fff0f5;">)</span>;
+<span style="color: #51afef; font-style: italic;">var</span> <span style="color: #db5762;">exceptCarBike</span> = unionBike.<span style="color: #c678dd;">Except</span><span style="color: #fff0f5;">(</span>unionCar<span style="color: #fff0f5;">)</span>;
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org11ef538" class="outline-3">
+<h3 id="org11ef538"><span class="section-number-3">6.7</span> Using the dot notation</h3>
+<div class="outline-text-3" id="text-6-7">
+
+<div class="figure">
+<p><img src="images/LINQ/screenshot_2018-12-15_18-55-58.png" alt="screenshot_2018-12-15_18-55-58.png" />
+</p>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org3e1e9c4" class="outline-2">
+<h2 id="org3e1e9c4"><span class="section-number-2">7</span> .NET Remoting</h2>
+<div class="outline-text-2" id="text-7">
+</div>
+<div id="outline-container-org87e46f0" class="outline-3">
+<h3 id="org87e46f0"><span class="section-number-3">7.1</span> Server Setup</h3>
+<div class="outline-text-3" id="text-7-1">
+</div>
+<div id="outline-container-orgc4a3534" class="outline-4">
+<h4 id="orgc4a3534">Step 1, Create an Interface for an Entity (Product in this case)</h4>
+<div class="outline-text-4" id="text-orgc4a3534">
+<div class="org-src-container">
+<pre class="src src-csharp"><span style="color: #51afef; font-style: italic;">public</span> <span style="color: #51afef; font-style: italic;">interface</span> <span style="color: #ECBE7B;">ProductInterface</span> <span style="color: #fff0f5;">{</span>
+    <span style="color: #ECBE7B;">string</span> <span style="color: #c678dd;">getDescription</span><span style="color: #c678dd;">()</span>;
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org5749aaf" class="outline-4">
+<h4 id="org5749aaf">Step 2, Create the Entity (Product)</h4>
+<div class="outline-text-4" id="text-org5749aaf">
+<ul class="org-ul">
+<li><b>NOTE</b>: Needs to extend the Interface and <code>MarshalByRefObject</code></li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-csharp"><span style="color: #51afef; font-style: italic;">public</span> <span style="color: #51afef; font-style: italic;">class</span> <span style="color: #ECBE7B;">Product</span> : <span style="color: #ECBE7B;">MarshalByRefObject</span>, <span style="color: #ECBE7B;">ProductInterface</span> <span style="color: #fff0f5;">{</span>
+    <span style="color: #ECBE7B;">string</span> <span style="color: #db5762;">name</span> = <span style="color: #98be65;">"Toaster!!!"</span>;
+
+    <span style="color: #51afef; font-style: italic;">public</span> <span style="color: #ECBE7B;">string</span> <span style="color: #c678dd;">getDescription</span><span style="color: #c678dd;">()</span> <span style="color: #c678dd;">{</span>
+        <span style="color: #51afef; font-style: italic;">return</span> name;
+    <span style="color: #c678dd;">}</span>
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org583b737" class="outline-4">
+<h4 id="org583b737">Step 3, Create Server</h4>
+<div class="outline-text-4" id="text-org583b737">
+<div class="org-src-container">
+<pre class="src src-csharp"><span style="color: #51afef; font-style: italic;">class</span> <span style="color: #ECBE7B;">Program</span> <span style="color: #fff0f5;">{</span>
+    <span style="color: #51afef; font-style: italic;">static</span> <span style="color: #ECBE7B;">void</span> <span style="color: #c678dd;">Main</span><span style="color: #c678dd;">(</span><span style="color: #ECBE7B;">string</span><span style="color: #98be65;">[]</span> <span style="color: #db5762;">args</span><span style="color: #c678dd;">)</span> <span style="color: #c678dd;">{</span>
+        ProductServer<span style="color: #98be65;">()</span>;
+    <span style="color: #c678dd;">}</span>
+    <span style="color: #51afef; font-style: italic;">static</span> <span style="color: #ECBE7B;">void</span> <span style="color: #c678dd;">ProductServer</span><span style="color: #c678dd;">()</span> <span style="color: #c678dd;">{</span>
+        <span style="color: #5B6268;">// </span><span style="color: #5B6268;">Open TCP</span>
+        <span style="color: #ECBE7B;">TcpChannel</span> <span style="color: #db5762;">tcpChannel</span> = <span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">TcpChannel</span><span style="color: #98be65;">(</span>9998<span style="color: #98be65;">)</span>;
+        <span style="color: #5B6268;">// </span><span style="color: #5B6268;">Register the TCP</span>
+        ChannelServices.<span style="color: #c678dd;">RegisterChannel</span><span style="color: #98be65;">(</span><span style="color: #ECBE7B;">tcpChannel</span><span style="color: #98be65;">)</span>;
+        <span style="color: #5B6268;">// </span><span style="color: #5B6268;">Get the Product as the Common Interface</span>
+        <span style="color: #ECBE7B;">Type</span> <span style="color: #db5762;">commonInterfaceType</span> = Type.<span style="color: #c678dd;">GetType</span><span style="color: #98be65;">(</span><span style="color: #98be65;">"Product"</span><span style="color: #98be65;">)</span>;
+        <span style="color: #5B6268;">// </span><span style="color: #5B6268;">Register the Interface</span>
+        RemotingConfiguration.<span style="color: #c678dd;">RegisterWellKnownServiceType</span><span style="color: #98be65;">(</span>
+            <span style="color: #ECBE7B;">commonInterfaceType</span>,
+            <span style="color: #98be65;">"MyToaster"</span>,  <span style="color: #5B6268;">// </span><span style="color: #5B6268;">Path</span>
+            WellKnownObjectMode.<span style="color: #ECBE7B;">SingleCall</span>
+        <span style="color: #98be65;">)</span>;
+        Console.<span style="color: #c678dd;">WriteLine</span><span style="color: #98be65;">(</span><span style="color: #98be65;">"Press ENTER to quit"</span><span style="color: #98be65;">)</span>;
+        Console.<span style="color: #c678dd;">ReadLine</span><span style="color: #98be65;">()</span>;
+    <span style="color: #c678dd;">}</span>
+<span style="color: #fff0f5;">}</span>
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgdd5ebe3" class="outline-3">
+<h3 id="orgdd5ebe3"><span class="section-number-3">7.2</span> Client Setup</h3>
+<div class="outline-text-3" id="text-7-2">
+</div>
+<div id="outline-container-orgd1998fc" class="outline-4">
+<h4 id="orgd1998fc">Step 1, Use the same Interface as the server</h4>
+<div class="outline-text-4" id="text-orgd1998fc">
+<div class="org-src-container">
+<pre class="src src-csharp"><span style="color: #51afef; font-style: italic;">public</span> <span style="color: #51afef; font-style: italic;">interface</span> <span style="color: #ECBE7B;">ProductInterface</span> <span style="color: #fff0f5;">{</span>
+    <span style="color: #ECBE7B;">string</span> <span style="color: #c678dd;">getDescription</span><span style="color: #c678dd;">()</span>;
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org5f0824b" class="outline-4">
+<h4 id="org5f0824b">Step 2, Create the Client</h4>
+<div class="outline-text-4" id="text-org5f0824b">
+<div class="org-src-container">
+<pre class="src src-csharp"><span style="color: #51afef; font-style: italic;">class</span> <span style="color: #ECBE7B;">MyClient</span> <span style="color: #fff0f5;">{</span>
+    <span style="color: #51afef; font-style: italic;">public</span> <span style="color: #51afef; font-style: italic;">static</span> <span style="color: #ECBE7B;">void</span> <span style="color: #c678dd;">Main</span><span style="color: #c678dd;">()</span> <span style="color: #c678dd;">{</span>
+        <span style="color: #5B6268;">// </span><span style="color: #5B6268;">Open TCP</span>
+        <span style="color: #ECBE7B;">TcpChannel</span> <span style="color: #db5762;">tcpChannel</span> = <span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">TcpChannel</span><span style="color: #98be65;">()</span>;
+        <span style="color: #5B6268;">// </span><span style="color: #5B6268;">Register TCP</span>
+        ChannelServices.<span style="color: #c678dd;">RegisterChannel</span><span style="color: #98be65;">(</span><span style="color: #ECBE7B;">tcpChannel</span><span style="color: #98be65;">)</span>;
+        <span style="color: #5B6268;">// </span><span style="color: #5B6268;">Get the type of the Interface</span>
+        <span style="color: #ECBE7B;">Type</span> <span style="color: #db5762;">requiredType</span> = <span style="color: #51afef; font-style: italic;">typeof</span><span style="color: #98be65;">(</span><span style="color: #ECBE7B;">ProductInterface</span><span style="color: #98be65;">)</span>;
+        <span style="color: #5B6268;">// </span><span style="color: #5B6268;">Retrieve the object via the created route</span>
+        <span style="color: #ECBE7B;">ProductInterface</span> <span style="color: #db5762;">remoteObject</span> =
+            <span style="color: #98be65;">(</span><span style="color: #ECBE7B;">ProductInterface</span><span style="color: #98be65;">)</span>
+            Activator.<span style="color: #c678dd;">GetObject</span><span style="color: #98be65;">(</span><span style="color: #ECBE7B;">requiredType</span>, <span style="color: #98be65;">"tcp://localhost:9998/MyToaster"</span><span style="color: #98be65;">)</span>;
+        <span style="color: #5B6268;">// </span><span style="color: #5B6268;">Call the Product's method via its interface</span>
+        Console.<span style="color: #c678dd;">WriteLine</span><span style="color: #98be65;">(</span>remoteObject.<span style="color: #c678dd;">getDescription</span><span style="color: #00bfff;">()</span><span style="color: #98be65;">)</span>;
+    <span style="color: #c678dd;">}</span>
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org37779d9" class="outline-2">
+<h2 id="org37779d9"><span class="section-number-2">8</span> Indexers</h2>
+<div class="outline-text-2" id="text-8">
+<ul class="org-ul">
+<li>Allow to add array like indexing to any class</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-csharp"><span style="color: #51afef; font-style: italic;">class</span> <span style="color: #ECBE7B;">Vector</span> <span style="color: #fff0f5;">{</span>
+    <span style="color: #51afef; font-style: italic;">private</span> <span style="color: #ECBE7B;">int</span> <span style="color: #db5762;">count</span> = 4;
+    <span style="color: #51afef; font-style: italic;">private</span> <span style="color: #ECBE7B;">int</span><span style="color: #c678dd;">[]</span> <span style="color: #db5762;">arr</span> = <span style="color: #c678dd;">{</span>3, 4, 6, 7<span style="color: #c678dd;">}</span>;
+    <span style="color: #5B6268;">// </span><span style="color: #5B6268;">Indexer definition</span>
+    <span style="color: #51afef; font-style: italic;">public</span> <span style="color: #ECBE7B;">int</span> <span style="color: #51afef; font-style: italic;">this</span><span style="color: #c678dd;">[</span><span style="color: #ECBE7B;">int</span> index<span style="color: #c678dd;">]</span> <span style="color: #c678dd;">{</span>
+        <span style="color: #5B6268;">// </span><span style="color: #5B6268;">provide a getter</span>
+        <span style="color: #51afef; font-style: italic;">get</span> <span style="color: #98be65;">{</span>
+            <span style="color: #51afef; font-style: italic;">if</span> <span style="color: #00bfff;">(</span>index &lt; count<span style="color: #00bfff;">)</span>
+                <span style="color: #51afef; font-style: italic;">return</span> arr<span style="color: #00bfff;">[</span>index<span style="color: #00bfff;">]</span>;
+            <span style="color: #51afef; font-style: italic;">return</span> 0;
+        <span style="color: #98be65;">}</span>
+        <span style="color: #5B6268;">// </span><span style="color: #5B6268;">provide a setter</span>
+        <span style="color: #51afef; font-style: italic;">set</span> <span style="color: #98be65;">{</span>
+            arr<span style="color: #00bfff;">[</span>index<span style="color: #00bfff;">]</span> = value;  <span style="color: #5B6268;">// </span><span style="color: #5B6268;">value is a keyword of the setter</span>
+        <span style="color: #98be65;">}</span>
+    <span style="color: #c678dd;">}</span>
+<span style="color: #fff0f5;">}</span>
+<span style="color: #51afef; font-style: italic;">class</span> <span style="color: #ECBE7B;">Program</span> <span style="color: #fff0f5;">{</span>
+    <span style="color: #51afef; font-style: italic;">public</span> <span style="color: #51afef; font-style: italic;">static</span> <span style="color: #ECBE7B;">void</span> <span style="color: #c678dd;">Main</span><span style="color: #c678dd;">(</span><span style="color: #ECBE7B;">string</span><span style="color: #98be65;">[]</span> <span style="color: #db5762;">args</span><span style="color: #c678dd;">)</span> <span style="color: #c678dd;">{</span>
+        <span style="color: #ECBE7B;">Vector</span> <span style="color: #db5762;">v</span> = <span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">Vector</span><span style="color: #98be65;">()</span>;
+        v<span style="color: #98be65;">[</span>1<span style="color: #98be65;">]</span> = 8;  <span style="color: #5B6268;">// </span><span style="color: #5B6268;">assign a value like to an array</span>
+        Console.<span style="color: #c678dd;">WriteLine</span><span style="color: #98be65;">(</span><span style="color: #98be65;">"idx 1: "</span> + v<span style="color: #00bfff;">[</span>1<span style="color: #00bfff;">]</span><span style="color: #98be65;">)</span>;
+    <span style="color: #c678dd;">}</span>
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org3696730" class="outline-2">
+<h2 id="org3696730"><span class="section-number-2">9</span> Dynamic Types</h2>
+<div class="outline-text-2" id="text-9">
+<ul class="org-ul">
+<li><code>var</code> provides a form of casting, but the variable itself is still strongly typed</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-csharp"><span style="color: #ECBE7B;">int</span> <span style="color: #db5762;">x</span> = 2;
+<span style="color: #51afef; font-style: italic;">var</span> <span style="color: #db5762;">v</span> = x; <span style="color: #5B6268;">// </span><span style="color: #5B6268;">now x is of type 'int'</span>
+v = <span style="color: #98be65;">"foo"</span>; <span style="color: #5B6268;">// </span><span style="color: #5B6268;">error</span>
+</pre>
+</div>
+<ul class="org-ul">
+<li><code>dynamic</code> keyword provides a way of having a dynamic types so the following example would not cause a compile time error</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-csharp"><span style="color: #ECBE7B;">int</span> <span style="color: #db5762;">x</span> = 2;
+<span style="color: #51afef; font-style: italic;">var</span> <span style="color: #db5762;">v</span> = x; <span style="color: #5B6268;">// </span><span style="color: #5B6268;">now x is of type 'int'</span>
+v = <span style="color: #98be65;">"foo"</span>; <span style="color: #5B6268;">// </span><span style="color: #5B6268;">error</span>
+</pre>
+</div>
+<ul class="org-ul">
+<li>additionally a <code>dynamic</code> object can be made that tests if a method exists on the object with <code>TryInvokeMember</code>, if it does not exists an arbitrary value can be returned</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-csharp"><span style="color: #51afef; font-style: italic;">public</span> <span style="color: #51afef; font-style: italic;">class</span> <span style="color: #ECBE7B;">MyDynamic</span> : <span style="color: #ECBE7B;">DynamicObject</span> <span style="color: #fff0f5;">{</span>
+    <span style="color: #5B6268;">// </span><span style="color: #5B6268;">Faulty method invocation handler</span>
+    <span style="color: #51afef; font-style: italic;">public</span> <span style="color: #51afef; font-style: italic;">override</span> <span style="color: #ECBE7B;">bool</span> <span style="color: #c678dd;">TryInvokeMember</span> <span style="color: #c678dd;">(</span>
+        <span style="color: #ECBE7B;">InvokeMemberBinder</span> <span style="color: #db5762;">binder</span>,
+        <span style="color: #ECBE7B;">object</span><span style="color: #98be65;">[]</span> <span style="color: #db5762;">args</span>,
+        <span style="color: #51afef; font-style: italic;">out</span> <span style="color: #ECBE7B;">object</span> <span style="color: #db5762;">result</span>
+        <span style="color: #c678dd;">)</span> <span style="color: #c678dd;">{</span>
+        Console.<span style="color: #c678dd;">WriteLine</span><span style="color: #98be65;">(</span><span style="color: #98be65;">"I would have invoked: {0}"</span>, binder.Name<span style="color: #98be65;">)</span>;
+        result = <span style="color: #98be65;">"dummy"</span>;  <span style="color: #5B6268;">// </span><span style="color: #5B6268;">return this dummy data</span>
+        <span style="color: #51afef; font-style: italic;">return</span> <span style="color: #a9a1e1;">true</span>;
+    <span style="color: #c678dd;">}</span>
+    <span style="color: #51afef; font-style: italic;">public</span> <span style="color: #ECBE7B;">string</span> <span style="color: #c678dd;">NormalMethod</span><span style="color: #c678dd;">()</span> <span style="color: #c678dd;">{</span>
+        Console.<span style="color: #c678dd;">WriteLine</span><span style="color: #98be65;">(</span><span style="color: #98be65;">"In NormalMethod"</span><span style="color: #98be65;">)</span>;
+        <span style="color: #51afef; font-style: italic;">return</span> <span style="color: #98be65;">"normal"</span>;
+    <span style="color: #c678dd;">}</span>
+<span style="color: #fff0f5;">}</span>
+<span style="color: #51afef; font-style: italic;">class</span> <span style="color: #ECBE7B;">Program</span> <span style="color: #fff0f5;">{</span>
+    <span style="color: #51afef; font-style: italic;">public</span> <span style="color: #51afef; font-style: italic;">static</span> <span style="color: #ECBE7B;">void</span> <span style="color: #c678dd;">Main</span><span style="color: #c678dd;">(</span><span style="color: #ECBE7B;">string</span><span style="color: #98be65;">[]</span> <span style="color: #db5762;">args</span><span style="color: #c678dd;">)</span> <span style="color: #c678dd;">{</span>
+        <span style="color: #ECBE7B;">dynamic</span> <span style="color: #db5762;">obj</span> = <span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">MyDynamic</span><span style="color: #98be65;">()</span>;
+        Console.<span style="color: #c678dd;">WriteLine</span><span style="color: #98be65;">(</span>obj.<span style="color: #c678dd;">NormalMethod</span><span style="color: #00bfff;">()</span><span style="color: #98be65;">)</span>;  <span style="color: #5B6268;">// </span><span style="color: #5B6268;">invoked normally</span>
+        Console.<span style="color: #c678dd;">WriteLine</span><span style="color: #98be65;">(</span>obj.<span style="color: #c678dd;">HelloWorld</span><span style="color: #00bfff;">()</span><span style="color: #98be65;">)</span>;  <span style="color: #5B6268;">// </span><span style="color: #5B6268;">method does not exist</span>
+    <span style="color: #c678dd;">}</span>
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgd7be50d" class="outline-2">
+<h2 id="orgd7be50d"><span class="section-number-2">10</span> Design Patterns</h2>
+<div class="outline-text-2" id="text-10">
+</div>
+<div id="outline-container-org5da3062" class="outline-3">
+<h3 id="org5da3062"><span class="section-number-3">10.1</span> Adapter</h3>
+<div class="outline-text-3" id="text-10-1">
+<ul class="org-ul">
+<li>Change the interface associated with an existing class</li>
+<li>It basically revolves around taking a class and adapting it to what we want it to do</li>
+<li>Say we have a simple <code>Counter</code> class, that can only increment and decrement by 1</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-csharp"><span style="color: #51afef; font-style: italic;">class</span> <span style="color: #ECBE7B;">Counter</span> <span style="color: #fff0f5;">{</span>
+    <span style="color: #51afef; font-style: italic;">private</span> <span style="color: #ECBE7B;">int</span> <span style="color: #db5762;">count</span>;
+    <span style="color: #51afef; font-style: italic;">public</span> Counter<span style="color: #c678dd;">(</span><span style="color: #ECBE7B;">int</span> <span style="color: #db5762;">v</span><span style="color: #c678dd;">)</span> <span style="color: #c678dd;">{</span>
+        count = v;
+    <span style="color: #c678dd;">}</span>
+    <span style="color: #51afef; font-style: italic;">public</span> <span style="color: #ECBE7B;">void</span> <span style="color: #c678dd;">increment</span><span style="color: #c678dd;">()</span> <span style="color: #c678dd;">{</span>
+        count++;
+    <span style="color: #c678dd;">}</span>
+    <span style="color: #51afef; font-style: italic;">public</span> <span style="color: #ECBE7B;">void</span> <span style="color: #c678dd;">decrement</span><span style="color: #c678dd;">()</span> <span style="color: #c678dd;">{</span>
+        count--;
+    <span style="color: #c678dd;">}</span>
+    <span style="color: #51afef; font-style: italic;">public</span> <span style="color: #ECBE7B;">int</span> <span style="color: #c678dd;">readValue</span><span style="color: #c678dd;">()</span> <span style="color: #c678dd;">{</span>
+        <span style="color: #51afef; font-style: italic;">return</span> count;
+    <span style="color: #c678dd;">}</span>
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+<ul class="org-ul">
+<li>But we want to be able to increment/decrement by an any value and use it as a <code>MoneyStorage</code> type class</li>
+<li>First we define an Interface for it</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-csharp"><span style="color: #51afef; font-style: italic;">public</span> <span style="color: #51afef; font-style: italic;">interface</span> <span style="color: #ECBE7B;">IContainer</span> <span style="color: #fff0f5;">{</span>
+    <span style="color: #ECBE7B;">void</span> <span style="color: #51afef; font-style: italic;">add</span><span style="color: #c678dd;">(</span><span style="color: #ECBE7B;">int</span> <span style="color: #db5762;">i</span><span style="color: #c678dd;">)</span>;
+    <span style="color: #ECBE7B;">bool</span> <span style="color: #51afef; font-style: italic;">remove</span><span style="color: #c678dd;">(</span><span style="color: #ECBE7B;">int</span> <span style="color: #db5762;">i</span><span style="color: #c678dd;">)</span>;
+    <span style="color: #ECBE7B;">int</span> <span style="color: #c678dd;">readAmount</span><span style="color: #c678dd;">()</span>;
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+<ul class="org-ul">
+<li>Now we define the <code>MoneyStorage</code> class</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-csharp"><span style="color: #51afef; font-style: italic;">public</span> <span style="color: #51afef; font-style: italic;">class</span> <span style="color: #ECBE7B;">MoneyStorage</span> : <span style="color: #ECBE7B;">IContainer</span> <span style="color: #fff0f5;">{</span>
+    <span style="color: #51afef; font-style: italic;">private</span> <span style="color: #ECBE7B;">Counter</span> <span style="color: #db5762;">c</span>;
+    <span style="color: #51afef; font-style: italic;">public</span> MoneyStorage<span style="color: #c678dd;">(</span><span style="color: #ECBE7B;">int</span> <span style="color: #db5762;">i</span><span style="color: #c678dd;">)</span> <span style="color: #c678dd;">{</span>
+        c = <span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">Counter</span><span style="color: #98be65;">(</span>i<span style="color: #98be65;">)</span>;
+    <span style="color: #c678dd;">}</span>
+    <span style="color: #51afef; font-style: italic;">public</span> <span style="color: #ECBE7B;">void</span> <span style="color: #51afef; font-style: italic;">add</span><span style="color: #c678dd;">(</span><span style="color: #ECBE7B;">int</span> <span style="color: #db5762;">i</span><span style="color: #c678dd;">)</span> <span style="color: #c678dd;">{</span>
+        <span style="color: #51afef; font-style: italic;">for</span> <span style="color: #98be65;">(</span><span style="color: #ECBE7B;">int</span> <span style="color: #db5762;">j</span> = 0; j &lt; i; j++<span style="color: #98be65;">)</span> <span style="color: #98be65;">{</span>
+            c.<span style="color: #c678dd;">increment</span><span style="color: #00bfff;">()</span>;
+        <span style="color: #98be65;">}</span>
+    <span style="color: #c678dd;">}</span>
+    <span style="color: #51afef; font-style: italic;">public</span> <span style="color: #ECBE7B;">void</span> <span style="color: #51afef; font-style: italic;">remove</span><span style="color: #c678dd;">(</span><span style="color: #ECBE7B;">int</span> <span style="color: #db5762;">i</span><span style="color: #c678dd;">)</span> <span style="color: #c678dd;">{</span>
+        <span style="color: #51afef; font-style: italic;">for</span> <span style="color: #98be65;">(</span><span style="color: #ECBE7B;">int</span> <span style="color: #db5762;">j</span> = 0; j &lt; i; j++<span style="color: #98be65;">)</span> <span style="color: #98be65;">{</span>
+            c.<span style="color: #c678dd;">decrement</span><span style="color: #00bfff;">()</span>;
+        <span style="color: #98be65;">}</span>
+    <span style="color: #c678dd;">}</span>
+    <span style="color: #51afef; font-style: italic;">public</span> <span style="color: #ECBE7B;">int</span> <span style="color: #c678dd;">readAmount</span><span style="color: #c678dd;">()</span> <span style="color: #c678dd;">{</span>
+        <span style="color: #51afef; font-style: italic;">return</span> c.<span style="color: #c678dd;">readValue</span><span style="color: #98be65;">()</span>;
+    <span style="color: #c678dd;">}</span>
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+<ul class="org-ul">
+<li>Quite simple, really</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org9a087b0" class="outline-3">
+<h3 id="org9a087b0"><span class="section-number-3">10.2</span> Decorator</h3>
+<div class="outline-text-3" id="text-10-2">
+<ul class="org-ul">
+<li>Add additional functionality by adding more objects to the initial class</li>
+<li>Example on a simple class that prints out to the console a name</li>
+<li>Step 1, create the main domain class</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-csharp"><span style="color: #51afef; font-style: italic;">class</span> <span style="color: #ECBE7B;">Display</span> <span style="color: #fff0f5;">{</span>
+    <span style="color: #51afef; font-style: italic;">private</span> <span style="color: #ECBE7B;">String</span> <span style="color: #db5762;">name</span>;
+    <span style="color: #5B6268;">// </span><span style="color: #5B6268;">normal constructor</span>
+    <span style="color: #51afef; font-style: italic;">public</span> Display<span style="color: #c678dd;">(</span><span style="color: #ECBE7B;">String</span> <span style="color: #db5762;">n</span><span style="color: #c678dd;">)</span> <span style="color: #c678dd;">{</span>
+        name = n;
+    <span style="color: #c678dd;">}</span>
+    <span style="color: #5B6268;">// </span><span style="color: #5B6268;">constructor that accepts the same class type</span>
+    <span style="color: #51afef; font-style: italic;">public</span> Display<span style="color: #c678dd;">(</span><span style="color: #ECBE7B;">Display</span> <span style="color: #db5762;">d</span><span style="color: #c678dd;">)</span> <span style="color: #c678dd;">{</span>
+        name = d.name;
+    <span style="color: #c678dd;">}</span>
+    <span style="color: #51afef; font-style: italic;">public</span> <span style="color: #51afef; font-style: italic;">virtual</span> <span style="color: #ECBE7B;">void</span> <span style="color: #c678dd;">print</span><span style="color: #c678dd;">()</span> <span style="color: #c678dd;">{</span>
+        Console.<span style="color: #c678dd;">WriteLine</span><span style="color: #98be65;">(</span><span style="color: #98be65;">"\t"</span> + name<span style="color: #98be65;">)</span>;
+    <span style="color: #c678dd;">}</span>
+    <span style="color: #51afef; font-style: italic;">public</span> <span style="color: #51afef; font-style: italic;">virtual</span> <span style="color: #ECBE7B;">void</span> <span style="color: #c678dd;">setName</span><span style="color: #c678dd;">(</span><span style="color: #ECBE7B;">String</span> <span style="color: #db5762;">n</span><span style="color: #c678dd;">)</span> <span style="color: #c678dd;">{</span>
+        name = n;
+    <span style="color: #c678dd;">}</span>
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+<ul class="org-ul">
+<li>Step 2, define a <code>Decorator</code> that extends the <code>Display</code></li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-csharp"><span style="color: #51afef; font-style: italic;">class</span> <span style="color: #ECBE7B;">Decorator</span> : <span style="color: #ECBE7B;">Display</span> <span style="color: #fff0f5;">{</span>
+    <span style="color: #51afef; font-style: italic;">protected</span> <span style="color: #ECBE7B;">Display</span> <span style="color: #db5762;">display</span>;
+    <span style="color: #51afef; font-style: italic;">public</span> Decorator<span style="color: #c678dd;">(</span><span style="color: #ECBE7B;">Display</span> <span style="color: #db5762;">display</span><span style="color: #c678dd;">)</span> : <span style="color: #51afef; font-style: italic;">base</span><span style="color: #c678dd;">(</span>display<span style="color: #c678dd;">)</span> <span style="color: #c678dd;">{</span>
+        <span style="color: #51afef; font-style: italic;">this</span>.display = display;
+    <span style="color: #c678dd;">}</span>
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+<ul class="org-ul">
+<li>Step 3, define the first child <code>Decorator</code></li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-csharp"><span style="color: #51afef; font-style: italic;">class</span> <span style="color: #ECBE7B;">UpperLine</span> : <span style="color: #ECBE7B;">Decorator</span> <span style="color: #fff0f5;">{</span>
+    <span style="color: #5B6268;">// </span><span style="color: #5B6268;">accept the main domain class in the constuctor</span>
+    <span style="color: #51afef; font-style: italic;">public</span> UpperLine<span style="color: #c678dd;">(</span><span style="color: #ECBE7B;">Display</span> <span style="color: #db5762;">display</span><span style="color: #c678dd;">)</span> : <span style="color: #51afef; font-style: italic;">base</span><span style="color: #c678dd;">(</span>display<span style="color: #c678dd;">)</span> <span style="color: #c678dd;">{</span>
+    <span style="color: #c678dd;">}</span>
+    <span style="color: #5B6268;">// </span><span style="color: #5B6268;">override the print method</span>
+    <span style="color: #51afef; font-style: italic;">public</span> <span style="color: #51afef; font-style: italic;">override</span> <span style="color: #ECBE7B;">void</span> <span style="color: #c678dd;">print</span><span style="color: #c678dd;">()</span> <span style="color: #c678dd;">{</span>
+        Console.<span style="color: #c678dd;">WriteLine</span><span style="color: #98be65;">(</span><span style="color: #98be65;">"*********************"</span><span style="color: #98be65;">)</span>;
+        <span style="color: #5B6268;">// </span><span style="color: #5B6268;">but still call the main domain class' print as well</span>
+        display.<span style="color: #c678dd;">print</span><span style="color: #98be65;">()</span>;
+    <span style="color: #c678dd;">}</span>
+    <span style="color: #51afef; font-style: italic;">public</span> <span style="color: #51afef; font-style: italic;">override</span> <span style="color: #ECBE7B;">void</span> <span style="color: #c678dd;">setName</span><span style="color: #c678dd;">(</span><span style="color: #ECBE7B;">String</span> <span style="color: #db5762;">n</span><span style="color: #c678dd;">)</span> <span style="color: #c678dd;">{</span>
+        display.<span style="color: #c678dd;">setName</span><span style="color: #98be65;">(</span>n<span style="color: #98be65;">)</span>;
+    <span style="color: #c678dd;">}</span>
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+<ul class="org-ul">
+<li>Step 4, define another <code>Decorator</code> child</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-csharp"><span style="color: #51afef; font-style: italic;">class</span> <span style="color: #ECBE7B;">LowLine</span> : <span style="color: #ECBE7B;">Decorator</span> <span style="color: #fff0f5;">{</span>
+    <span style="color: #51afef; font-style: italic;">public</span> LowLine<span style="color: #c678dd;">(</span><span style="color: #ECBE7B;">Display</span> <span style="color: #db5762;">display</span><span style="color: #c678dd;">)</span> : <span style="color: #51afef; font-style: italic;">base</span><span style="color: #c678dd;">(</span>display<span style="color: #c678dd;">)</span> <span style="color: #c678dd;">{</span>
+    <span style="color: #c678dd;">}</span>
+    <span style="color: #51afef; font-style: italic;">public</span> <span style="color: #51afef; font-style: italic;">override</span> <span style="color: #ECBE7B;">void</span> <span style="color: #c678dd;">print</span><span style="color: #c678dd;">()</span> <span style="color: #c678dd;">{</span>
+        display.<span style="color: #c678dd;">print</span><span style="color: #98be65;">()</span>;
+        Console.<span style="color: #c678dd;">WriteLine</span><span style="color: #98be65;">(</span><span style="color: #98be65;">"*********************"</span><span style="color: #98be65;">)</span>;
+    <span style="color: #c678dd;">}</span>
+    <span style="color: #51afef; font-style: italic;">public</span> <span style="color: #51afef; font-style: italic;">override</span> <span style="color: #ECBE7B;">void</span> <span style="color: #c678dd;">setName</span><span style="color: #c678dd;">(</span><span style="color: #ECBE7B;">String</span> <span style="color: #db5762;">n</span><span style="color: #c678dd;">)</span> <span style="color: #c678dd;">{</span>
+        display.<span style="color: #c678dd;">setName</span><span style="color: #98be65;">(</span>n<span style="color: #98be65;">)</span>;
+    <span style="color: #c678dd;">}</span>
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+<ul class="org-ul">
+<li>Step 5, decorate the display class with an under-line and upper-line print out</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-csharp"><span style="color: #51afef; font-style: italic;">class</span> <span style="color: #ECBE7B;">Program</span> <span style="color: #fff0f5;">{</span>
+    <span style="color: #51afef; font-style: italic;">static</span> <span style="color: #ECBE7B;">void</span> <span style="color: #c678dd;">Main</span><span style="color: #c678dd;">(</span><span style="color: #ECBE7B;">string</span><span style="color: #98be65;">[]</span> <span style="color: #db5762;">args</span><span style="color: #c678dd;">)</span> <span style="color: #c678dd;">{</span>
+        <span style="color: #ECBE7B;">Display</span> <span style="color: #db5762;">helloWorld</span> = <span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">Display</span><span style="color: #98be65;">(</span><span style="color: #98be65;">"Hello World"</span><span style="color: #98be65;">)</span>;
+        <span style="color: #5B6268;">// </span><span style="color: #5B6268;">decorate helloWorld with UpperLine and LowLine</span>
+        <span style="color: #ECBE7B;">Display</span> <span style="color: #db5762;">d</span> = <span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">UpperLine</span><span style="color: #98be65;">(</span><span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">LowLine</span><span style="color: #00bfff;">(</span><span style="color: #ECBE7B;">helloWorld</span><span style="color: #00bfff;">)</span><span style="color: #98be65;">)</span>;
+        d.<span style="color: #c678dd;">print</span><span style="color: #98be65;">()</span>;
+    <span style="color: #c678dd;">}</span>
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org9e861a6" class="outline-3">
+<h3 id="org9e861a6"><span class="section-number-3">10.3</span> Factory</h3>
+<div class="outline-text-3" id="text-10-3">
+<ul class="org-ul">
+<li>Simple decision making class</li>
+<li>Returns one of several possible subclasses depending on the arguments provided</li>
+<li>Given a <code>Student</code> class</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-csharp"><span style="color: #51afef; font-style: italic;">abstract</span> <span style="color: #51afef; font-style: italic;">class</span> <span style="color: #ECBE7B;">Student</span> <span style="color: #fff0f5;">{</span>
+    <span style="color: #51afef; font-style: italic;">protected</span> <span style="color: #ECBE7B;">string</span> <span style="color: #db5762;">name</span>;
+    <span style="color: #51afef; font-style: italic;">protected</span> <span style="color: #ECBE7B;">int</span> <span style="color: #db5762;">mark</span>;
+    <span style="color: #51afef; font-style: italic;">protected</span> <span style="color: #ECBE7B;">int</span> <span style="color: #db5762;">age</span>;
+    <span style="color: #51afef; font-style: italic;">public</span> Student<span style="color: #c678dd;">(</span><span style="color: #ECBE7B;">string</span> <span style="color: #db5762;">s</span>, <span style="color: #ECBE7B;">int</span> <span style="color: #db5762;">a</span><span style="color: #c678dd;">)</span> <span style="color: #c678dd;">{</span>
+        name = s;
+        age = a;
+        mark = 0;
+    <span style="color: #c678dd;">}</span>
+    <span style="color: #51afef; font-style: italic;">public</span> <span style="color: #ECBE7B;">void</span> <span style="color: #c678dd;">setMark</span><span style="color: #c678dd;">(</span><span style="color: #ECBE7B;">int</span> <span style="color: #db5762;">m</span><span style="color: #c678dd;">)</span> <span style="color: #c678dd;">{</span>
+        mark = m;
+    <span style="color: #c678dd;">}</span>
+    <span style="color: #51afef; font-style: italic;">public</span> <span style="color: #51afef; font-style: italic;">abstract</span> <span style="color: #ECBE7B;">double</span> <span style="color: #c678dd;">getMark</span><span style="color: #c678dd;">()</span>;
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+<ul class="org-ul">
+<li>And given the <code>MatureStudent</code>, <code>OldStudent</code> and <code>YoungStudent</code> child classes of <code>Student</code></li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-csharp"><span style="color: #51afef; font-style: italic;">class</span> <span style="color: #ECBE7B;">MatureStudent</span> : <span style="color: #ECBE7B;">Student</span> <span style="color: #fff0f5;">{</span>
+    <span style="color: #51afef; font-style: italic;">public</span> MatureStudent<span style="color: #c678dd;">(</span><span style="color: #ECBE7B;">string</span> <span style="color: #db5762;">s</span>, <span style="color: #ECBE7B;">int</span> <span style="color: #db5762;">a</span><span style="color: #c678dd;">)</span>
+    : <span style="color: #51afef; font-style: italic;">base</span><span style="color: #c678dd;">(</span>s, a<span style="color: #c678dd;">)</span> <span style="color: #c678dd;">{}</span>
+    <span style="color: #51afef; font-style: italic;">override</span> <span style="color: #51afef; font-style: italic;">public</span> <span style="color: #ECBE7B;">double</span> <span style="color: #c678dd;">getMark</span><span style="color: #c678dd;">()</span> <span style="color: #c678dd;">{</span>
+        <span style="color: #51afef; font-style: italic;">return</span> mark * 1.1;
+    <span style="color: #c678dd;">}</span>
+<span style="color: #fff0f5;">}</span>
+
+<span style="color: #51afef; font-style: italic;">class</span> <span style="color: #ECBE7B;">OldStudent</span> : <span style="color: #ECBE7B;">Student</span> <span style="color: #fff0f5;">{</span>
+    <span style="color: #51afef; font-style: italic;">public</span> OldStudent<span style="color: #c678dd;">(</span><span style="color: #ECBE7B;">string</span> <span style="color: #db5762;">s</span>, <span style="color: #ECBE7B;">int</span> <span style="color: #db5762;">a</span><span style="color: #c678dd;">)</span>
+    : <span style="color: #51afef; font-style: italic;">base</span><span style="color: #c678dd;">(</span>s, a<span style="color: #c678dd;">)</span> <span style="color: #c678dd;">{}</span>
+    <span style="color: #51afef; font-style: italic;">override</span> <span style="color: #51afef; font-style: italic;">public</span> <span style="color: #ECBE7B;">double</span> <span style="color: #c678dd;">getMark</span><span style="color: #c678dd;">()</span> <span style="color: #c678dd;">{</span>
+        <span style="color: #51afef; font-style: italic;">return</span> mark * 1.2;
+    <span style="color: #c678dd;">}</span>
+<span style="color: #fff0f5;">}</span>
+
+<span style="color: #51afef; font-style: italic;">class</span> <span style="color: #ECBE7B;">OldStudent</span> : <span style="color: #ECBE7B;">Student</span> <span style="color: #fff0f5;">{</span>
+    <span style="color: #51afef; font-style: italic;">public</span> OldStudent<span style="color: #c678dd;">(</span><span style="color: #ECBE7B;">string</span> <span style="color: #db5762;">s</span>, <span style="color: #ECBE7B;">int</span> <span style="color: #db5762;">a</span><span style="color: #c678dd;">)</span>
+    : <span style="color: #51afef; font-style: italic;">base</span><span style="color: #c678dd;">(</span>s, a<span style="color: #c678dd;">)</span> <span style="color: #c678dd;">{}</span>
+    <span style="color: #51afef; font-style: italic;">override</span> <span style="color: #51afef; font-style: italic;">public</span> <span style="color: #ECBE7B;">double</span> <span style="color: #c678dd;">getMark</span><span style="color: #c678dd;">()</span> <span style="color: #c678dd;">{</span>
+        <span style="color: #51afef; font-style: italic;">return</span> mark;
+    <span style="color: #c678dd;">}</span>
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+<ul class="org-ul">
+<li>Now we define the student factory that returns a <code>Student</code> class based on the age</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-csharp"><span style="color: #51afef; font-style: italic;">class</span> <span style="color: #ECBE7B;">StudentFactory</span> <span style="color: #fff0f5;">{</span>
+    <span style="color: #51afef; font-style: italic;">public</span> <span style="color: #51afef; font-style: italic;">static</span> <span style="color: #ECBE7B;">Student</span> <span style="color: #c678dd;">getStudent</span><span style="color: #c678dd;">(</span><span style="color: #ECBE7B;">string</span> <span style="color: #db5762;">name</span>, <span style="color: #ECBE7B;">int</span> <span style="color: #db5762;">age</span><span style="color: #c678dd;">)</span> <span style="color: #c678dd;">{</span>
+        <span style="color: #51afef; font-style: italic;">if</span> <span style="color: #98be65;">(</span>age &lt; 25<span style="color: #98be65;">)</span>
+            <span style="color: #51afef; font-style: italic;">return</span> <span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">YoungStudent</span><span style="color: #98be65;">(</span><span style="color: #ECBE7B;">name</span>, <span style="color: #ECBE7B;">age</span><span style="color: #98be65;">)</span>;
+        <span style="color: #51afef; font-style: italic;">else</span> <span style="color: #51afef; font-style: italic;">if</span> <span style="color: #98be65;">(</span>age &lt; 50<span style="color: #98be65;">)</span>
+            <span style="color: #51afef; font-style: italic;">return</span> <span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">MatureStudent</span><span style="color: #98be65;">(</span><span style="color: #ECBE7B;">name</span>, <span style="color: #ECBE7B;">age</span><span style="color: #98be65;">)</span>;
+        <span style="color: #51afef; font-style: italic;">else</span>
+            <span style="color: #51afef; font-style: italic;">return</span> <span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">OldStudent</span><span style="color: #98be65;">(</span><span style="color: #ECBE7B;">name</span>, <span style="color: #ECBE7B;">age</span><span style="color: #98be65;">)</span>;
+    <span style="color: #c678dd;">}</span>
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org0762f2e" class="outline-3">
+<h3 id="org0762f2e"><span class="section-number-3">10.4</span> Singleton</h3>
+<div class="outline-text-3" id="text-10-4">
+<ul class="org-ul">
+<li>Ensure a single instance of a class</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-csharp"><span style="color: #51afef; font-style: italic;">public</span> <span style="color: #51afef; font-style: italic;">class</span> <span style="color: #ECBE7B;">SingletonExample</span> <span style="color: #fff0f5;">{</span>
+    <span style="color: #51afef; font-style: italic;">private</span> <span style="color: #51afef; font-style: italic;">static</span> <span style="color: #ECBE7B;">SingletonExample</span> <span style="color: #db5762;">instance</span>;
+    <span style="color: #51afef; font-style: italic;">private</span> SingletonExample<span style="color: #c678dd;">()</span> <span style="color: #c678dd;">{</span>
+    <span style="color: #c678dd;">}</span>
+    <span style="color: #51afef; font-style: italic;">public</span> <span style="color: #51afef; font-style: italic;">static</span> <span style="color: #ECBE7B;">SingletonExample</span> <span style="color: #c678dd;">getInstance</span><span style="color: #c678dd;">()</span> <span style="color: #c678dd;">{</span>
+        <span style="color: #51afef; font-style: italic;">if</span> <span style="color: #98be65;">(</span>instance == <span style="color: #a9a1e1;">null</span><span style="color: #98be65;">)</span>
+            instance = <span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">SingletonExample</span><span style="color: #98be65;">()</span>;
+        <span style="color: #51afef; font-style: italic;">return</span> instance;
+    <span style="color: #c678dd;">}</span>
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org1cd523e" class="outline-3">
+<h3 id="org1cd523e"><span class="section-number-3">10.5</span> Twin</h3>
+<div class="outline-text-3" id="text-10-5">
+<ul class="org-ul">
+<li>Allows multiple inheritance</li>
+<li>Say we have two classes: <code>Counter</code> and <code>Name</code></li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-csharp"><span style="color: #51afef; font-style: italic;">class</span> <span style="color: #ECBE7B;">Counter</span> <span style="color: #fff0f5;">{</span>
+    <span style="color: #51afef; font-style: italic;">public</span> <span style="color: #ECBE7B;">int</span> <span style="color: #db5762;">Value</span> <span style="color: #c678dd;">{</span> <span style="color: #51afef; font-style: italic;">get</span>; <span style="color: #51afef; font-style: italic;">set</span>; <span style="color: #c678dd;">}</span>
+    <span style="color: #51afef; font-style: italic;">public</span> Counter<span style="color: #c678dd;">(</span><span style="color: #ECBE7B;">int</span> <span style="color: #db5762;">v</span><span style="color: #c678dd;">)</span> <span style="color: #c678dd;">{</span>
+        Value = v;
+    <span style="color: #c678dd;">}</span>
+
+<span style="color: #fff0f5;">}</span>
+<span style="color: #51afef; font-style: italic;">class</span> <span style="color: #ECBE7B;">Name</span> <span style="color: #fff0f5;">{</span>
+    <span style="color: #51afef; font-style: italic;">public</span> <span style="color: #ECBE7B;">string</span> <span style="color: #db5762;">Description</span>;
+    <span style="color: #51afef; font-style: italic;">public</span> Name<span style="color: #c678dd;">(</span><span style="color: #ECBE7B;">string</span> <span style="color: #db5762;">d</span><span style="color: #c678dd;">)</span> <span style="color: #c678dd;">{</span>
+        Description = d;
+    <span style="color: #c678dd;">}</span>
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+<ul class="org-ul">
+<li>And now we would like to have a <code>NamedCounter</code></li>
+<li>We choose which class is going to be an instance variable and which is going to be the base (in this case the base is the <code>Name</code> class)</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-csharp"><span style="color: #51afef; font-style: italic;">class</span> <span style="color: #ECBE7B;">NamedCounter</span> : <span style="color: #ECBE7B;">Name</span> <span style="color: #fff0f5;">{</span>
+    <span style="color: #51afef; font-style: italic;">private</span> <span style="color: #ECBE7B;">Counter</span> <span style="color: #db5762;">counter</span>;
+    <span style="color: #51afef; font-style: italic;">public</span> NamedCounter<span style="color: #c678dd;">(</span><span style="color: #ECBE7B;">int</span> <span style="color: #db5762;">value</span>, <span style="color: #ECBE7B;">string</span> <span style="color: #db5762;">name</span><span style="color: #c678dd;">)</span> : <span style="color: #51afef; font-style: italic;">base</span><span style="color: #c678dd;">(</span>name<span style="color: #c678dd;">)</span> <span style="color: #c678dd;">{</span>  <span style="color: #5B6268;">// </span><span style="color: #5B6268;">Name as base</span>
+        counter = <span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">Counter</span><span style="color: #98be65;">(</span>value<span style="color: #98be65;">)</span>; <span style="color: #5B6268;">// </span><span style="color: #5B6268;">counter as class attribute</span>
+    <span style="color: #c678dd;">}</span>
+    <span style="color: #51afef; font-style: italic;">public</span> <span style="color: #ECBE7B;">void</span> <span style="color: #c678dd;">PrintAllDetails</span><span style="color: #c678dd;">()</span> <span style="color: #c678dd;">{</span>
+        Console.<span style="color: #c678dd;">WriteLine</span><span style="color: #98be65;">(</span><span style="color: #98be65;">"Name {0}, Counter {1}"</span>, <span style="color: #51afef; font-style: italic;">base</span>.Description, counter.Value<span style="color: #98be65;">)</span>;
+    <span style="color: #c678dd;">}</span>
+    <span style="color: #51afef; font-style: italic;">public</span> <span style="color: #ECBE7B;">void</span> <span style="color: #c678dd;">ResetCounter</span><span style="color: #c678dd;">()</span> <span style="color: #c678dd;">{</span>
+        counter.Value = 0;
+    <span style="color: #c678dd;">}</span>
+    <span style="color: #51afef; font-style: italic;">public</span> <span style="color: #ECBE7B;">void</span> <span style="color: #c678dd;">ResetName</span><span style="color: #c678dd;">()</span> <span style="color: #c678dd;">{</span>
+        <span style="color: #51afef; font-style: italic;">base</span>.Description = <span style="color: #98be65;">""</span>;
+    <span style="color: #c678dd;">}</span>
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org95627e3" class="outline-3">
+<h3 id="org95627e3"><span class="section-number-3">10.6</span> Visitor</h3>
+<div class="outline-text-3" id="text-10-6">
+<ul class="org-ul">
+<li>New functionality without modifying existing class</li>
+<li>Step 1, define the <b>Visitor</b> and <b>Visitable</b> interfaces</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-csharp"><span style="color: #51afef; font-style: italic;">public</span> <span style="color: #51afef; font-style: italic;">interface</span> <span style="color: #ECBE7B;">IVisitor</span> <span style="color: #fff0f5;">{</span>
+    <span style="color: #ECBE7B;">void</span> <span style="color: #c678dd;">Visit</span><span style="color: #c678dd;">(</span><span style="color: #ECBE7B;">IVisitable</span> <span style="color: #db5762;">visitable</span><span style="color: #c678dd;">)</span>;
+<span style="color: #fff0f5;">}</span>
+<span style="color: #51afef; font-style: italic;">public</span> <span style="color: #51afef; font-style: italic;">interface</span> <span style="color: #ECBE7B;">IVisitable</span> <span style="color: #fff0f5;">{</span>
+    <span style="color: #ECBE7B;">void</span> <span style="color: #c678dd;">Accept</span><span style="color: #c678dd;">(</span><span style="color: #ECBE7B;">IVisitor</span> <span style="color: #db5762;">visitor</span><span style="color: #c678dd;">)</span>;
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+<ul class="org-ul">
+<li>Step 2, provide a <b>Visitable</b> class, in this case <code>Counter</code></li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-csharp"><span style="color: #51afef; font-style: italic;">public</span> <span style="color: #51afef; font-style: italic;">class</span> <span style="color: #ECBE7B;">Counter</span> : <span style="color: #ECBE7B;">IVisitable</span> <span style="color: #fff0f5;">{</span>
+    <span style="color: #51afef; font-style: italic;">public</span> <span style="color: #ECBE7B;">int</span> <span style="color: #db5762;">count</span> <span style="color: #c678dd;">{</span> <span style="color: #51afef; font-style: italic;">get</span>; <span style="color: #51afef; font-style: italic;">set</span>; <span style="color: #c678dd;">}</span>
+    <span style="color: #51afef; font-style: italic;">public</span> Counter<span style="color: #c678dd;">(</span><span style="color: #ECBE7B;">int</span> <span style="color: #db5762;">c</span><span style="color: #c678dd;">)</span> <span style="color: #c678dd;">{</span>
+        count = c;
+    <span style="color: #c678dd;">}</span>
+    <span style="color: #51afef; font-style: italic;">public</span> <span style="color: #ECBE7B;">void</span> <span style="color: #c678dd;">Accept</span><span style="color: #c678dd;">(</span><span style="color: #ECBE7B;">IVisitor</span> <span style="color: #db5762;">visitor</span><span style="color: #c678dd;">)</span> <span style="color: #c678dd;">{</span>
+        <span style="color: #5B6268;">// </span><span style="color: #5B6268;">give the visitor my instance</span>
+        visitor.<span style="color: #c678dd;">Visit</span><span style="color: #98be65;">(</span><span style="color: #51afef; font-style: italic;">this</span><span style="color: #98be65;">)</span>;
+    <span style="color: #c678dd;">}</span>
+    <span style="color: #51afef; font-style: italic;">public</span> <span style="color: #ECBE7B;">int</span> <span style="color: #c678dd;">readCount</span><span style="color: #c678dd;">()</span> <span style="color: #c678dd;">{</span>
+        <span style="color: #51afef; font-style: italic;">return</span> count;
+    <span style="color: #c678dd;">}</span>
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+<ul class="org-ul">
+<li>Step 3, provide a <b>Visitor</b> class, in this case <code>MoreFunctions</code></li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-csharp"><span style="color: #51afef; font-style: italic;">public</span> <span style="color: #51afef; font-style: italic;">class</span> <span style="color: #ECBE7B;">MoreFunctions</span> : <span style="color: #ECBE7B;">IVisitor</span> <span style="color: #fff0f5;">{</span>
+    <span style="color: #51afef; font-style: italic;">private</span> <span style="color: #ECBE7B;">Counter</span> <span style="color: #db5762;">external</span>;
+    <span style="color: #51afef; font-style: italic;">public</span> <span style="color: #ECBE7B;">void</span> <span style="color: #c678dd;">Visit</span><span style="color: #c678dd;">(</span><span style="color: #ECBE7B;">IVisitable</span> <span style="color: #db5762;">visitable</span><span style="color: #c678dd;">)</span> <span style="color: #c678dd;">{</span>
+        <span style="color: #5B6268;">// </span><span style="color: #5B6268;">grab the visitable's instance</span>
+        external = <span style="color: #98be65;">(</span>Counter<span style="color: #98be65;">)</span> visitable;
+    <span style="color: #c678dd;">}</span>
+    <span style="color: #51afef; font-style: italic;">public</span> <span style="color: #ECBE7B;">void</span> <span style="color: #c678dd;">resetCount</span><span style="color: #c678dd;">()</span> <span style="color: #c678dd;">{</span>
+        external.count = 0;
+    <span style="color: #c678dd;">}</span>
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+<ul class="org-ul">
+<li>Step 4, <b>Visitable</b> accept the <b>Visitor</b>, and call the visitor's function</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-csharp"><span style="color: #51afef; font-style: italic;">public</span> <span style="color: #51afef; font-style: italic;">class</span> <span style="color: #ECBE7B;">VisitorExample</span> <span style="color: #fff0f5;">{</span>
+    <span style="color: #51afef; font-style: italic;">public</span> <span style="color: #51afef; font-style: italic;">static</span> <span style="color: #ECBE7B;">void</span> <span style="color: #c678dd;">Main</span><span style="color: #c678dd;">()</span> <span style="color: #c678dd;">{</span>
+        <span style="color: #ECBE7B;">Counter</span> <span style="color: #db5762;">counter</span> = <span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">Counter</span><span style="color: #98be65;">(</span>20<span style="color: #98be65;">)</span>;
+        <span style="color: #ECBE7B;">MoreFunctions</span> <span style="color: #db5762;">moreFunctions</span> = <span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">MoreFunctions</span><span style="color: #98be65;">()</span>;
+        counter.<span style="color: #c678dd;">Accept</span><span style="color: #98be65;">(</span><span style="color: #ECBE7B;">moreFunctions</span><span style="color: #98be65;">)</span>;  <span style="color: #5B6268;">// </span><span style="color: #5B6268;">counter accept a visitor</span>
+
+        moreFunctions.<span style="color: #c678dd;">resetCount</span><span style="color: #98be65;">()</span>;  <span style="color: #5B6268;">// </span><span style="color: #5B6268;">visitor reset the counter's counter</span>
+        Console.<span style="color: #c678dd;">WriteLine</span><span style="color: #98be65;">(</span>counter.<span style="color: #c678dd;">readCount</span><span style="color: #00bfff;">()</span><span style="color: #98be65;">)</span>;  <span style="color: #5B6268;">// </span><span style="color: #5B6268;">outputs 0</span>
+    <span style="color: #c678dd;">}</span>
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+
+<script src="../assets/jquery-3.3.1.min.js"></script>
+<script src="../assets/notes.js"></script>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="date">Date: 2018-09-10 Mon 11:54</p>
+<p class="author">Author: Damian Chrzanowski</p>
+<p class="date">Created: 2018-12-15 Sat 20:49</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

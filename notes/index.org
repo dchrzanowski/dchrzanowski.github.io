@@ -1,0 +1,35 @@
+#+TITLE: Damian Chrzanowski's Notes
+#+DATE: [2018-12-13 Thu 20:49]
+#+AUTHOR: Damian Chrzanowski
+#+EMAIL: pjdamian.chrzanowski@gmail.com
+#+OPTIONS: TOC:2 num:2
+#+HTML_HEAD: <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="assets/org.css"/>
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="assets/org_index.css"/>
+#+HTML_HEAD: <link rel="icon" href="assets/favicon.ico">
+
+[[file:y1/index.org][Year 1 Notes]]
+
+[[file:y2/index.org][Year 2 Notes]]
+
+[[file:y3/index.org][Year 3 Notes]]
+
+[[file:resources/angular4/angular4.org][Angular]]
+
+[[file:resources/nativescript/nativescript.org][Nativescript]]
+
+[[file:resources/docker/docker.org][Docker]]
+
+[[file:resources/heroku/heroku.org][Heroku]]
+
+[[file:resources/regex/regex.org][Regex]]
+
+[[file:resources/webpack/webpack.org][Webpack]]
+
+[[file:resources/websockets/websockets.org][WebSockets]]
+
+
+#+BEGIN_EXPORT html
+<script src="assets/jquery-3.3.1.min.js"></script>
+<script src="assets/notes.js"></script>
+#+END_EXPORT

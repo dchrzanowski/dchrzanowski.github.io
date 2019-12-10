@@ -1,0 +1,2880 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2018-12-13 Thu 21:43 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Software Engineering 3</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="Damian Chrzanowski" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="../assets/org.css"/>
+<link rel="icon" href="../assets/favicon.ico">
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2018 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Software Engineering 3</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org5263580">1. FAQ's</a></li>
+<li><a href="#org30614d7">2. Software</a>
+<ul>
+<li><a href="#org695d66a">2.1. Software definition</a></li>
+<li><a href="#org5775a1b">2.2. Software Engineering</a></li>
+<li><a href="#orgf25f34e">2.3. Software Project Failure</a></li>
+<li><a href="#orgc003a61">2.4. Software Costs</a></li>
+<li><a href="#org030f8ef">2.5. Software Process Activities</a></li>
+<li><a href="#orgfe973de">2.6. Software Products</a></li>
+<li><a href="#org71a08df">2.7. Good Software</a></li>
+<li><a href="#orge48e1cb">2.8. System Engineering vs Software Engineering</a></li>
+<li><a href="#org20bc7d0">2.9. Challenges of Software</a></li>
+<li><a href="#org0b17069">2.10. Application Types</a></li>
+<li><a href="#orgc4215c4">2.11. Software Ethics</a></li>
+<li><a href="#org6423547">2.12. Ethical principles Example on Google MyActivity</a></li>
+</ul>
+</li>
+<li><a href="#orge73b8be">3. Process Description Template</a>
+<ul>
+<li><a href="#org4f78c62">3.1. Definition</a></li>
+<li><a href="#org4443cae">3.2. Template Format</a></li>
+<li><a href="#org70e7676">3.3. How to</a></li>
+<li><a href="#org344de98">3.4. Describe TTD using the Process Description Template</a></li>
+<li><a href="#org1638037">3.5. Describe the software review process</a></li>
+</ul>
+</li>
+<li><a href="#org58c98a0">4. Software Processes</a>
+<ul>
+<li><a href="#org6a8e36d">4.1. Process description may include</a></li>
+<li><a href="#orgbe48f6c">4.2. Plan-driven vs Agile</a></li>
+<li><a href="#orga35d409">4.3. Models</a></li>
+<li><a href="#org841608f">4.4. Waterfall</a></li>
+<li><a href="#org2bc8a9d">4.5. Incremental Development</a></li>
+<li><a href="#org88f19db">4.6. Integration and Configuration</a></li>
+<li><a href="#org6bc0955">4.7. Prototyping</a></li>
+<li><a href="#org4b113fd">4.8. Incremental Development and Delivery</a></li>
+<li><a href="#org3b9733f">4.9. Other Models</a></li>
+</ul>
+</li>
+<li><a href="#org9656ac4">5. Software Review Process</a>
+<ul>
+<li><a href="#orgb464b0c">5.1. Why review?</a></li>
+<li><a href="#org2c05c35">5.2. Requirements of a Review Process</a></li>
+<li><a href="#org32726d2">5.3. Peer Review</a></li>
+<li><a href="#org5ec57ac">5.4. Types of Reviews</a></li>
+</ul>
+</li>
+<li><a href="#orgad957a2">6. Quality</a>
+<ul>
+<li><a href="#org3d8d30f">6.1. General Concept</a></li>
+<li><a href="#org792e11e">6.2. Quality Management</a></li>
+<li><a href="#orgf499780">6.3. Quality Planning</a></li>
+<li><a href="#org1131b0f">6.4. Process and Product Standards</a></li>
+<li><a href="#org9448ecc">6.5. Reviews and inspections</a></li>
+<li><a href="#org1ab2cf4">6.6. Software measurements and metrics</a></li>
+</ul>
+</li>
+<li><a href="#org9335d24">7. Inspection/Review and Associated Metrics</a>
+<ul>
+<li><a href="#org2901459">7.1. Goals</a></li>
+<li><a href="#org2f3a90c">7.2. Inspection Steps</a></li>
+<li><a href="#orgf6566d7">7.3. Metrics</a></li>
+</ul>
+</li>
+<li><a href="#org4f45027">8. Software Metrics</a>
+<ul>
+<li><a href="#org926c601">8.1. Basic Measurement Theory</a></li>
+<li><a href="#org9a12b93">8.2. Software Measurements and Metrics</a></li>
+<li><a href="#org1ddad83">8.3. Software metric should satisfy the following characteristics:</a></li>
+<li><a href="#orgab8e51b">8.4. Process Measurement</a></li>
+<li><a href="#org5aec3a8">8.5. Selection Approach</a></li>
+</ul>
+</li>
+<li><a href="#org4380e28">9. Process Improvement</a>
+<ul>
+<li><a href="#org6c61b36">9.1. The Process Improvement Process</a></li>
+<li><a href="#org6645117">9.2. Process Measurement (Stage 1)</a></li>
+<li><a href="#org3f063fb">9.3. Process Analysis (Stage 2)</a></li>
+<li><a href="#orgdba3733">9.4. Process Change (Stage 3)</a></li>
+</ul>
+</li>
+<li><a href="#org34de316">10. CMMI</a>
+<ul>
+<li><a href="#org953cb9e">10.1. What Is It?</a></li>
+<li><a href="#orgbf20c86">10.2. Why Use It?</a></li>
+<li><a href="#org63cc3b9">10.3. Continuous Model</a></li>
+<li><a href="#org8bf1045">10.4. Staged Model</a></li>
+<li><a href="#org5d344a2">10.5. The CMMI Model Diagram</a></li>
+<li><a href="#orgbff19b5">10.6. Stages</a></li>
+</ul>
+</li>
+<li><a href="#org3d1758f">11. For the Exam</a>
+<ul>
+<li><a href="#org29ff2c4">11.1. Quality</a></li>
+<li><a href="#orga5795d9">11.2. CMMI</a></li>
+</ul>
+</li>
+<li><a href="#org292196b">12. Exam Question</a>
+<ul>
+<li><a href="#org0b068c2">12.1. CMMI</a></li>
+<li><a href="#orgad9e916">12.2. Explain how the principles underlying agile methods lead to the accelerated development and deployment of software.</a></li>
+<li><a href="#org25c5bf5">12.3. Extreme programming expresses user requirements as stories, with each story written on a card. Discuss the advantages and disadvantages of this approach to requirements description.</a></li>
+<li><a href="#org0ebcdac">12.4. Explain why program inspections are an effective technique for discovering errors in a program. What types of error are unlikely to be discovered through inspections?</a></li>
+<li><a href="#org835f264">12.5. Explain why it is difficult to validate the relationships between internal product attributes, such as cyclomatic complexity and external attributes, such as maintainability.</a></li>
+<li><a href="#org9c1e322">12.6. Explain how standards may be used to capture organizational wisdom about effective methods of software development. Suggest four types of knowledge that might be captured in organizational standards.</a></li>
+<li><a href="#org6e09e58">12.7. Assume you work for an organization that develops database products for individuals and small businesses. This organization is interested in quantifying its software development. Identify appropriate process and product metrics to do this and suggest how these can be collected.</a></li>
+<li><a href="#org34d5006">12.8. When would you recommend against the use of an agile method for developing a software system?</a></li>
+<li><a href="#orgcbfad2f">12.9. Suggest four reasons why the productivity rate of programmers working as a pair might be more than half that of two programmers working individually.</a></li>
+<li><a href="#org3dfdad8">12.10. It has been suggested that one of the problems of having a user closely involved with a software development team is that they 'go native'. That is, they adopt the outlook of the development team and lose sight of the needs of their user colleagues. Suggest three ways how you might avoid this problem and discuss the advantages and disadvantages of each approach.</a></li>
+<li><a href="#org6aa61a7">12.11. Under what circumstances might a company justifiably charge a much higher price for a software system than the software cost estimate plus a reasonable profit margin?</a></li>
+<li><a href="#org4f5f12c">12.12. Cost estimates are inherently risky, irrespective of the estimation technique used. Suggest five ways in which the risk in a cost estimate can be reduced.</a></li>
+<li><a href="#orgb050840">12.13. What is the most important difference between generic software product development and custom software development? What might this mean in practice for users of generic software products?</a></li>
+<li><a href="#org6e7f824">12.14. Giving reasons for your answer based on the type of system being developed, suggest the most appropriate generic software process model that might be used as a basis for managing the development of the following systems:</a></li>
+<li><a href="#org9fc8eac">12.15. Fixed-price contracts, where the contractor bids a fixed price to complete a system development, may be used to move project risk from client to contractor. If anything goes wrong, the contractor has to pay. Suggest how the use of such contracts may increase the likelihood that product risks will arise.</a></li>
+<li><a href="#org11776c7">12.16. What are the important differences between the agile approach and the process maturity approach to software process improvement?</a></li>
+<li><a href="#orgc90e941">12.17. Describe three types of software process metric that may be collected as part of a process improvement process. Give one example of each type of metric.</a></li>
+<li><a href="#orgde5790f">12.18. Discuss, in relation to the ACM/IEEE Code of Ethics, the ethics of a company releasing software without disclosing known defects. Your answer should address each of the principles of the ACM/IEEE Code of Ethics. Justify any assumptions that you make.</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<p>
+<a href="index.html">Home Page</a>
+</p>
+
+<div id="outline-container-org5263580" class="outline-2">
+<h2 id="org5263580"><span class="section-number-2">1</span> FAQ's</h2>
+<div class="outline-text-2" id="text-1">
+<ul class="org-ul">
+<li><p>
+What is Software?
+</p>
+<p class="verse">
+Computer programs and associated documentation. Software products may be developed for a particular customer or may be developed for a general market.<br />
+</p></li>
+
+<li><p>
+What are the attributes of good software?
+</p>
+<p class="verse">
+Good software should deliver the required functionality and performance to the user and should be maintainable, dependable and usable.<br />
+</p></li>
+
+<li><p>
+What is software engineering?
+</p>
+<p class="verse">
+Software engineering is an engineering discipline that is concerned with all aspects of software production.<br />
+</p></li>
+
+<li><p>
+What are the fundamental software engineering activities?
+</p>
+<p class="verse">
+Software specification, software development, software validation and software evolution.<br />
+</p></li>
+
+<li><p>
+What is the difference between software engineering and computer science?
+</p>
+<p class="verse">
+Computer science focuses on theory and fundamentals; software engineering is concerned with the practicalities of developing and delivering useful software.<br />
+</p></li>
+
+<li><p>
+What is the difference between software engineering and system engineering?
+</p>
+<p class="verse">
+System engineering is concerned with all aspects of computer-based systems development including hardware, software and process engineering. Software engineering is part of this more general process.<br />
+</p></li>
+
+<li><p>
+What are the key challenges facing software engineering?
+</p>
+<p class="verse">
+Coping with increasing diversity, demands for reduced delivery times and developing trustworthy software.<br />
+</p></li>
+
+<li><p>
+What are the costs of software engineering?
+</p>
+<p class="verse">
+Roughly 60% of software costs are development costs, 40% are testing costs. For custom software, evolution costs often exceed development costs.<br />
+</p></li>
+
+<li><p>
+What are the best software engineering techniques and methods?
+</p>
+<p class="verse">
+While all software projects have to be professionally managed and developed, different techniques are appropriate for different types of system. For example, games should always be developed using a series of prototypes whereas safety critical control systems require a complete and analyzable specification to be developed. You can’t, therefore, say that one method is better than another.<br />
+</p></li>
+
+<li><p>
+What differences has the web made to software engineering?
+</p>
+<p class="verse">
+The web has led to the availability of software services and the possibility of developing highly distributed service-based systems. Web-based systems development has led to important advances in programming languages and software reuse.<br />
+</p></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org30614d7" class="outline-2">
+<h2 id="org30614d7"><span class="section-number-2">2</span> Software</h2>
+<div class="outline-text-2" id="text-2">
+</div>
+<div id="outline-container-org695d66a" class="outline-3">
+<h3 id="org695d66a"><span class="section-number-3">2.1</span> Software definition</h3>
+<div class="outline-text-3" id="text-2-1">
+<ul class="org-ul">
+<li>Software: Computer program, documentation meets requirements</li>
+<li>Software comprises of:
+<ul class="org-ul">
+<li>Planning</li>
+<li>User requirements/user stories</li>
+<li>Design</li>
+<li>Coding</li>
+<li>Testing</li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org5775a1b" class="outline-3">
+<h3 id="org5775a1b"><span class="section-number-3">2.2</span> Software Engineering</h3>
+<div class="outline-text-3" id="text-2-2">
+<ul class="org-ul">
+<li>Is concerned with: theories, methods and tools for professional software development</li>
+<li>Is concerned with cost-effective software development</li>
+<li>Activities of software engineering: planning, requirements, design, coding, testing</li>
+<li>The economies of <b>ALL</b> developed nations are dependent on software</li>
+<li>More and more systems are software controlled</li>
+<li>Using appropriate theories and methods to solve problems bearing in mind organizational and financial problems</li>
+<li>Systems should be developed using a managed and understood development process (different processes for different types of software)</li>
+<li>Dependability and performance are crucial</li>
+<li>Managing an understanding the software specification and requirements</li>
+<li>Where appropriate - reuse software (especially in web-based systems)</li>
+<li>Incremental and agile development (especially in web-based systems)</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgf25f34e" class="outline-3">
+<h3 id="orgf25f34e"><span class="section-number-3">2.3</span> Software Project Failure</h3>
+<div class="outline-text-3" id="text-2-3">
+<ul class="org-ul">
+<li><b>Increasing System Complexity</b>: As new software engineering techniques help us to build larger, more complex systems, the demands change. Systems have to be built and delivered more quickly; larger, even more complex systems are required; systems have to have new capabilities that were previously thought to be impossible.</li>
+<li><b>Failure to use software engineering methods</b>: It is fairly easy to write computer programs without using software engineering methods and techniques. Many companies have drifted into software development as their products and services have evolved. They do not use software engineering methods in their everyday work. Consequently, their software is often more expensive and less reliable than it should be.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgc003a61" class="outline-3">
+<h3 id="orgc003a61"><span class="section-number-3">2.4</span> Software Costs</h3>
+<div class="outline-text-3" id="text-2-4">
+<ul class="org-ul">
+<li>Are generally higher than system costs</li>
+<li>Costs more to maintain than to develop</li>
+<li>It is generally cheaper to use software engineering techniques and methods in the long run, since making modifications later can be expensive</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org030f8ef" class="outline-3">
+<h3 id="org030f8ef"><span class="section-number-3">2.5</span> Software Process Activities</h3>
+<div class="outline-text-3" id="text-2-5">
+<ul class="org-ul">
+<li><p>
+<b>Software Specification</b>: Customers and Engineers define the software to be produced and the constraints on its operation
+</p>
+<ul class="org-ul">
+<li>The process of establishing what services are required and the constraints on the system's operation and development</li>
+<li><b>Requirements Engineering</b></li>
+</ul>
+
+<div class="figure">
+<p><img src="images/Software%20Processes/screenshot_2018-12-07_17-34-49.png" alt="screenshot_2018-12-07_17-34-49.png" />
+</p>
+</div></li>
+<li><b>Software Development</b>: Where the software is designed and programmed
+<ul class="org-ul">
+<li>The process of converting the system specification into an executable system</li>
+<li><b>Software Design</b>: Design a software structure that realizes the specification</li>
+<li><b>Implementation</b>: Translate this structure into an executable program</li>
+<li><b>Design</b> and <b>Implementation</b> are interleaved</li>
+<li><b>Programming</b>: is an individual activity with no standard process</li>
+<li><b>Debugging</b>: is the activity of finding program faults and correcting these faults</li>
+</ul></li>
+<li><b>Software Validation</b>: Where the software is checked to ensure that it fulfills requirements
+<ul class="org-ul">
+<li><b>Verification and Validation (V&amp;V)</b>: Is intended to show that a system conforms to its specification and meets the requirements of the system</li>
+<li>Involves checking and reviewing processes and system testing</li>
+<li>System testing involves executing the system with tests made from the specification</li>
+<li><b>Testing</b> is the most common <b>V&amp;V</b> activity</li>
+<li><b>Testing stages are</b>: Component testing, System testing, Customer testing</li>
+</ul></li>
+<li><b>Software Evolution</b>: Where the software is modified to reflect changing customer and market requirements
+<ul class="org-ul">
+<li>Software is flexible and can change</li>
+<li>As requirements change throughout changing business circumstances so must the software evolve.</li>
+<li>Change leads to rework and re-analysis, and thus a cost increase</li>
+<li>To reduce the costs anticipate change: for example, develop a prototype first</li>
+<li>To reduce the costs implement "change tolerance": this normally occurs in the incremental SDLCs, where the proposed changes may be implemented in increments</li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgfe973de" class="outline-3">
+<h3 id="orgfe973de"><span class="section-number-3">2.6</span> Software Products</h3>
+<div class="outline-text-3" id="text-2-6">
+<ul class="org-ul">
+<li>Generic products: stand alone, made for general public
+<ul class="org-ul">
+<li>The decisions are made by the developers</li>
+</ul></li>
+<li>Customized: specific software e.g. embedded systems, interactive transaction-based systems (web apps)
+<ul class="org-ul">
+<li>The decisions are made by the customer</li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org71a08df" class="outline-3">
+<h3 id="org71a08df"><span class="section-number-3">2.7</span> Good Software</h3>
+<div class="outline-text-3" id="text-2-7">
+<ul class="org-ul">
+<li><b>Maintainability</b>: Should be adaptable to change</li>
+<li><b>Dependability and security</b>: Should not cause physical or economical damage. Malicious users should not be able to access or damage the system.</li>
+<li><b>Efficiency</b>: Should not make wasteful use of resources. Should be: responsive, use processing time well, utilize memory well</li>
+<li><b>Acceptability</b>: Must be understandable, usable and compatible with other systems</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orge48e1cb" class="outline-3">
+<h3 id="orge48e1cb"><span class="section-number-3">2.8</span> System Engineering vs Software Engineering</h3>
+<div class="outline-text-3" id="text-2-8">
+<ul class="org-ul">
+<li>Software relates to the software itself</li>
+<li>System relates to all the parts</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org20bc7d0" class="outline-3">
+<h3 id="org20bc7d0"><span class="section-number-3">2.9</span> Challenges of Software</h3>
+<div class="outline-text-3" id="text-2-9">
+<ul class="org-ul">
+<li>Documentation</li>
+<li>Life long learning</li>
+<li>AI</li>
+<li>Challenges with ethics</li>
+<li>Heterogeneity</li>
+<li>Business and social change</li>
+<li>Security and trust</li>
+<li>Scale</li>
+<li>There are many different types of software systems and there is no universal set of software techniques that is applicable to solve the problems</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org0b17069" class="outline-3">
+<h3 id="org0b17069"><span class="section-number-3">2.10</span> Application Types</h3>
+<div class="outline-text-3" id="text-2-10">
+<ul class="org-ul">
+<li>Stand-alone</li>
+<li>Interactive transaction-based</li>
+<li>Embedded control systems</li>
+<li>Batch processing systems</li>
+<li>Entertainment systems</li>
+<li>Modeling and simulation</li>
+<li>Data collection systems</li>
+<li>Systems of systems</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgc4215c4" class="outline-3">
+<h3 id="orgc4215c4"><span class="section-number-3">2.11</span> Software Ethics</h3>
+<div class="outline-text-3" id="text-2-11">
+</div>
+<div id="outline-container-org871172d" class="outline-4">
+<h4 id="org871172d">Confidentiality</h4>
+<div class="outline-text-4" id="text-org871172d">
+<p class="verse">
+Respect the employer's and client's confidentiality<br />
+</p>
+</div>
+</div>
+
+<div id="outline-container-org25e5877" class="outline-4">
+<h4 id="org25e5877">Competence</h4>
+<div class="outline-text-4" id="text-org25e5877">
+<p class="verse">
+Never misinterpret own level of competence. Do not accept work that they are incapable of doing.<br />
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgef89bdc" class="outline-4">
+<h4 id="orgef89bdc">Intellectual property rights</h4>
+<div class="outline-text-4" id="text-orgef89bdc">
+<p class="verse">
+Engineers should be aware of local laws governing the rules of intellectual property (patents, copyrights, etc.).<br />
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgba6cf0a" class="outline-4">
+<h4 id="orgba6cf0a">Computer misuse</h4>
+<div class="outline-text-4" id="text-orgba6cf0a">
+<p class="verse">
+Anything from malicious intent to video games on company time, on a company machine<br />
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgf7b0c45" class="outline-4">
+<h4 id="orgf7b0c45">ACM/IEEE Code of Ethics</h4>
+<div class="outline-text-4" id="text-orgf7b0c45">
+<ol class="org-ol">
+<li><b>Public</b> - Software engineers shall act consistently with the public interest.</li>
+<li><b>Client And Employer</b> - Software engineers shall act in a manner that is in the best interests of their client and employer consistent with the public interest.</li>
+<li><b>Product</b> - Software engineers shall ensure that their products and related modifications meet the highest professional standards possible.</li>
+<li><b>Judgment</b> - Software engineers shall maintain integrity and independence in their professional judgment.</li>
+<li><b>Management</b> - Software engineering managers and leaders shall subscribe to and promote an ethical approach to the management of software development and maintenance.</li>
+<li><b>Profession</b> - Software engineers shall advance the integrity and reputation of the profession consistent with the public interest.</li>
+<li><b>Colleagues</b> - Software engineers shall be fair to and supportive of their colleagues.</li>
+<li><b>Self</b> - Software engineers shall participate in lifelong learning regarding the practice of their profession and shall promote an ethical approach to the practice of the profession.</li>
+</ol>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org6423547" class="outline-3">
+<h3 id="org6423547"><span class="section-number-3">2.12</span> Ethical principles Example on Google MyActivity</h3>
+<div class="outline-text-3" id="text-2-12">
+</div>
+<div id="outline-container-org112aa72" class="outline-4">
+<h4 id="org112aa72">Public</h4>
+<div class="outline-text-4" id="text-org112aa72">
+<ul class="org-ul">
+<li>The application itself acts with the public interest, however beforehand the data was hidden. The product does provide all the data that is gathered by Google and it allows for the user to delete/modify their historical data.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgc73657c" class="outline-4">
+<h4 id="orgc73657c">Client and employer</h4>
+<div class="outline-text-4" id="text-orgc73657c">
+<ul class="org-ul">
+<li>The application is made with the best interest of the people and the company.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org5ec3548" class="outline-4">
+<h4 id="org5ec3548">Product</h4>
+<div class="outline-text-4" id="text-org5ec3548">
+<ul class="org-ul">
+<li>The product as advertised is of the highest standard as far as we are concerned,</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org750bb17" class="outline-4">
+<h4 id="org750bb17">Judgement</h4>
+<div class="outline-text-4" id="text-org750bb17">
+<ul class="org-ul">
+<li>We would say that it is safe to assume that the developers had enough integrity and independence and judged the product's features well.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org7c05e9c" class="outline-4">
+<h4 id="org7c05e9c">Management</h4>
+<div class="outline-text-4" id="text-org7c05e9c">
+<ul class="org-ul">
+<li>As it stands it is impossible to determine if the team had an ethical approach during development and during maintenance. A research would be required with the dev team</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org43a3c72" class="outline-4">
+<h4 id="org43a3c72">Profession</h4>
+<div class="outline-text-4" id="text-org43a3c72">
+<ul class="org-ul">
+<li>The developers kept the integrity and the reputation of themselves and the company by delivering a very good product</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org7e7db45" class="outline-4">
+<h4 id="org7e7db45">Colleagues</h4>
+<div class="outline-text-4" id="text-org7e7db45">
+<ul class="org-ul">
+<li>We cannot tell how the team has worked. However, in a traditional scenario work mates should support themselves.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org5f80c63" class="outline-4">
+<h4 id="org5f80c63">Self</h4>
+<div class="outline-text-4" id="text-org5f80c63">
+<ul class="org-ul">
+<li>In the case of 'myactivity.google.com', it is safe to say the devs went down the learning path, as a product like this did not exist before</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orge73b8be" class="outline-2">
+<h2 id="orge73b8be"><span class="section-number-2">3</span> Process Description Template</h2>
+<div class="outline-text-2" id="text-3">
+</div>
+<div id="outline-container-org4f78c62" class="outline-3">
+<h3 id="org4f78c62"><span class="section-number-3">3.1</span> Definition</h3>
+<div class="outline-text-3" id="text-3-1">
+<ul class="org-ul">
+<li><b>Process</b>: Consists of skilled people employing documents, tools, and other resources to plan, perform, and improve tasks in order to produce a desired result</li>
+<li><b>Process description</b>: Documents what tasks are to be performed</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org4443cae" class="outline-3">
+<h3 id="org4443cae"><span class="section-number-3">3.2</span> Template Format</h3>
+<div class="outline-text-3" id="text-3-2">
+<p class="verse">
+<b>Process Name</b>:<br />
+Purpose:<br />
+</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">&#xa0;</th>
+<th scope="col" class="org-left">&#xa0;</th>
+<th scope="col" class="org-left">&#xa0;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Entry Criteria</td>
+<td class="org-left">Controls</td>
+<td class="org-left">Exit Criteria</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">Inputs</td>
+<td class="org-left">Tasks</td>
+<td class="org-left">Outputs</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">Metrics</td>
+<td class="org-left">Roles</td>
+<td class="org-left">Issues</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-org70e7676" class="outline-3">
+<h3 id="org70e7676"><span class="section-number-3">3.3</span> How to</h3>
+<div class="outline-text-3" id="text-3-3">
+<ul class="org-ul">
+<li>Usually start with <b>Tasks</b>: A <b>task</b> is a single step of work to be performed</li>
+<li><b>Entry and Exit Criteria</b>: Insert dependencies with other criteria. What is required for tasks to begin? What is required for the process to be deemed complete?</li>
+<li><b>Input</b>: What is needed to perform the tasks</li>
+<li><b>Output</b>: What is being produced by the tasks</li>
+<li><b>Roles</b>: Could be: tester, developer, manager, etc. Describes responsibilities and duties</li>
+<li><b>Issues</b>: Cover any exceptions</li>
+<li><b>Metrics</b>: Could be: time, number of defects, code coverage in terms of testing, etc. Measure and analyse things that affect the process and its success or failure.</li>
+<li><b>Controls</b>: Apply to tasks and control how you engage with the tasks. How are the tasks performed? Provide additional information of what the tasks need to do. Directs, constraints or influences on how to process tasks.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org344de98" class="outline-3">
+<h3 id="org344de98"><span class="section-number-3">3.4</span> Describe TTD using the Process Description Template</h3>
+<div class="outline-text-3" id="text-3-4">
+<p class="verse">
+Process Name: Test Driven Development<br />
+Purpose: Plan,Design and Execute Tests before creation of the code<br />
+</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">&#xa0;</th>
+<th scope="col" class="org-left">&#xa0;</th>
+<th scope="col" class="org-left">&#xa0;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><b>Entry Criteria</b></td>
+<td class="org-left"><b>Controls</b></td>
+<td class="org-left"><b>Exit Criteria</b></td>
+</tr>
+
+<tr>
+<td class="org-left">Backlog (User stories)</td>
+<td class="org-left">1. Create product skeleton based on the user story</td>
+<td class="org-left">All User Stories tested and functional</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">2. Add tests that provide 100% coverage of the tested methods</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">3. Run each of the tests and make sure that they all fail</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">4. Write the product code for all the methods with the intention of passing the tests</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">5. Run all the tests and make sure that they all pass</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">6. Refactor code with the focus on speed optimization and readability</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left"><b>Inputs</b></td>
+<td class="org-left"><b>Tasks</b></td>
+<td class="org-left"><b>Outputs</b></td>
+</tr>
+
+<tr>
+<td class="org-left">1. User Stories (before task 1)</td>
+<td class="org-left">1. Create product skeleton</td>
+<td class="org-left">1. Product skeleton</td>
+</tr>
+
+<tr>
+<td class="org-left">2. Skeleton code (before task 1)</td>
+<td class="org-left">2. Add Tests (White Box &amp; Black Box)</td>
+<td class="org-left">2. Designed Tests</td>
+</tr>
+
+<tr>
+<td class="org-left">3. Tests (before task 3)</td>
+<td class="org-left">3. Run tests and see them fail</td>
+<td class="org-left">3. Failure of all tests</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">4. Write the code</td>
+<td class="org-left">4. Product code written</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">5. Run the test and see them succeed</td>
+<td class="org-left">5. 100% Test coverage</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">6. Refactor the code</td>
+<td class="org-left">6. Tidy, neat, performant code</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">7. Repeat from 1</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left"><b>Metrics</b></td>
+<td class="org-left"><b>Roles</b></td>
+<td class="org-left"><b>Issues</b></td>
+</tr>
+
+<tr>
+<td class="org-left">Test Coverage 100% required</td>
+<td class="org-left">Developer, Tester</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">Refactored code to the developers best ability</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-org1638037" class="outline-3">
+<h3 id="org1638037"><span class="section-number-3">3.5</span> Describe the software review process</h3>
+<div class="outline-text-3" id="text-3-5">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">&#xa0;</th>
+<th scope="col" class="org-left">&#xa0;</th>
+<th scope="col" class="org-left">&#xa0;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><b>Entry Criteria</b></td>
+<td class="org-left"><b>Controls</b></td>
+<td class="org-left"><b>Exit Criteria</b></td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">1. Defined SDLC</td>
+<td class="org-left">1. Author completes a <b>deliverable</b></td>
+<td class="org-left">1. Material complies with defined standard</td>
+</tr>
+
+<tr>
+<td class="org-left">2. Defined quality standards and/or procedure</td>
+<td class="org-left">2. <b>Deliverable</b> placed under VC</td>
+<td class="org-left">2. Material is of higher or same standard as before</td>
+</tr>
+
+<tr>
+<td class="org-left">how to conduct a review process</td>
+<td class="org-left">3. Appoint a review leader</td>
+<td class="org-left">3. Review minutes</td>
+</tr>
+
+<tr>
+<td class="org-left">3. Identification of material to be reviewed</td>
+<td class="org-left">4. The leader identifies the reviewers</td>
+<td class="org-left">4. List of problems to fix</td>
+</tr>
+
+<tr>
+<td class="org-left">4. Identification of criteria to determine</td>
+<td class="org-left">5. Each reviewer gets a copy of the deliverable and a date of the review</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">a successful review</td>
+<td class="org-left">6. Gather for the meeting</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">7. Leader asks all reviewers about comments on the deliverable</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">8. Review leader nominates a scribe to take the minutes</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">9. Discuss the reviewers' comments</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">10. Identify problems and take them down by the scribe</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">11. Vote on the outcome accept or rewrite</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">12. Author fixes the identified problems</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">13. Leader checks if the solution is acceptable</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">14. Leader signs off</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">15. Review closes</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left"><b>Inputs</b></td>
+<td class="org-left"><b>Tasks</b></td>
+<td class="org-left"><b>Outputs</b></td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">1. Material to be reviewed</td>
+<td class="org-left">1. Review Scheduled</td>
+<td class="org-left">1. List of indentified problems</td>
+</tr>
+
+<tr>
+<td class="org-left">2. Team preparation</td>
+<td class="org-left">2. Independent reviewers selected</td>
+<td class="org-left">2. Problems fixed</td>
+</tr>
+
+<tr>
+<td class="org-left">3. Checklists</td>
+<td class="org-left">3. Review preparation required by the reviewers</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">4. Checklists and standards are used</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">5. Deliverable is chosen for the review</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">5. Review comments are formally taken as minutes of the review meeting</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">6. Problems are identified</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">7. Author of the deliverable fixes the problem</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left"><b>Metrics</b></td>
+<td class="org-left"><b>Roles</b></td>
+<td class="org-left"><b>Issues</b></td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">1. Review completion metric</td>
+<td class="org-left">Scribe, Reviewers, Review Leader, Author</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">2. Review data gathered</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org58c98a0" class="outline-2">
+<h2 id="org58c98a0"><span class="section-number-2">4</span> Software Processes</h2>
+<div class="outline-text-2" id="text-4">
+<ul class="org-ul">
+<li>There exist many different types, but they all include:
+<ul class="org-ul">
+<li>Specification</li>
+<li>Design and implementation</li>
+<li>Validation</li>
+<li>Evolution</li>
+</ul></li>
+<li>A <b>Software Process Model</b> is an abstract representation of a process. It presents a description of a process from some particular perspective</li>
+<li>When speaking about the process we usually talk about the activities involved: specifying the data model, designing a UI, etc. and ordering these activities</li>
+</ul>
+</div>
+
+<div id="outline-container-org6a8e36d" class="outline-3">
+<h3 id="org6a8e36d"><span class="section-number-3">4.1</span> Process description may include</h3>
+<div class="outline-text-3" id="text-4-1">
+<ul class="org-ul">
+<li><b>Products</b>: outcomes of a process</li>
+<li><b>Roles</b>: reflect the responsibilities of the people involved in the process</li>
+<li><b>Pre and Post Conditions</b>: Statements that are true before and after the process has taken place</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgbe48f6c" class="outline-3">
+<h3 id="orgbe48f6c"><span class="section-number-3">4.2</span> Plan-driven vs Agile</h3>
+<div class="outline-text-3" id="text-4-2">
+<ul class="org-ul">
+<li><b>Plan Driven</b>: All processes and activities are planned in advance, the progress is measured against this plan</li>
+<li><b>Agile</b>: Planning is incremental and it is easier to change the process to reflect changing customer requirements</li>
+<li>In practice a bit of both usually works out best</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orga35d409" class="outline-3">
+<h3 id="orga35d409"><span class="section-number-3">4.3</span> Models</h3>
+<div class="outline-text-3" id="text-4-3">
+<ul class="org-ul">
+<li><b>Waterfall</b>: Plan-driven model. Separate and distinct phases of specification an development</li>
+<li><b>Incremental Development</b>: Specification, development and validation are interleaved. May be plan-driven or agile.</li>
+<li><p>
+<b>Integration and Configuration</b>: The system is assembled from existing configurable components. May be plan-driven or agile.
+</p>
+
+<p class="verse">
+<b>In practice, most large systems are developed using a process that incorporates elements from all of these models.</b><br />
+</p></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org841608f" class="outline-3">
+<h3 id="org841608f"><span class="section-number-3">4.4</span> Waterfall</h3>
+<div class="outline-text-3" id="text-4-4">
+<ul class="org-ul">
+<li>Diagram</li>
+</ul>
+
+<div class="figure">
+<p><img src="images/Software%20Processes/screenshot_2018-12-07_17-19-54.png" alt="screenshot_2018-12-07_17-19-54.png" />
+</p>
+</div>
+<ul class="org-ul">
+<li>The main problem with Waterfall is that it is difficult to accommodate change once the process is underway</li>
+<li>Difficulty with responding to change in requirements</li>
+<li>Mostly used for large systems with a clearly defined goal</li>
+<li>Sequential <b>process activities</b></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org2bc8a9d" class="outline-3">
+<h3 id="org2bc8a9d"><span class="section-number-3">4.5</span> Incremental Development</h3>
+<div class="outline-text-3" id="text-4-5">
+<ul class="org-ul">
+<li>Diagram</li>
+</ul>
+
+<div class="figure">
+<p><img src="images/Software%20Processes/screenshot_2018-12-07_17-22-25.png" alt="screenshot_2018-12-07_17-22-25.png" />
+</p>
+</div>
+<ul class="org-ul">
+<li>The cost of requirements change is reduced</li>
+<li>It is easier to get customer feedback and act upon it</li>
+<li>More rapid delivery and deployment of useful software</li>
+<li>One of the problems is that the process is not transparent in operation</li>
+<li>System structure tends to degrade as new features are added</li>
+<li>Interleaved <b>process activities</b></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org88f19db" class="outline-3">
+<h3 id="org88f19db"><span class="section-number-3">4.6</span> Integration and Configuration</h3>
+<div class="outline-text-3" id="text-4-6">
+<ul class="org-ul">
+<li>Based on software reuse in which the system is integrated from existing components</li>
+<li>Reused components may be configured to adapt their behaviour</li>
+<li>Reuse is now the standard approach for building many types of systems</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org6bc0955" class="outline-3">
+<h3 id="org6bc0955"><span class="section-number-3">4.7</span> Prototyping</h3>
+<div class="outline-text-3" id="text-4-7">
+<ul class="org-ul">
+<li>Benefits:
+<ul class="org-ul">
+<li>Improved system stability</li>
+<li>A closer match to user's real needs</li>
+<li>Improved design quality</li>
+<li>Improved maintainability</li>
+<li>Reduced development effort</li>
+</ul></li>
+<li>Diagram</li>
+</ul>
+
+<div class="figure">
+<p><img src="images/Software%20Processes/screenshot_2018-12-07_17-57-18.png" alt="screenshot_2018-12-07_17-57-18.png" />
+</p>
+</div>
+<ul class="org-ul">
+<li>May involve leaving out functionality</li>
+<li>May be based on rapid prototyping languages or tools</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org4b113fd" class="outline-3">
+<h3 id="org4b113fd"><span class="section-number-3">4.8</span> Incremental Development and Delivery</h3>
+<div class="outline-text-3" id="text-4-8">
+<ul class="org-ul">
+<li><b>Incremental Development</b>
+<ul class="org-ul">
+<li>Develop the system in increments and evaluate each increment before proceeding to the next one</li>
+<li>Normal approach in Agile</li>
+<li>Evaluation done by user/customer proxy</li>
+</ul></li>
+<li><b>Incremental Delivery</b>
+<ul class="org-ul">
+<li>Deploy in increments for use by end-users</li>
+<li>More realistic evaluation about practical use of software</li>
+<li>Difficult to implement for replacement systems as increments have less functionality than the system being replaced</li>
+</ul></li>
+<li>Diagram</li>
+</ul>
+
+<div class="figure">
+<p><img src="images/Software%20Processes/screenshot_2018-12-07_18-03-07.png" alt="screenshot_2018-12-07_18-03-07.png" />
+</p>
+</div>
+<ul class="org-ul">
+<li><b>Pros</b>
+<ul class="org-ul">
+<li>Customer value can be delivered early, early system functionality</li>
+<li>Early increments are essentially prototypes and help elicit requirements</li>
+<li>Lower risk of overall project failure</li>
+<li>High priority systems receive better testing</li>
+</ul></li>
+<li><b>Cons</b>
+<ul class="org-ul">
+<li>The system needs to have a basic set of facilities, otherwise other parts cannot be connected</li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org3b9733f" class="outline-3">
+<h3 id="org3b9733f"><span class="section-number-3">4.9</span> Other Models</h3>
+<div class="outline-text-3" id="text-4-9">
+</div>
+<div id="outline-container-org138a7a3" class="outline-4">
+<h4 id="org138a7a3">Iterative</h4>
+<div class="outline-text-4" id="text-org138a7a3">
+
+<div class="figure">
+<p><img src="images/Software%20Processes/screenshot_2018-12-07_18-14-31.png" alt="screenshot_2018-12-07_18-14-31.png" />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org19774f7" class="outline-4">
+<h4 id="org19774f7">Spiral</h4>
+<div class="outline-text-4" id="text-org19774f7">
+
+<div class="figure">
+<p><img src="images/Software%20Processes/screenshot_2018-12-07_18-16-45.png" alt="screenshot_2018-12-07_18-16-45.png" />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org0e50224" class="outline-4">
+<h4 id="org0e50224">V-Model</h4>
+<div class="outline-text-4" id="text-org0e50224">
+
+<div class="figure">
+<p><img src="images/Software%20Processes/screenshot_2018-12-07_18-17-17.png" alt="screenshot_2018-12-07_18-17-17.png" />
+</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org9656ac4" class="outline-2">
+<h2 id="org9656ac4"><span class="section-number-2">5</span> Software Review Process</h2>
+<div class="outline-text-2" id="text-5">
+<ul class="org-ul">
+<li><b>Objective of an inspection</b> is to identify software elements' defects. This is a rigorous, formal peer examination that does the following:
+<ol class="org-ol">
+<li>Verify that the software elements satisfy its specification</li>
+<li>Verify that it confirms to applicable standards</li>
+<li>Identifies deviations from standards and specifications</li>
+<li>Collects software engineering data (defect numbers, effort, etc&#x2026;)</li>
+</ol></li>
+</ul>
+
+<div class="figure">
+<p><img src="images/Software%20Review%20Process/screenshot_2018-12-07_18-20-47.png" alt="screenshot_2018-12-07_18-20-47.png" />
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgb464b0c" class="outline-3">
+<h3 id="orgb464b0c"><span class="section-number-3">5.1</span> Why review?</h3>
+<div class="outline-text-3" id="text-5-1">
+<ul class="org-ul">
+<li>Ensure that parties technically agree on the deliverable under review</li>
+<li>Verify if the deliverable meets the predefined criteria</li>
+<li>Find errors as early as possible</li>
+<li>To formally complete a technical task or a project phase</li>
+<li>To give testers and devs a perspective of different parts of the system</li>
+<li>To provide data on the product and the inspection process (metrics)</li>
+<li>To help build effective technical teams</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org2c05c35" class="outline-3">
+<h3 id="org2c05c35"><span class="section-number-3">5.2</span> Requirements of a Review Process</h3>
+<div class="outline-text-3" id="text-5-2">
+<ul class="org-ul">
+<li>Defined SDLC</li>
+<li>Defined quality standards and/or procedures that describe how reviews should be carried out</li>
+<li>Identification of the Material that needs to be reviewed</li>
+<li>Identification of a criteria that will determine a successful review</li>
+<li>Who is scheduling the review?</li>
+<li>Data Collections (Metrics)</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org32726d2" class="outline-3">
+<h3 id="org32726d2"><span class="section-number-3">5.3</span> Peer Review</h3>
+<div class="outline-text-3" id="text-5-3">
+<ul class="org-ul">
+<li><b>Peer</b>: A person with an equivalent technical background</li>
+<li><b>Peer Review</b>: Is where members of the same team of organization, <b>schedule and prepare</b> for a review where <b>minutes are kept</b></li>
+<li><b>How to?</b>
+<ul class="org-ul">
+<li>The <b>author</b> or developer completes work on the item to be reviewed, called a <b>deliverable</b></li>
+<li>The deliverable should be placed under <b>configuration management</b> or <b>version control</b> before being released for review</li>
+<li>A <b>review leader</b> is appointed</li>
+<li>The review leader identifies the <b>reviewers</b>, who will be responsible for reviewing the <b>deliverable</b></li>
+<li>Each reviewer gets a copy of the <b>deliverable</b>, and the date of the review</li>
+<li>Gather for the review meeting</li>
+<li>The leader allows for each reviewer to make a comment on the <b>deliverable</b> to see if the meeting should proceed (Go/No-Go decision)</li>
+<li>Leader nominates a <b>scribe</b> to take the minutes</li>
+<li>Reviewer comments are discussed</li>
+<li>Each reviewer comments in turn</li>
+<li>Identified problems are noted by the <b>scribe</b></li>
+<li>Note: the purpose of the meeting is to identify problems and <b>NOT</b> to solve them</li>
+<li>Vote on the outcome (Rewrite, Accepted, etc&#x2026;)</li>
+<li>Author fixed problems</li>
+<li>Review leader checks if the solutions are adequate</li>
+<li>Review leader signs off on the deliverable</li>
+<li>Review closed</li>
+<li><b>Metrics</b>: Much can be learned about review effectiveness from a study of the data gathered</li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org5ec57ac" class="outline-3">
+<h3 id="org5ec57ac"><span class="section-number-3">5.4</span> Types of Reviews</h3>
+<div class="outline-text-3" id="text-5-4">
+<ul class="org-ul">
+<li><b>Desk Check</b>
+<ul class="org-ul">
+<li>Informal Mechanism</li>
+<li>Associated with code design and especially debugging</li>
+<li>Done by the author</li>
+</ul></li>
+<li><b>Proof Reading</b>
+<ul class="org-ul">
+<li>Informal and easy to organize</li>
+<li>Author gets the "engineer over the wall" to read over code or a document</li>
+<li>Usually done as a "pre-review" check</li>
+<li>Review Comments are verbal or penciled in</li>
+</ul></li>
+<li><b>Structured Walkthrough</b>
+<ul class="org-ul">
+<li>Formal mechanism</li>
+<li>The author of the code gets another developer to talk through a paper execution of the code</li>
+<li>More developers are invited to listen and add comments</li>
+<li>May expose hidden functionality and ambiguities</li>
+</ul></li>
+<li><b>Code Inspection</b>
+<ul class="org-ul">
+<li>Review scheduled</li>
+<li>Independent reviewers are selected</li>
+<li>Review preparation is required by the reviewers</li>
+<li>Checklists and coding standards are used</li>
+<li>Review comments are formally taken as minutes of the review meeting</li>
+<li>Follow-up procedure required to ensure that any changes required from review meeting are completed</li>
+</ul></li>
+<li><b>Technical Document Review</b>
+<ul class="org-ul">
+<li>Review scheduled</li>
+<li>Independent reviewers are selected</li>
+<li>Review preparation is required by the reviewers</li>
+<li>Checklists and coding standards are used</li>
+<li>Review comments are formally taken as minutes of the review meeting</li>
+<li>Follow-up procedure required to ensure that any changes required from review meeting are completed</li>
+</ul></li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgad957a2" class="outline-2">
+<h2 id="orgad957a2"><span class="section-number-2">6</span> Quality</h2>
+<div class="outline-text-2" id="text-6">
+</div>
+<div id="outline-container-org3d8d30f" class="outline-3">
+<h3 id="org3d8d30f"><span class="section-number-3">6.1</span> General Concept</h3>
+<div class="outline-text-3" id="text-6-1">
+<ul class="org-ul">
+<li><b>Quality</b> means that a system of a product should meet its specification of requirements</li>
+<li>Potential software quality attributes:
+<ul class="org-ul">
+<li>Safety</li>
+<li>Security</li>
+<li>Reliability</li>
+<li>Testability</li>
+<li>Complexity</li>
+<li>Portability</li>
+<li>Efficiency</li>
+<li>Robustness</li>
+<li>Modularity</li>
+</ul></li>
+<li><b>Problems with quality</b>:
+<ul class="org-ul">
+<li>Customer's quality demands may differ than the developer's quality demands</li>
+<li>Quality requirements are difficult to specify</li>
+</ul></li>
+<li>Quality of the developed product is linked with the quality of the production process
+<ul class="org-ul">
+<li>However, the complexity of this relationship is not well understood</li>
+<li>Software is designed and not manufactured (like in a factory)</li>
+<li>Software development is a creative process, not a mechanical process</li>
+</ul></li>
+</ul>
+
+<div class="figure">
+<p><img src="images/Quality/screenshot_2018-12-07_20-00-54.png" alt="screenshot_2018-12-07_20-00-54.png" />
+</p>
+</div>
+<ul class="org-ul">
+<li>And therefore, <b>Factors affecting quality</b> are:
+<ul class="org-ul">
+<li>Development tech</li>
+<li>Process quality</li>
+<li>Cost, time and schedule</li>
+<li>People quality</li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org792e11e" class="outline-3">
+<h3 id="org792e11e"><span class="section-number-3">6.2</span> Quality Management</h3>
+<div class="outline-text-3" id="text-6-2">
+<ul class="org-ul">
+<li><b>Quality Management</b>: Must be in place to improve quality</li>
+<li>Three main <b>principals</b> exist:
+<ul class="org-ul">
+<li>At organizational level: <b>Quality Management</b> is concerned with creating a framework of processes and standards that will lead to high-quality software</li>
+<li>At project level: Applying specific processes and checking that these processes have been followed</li>
+<li>At project level: Establishing a quality plan that sets out quality goals and defines what processes and standards to use</li>
+</ul></li>
+<li>The scope of quality management is most important for large and complex systems</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgf499780" class="outline-3">
+<h3 id="orgf499780"><span class="section-number-3">6.3</span> Quality Planning</h3>
+<div class="outline-text-3" id="text-6-3">
+<ul class="org-ul">
+<li><b>Quality plan</b>: Identifies the most important attributes for a product.</li>
+<li><b>Quality plan</b>: Should also define the quality assessment process.</li>
+<li><b>Quality plan structure</b>
+<ul class="org-ul">
+<li>Product introduction</li>
+<li>Product plans</li>
+<li>Process descriptions</li>
+<li>Quality goals</li>
+<li>Risk and risk management</li>
+<li>Should be short and succinct</li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org1131b0f" class="outline-3">
+<h3 id="org1131b0f"><span class="section-number-3">6.4</span> Process and Product Standards</h3>
+<div class="outline-text-3" id="text-6-4">
+<ul class="org-ul">
+<li><b>Process Standard</b>: Defines how the software process should be controlled
+<ul class="org-ul">
+<li>Review processes</li>
+<li>Configuration management</li>
+<li>Test recording process</li>
+<li>Submission of new code</li>
+<li>Change control process</li>
+<li>Test recording process</li>
+</ul></li>
+<li><b>Product Standard</b>: Defines characteristics that all components should have e.g. a common programming style
+<ul class="org-ul">
+<li>Design review form</li>
+<li>Programming Language Coding Standards</li>
+<li>Change Request Form</li>
+<li>Project Plan Format</li>
+<li>Requirements document structure</li>
+</ul></li>
+<li><b>Problems with standards</b>
+<ul class="org-ul">
+<li>Not seen as relevant</li>
+<li>Not up to date</li>
+<li>Too much bureaucratic form filling</li>
+<li>Seen as tedious, if they are unsupported by software tools</li>
+</ul></li>
+<li><b>Importance of Standards</b>
+<ul class="org-ul">
+<li>Encapsulation of best practices (avoids past mistakes)</li>
+<li>They are a framework for defining what quality means, i.e. view of quality</li>
+<li>They provide continuity - new staff can understand the standards by simply reading them</li>
+</ul></li>
+<li><b>Developing Standards</b>
+<ul class="org-ul">
+<li>Involve all stakeholders</li>
+<li>Standards and their usage should be reviewed regularly</li>
+<li>Employ tool support where possible (excessive clerical work is the most common complaint)</li>
+</ul></li>
+<li><p>
+<b>ISO 9001</b>
+</p>
+<ul class="org-ul">
+<li>An international set of standards that can be used as a basis for developing quality management systems</li>
+<li>The most general of these standards</li>
+<li>An external body may certify an organization's manuals and grant them ISO 9001</li>
+<li>Some customers demand the ISO standards</li>
+<li>Applies to organization that design, develop and maintain products, including software</li>
+</ul>
+
+<div class="figure">
+<p><img src="images/Quality/screenshot_2018-12-07_20-41-55.png" alt="screenshot_2018-12-07_20-41-55.png" />
+</p>
+</div></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org9448ecc" class="outline-3">
+<h3 id="org9448ecc"><span class="section-number-3">6.5</span> Reviews and inspections</h3>
+<div class="outline-text-3" id="text-6-5">
+<ul class="org-ul">
+<li><b>Quality reviews</b>
+<ul class="org-ul">
+<li>Examine software systems and associated documentation</li>
+<li>Code, designs, specification, test plans, standards, all can be reviewed</li>
+</ul></li>
+<li><p>
+<b>Program inspections</b>
+</p>
+<ul class="org-ul">
+<li>Peer reviewed to discover defects and anomalies</li>
+<li>Do not require an execution of a system</li>
+<li>May be applied to any representation of the system</li>
+<li>Effective for error discovery</li>
+<li>Employ <b>Inspection checklists</b></li>
+<li>Checklists of common errors to drive the inspection</li>
+<li>Programming language dependent</li>
+<li>Checklist example</li>
+</ul>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Fault Class</th>
+<th scope="col" class="org-left">Inspection check</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Data faults</td>
+<td class="org-left">Vars initialized? Names constants? Array bounds? String delimiters? Buffer overflow?</td>
+</tr>
+
+<tr>
+<td class="org-left">Control faults</td>
+<td class="org-left">Loop conditions? Loops terminate? If/Switch statements reachable?</td>
+</tr>
+
+<tr>
+<td class="org-left">Input/Output faults</td>
+<td class="org-left">Are all input vars used? Are output vars assigned? Input validation?</td>
+</tr>
+
+<tr>
+<td class="org-left">Interface faults</td>
+<td class="org-left">Function parameter call correctness? Parameters in right order? Shared memory model compatibility?</td>
+</tr>
+
+<tr>
+<td class="org-left">Storage faults</td>
+<td class="org-left">Linked structure rearrangements? Dynamic space allocation? Is space deallocated?</td>
+</tr>
+
+<tr>
+<td class="org-left">Exception faults</td>
+<td class="org-left">Are all error conditions considered?</td>
+</tr>
+</tbody>
+</table></li>
+</ul>
+
+
+<ul class="org-ul">
+<li>Agile processed rarely use inspections, they rely on team cooperation, guidelines</li>
+<li>XP practitioners argue that pair programming is an effective substitute for inspections</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org1ab2cf4" class="outline-3">
+<h3 id="org1ab2cf4"><span class="section-number-3">6.6</span> Software measurements and metrics</h3>
+<div class="outline-text-3" id="text-6-6">
+<ul class="org-ul">
+<li><b>Software measurement</b> is concerned with deriving a numeric value for an attribute of a software product or process</li>
+<li>Allows for an objective comparison between techniques</li>
+<li><b>Software metric</b>
+<ul class="org-ul">
+<li>Allows for the <b>software</b> and the <b>software process</b> to be quantified</li>
+<li>May be used to for general predictions</li>
+<li>May be used to predict product attributes</li>
+<li>May be used to control software process</li>
+<li>May be used to identify anomalies</li>
+</ul></li>
+<li><b>Use of measurements</b>
+<ul class="org-ul">
+<li>Assign value to system quality attributes, e.g. measuring cyclomatic complexity</li>
+<li>Identify the system components whose quality is sub-standard</li>
+</ul></li>
+</ul>
+</div>
+
+<div id="outline-container-org6424e6d" class="outline-4">
+<h4 id="org6424e6d">Metric Assumptions</h4>
+<div class="outline-text-4" id="text-org6424e6d">
+<ul class="org-ul">
+<li>A software property <b>can be measured</b></li>
+<li>We can only measure internal attributes, but are often interested in external software attributes</li>
+<li>It may be difficult to relate what has been measured to a desirable external quality attribute</li>
+<li>Relationships between external and internal attributes:</li>
+</ul>
+
+<div class="figure">
+<p><img src="images/Quality/screenshot_2018-12-07_21-24-51.png" alt="screenshot_2018-12-07_21-24-51.png" />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgffd29c2" class="outline-4">
+<h4 id="orgffd29c2">Problems With Metrics In The Industry</h4>
+<div class="outline-text-4" id="text-orgffd29c2">
+<ul class="org-ul">
+<li>It is impossible to quantify the return on investment by introducing an organizational metric system</li>
+<li>There are no standards for metrics or standardized processes for measurement and analysis</li>
+<li>In many companies software processes are poorly defined and controlled</li>
+<li>Introducing measurements adds additional overhead to the process</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orge21352a" class="outline-4">
+<h4 id="orge21352a">Product Metric</h4>
+<div class="outline-text-4" id="text-orge21352a">
+<ul class="org-ul">
+<li>A <b>quality metric</b> should be a predictor of product quality</li>
+<li><b>Classes of product metrics</b>:
+<ul class="org-ul">
+<li><b>Dynamic metrics</b> which are collected by measurements made of a program in execution
+<ul class="org-ul">
+<li>Help assess efficiency and reliability</li>
+<li>Are closely related to software quality attributes</li>
+<li>It is easy to measure the response time of a system or the number of failures</li>
+</ul></li>
+<li><b>Static metrics</b> which are collected by measurements made of the system representations
+<ul class="org-ul">
+<li>Help assess complexity, understandability and maintainability</li>
+<li>Have indirect relationship with quality attributes. The assessor needs to derive relationships between these metrics and quality properties such as complexity, understandability and maintainability</li>
+</ul></li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org5a4a4d1" class="outline-4">
+<h4 id="org5a4a4d1">Static software product metrics</h4>
+<div class="outline-text-4" id="text-org5a4a4d1">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Software Metric</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Fan-in/Fan-out</td>
+<td class="org-left">Fan-in is the number of functions that call other functions. Fan-out is the number of functions that are called by other functions</td>
+</tr>
+
+<tr>
+<td class="org-left">Length of code</td>
+<td class="org-left">The larger the code base the harder it is to maintain it, and the more error-prone and complex the component is. One of the most reliable metrics of error-proneness</td>
+</tr>
+
+<tr>
+<td class="org-left">Cyclomatic complexity</td>
+<td class="org-left">Measure of the control complexity of a program. It is the depth of execution, the higher the complexity the less "flat" the code base is</td>
+</tr>
+
+<tr>
+<td class="org-left">Length of identifiers</td>
+<td class="org-left">In general the longer the identifiers the better the description, but also likely a higher verbosity</td>
+</tr>
+
+<tr>
+<td class="org-left">Depth of conditional nesting</td>
+<td class="org-left">Depth of if-statements nesting. Deep nesting is highly error-prone</td>
+</tr>
+
+<tr>
+<td class="org-left">Fog index</td>
+<td class="org-left">This is a measure of the average lengths of words and sentences in a document. The higher the index the more difficult the document is to understand</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-org507feea" class="outline-4">
+<h4 id="org507feea">The CK Object-Oriented metrics suite</h4>
+<div class="outline-text-4" id="text-org507feea">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Object-Oriented Metric</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Weighted methods per class (WMC)</td>
+<td class="org-left">Number of methods in each class, weighted by the complexity of each method</td>
+</tr>
+
+<tr>
+<td class="org-left">Depth of inheritance tree (DIT)</td>
+<td class="org-left">The deeper the inheritance tree, the more complex the design</td>
+</tr>
+
+<tr>
+<td class="org-left">Number of children (NOC)</td>
+<td class="org-left">A high NOC may indicate great reuse. Effort might be necessary to validate the parent class, so that it does not break the children</td>
+</tr>
+
+<tr>
+<td class="org-left">Coupling between object classes (CBO)</td>
+<td class="org-left">High CBO implies high inter-class dependency, and thus changing one will likely affect many</td>
+</tr>
+
+<tr>
+<td class="org-left">Response for a class (RFC)</td>
+<td class="org-left">Amount of method calls in response to a message or event of the object. The higher the value, yet again the higher the complexity</td>
+</tr>
+
+<tr>
+<td class="org-left">Lack of cohesion in methods (LCOM)</td>
+<td class="org-left">Is the difference between the number of method pairs without shared attributes and the number of method pairs with shared attributes. The value of this metric debatable</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-orgdf0eb21" class="outline-4">
+<h4 id="orgdf0eb21">System Component Analysis</h4>
+<div class="outline-text-4" id="text-orgdf0eb21">
+<ul class="org-ul">
+<li>System components can be analyzed using a range of metrics</li>
+<li>Then the data can be compared against other components or historical data</li>
+<li>Anomalous measurements may indicate that there is an issue with the component</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgf2ef461" class="outline-4">
+<h4 id="orgf2ef461">Measurement Process</h4>
+<div class="outline-text-4" id="text-orgf2ef461">
+
+<div class="figure">
+<p><img src="images/Quality/screenshot_2018-12-07_21-55-47.png" alt="screenshot_2018-12-07_21-55-47.png" />
+</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org9335d24" class="outline-2">
+<h2 id="org9335d24"><span class="section-number-2">7</span> Inspection/Review and Associated Metrics</h2>
+<div class="outline-text-2" id="text-7">
+</div>
+<div id="outline-container-org2901459" class="outline-3">
+<h3 id="org2901459"><span class="section-number-3">7.1</span> Goals</h3>
+<div class="outline-text-3" id="text-7-1">
+<ul class="org-ul">
+<li>Remove and detect defects</li>
+<li>Develop a better understanding of software and the software development processes</li>
+<li>Prevent defects</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org2f3a90c" class="outline-3">
+<h3 id="org2f3a90c"><span class="section-number-3">7.2</span> Inspection Steps</h3>
+<div class="outline-text-3" id="text-7-2">
+<ul class="org-ul">
+<li><b>Pre</b>: Inspection planned, adequate resources allocated by the project manager</li>
+<li><b>Planning</b>: Reviewers chosen, materials ready for review</li>
+<li><b>Overview</b>: Author provides an overview of the material</li>
+<li><b>Discussion</b>: Leader allows to discuss optimum checking rates, focus on criteria/rules to be checked, reviewers may be assigned additional roles</li>
+<li><b>Preparation</b>: Reviewers/inspectors spend time individually and check the material against documents, criteria, checklists, etc. to find defects</li>
+<li><b>Meeting</b>: Logging issues that have been found. Discussion kept to minimum</li>
+<li><b>Re-work/Edit</b>: Author investigates issues and fixes any problems</li>
+<li><b>Follow-up</b>: Leader verifies that author fixed the issues</li>
+<li>All data from the inspection is collected for future reviews/inspections, analysis, optimum checking rates, quality of work, etc.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgf6566d7" class="outline-3">
+<h3 id="orgf6566d7"><span class="section-number-3">7.3</span> Metrics</h3>
+<div class="outline-text-3" id="text-7-3">
+</div>
+<div id="outline-container-org565a2a0" class="outline-4">
+<h4 id="org565a2a0">Inspection metrics</h4>
+<div class="outline-text-4" id="text-org565a2a0">
+<ul class="org-ul">
+<li><b>Inspection rate</b>: The amount of pseudo-code, code or pages inspected in one hour of inspection time. <b>E.g.</b> 600 lines of code inspected in 2hr = 300 lines inspected per hour</li>
+<li><b>Average inspection rate</b>: The average amount of pseudo-code, code, or pages inspected in one hour of inspection time. <b>E.g.</b> (308 + 291 + 295 + 310) / 4 = 301 lines per hour</li>
+<li><b>Inspection effort</b>: The amount of time required to inspect either 1000 lines of pseudo-code or code, or one page of text. <b>E.g.</b> If the inspection rate is 308 lines of code per hour then the Inspection Effort is 1000/308 = 3.25 hours</li>
+<li><b>Average inspection effort</b>: The average amount of time required to inspect either 1,000 lines of pseudo-code or code, or one page of text. <b>E.g.</b> If the average inspection rate is 301 lines of code per hour. Average Inspection Effort is 1000/301 = 3.32 hours.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org7676053" class="outline-4">
+<h4 id="org7676053">Inspection Preparation Metrics</h4>
+<div class="outline-text-4" id="text-org7676053">
+<ul class="org-ul">
+<li><b>Preparation rate</b>: The number of hours of preparation required for each inspection hour. <b>E.g.</b> If four inspectors prepare in 3.25, 3, 2.5, and 2.8 hours, for an inspection meeting that lasts 2.05 hours then the Preparation Rate is (3.25 + 3+ 2.5+ 2.8 = 12.55 hours) divided by 8.2 hours (inspection time of 2.05 * 4 inspectors) = 1.53 hours preparation for each hour of inspection.</li>
+<li><b>Average preparation rate</b>: The average amount of time required to prepare for each hour of inspection. <b>E.g.</b> If the preparation rates for four inspections are 1.53, 1.1, 1.25, 1.6 then the Average Preparation Rate is (1.53 + 1.1 + 1.25 + 1.6) / 4 = 1.37 hours.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orge8d4191" class="outline-4">
+<h4 id="orge8d4191">Inspection defect finding metrics</h4>
+<div class="outline-text-4" id="text-orge8d4191">
+<ul class="org-ul">
+<li><b>Defect finding rate</b>: The number of defects found during one inspection hour. <b>E.g.</b> If 9 defects are found during a code inspection meeting that lasts 1.93 hours then the Defect Finding Rate is 9/1.93 = 4.66 defects per hour.</li>
+<li><b>Average defect finding rate</b>: The number of defects found for a number of inspections during one inspection hour. <b>E.g.</b> The number of defects per hour for four inspections are 4.66, 6.02, 5.1, and 3.75. The Average Defect Finding Rate is (4.66 + 6.02 + 5.1 + 3.75)/4 = 4.88 defects per hour.</li>
+<li><b>Defect finding effort</b>: The number of defects found per 1000 lines of pseudo-code, code, or per page. <b>E.g.</b> If the defect finding rate for a code inspection is 4.66 defects per hour and the inspection rate for the inspection is 308 lines of code per hour the Defect Finding Effort is (4.66 * 1000)/308 = 15.13 defects per 1000 lines of code.</li>
+<li><b>Average defect finding effort</b>: The average number of defects found per 1000 lines of pseudo-code, code, or per page. <b>E.g.</b> If the average defect finding rate for a code inspection is 4.88 defects per hour and the average inspection rate for the inspection is 301 lines of code per hour then the Average Defect Finding Effort is (4.88 * 1000)/301 = 16.21 defects per 1000 lines of code.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgdb1c2f5" class="outline-4">
+<h4 id="orgdb1c2f5">Inspection Defect Correction Metrics</h4>
+<div class="outline-text-4" id="text-orgdb1c2f5">
+<ul class="org-ul">
+<li><b>Defect correction rate</b>: The amount of time to correct each defect. <b>E.g.</b> Nine defects are found during a code inspection meeting with the following times recorded for correction: 10 minutes, one hour, six hours, one half hour, eight hours, two hours, four hours, four and one half hours, two hours. The Defect Correction Rate is (0.17 + 1 + 6 + 0.5 + 8 + 2 + 4 + 4.5 + 2)/9 = 3.13 hours per defect.</li>
+<li><b>Average defect correction rate</b>: The average amount of time to correct each defect based on multiple inspections. <b>E.g.</b> If the defect corrections rates for four inspections are 3.13, 5.9, 7.25, and 4.5 hours then the Average Defect Correction Rate is (3.13 + 5.9 + 7.25 + 4.5)/4 = 5.2  hours per defect.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgf0a1fba" class="outline-4">
+<h4 id="orgf0a1fba">Re-Inspection Metrics</h4>
+<div class="outline-text-4" id="text-orgf0a1fba">
+<ul class="org-ul">
+<li><b>Re-inspection rate</b>: The percentage of inspections that require re-inspection. <b>E.g.</b> If three inspections require re-inspection and twelve inspections do not then the Re-inspection Rate is 3/15 = 20 percent.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org07dd367" class="outline-4">
+<h4 id="org07dd367">Inspection Effectiveness Metrics</h4>
+<div class="outline-text-4" id="text-org07dd367">
+<ul class="org-ul">
+<li><b>Percentage of Defects found by Inspection</b>: The percentage of all defects that are found using the inspection process. <b>E.g.</b> If 1200 defect are found during inspection and there are a total of 2000 defects found throughout the project then the Percentage of Defects Found by Inspection is 1200/2000 = 60 percent.</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org4f45027" class="outline-2">
+<h2 id="org4f45027"><span class="section-number-2">8</span> Software Metrics</h2>
+<div class="outline-text-2" id="text-8">
+</div>
+<div id="outline-container-org926c601" class="outline-3">
+<h3 id="org926c601"><span class="section-number-3">8.1</span> Basic Measurement Theory</h3>
+<div class="outline-text-3" id="text-8-1">
+<ul class="org-ul">
+<li>An <b>entity</b> is a person, place, thing, event or time period</li>
+<li>An <b>attribute</b> is a feature of the entity</li>
+<li>Software entities include:
+<ul class="org-ul">
+<li>People, tools, methods</li>
+<li>Software related activities, e.g. code inspection</li>
+<li>Any work products produced, e.g. a requirements document</li>
+</ul></li>
+<li>Software entities' attributes:
+<ul class="org-ul">
+<li>Time/Effort taken to execute a process</li>
+<li>Complexity, size, modularity</li>
+<li>Reliability, usability, maintainability</li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org9a12b93" class="outline-3">
+<h3 id="org9a12b93"><span class="section-number-3">8.2</span> Software Measurements and Metrics</h3>
+<div class="outline-text-3" id="text-8-2">
+<ul class="org-ul">
+<li>Software measurement is concerned with deriving a numeric value for an attribute of a software entity</li>
+<li>A Software Metric is any type of measurement which relates to a software system, process or related documentation (e.g. Lines of code in a program, the Fog index, number of person-days required to develop a component)</li>
+<li>Software Metrics allow the software entities to be <b>quantified</b></li>
+<li>Metrics can perform the following functions:
+<ul class="org-ul">
+<li>Help people <b>understand</b> more about software products, processes, and services</li>
+<li>Be used to <b>evaluate</b> software products, processes, and services against established standards and goals</li>
+<li>Provide information needed to <b>control</b> resources and processes used to produce software</li>
+<li>Be used to <b>predict</b> attributes of software entities in the future.</li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org1ddad83" class="outline-3">
+<h3 id="org1ddad83"><span class="section-number-3">8.3</span> Software metric should satisfy the following characteristics:</h3>
+<div class="outline-text-3" id="text-8-3">
+<ul class="org-ul">
+<li><b>Must be measurable</b>: It is probably stating the obvious that a metric must be measurable, but it is quite common for opinions, which are not measurable, to be used as metrics.</li>
+<li><b>Must be independent</b>: A metric is only useful if it is independent of the influence of the project team or organisation. Project teams have a direct interest in attaining good metric values. Basically don't <b>lie</b> in the stats.</li>
+<li><b>Must be accountable</b>: Information about a metric and its uses should be documented. This is important so that individuals, who use the metrics for some application (e.g. Project Management), can understand the significance of the metric values.</li>
+<li><b>Must be precise</b>: Metric values must be associated with a precise value.</li>
+</ul>
+</div>
+
+<div id="outline-container-orgaa2eb5f" class="outline-4">
+<h4 id="orgaa2eb5f">Base Measures</h4>
+<div class="outline-text-4" id="text-orgaa2eb5f">
+<ul class="org-ul">
+<li>Are measured directly</li>
+<li>Usually the measure consists of a single variable</li>
+<li>Example:
+<ul class="org-ul">
+<li>Lines of code reviewed during an inspection</li>
+<li>Number of hours spent preparing for an inspection</li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org704f8b7" class="outline-4">
+<h4 id="org704f8b7">Derived Measures</h4>
+<div class="outline-text-4" id="text-org704f8b7">
+<ul class="org-ul">
+<li>Derived measures or complex metrics and are modelled using combinations (equations or algorithms) of base measures and/or other derived measures.</li>
+<li>Example:
+<ul class="org-ul">
+<li>The inspection’s preparation rate (e.g. the number of lines of code reviewed divided by the number of preparation hours.)</li>
+</ul></li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgab8e51b" class="outline-3">
+<h3 id="orgab8e51b"><span class="section-number-3">8.4</span> Process Measurement</h3>
+<div class="outline-text-3" id="text-8-4">
+<ul class="org-ul">
+<li>Process measurements are quantitative data about the software process.</li>
+<li>Process measurements can be used to assess whether the efficiency of a process has been improved.</li>
+<li>Examples:
+<ul class="org-ul">
+<li>Time taken for a particular process to complete</li>
+<li>Resources required for a particular process</li>
+<li>Number of occurrences of a particular event</li>
+</ul></li>
+<li>Process measurements on their own cannot be used to determine whether product quality has improved.</li>
+<li>Product quality data should be collected and related to process activities.</li>
+<li>Product measures are concerned with characteristics of the software itself, such as cyclomatic complexity.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org5aec3a8" class="outline-3">
+<h3 id="org5aec3a8"><span class="section-number-3">8.5</span> Selection Approach</h3>
+<div class="outline-text-3" id="text-8-5">
+<ul class="org-ul">
+<li>Collect data on everything, then analyse the data to find correlation, meaning, or information, OR</li>
+<li>Collect and report on the current “hot” metrics, OR</li>
+<li>Use whatever data is available as a by-product of the software development process to produce metrics, OR</li>
+<li>Employ the Goal/Question/Metric (GQM) approach to define a goal-based software measurement program.</li>
+<li>GQM can be used to help decide what measurements should be taken and how they should be used.</li>
+<li>(GQM is an approach to software metrics that has been promoted by Victor Basili of the University of Maryland.)</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org4380e28" class="outline-2">
+<h2 id="org4380e28"><span class="section-number-2">9</span> Process Improvement</h2>
+<div class="outline-text-2" id="text-9">
+</div>
+<div id="outline-container-org6c61b36" class="outline-3">
+<h3 id="org6c61b36"><span class="section-number-3">9.1</span> The Process Improvement Process</h3>
+<div class="outline-text-3" id="text-9-1">
+<ul class="org-ul">
+<li>Process improvement means understanding existing processes and changing these processes to increase product quality and/or reduce costs and development time.</li>
+<li>Is <b>cyclic</b>:
+<ul class="org-ul">
+<li><b>Measure</b></li>
+<li><b>Analyze</b></li>
+<li><b>Change</b></li>
+</ul></li>
+</ul>
+</div>
+
+<div id="outline-container-org2983c53" class="outline-4">
+<h4 id="org2983c53">Approaches To Improvement</h4>
+<div class="outline-text-4" id="text-org2983c53">
+<ul class="org-ul">
+<li><b>The process maturity approach</b>, which focuses on improving process and project management and introducing good software engineering practice.
+<ul class="org-ul">
+<li>The level of process maturity reflects the extent to which good technical and management practice has been adopted in organizational software development processes.</li>
+</ul></li>
+<li><b>The agile approach</b>, which focuses on iterative development and the reduction of overheads in the software process.
+<ul class="org-ul">
+<li>The primary characteristics of agile methods are rapid delivery of functionality and responsiveness to changing customer requirements.</li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org1898939" class="outline-4">
+<h4 id="org1898939">Improvement attributes</h4>
+<div class="outline-text-4" id="text-org1898939">
+<ul class="org-ul">
+<li>You also have to consider what aspects of the process that you want to improve.</li>
+<li>Your goal might be to improve software quality and so you may wish to introduce new process activities that change the way software is developed and tested.</li>
+<li>You may be interested in improving some attribute of the process itself (such as development time) and you have to decide which process attributes are the most important to your company.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orga711e88" class="outline-4">
+<h4 id="orga711e88">Process Attributes</h4>
+<div class="outline-text-4" id="text-orga711e88">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Process Characteristics</th>
+<th scope="col" class="org-left">Key Issues</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Understandability</td>
+<td class="org-left">To what extent is the process explicitly defined and how easy is it to understand the process definition?</td>
+</tr>
+
+<tr>
+<td class="org-left">Standardization</td>
+<td class="org-left">To what extent is the process based on a standard generic process?</td>
+</tr>
+
+<tr>
+<td class="org-left">Visibility</td>
+<td class="org-left">Do the process activities culminate in clear results, so that the progress of the process is externally visible?</td>
+</tr>
+
+<tr>
+<td class="org-left">Measurability</td>
+<td class="org-left">Does the process include data collection or other activities that allow process or product characteristics to be measured?</td>
+</tr>
+
+<tr>
+<td class="org-left">Supportability</td>
+<td class="org-left">To what extent can software tools be used to support the process activities?</td>
+</tr>
+
+<tr>
+<td class="org-left">Acceptability</td>
+<td class="org-left">Is the defined process acceptable to and usable by the engineers responsible for producing the software product?</td>
+</tr>
+
+<tr>
+<td class="org-left">Reliability</td>
+<td class="org-left">Is the process designed in such a way that process errors are avoided or trapped before they result in product errors?</td>
+</tr>
+
+<tr>
+<td class="org-left">Robustness</td>
+<td class="org-left">Can the process continue in spite of unexpected problems?</td>
+</tr>
+
+<tr>
+<td class="org-left">Maintainability</td>
+<td class="org-left">Can the process evolve to reflect changing organizational requirements or identified process improvements?</td>
+</tr>
+
+<tr>
+<td class="org-left">Rapidity</td>
+<td class="org-left">How fast can the process of delivering a system from a given specification be completed?</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org6645117" class="outline-3">
+<h3 id="org6645117"><span class="section-number-3">9.2</span> Process Measurement (Stage 1)</h3>
+<div class="outline-text-3" id="text-9-2">
+<ul class="org-ul">
+<li>Attributes of the current process are measured. These are a baseline for assessing improvements.
+<ul class="org-ul">
+<li>Wherever possible, quantitative process data should be collected</li>
+<li>Process measurements should be used to assess process improvements</li>
+<li>Time taken for process activities to be completed</li>
+<li>Resources required for processes or activities</li>
+<li>Number of occurrences of a particular event</li>
+<li>Goal-Question-Metric Paradigm (<b>GQM</b>)
+<ul class="org-ul">
+<li>Why are we introducing process improvement?</li>
+<li>What information do we need to help identify and assess improvements?</li>
+<li>What process and product measurements are required to provide this information?</li>
+</ul></li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org3f063fb" class="outline-3">
+<h3 id="org3f063fb"><span class="section-number-3">9.3</span> Process Analysis (Stage 2)</h3>
+<div class="outline-text-3" id="text-9-3">
+<ul class="org-ul">
+<li>The current process is assessed and bottlenecks and weaknesses are identified.</li>
+<li>The study of existing processes to understand the relationships between parts of the process and to compare them with other processes.</li>
+<li><b>Objectives</b>:
+<ul class="org-ul">
+<li>To understand the activities involved in the process and the relationships between these activities.</li>
+<li>To understand the relationships between the process activities and the measurements that have been made.</li>
+<li>To relate the specific process or processes that you are analyzing to comparable processes elsewhere in the organization, or to idealized processes of the same type.</li>
+</ul></li>
+<li><b>Techniques</b>:
+<ul class="org-ul">
+<li>Published process models and process standards</li>
+<li>Questionnaires and interviews</li>
+<li>Ethnographic analysis
+<ul class="org-ul">
+<li>Involves assimilating process knowledge by observation. Best for in-depth analysis of process fragments rather than for whole-process understanding.</li>
+</ul></li>
+</ul></li>
+<li><b>Aspects</b>:
+<ul class="org-ul">
+<li>Communications</li>
+<li>Introspection</li>
+<li>Learning</li>
+<li>Tool support</li>
+</ul></li>
+<li><b>Models</b>:
+<ul class="org-ul">
+<li>Process models are a good way of focusing attention on the activities in a process and the information transfer between these activities.</li>
+<li>Model-oriented questions can be used to help understand the process e.g.
+<ul class="org-ul">
+<li>What activities take place in practice but are not shown in the model?</li>
+<li>Are there process activities, shown in the model, that you (the process actor) think are inefficient?</li>
+</ul></li>
+</ul></li>
+<li><b>Exceptions for Models</b>:
+<ul class="org-ul">
+<li>Several key people becoming ill just before a critical review;</li>
+<li>A breach of security that means all external communications are out of action for several days;</li>
+<li>Organisational reorganisation;</li>
+<li>A need to respond to an unanticipated request for new proposals.</li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgdba3733" class="outline-3">
+<h3 id="orgdba3733"><span class="section-number-3">9.4</span> Process Change (Stage 3)</h3>
+<div class="outline-text-3" id="text-9-4">
+<ul class="org-ul">
+<li>Changes to the process that have been identified during the analysis are introduced.</li>
+<li>May involve:
+<ul class="org-ul">
+<li>Introducing new practices, methods or processes</li>
+<li>Changing the ordering of process activities</li>
+<li>Introducing or removing deliverables</li>
+<li>Introducing new roles or responsibilities</li>
+</ul></li>
+</ul>
+</div>
+
+<div id="outline-container-orgf707eb2" class="outline-4">
+<h4 id="orgf707eb2">Improvement Identification (Stage 1)</h4>
+<div class="outline-text-4" id="text-orgf707eb2">
+<ul class="org-ul">
+<li>This stage is concerned with using the results of the process analysis to identify ways to tackle quality problems, schedule bottlenecks or cost inefficiencies that have been identified during process analysis.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgedf8e04" class="outline-4">
+<h4 id="orgedf8e04">Improvement Prioritization (Stage 2)</h4>
+<div class="outline-text-4" id="text-orgedf8e04">
+<ul class="org-ul">
+<li>When many possible changes have been identified, it is usually impossible to introduce them all at once, and you must decide which are the most important.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org46a4f5f" class="outline-4">
+<h4 id="org46a4f5f">Improvement Change Introduction (Stage 3)</h4>
+<div class="outline-text-4" id="text-org46a4f5f">
+<ul class="org-ul">
+<li>Process change introduction means putting new procedures, methods and tools into place and integrating them with other process activities.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org0cefdf4" class="outline-4">
+<h4 id="org0cefdf4">Process Change Training (Stage 4)</h4>
+<div class="outline-text-4" id="text-org0cefdf4">
+<ul class="org-ul">
+<li>Without training, it is not possible to gain the full benefits of process changes. The engineers involved need to understand the changes that have been proposed and how to perform the new and changed processes.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orga1364cb" class="outline-4">
+<h4 id="orga1364cb">Change Tuning (Stage 5)</h4>
+<div class="outline-text-4" id="text-orga1364cb">
+<ul class="org-ul">
+<li>Proposed process changes will never be completely effective as soon as they are introduced. You need a tuning phase where minor problems can be discovered, and modifications to the process can be proposed and introduced.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orged19841" class="outline-4">
+<h4 id="orged19841">Problems</h4>
+<div class="outline-text-4" id="text-orged19841">
+<ul class="org-ul">
+<li>Resistance to change</li>
+<li>Change persistence</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org34de316" class="outline-2">
+<h2 id="org34de316"><span class="section-number-2">10</span> CMMI</h2>
+<div class="outline-text-2" id="text-10">
+</div>
+<div id="outline-container-org953cb9e" class="outline-3">
+<h3 id="org953cb9e"><span class="section-number-3">10.1</span> What Is It?</h3>
+<div class="outline-text-3" id="text-10-1">
+<ul class="org-ul">
+<li>The CMMI framework is the current stage of work on process assessment and improvement that started at the Software Engineering Institute in the 1980s.</li>
+<li>A common-sense application of process management and quality improvement concepts to product development,  maintenance and acquisition</li>
+<li>Set of best practices</li>
+<li>A community developed guide</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgbf20c86" class="outline-3">
+<h3 id="orgbf20c86"><span class="section-number-3">10.2</span> Why Use It?</h3>
+<div class="outline-text-3" id="text-10-2">
+<ul class="org-ul">
+<li>Benchmarking tool</li>
+<li>Acts as a roadmap</li>
+<li>Provides criteria for reviews and appraisals</li>
+<li>Provides a reference point</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org63cc3b9" class="outline-3">
+<h3 id="org63cc3b9"><span class="section-number-3">10.3</span> Continuous Model</h3>
+<div class="outline-text-3" id="text-10-3">
+<ul class="org-ul">
+<li>Allows you to select the order of improvement that best meets the organisation’s business objectives.</li>
+<li>Enables comparisons across and among organisations on a process area by process area basis.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org8bf1045" class="outline-3">
+<h3 id="org8bf1045"><span class="section-number-3">10.4</span> Staged Model</h3>
+<div class="outline-text-3" id="text-10-4">
+<ul class="org-ul">
+<li>Provides a proven sequence of improvements, each serving as a foundation for the next.</li>
+<li>Enables comparisons across and among organisations on a process area on a (maturity) level basis. Provides a single rating that summarizes appraisal results.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org5d344a2" class="outline-3">
+<h3 id="org5d344a2"><span class="section-number-3">10.5</span> The CMMI Model Diagram</h3>
+<div class="outline-text-3" id="text-10-5">
+
+<div class="figure">
+<p><img src="images/CMMI/screenshot_2018-12-09_12-32-39.png" alt="screenshot_2018-12-09_12-32-39.png" />
+</p>
+</div>
+<ul class="org-ul">
+<li><b>Process Areas</b>: A set of related activities that when performed together accomplish a set of goals
+<ul class="org-ul">
+<li>There are 22 Process Areas in the CMMI</li>
+<li>Each process area has generic (common to all PAs) and specific goals (specific to a PA)</li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgbff19b5" class="outline-3">
+<h3 id="orgbff19b5"><span class="section-number-3">10.6</span> Stages</h3>
+<div class="outline-text-3" id="text-10-6">
+</div>
+<div id="outline-container-orgd43d911" class="outline-4">
+<h4 id="orgd43d911">1: Initial, Essentially uncontrolled</h4>
+</div>
+
+<div id="outline-container-org62834c3" class="outline-4">
+<h4 id="org62834c3">2: Managed, Product management procedures defined and used</h4>
+<div class="outline-text-4" id="text-org62834c3">
+<ul class="org-ul">
+<li>Requirements management</li>
+<li>Project planning</li>
+<li>Project monitoring and control</li>
+<li>Configuration management</li>
+<li>Supplier agreement management</li>
+<li>Measurement and analysis</li>
+<li>Product and process quality assurance</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org8751856" class="outline-4">
+<h4 id="org8751856">3: Defined, Process management procedures and strategies defined</h4>
+<div class="outline-text-4" id="text-org8751856">
+<ul class="org-ul">
+<li>Integrated teaming</li>
+<li>Integrated supplier management</li>
+<li>Decision analysis and resolution</li>
+<li>Risk management</li>
+<li>Integrated project management</li>
+<li>Organizational training</li>
+<li>Organizational process definition</li>
+<li>Organizational process focus</li>
+<li>Validation</li>
+<li>Verification</li>
+<li>Product integration</li>
+<li>Technical solution</li>
+<li>Requirements development</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org43256f6" class="outline-4">
+<h4 id="org43256f6">4: Quantitatively Managed, Process management strategies used and controlled</h4>
+<div class="outline-text-4" id="text-org43256f6">
+<ul class="org-ul">
+<li>Quantitative project management</li>
+<li>Organizational process performance</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org136fe3f" class="outline-4">
+<h4 id="org136fe3f">5: Optimizing, Process improvement strategies defined and used</h4>
+<div class="outline-text-4" id="text-org136fe3f">
+<ul class="org-ul">
+<li>Organization innovation and deployment</li>
+<li>Causal analysis and resolution</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org3d1758f" class="outline-2">
+<h2 id="org3d1758f"><span class="section-number-2">11</span> For the Exam</h2>
+<div class="outline-text-2" id="text-11">
+</div>
+<div id="outline-container-org29ff2c4" class="outline-3">
+<h3 id="org29ff2c4"><span class="section-number-3">11.1</span> Quality</h3>
+<div class="outline-text-3" id="text-11-1">
+<ul class="org-ul">
+<li>Remember important aspect of auditing processes</li>
+<li>Make sure to be able to calculate metrics for the exam</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orga5795d9" class="outline-3">
+<h3 id="orga5795d9"><span class="section-number-3">11.2</span> CMMI</h3>
+<div class="outline-text-3" id="text-11-2">
+<ul class="org-ul">
+<li>Staged vs modeled</li>
+<li>The five levels of maturity, but not all the individual sub components</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org292196b" class="outline-2">
+<h2 id="org292196b"><span class="section-number-2">12</span> Exam Question</h2>
+<div class="outline-text-2" id="text-12">
+</div>
+<div id="outline-container-org0b068c2" class="outline-3">
+<h3 id="org0b068c2"><span class="section-number-3">12.1</span> CMMI</h3>
+<div class="outline-text-3" id="text-12-1">
+<ul class="org-ul">
+<li>Continuous vs Staged:
+<ul class="org-ul">
+<li><b>Continuous Model</b>: Uses Capability Levels as a form of measurement (amount of specific goals and generic practices in place)</li>
+<li><b>Staged Model</b>: Uses Maturity levels as a form of measurement. Five stages of maturity: Initial, Managed, Defined, Quantitatively Managed, Optimizing</li>
+</ul></li>
+<li>Define and identify relationships of;
+<ul class="org-ul">
+<li><b>Process Area</b>: A collection of related practices in an area that, when implemented together, they will satisfy a specific set of goals that are important to improve that certain area.</li>
+<li><b>Generic Goals</b>: A part of a <b>Process Area</b>, common to all <b>Process Areas</b>; Is a needed model component which is used to check if a <b>Process Area</b> has been satisfied or not.
+<ul class="org-ul">
+<li>Address institutionalization issues</li>
+<li><b>Institutionalization</b>:
+<ul class="org-ul">
+<li>Culture nurtured by the management</li>
+<li>Process survives personnel turnover</li>
+<li>Practice becomes habit</li>
+<li>It means that the process will: be effective, be repeatable and lasting</li>
+</ul></li>
+</ul></li>
+<li><b>Specific Goals</b>: A part of a <b>Process Area</b>, however specific to only a certain <b>Process Area</b>
+<ul class="org-ul">
+<li>Addresses the unique characteristics of the <b>Process Area</b></li>
+</ul></li>
+<li><b>Specific Practices</b>: Is a part or sub-component that is important to a company; Is a Process that a company should implement/cover to accomplish a Specific Goal</li>
+<li><b>Generic Practices</b>: Are elements present in <b>Generic Goals</b> that and apply to multiple processes. These generic practices must be follow to institutionalize the process across an organization.</li>
+<li><b>Typical Work Products</b>: List sample outputs from a specific process.</li>
+<li><b>Sub-practices</b>: Is an elaborated guidance that provides direction for interpreting and implementing a specific or generic practice.</li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgad9e916" class="outline-3">
+<h3 id="orgad9e916"><span class="section-number-3">12.2</span> Explain how the principles underlying agile methods lead to the accelerated development and deployment of software.</h3>
+<div class="outline-text-3" id="text-12-2">
+<ul class="org-ul">
+<li><b>Individual and interactions over processes and tools</b>: By taking advantages of individual skills and ability and by ensuring that the development team knows what each other are doing, the overheads of formal communication and process assurance are avoided. This means that the team can focus on the development of working software.</li>
+<li><b>Working software over comprehensive documentation</b>: This contributes to accelerated development because time is not spent developing, checking and managing documentation. Rather, the programmer’s time is focused on the development and testing of code.</li>
+<li><b>Customer collaboration over contract negotiation</b>: Rather than spending time developing, analyzing and negotiating requirements to be included in a system contract, agile developers argue that it is more effective to get feedback from customer’s directly during the development about what is required. This allows useful functionality to be developed and delivered earlier than would be possible if contracts were required.</li>
+<li><b>Responding to change over following a plan</b>: Agile developers argue (rightly) that being responsive to change is more effective than following a plan-based process because change is inevitable whatever process is used. There is significant overhead in changing plans to accommodate change and the inflexibility of a plan means that work may be done that is later discarded.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org25c5bf5" class="outline-3">
+<h3 id="org25c5bf5"><span class="section-number-3">12.3</span> Extreme programming expresses user requirements as stories, with each story written on a card. Discuss the advantages and disadvantages of this approach to requirements description.</h3>
+<div class="outline-text-3" id="text-12-3">
+<ul class="org-ul">
+<li><b>Pros</b>:
+<ul class="org-ul">
+<li>Unified vision and communication between the client and the team</li>
+<li>Prioritizing functions</li>
+<li>Maximization of usability</li>
+<li>Boosts creativity through communication</li>
+<li>Time estimation facility</li>
+</ul></li>
+<li><b>Cons</b>:
+<ul class="org-ul">
+<li>Sometimes simple tasks are hard to describe</li>
+<li>User Story interpretation difference between the client and the team</li>
+<li>No information regarding method of development of the UI</li>
+<li>Focus on business functionality and not technicalities, e.g. Code Efficiency</li>
+<li>Lost of vision due to fragmentation via too many user stories</li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org0ebcdac" class="outline-3">
+<h3 id="org0ebcdac"><span class="section-number-3">12.4</span> Explain why program inspections are an effective technique for discovering errors in a program. What types of error are unlikely to be discovered through inspections?</h3>
+<div class="outline-text-3" id="text-12-4">
+<p>
+Program inspections are effective for the following reasons:
+</p>
+
+<ul class="org-ul">
+<li>They can <b>find several faults in one pass</b> without being concerned about interference between program faults.</li>
+<li>They bring a <b>number of people with different experience</b> of different types of errors. Hence, the team approach offers greater coverage than any individual can bring.</li>
+<li>They force the program <b>author to re-examine</b> the program in detail – this often reveals errors or misunderstandings.</li>
+<li>The types of errors that inspections are unlikely to find are <b>specification errors or errors that are based on a misunderstanding</b> of the application domain (unless there are domain experts in the team).</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org835f264" class="outline-3">
+<h3 id="org835f264"><span class="section-number-3">12.5</span> Explain why it is difficult to validate the relationships between internal product attributes, such as cyclomatic complexity and external attributes, such as maintainability.</h3>
+<div class="outline-text-3" id="text-12-5">
+<ul class="org-ul">
+<li>The basic difficulty arises because the external attributes such as maintainability are <b>not just dependent on a small number of internal product attributes</b>. While the <b>complexity of a system influences its maintainability</b>, other issues such as the use of variable names, the system documentation and, particularly, the skills of the people doing the maintenance <b>have such a large effect</b> on the process that they may mask any maintainability differences arising from different levels of complexity. This does not contradict experiments where a relationship between maintainability and complexity was discovered – however, we don’t have enough evidence at the moment to generalize this.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org9c1e322" class="outline-3">
+<h3 id="org9c1e322"><span class="section-number-3">12.6</span> Explain how standards may be used to capture organizational wisdom about effective methods of software development. Suggest four types of knowledge that might be captured in organizational standards.</h3>
+<div class="outline-text-3" id="text-12-6">
+<p>
+Standards encapsulate organizational wisdom because they capture good practices that have evolved over the years. Knowledge that might be captured in organizational standards include:
+</p>
+
+<ul class="org-ul">
+<li>Knowledge of specific <b>types of fault that commonly occur in the type of software developed by an organization</b>. This might be encapsulated in a standard review checklist.</li>
+<li>Knowledge of the <b>types of system model that have proved useful for software maintenance</b>. This can be encapsulated in design documentation standards.</li>
+<li>Knowledge of <b>tool support that has been useful for a range of projects</b>. This can be encapsulated in a standard for a development environment to be used by all projects.</li>
+<li>Knowledge of the <b>type of information that is useful to include as comments in code</b>. This can be encapsulated in a code commenting standard.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org6e09e58" class="outline-3">
+<h3 id="org6e09e58"><span class="section-number-3">12.7</span> Assume you work for an organization that develops database products for individuals and small businesses. This organization is interested in quantifying its software development. Identify appropriate process and product metrics to do this and suggest how these can be collected.</h3>
+<div class="outline-text-3" id="text-12-7">
+</div>
+<div id="outline-container-org464a69e" class="outline-4">
+<h4 id="org464a69e">Product metrics</h4>
+<div class="outline-text-4" id="text-org464a69e">
+<p>
+Product metrics should be used to judge the quality and efficiency of the software.
+</p>
+
+<ul class="org-ul">
+<li>Total number of measured faults detected by testing</li>
+<li>Total number of faults which resulted in database corruption</li>
+<li>Total number of system failures which forced a system restart</li>
+<li>Number of database transactions processed per unit time.</li>
+<li>Time to read/write large DB records</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org1a4a318" class="outline-4">
+<h4 id="org1a4a318">Process Metrics</h4>
+<div class="outline-text-4" id="text-org1a4a318">
+<ul class="org-ul">
+<li>Number of different configurations used for system testing</li>
+<li>Number of fault reports submitted</li>
+<li>Average time required to clear fault after it is reported</li>
+<li>Time required to run system regression tests</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org34d5006" class="outline-3">
+<h3 id="org34d5006"><span class="section-number-3">12.8</span> When would you recommend against the use of an agile method for developing a software system?</h3>
+<div class="outline-text-3" id="text-12-8">
+<ul class="org-ul">
+<li>Agile methods should probably not be used when the software is being developed by <b>teams who are not co-located</b>. If any of the individual teams use agile methods, it is very difficult to coordinate their work with other teams. Furthermore, the <b>informal communication which is an essential part</b> of agile methods is practically impossible to maintain.</li>
+<li>Agile methods should probably also be avoided for <b>critical systems</b> where the consequences of a specification error are serious. In those circumstances, a system specification that is available before development starts makes a detailed specification analysis possible.</li>
+<li>However, some ideas from agile approaches such as test first development are certainly applicable to critical systems.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgcbfad2f" class="outline-3">
+<h3 id="orgcbfad2f"><span class="section-number-3">12.9</span> Suggest four reasons why the productivity rate of programmers working as a pair might be more than half that of two programmers working individually.</h3>
+<div class="outline-text-3" id="text-12-9">
+<ul class="org-ul">
+<li>Pair programming leads to <b>continuous informal reviewing</b>. This discovers bugs morequickly than individual testing.</li>
+<li>Information sharing in pair programming is implicit – it happens during the process. This <b>reduces the need for documentation</b> and the <b>time required if one programmer has to pick up another’s work</b>. Individual programmers have to spend time explicitly sharing information and they are not being productive when doing so.</li>
+<li>Pair programming encourages <b>refactoring</b> (the code must be understandable to another person). This <b>reduces the costs of subsequent</b> development and means that future changes can be made quickly. Hence, efficiency is increased.</li>
+<li>In pair programming, people are likely to spend <b>less time in fine-grain optimization</b> as this does not benefit the other programmer. This means that the <b>pair focuses on the essential features</b> of the system which they can then produce more quickly.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org3dfdad8" class="outline-3">
+<h3 id="org3dfdad8"><span class="section-number-3">12.10</span> It has been suggested that one of the problems of having a user closely involved with a software development team is that they 'go native'. That is, they adopt the outlook of the development team and lose sight of the needs of their user colleagues. Suggest three ways how you might avoid this problem and discuss the advantages and disadvantages of each approach.</h3>
+<div class="outline-text-3" id="text-12-10">
+<ul class="org-ul">
+<li><b>Involve multiple users</b> in the development team. Advantages are you get multiple perspectives on the problem, better coverage of user tasks and hence requirements and less likelihood of having an atypical user. Disadvantages are cost, difficulties of getting user engagement and possible user conflicts.</li>
+<li><b>Change the user</b> who is involved with the team. Advantages are, again, multiple perspectives. Disadvantages are each user takes time to be productive and possible conflicting requirements from different users.</li>
+<li><b>Validate user suggestions</b> with other user representatives. Advantages are independent check on suggestions; disadvantage is that this slows down the development process as it takes time to do the checks.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org6aa61a7" class="outline-3">
+<h3 id="org6aa61a7"><span class="section-number-3">12.11</span> Under what circumstances might a company justifiably charge a much higher price for a software system than the software cost estimate plus a reasonable profit margin?</h3>
+<div class="outline-text-3" id="text-12-11">
+<ul class="org-ul">
+<li>Where a customer expects the developer to <b>take on a considerable amount of project risk</b></li>
+<li>Where the customer has <b>special requirements</b> e.g. for very rapid delivery</li>
+<li>When the <b>work is not central to the companies' business</b> and so diverts people from other more business-focused activities. The high price is intended to compensate for this.</li>
+<li>When the <b>customer has no alternative! Ethics come to play here though, MONOPOLY!</b></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org4f5f12c" class="outline-3">
+<h3 id="org4f5f12c"><span class="section-number-3">12.12</span> Cost estimates are inherently risky, irrespective of the estimation technique used. Suggest five ways in which the risk in a cost estimate can be reduced.</h3>
+<div class="outline-text-3" id="text-12-12">
+<ul class="org-ul">
+<li>We can use <b>different estimation techniques</b> to obtain a number of independent estimations. If these estimations are widely divergent, we can generate more costing information iterate until the estimates coverage</li>
+<li>If we find parts of project phrases are hard to estimate, we should <b>develop a prototype</b> to find out what problems happening to those phrases</li>
+<li>We can <b>reuse the software</b> to reduce estimation that we need to do</li>
+<li>When the system functions are adapted to a fixed cost, we need to <b>adopt a design that will reduce the cost of the development</b></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgb050840" class="outline-3">
+<h3 id="orgb050840"><span class="section-number-3">12.13</span> What is the most important difference between generic software product development and custom software development? What might this mean in practice for users of generic software products?</h3>
+<div class="outline-text-3" id="text-12-13">
+<ul class="org-ul">
+<li>The essential difference is that in <b>generic software product development</b>, the specification is <b>owned by the product developer</b>. For <b>custom product development</b>, the specification is <b>owned and controlled by the customer</b>. The implications of this are significant – the developer can quickly decide to change the specification in response to some external change (e.g. a competing product) but, when the customer owns the specification, changes have to be negotiated between the customer and the developer and may have contractual implications.</li>
+<li>For users of generic products, this means they have no control over the software specification so cannot control the evolution of the product. The developer may decide to include/exclude features and change the user interface. This could have implications for the user’s business processes and add extra training costs when new versions of the system are installed. It also may limit the customer’s flexibility to change their own business processes.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org6e7f824" class="outline-3">
+<h3 id="org6e7f824"><span class="section-number-3">12.14</span> Giving reasons for your answer based on the type of system being developed, suggest the most appropriate generic software process model that might be used as a basis for managing the development of the following systems:</h3>
+<div class="outline-text-3" id="text-12-14">
+<ul class="org-ul">
+<li><b>Anti-lock braking system</b>: This is a safety-critical system so requires a lot of up-front analysis before implementation. It certainly needs a plan-driven approach to development with the requirements carefully analysed. A waterfall model is therefore the most appropriate approach to use, perhaps with formal transformations between the different development stages.</li>
+<li><b>Virtual reality system</b>: This is a system where the requirements will change and there will be an extensive user interface components. Incremental development with, perhaps, some UI prototyping is the most appropriate model. An agile process may be used.</li>
+<li><b>University accounting system</b>: This is a system whose requirements are fairly well-known and which will be used in an environment in conjunction with lots of other systems such as a research grant management system. Therefore, a reuse-based approach is likely to be appropriate for this.</li>
+<li><b>Interactive travel planning system</b>: System with a complex user interface but which must be stable and reliable. An incremental development approach is the most appropriate as the system requirements will change as real user experience with the system is gained.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org9fc8eac" class="outline-3">
+<h3 id="org9fc8eac"><span class="section-number-3">12.15</span> Fixed-price contracts, where the contractor bids a fixed price to complete a system development, may be used to move project risk from client to contractor. If anything goes wrong, the contractor has to pay. Suggest how the use of such contracts may increase the likelihood that product risks will arise.</h3>
+<div class="outline-text-3" id="text-12-15">
+<ul class="org-ul">
+<li><b>Fixed-price contracts</b> are attractive to potential software development clients because it guarantees them a predetermined budget and also allows for all the risk to be taken up by the contractor. Fixed-price contracts mean that the contractor takes on any extra costs that could incur because of changes in requirements or technology that affect the timeline for the project's completion. While this may be a benefit for the customer, who will have more power to change their mind and project requirements, it is much more likely that product risks will arise because of bad communication, changes in plans, and off-schedule development. And all of these problems will be up to the contractor to take care of, which does not seem like a smart business plan.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org11776c7" class="outline-3">
+<h3 id="org11776c7"><span class="section-number-3">12.16</span> What are the important differences between the agile approach and the process maturity approach to software process improvement?</h3>
+<div class="outline-text-3" id="text-12-16">
+<ul class="org-ul">
+<li>The fundamental difference in these approaches is that the agile approach is <b>people-centric</b> and the process maturity approach is <b>process centric</b>. In the agile approach, practices are introduced that are geared to supporting communication between people, making it easier for them to make changes to the software and minimizing the time that they need to spend doing things apart from software production (e.g. documentation).</li>
+<li>The process maturity approach is <b>based on defined processes</b> that <b>incorporate good practice</b> and in ensuring that these <b>processes are followed by all of the teams</b> in an organization. They assume that by defining process and good practice, all engineers involved in development can perform in a comparable way. That is, they do not focus on the capabilities of the individual engineers but rather on being able to maintain consistent practice even although the team changes.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgc90e941" class="outline-3">
+<h3 id="orgc90e941"><span class="section-number-3">12.17</span> Describe three types of software process metric that may be collected as part of a process improvement process. Give one example of each type of metric.</h3>
+<div class="outline-text-3" id="text-12-17">
+<ul class="org-ul">
+<li><b>Source Code Metrics</b>
+<ul class="org-ul">
+<li>When measuring source code quality make sure you’re looking at the <b>number of lines of code</b> you have, which will ensure that you have the appropriate amount of code and it’s no more complex than it needs to be. Another thing to track is how <b>compliant each line of code is with the programming languages’ standard usage rules</b>. Equally important is to track the <b>percentage of comments within the code</b>, which will tell you how much maintenance the program will require. The less comments, the more problems when you decide to change or upgrade. Other things to include in your measurements is <b>code duplicates and unit test coverage</b>, which will tell you how smoothly your product will run (and at when are you likely to encounter issues).</li>
+</ul></li>
+<li><b>Development Metrics</b>
+<ul class="org-ul">
+<li>Measuring <b>number of defects within the code and time to fix them</b> tells you a lot about the development process itself. Start by <b>tallying up the number of defects that appear in the code and note the time</b> it takes to fix them. If any <b>defects have to be fixed multiple times then there might be a misunderstanding of requirements or a skills gap</b> – which is important to address as soon as possible.</li>
+</ul></li>
+<li><b>Testing Metrics</b>
+<ul class="org-ul">
+<li>There are two major testing metrics. One of them is <b>"test coverage"</b> that collects data about which parts of the software program are executed when it runs a test. The second part is a test of the <b>testing itself</b>. It’s called <b>"defect removal efficiency,"</b> and it checks your success rate for spotting and removing defects. The more you measure, the more you know about your software product, the more likely you are able to improve it. Automating the measurement process is the best way to measure software quality - it’s not the easiest thing, or the cheapest, but it’ll save you tons of cost down the line.</li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgde5790f" class="outline-3">
+<h3 id="orgde5790f"><span class="section-number-3">12.18</span> Discuss, in relation to the ACM/IEEE Code of Ethics, the ethics of a company releasing software without disclosing known defects. Your answer should address each of the principles of the ACM/IEEE Code of Ethics. Justify any assumptions that you make.</h3>
+<div class="outline-text-3" id="text-12-18">
+<ul class="org-ul">
+<li><b>PUBLIC</b> - Software engineers shall act consistently with the public interest.</li>
+<li><b>CLIENT AND EMPLOYER</b> - Software engineers shall act in a manner that is in the best interests of their client and employer consistent with the public interest.</li>
+<li><b>PRODUCT</b> - Software engineers shall ensure that their products and related modifications meet the highest professional standards possible.</li>
+<li><b>JUDGMENT</b> - Software engineers shall maintain integrity and independence in their professional judgment.</li>
+<li><b>MANAGEMENT</b> - Software engineering managers and leaders shall subscribe to and promote an ethical approach to the management of software development and maintenance.</li>
+<li><b>PROFESSION</b> - Software engineers shall advance the integrity and reputation of the profession consistent with the public interest.</li>
+<li><b>COLLEAGUES</b> - Software engineers shall be fair to and supportive of their colleagues.</li>
+<li><b>SELF</b> - Software engineers shall participate in lifelong learning regarding the practice of their profession and shall promote an ethical approach to the practice of the profession.</li>
+</ul>
+
+<script src="../assets/jquery-3.3.1.min.js"></script>
+<script src="../assets/notes.js"></script>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="date">Date: 2018-09-10 Mon 11:54</p>
+<p class="author">Author: Damian Chrzanowski</p>
+<p class="date">Created: 2018-12-13 Thu 21:43</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

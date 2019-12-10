@@ -1,0 +1,272 @@
+#+TITLE: Databases 4
+#+DATE: [2019-09-09 Mon 11:54]
+#+AUTHOR: Damian Chrzanowski
+#+EMAIL: pjdamian.chrzanowski@gmail.com
+#+OPTIONS: TOC:2 num:2
+#+HTML_HEAD: <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="../assets/org.css"/>
+#+HTML_HEAD: <link rel="icon" href="../assets/favicon.ico">
+[[file:index.org][Home Page]]
+* Grade Distribution
+  - 50 CA
+  - 50 Exam
+    - Four benefits of SQL views
+* DDL (Data Definition Language)
+  - Create
+  - Drop
+  - Alter
+* DML (Data Manipulation Language)
+  - Select
+  - Insert
+  - Update
+  - Delete
+* Select Query Examples
+  - Get all that are not in their 40s
+  #+begin_src sql
+  select * from details where age not between 40 and 50;
+  -- OR
+  select * from details where age not like '4%';
+  -- OR
+  select * from details where age < 40 OR age > 49;
+  #+end_src
+  - Get all with a name longer than 4 letters
+  #+begin_src sql
+  select * from details where length(firstName) > 4;
+  #+end_src
+  - Get sum of all female wages
+  #+begin_src sql
+  select *, sum(rate * hours) as 'Wage' from details where gender = 'F';
+  #+end_src
+  - Average age in each department
+  #+begin_src sql
+  select department,avg(age) as 'AVG Age' from details group by department;
+  #+end_src
+  - Count number of females and males per department
+  #+begin_src sql
+  select department,gender,count(*) as 'Count' from details group by gender, department;
+  #+end_src
+  - Youngest person (or use limit with order by)
+  #+begin_src sql
+  select * from details where age = (select min(age) from details);
+  #+end_src
+* Views
+  - Creates a copy of a specific query
+  - Provides 4 mandatory aspects:
+    - *Design independence*: Limit what is seen and thus provide an abstraction to the viewer
+    - *Data security*: Restrict access to what is actually visible from a table
+    - *Simplified queries*: Hide complexity
+    - *Updatability*: Can be used to update, insert and delete data as well
+  - To create an updateable view:
+    - No ~DISTINCT~
+    - No aggregation functions
+    - No ~GROUP BY~ or ~HAVING~
+    - No ~UNION~
+
+  #+begin_src sql
+    CREATE VIEW names_department AS
+    SELECT firstNames, lastName
+    FROM details;
+
+    -- then read the names_department view as follows
+    select * form names_department;
+  #+end_src
+  - Create a view of a concatenated name and a phone number
+  #+begin_src sql
+    create view DocsPhone as
+    select concat(firstName, " ", lastName)
+    as 'Full Name', contactNo
+    from doctors;
+  #+end_src
+* Stored Programs
+** Stored Procedure
+   - Simple stored procedure that starts a transaction and attempts to update the invoices table
+   #+begin_src sql
+     -- changes the standard delimiter (semicolon) to a double forward slash
+     DELIMITER //
+
+     CREATE PROCEDURE update_surname
+     (
+         invoice_id_param INT,
+         credit_total_param DECIMAL(9,2)
+     )
+     BEGIN
+         DECLARE sql_error TINYINT DEFAULT FALSE;
+
+         DECLARE CONTINUE HANDLER FOR SQLEXCEPTION
+                 SET sql_error = TRUE;
+
+         START TRANSACTION;
+
+         UPDATE invoices
+         SET credi_total = credit_total_param
+         WHERE invoice_id = invoice_id_param;
+
+         IF sql_error = FALSE THEN
+             SELECT "Commited";
+             COMMIT;
+         ELSE
+             SELECT "Rollback";
+             ROLLBACK;
+         END IF;
+     END //
+   #+end_src
+   - Use the procedure as follows
+   #+begin_src sql
+     CALL name_of_procedure(56, 300);
+   #+end_src
+   - Input and output in Stored Procedure: outputs the amount of updates as the return value
+   #+begin_src sql
+     DELIMITER //
+
+     CREATE PROCEDURE update_surname
+     (
+         IN invoice_id_param INT,
+         IN credit_total_param DECIMAL(9,2),
+         OUT update_count int
+     )
+     BEGIN
+     DECLARE sql_error TINYINT DEFAULT FALSE;
+
+     DECLARE CONTINUE HANDLER FOR SQLEXCEPTION
+     SET sql_error = TRUE;
+
+     START TRANSACTION;
+
+     UPDATE invoices
+     SET credi_total = credit_total_param
+     WHERE invoice_id = invoice_id_param;
+
+     IF sql_error = FALSE THEN
+         SET update_count = 1;
+         COMMIT;
+     ELSE
+         SET update_count = 0;
+         ROLLBACK;
+     END IF;
+
+     END //
+   #+end_src
+** Stored Functions
+   - Functions are much alike procedure, however they: can return *only* a single value, *cannot* perform INSERT, UPDATE, DELETE
+   - Example of a function that calculates salary
+   #+begin_src sql
+     DELIMITER //
+
+     CREATE Function calculate_salary
+     (
+         id_param INT
+     )
+
+     RETURNS DECIMAL(9, 2)
+
+     BEGIN
+         DECLARE salary_var DECIMAL(9,2);
+             select sum(rate*hours)
+             into salary_var
+             from details
+             where id = id_param;
+         RETURN salary_var;
+     END//
+
+   #+end_src
+   - Use as like a normal function
+   #+begin_src sql
+     SELECT calculate_salary(3);
+   #+end_src
+   - Dropping functions
+   #+begin_src sql
+   DROP Function IF EXISTS calculate_salary;
+   #+end_src
+** Triggers
+   - Triggers are like hooks, they get fired before or after a: DELETE, UPDATE, INSERT
+   - Triggers can obscure what the server actually does, so be careful with them
+   - Using a lot of triggers can be slow
+   - DB maintenance can become difficult if there is a lot of triggers that do "invisible" work
+   - You  must specify a ~FOR EACH ROW~ clause. This clause creates a row-level trigger that fires once for each row that's modified.
+   - MySQL only supports row-level triggers
+   - ~SHOW TRIGGERS~ to show all triggers, or ~SHOW TRIGGERS IN db_name~ to show triggers for a particular database
+   - Example of a ~BEFORE~ trigger:
+   #+begin_src sql
+     DELIMITER //
+     CREATE TRIGGER details_before_update
+         BEFORE UPDATE ON details
+         FOR EACH ROW
+         BEGIN
+             SET NEW.department = UPPER(NEW.department);
+         END//
+   #+end_src
+   - Example of AFTER INSERT
+   #+begin_src sql
+     DELIMITER //
+     DROP TRIGGER IF EXISTS orders_after_insert;
+     CREATE  TRIGGER orders_after_insert
+         AFTER INSERT on orders
+         FOR EACH ROW
+     BEGIN
+         INSERT INTO orders_audit VALUES
+         (NEW.order_id, NEW.customer_id, "INSERTED", NOW());
+     END//
+   #+end_src
+** Events
+   - It fires at scheduled events
+   - Usually disabled by default, check with ~show variables where Variable_name = "event_scheduler";~
+   - Set with ~SET GLOBAL event_scheduler = ON;~
+   - Show events with ~SHOW EVENTS;~
+   - Show in certain DB ~SHOW EVENTS db_name;~
+   - Enable/Disable event with ~ALTER EVENT event_name DISABLE/ENABLE~
+   - Example of a one-time event (here its minutes, normally it would be hours or days, weeks, months):
+   #+BEGIN_SRC sql
+     DROP EVENT IF EXISTS one_time_delete_audit_rows;
+
+     DELIMITER //
+
+     CREATE EVENT one_time_delete_audit_rows
+     ON SCHEDULE AT NOW() + INTERVAL 10 MINUTE
+     DO BEGIN
+        DELETE FROM orders_audit WHERE action_date < NOW() - INTERVAL 10 MINUTE;
+     END //
+   #+END_SRC
+   - Example of a recurring event:
+   #+BEGIN_SRC sql
+     DROP EVENT IF EXISTS monthly_delete_audit_rows;
+
+     DELIMITER //
+     CREATE EVENT monthly_delete_audit_rows
+     ON SCHEDULE EVERY 1 MONTH
+     STARTS '2019-01-01'
+     DO BEGIN
+        DELETE FROM orders_audit WHERE action_date < NOW() - INTERVAL 1 MONTH;
+     END //
+   #+END_SRC
+* Normalisation
+** 1NF
+   - Contains no repeating columns, also each column must not repeat values (e.g. comma separation)
+   - Example of not a 1NF:
+   [[file:images/Normalisation/2019-12-04_21-18-46_screenshot.png]]
+   - To convert to 1NF remove repeating groups
+** 2NF
+   - Every column in a table must be /functionally dependent/ on the *whole* primary key of the table
+   - Functional dependency indicates that a link exists between the values in two different columns
+   - To convert from 1NF to 2NF remove columns that are not dependent on the primary key
+   - Example of converting from 1NF to 2NF (remove attributes that are not dependent on WHOLE primary key):
+   [[file:images/Normalisation/2019-12-04_21-22-14_screenshot.png]]
+** 3NF
+   - An entity is in the third normal form if it contains no transitive dependencies.
+   - A transitive dependency is one which is dependant on a non-key attribute
+   - To convert to third normal form, remove attributes that depend on non primary key attributes
+   - Example of converting from 2NF to 3NF (remove transitive dependencies):
+   [[file:images/Normalisation/2019-12-04_21-26-02_screenshot.png]]
+* ORM
+** Overview
+  - Main problems:
+    - *Granurality*: Problems with fine-grained classes embedded in fine-grained classes. In SQL there are only rows and columns
+    - *Subtypes*: Inheritance and polymorphism are natural OOP paradigms, SQL has no such concept
+    - *Identity*: Java compares object by reference (memory location), SQL does not have such comparisons
+    - *Association*: Java uses associations by references, SQL uses foreign keys. Java can be many-to-many, tables are always one-to-one or one-to-many, many-to-many can only be done by introducing a new table
+    - *Data navigation*: Java uses getters to retrieve data from one object to another, SQL uses joins
+** TODO JPA
+* Delete at the end
+  #+BEGIN_EXPORT html
+  <script src="../assets/jquery-3.3.1.min.js"></script>
+  <script src="../assets/notes.js"></script>
+  #+END_EXPORT

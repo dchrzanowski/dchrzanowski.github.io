@@ -1,0 +1,1486 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2018-12-16 Sun 12:27 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Software Development 3</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="Damian Chrzanowski" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="../assets/org.css"/>
+<link rel="icon" href="../assets/favicon.ico">
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2018 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Software Development 3</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orgb46e67d">1. Definitions</a>
+<ul>
+<li><a href="#org44ddbb5">1.1. Compiler</a></li>
+</ul>
+</li>
+<li><a href="#org033f744">2. Java Overview</a>
+<ul>
+<li><a href="#org35818c0">2.1. Compiling in Java</a></li>
+</ul>
+</li>
+<li><a href="#org797208d">3. Object Oriented Design</a>
+<ul>
+<li><a href="#orged3ad81">3.1. Definitions</a></li>
+<li><a href="#orgfde3f03">3.2. Two main approaches exist</a></li>
+<li><a href="#org610813c">3.3. Relationship with Relational Databases</a></li>
+<li><a href="#orgea26bf1">3.4. Methods visibility</a></li>
+<li><a href="#org9da18c9">3.5. The constructor</a></li>
+<li><a href="#orgf8c8fe8">3.6. Encapsulation</a></li>
+</ul>
+</li>
+<li><a href="#org422d582">4. Collections And Generics</a>
+<ul>
+<li><a href="#org7110b9b">4.1. Overview</a></li>
+<li><a href="#org56c44a0">4.2. Iterators</a></li>
+<li><a href="#orgb111549">4.3. List Interface</a></li>
+<li><a href="#org2b71f75">4.4. Map Interface</a></li>
+<li><a href="#orgf777262">4.5. Generics</a></li>
+</ul>
+</li>
+<li><a href="#org23571c9">5. GUI Design</a>
+<ul>
+<li><a href="#orgb7aa96c">5.1. Swing Overview</a></li>
+<li><a href="#org097fd37">5.2. AWT Overview</a></li>
+<li><a href="#org68a5d84">5.3. <code>JFrame</code> example</a></li>
+<li><a href="#orgc2d5226">5.4. Layout management</a></li>
+</ul>
+</li>
+<li><a href="#org7e01aeb">6. JTable</a>
+<ul>
+<li><a href="#org26676cf">6.1. Simple <code>JTable</code></a></li>
+<li><a href="#org59a0395">6.2. With the <code>DefaultTableModel</code></a></li>
+<li><a href="#org9d338c5">6.3. Attaching a listener to the table</a></li>
+<li><a href="#org52aec50">6.4. Getting / Setting Values to the Model</a></li>
+</ul>
+</li>
+<li><a href="#org892ecfa">7. Charts</a>
+<ul>
+<li><a href="#orgd01e434">7.1. PieChart</a></li>
+<li><a href="#orge19dfae">7.2. BarChart</a></li>
+<li><a href="#org8dd326f">7.3. XYChart</a></li>
+</ul>
+</li>
+<li><a href="#org8c244ae">8. Event Driven Programming</a>
+<ul>
+<li><a href="#orga6b9b68">8.1. Some listener types <code>Interfaces</code></a></li>
+<li><a href="#org5d17cfc">8.2. Example button click listener</a></li>
+</ul>
+</li>
+<li><a href="#orge4c1048">9. Abstract Classes</a>
+<ul>
+<li><a href="#org1e72256">9.1. Example abstract class</a></li>
+</ul>
+</li>
+<li><a href="#org5277ec6">10. Interfaces</a>
+<ul>
+<li><a href="#org79c000a">10.1. Example on <code>KeyListener</code></a></li>
+</ul>
+</li>
+<li><a href="#orgccdcda8">11. Design Patterns</a>
+<ul>
+<li><a href="#org2b1fdcc">11.1. Singleton Pattern</a></li>
+<li><a href="#orgf287a6f">11.2. Factory Pattern</a></li>
+<li><a href="#org5130e67">11.3. Mode-View-Controller (MVC)</a></li>
+<li><a href="#org724899d">11.4. Decorator Pattern</a></li>
+</ul>
+</li>
+<li><a href="#org04ef0e3">12. Remote Method Invocation (RMI)</a>
+<ul>
+<li><a href="#org1b41585">12.1. Remote Class (aka Distributed Class)</a></li>
+<li><a href="#org4c5fa24">12.2. Example on a <code>Product</code> class</a></li>
+</ul>
+</li>
+<li><a href="#org3577190">13. Serialization</a>
+<ul>
+<li><a href="#orgb0c26f1">13.1. Example of Serialization</a></li>
+<li><a href="#orgd20be8d">13.2. Example Deserialization</a></li>
+</ul>
+</li>
+<li><a href="#orgbcad9f0">14. New Date and Time API</a>
+<ul>
+<li><a href="#org52c0af7">14.1. Methods</a></li>
+<li><a href="#orge3e0034">14.2. Creating the <code>LocalDate</code> objects</a></li>
+<li><a href="#org58fefb0">14.3. Creating the <code>LocalTime</code> objects</a></li>
+<li><a href="#org55b93c1">14.4. A combined class of date and time is called <code>LocalDateTime</code></a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<p>
+<a href="index.html">Home Page</a>
+</p>
+
+<div id="outline-container-orgb46e67d" class="outline-2">
+<h2 id="orgb46e67d"><span class="section-number-2">1</span> Definitions</h2>
+<div class="outline-text-2" id="text-1">
+</div>
+<div id="outline-container-org44ddbb5" class="outline-3">
+<h3 id="org44ddbb5"><span class="section-number-3">1.1</span> Compiler</h3>
+<div class="outline-text-3" id="text-1-1">
+<p>
+A compiler takes source code and compiles it into machine code which can be understood by one particular operating system. C++ is compiled in this way i.e. the .C code files are compiled to .exe machine code files on a PC.
+</p>
+
+<p>
+The compiler is dependent on the operating system.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org033f744" class="outline-2">
+<h2 id="org033f744"><span class="section-number-2">2</span> Java Overview</h2>
+<div class="outline-text-2" id="text-2">
+</div>
+<div id="outline-container-org35818c0" class="outline-3">
+<h3 id="org35818c0"><span class="section-number-3">2.1</span> Compiling in Java</h3>
+<div class="outline-text-3" id="text-2-1">
+<ul class="org-ul">
+<li>In Java compiling is split into a 2 stage process - <b>compiling</b> and <b>interpreting</b> the resulting byte code</li>
+<li>Each machine has its own set of machine instructions called machine code</li>
+<li>Java compiler creates common byte code</li>
+<li>A platform <b>dependent</b> JVM interprets the byte code (i.e. converts the common byte code into a particular machine code)</li>
+<li>.java file -&gt; java compiler -&gt; java bytecode -&gt; interpreter -&gt; platform (SPARC, PC, PowerPC)</li>
+<li>Java uses a Just-in-time compiler (JIT) which increases code execution</li>
+<li><b>JVM</b> is the java interpreter and is platform <b>dependent</b></li>
+<li><b>JRE</b> is a set of files that contains the <b>JVM</b>, core classes and supporting files</li>
+<li><b>JDK</b> is a set of tools used by software designers to develop Java code, the <b>JDK</b> includes the <b>JRE</b></li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org797208d" class="outline-2">
+<h2 id="org797208d"><span class="section-number-2">3</span> Object Oriented Design</h2>
+<div class="outline-text-2" id="text-3">
+</div>
+<div id="outline-container-orged3ad81" class="outline-3">
+<h3 id="orged3ad81"><span class="section-number-3">3.1</span> Definitions</h3>
+<div class="outline-text-3" id="text-3-1">
+<ul class="org-ul">
+<li><b>Class</b>: Is a blueprint or a template that defines the variables and methods common to all objects of a certain kind</li>
+<li><b>Object</b>: Is the "instance" (built or constructed) of the class that has been created out of the blueprint. An object is an instance of a class with a group of attributes and related methods. There are two parts to an object: the data the object stores and the methods the object has</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgfde3f03" class="outline-3">
+<h3 id="orgfde3f03"><span class="section-number-3">3.2</span> Two main approaches exist</h3>
+<div class="outline-text-3" id="text-3-2">
+<ul class="org-ul">
+<li><b>Functional Oriented Design</b>: Starting point when designing a system is: "What will the system do"</li>
+<li><b>Object Oriented Design</b>: Starting point when designing a system is: "What data will be stored in the system"</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org610813c" class="outline-3">
+<h3 id="org610813c"><span class="section-number-3">3.3</span> Relationship with Relational Databases</h3>
+<div class="outline-text-3" id="text-3-3">
+<ul class="org-ul">
+<li>The class name is the table name</li>
+<li>The column names are the class attributes</li>
+<li>The row of a table is the instance or object</li>
+<li>The id of a table row is the instance's memory reference (object reference)</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgea26bf1" class="outline-3">
+<h3 id="orgea26bf1"><span class="section-number-3">3.4</span> Methods visibility</h3>
+<div class="outline-text-3" id="text-3-4">
+<ul class="org-ul">
+<li><b>Private</b>:  Visible within the class where they are defined (methods and attributes are not visible in sub-classes)</li>
+<li><b>Package</b>: Visible within the class where they are defined and also within any class within the same package</li>
+<li><b>Protected</b>: Visible within the class where they are defined and also within any class within the same package and any sub-classes</li>
+<li><b>Public</b>: Visible anywhere</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org9da18c9" class="outline-3">
+<h3 id="org9da18c9"><span class="section-number-3">3.5</span> The constructor</h3>
+<div class="outline-text-3" id="text-3-5">
+<ul class="org-ul">
+<li>Is the <b>method</b> that is called upon the object's instantiation</li>
+<li>It must have the same name as the class</li>
+<li>It has no return type, however, the constructor returns the instance of the object</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgf8c8fe8" class="outline-3">
+<h3 id="orgf8c8fe8"><span class="section-number-3">3.6</span> Encapsulation</h3>
+<div class="outline-text-3" id="text-3-6">
+<ul class="org-ul">
+<li>All data store in a class should be stored “private”. This means that only the class which owns the data can alter it. An external class can not alter the data without the knowledge of the owning class.</li>
+<li>Each attribute in a class should have 2 methods which allow the value of the attribute to be read and modified. These 2 methods are commonly known as "set and get methods" (setters and getters).</li>
+<li>The usage of getters and setters allows for additional error checking to be present within the getter and setter methods</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org422d582" class="outline-2">
+<h2 id="org422d582"><span class="section-number-2">4</span> Collections And Generics</h2>
+<div class="outline-text-2" id="text-4">
+</div>
+<div id="outline-container-org7110b9b" class="outline-3">
+<h3 id="org7110b9b"><span class="section-number-3">4.1</span> Overview</h3>
+<div class="outline-text-3" id="text-4-1">
+<ul class="org-ul">
+<li>Originally Java provided ad hoc classes such as Vector and Stack. Useful but lacked a central unifying theme</li>
+<li>Java Collections Framework (<b>JCF</b>) provides high performance</li>
+<li><b>JCF</b> work in a similar manner have a common interface and have a certain degree of interoperability</li>
+<li>All <b>JCF</b> contain the following:
+<ul class="org-ul">
+<li><b>Interfaces</b>: Interfaces allow collections to be manipulated independently of the details of their representation</li>
+<li><b>Implementations</b>: These are the concrete implementations of the collection interfaces. In essence, they are reusable data structures</li>
+<li><b>Algorithms</b>: These are the methods that perform useful computations, such as searching and sorting, on objects that implement collection interfaces. The algorithms are said to be polymorphic: that is, the same method can be used on many different implementations of the appropriate collection interface.</li>
+</ul></li>
+<li><b>JCF</b> is interface based</li>
+<li><b>JCF</b> has two main class hierarchies:
+<ul class="org-ul">
+<li><b>Collection</b>: Store individual objects as elements</li>
+<li><b>Map</b>: Store objects in a key-value pair structure</li>
+</ul></li>
+<li>Most commonly used <b>JCF</b> classes are: <code>ArrayList</code>, <code>LinkedList</code>, <code>HashSet</code>, <code>HashMap</code> and <code>TreeMap</code></li>
+<li><b>JCF</b> Diagram</li>
+</ul>
+
+<div class="figure">
+<p><img src="images/Collections%20And%20Generics/screenshot_2018-12-04_15-31-49.png" alt="screenshot_2018-12-04_15-31-49.png" />
+</p>
+</div>
+<ul class="org-ul">
+<li><b>JCF</b> Interfaces</li>
+</ul>
+
+<div class="figure">
+<p><img src="images/Collections%20And%20Generics/screenshot_2018-12-04_15-33-06.png" alt="screenshot_2018-12-04_15-33-06.png" />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org56c44a0" class="outline-3">
+<h3 id="org56c44a0"><span class="section-number-3">4.2</span> Iterators</h3>
+<div class="outline-text-3" id="text-4-2">
+<ul class="org-ul">
+<li>Allows for an easy traversal of the Collection</li>
+<li>Two iterators exist:
+<ul class="org-ul">
+<li><code>Iterator</code>: One directional traversal
+<ul class="org-ul">
+<li>Methods: <code>boolean hasNext()</code>, <code>Object next()</code>, <code>void remove()</code></li>
+</ul></li>
+<li><code>ListIterator</code>: Two directional traversal, extends <code>Iterator</code>
+<ul class="org-ul">
+<li>Methods: <code>void add(Object obj)</code>, <code>boolean hasNext()</code>, <code>boolean hasPrevious()</code>, <code>Object next()</code>, <code>Object previous()</code>, <code>void remove()</code>, <code>void set(Object obj)</code>, <code>int nextIndex()</code>, <code>int previousIndex()</code></li>
+</ul></li>
+</ul></li>
+<li>Each collection has a <code>iterator()</code> method that returns an iterator</li>
+</ul>
+</div>
+
+<div id="outline-container-org6eac934" class="outline-4">
+<h4 id="org6eac934">Example of an <code>Iterator</code> on an <code>ArrayList</code></h4>
+<div class="outline-text-4" id="text-org6eac934">
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #ECBE7B;">ArrayList</span> <span style="color: #db5762;">al</span> = <span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">ArrayList</span><span style="color: #fff0f5;">()</span>;
+
+<span style="color: #ECBE7B;">Iterator</span> <span style="color: #db5762;">itr</span> = al.listIterator<span style="color: #fff0f5;">()</span>;
+<span style="color: #51afef; font-style: italic;">while</span><span style="color: #fff0f5;">(</span>itr.hasNext<span style="color: #c678dd;">()</span><span style="color: #fff0f5;">)</span> <span style="color: #fff0f5;">{</span>
+    <span style="color: #ECBE7B;">Object</span> <span style="color: #db5762;">element</span> = itr.next<span style="color: #c678dd;">()</span>;
+    System.out.print<span style="color: #c678dd;">(</span>element + <span style="color: #98be65;">" "</span><span style="color: #c678dd;">)</span>;
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgb111549" class="outline-3">
+<h3 id="orgb111549"><span class="section-number-3">4.3</span> List Interface</h3>
+<div class="outline-text-3" id="text-4-3">
+<ul class="org-ul">
+<li>In addition to the standard methods provided by the <b>Collection</b> the <code>List</code> also has additional methods</li>
+<li><code>List</code> methods: <code>void add(int idx, Object obj)</code>, <code>boolean addAll(int idx, Collection c)</code>, <code>Object get(int idx)</code>, <code>int indexOf(Object obj)</code>, <code>int lastIndexOf(Object obj)</code>, <code>ListIterator listIterator()</code>, <code>ListIterator listIterator(int idx)</code>, <code>Object remove(int idx)</code>, <code>Object set(int idx, Object obj)</code>, <code>List subList(int start, int end)</code></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org2b71f75" class="outline-3">
+<h3 id="org2b71f75"><span class="section-number-3">4.4</span> Map Interface</h3>
+<div class="outline-text-3" id="text-4-4">
+<ul class="org-ul">
+<li>Has additional throws in comparison to the standard <b>Collection</b>
+<ul class="org-ul">
+<li><code>NoSuchElementException</code>: When no items exist in the invoking map</li>
+<li><code>ClassCastException</code>: When an object is incompatible with the elements of the map</li>
+</ul></li>
+<li><code>Map</code> methods: <code>void clear()</code>, <code>boolean containsKey(Object k)</code>, <code>boolean containsValue(Object v)</code>, <code>Set entrySet()</code>, <code>boolean equals(Object obj)</code>, <code>Object get(Object k)</code>, <code>int hashCode()</code>, <code>boolean isEmpty()</code>, <code>Set keySet()</code>, <code>Object put(Object k, Object v)</code>, <code>void putAll(Map m)</code>, <code>Object remove(Object k)</code>, <code>int size()</code>, <code>Collection values()</code></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgf777262" class="outline-3">
+<h3 id="orgf777262"><span class="section-number-3">4.5</span> Generics</h3>
+<div class="outline-text-3" id="text-4-5">
+<ul class="org-ul">
+<li>Java Generic methods and generic classes enable programmers to specify, with a single method declaration, a set of related methods or, with a single class declaration, a set of related types, respectively.</li>
+<li>Using Java Generic concept, we might write a generic method for sorting an array of objects, then invoke the generic method with Integer arrays, Double arrays, String arrays and so on, to sort the array elements.</li>
+<li>Generics naming conventions:
+<ul class="org-ul">
+<li><b>E</b>: Element</li>
+<li><b>K</b>: Key</li>
+<li><b>N</b>: Number</li>
+<li><b>T</b>: Type</li>
+<li><b>V</b>: Value</li>
+</ul></li>
+</ul>
+</div>
+
+<div id="outline-container-org86bde2f" class="outline-4">
+<h4 id="org86bde2f">Example of a method that prints out any array</h4>
+<div class="outline-text-4" id="text-org86bde2f">
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #51afef; font-style: italic;">public</span> <span style="color: #51afef; font-style: italic;">static</span> <span style="color: #fff0f5;">&lt;</span><span style="color: #ECBE7B;">E</span><span style="color: #fff0f5;">&gt;</span> <span style="color: #ECBE7B;">void</span> <span style="color: #c678dd;">printArray</span><span style="color: #fff0f5;">(</span> <span style="color: #ECBE7B;">E</span><span style="color: #c678dd;">[]</span> <span style="color: #db5762;">inputArray</span> <span style="color: #fff0f5;">)</span> <span style="color: #fff0f5;">{</span>
+    <span style="color: #51afef; font-style: italic;">for</span> <span style="color: #c678dd;">(</span> <span style="color: #ECBE7B;">E</span> <span style="color: #db5762;">element</span> : inputArray <span style="color: #c678dd;">){</span>
+        System.out.printf<span style="color: #98be65;">(</span> <span style="color: #98be65;">"%s "</span>, element <span style="color: #98be65;">)</span>;
+    <span style="color: #c678dd;">}</span>
+    System.out.println<span style="color: #c678dd;">()</span>;
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org23571c9" class="outline-2">
+<h2 id="org23571c9"><span class="section-number-2">5</span> GUI Design</h2>
+<div class="outline-text-2" id="text-5">
+</div>
+<div id="outline-container-orgb7aa96c" class="outline-3">
+<h3 id="orgb7aa96c"><span class="section-number-3">5.1</span> Swing Overview</h3>
+<div class="outline-text-3" id="text-5-1">
+<ul class="org-ul">
+<li><b>Swing</b> is a library of Java components which can be used to create GUIs</li>
+<li><b>Swing</b> is a part of the Java Foundation Classes (JFC) in the Java Platform</li>
+<li><b>Container</b> is a component that can contain other components e.g.: <code>JFrame</code>, <code>JPanel</code></li>
+<li><b>Swing</b> has full flexibility of how the components are displayed</li>
+<li>Exists in the <code>javax.swing</code> package</li>
+<li>Three top level containers:
+<ul class="org-ul">
+<li><code>JFrame</code></li>
+<li><code>JDialog</code></li>
+<li><code>JApplet</code></li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org097fd37" class="outline-3">
+<h3 id="org097fd37"><span class="section-number-3">5.2</span> AWT Overview</h3>
+<div class="outline-text-3" id="text-5-2">
+<ul class="org-ul">
+<li>Abstract Window Toolkit (<b>AWT</b>)</li>
+<li>Original windowing library for Java</li>
+<li>Basic UI components and containers</li>
+<li><b>AWT</b> was not portable, it was implemented using native code, <b>Swing</b> uses non-native code</li>
+<li><b>AWT</b> always displays components in a native way</li>
+<li>Exists in the <code>java.awt</code> package</li>
+<li>Used primarily for event handling these days</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org68a5d84" class="outline-3">
+<h3 id="org68a5d84"><span class="section-number-3">5.3</span> <code>JFrame</code> example</h3>
+<div class="outline-text-3" id="text-5-3">
+<ul class="org-ul">
+<li>Needs to import <code>java.awt.*</code> and <code>java.awt.event.*</code>. Swing components rely on AWT's event handling</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #ECBE7B;">JFrame</span> <span style="color: #db5762;">frame</span> = <span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">JFrame</span><span style="color: #fff0f5;">(</span><span style="color: #98be65;">"I am a Swing Frame"</span><span style="color: #fff0f5;">)</span>;
+<span style="color: #ECBE7B;">JLabel</span> <span style="color: #db5762;">label</span> = <span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">JLabel</span><span style="color: #fff0f5;">(</span><span style="color: #98be65;">"I am a Swing Label"</span><span style="color: #fff0f5;">)</span>;
+frame.getContentPane<span style="color: #fff0f5;">()</span>.add<span style="color: #fff0f5;">(</span>label<span style="color: #fff0f5;">)</span>;
+frame.pack<span style="color: #fff0f5;">()</span>;
+frame.setVisible<span style="color: #fff0f5;">(</span><span style="color: #a9a1e1;">true</span><span style="color: #fff0f5;">)</span>;
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgc2d5226" class="outline-3">
+<h3 id="orgc2d5226"><span class="section-number-3">5.4</span> Layout management</h3>
+<div class="outline-text-3" id="text-5-4">
+<ul class="org-ul">
+<li>By default, each container has a layout manager - an object that performs layout management for the components within the container.</li>
+<li>Components can provide size and alignment hints to layout managers, but layout managers have the final say on the size and position of those components.</li>
+</ul>
+</div>
+
+<div id="outline-container-org4915129" class="outline-4">
+<h4 id="org4915129">Some types are:</h4>
+<div class="outline-text-4" id="text-org4915129">
+<ul class="org-ul">
+<li><b>BorderLayout</b> (default on a <code>JFrame</code>)
+<ul class="org-ul">
+<li>Has five areas to which components are added: North, South, East, West and Center</li>
+</ul></li>
+<li><b>BoxLayout</b>
+<ul class="org-ul">
+<li>Components are added on the X axis or the Y axis (<code>BoxLayout.Y_AXIS</code>, <code>BoxLayout.X_AXIS</code>)</li>
+</ul></li>
+<li><b>FlowLayout</b> (default on a <code>JPanel</code>)
+<ul class="org-ul">
+<li>Components are centered by default, they can also be left of right aligned</li>
+</ul></li>
+<li><b>GridLayout</b>
+<ul class="org-ul">
+<li>Components are placed on a grid of X and Y size, e.g. <code>new GridLayout(3, 2)</code></li>
+</ul></li>
+<li><b>GridBagLayout</b>
+<ul class="org-ul">
+<li>In a sense resembles a HTML table in which components can span multiple columns or rows</li>
+</ul></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org7e01aeb" class="outline-2">
+<h2 id="org7e01aeb"><span class="section-number-2">6</span> JTable</h2>
+<div class="outline-text-2" id="text-6">
+</div>
+<div id="outline-container-org26676cf" class="outline-3">
+<h3 id="org26676cf"><span class="section-number-3">6.1</span> Simple <code>JTable</code></h3>
+<div class="outline-text-3" id="text-6-1">
+<ul class="org-ul">
+<li>Simply insert the headings and the data into the JTable's constructor</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #ECBE7B;">String</span> <span style="color: #db5762;">data</span><span style="color: #fff0f5;">[][]</span>=<span style="color: #fff0f5;">{</span>
+    <span style="color: #c678dd;">{</span><span style="color: #98be65;">"101"</span>,<span style="color: #98be65;">"Amit"</span>,<span style="color: #98be65;">"670000"</span><span style="color: #c678dd;">}</span>,
+    <span style="color: #c678dd;">{</span><span style="color: #98be65;">"102"</span>,<span style="color: #98be65;">"Jai"</span>,<span style="color: #98be65;">"780000"</span><span style="color: #c678dd;">}</span>,
+    <span style="color: #c678dd;">{</span><span style="color: #98be65;">"101"</span>,<span style="color: #98be65;">"Sachin"</span>,<span style="color: #98be65;">"700000"</span><span style="color: #c678dd;">}</span>
+<span style="color: #fff0f5;">}</span>;
+<span style="color: #ECBE7B;">String</span> <span style="color: #db5762;">headings</span><span style="color: #fff0f5;">[]</span> = <span style="color: #fff0f5;">{</span><span style="color: #98be65;">"ID"</span>, <span style="color: #98be65;">"Name"</span>, <span style="color: #98be65;">"Salary"</span><span style="color: #fff0f5;">}</span>;
+
+<span style="color: #ECBE7B;">JTable</span> <span style="color: #db5762;">table</span> = <span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">JTable</span><span style="color: #fff0f5;">(</span>data, headings<span style="color: #fff0f5;">)</span>;
+<span style="color: #ECBE7B;">JScrollPane</span> <span style="color: #db5762;">scrollPane</span> = <span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">JScrollPane</span><span style="color: #fff0f5;">(</span>table<span style="color: #fff0f5;">)</span>;
+
+panel.add<span style="color: #fff0f5;">(</span>scrollPane<span style="color: #fff0f5;">)</span>;
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org59a0395" class="outline-3">
+<h3 id="org59a0395"><span class="section-number-3">6.2</span> With the <code>DefaultTableModel</code></h3>
+<div class="outline-text-3" id="text-6-2">
+<ul class="org-ul">
+<li>Define the <code>DefaultTableModel</code></li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #ECBE7B;">DefaultTableModel</span> <span style="color: #db5762;">tableModel</span> =
+    <span style="color: #5B6268;">// </span><span style="color: #5B6268;">provide empty row and column data at first</span>
+    <span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">DefaultTableModel</span><span style="color: #fff0f5;">(</span><span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">Object</span><span style="color: #c678dd;">[][]</span> <span style="color: #c678dd;">{}</span>,
+                          <span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">String</span><span style="color: #c678dd;">[]</span> <span style="color: #c678dd;">{}</span><span style="color: #fff0f5;">)</span> <span style="color: #fff0f5;">{</span>
+        <span style="color: #5B6268;">// </span><span style="color: #5B6268;">Define column types</span>
+        Class<span style="color: #c678dd;">[]</span> types = <span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">Class</span><span style="color: #c678dd;">[]</span> <span style="color: #c678dd;">{</span>
+            <span style="color: #a9a1e1;">java</span>.<span style="color: #a9a1e1;">lang</span>.Integer.<span style="color: #51afef; font-style: italic;">class</span>,
+            <span style="color: #a9a1e1;">java</span>.<span style="color: #a9a1e1;">lang</span>.Object.<span style="color: #51afef; font-style: italic;">class</span>,
+            <span style="color: #a9a1e1;">java</span>.<span style="color: #a9a1e1;">lang</span>.Integer.<span style="color: #51afef; font-style: italic;">class</span>,
+        <span style="color: #c678dd;">}</span>;
+        <span style="color: #5B6268;">// </span><span style="color: #5B6268;">Column type checker (required)</span>
+        <span style="color: #51afef; font-style: italic;">public</span> <span style="color: #ECBE7B;">Class</span> <span style="color: #c678dd;">getColumnClass</span><span style="color: #c678dd;">(</span><span style="color: #ECBE7B;">int</span> <span style="color: #db5762;">columnIndex</span><span style="color: #c678dd;">)</span> <span style="color: #c678dd;">{</span>
+            <span style="color: #51afef; font-style: italic;">return</span> types<span style="color: #98be65;">[</span>columnIndex<span style="color: #98be65;">]</span>;
+        <span style="color: #c678dd;">}</span>
+        <span style="color: #5B6268;">// </span><span style="color: #5B6268;">all editable, so just return true, otherwise provide</span>
+        <span style="color: #5B6268;">// </span><span style="color: #5B6268;">logic based on the column or row index</span>
+        <span style="color: #51afef; font-style: italic;">public</span> <span style="color: #ECBE7B;">boolean</span> <span style="color: #c678dd;">isCellEditable</span><span style="color: #c678dd;">(</span><span style="color: #ECBE7B;">int</span> <span style="color: #db5762;">rowIndex</span>, <span style="color: #ECBE7B;">int</span> <span style="color: #db5762;">columnIndex</span><span style="color: #c678dd;">)</span> <span style="color: #c678dd;">{</span>
+            <span style="color: #51afef; font-style: italic;">return</span> <span style="color: #a9a1e1;">true</span>;
+        <span style="color: #c678dd;">}</span>
+    <span style="color: #fff0f5;">}</span>;
+<span style="color: #5B6268;">// </span><span style="color: #5B6268;">set the column headings</span>
+tableModel.setColumnIdentifiers<span style="color: #fff0f5;">(</span>headings<span style="color: #fff0f5;">)</span>;
+<span style="color: #5B6268;">// </span><span style="color: #5B6268;">add array to the table, must comply with the heading types (Integer, Object, Integer)</span>
+<span style="color: #51afef; font-style: italic;">for</span> <span style="color: #fff0f5;">(</span><span style="color: #ECBE7B;">int</span> <span style="color: #db5762;">i</span> = 0; i &lt; data.<span style="color: #ECBE7B;">size</span><span style="color: #c678dd;">()</span>; i++<span style="color: #fff0f5;">)</span> <span style="color: #fff0f5;">{</span>
+    tableModel.addRow<span style="color: #c678dd;">(</span>data.get<span style="color: #98be65;">(</span>i<span style="color: #98be65;">)</span><span style="color: #c678dd;">)</span>;
+<span style="color: #fff0f5;">}</span>
+<span style="color: #5B6268;">// </span><span style="color: #5B6268;">set the table data</span>
+jTable.setModel<span style="color: #fff0f5;">(</span>tableModel<span style="color: #fff0f5;">)</span>;
+<span style="color: #5B6268;">// </span><span style="color: #5B6268;">just in case Update</span>
+jTable.updateUI<span style="color: #fff0f5;">()</span>;
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org9d338c5" class="outline-3">
+<h3 id="org9d338c5"><span class="section-number-3">6.3</span> Attaching a listener to the table</h3>
+<div class="outline-text-3" id="text-6-3">
+<ul class="org-ul">
+<li>Attach the listener method example</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #51afef; font-style: italic;">public</span> <span style="color: #ECBE7B;">void</span> <span style="color: #c678dd;">attachTableListener</span><span style="color: #fff0f5;">(</span><span style="color: #ECBE7B;">TableModelListener</span> <span style="color: #db5762;">listener</span><span style="color: #fff0f5;">)</span> <span style="color: #fff0f5;">{</span>
+    jTable.getModel<span style="color: #c678dd;">()</span>.addTableModelListener<span style="color: #c678dd;">(</span>listener<span style="color: #c678dd;">)</span>;
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+<ul class="org-ul">
+<li>Listener example</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-java">attachTableListener<span style="color: #fff0f5;">(</span><span style="color: #c678dd;">(</span>tableModelEvent<span style="color: #c678dd;">)</span> -&gt; <span style="color: #c678dd;">{</span>
+        <span style="color: #5B6268;">// </span><span style="color: #5B6268;">get the data from the row</span>
+        <span style="color: #ECBE7B;">int</span> <span style="color: #db5762;">row</span> = tableModelEvent.getFirstRow<span style="color: #98be65;">()</span>;
+        <span style="color: #ECBE7B;">int</span> <span style="color: #db5762;">col</span> = tableModelEvent.getColumn<span style="color: #98be65;">()</span>;
+        <span style="color: #5B6268;">// </span><span style="color: #5B6268;">use the view's getString/Bool/IntAt() to get the data</span>
+        <span style="color: #5B6268;">// </span><span style="color: #5B6268;">from the specifi row and col and do something with them</span>
+    <span style="color: #c678dd;">}</span><span style="color: #fff0f5;">)</span>;
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org52aec50" class="outline-3">
+<h3 id="org52aec50"><span class="section-number-3">6.4</span> Getting / Setting Values to the Model</h3>
+<div class="outline-text-3" id="text-6-4">
+<ul class="org-ul">
+<li>Get</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #51afef; font-style: italic;">public</span> <span style="color: #ECBE7B;">String</span> <span style="color: #c678dd;">getStringAt</span><span style="color: #fff0f5;">(</span><span style="color: #ECBE7B;">int</span> <span style="color: #db5762;">row</span>, <span style="color: #ECBE7B;">int</span> <span style="color: #db5762;">column</span><span style="color: #fff0f5;">)</span> <span style="color: #fff0f5;">{</span>
+    <span style="color: #51afef; font-style: italic;">return</span> <span style="color: #c678dd;">(</span><span style="color: #ECBE7B;">String</span><span style="color: #c678dd;">)</span> jTable1.getModel<span style="color: #c678dd;">()</span>.getValueAt<span style="color: #c678dd;">(</span>row, column<span style="color: #c678dd;">)</span>;
+<span style="color: #fff0f5;">}</span>
+<span style="color: #51afef; font-style: italic;">public</span> <span style="color: #ECBE7B;">boolean</span> <span style="color: #c678dd;">getBoolAt</span><span style="color: #fff0f5;">(</span><span style="color: #ECBE7B;">int</span> <span style="color: #db5762;">row</span>, <span style="color: #ECBE7B;">int</span> <span style="color: #db5762;">column</span><span style="color: #fff0f5;">)</span> <span style="color: #fff0f5;">{</span>
+    <span style="color: #51afef; font-style: italic;">return</span> <span style="color: #c678dd;">(</span><span style="color: #ECBE7B;">boolean</span><span style="color: #c678dd;">)</span> jTable1.getModel<span style="color: #c678dd;">()</span>.getValueAt<span style="color: #c678dd;">(</span>row, column<span style="color: #c678dd;">)</span>;
+<span style="color: #fff0f5;">}</span>
+<span style="color: #51afef; font-style: italic;">public</span> <span style="color: #ECBE7B;">int</span> <span style="color: #c678dd;">getIntAt</span><span style="color: #fff0f5;">(</span><span style="color: #ECBE7B;">int</span> <span style="color: #db5762;">row</span>, <span style="color: #ECBE7B;">int</span> <span style="color: #db5762;">column</span><span style="color: #fff0f5;">)</span> <span style="color: #fff0f5;">{</span>
+    <span style="color: #51afef; font-style: italic;">return</span> <span style="color: #c678dd;">(</span><span style="color: #ECBE7B;">int</span><span style="color: #c678dd;">)</span> jTable1.getModel<span style="color: #c678dd;">()</span>.getValueAt<span style="color: #c678dd;">(</span>row, column<span style="color: #c678dd;">)</span>;
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+<ul class="org-ul">
+<li>Set (if needed, although usually you'd edit directly on the table)</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #51afef; font-style: italic;">public</span> <span style="color: #ECBE7B;">void</span> <span style="color: #c678dd;">setStringAt</span><span style="color: #fff0f5;">(</span><span style="color: #ECBE7B;">String</span> <span style="color: #db5762;">value</span>, <span style="color: #ECBE7B;">int</span> <span style="color: #db5762;">row</span>, <span style="color: #ECBE7B;">int</span> <span style="color: #db5762;">column</span><span style="color: #fff0f5;">)</span> <span style="color: #fff0f5;">{</span>
+    <span style="color: #51afef; font-style: italic;">return</span> jTable1.getModel<span style="color: #c678dd;">()</span>.setValueAt<span style="color: #c678dd;">(</span>value, row, column<span style="color: #c678dd;">)</span>;
+<span style="color: #fff0f5;">}</span>
+<span style="color: #51afef; font-style: italic;">public</span> <span style="color: #ECBE7B;">void</span> <span style="color: #c678dd;">setBoolAt</span><span style="color: #fff0f5;">(</span><span style="color: #ECBE7B;">boolean</span> <span style="color: #db5762;">value</span>, <span style="color: #ECBE7B;">int</span> <span style="color: #db5762;">row</span>, <span style="color: #ECBE7B;">int</span> <span style="color: #db5762;">column</span><span style="color: #fff0f5;">)</span> <span style="color: #fff0f5;">{</span>
+    <span style="color: #51afef; font-style: italic;">return</span> jTable1.getModel<span style="color: #c678dd;">()</span>.setValueAt<span style="color: #c678dd;">(</span>value, row, column<span style="color: #c678dd;">)</span>;
+<span style="color: #fff0f5;">}</span>
+<span style="color: #51afef; font-style: italic;">public</span> <span style="color: #ECBE7B;">void</span> <span style="color: #c678dd;">setIntAt</span><span style="color: #fff0f5;">(</span><span style="color: #ECBE7B;">int</span> <span style="color: #db5762;">value</span>, <span style="color: #ECBE7B;">int</span> <span style="color: #db5762;">row</span>, <span style="color: #ECBE7B;">int</span> <span style="color: #db5762;">column</span><span style="color: #fff0f5;">)</span> <span style="color: #fff0f5;">{</span>
+    <span style="color: #51afef; font-style: italic;">return</span> jTable1.getModel<span style="color: #c678dd;">()</span>.setValueAt<span style="color: #c678dd;">(</span>value, row, column<span style="color: #c678dd;">)</span>;
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org892ecfa" class="outline-2">
+<h2 id="org892ecfa"><span class="section-number-2">7</span> Charts</h2>
+<div class="outline-text-2" id="text-7">
+</div>
+<div id="outline-container-orgd01e434" class="outline-3">
+<h3 id="orgd01e434"><span class="section-number-3">7.1</span> PieChart</h3>
+<div class="outline-text-3" id="text-7-1">
+<ul class="org-ul">
+<li>Step 1, add data to the <code>DefaultPieDataset</code></li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #ECBE7B;">DefaultPieDataset</span> <span style="color: #db5762;">dataset</span> = <span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">DefaultPieDataset</span><span style="color: #fff0f5;">()</span>;
+<span style="color: #51afef; font-style: italic;">for</span> <span style="color: #fff0f5;">(</span><span style="color: #ECBE7B;">Car</span> <span style="color: #db5762;">each</span> : Cars<span style="color: #fff0f5;">)</span> <span style="color: #fff0f5;">{</span>
+    <span style="color: #5B6268;">// </span><span style="color: #5B6268;">Each chart slice will have the name of the car</span>
+    <span style="color: #5B6268;">// </span><span style="color: #5B6268;">And the charts angle size is determined by the car's mileage</span>
+    dataset.setValue<span style="color: #c678dd;">(</span>each.getName<span style="color: #98be65;">()</span>, each.getMileage<span style="color: #98be65;">()</span><span style="color: #c678dd;">)</span>;
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+<ul class="org-ul">
+<li>Step 2, add the dataset to the chart panel factory</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #ECBE7B;">JFreeChart</span> <span style="color: #db5762;">chart</span> = ChartFactory.createPieChart
+    <span style="color: #fff0f5;">(</span><span style="color: #98be65;">"ChartTitle"</span>,  <span style="color: #5B6268;">// </span><span style="color: #5B6268;">Chart Title</span>
+     dataset,  <span style="color: #5B6268;">// </span><span style="color: #5B6268;">the dataset</span>
+     <span style="color: #a9a1e1;">true</span>,  <span style="color: #5B6268;">// </span><span style="color: #5B6268;">legend</span>
+     <span style="color: #a9a1e1;">true</span>,  <span style="color: #5B6268;">// </span><span style="color: #5B6268;">tooltip</span>
+     <span style="color: #a9a1e1;">false</span><span style="color: #fff0f5;">)</span>;  <span style="color: #5B6268;">// </span><span style="color: #5B6268;">urls</span>
+</pre>
+</div>
+<ul class="org-ul">
+<li>Step 3, add the chart to a panel or a frame</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-java">panel.add<span style="color: #fff0f5;">(</span><span style="color: #ECBE7B;">chart</span><span style="color: #fff0f5;">)</span>;
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orge19dfae" class="outline-3">
+<h3 id="orge19dfae"><span class="section-number-3">7.2</span> BarChart</h3>
+<div class="outline-text-3" id="text-7-2">
+<ul class="org-ul">
+<li>Step 1, add data to the <code>DefaultCategoryDataset</code></li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #ECBE7B;">DefaultCategoryDataset</span> <span style="color: #db5762;">dataset</span> = <span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">DefaultCategoryDataset</span><span style="color: #fff0f5;">()</span>;
+<span style="color: #5B6268;">// </span><span style="color: #5B6268;">each bar represtets the car's name, and its mileage</span>
+<span style="color: #51afef; font-style: italic;">for</span> <span style="color: #fff0f5;">(</span><span style="color: #ECBE7B;">Car</span> <span style="color: #db5762;">each</span> : cars<span style="color: #fff0f5;">)</span> <span style="color: #fff0f5;">{</span>
+    dataset.setValue
+        <span style="color: #c678dd;">(</span>car.getMileage<span style="color: #98be65;">()</span>,  <span style="color: #5B6268;">// </span><span style="color: #5B6268;">bar y value</span>
+         <span style="color: #98be65;">"Mileage"</span>,  <span style="color: #5B6268;">// </span><span style="color: #5B6268;">bar y axis name</span>
+         car.getName<span style="color: #98be65;">()</span><span style="color: #c678dd;">)</span>;  <span style="color: #5B6268;">// </span><span style="color: #5B6268;">bar name</span>
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+<ul class="org-ul">
+<li>Step 2, add the dataset to the chart panel factory</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #ECBE7B;">JFreeChart</span> <span style="color: #db5762;">chart</span> = ChartFactory.createBarChart
+    <span style="color: #fff0f5;">(</span><span style="color: #98be65;">"Chart Title"</span>,  <span style="color: #5B6268;">// </span><span style="color: #5B6268;">chart title</span>
+     <span style="color: #98be65;">"Mileage"</span>,  <span style="color: #5B6268;">// </span><span style="color: #5B6268;">x axis name</span>
+     <span style="color: #98be65;">"Car Name"</span>,  <span style="color: #5B6268;">// </span><span style="color: #5B6268;">y axis name</span>
+     dataset<span style="color: #fff0f5;">)</span>; <span style="color: #5B6268;">// </span><span style="color: #5B6268;">the dataset</span>
+</pre>
+</div>
+<ul class="org-ul">
+<li>Step 3, add the chart to a panel or a frame</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-java">panel.add<span style="color: #fff0f5;">(</span><span style="color: #ECBE7B;">chart</span><span style="color: #fff0f5;">)</span>;
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org8dd326f" class="outline-3">
+<h3 id="org8dd326f"><span class="section-number-3">7.3</span> XYChart</h3>
+<div class="outline-text-3" id="text-7-3">
+<ul class="org-ul">
+<li>Step 1, add data to the <code>XYSeries</code> and to <code>XYSeriesCollection</code> respectively</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #ECBE7B;">XYSeries</span> <span style="color: #db5762;">series</span> = <span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">XYSeries</span><span style="color: #fff0f5;">(</span>lineName<span style="color: #fff0f5;">)</span>;
+<span style="color: #5B6268;">// </span><span style="color: #5B6268;">add x and y values in this case, the car's mileage</span>
+<span style="color: #5B6268;">// </span><span style="color: #5B6268;">and the year the car was manufactured at</span>
+<span style="color: #51afef; font-style: italic;">for</span> <span style="color: #fff0f5;">(</span><span style="color: #ECBE7B;">Car</span> <span style="color: #db5762;">each</span> : cars<span style="color: #fff0f5;">)</span> <span style="color: #fff0f5;">{</span>
+    series.add<span style="color: #c678dd;">(</span>each.getMileage<span style="color: #98be65;">()</span>, each.getYear<span style="color: #98be65;">()</span><span style="color: #c678dd;">)</span>;
+<span style="color: #fff0f5;">}</span>
+<span style="color: #5B6268;">// </span><span style="color: #5B6268;">add the series to the dataset</span>
+<span style="color: #ECBE7B;">XYSeriesCollection</span> <span style="color: #db5762;">dataset</span> = <span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">XYSeriesCollection</span><span style="color: #fff0f5;">()</span>;
+dataset.addSeries<span style="color: #fff0f5;">(</span>series<span style="color: #fff0f5;">)</span>;
+</pre>
+</div>
+<ul class="org-ul">
+<li>Step 2, add the dataset to the chart panel factory</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #5B6268;">// </span><span style="color: #5B6268;">scatter plot</span>
+chart = ChartFactory.createScatterPlot
+    <span style="color: #fff0f5;">(</span><span style="color: #98be65;">"Chart Title"</span>,  <span style="color: #5B6268;">// </span><span style="color: #5B6268;">chart title</span>
+     <span style="color: #98be65;">"Mileage"</span>,  <span style="color: #5B6268;">// </span><span style="color: #5B6268;">x axis name</span>
+     <span style="color: #98be65;">"Year Manufactured"</span>,  <span style="color: #5B6268;">// </span><span style="color: #5B6268;">y asix name</span>
+     dataset<span style="color: #fff0f5;">)</span>;  <span style="color: #5B6268;">// </span><span style="color: #5B6268;">the dataset</span>
+<span style="color: #5B6268;">// </span><span style="color: #5B6268;">or line chart</span>
+chart = ChartFactory.createXYLineChart
+    <span style="color: #fff0f5;">(</span><span style="color: #98be65;">"Chart Title"</span>,  <span style="color: #5B6268;">// </span><span style="color: #5B6268;">chart title</span>
+     <span style="color: #98be65;">"Mileage"</span>,  <span style="color: #5B6268;">// </span><span style="color: #5B6268;">x axis name</span>
+     <span style="color: #98be65;">"Year Manufactured"</span>,  <span style="color: #5B6268;">// </span><span style="color: #5B6268;">y asix name</span>
+     dataset<span style="color: #fff0f5;">)</span>;  <span style="color: #5B6268;">// </span><span style="color: #5B6268;">the dataset</span>
+</pre>
+</div>
+<ul class="org-ul">
+<li>Step 3, add the chart to a panel or a frame</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-java">panel.add<span style="color: #fff0f5;">(</span><span style="color: #ECBE7B;">chart</span><span style="color: #fff0f5;">)</span>;
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org8c244ae" class="outline-2">
+<h2 id="org8c244ae"><span class="section-number-2">8</span> Event Driven Programming</h2>
+<div class="outline-text-2" id="text-8">
+<ul class="org-ul">
+<li>Reacts to mouse or keyboard events</li>
+<li>Objects need to implement a listening interface that will listen on the event that may occur on it</li>
+</ul>
+</div>
+
+<div id="outline-container-orga6b9b68" class="outline-3">
+<h3 id="orga6b9b68"><span class="section-number-3">8.1</span> Some listener types <code>Interfaces</code></h3>
+<div class="outline-text-3" id="text-8-1">
+<ul class="org-ul">
+<li><b>ActionListener</b>: Reacts to mouse clicks</li>
+<li><b>FocusListener</b>: Keyboard focus events on a component</li>
+<li><b>KeyListener</b>: Listening for keystrokes</li>
+<li><b>MouseListener</b>: Full mouse event support (press, release, click, enter, exit, etx.)</li>
+<li><b>MouseMotionListener</b>: Listening for mouse motion events</li>
+<li><b>MouseWheelListener</b>: Mouse wheel listener</li>
+<li><b>WindowFocusListener</b>: Window focus change listener</li>
+<li><b>WindowListener</b>: Window general events</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org5d17cfc" class="outline-3">
+<h3 id="org5d17cfc"><span class="section-number-3">8.2</span> Example button click listener</h3>
+<div class="outline-text-3" id="text-8-2">
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #51afef; font-style: italic;">public</span> <span style="color: #51afef; font-style: italic;">class</span> <span style="color: #ECBE7B;">ButtonFrame</span> <span style="color: #51afef; font-style: italic;">extends</span> <span style="color: #ECBE7B;">JFrame</span> <span style="color: #51afef; font-style: italic;">implements</span> <span style="color: #ECBE7B;">ActionListener</span> <span style="color: #fff0f5;">{</span>
+
+    <span style="color: #51afef; font-style: italic;">public</span> <span style="color: #51afef; font-style: italic;">static</span> <span style="color: #ECBE7B;">void</span> <span style="color: #c678dd;">main</span><span style="color: #c678dd;">(</span><span style="color: #ECBE7B;">String</span><span style="color: #98be65;">[]</span> <span style="color: #db5762;">args</span><span style="color: #c678dd;">)</span> <span style="color: #c678dd;">{</span>
+        .
+        .
+        .
+        button.addActionListener<span style="color: #98be65;">(</span><span style="color: #51afef; font-style: italic;">this</span><span style="color: #98be65;">)</span>;
+    <span style="color: #c678dd;">}</span>
+
+    <span style="color: #51afef; font-style: italic;">public</span> <span style="color: #ECBE7B;">void</span> <span style="color: #c678dd;">actionPerformed</span><span style="color: #c678dd;">(</span><span style="color: #ECBE7B;">ActionEvent</span> <span style="color: #db5762;">e</span><span style="color: #c678dd;">){</span>
+        <span style="color: #51afef; font-style: italic;">if</span><span style="color: #98be65;">(</span>e.getSource<span style="color: #00bfff;">()</span>.equals<span style="color: #00bfff;">(</span>theLeftButton<span style="color: #00bfff;">)</span><span style="color: #98be65;">){</span>
+            theLabel.setText<span style="color: #00bfff;">(</span><span style="color: #98be65;">"Left button was pressed"</span><span style="color: #00bfff;">)</span>;
+        <span style="color: #98be65;">}</span>
+        <span style="color: #51afef; font-style: italic;">else</span> <span style="color: #51afef; font-style: italic;">if</span><span style="color: #98be65;">(</span>e.getSource<span style="color: #00bfff;">()</span>.equals<span style="color: #00bfff;">(</span>theMiddleButton<span style="color: #00bfff;">)</span><span style="color: #98be65;">){</span>
+            theLabel.setText<span style="color: #00bfff;">(</span><span style="color: #98be65;">"Middle button was pressed"</span><span style="color: #00bfff;">)</span>;
+        <span style="color: #98be65;">}</span>
+        <span style="color: #51afef; font-style: italic;">else</span> <span style="color: #51afef; font-style: italic;">if</span><span style="color: #98be65;">(</span>e.getSource<span style="color: #00bfff;">()</span>.equals<span style="color: #00bfff;">(</span>theRightButton<span style="color: #00bfff;">)</span><span style="color: #98be65;">){</span>
+            theLabel.setText<span style="color: #00bfff;">(</span><span style="color: #98be65;">"Right button was pressed"</span><span style="color: #00bfff;">)</span>;
+        <span style="color: #98be65;">}</span>
+    <span style="color: #c678dd;">}</span>
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orge4c1048" class="outline-2">
+<h2 id="orge4c1048"><span class="section-number-2">9</span> Abstract Classes</h2>
+<div class="outline-text-2" id="text-9">
+<ul class="org-ul">
+<li><b>Abstract</b> class is a conceptual class</li>
+<li>Cannot be instantiated, but can be subclassed</li>
+<li>Provide a common root for a group of classes</li>
+<li>They force structure and subclasses and define base behavior</li>
+<li>Allows to define a common root class that can be used as a collection</li>
+<li>If the class that extends the abstract class defines all the abstract methods then the class is <b>complete</b>, otherwise it has <b>incomplete</b> methods</li>
+</ul>
+</div>
+
+<div id="outline-container-org1e72256" class="outline-3">
+<h3 id="org1e72256"><span class="section-number-3">9.1</span> Example abstract class</h3>
+<div class="outline-text-3" id="text-9-1">
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #51afef; font-style: italic;">public</span> <span style="color: #51afef; font-style: italic;">abstract</span> <span style="color: #51afef; font-style: italic;">class</span> <span style="color: #ECBE7B;">FootballSupporter</span> <span style="color: #fff0f5;">{</span>
+    <span style="color: #51afef; font-style: italic;">public</span> <span style="color: #51afef; font-style: italic;">abstract</span> <span style="color: #ECBE7B;">String</span> <span style="color: #c678dd;">getTeamName</span><span style="color: #c678dd;">()</span>;
+    <span style="color: #51afef; font-style: italic;">public</span> <span style="color: #51afef; font-style: italic;">abstract</span> <span style="color: #ECBE7B;">void</span> <span style="color: #c678dd;">setTeamName</span><span style="color: #c678dd;">(</span><span style="color: #ECBE7B;">String</span> <span style="color: #db5762;">teamName</span><span style="color: #c678dd;">)</span>;
+    <span style="color: #51afef; font-style: italic;">public</span> <span style="color: #51afef; font-style: italic;">abstract</span> <span style="color: #ECBE7B;">String</span> <span style="color: #c678dd;">getHomeGround</span><span style="color: #c678dd;">()</span>;
+    <span style="color: #51afef; font-style: italic;">public</span> <span style="color: #51afef; font-style: italic;">abstract</span> <span style="color: #ECBE7B;">void</span> <span style="color: #c678dd;">setHomeGround</span><span style="color: #c678dd;">(</span><span style="color: #ECBE7B;">String</span> <span style="color: #db5762;">teamName</span><span style="color: #c678dd;">)</span>;
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org5277ec6" class="outline-2">
+<h2 id="org5277ec6"><span class="section-number-2">10</span> Interfaces</h2>
+<div class="outline-text-2" id="text-10">
+<ul class="org-ul">
+<li>An <code>Interface</code> describes methods but does not provide bodies for them</li>
+<li>An <code>Interface</code> cannot be instantiated</li>
+<li>An <code>Interface</code> has all methods implicitly <code>abstract</code></li>
+<li>A class can implement multiple interfaces</li>
+<li>With an <code>Interface</code> it is possible to write methods for two unrelated class that share a common interface than can be used in a collection</li>
+</ul>
+</div>
+
+<div id="outline-container-org79c000a" class="outline-3">
+<h3 id="org79c000a"><span class="section-number-3">10.1</span> Example on <code>KeyListener</code></h3>
+<div class="outline-text-3" id="text-10-1">
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #51afef; font-style: italic;">interface</span> <span style="color: #ECBE7B;">KeyListener</span> <span style="color: #fff0f5;">{</span>
+    <span style="color: #51afef; font-style: italic;">public</span> <span style="color: #ECBE7B;">void</span> <span style="color: #c678dd;">keyPressed</span><span style="color: #c678dd;">(</span><span style="color: #ECBE7B;">KeyEvent</span> <span style="color: #db5762;">e</span><span style="color: #c678dd;">)</span>;
+    <span style="color: #51afef; font-style: italic;">public</span> <span style="color: #ECBE7B;">void</span> <span style="color: #c678dd;">keyReleased</span><span style="color: #c678dd;">(</span><span style="color: #ECBE7B;">KeyEvent</span> <span style="color: #db5762;">e</span><span style="color: #c678dd;">)</span>;
+    <span style="color: #51afef; font-style: italic;">public</span> <span style="color: #ECBE7B;">void</span> <span style="color: #c678dd;">keyTyped</span><span style="color: #c678dd;">(</span><span style="color: #ECBE7B;">KeyEvent</span> <span style="color: #db5762;">e</span><span style="color: #c678dd;">)</span>;
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgccdcda8" class="outline-2">
+<h2 id="orgccdcda8"><span class="section-number-2">11</span> Design Patterns</h2>
+<div class="outline-text-2" id="text-11">
+<ul class="org-ul">
+<li>The goal of a design pattern is to create a documentation to help software designers resolve recurring problems encountered throughout all of software development</li>
+<li>A shared language for communicating insight and experience about problems and their solutions</li>
+<li>"Each pattern descibes a problem which occurs over and over again in our environment, and then describes the core of the solution to that problem, in such a way that you can use this solution a million times over, without ever doing it the same way twice" - <i>Christopher Alexander</i></li>
+<li>Alexander presented 253 patterns in 35 groups at different levels of abstraction</li>
+<li>In 1994, four authors Erich Gamma, Richard Helm, Ralph Johnson und John Vlissides published a book titled Design Patterns - Elements of Reusable Object-Oriented Software which initiated the concept of Design Pattern in Software development.</li>
+<li>Two main usages in software development
+<ul class="org-ul">
+<li>Common platform for developers</li>
+<li>Best Practices</li>
+</ul></li>
+<li>Design patterns provide a standard terminology and are specific to particular scenario</li>
+<li>A pattern is made by four elements:
+<ul class="org-ul">
+<li>Name</li>
+<li>Problem</li>
+<li>Solution</li>
+<li>Consequences</li>
+</ul></li>
+</ul>
+</div>
+
+<div id="outline-container-org2b1fdcc" class="outline-3">
+<h3 id="org2b1fdcc"><span class="section-number-3">11.1</span> Singleton Pattern</h3>
+<div class="outline-text-3" id="text-11-1">
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #51afef; font-style: italic;">public</span> <span style="color: #51afef; font-style: italic;">class</span> <span style="color: #ECBE7B;">SingletonExample</span><span style="color: #fff0f5;">{</span>
+    <span style="color: #51afef; font-style: italic;">private</span> <span style="color: #51afef; font-style: italic;">static</span> <span style="color: #ECBE7B;">SingletonExample</span> <span style="color: #db5762;">instance</span>;
+
+    <span style="color: #51afef; font-style: italic;">private</span> <span style="color: #c678dd;">SingletonExample</span><span style="color: #c678dd;">(){}</span>
+
+    <span style="color: #51afef; font-style: italic;">public</span> <span style="color: #51afef; font-style: italic;">static</span> <span style="color: #ECBE7B;">SingletonExample</span> <span style="color: #c678dd;">getInstance</span><span style="color: #c678dd;">(){</span>
+        <span style="color: #51afef; font-style: italic;">if</span><span style="color: #98be65;">(</span>instance == <span style="color: #a9a1e1;">null</span><span style="color: #98be65;">)</span>
+            instance = <span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">SingletonExample</span><span style="color: #98be65;">()</span>;
+        <span style="color: #51afef; font-style: italic;">return</span> instance;
+    <span style="color: #c678dd;">}</span>
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgf287a6f" class="outline-3">
+<h3 id="orgf287a6f"><span class="section-number-3">11.2</span> Factory Pattern</h3>
+<div class="outline-text-3" id="text-11-2">
+<ul class="org-ul">
+<li>Is a creational pattern</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #51afef; font-style: italic;">public</span> <span style="color: #51afef; font-style: italic;">class</span> <span style="color: #ECBE7B;">SingletonExample</span><span style="color: #fff0f5;">{</span>
+    <span style="color: #51afef; font-style: italic;">private</span> <span style="color: #51afef; font-style: italic;">static</span> <span style="color: #ECBE7B;">SingletonExample</span> <span style="color: #db5762;">instance</span>;
+
+    <span style="color: #51afef; font-style: italic;">private</span> <span style="color: #c678dd;">SingletonExample</span><span style="color: #c678dd;">(){}</span>
+
+    <span style="color: #51afef; font-style: italic;">public</span> <span style="color: #51afef; font-style: italic;">static</span> <span style="color: #ECBE7B;">SingletonExample</span> <span style="color: #c678dd;">getInstance</span><span style="color: #c678dd;">(){</span>
+        <span style="color: #51afef; font-style: italic;">if</span><span style="color: #98be65;">(</span>instance == <span style="color: #a9a1e1;">null</span><span style="color: #98be65;">)</span>
+            instance = <span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">SingletonExample</span><span style="color: #98be65;">()</span>;
+        <span style="color: #51afef; font-style: italic;">return</span> instance;
+    <span style="color: #c678dd;">}</span>
+
+    <span style="color: #51afef; font-style: italic;">public</span> <span style="color: #ECBE7B;">IStudent</span> <span style="color: #c678dd;">createStudent</span><span style="color: #c678dd;">(</span><span style="color: #ECBE7B;">int</span> <span style="color: #db5762;">year</span><span style="color: #c678dd;">)</span> <span style="color: #c678dd;">{</span>
+        <span style="color: #51afef; font-style: italic;">if</span> <span style="color: #98be65;">(</span>year == 1<span style="color: #98be65;">)</span> <span style="color: #98be65;">{</span>
+            <span style="color: #ECBE7B;">StudentYOne</span> <span style="color: #db5762;">studentOne</span> = <span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">StudentYOne</span><span style="color: #00bfff;">()</span>;
+            <span style="color: #51afef; font-style: italic;">return</span> <span style="color: #00bfff;">(</span><span style="color: #ECBE7B;">IStudent</span><span style="color: #00bfff;">)</span> studentOne;
+        <span style="color: #98be65;">}</span>
+        <span style="color: #51afef; font-style: italic;">else</span> <span style="color: #98be65;">{</span>
+            <span style="color: #ECBE7B;">StudentNonYOne</span> <span style="color: #db5762;">studentNonYOne</span> = <span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">StudentNonYOne</span><span style="color: #00bfff;">()</span>;
+            <span style="color: #51afef; font-style: italic;">return</span> <span style="color: #00bfff;">(</span><span style="color: #ECBE7B;">IStudent</span><span style="color: #00bfff;">)</span> studentNonYOne;
+        <span style="color: #98be65;">}</span>
+    <span style="color: #c678dd;">}</span>
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org5130e67" class="outline-3">
+<h3 id="org5130e67"><span class="section-number-3">11.3</span> Mode-View-Controller (MVC)</h3>
+<div class="outline-text-3" id="text-11-3">
+<ul class="org-ul">
+<li>Is a design pattern for user-facing software that separates the representation of information from the user's interaction with it
+<ul class="org-ul">
+<li><b>Model</b>: The data of your application, along with the business logic that defines how to change and access that data. The model can be shared among any number of view and controller objects.</li>
+<li><b>View</b>: The means of presenting the model's data to the outside world. This could take the form of a GUI, generated speech, audible tones, printouts, or even non-user oriented output, such as turning on an air conditioner.</li>
+<li><b>Controller</b> - The means of gathering user or other environmental input and providing feedback to the model, normally changing some of the data in that model.</li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org724899d" class="outline-3">
+<h3 id="org724899d"><span class="section-number-3">11.4</span> Decorator Pattern</h3>
+<div class="outline-text-3" id="text-11-4">
+<ul class="org-ul">
+<li>Allows to add new functionality to an existing object without altering its structure</li>
+</ul>
+</div>
+
+<div id="outline-container-org9e06a47" class="outline-4">
+<h4 id="org9e06a47">Example on shape</h4>
+<div class="outline-text-4" id="text-org9e06a47">
+<ul class="org-ul">
+<li>Step 1. Create the interface</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #51afef; font-style: italic;">public</span> <span style="color: #51afef; font-style: italic;">interface</span> <span style="color: #ECBE7B;">Shape</span> <span style="color: #fff0f5;">{</span>
+    <span style="color: #ECBE7B;">void</span> <span style="color: #c678dd;">draw</span><span style="color: #c678dd;">()</span>;
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+<ul class="org-ul">
+<li>Step 2. Create concrete classes implementing the interface</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #51afef; font-style: italic;">public</span> <span style="color: #51afef; font-style: italic;">class</span> <span style="color: #ECBE7B;">Rectangle</span> <span style="color: #51afef; font-style: italic;">implements</span> <span style="color: #ECBE7B;">Shape</span> <span style="color: #fff0f5;">{</span>
+   <span style="color: #a9a1e1;">@Override</span>
+   <span style="color: #51afef; font-style: italic;">public</span> <span style="color: #ECBE7B;">void</span> <span style="color: #c678dd;">draw</span><span style="color: #c678dd;">()</span> <span style="color: #c678dd;">{</span>
+      System.out.println<span style="color: #98be65;">(</span><span style="color: #98be65;">"Shape: Rectangle"</span><span style="color: #98be65;">)</span>;
+   <span style="color: #c678dd;">}</span>
+<span style="color: #fff0f5;">}</span>
+
+</pre>
+</div>
+<ul class="org-ul">
+<li>Step 3. Create an abstract decorator class implementing the <code>Shape</code> interface</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #51afef; font-style: italic;">public</span> <span style="color: #51afef; font-style: italic;">abstract</span> <span style="color: #51afef; font-style: italic;">class</span> <span style="color: #ECBE7B;">ShapeDecorator</span> <span style="color: #51afef; font-style: italic;">implements</span> <span style="color: #ECBE7B;">Shape</span> <span style="color: #fff0f5;">{</span>
+    <span style="color: #51afef; font-style: italic;">protected</span> <span style="color: #ECBE7B;">Shape</span> <span style="color: #db5762;">decoratedShape</span>;
+    <span style="color: #51afef; font-style: italic;">public</span> <span style="color: #c678dd;">ShapeDecorator</span><span style="color: #c678dd;">(</span><span style="color: #ECBE7B;">Shape</span> <span style="color: #db5762;">decoratedShape</span><span style="color: #c678dd;">){</span>
+        <span style="color: #51afef; font-style: italic;">this</span>.decoratedShape = decoratedShape;
+    <span style="color: #c678dd;">}</span>
+
+    <span style="color: #51afef; font-style: italic;">public</span> <span style="color: #ECBE7B;">void</span> <span style="color: #c678dd;">draw</span><span style="color: #c678dd;">(){</span>
+        decoratedShape.draw<span style="color: #98be65;">()</span>;
+    <span style="color: #c678dd;">}</span>
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+<ul class="org-ul">
+<li>Step 4. Create a concrete class that extends the <code>ShapeDecorator</code> class</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #51afef; font-style: italic;">public</span> <span style="color: #51afef; font-style: italic;">class</span> <span style="color: #ECBE7B;">RedShapeDecorator</span> <span style="color: #51afef; font-style: italic;">extends</span> <span style="color: #ECBE7B;">ShapeDecorator</span> <span style="color: #fff0f5;">{</span>
+    <span style="color: #51afef; font-style: italic;">public</span> <span style="color: #c678dd;">RedShapeDecorator</span><span style="color: #c678dd;">(</span><span style="color: #ECBE7B;">Shape</span> <span style="color: #db5762;">decoratedShape</span><span style="color: #c678dd;">)</span> <span style="color: #c678dd;">{</span>
+        <span style="color: #51afef; font-style: italic;">super</span><span style="color: #98be65;">(</span>decoratedShape<span style="color: #98be65;">)</span>;
+    <span style="color: #c678dd;">}</span>
+    <span style="color: #a9a1e1;">@Override</span>
+    <span style="color: #51afef; font-style: italic;">public</span> <span style="color: #ECBE7B;">void</span> <span style="color: #c678dd;">draw</span><span style="color: #c678dd;">()</span> <span style="color: #c678dd;">{</span>
+        decoratedShape.draw<span style="color: #98be65;">()</span>;
+        setRedBorder<span style="color: #98be65;">(</span>decoratedShape<span style="color: #98be65;">)</span>;
+    <span style="color: #c678dd;">}</span>
+    <span style="color: #51afef; font-style: italic;">private</span> <span style="color: #ECBE7B;">void</span> <span style="color: #c678dd;">setRedBorder</span><span style="color: #c678dd;">(</span><span style="color: #ECBE7B;">Shape</span> <span style="color: #db5762;">decoratedShape</span><span style="color: #c678dd;">){</span>
+        System.out.println<span style="color: #98be65;">(</span><span style="color: #98be65;">"Border Color: Red"</span><span style="color: #98be65;">)</span>;
+    <span style="color: #c678dd;">}</span>
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+<ul class="org-ul">
+<li>Step 5. Usage</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #51afef; font-style: italic;">public</span> <span style="color: #51afef; font-style: italic;">class</span> <span style="color: #ECBE7B;">MainClass</span> <span style="color: #fff0f5;">{</span>
+    <span style="color: #51afef; font-style: italic;">public</span> <span style="color: #51afef; font-style: italic;">static</span> <span style="color: #ECBE7B;">void</span> <span style="color: #c678dd;">main</span><span style="color: #c678dd;">(</span><span style="color: #ECBE7B;">String</span><span style="color: #98be65;">[]</span> <span style="color: #db5762;">args</span><span style="color: #c678dd;">)</span> <span style="color: #c678dd;">{</span>
+        <span style="color: #ECBE7B;">Shape</span> <span style="color: #db5762;">redRectangle</span> = <span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">RedShapeDecorator</span><span style="color: #98be65;">(</span><span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">Rectangle</span><span style="color: #00bfff;">()</span><span style="color: #98be65;">)</span>;
+        redRectangle.draw<span style="color: #98be65;">()</span>;
+    <span style="color: #c678dd;">}</span>
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org04ef0e3" class="outline-2">
+<h2 id="org04ef0e3"><span class="section-number-2">12</span> Remote Method Invocation (RMI)</h2>
+<div class="outline-text-2" id="text-12">
+<ul class="org-ul">
+<li>In distributed programming one can use:
+<ul class="org-ul">
+<li>Low level sockets</li>
+<li>JDBC</li>
+<li>RMI</li>
+<li>Object request broker</li>
+</ul></li>
+<li><b>RMI</b> generally comprises of two separate programs: Client and Server</li>
+<li><b>RMI</b> provides the mechanism by which the server and the client communicate and pass information back and forth. Such an application is sometimes referred to as a distributed object application.</li>
+</ul>
+</div>
+
+<div id="outline-container-org1b41585" class="outline-3">
+<h3 id="org1b41585"><span class="section-number-3">12.1</span> Remote Class (aka Distributed Class)</h3>
+<div class="outline-text-3" id="text-12-1">
+<ul class="org-ul">
+<li>A Remote Class has two parts: the interface and the class itself.</li>
+<li>The Remote interface must have the following properties:
+<ul class="org-ul">
+<li>The interface must be public.</li>
+<li>The interface must extend the interface <code>java.rmi.Remote</code></li>
+</ul></li>
+<li>Every method in the interface must declare that it throws <code>java.rmi.RemoteException</code>. Other exceptions may also be thrown.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org4c5fa24" class="outline-3">
+<h3 id="org4c5fa24"><span class="section-number-3">12.2</span> Example on a <code>Product</code> class</h3>
+<div class="outline-text-3" id="text-12-2">
+<ul class="org-ul">
+<li><code>Register</code>: At least one remote object must be registered with the Object Registry. The <code>rmiregistry</code> Object Registry only accepts requests to bind and unbind objects running on the same machine, so it is never necessary to specify the name of the machine when one is registering an object</li>
+<li>It has to extend the <code>java.rmi.server.UnicastRemoteObject</code></li>
+<li>Step 1. Create the interface</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #51afef; font-style: italic;">import</span> <span style="color: #a9a1e1;">java</span>.<span style="color: #a9a1e1;">rmi</span>.*;
+<span style="color: #51afef; font-style: italic;">public</span> <span style="color: #51afef; font-style: italic;">interface</span> <span style="color: #ECBE7B;">ProductInterface</span> <span style="color: #51afef; font-style: italic;">extends</span> <span style="color: #ECBE7B;">Remote</span> <span style="color: #fff0f5;">{</span>
+    <span style="color: #51afef; font-style: italic;">public</span> <span style="color: #ECBE7B;">String</span> <span style="color: #c678dd;">getDescription</span><span style="color: #c678dd;">()</span> <span style="color: #51afef; font-style: italic;">throws</span> <span style="color: #ECBE7B;">RemoteException</span>;
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+<ul class="org-ul">
+<li>Step 2. Create the remote (distributed) <code>Product</code> class</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #51afef; font-style: italic;">import</span> <span style="color: #a9a1e1;">java</span>.<span style="color: #a9a1e1;">rmi</span>.*;
+<span style="color: #51afef; font-style: italic;">import</span> <span style="color: #a9a1e1;">java</span>.<span style="color: #a9a1e1;">rmi</span>.<span style="color: #a9a1e1;">server</span>.*;
+<span style="color: #51afef; font-style: italic;">public</span> <span style="color: #51afef; font-style: italic;">class</span> <span style="color: #ECBE7B;">Product</span> <span style="color: #51afef; font-style: italic;">extends</span> <span style="color: #ECBE7B;">UnicastRemoteObject</span> <span style="color: #51afef; font-style: italic;">implements</span> <span style="color: #ECBE7B;">ProductInterface</span> <span style="color: #fff0f5;">{</span>
+    <span style="color: #51afef; font-style: italic;">private</span> <span style="color: #ECBE7B;">String</span> <span style="color: #db5762;">description</span>;
+    <span style="color: #51afef; font-style: italic;">public</span> <span style="color: #c678dd;">Product</span><span style="color: #c678dd;">(</span><span style="color: #ECBE7B;">String</span> <span style="color: #db5762;">description</span><span style="color: #c678dd;">)</span> <span style="color: #51afef; font-style: italic;">throws</span> <span style="color: #ECBE7B;">RemoteException</span> <span style="color: #c678dd;">{</span>
+        <span style="color: #51afef; font-style: italic;">this</span>.description = description;
+    <span style="color: #c678dd;">}</span>
+    <span style="color: #51afef; font-style: italic;">public</span> <span style="color: #ECBE7B;">String</span> <span style="color: #c678dd;">getDescription</span><span style="color: #c678dd;">(){</span>
+        <span style="color: #51afef; font-style: italic;">return</span> description;
+    <span style="color: #c678dd;">}</span>
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+<ul class="org-ul">
+<li>Step 3. Create the server</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #51afef; font-style: italic;">import</span> <span style="color: #a9a1e1;">java</span>.<span style="color: #a9a1e1;">rmi</span>.*;
+<span style="color: #51afef; font-style: italic;">import</span> <span style="color: #a9a1e1;">java</span>.<span style="color: #a9a1e1;">rmi</span>.<span style="color: #a9a1e1;">server</span>.*;
+<span style="color: #51afef; font-style: italic;">public</span> <span style="color: #51afef; font-style: italic;">class</span> <span style="color: #ECBE7B;">ProductServer</span> <span style="color: #fff0f5;">{</span>
+    <span style="color: #51afef; font-style: italic;">public</span> <span style="color: #51afef; font-style: italic;">static</span> <span style="color: #ECBE7B;">void</span> <span style="color: #c678dd;">main</span><span style="color: #c678dd;">(</span><span style="color: #ECBE7B;">String</span> <span style="color: #db5762;">args</span><span style="color: #98be65;">[]</span><span style="color: #c678dd;">){</span>
+        <span style="color: #51afef; font-style: italic;">try</span> <span style="color: #98be65;">{</span>
+            <span style="color: #ECBE7B;">Product</span> <span style="color: #db5762;">carObject</span> = <span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">Product</span><span style="color: #00bfff;">(</span><span style="color: #98be65;">"car"</span><span style="color: #00bfff;">)</span>;
+            <span style="color: #ECBE7B;">Product</span> <span style="color: #db5762;">busObject</span> = <span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">Product</span><span style="color: #00bfff;">(</span><span style="color: #98be65;">"bus"</span><span style="color: #00bfff;">)</span>;
+            Naming.rebind<span style="color: #00bfff;">(</span><span style="color: #98be65;">"car"</span>, carObject<span style="color: #00bfff;">)</span>;
+            Naming.rebind<span style="color: #00bfff;">(</span><span style="color: #98be65;">"bus"</span>, busObject<span style="color: #00bfff;">)</span>;
+        <span style="color: #98be65;">}</span>
+        <span style="color: #51afef; font-style: italic;">catch</span><span style="color: #98be65;">(</span><span style="color: #ECBE7B;">Exception</span> <span style="color: #db5762;">e</span><span style="color: #98be65;">){</span>
+            e.printStackTrace<span style="color: #00bfff;">()</span>;
+        <span style="color: #98be65;">}</span>
+    <span style="color: #c678dd;">}</span>
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+<ul class="org-ul">
+<li>Step 4. Create the client</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #51afef; font-style: italic;">import</span> <span style="color: #a9a1e1;">java</span>.<span style="color: #a9a1e1;">rmi</span>.*;
+<span style="color: #51afef; font-style: italic;">public</span> <span style="color: #51afef; font-style: italic;">class</span> <span style="color: #ECBE7B;">ProductClient</span> <span style="color: #fff0f5;">{</span>
+    <span style="color: #51afef; font-style: italic;">public</span> <span style="color: #51afef; font-style: italic;">static</span> <span style="color: #ECBE7B;">void</span> <span style="color: #c678dd;">main</span><span style="color: #c678dd;">(</span><span style="color: #ECBE7B;">String</span> <span style="color: #db5762;">args</span><span style="color: #98be65;">[]</span><span style="color: #c678dd;">)</span> <span style="color: #c678dd;">{</span>
+        <span style="color: #ECBE7B;">String</span> <span style="color: #db5762;">url</span> = <span style="color: #98be65;">"rmi:///"</span>;
+
+        <span style="color: #51afef; font-style: italic;">try</span> <span style="color: #98be65;">{</span>
+            <span style="color: #ECBE7B;">ProductInterface</span> <span style="color: #db5762;">product1</span> = <span style="color: #00bfff;">(</span><span style="color: #ECBE7B;">ProductInterface</span><span style="color: #00bfff;">)</span> Naming.lookup<span style="color: #00bfff;">(</span>url + <span style="color: #98be65;">"car"</span><span style="color: #00bfff;">)</span>;
+            <span style="color: #ECBE7B;">String</span> <span style="color: #db5762;">aDescription</span> = product1.getDescription<span style="color: #00bfff;">()</span>;
+            System.out.println<span style="color: #00bfff;">(</span><span style="color: #98be65;">"Result: "</span>+ aDescription<span style="color: #00bfff;">)</span>;
+
+            <span style="color: #ECBE7B;">ProductInterface</span> <span style="color: #db5762;">product2</span> = <span style="color: #00bfff;">(</span><span style="color: #ECBE7B;">ProductInterface</span><span style="color: #00bfff;">)</span> Naming.lookup<span style="color: #00bfff;">(</span>url + <span style="color: #98be65;">"bus"</span><span style="color: #00bfff;">)</span>;
+            <span style="color: #ECBE7B;">String</span> <span style="color: #db5762;">aDescription1</span> = product2.getDescription<span style="color: #00bfff;">()</span>;
+            System.out.println<span style="color: #00bfff;">(</span><span style="color: #98be65;">"Result: "</span>+ aDescription1<span style="color: #00bfff;">)</span>;
+        <span style="color: #98be65;">}</span>
+        <span style="color: #51afef; font-style: italic;">catch</span> <span style="color: #98be65;">(</span><span style="color: #ECBE7B;">Exception</span> <span style="color: #db5762;">e</span><span style="color: #98be65;">)</span> <span style="color: #98be65;">{</span>
+            e.printStackTrace<span style="color: #00bfff;">()</span>;
+        <span style="color: #98be65;">}</span>
+    <span style="color: #c678dd;">}</span>
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+<ul class="org-ul">
+<li>Step 5. Running
+<ol class="org-ol">
+<li>Compile the <code>Product.class</code> file with the <code>rmic</code> command (this step generates the product stub)</li>
+<li>Start the RMI registry with the <code>rmiregistry</code> command</li>
+<li>In a new shell start the product server with <code>java ProductServer</code></li>
+<li>In a new shell start the product client with <code>java ProductClient</code></li>
+</ol></li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org3577190" class="outline-2">
+<h2 id="org3577190"><span class="section-number-2">13</span> Serialization</h2>
+<div class="outline-text-2" id="text-13">
+<ul class="org-ul">
+<li>Is a process of transforming an in-memory object to a byte stream</li>
+<li><b>Deserialization</b> is the inverse process of reconstructing an object from a byte stream to the same state in which the object was previously serialized</li>
+<li>To implement serialization a class needs to implement the <code>Serializable</code> interface</li>
+<li>Usually enclosed in a <code>try/catch</code> block in which the <code>try</code> tries to read, if there is no file then create a new object in the <code>catch</code> block and serialize it to the file</li>
+</ul>
+</div>
+
+<div id="outline-container-orgb0c26f1" class="outline-3">
+<h3 id="orgb0c26f1"><span class="section-number-3">13.1</span> Example of Serialization</h3>
+<div class="outline-text-3" id="text-13-1">
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #ECBE7B;">FileOutputStream</span> <span style="color: #db5762;">out</span> = <span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">FileOutputStream</span><span style="color: #fff0f5;">(</span><span style="color: #98be65;">"save.ser"</span><span style="color: #fff0f5;">)</span>;
+<span style="color: #ECBE7B;">ObjectOutputStream</span> <span style="color: #db5762;">oos</span> = <span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">ObjectOutputStream</span><span style="color: #fff0f5;">(</span>out<span style="color: #fff0f5;">)</span>;
+oos.writeObject<span style="color: #fff0f5;">(</span><span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">Date</span><span style="color: #c678dd;">()</span><span style="color: #fff0f5;">)</span>;
+oos.close<span style="color: #fff0f5;">()</span>;
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgd20be8d" class="outline-3">
+<h3 id="orgd20be8d"><span class="section-number-3">13.2</span> Example Deserialization</h3>
+<div class="outline-text-3" id="text-13-2">
+<ul class="org-ul">
+<li>Remember to cast the object upon retrieval</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #ECBE7B;">FileInputStream</span> <span style="color: #db5762;">in</span> = <span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">FileInputStream</span><span style="color: #fff0f5;">(</span><span style="color: #98be65;">"save.ser"</span><span style="color: #fff0f5;">)</span>;
+<span style="color: #ECBE7B;">ObjectInputStream</span> <span style="color: #db5762;">ois</span> = <span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">ObjectInputStream</span><span style="color: #fff0f5;">(</span>in<span style="color: #fff0f5;">)</span>;
+<span style="color: #ECBE7B;">Date</span> <span style="color: #db5762;">d</span> = <span style="color: #fff0f5;">(</span><span style="color: #ECBE7B;">Date</span><span style="color: #fff0f5;">)</span> ois.readObject<span style="color: #fff0f5;">()</span>;
+ois.close<span style="color: #fff0f5;">()</span>;
+</pre>
+</div>
+
+<script src="../assets/jquery-3.3.1.min.js"></script>
+<script src="../assets/notes.js"></script>
+</div>
+</div>
+</div>
+<div id="outline-container-orgbcad9f0" class="outline-2">
+<h2 id="orgbcad9f0"><span class="section-number-2">14</span> New Date and Time API</h2>
+<div class="outline-text-2" id="text-14">
+</div>
+<div id="outline-container-org52c0af7" class="outline-3">
+<h3 id="org52c0af7"><span class="section-number-3">14.1</span> Methods</h3>
+<div class="outline-text-3" id="text-14-1">
+<ul class="org-ul">
+<li><code>now()</code>: Today's data</li>
+<li><code>minusYears()/Months()/Days()</code>: Subtract years/monts/days</li>
+<li><code>plusYears()/Months()/Days()</code>: Add years/monts/days</li>
+<li><code>isBefore()</code>: Is before a certain date</li>
+<li><code>isAfter()</code>: Is after a certain date</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orge3e0034" class="outline-3">
+<h3 id="orge3e0034"><span class="section-number-3">14.2</span> Creating the <code>LocalDate</code> objects</h3>
+<div class="outline-text-3" id="text-14-2">
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #51afef; font-style: italic;">import</span> <span style="color: #a9a1e1;">java</span>.<span style="color: #a9a1e1;">time</span>.*;
+
+<span style="color: #51afef; font-style: italic;">class</span> <span style="color: #ECBE7B;">test</span> <span style="color: #fff0f5;">{</span>
+    <span style="color: #51afef; font-style: italic;">public</span> <span style="color: #51afef; font-style: italic;">static</span> <span style="color: #ECBE7B;">void</span> <span style="color: #c678dd;">main</span><span style="color: #c678dd;">(</span><span style="color: #ECBE7B;">String</span><span style="color: #98be65;">[]</span> <span style="color: #db5762;">args</span><span style="color: #c678dd;">)</span> <span style="color: #c678dd;">{</span>
+        <span style="color: #ECBE7B;">LocalDate</span> <span style="color: #db5762;">now</span> = LocalDate.now<span style="color: #98be65;">()</span>;
+        <span style="color: #ECBE7B;">LocalDate</span> <span style="color: #db5762;">nowMinus30Years</span> = LocalDate.now<span style="color: #98be65;">()</span>.minusYears<span style="color: #98be65;">(</span>30<span style="color: #98be65;">)</span>;
+        <span style="color: #ECBE7B;">LocalDate</span> <span style="color: #db5762;">parsedDate</span> = LocalDate.parse<span style="color: #98be65;">(</span><span style="color: #98be65;">"2006-10-28"</span><span style="color: #98be65;">)</span>;
+        <span style="color: #ECBE7B;">LocalDate</span> <span style="color: #db5762;">parsedDateWithOf</span> = LocalDate.of<span style="color: #98be65;">(</span>2006, 10, 28<span style="color: #98be65;">)</span>;
+        <span style="color: #5B6268;">// </span><span style="color: #5B6268;">is the parsed date 30 years ago?</span>
+        System.out.println<span style="color: #98be65;">(</span><span style="color: #98be65;">"Is 30 years ago: "</span> + nowMinus30Years.isAfter<span style="color: #00bfff;">(</span>parsedDate<span style="color: #00bfff;">)</span><span style="color: #98be65;">)</span>;  <span style="color: #5B6268;">// </span><span style="color: #5B6268;">false</span>
+    <span style="color: #c678dd;">}</span>
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org58fefb0" class="outline-3">
+<h3 id="org58fefb0"><span class="section-number-3">14.3</span> Creating the <code>LocalTime</code> objects</h3>
+<div class="outline-text-3" id="text-14-3">
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #51afef; font-style: italic;">import</span> <span style="color: #a9a1e1;">java</span>.<span style="color: #a9a1e1;">time</span>.*;
+
+<span style="color: #51afef; font-style: italic;">class</span> <span style="color: #ECBE7B;">test</span> <span style="color: #fff0f5;">{</span>
+    <span style="color: #51afef; font-style: italic;">public</span> <span style="color: #51afef; font-style: italic;">static</span> <span style="color: #ECBE7B;">void</span> <span style="color: #c678dd;">main</span><span style="color: #c678dd;">(</span><span style="color: #ECBE7B;">String</span><span style="color: #98be65;">[]</span> <span style="color: #db5762;">args</span><span style="color: #c678dd;">)</span> <span style="color: #c678dd;">{</span>
+        <span style="color: #ECBE7B;">LocalTime</span> <span style="color: #db5762;">now</span> = LocalTime.now<span style="color: #98be65;">()</span>;
+        <span style="color: #ECBE7B;">LocalTime</span> <span style="color: #db5762;">nowMinus3Hours</span> = LocalTime.now<span style="color: #98be65;">()</span>.minusHours<span style="color: #98be65;">(</span>4<span style="color: #98be65;">)</span>;
+        <span style="color: #ECBE7B;">LocalTime</span> <span style="color: #db5762;">parseTime</span> = LocalTime.parse<span style="color: #98be65;">(</span><span style="color: #98be65;">"06:30"</span><span style="color: #98be65;">)</span>;
+        <span style="color: #ECBE7B;">LocalTime</span> <span style="color: #db5762;">parseTimeWithOf</span> = LocalTime.of<span style="color: #98be65;">(</span>10, 45<span style="color: #98be65;">)</span>;
+
+        System.out.println<span style="color: #98be65;">(</span>parseTime<span style="color: #98be65;">)</span>; <span style="color: #5B6268;">// </span><span style="color: #5B6268;">6:30</span>
+        System.out.println<span style="color: #98be65;">(</span>parseTimeWithOf<span style="color: #98be65;">)</span>;  <span style="color: #5B6268;">// </span><span style="color: #5B6268;">10:45</span>
+        System.out.println<span style="color: #98be65;">(</span>parseTime.isBefore<span style="color: #00bfff;">(</span>parseTimeWithOf<span style="color: #00bfff;">)</span><span style="color: #98be65;">)</span>;  <span style="color: #5B6268;">// </span><span style="color: #5B6268;">true</span>
+
+    <span style="color: #c678dd;">}</span>
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org55b93c1" class="outline-3">
+<h3 id="org55b93c1"><span class="section-number-3">14.4</span> A combined class of date and time is called <code>LocalDateTime</code></h3>
+<div class="outline-text-3" id="text-14-4">
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #51afef; font-style: italic;">import</span> <span style="color: #a9a1e1;">java</span>.<span style="color: #a9a1e1;">time</span>.*;
+
+<span style="color: #51afef; font-style: italic;">class</span> <span style="color: #ECBE7B;">test</span> <span style="color: #fff0f5;">{</span>
+    <span style="color: #51afef; font-style: italic;">public</span> <span style="color: #51afef; font-style: italic;">static</span> <span style="color: #ECBE7B;">void</span> <span style="color: #c678dd;">main</span><span style="color: #c678dd;">(</span><span style="color: #ECBE7B;">String</span><span style="color: #98be65;">[]</span> <span style="color: #db5762;">args</span><span style="color: #c678dd;">)</span> <span style="color: #c678dd;">{</span>
+        <span style="color: #ECBE7B;">LocalDateTime</span> <span style="color: #db5762;">now</span> = LocalDateTime.now<span style="color: #98be65;">()</span>;
+        <span style="color: #ECBE7B;">LocalDateTime</span> <span style="color: #db5762;">nowMinus4Years</span> = LocalDateTime.now<span style="color: #98be65;">()</span>.minusYears<span style="color: #98be65;">(</span>4<span style="color: #98be65;">)</span>;
+        <span style="color: #ECBE7B;">LocalDateTime</span> <span style="color: #db5762;">parseDateTime</span> = LocalDateTime.parse<span style="color: #98be65;">(</span><span style="color: #98be65;">"2018-12-16T06:30:00"</span><span style="color: #98be65;">)</span>;
+        <span style="color: #ECBE7B;">LocalDateTime</span> <span style="color: #db5762;">parseDateTimeWithOf</span> = LocalDateTime.of<span style="color: #98be65;">(</span>2018, 12, 16, 10, 45<span style="color: #98be65;">)</span>;
+
+        System.out.println<span style="color: #98be65;">(</span>parseDateTime<span style="color: #98be65;">)</span>; <span style="color: #5B6268;">// </span><span style="color: #5B6268;">2018-12-16T06:30</span>
+        System.out.println<span style="color: #98be65;">(</span>parseDateTimeWithOf<span style="color: #98be65;">)</span>;  <span style="color: #5B6268;">// </span><span style="color: #5B6268;">2018-12-16T10:45</span>
+        System.out.println<span style="color: #98be65;">(</span>parseDateTime.isBefore<span style="color: #00bfff;">(</span>parseDateTimeWithOf<span style="color: #00bfff;">)</span><span style="color: #98be65;">)</span>;  <span style="color: #5B6268;">// </span><span style="color: #5B6268;">true</span>
+    <span style="color: #c678dd;">}</span>
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="date">Date: 2018-09-10 Mon 11:54</p>
+<p class="author">Author: Damian Chrzanowski</p>
+<p class="date">Created: 2018-12-16 Sun 12:27</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

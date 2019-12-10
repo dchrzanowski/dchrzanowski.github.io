@@ -1,0 +1,446 @@
+#+TITLE: Docker
+#+DATE: [2018-04-21 Sat 14:41]
+#+AUTHOR: Damian Chrzanowski
+#+EMAIL: pjdamian.chrzanowski@gmail.com
+#+OPTIONS: H:2 toc:2
+#+HTML_HEAD: <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="../../assets/org.css"/>
+#+HTML_HEAD: <link rel="icon" href="../../assets/favicon.ico">
+
+[[file:../../index.org][Home Page]]
+
+* Installation
+  - Install the ~docker~ and ~docker-compose~ packages
+  - Add the service
+  #+BEGIN_SRC sh
+  sudo systemctl start docker.service
+  sudo systemctl enable docker.service
+  #+END_SRC
+  - Add yourself to the docker group, log out and log back in for the changes to take effect
+  #+BEGIN_SRC sh
+  sudo usermod -aG docker USERNAME
+  #+END_SRC
+
+* Important notes
+  - The hostname ENV variable, is the name of the container when launched inside of the container
+
+* Logging into Docker in the CLI
+  #+BEGIN_SRC sh
+  docker login
+  #+END_SRC
+
+* Commands
+** Testing
+   - Test installation
+   #+BEGIN_SRC sh
+  docker run hello-world
+   #+END_SRC
+
+** Help
+   - Container help
+   #+BEGIN_SRC sh
+   docker container --help
+   #+END_SRC
+   - Image help
+   #+BEGIN_SRC sh
+   docker image --help
+   #+END_SRC
+
+** Listing
+   - List images
+   #+BEGIN_SRC sh
+  docker image ls
+   #+END_SRC
+   - List containers, (running, all, all in quiet mode)
+   #+BEGIN_SRC sh
+  docker container ls
+  docker container ls -a
+  docker container ls -sq
+   #+END_SRC
+
+** Building
+   - Build an image from the current directory, using a ~Dockerfile~, with a certain tag
+   #+BEGIN_SRC sh
+   docker build -t TAGNAME .
+   #+END_SRC
+
+** Running
+   - Run the ~friendlyhello~ image with a port mapping from port ~80~ (in the container) to port ~4000~ (outside the container)
+   #+BEGIN_SRC sh
+   docker run -p 4000:80 friendlyhello
+   #+END_SRC
+   - Same as above but in detached mode
+   #+BEGIN_SRC sh
+   docker run -d -p 4000:80 friendlyhello
+   #+END_SRC
+   - Run from the cloud
+   #+BEGIN_SRC sh
+   docker run USERNAME/REPOSITORY:TAG
+   #+END_SRC
+
+** Stopping
+   - Stop the container with the ID ~123456~
+   #+BEGIN_SRC sh
+   docker container stop 123456
+   #+END_SRC
+
+** Killing containers
+   - Kill the container with the ID ~123456~
+   #+BEGIN_SRC sh
+   docker container kill 123456
+   #+END_SRC
+
+** Remove container/image
+   - Remove the container/image with the ID ~123456~
+   #+BEGIN_SRC sh
+   docker container rm 123456
+   docker image rm 123456
+   #+END_SRC
+   - Remove all containers/images
+   #+BEGIN_SRC sh
+   docker container rm $(docker container ls -a -q)
+   docker image rm $(docker image ls -a -q)
+   #+END_SRC
+
+** Tagging
+   - Tag an image
+   #+BEGIN_SRC sh
+   docker tag IMAGENAME USERNAME/REPOSITORY:TAGNAME
+   #+END_SRC
+
+** Pushing the image
+   - Push the image
+   #+BEGIN_SRC sh
+   docker push USERNAME/TAGNAME
+   #+END_SRC
+
+* Sample Setup
+
+** Sample Dockerfile
+   - The ~Dockerfile~ itself
+   #+BEGIN_SRC dockerfile
+     # Use an official Python runtime as a parent image
+     FROM python:2.7-slim
+
+     # Set the working directory to /app
+     WORKDIR /app
+
+     # Copy the current directory contents into the container at /app
+     ADD . /app
+
+     # Install any needed packages specified in requirements.txt
+     RUN pip install --trusted-host pypi.python.org -r requirements.txt
+
+     # Make port 80 available to the world outside this container
+     EXPOSE 80
+
+     # Define environment variable
+     ENV NAME World
+
+     # Run app.py when the container launches
+     CMD ["python", "app.py"]
+   #+END_SRC
+
+** Sample Python Flask server
+   - Additionally we create ~requirements.txt~ (python dependencies file)
+   #+BEGIN_SRC text
+   Flask
+   Redis
+   #+END_SRC
+   - And the ~app.py~ for the app itself
+   #+BEGIN_SRC python
+     from flask import Flask
+     from redis import Redis, RedisError
+     import os
+     import socket
+
+     # Connect to Redis
+     redis = Redis(host="redis", db=0, socket_connect_timeout=2, socket_timeout=2)
+
+     app = Flask(__name__)
+
+     @app.route("/")
+     def hello():
+         try:
+             visits = redis.incr("counter")
+         except RedisError:
+             visits = "<i>cannot connect to Redis, counter disabled</i>"
+
+         html = "<h3>Hello {name}!</h3>" \
+                "<b>Hostname:</b> {hostname}<br/>" \
+                "<b>Visits:</b> {visits}"
+         return html.format(name=os.getenv("NAME", "world"), hostname=socket.gethostname(), visits=visits)
+
+     if __name__ == "__main__":
+         app.run(host='0.0.0.0', port=80)
+   #+END_SRC
+
+** Running the app
+   - Build the image
+   - ~-t~ to add a tag
+   #+BEGIN_SRC sh
+   docker build -t friendlyhello .
+   #+END_SRC
+   - Run the image. Add ~-d~ to run in detached mode
+   #+BEGIN_SRC sh
+   docker run -p 4000:80 friendlyhello
+   #+END_SRC
+
+** Login, tag the image, and push
+   - Login
+   #+BEGIN_SRC sh
+   docker login
+   #+END_SRC
+   - Tag an image
+   #+BEGIN_SRC sh
+   docker tag friendlyhello:latest grimscythe/get-started:part2
+   #+END_SRC
+   - Push the image
+   #+BEGIN_SRC sh
+   docker push grimscythe/get-started:part2
+   #+END_SRC
+
+** Now the image is available publicly and can be ran from any machine with
+   - Run it with
+   #+BEGIN_SRC sh
+   docker run -p 4000:80 grimscythe/get-started:part2
+   #+END_SRC
+
+
+* Sample Setup with Docker-Compose
+  - run ~docker-compose up~ once everything is setup
+
+** Create the dockerfile for the application
+   #+BEGIN_SRC dockerfile
+     FROM node:10.1.0
+
+     WORKDIR /usr/src/app
+
+     COPY package*.json ./
+
+     RUN npm install typescript
+
+     RUN npm install
+
+     COPY . .
+
+     EXPOSE 3000
+
+     CMD ["npm", "run", "start:dev"]
+   #+END_SRC
+
+** YML file that spins up the DB, waits for it and launches the app server
+   #+BEGIN_SRC yaml
+     version: "3"
+     services:
+       app:
+         build:
+           context: .
+           dockerfile: Dockerfile.app
+         image: prefarm/arable
+         depends_on:
+           - db
+         ports:
+           - 8080:8081
+         command: ["./wait-for-it.sh", "db:27017", "--", "nodemon"]
+         volumes:
+           - .:/usr/src/app
+           - /usr/src/app/node_modules/
+       db:
+         build:
+           context: .
+           dockerfile: Dockerfile.db
+         image: prefarm/db
+         ports:
+           - 27017:27017
+         environment:
+           MONGO_INITDB_DATABASE: Arable
+   #+END_SRC
+
+** wait-for-it bash script to wait for the db to spin up
+   #+BEGIN_SRC sh
+     #!/usr/bin/env bash
+     #   Use this script to test if a given TCP host/port are available
+
+     cmdname=$(basename $0)
+
+     echoerr() { if [[ $QUIET -ne 1 ]]; then echo "$@" 1>&2; fi }
+
+     usage()
+     {
+         cat << USAGE >&2
+     Usage:
+         $cmdname host:port [-s] [-t timeout] [-- command args]
+         -h HOST | --host=HOST       Host or IP under test
+         -p PORT | --port=PORT       TCP port under test
+                                     Alternatively, you specify the host and port as host:port
+         -s | --strict               Only execute subcommand if the test succeeds
+         -q | --quiet                Don't output any status messages
+         -t TIMEOUT | --timeout=TIMEOUT
+                                     Timeout in seconds, zero for no timeout
+         -- COMMAND ARGS             Execute command with args after the test finishes
+     USAGE
+         exit 1
+     }
+
+     wait_for()
+     {
+         if [[ $TIMEOUT -gt 0 ]]; then
+             echoerr "$cmdname: waiting $TIMEOUT seconds for $HOST:$PORT"
+         else
+             echoerr "$cmdname: waiting for $HOST:$PORT without a timeout"
+         fi
+         start_ts=$(date +%s)
+         while :
+         do
+             if [[ $ISBUSY -eq 1 ]]; then
+                 nc -z $HOST $PORT
+                 result=$?
+             else
+                 (echo > /dev/tcp/$HOST/$PORT) >/dev/null 2>&1
+                 result=$?
+             fi
+             if [[ $result -eq 0 ]]; then
+                 end_ts=$(date +%s)
+                 echoerr "$cmdname: $HOST:$PORT is available after $((end_ts - start_ts)) seconds"
+                 break
+             fi
+             sleep 1
+         done
+         return $result
+     }
+
+     wait_for_wrapper()
+     {
+         # In order to support SIGINT during timeout: http://unix.stackexchange.com/a/57692
+         if [[ $QUIET -eq 1 ]]; then
+             timeout $BUSYTIMEFLAG $TIMEOUT $0 --quiet --child --host=$HOST --port=$PORT --timeout=$TIMEOUT &
+         else
+             timeout $BUSYTIMEFLAG $TIMEOUT $0 --child --host=$HOST --port=$PORT --timeout=$TIMEOUT &
+         fi
+         PID=$!
+         trap "kill -INT -$PID" INT
+         wait $PID
+         RESULT=$?
+         if [[ $RESULT -ne 0 ]]; then
+             echoerr "$cmdname: timeout occurred after waiting $TIMEOUT seconds for $HOST:$PORT"
+         fi
+         return $RESULT
+     }
+
+     # process arguments
+     while [[ $# -gt 0 ]]
+     do
+         case "$1" in
+             ,*:* )
+             hostport=(${1//:/ })
+             HOST=${hostport[0]}
+             PORT=${hostport[1]}
+             shift 1
+             ;;
+             --child)
+             CHILD=1
+             shift 1
+             ;;
+             -q | --quiet)
+             QUIET=1
+             shift 1
+             ;;
+             -s | --strict)
+             STRICT=1
+             shift 1
+             ;;
+             -h)
+             HOST="$2"
+             if [[ $HOST == "" ]]; then break; fi
+             shift 2
+             ;;
+             --host=*)
+             HOST="${1#*=}"
+             shift 1
+             ;;
+             -p)
+             PORT="$2"
+             if [[ $PORT == "" ]]; then break; fi
+             shift 2
+             ;;
+             --port=*)
+             PORT="${1#*=}"
+             shift 1
+             ;;
+             -t)
+             TIMEOUT="$2"
+             if [[ $TIMEOUT == "" ]]; then break; fi
+             shift 2
+             ;;
+             --timeout=*)
+             TIMEOUT="${1#*=}"
+             shift 1
+             ;;
+             --)
+             shift
+             CLI=("$@")
+             break
+             ;;
+             --help)
+             usage
+             ;;
+             ,*)
+             echoerr "Unknown argument: $1"
+             usage
+             ;;
+         esac
+     done
+
+     if [[ "$HOST" == "" || "$PORT" == "" ]]; then
+         echoerr "Error: you need to provide a host and port to test."
+         usage
+     fi
+
+     TIMEOUT=${TIMEOUT:-15}
+     STRICT=${STRICT:-0}
+     CHILD=${CHILD:-0}
+     QUIET=${QUIET:-0}
+
+     # check to see if timeout is from busybox?
+     # check to see if timeout is from busybox?
+     TIMEOUT_PATH=$(realpath $(which timeout))
+     if [[ $TIMEOUT_PATH =~ "busybox" ]]; then
+             ISBUSY=1
+             BUSYTIMEFLAG="-t"
+     else
+             ISBUSY=0
+             BUSYTIMEFLAG=""
+     fi
+
+     if [[ $CHILD -gt 0 ]]; then
+         wait_for
+         RESULT=$?
+         exit $RESULT
+     else
+         if [[ $TIMEOUT -gt 0 ]]; then
+             wait_for_wrapper
+             RESULT=$?
+         else
+             wait_for
+             RESULT=$?
+         fi
+     fi
+
+     if [[ $CLI != "" ]]; then
+         if [[ $RESULT -ne 0 && $STRICT -eq 1 ]]; then
+             echoerr "$cmdname: strict mode, refusing to execute subprocess"
+             exit $RESULT
+         fi
+         exec "${CLI[@]}"
+     else
+         exit $RESULT
+     fi
+
+   #+END_SRC
+
+
+   #+BEGIN_EXPORT html
+   <script src="../../assets/jquery-3.3.1.min.js"></script>
+   <script src="../../assets/notes.js"></script>
+   #+END_EXPORT

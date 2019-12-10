@@ -1,0 +1,131 @@
+#+TITLE: Management And Organizational Behaviour
+#+DATE: [2019-09-09 Mon 11:54]
+#+AUTHOR: Damian Chrzanowski
+#+EMAIL: pjdamian.chrzanowski@gmail.com
+#+OPTIONS: TOC:2 num:2
+#+HTML_HEAD: <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="../assets/org.css"/>
+#+HTML_HEAD: <link rel="icon" href="../assets/favicon.ico">
+[[file:index.org][Home Page]]
+* Definitions
+  - *Organization*: Is a systematic arrangement of people brought together to accomplish some specific purpose
+* Management
+** Management is considered art and science
+   - Some people are natural at it, some will always struggle
+** Why is there good and bad?
+   - Mostly because we are human
+** Motivating
+   - Pat on the back
+   - Talking
+   - Money (but not to everyone)
+** Three common characteristics
+   - *Goal*:
+   - *People*:
+   - *Structure*:
+** Performance
+   - *Efficiency*: Is essentially doing the thing right
+   - *Effectiveness*: Is essentially doing the thing the right way
+* Teams
+** People are the most important aspect of any project
+** Teamwork/Group Work
+   - Composition
+   - Interaction
+   - Cohesion
+   - Group Loyalties
+   - Communication
+     - Size
+     - Structure
+     - Composition
+     - Physical work environment
+   - Organisation
+** People Over Process
+   - Consistency
+   - Respect
+   - Inclusion
+   - Honesty
+** Selecting a Team
+** Hiring a Juggler
+** Staff selection
+   - Domain experience
+   - Platform experience
+   - Programming language experience
+   - Problem solving ability
+   - Education
+   - Communication
+   - Adaptability
+   - Attitude
+   - Personality
+** Human Needs
+   - Esteem needs
+   - Social needs
+   - Safety needs
+   - Psychological needs
+** Personality Types
+   - Task-oriented
+   - Self-oriented
+   - Interaction-oriented
+** Motivation balance
+* Management Mintzberg's Interpretation
+** Previous vague terms
+   - Planning
+   - Organizing
+   - Leading
+   - Controlling
+** Motto
+   - Mintzberg says that management is an art (a ‘human skill’) and it is therefore imperative for managers to learn continuously about their own situations.
+** Interpersonal Roles
+   - Figurehead
+   - Leader
+   - Liason
+** Informational Roles
+   - Monitor
+   - Disseminator
+   - Spokesperson
+** Decisional Roles
+   - Entrepreneur
+   - Disturbance Handler
+   - Resource Allocator
+   - Negotiator
+* Motivation
+** Mainly defined as:
+   1. Direction of behaviour in an organization
+   2. The effort or how hard people work
+   3. The persistence displayed in meeting
+** Outcomes and Inputs
+   - *Outcomes*: Anything a person gets from a job. Examples include pay, autonomy, accomplishment
+   - *Inputs*: Anything a person contributes to the job. Examples include skills, knowledge, work behaviour
+** Motivation Equation
+*** Inputs from Organizational members
+    - Time
+    - Effort
+    - Education
+    - Experience
+    - Skills
+    - Knowledge
+    - Work Behaviour
+*** Performance
+    - Contribute to organization efficiency
+    - Effectiveness
+*** Outcomes received by members
+    - Pay
+    - Job security
+** Frederick W.Taylor's Theory
+** Victor Vroom's Theory: Expectancy Theory
+   - *Effort*: Uses Expectancy moderator.
+   - *Performance*: Uses Instrumentality moderator.
+   - *Outcomes*: Uses Valence moderator.
+* Needs
+** TODO Maslow
+** McClelland's Needs Theory
+*** Approach
+    - First identify a person's needs on your team
+    - Structure your approach
+* On The Exam
+** Lecture 1
+** Lecture 3
+** Lecture 4 (High Performance Teams)
+* Delete at the end
+    #+BEGIN_EXPORT html
+    <script src="../assets/jquery-3.3.1.min.js"></script>
+    <script src="../assets/notes.js"></script>
+    #+END_EXPORT

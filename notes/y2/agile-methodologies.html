@@ -1,0 +1,1588 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2018-12-13 Thu 20:27 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Agile Methodologies 2</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="Damian Chrzanowski" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="../assets/org.css"/>
+<link rel="icon" href="../assets/favicon.ico">
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2018 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Agile Methodologies 2</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orgd8fde7b">1. Feature Driven Development (FDD) SDLC</a></li>
+<li><a href="#org3dfa2a8">2. Kanban SDLC</a>
+<ul>
+<li><a href="#org317908b">2.1. Four key principles:</a></li>
+<li><a href="#orgedbd888">2.2. Core practices:</a></li>
+<li><a href="#org6cbc93b">2.3. Kanban task board</a></li>
+<li><a href="#orgbe53663">2.4. WIP limits</a></li>
+</ul>
+</li>
+<li><a href="#org5da8ef6">3. Test template</a></li>
+<li><a href="#org72128f8">4. Product Backlog</a></li>
+<li><a href="#orgcf3f2ce">5. Working Agreement</a></li>
+<li><a href="#org69f07da">6. Definition of DONE</a></li>
+<li><a href="#org51b7c8e">7. Prioritization Techniques</a>
+<ul>
+<li><a href="#org72c96f6">7.1. Based on Value</a></li>
+<li><a href="#orge311c94">7.2. Value Stream Mapping</a></li>
+<li><a href="#org1341ec5">7.3. MoSCoW</a></li>
+<li><a href="#org22a5c4f">7.4. Kano Model</a></li>
+</ul>
+</li>
+<li><a href="#org9641460">8. Estimation Techniques</a>
+<ul>
+<li><a href="#orgfa6f091">8.1. Level of Effort (LoE) or T-Shirt sizing</a></li>
+<li><a href="#org1e3ea9c">8.2. Ideal Time (Days or Hours)</a></li>
+<li><a href="#orgdb8bbe3">8.3. Story Points</a></li>
+<li><a href="#org802951d">8.4. 50/90 Estimation</a></li>
+</ul>
+</li>
+<li><a href="#org8fefcee">9. Team Participation Estimation Techniques</a>
+<ul>
+<li><a href="#orgb964d78">9.1. Planning Poker</a></li>
+<li><a href="#org53d1988">9.2. Wide-Band Delphi</a></li>
+</ul>
+</li>
+<li><a href="#org49f20f1">10. Grooming</a>
+<ul>
+<li><a href="#orgc44c17b">10.1. Grooming in SCRUM</a></li>
+</ul>
+</li>
+<li><a href="#orgcf69318">11. Planning</a>
+<ul>
+<li><a href="#org419ceeb">11.1. Velocity</a></li>
+<li><a href="#org4a059b1">11.2. Technical Debt</a></li>
+<li><a href="#org081db8a">11.3. Bugs</a></li>
+<li><a href="#orgdf6486f">11.4. Inputs on Sprint Planning Meeting</a></li>
+<li><a href="#org333f246">11.5. Process</a></li>
+<li><a href="#org22f6a2b">11.6. Output</a></li>
+<li><a href="#orgcaa2c78">11.7. Chickens and Pigs</a></li>
+</ul>
+</li>
+<li><a href="#orgc0afee7">12. Test Techniques and Measures</a>
+<ul>
+<li><a href="#orgf405eb3">12.1. Definitions</a></li>
+<li><a href="#org1c4136b">12.2. Black Box</a></li>
+<li><a href="#org633f3c7">12.3. White Box</a></li>
+</ul>
+</li>
+<li><a href="#org1f3ac1f">13. System State</a>
+<ul>
+<li><a href="#org0d526d8">13.1. Definition</a></li>
+<li><a href="#orgc23f10b">13.2. Diagrams</a></li>
+<li><a href="#orga391e27">13.3. Testing</a></li>
+</ul>
+</li>
+<li><a href="#orga97a983">14. Meetings or Ceremonies</a>
+<ul>
+<li><a href="#orge910fed">14.1. Daily Stand-up</a></li>
+<li><a href="#orgc7333ba">14.2. Sprint Review (Demo)</a></li>
+<li><a href="#org1ffe1eb">14.3. Retrospectives</a></li>
+<li><a href="#org6c6f0ad">14.4. Measuring Success</a></li>
+</ul>
+</li>
+<li><a href="#orgf178be4">15. Triple Constraints</a></li>
+<li><a href="#orgb3ba51e">16. Tracking</a>
+<ul>
+<li><a href="#org64b2eb8">16.1. Tracking in XP</a></li>
+<li><a href="#org5e874ff">16.2. Progress charts</a></li>
+<li><a href="#org9c4729d">16.3. Information Radiators</a></li>
+<li><a href="#org68422db">16.4. FDD's parking lots</a></li>
+<li><a href="#orga5e25dd">16.5. Other Common methods</a></li>
+</ul>
+</li>
+<li><a href="#orgb949ee9">17. Tracking quality</a>
+<ul>
+<li><a href="#orgb8c198b">17.1. Meaning</a></li>
+<li><a href="#org4bd5a1f">17.2. Build status</a></li>
+<li><a href="#org46603fe">17.3. Defects</a></li>
+<li><a href="#orgf7aa302">17.4. Test cases</a></li>
+</ul>
+</li>
+<li><a href="#orgeedde14">18. Testing, Quality and Integration</a>
+<ul>
+<li><a href="#orga1610ab">18.1. Quality</a></li>
+<li><a href="#orge7b4364">18.2. Gherkin language for testing</a></li>
+</ul>
+</li>
+<li><a href="#org605c30a">19. Mock ups</a>
+<ul>
+<li><a href="#org3c505ff">19.1. Stubs</a></li>
+<li><a href="#org4c852ed">19.2. Mock objects</a></li>
+<li><a href="#orgd24abf0">19.3. Static and dynamic mocks</a></li>
+<li><a href="#org560d2cc">19.4. Mock and stub diagram</a></li>
+<li><a href="#org83cb1ac">19.5. Dependency Injection, aka Inversion of Control</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<p>
+<a href="index.html">Home Page</a>
+</p>
+
+<div id="outline-container-orgd8fde7b" class="outline-2">
+<h2 id="orgd8fde7b"><span class="section-number-2">1</span> Feature Driven Development (FDD) SDLC</h2>
+<div class="outline-text-2" id="text-1">
+<ul class="org-ul">
+<li>Works with the concept of classes that must be integrated to the deliver the full set</li>
+<li>More model-driven approach. Aka "plan by feature", allows to support large projects and teams</li>
+<li>To manage requirements FDD breaks features into three levels
+<ul class="org-ul">
+<li>Highest level: problem domain/subject area that is broken down into the</li>
+<li>Business activity</li>
+<li>Individual features</li>
+</ul></li>
+<li>Uses the parking lots method to track progress</li>
+</ul>
+
+<div class="figure">
+<p><img src="images/Agile_FDD_ParkingLots.png" alt="Agile_FDD_ParkingLots.png" />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org3dfa2a8" class="outline-2">
+<h2 id="org3dfa2a8"><span class="section-number-2">2</span> Kanban SDLC</h2>
+<div class="outline-text-2" id="text-2">
+<ul class="org-ul">
+<li>Just-in-time development and evolving the process to create on optimal system</li>
+<li>Uses a visual signboard and a work-in-progress pull method</li>
+<li>Does not use iterations (although it can), advocates continuous workflow</li>
+<li>Fits projects that are unpredictable, with unplanned workflow, and require deployment in less time than a typical iteration</li>
+</ul>
+</div>
+
+<div id="outline-container-org317908b" class="outline-3">
+<h3 id="org317908b"><span class="section-number-3">2.1</span> Four key principles:</h3>
+<div class="outline-text-3" id="text-2-1">
+<ul class="org-ul">
+<li><b>Foster leadership at all levels of the organization</b>: everyone is encouraged to act as a leader, at any level (even entry).</li>
+<li><b>Start with what you know</b>: Understand where you are today and evolve from that point.</li>
+<li><b>Focus on incremental an evolutionary change</b>: Do not make drastic changes. Evolve slowly but makes changes to be impactful.</li>
+<li><b>Respect current methodologies and roles</b>: Remember that the current process is used for a reason. Makes changes only if certain methods do not help the team.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgedbd888" class="outline-3">
+<h3 id="orgedbd888"><span class="section-number-3">2.2</span> Core practices:</h3>
+<div class="outline-text-3" id="text-2-2">
+<ul class="org-ul">
+<li><b>Visualize workflow</b>: Kanban board with columns to visualise the workflow.</li>
+<li><b>Limit work in progress, and pull in new work only when time becomes available</b>: Focus on working with a single task at a time.</li>
+<li><b>Manage the flow through the system</b>: Like a relay race, understand the flow of work. Keep bottlenecks to minimum.</li>
+<li><b>Provide explicit policies</b>: The team needs to understand how to work in order to eliminate ambiguity</li>
+<li><b>Improve collaboratively and evolve experimentally</b>: Improvement is best in teamwork, via shared vision. However, all improvements must be evaluated and experimented upon.</li>
+<li><b>Ensure feedback is part of the process</b>: Positive and Negative feedback are as valuable</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org6cbc93b" class="outline-3">
+<h3 id="org6cbc93b"><span class="section-number-3">2.3</span> Kanban task board</h3>
+<div class="outline-text-3" id="text-2-3">
+<ul class="org-ul">
+<li>Visualize the workflow</li>
+<li>Limit work in progress</li>
+<li>Measure the lead time</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgbe53663" class="outline-3">
+<h3 id="orgbe53663"><span class="section-number-3">2.4</span> WIP limits</h3>
+<div class="outline-text-3" id="text-2-4">
+<ul class="org-ul">
+<li>Allows to see a bottleneck in the process. Each column (apart from the <b>TODO</b> and <b>COMPLETED</b>) can have a WIP limit.</li>
+<li>Prevent the product owner from forcing too much work.</li>
+<li>WIP limits can be set by story points amount</li>
+<li>Limits allow to see the time that a task takes from <b>TODO</b> to <b>COMPLETED</b></li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org5da8ef6" class="outline-2">
+<h2 id="org5da8ef6"><span class="section-number-2">3</span> Test template</h2>
+<div class="outline-text-2" id="text-3">
+<p class="verse">
+Test Number<br />
+Test Objective<br />
+Test Type (jUnit or UAT)<br />
+Input(s)<br />
+Expected Output(s)<br />
+Test Procedure (UAT)<br />
+</p>
+</div>
+</div>
+
+<div id="outline-container-org72128f8" class="outline-2">
+<h2 id="org72128f8"><span class="section-number-2">4</span> Product Backlog</h2>
+<div class="outline-text-2" id="text-4">
+<ul class="org-ul">
+<li>Full list of desired features (user stories)</li>
+<li>Highest priority stories on the top with the highest level of detail</li>
+<li>Backlogs vary in depth, breadth and quality</li>
+<li><b>DEEP</b> guidance while creating the backlog:
+<ul class="org-ul">
+<li><b>D</b> etailed appropriately: Highest priority stories must contain a high level of detail. All necessary clarifications are in the acceptance criteria.</li>
+<li><b>E</b> stimated: Means that the team understands the complexity and knows how long it will take to develop the user story.</li>
+<li><b>E</b> mergent: Adapts to evolution of the competition, marketplace, customer, technology, etc.</li>
+<li><b>P</b> rioritized: User stories are prioritized by their importance to the business.</li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgcf3f2ce" class="outline-2">
+<h2 id="orgcf3f2ce"><span class="section-number-2">5</span> Working Agreement</h2>
+<div class="outline-text-2" id="text-5">
+<ul class="org-ul">
+<li>Document with a set of expectations that define how the team is going to work together</li>
+<li>Is the first point of collaboration for the team</li>
+<li>More than just rules: working agreement reflects the values and commitment of the team.</li>
+<li>Creates trust and builds up teamwork establishment</li>
+<li>Example topics
+<ul class="org-ul">
+<li>Time and location of the daily scrum meeting</li>
+<li>Testing strategies (unit, functional, integration, performance, stress, etc&#x2026;)</li>
+<li>Build and infrastructure plans</li>
+<li>Team norms (be on time, respect, help, etc&#x2026;)</li>
+<li>How to address bugs/fires during a Sprint</li>
+<li>Product Owner availability (phone, office hours, attendance in Daily Scrum)</li>
+<li>Capacity plan for initial Sprint</li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org69f07da" class="outline-2">
+<h2 id="org69f07da"><span class="section-number-2">6</span> Definition of DONE</h2>
+<div class="outline-text-2" id="text-6">
+<ul class="org-ul">
+<li>Meaningful conversation between the development team, the stakeholders and the product owner to understand what is meant by "completion"</li>
+<li>Different people might have a different understanding of the word <b>DONE</b>
+<ul class="org-ul">
+<li>Should code reviews be in the definition?</li>
+<li>Should the documentation be updated before the sprint is done?</li>
+<li>Etc.</li>
+</ul></li>
+<li>Make sure that everyone is on the same page, so that the expectations are the same across the team</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org51b7c8e" class="outline-2">
+<h2 id="org51b7c8e"><span class="section-number-2">7</span> Prioritization Techniques</h2>
+<div class="outline-text-2" id="text-7">
+</div>
+<div id="outline-container-org72c96f6" class="outline-3">
+<h3 id="org72c96f6"><span class="section-number-3">7.1</span> Based on Value</h3>
+<div class="outline-text-3" id="text-7-1">
+</div>
+<div id="outline-container-orgc33863c" class="outline-4">
+<h4 id="orgc33863c">Potential Pros</h4>
+<div class="outline-text-4" id="text-orgc33863c">
+<ul class="org-ul">
+<li>Increase revenue</li>
+<li>Expansion of addressable market</li>
+<li>Decreased cost</li>
+<li>Increase customer satisfaction</li>
+<li>Increase processing speed</li>
+<li>Increase stability</li>
+<li>Improve usability</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgf9b015b" class="outline-4">
+<h4 id="orgf9b015b">Potential Cons</h4>
+<div class="outline-text-4" id="text-orgf9b015b">
+<ul class="org-ul">
+<li>The cost of developing the feature must be lower then its possible income</li>
+<li>If the cost of developing the feature is too high then the feature deteriorates and should be de-prioritized</li>
+<li>New feature might cause a hit on the stability or performance of the application</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orge311c94" class="outline-3">
+<h3 id="orge311c94"><span class="section-number-3">7.2</span> Value Stream Mapping</h3>
+<div class="outline-text-3" id="text-7-2">
+<ul class="org-ul">
+<li>The entire process is viewed from the customer's perspective, allows to see potential breakpoints and bottlenecks from a customer's perspective</li>
+<li>The application should not have any breakpoints</li>
+<li>The application should be functional</li>
+<li>Make sure that the application flows seamlessly</li>
+<li>Customer experience must be optimised</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org1341ec5" class="outline-3">
+<h3 id="org1341ec5"><span class="section-number-3">7.3</span> MoSCoW</h3>
+<div class="outline-text-3" id="text-7-3">
+<ul class="org-ul">
+<li><b>Must have</b>: All compulsory features that need to be implemented for the system to work and to satisfy the customer</li>
+<li><b>Should have</b>: Important but can be omitted if time or resources do not allow it</li>
+<li><b>Could have</b>: System enhancements with great functionality, however, not critical</li>
+<li><b>Want to have</b>: Features that serve only a limited amount of people, do not provide a decent amount of business value</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org22a5c4f" class="outline-3">
+<h3 id="org22a5c4f"><span class="section-number-3">7.4</span> Kano Model</h3>
+<div class="outline-text-3" id="text-7-4">
+</div>
+<div id="outline-container-org772b395" class="outline-4">
+<h4 id="org772b395">Characteristics</h4>
+<div class="outline-text-4" id="text-org772b395">
+<ul class="org-ul">
+<li><b>Basic needs</b>: All compulsory features that need to be implemented for the system to work and to satisfy the customer</li>
+<li><b>Performance Needs</b>: Customer experience enhancements and bottleneck removers</li>
+<li><b>Delights</b>: Unexpected bonuses in the project that excite the customer and add business value</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org49caf9f" class="outline-4">
+<h4 id="org49caf9f">Notes</h4>
+<div class="outline-text-4" id="text-org49caf9f">
+<ul class="org-ul">
+<li>Provide a good amount of <b>Basic Needs</b>, <b>Performance Needs</b> and <b>Delights</b> to deliver a great product</li>
+<li>Too many <b>Delights</b> will not give any functionality</li>
+<li>Too many <b>Basic Needs</b> will not excite the customer</li>
+<li>With time <b>Delights</b> become <b>Performance Needs</b>, and <b>Performance Needs</b> become <b>Basic Needs</b></li>
+<li>To remain innovative prioritize <b>Delights</b></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org9641460" class="outline-2">
+<h2 id="org9641460"><span class="section-number-2">8</span> Estimation Techniques</h2>
+<div class="outline-text-2" id="text-8">
+<ul class="org-ul">
+<li>One of the hardest things to do in software development</li>
+</ul>
+</div>
+
+<div id="outline-container-orgfa6f091" class="outline-3">
+<h3 id="orgfa6f091"><span class="section-number-3">8.1</span> Level of Effort (LoE) or T-Shirt sizing</h3>
+<div class="outline-text-3" id="text-8-1">
+<ul class="org-ul">
+<li>Least accurate, but is the most simple</li>
+<li>Uses only three levels of description: <b>small</b>, <b>medium</b> and <b>large</b></li>
+<li>Some teams add <b>extra small</b> and <b>extra large</b></li>
+</ul>
+</div>
+
+<div id="outline-container-org69954c8" class="outline-4">
+<h4 id="org69954c8">Pros</h4>
+<div class="outline-text-4" id="text-org69954c8">
+<ul class="org-ul">
+<li>Simple</li>
+<li>Quick</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org5c0de6c" class="outline-4">
+<h4 id="org5c0de6c">Cons</h4>
+<div class="outline-text-4" id="text-org5c0de6c">
+<ul class="org-ul">
+<li>Lack of precision</li>
+<li>Inability to add up several user stories into a meaningful measure</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org1e3ea9c" class="outline-3">
+<h3 id="org1e3ea9c"><span class="section-number-3">8.2</span> Ideal Time (Days or Hours)</h3>
+<div class="outline-text-3" id="text-8-2">
+<ul class="org-ul">
+<li>The developer determines the ideal amount of time to develop a user story. By ideal we mean no interruptions, phone calls etc.</li>
+<li>Easier than clock-in-out, since clocking does not take into account possible interruptions</li>
+<li>Most of companies use the 2 to 1 ration. Meaning that every hour, 40 minutes is spent of work and 20 minutes on interruptions and breaks</li>
+</ul>
+</div>
+
+<div id="outline-container-orgc62fcb7" class="outline-4">
+<h4 id="orgc62fcb7">Pros</h4>
+<div class="outline-text-4" id="text-orgc62fcb7">
+<ul class="org-ul">
+<li><b>Hours</b> is simply the amount of hours that the team will spend to develop a user story</li>
+<li>Convenient since there is only one definition of an hour</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orge5298d0" class="outline-4">
+<h4 id="orge5298d0">Cons</h4>
+<div class="outline-text-4" id="text-orge5298d0">
+<ul class="org-ul">
+<li>During an early stage of planning the amount of hours could be not precise</li>
+<li>Great risk of the stakeholders and executives to place high expectations due to estimated hours</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgdb8bbe3" class="outline-3">
+<h3 id="orgdb8bbe3"><span class="section-number-3">8.3</span> Story Points</h3>
+<div class="outline-text-3" id="text-8-3">
+</div>
+<div id="outline-container-org52ebbdc" class="outline-4">
+<h4 id="org52ebbdc">Characteristics</h4>
+<div class="outline-text-4" id="text-org52ebbdc">
+<ul class="org-ul">
+<li>Points are an arbitrary measure used mostly in SCRUM</li>
+<li>Usually use numbers from the Fibonacci sequence to describe the difficulty level of a user story: 1, 2, 3, 5, 8, 13, 21&#x2026;</li>
+<li>Usually a story above 13, would be considered an Epic</li>
+<li>Some teams replace the 21 with a 20 and add 40 and a 100, this approach allows to clearly see Epics that need to be broken down</li>
+<li>Sometimes an ∞ symbol or a high number in the hundreds is used to describe a story that cannot be accurately estimated due to lack of knowledge</li>
+<li>However if a 100 point story takes a month to develop, that does not mean that another story worth 100 will also take that long</li>
+<li>Story points are abstract and negotiable (different skill levels of developers may assign different points)</li>
+<li><b>Zero</b> points indicates a dependency, a story that is a placeholder and needs to be completed by a different team</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org6e8a30b" class="outline-4">
+<h4 id="org6e8a30b">Starting evaluation</h4>
+<div class="outline-text-4" id="text-org6e8a30b">
+<ul class="org-ul">
+<li>Relative sizing, start with a task that the whole team is familiar with</li>
+<li>Example: say that adding a new field to the DB is 5 points and all team members know how much effort it is. Then every other story is compared to this 5 pointer, this helps to evaluate stories more accurately</li>
+<li>Remember to include testing activities in the story points. Same as designing, planning and coding.</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org802951d" class="outline-3">
+<h3 id="org802951d"><span class="section-number-3">8.4</span> 50/90 Estimation</h3>
+<div class="outline-text-3" id="text-8-4">
+<ul class="org-ul">
+<li>In a lot of cases the developers consider the rough estimate user story difficulty and the worst case scenario</li>
+<li>It is unfair to the customer as it adds potential costs upon him/her via the buffer added to the stories</li>
+<li>The 50/90 technique allows to remove the rough estimate and calculate a more accurate buffer</li>
+<li>The 50 value is the most likely estimation and the 90 is the worst case scenario</li>
+<li>The value is calculates as follows: √(a<sup>2</sup> - b<sup>2</sup>), where <b>a</b> is the most likely estimation and <b>b</b> is the worst case scenario</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org8fefcee" class="outline-2">
+<h2 id="org8fefcee"><span class="section-number-2">9</span> Team Participation Estimation Techniques</h2>
+<div class="outline-text-2" id="text-9">
+</div>
+<div id="outline-container-orgb964d78" class="outline-3">
+<h3 id="orgb964d78"><span class="section-number-3">9.1</span> Planning Poker</h3>
+<div class="outline-text-3" id="text-9-1">
+<ul class="org-ul">
+<li>Each team member is given a set of cards with Fibonacci values</li>
+<li>After discussing a feature and making sure that the understanding of it is thorough, all team members reveal their cards at the same time</li>
+<li>First we look if there is a high amount of discrepancy. Did someone throw a 2 and someone else a 13? This may reveal a lack of common understanding of the feature</li>
+<li>Encourage a conversation</li>
+<li>After evaluating all problems the team agrees on a story point</li>
+<li>Can be used <a href="https://www.planningpoker.com/">online</a> if all the team members are not available in the same place</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org53d1988" class="outline-3">
+<h3 id="org53d1988"><span class="section-number-3">9.2</span> Wide-Band Delphi</h3>
+<div class="outline-text-3" id="text-9-2">
+<ul class="org-ul">
+<li>Similar to Planning Poker but more structured and formal</li>
+<li>Facilitator calls a meeting to discuss features</li>
+<li>Expert participants fill in anonymous forms and submit them to the facilitator</li>
+<li>Facilitator compiles the results and maintains them as anonymous</li>
+<li>Based on the new inputs, the experts team discuss the feature again, try to understand it better</li>
+<li>The process is repeated until all agree upon the value</li>
+</ul>
+</div>
+
+<div id="outline-container-org161ca2a" class="outline-4">
+<h4 id="org161ca2a">Pros</h4>
+<div class="outline-text-4" id="text-org161ca2a">
+<ul class="org-ul">
+<li>Provides better accuracy</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgb08ee7d" class="outline-4">
+<h4 id="orgb08ee7d">Cons</h4>
+<div class="outline-text-4" id="text-orgb08ee7d">
+<ul class="org-ul">
+<li>More time consuming</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org49f20f1" class="outline-2">
+<h2 id="org49f20f1"><span class="section-number-2">10</span> Grooming</h2>
+<div class="outline-text-2" id="text-10">
+<ul class="org-ul">
+<li>During the development the requirements and the user stories are groomed into functional input for the team</li>
+<li>The priority of the user stories and their size is important before committing to work</li>
+<li>Grooming and planning are critical activities since they incorporate valuable Agile principles, such as: self-organizing, face-to-face meetings, sustainable work environment, frequent delivery</li>
+<li>If the team does not put in the effort into grooming and planning, they are likely to fail during development as well</li>
+</ul>
+</div>
+
+<div id="outline-container-orgc44c17b" class="outline-3">
+<h3 id="orgc44c17b"><span class="section-number-3">10.1</span> Grooming in SCRUM</h3>
+<div class="outline-text-3" id="text-10-1">
+<ul class="org-ul">
+<li>Prioritization and Estimation often take place during Grooming</li>
+<li>Grooming session is also used to:
+<ul class="org-ul">
+<li>Improve and clarify user stories</li>
+<li>Breaking down Epics</li>
+<li>Improving poorly written stories</li>
+<li>Adding acceptance criteria</li>
+</ul></li>
+<li>Once features are understood, a discussion about Prioritization occurs</li>
+<li>The goal of the session is to leave the session with user stories prioritized, discussed, well understood, negotiated, agreed upon</li>
+<li>Product owner is to lead the session</li>
+</ul>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-orgcf69318" class="outline-2">
+<h2 id="orgcf69318"><span class="section-number-2">11</span> Planning</h2>
+<div class="outline-text-2" id="text-11">
+<p class="verse">
+Once the grooming session is completed and the team understands the highest priority user stories, the team proceeds to the Sprint Planning<br />
+</p>
+</div>
+
+<div id="outline-container-org419ceeb" class="outline-3">
+<h3 id="org419ceeb"><span class="section-number-3">11.1</span> Velocity</h3>
+<div class="outline-text-3" id="text-11-1">
+<ul class="org-ul">
+<li>The team, after a few sprints get an idea of what is their Velocity</li>
+<li>The Velocity indicates how much the team can deliver in a specified time frame (usually a Sprint)</li>
+<li>Story points are usually used to measure Velocity</li>
+<li>Some teams use hours as their Velocity</li>
+<li>New teams struggle to estimate their Velocity. Usually it is guesswork, but it allows to inspect and adapt.</li>
+<li>Great tool to measure commitment in the feature</li>
+<li>Team should be stable, no new members, and work full-time to measure Velocity properly</li>
+<li>Vacations and training might affect Velocity</li>
+<li>Also external elements such as infrastructure stability might affect Velocity</li>
+<li>Velocity is evaluated throughout the entire development</li>
+<li>Velocity is based on user story points and thus is not a real measure of comparison between different teams, due to the arbitrary nature of story points.</li>
+<li>Velocity is not an indicator of performance or productivity</li>
+<li>Some teams use the average of all sprints to measure Velocity, some only take the last two (as it could potentially be more accurate)</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org4a059b1" class="outline-3">
+<h3 id="org4a059b1"><span class="section-number-3">11.2</span> Technical Debt</h3>
+<div class="outline-text-3" id="text-11-2">
+<ul class="org-ul">
+<li>Sometimes to achieve a goal before the deadline, the team might knowingly or unknowingly create technical debt</li>
+<li>Technical debts are things that the team choose not to do now, but that might impede future development if left undone</li>
+<li>Two types of debt:
+<ul class="org-ul">
+<li>Intentional: Incurred as a trade-off, strategic reasons</li>
+<li>Unintentional: created due to a learning curve, poor testing, etc.</li>
+</ul></li>
+<li>Bottom lines is that, do not allow for Technical Debt to fester</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org081db8a" class="outline-3">
+<h3 id="org081db8a"><span class="section-number-3">11.3</span> Bugs</h3>
+<div class="outline-text-3" id="text-11-3">
+<ul class="org-ul">
+<li>Defects in code</li>
+<li>Different than Technical Debt, in that they impede performance or usability of the application</li>
+<li>In many companies there is a designated process to deal with Bugs</li>
+<li>Depending of the Bug's impact it may have to be prioritized</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgdf6486f" class="outline-3">
+<h3 id="orgdf6486f"><span class="section-number-3">11.4</span> Inputs on Sprint Planning Meeting</h3>
+<div class="outline-text-3" id="text-11-4">
+<ul class="org-ul">
+<li>Groomed and prioritized backlog</li>
+<li>Estimates for user stories</li>
+<li>Velocity</li>
+<li>Definition of Done</li>
+<li>Schedule of the sprint, vacations, work days, etc.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org333f246" class="outline-3">
+<h3 id="org333f246"><span class="section-number-3">11.5</span> Process</h3>
+<div class="outline-text-3" id="text-11-5">
+<ul class="org-ul">
+<li>Understand the User Stories, bring others up to speed if absent</li>
+<li>Decide how many user stories to commit to</li>
+<li>Break user stories to individual tasks (some teams skip this and a developer is responsible for the whole user story)</li>
+<li>Each member selects the tasks/user stories</li>
+<li>Each team member estimates the amount of time (hours) to completed the task/user story</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org22f6a2b" class="outline-3">
+<h3 id="org22f6a2b"><span class="section-number-3">11.6</span> Output</h3>
+<div class="outline-text-3" id="text-11-6">
+<ul class="org-ul">
+<li>The goal of the meeting: user stories are committed for the sprint</li>
+<li>The backlog itself which is a TO DO list</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgcaa2c78" class="outline-3">
+<h3 id="orgcaa2c78"><span class="section-number-3">11.7</span> Chickens and Pigs</h3>
+<div class="outline-text-3" id="text-11-7">
+<p class="verse">
+During planning the product owner is the Pig, since he/she demand on what needs to be done. Then the product owner turns into a Chicken, since he/she will not do the work, while the conversation moves to describing the work that needs to be done.<br />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgc0afee7" class="outline-2">
+<h2 id="orgc0afee7"><span class="section-number-2">12</span> Test Techniques and Measures</h2>
+<div class="outline-text-2" id="text-12">
+<p class="verse">
+Each techniques has its own design and its own coverage items.<br />
+</p>
+</div>
+
+<div id="outline-container-orgf405eb3" class="outline-3">
+<h3 id="orgf405eb3"><span class="section-number-3">12.1</span> Definitions</h3>
+<div class="outline-text-3" id="text-12-1">
+<ul class="org-ul">
+<li><b>Coverage item</b>: An entity or property used as a basis for test coverage, e.g. equivalence partitions or code statements</li>
+<li><b>Coverage</b>: The degree, expressed as a percentage, to which a specified coverage item has been exercised by a test suite.</li>
+<li><b>Coverage (measurement) Tool</b>: A tool that provides objective measures of what structural elements have been exercised by a test suite.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org1c4136b" class="outline-3">
+<h3 id="org1c4136b"><span class="section-number-3">12.2</span> Black Box</h3>
+<div class="outline-text-3" id="text-12-2">
+</div>
+<div id="outline-container-org68d9c62" class="outline-4">
+<h4 id="org68d9c62">Equivalence Partitioning (EP)</h4>
+<div class="outline-text-4" id="text-org68d9c62">
+</div>
+<ul class="org-ul">
+<li><a id="org49fbccd"></a>Test case design<br />
+<div class="outline-text-5" id="text-org49fbccd">
+<ul class="org-ul">
+<li>Test cases are designed to test for valid and invalid values in both inputs and outputs</li>
+<li>Test case should comprise of:
+<ul class="org-ul">
+<li>The inputs</li>
+<li>The partitions exercised</li>
+<li>The expected outcome</li>
+</ul></li>
+</ul>
+</div>
+</li>
+<li><a id="org0868dbc"></a>Coverage<br />
+<div class="outline-text-5" id="text-org0868dbc">
+<p class="verse">
+Coverage items is calculated by : (number of covered partitions) / (total number of partitions) * 100%<br />
+</p>
+</div>
+</li>
+<li><a id="org5268e6e"></a>Process<br />
+<div class="outline-text-5" id="text-org5268e6e">
+<ul class="org-ul">
+<li>Read requirements</li>
+<li>Divide the range of possible inputs and outputs into partitions</li>
+<li>We test at least one value from each class</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div id="outline-container-orgda05bc1" class="outline-4">
+<h4 id="orgda05bc1">Boundary Value Analysis (BVA)</h4>
+<div class="outline-text-4" id="text-orgda05bc1">
+</div>
+<ul class="org-ul">
+<li><a id="orgb20ef64"></a>Test case design<br />
+<div class="outline-text-5" id="text-orgb20ef64">
+<ul class="org-ul">
+<li>Test values at the boundaries of values of partitions</li>
+<li>The max and min values of a partition are the boundaries</li>
+<li>Boundary value the output as well</li>
+<li>Test case should comprise of:
+<ul class="org-ul">
+<li>The inputs</li>
+<li>The boundaries exercised</li>
+<li>The expected outcome</li>
+</ul></li>
+</ul>
+</div>
+</li>
+<li><a id="org9160cfe"></a>Coverage<br />
+<div class="outline-text-5" id="text-org9160cfe">
+<p class="verse">
+Coverage items is calculated by : (number of distinct boundary values executed) / (total number of boundary values coverage) * 100%<br />
+</p>
+</div>
+</li>
+</ul>
+</div>
+<div id="outline-container-orgd9d31f2" class="outline-4">
+<h4 id="orgd9d31f2">Classification Trees (CT)</h4>
+<div class="outline-text-4" id="text-orgd9d31f2">
+</div>
+<ul class="org-ul">
+<li><a id="orgaa7ac64"></a>Test case design<br />
+<div class="outline-text-5" id="text-orgaa7ac64">
+<ul class="org-ul">
+<li>Aimed at preparing test cases</li>
+<li>Suits a case in which multiple conditions are required to satisfy the output</li>
+</ul>
+</div>
+</li>
+<li><a id="org6c803a8"></a>Coverage<br />
+<div class="outline-text-5" id="text-org6c803a8">
+<ul class="org-ul">
+<li>The number of ideal test cases is left to the developer</li>
+<li>However, based on the classification tree one can deduce the <b>minimum criterion</b>. Minimum criterion is the number of test cases in which each leaf class in included at least once in a test case spec.</li>
+<li>The <b>maximum criterion</b> is the number of test cases if all combinations would be executed</li>
+<li>The ideal number of test cases is between the max and min criterion, however, the developer should design the minimum amount of test cases to save time.</li>
+</ul>
+</div>
+</li>
+<li><a id="orgc853d09"></a>Example<br />
+<div class="outline-text-5" id="text-orgc853d09">
+<ul class="org-ul">
+<li>A grid showing sample inputs for desired outcomes</li>
+</ul>
+
+<div class="figure">
+<p><img src="images/Test Techniques and Measures/screenshot_2018-04-25_12-10-51.png" alt="screenshot_2018-04-25_12-10-51.png" />
+</p>
+</div>
+</div>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org633f3c7" class="outline-3">
+<h3 id="org633f3c7"><span class="section-number-3">12.3</span> White Box</h3>
+<div class="outline-text-3" id="text-12-3">
+</div>
+<div id="outline-container-orgbe16766" class="outline-4">
+<h4 id="orgbe16766">Statement Coverage</h4>
+<div class="outline-text-4" id="text-orgbe16766">
+<ul class="org-ul">
+<li>Involves: assignments, loops, procedure and function calls, variable declarations, etc.</li>
+<li>Coverage: (number of statements executed) / (total number of executable statements) * 100%</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org8e9f8d7" class="outline-4">
+<h4 id="org8e9f8d7">Branch Coverage</h4>
+<div class="outline-text-4" id="text-org8e9f8d7">
+<ul class="org-ul">
+<li>Designed to specifically test branches</li>
+<li>A 100% Branch coverage implies that all branch paths have been executed in the test</li>
+<li>Coverage: (number of executed branch outcomes) / (total number of branch outcomes) * 100%</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org0b45af8" class="outline-4">
+<h4 id="org0b45af8">McCabe's Cyclomatic Complexity Metric</h4>
+<div class="outline-text-4" id="text-org0b45af8">
+<ul class="org-ul">
+<li>Checks all the possible paths within a program, however the depth can be specified</li>
+<li>The number of independent paths through a program is the <b>Cyclomatic Complexity (V)</b> and is defined as: <b>L - N + 2P</b>, where:
+<ul class="org-ul">
+<li><b>L</b> is the number of edges/links in a graph</li>
+<li><b>N</b> is the number of nodes in a graph</li>
+<li><b>P</b> is the number of disconnected parts of the graph (eg. a called method or a function)</li>
+</ul></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org1f3ac1f" class="outline-2">
+<h2 id="org1f3ac1f"><span class="section-number-2">13</span> System State</h2>
+<div class="outline-text-2" id="text-13">
+</div>
+<div id="outline-container-org0d526d8" class="outline-3">
+<h3 id="org0d526d8"><span class="section-number-3">13.1</span> Definition</h3>
+<div class="outline-text-3" id="text-13-1">
+<ul class="org-ul">
+<li>A state defines the current conditions of a system at a given time</li>
+<li>For a given state the system will:
+<ul class="org-ul">
+<li>Process certain inputs only</li>
+<li>Allow the system state to change to a different system state</li>
+</ul></li>
+<li>A state transition consists of:
+<ul class="org-ul">
+<li>Initial state</li>
+<li>Input that causes a transition in the next/final state</li>
+<li>Next/final state</li>
+<li>Output that accompanies the transition</li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgc23f10b" class="outline-3">
+<h3 id="orgc23f10b"><span class="section-number-3">13.2</span> Diagrams</h3>
+<div class="outline-text-3" id="text-13-2">
+<ul class="org-ul">
+<li>State transition diagrams are useful to model changes in behaviour</li>
+</ul>
+
+<div class="figure">
+<p><img src="images/System State/screenshot_2018-04-25_16-38-22.png" alt="screenshot_2018-04-25_16-38-22.png" />
+</p>
+</div>
+<ul class="org-ul">
+<li><b>Dead states</b> are not allowed</li>
+<li><b>Unreachable states</b> are also not allowed</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orga391e27" class="outline-3">
+<h3 id="orga391e27"><span class="section-number-3">13.3</span> Testing</h3>
+<div class="outline-text-3" id="text-13-3">
+<ul class="org-ul">
+<li>Appropriate when the system is described as a set of states and transitions</li>
+<li>Testing determines if the states change correctly</li>
+<li>Design:
+<ul class="org-ul">
+<li>Draw the state diagram</li>
+<li>Convert to a state transition table</li>
+<li>Derive test data for the state transitions</li>
+</ul></li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orga97a983" class="outline-2">
+<h2 id="orga97a983"><span class="section-number-2">14</span> Meetings or Ceremonies</h2>
+<div class="outline-text-2" id="text-14">
+</div>
+<div id="outline-container-orge910fed" class="outline-3">
+<h3 id="orge910fed"><span class="section-number-3">14.1</span> Daily Stand-up</h3>
+<div class="outline-text-3" id="text-14-1">
+<ul class="org-ul">
+<li>Answer three key question:
+<ul class="org-ul">
+<li>What has been completed?</li>
+<li>What do you plan to do by the next meeting?</li>
+<li>What is getting in the way?</li>
+</ul></li>
+<li>Open to all stakeholders</li>
+<li>Provide opportunity for <b>team calibration</b></li>
+<li>Provide opportunity to support other team members</li>
+<li>Usually takes about 15 min or less</li>
+<li>Quick status check</li>
+<li>Help others with any struggle</li>
+<li>Prepare the team for the day</li>
+<li>Not designed to solve problems, rather have a discussion about the problem</li>
+<li>Scrum master needs to keep the discussion on topic and disable non-topic discussion</li>
+<li>Daily meetings can decrease the amount of tedious long meetings</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgc7333ba" class="outline-3">
+<h3 id="orgc7333ba"><span class="section-number-3">14.2</span> Sprint Review (Demo)</h3>
+<div class="outline-text-3" id="text-14-2">
+<ul class="org-ul">
+<li>Open to all stakeholders and potentially customers as well</li>
+<li>Showcasing the current work</li>
+<li>Inform what has been completed</li>
+<li>Gather feedback</li>
+<li>Focus on showcasing the product rather than the presentation itself</li>
+<li>Product owner must accept or reject the user stories</li>
+<li>Product owner should evaluate the business value of new suggestions proposed during the demo</li>
+<li>Process:
+<ul class="org-ul">
+<li>Describe user stories tackled</li>
+<li>Preferably have the product owner showcase. Since non-technical person demoing, shows the product's usability</li>
+<li>There is nothing wrong with the developers demoing, they can describe best, on what has been done</li>
+<li>Evaluate feedback, be it negative or positive</li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org1ffe1eb" class="outline-3">
+<h3 id="org1ffe1eb"><span class="section-number-3">14.3</span> Retrospectives</h3>
+<div class="outline-text-3" id="text-14-3">
+<ul class="org-ul">
+<li>Retrospective is a team meeting at the end of a sprint that provides the opportunity to inspect and adapt teamwork</li>
+<li>Is a critical meeting and is and the core of Agile</li>
+<li>One way of facilitating the discussion is to provide cards for each team member and provide categories such as: stop doing, start doing, continue</li>
+<li>Example:</li>
+</ul>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Start Doing</th>
+<th scope="col" class="org-left">Stop Doing</th>
+<th scope="col" class="org-left">Continue</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Recalculate velocity after each iteration</td>
+<td class="org-left">Allow the daily stand-up meeting to last more than 15 min</td>
+<td class="org-left">Team lunch on Fridays</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">Enroll the team in a clean coding course</td>
+<td class="org-left">Write new code when unresolved defects exist</td>
+<td class="org-left">Customer feedback sessions</td>
+</tr>
+</tbody>
+</table>
+
+<ul class="org-ul">
+<li>Retrospectives allow to discuss workflow and how to enhance it</li>
+<li>Retrospectives can be awkward, as personal opinions and personal matters might arise. However, this is the best way to improve the workflow and remove obstacles.</li>
+<li>Retrospectives allow for the team to grow as a singular unit</li>
+<li>Example method:
+<ul class="org-ul">
+<li>Each team member writes down the action that they want to address on a post-it note</li>
+<li>Each team member is given a set amount of dot stickers (usually 3, 5, 8; depends on the team size)</li>
+<li>The notes are put up on the board</li>
+<li>The team members assign dots to the notes that they would like to address the most</li>
+<li>The note with the most dots is the top priority to be resolved, then next, so on&#x2026;</li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org6c6f0ad" class="outline-3">
+<h3 id="org6c6f0ad"><span class="section-number-3">14.4</span> Measuring Success</h3>
+<div class="outline-text-3" id="text-14-4">
+<ul class="org-ul">
+<li><b>Do it fast</b>: measure the teams' productivity and their responsiveness</li>
+<li><b>Do it right</b>: measure quality and customer satisfaction</li>
+<li><b>Do it on time</b>: demonstrate predictability for when software is delivered</li>
+<li><b>Keep doing it</b>: measure employee satisfaction</li>
+</ul>
+
+<p class="verse">
+Customer satisfaction is perhaps the most important measure of success.<br />
+If the software was delivered on time and the customer is satisfied then the project might be considered a success.<br />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgf178be4" class="outline-2">
+<h2 id="orgf178be4"><span class="section-number-2">15</span> Triple Constraints</h2>
+<div class="outline-text-2" id="text-15">
+<ul class="org-ul">
+<li>Scope is how much is done</li>
+<li>Resources is how many people are available</li>
+<li>Time is when the project will be released</li>
+</ul>
+
+<div class="figure">
+<p><img src="images/triple_constraints.png" alt="triple_constraints.png" />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgb3ba51e" class="outline-2">
+<h2 id="orgb3ba51e"><span class="section-number-2">16</span> Tracking</h2>
+<div class="outline-text-2" id="text-16">
+<ul class="org-ul">
+<li>Increased transparency and eliminates surprises</li>
+</ul>
+</div>
+
+<div id="outline-container-org64b2eb8" class="outline-3">
+<h3 id="org64b2eb8"><span class="section-number-3">16.1</span> Tracking in XP</h3>
+<div class="outline-text-3" id="text-16-1">
+<ul class="org-ul">
+<li>Designated <b>tracker</b> role</li>
+<li>Tracker asks all developers two questions: how many days(hours) are on the current task, and how many days(hours) are left.</li>
+<li>Tracker should talk to the developer about the task status</li>
+<li>Reinforce face-to-face communications</li>
+<li>In scrum the equivalent is in the daily stand-up</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org5e874ff" class="outline-3">
+<h3 id="org5e874ff"><span class="section-number-3">16.2</span> Progress charts</h3>
+<div class="outline-text-3" id="text-16-2">
+</div>
+<div id="outline-container-org2aefdd4" class="outline-4">
+<h4 id="org2aefdd4">Burn up chart</h4>
+<div class="outline-text-4" id="text-org2aefdd4">
+<ul class="org-ul">
+<li>Tracking the progress of the project</li>
+<li>Track by expected points, by total points or by feature</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org464e6a9" class="outline-4">
+<h4 id="org464e6a9">Burn down chart</h4>
+<div class="outline-text-4" id="text-org464e6a9">
+<ul class="org-ul">
+<li>Tracking the progress of the sprint</li>
+<li>Updated daily during the status check</li>
+<li>Allows to identify issues as early as possible</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org0b49fdb" class="outline-4">
+<h4 id="org0b49fdb">Charts examples</h4>
+<div class="outline-text-4" id="text-org0b49fdb">
+<ul class="org-ul">
+<li>Burn Up</li>
+</ul>
+
+<div class="figure">
+<p><img src="images/Agile_BurnUp.png" alt="Agile_BurnUp.png" />
+</p>
+</div>
+<ul class="org-ul">
+<li>Burn up by feature</li>
+</ul>
+
+<div class="figure">
+<p><img src="images/Agile_BurnUp_by_feature.png" alt="Agile_BurnUp_by_feature.png" />
+</p>
+</div>
+<ul class="org-ul">
+<li>Burn down</li>
+</ul>
+
+<div class="figure">
+<p><img src="images/Agile_BurnDown.png" alt="Agile_BurnDown.png" />
+</p>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org9c4729d" class="outline-3">
+<h3 id="org9c4729d"><span class="section-number-3">16.3</span> Information Radiators</h3>
+<div class="outline-text-3" id="text-16-3">
+<ul class="org-ul">
+<li>Anything posted in the team members' physical space that they will see every day, on a regular basis.</li>
+<li>Work like ads or billboards, work on the subconsciousness</li>
+<li>The radiator could be the working agreement, the burn down chart, best practices, etc.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org68422db" class="outline-3">
+<h3 id="org68422db"><span class="section-number-3">16.4</span> FDD's parking lots</h3>
+<div class="outline-text-3" id="text-16-4">
+<ul class="org-ul">
+<li>Uses the parking lots method to track progress</li>
+</ul>
+
+<div class="figure">
+<p><img src="images/Agile_FDD_ParkingLots.png" alt="Agile_FDD_ParkingLots.png" />
+</p>
+</div>
+<ul class="org-ul">
+<li>By simply reading the colours of each "lot" the reader is able to tell if the project is in jeopardy</li>
+<li>Allows to scale and support large projects</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orga5e25dd" class="outline-3">
+<h3 id="orga5e25dd"><span class="section-number-3">16.5</span> Other Common methods</h3>
+<div class="outline-text-3" id="text-16-5">
+<ul class="org-ul">
+<li>Gantt chart</li>
+<li>Stoplight chart</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgb949ee9" class="outline-2">
+<h2 id="orgb949ee9"><span class="section-number-2">17</span> Tracking quality</h2>
+<div class="outline-text-2" id="text-17">
+</div>
+<div id="outline-container-orgb8c198b" class="outline-3">
+<h3 id="orgb8c198b"><span class="section-number-3">17.1</span> Meaning</h3>
+<div class="outline-text-3" id="text-17-1">
+<ul class="org-ul">
+<li>There are preventive measures such as: TTD and paired-programming</li>
+<li>There are several approaches to tracking the quality of the product</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org4bd5a1f" class="outline-3">
+<h3 id="org4bd5a1f"><span class="section-number-3">17.2</span> Build status</h3>
+<div class="outline-text-3" id="text-17-2">
+<ul class="org-ul">
+<li>Look for errors after the code has been integrated</li>
+<li>Usually found quickly, Agile teams execute builds frequently</li>
+<li>Easier to narrow down errors if the builds are frequent</li>
+<li>Some teams introduce sirens or alarms when build errors occur, embarrassing, and thus most of developers reduce build errors</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org46603fe" class="outline-3">
+<h3 id="org46603fe"><span class="section-number-3">17.3</span> Defects</h3>
+<div class="outline-text-3" id="text-17-3">
+<ul class="org-ul">
+<li>Some teams use a defect burn down chart</li>
+<li>Sometimes defect quality is measured as a ratio of X amount of lines of code built and the amount of defects provided</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgf7aa302" class="outline-3">
+<h3 id="orgf7aa302"><span class="section-number-3">17.4</span> Test cases</h3>
+<div class="outline-text-3" id="text-17-4">
+<ul class="org-ul">
+<li>Write test code that will uncover defects</li>
+<li>Ensure highest quality via thorough tests</li>
+<li>Cover functionality and stability</li>
+<li>Use Testing Quadrants</li>
+</ul>
+
+<div class="figure">
+<p><img src="images/Agile_testing_quadrants.png" alt="Agile_testing_quadrants.png" />
+</p>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgeedde14" class="outline-2">
+<h2 id="orgeedde14"><span class="section-number-2">18</span> Testing, Quality and Integration</h2>
+<div class="outline-text-2" id="text-18">
+</div>
+<div id="outline-container-orga1610ab" class="outline-3">
+<h3 id="orga1610ab"><span class="section-number-3">18.1</span> Quality</h3>
+<div class="outline-text-3" id="text-18-1">
+<ul class="org-ul">
+<li>Most important are: pair programming, TDD, refactoring. These have built-in quality.</li>
+<li>Testing enhances quality</li>
+<li>Testing allows to maintain a consistent product and see if any future code does not break it</li>
+<li>Employ TDD, to write tests before product code</li>
+<li>Refactor code to improve readability and structure</li>
+<li>Minimizing defects</li>
+<li>Employ manual and automated testing</li>
+<li>Customer feedback
+<ul class="org-ul">
+<li>Alpha and Beta tests</li>
+<li>Usability testing</li>
+</ul></li>
+<li>Quality starts with:
+<ul class="org-ul">
+<li>Building a quality environment where the team can work at their fullest</li>
+<li>A culture focused on quality</li>
+<li>Being proactive about quality</li>
+<li>Daily builds and integration help manage defects</li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orge7b4364" class="outline-3">
+<h3 id="orge7b4364"><span class="section-number-3">18.2</span> Gherkin language for testing</h3>
+<div class="outline-text-3" id="text-18-2">
+<ul class="org-ul">
+<li>Describes scenarios</li>
+<li><b>Given</b> as the current condition</li>
+<li><b>And When Then</b> to explain how the scenario proceeds</li>
+<li>Example:</li>
+</ul>
+
+<div class="figure">
+<p><img src="images/Testing, Quality and Integration/screenshot_2018-04-25_17-08-44.png" alt="screenshot_2018-04-25_17-08-44.png" />
+</p>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org605c30a" class="outline-2">
+<h2 id="org605c30a"><span class="section-number-2">19</span> Mock ups</h2>
+<div class="outline-text-2" id="text-19">
+</div>
+<div id="outline-container-org3c505ff" class="outline-3">
+<h3 id="org3c505ff"><span class="section-number-3">19.1</span> Stubs</h3>
+<div class="outline-text-3" id="text-19-1">
+<ul class="org-ul">
+<li>Simulate non-existent classes</li>
+<li>Bare basics implementation</li>
+<li>May support state verification</li>
+<li>Allows to test early</li>
+</ul>
+
+<div class="figure">
+<p><img src="images/Mockups/screenshot_2018-03-09_11-17-08.png" alt="screenshot_2018-03-09_11-17-08.png" />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org4c852ed" class="outline-3">
+<h3 id="org4c852ed"><span class="section-number-3">19.2</span> Mock objects</h3>
+<div class="outline-text-3" id="text-19-2">
+<ul class="org-ul">
+<li>Create mock objects to test a method</li>
+<li>Suited for testing a portion of code in isolation form the rest of the code</li>
+<li>Do not implement business logic</li>
+<li>Replace the objects with which the methods under test collaborate</li>
+<li>Provides a wat to test code that has not yet been written</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgd24abf0" class="outline-3">
+<h3 id="orgd24abf0"><span class="section-number-3">19.3</span> Static and dynamic mocks</h3>
+<div class="outline-text-3" id="text-19-3">
+</div>
+<div id="outline-container-org84fe522" class="outline-4">
+<h4 id="org84fe522">Static mocks are pre-written and hard-coded, extend or inherit a common interface</h4>
+<div class="outline-text-4" id="text-org84fe522">
+<ul class="org-ul">
+<li>Considered a bad practice</li>
+<li>Example of a static mock</li>
+</ul>
+
+<div class="figure">
+<p><img src="images/Mockups/screenshot_2018-03-09_11-31-12.png" alt="screenshot_2018-03-09_11-31-12.png" />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org93eb95d" class="outline-4">
+<h4 id="org93eb95d">Dynamic mock created at run time, avoids cluttering</h4>
+<div class="outline-text-4" id="text-org93eb95d">
+
+<div class="figure">
+<p><img src="images/Mockups/screenshot_2018-03-09_11-26-44.png" alt="screenshot_2018-03-09_11-26-44.png" />
+</p>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org560d2cc" class="outline-3">
+<h3 id="org560d2cc"><span class="section-number-3">19.4</span> Mock and stub diagram</h3>
+<div class="outline-text-3" id="text-19-4">
+
+<div class="figure">
+<p><img src="images/Mockups/screenshot_2018-03-09_11-25-18.png" alt="screenshot_2018-03-09_11-25-18.png" />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org83cb1ac" class="outline-3">
+<h3 id="org83cb1ac"><span class="section-number-3">19.5</span> Dependency Injection, aka Inversion of Control</h3>
+<div class="outline-text-3" id="text-19-5">
+<ul class="org-ul">
+<li>Applying the IoC pattern to a class means removing the creation of all object instances for which this class is not directly responsible and passing any needed instances instead. The instances may be passed using a specific constructor, using a setter, or as parameters of the methods needing them. It becomes the responsibility of the calling code to correctly set the domain objects on the called class.</li>
+</ul>
+
+<script src="../assets/jquery-3.3.1.min.js"></script>
+<script src="../assets/notes.js"></script>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="date">Date: 2017-09-18 Mon 14:54</p>
+<p class="author">Author: Damian Chrzanowski</p>
+<p class="date">Created: 2018-12-13 Thu 20:27</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

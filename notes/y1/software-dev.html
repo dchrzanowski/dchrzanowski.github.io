@@ -1,0 +1,2582 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2018-12-13 Thu 17:24 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Software Development</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="Damian Chrzanowski" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="../assets/org.css"/>
+<link rel="icon" href="../assets/favicon.ico">
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2018 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Software Development</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org3ee87e4">1. Definitions</a></li>
+<li><a href="#org45e87e7">2. Java</a>
+<ul>
+<li><a href="#orgc0d29d8">2.1. Diagram of the java environment</a></li>
+<li><a href="#orgae7fa34">2.2. Hello World program</a></li>
+<li><a href="#org62a206a">2.3. Main steps to solving problems</a></li>
+</ul>
+</li>
+<li><a href="#org028a7f6">3. Data types</a>
+<ul>
+<li><a href="#orgcb82a89">3.1. Primitive data types that only contain a single value</a></li>
+</ul>
+</li>
+<li><a href="#org12fecca">4. Variables</a>
+<ul>
+<li><a href="#org178a997">4.1. Declaration</a></li>
+<li><a href="#org2cd8158">4.2. Naming rules</a></li>
+</ul>
+</li>
+<li><a href="#org0c65a5a">5. Complex data types</a>
+<ul>
+<li><a href="#org157df2e">5.1. Strings</a></li>
+<li><a href="#orgc9a9613">5.2. BigInteger and BigDecimal</a></li>
+</ul>
+</li>
+<li><a href="#org01963b9">6. User input</a></li>
+<li><a href="#orgd8c538a">7. Constant variables and magic numbers</a></li>
+<li><a href="#org79d3503">8. Comments</a></li>
+<li><a href="#orga64a315">9. Round of errors</a></li>
+<li><a href="#org7bc30f4">10. Integer division with integers</a></li>
+<li><a href="#org582b86a">11. Powers and roots, maths library</a></li>
+<li><a href="#orgcab07fa">12. Type casting - converting data types</a>
+<ul>
+<li><a href="#orga7cbdea">12.1. Implicit type conversion (done automatically)</a></li>
+<li><a href="#orga5e94d1">12.2. Explicit type conversion</a></li>
+</ul>
+</li>
+<li><a href="#org8ff193d">13. Formatting the output</a></li>
+<li><a href="#orgc261e63">14. Precedence and associativity</a></li>
+<li><a href="#orgca07715">15. Decisions, Conditional Execution</a>
+<ul>
+<li><a href="#org67b8b9b">15.1. If statement</a></li>
+<li><a href="#org6a87142">15.2. Else statement</a></li>
+<li><a href="#orgf1ecd06">15.3. Else If, Alternative Options</a></li>
+<li><a href="#org5c11929">15.4. Switch Statement</a></li>
+<li><a href="#orgdb631ff">15.5. Nested branches</a></li>
+</ul>
+</li>
+<li><a href="#org89fdf2e">16. Enumerated Types</a></li>
+<li><a href="#orgf3114ff">17. Logging</a></li>
+<li><a href="#org414e495">18. Boolean data type</a>
+<ul>
+<li><a href="#org90d364a">18.1. Example and size</a></li>
+<li><a href="#org94e1c50">18.2. Truth table with boolean expressions</a></li>
+<li><a href="#orgc619f9c">18.3. Shortening expressions</a></li>
+<li><a href="#orge10c905">18.4. DeMorgan's Laws</a></li>
+</ul>
+</li>
+<li><a href="#org8a504e5">19. Input Validation</a>
+<ul>
+<li><a href="#org749ee16">19.1. Reading an integer</a></li>
+</ul>
+</li>
+<li><a href="#org52bcc17">20. Iteration - loops</a>
+<ul>
+<li><a href="#orgd11df72">20.1. Types</a></li>
+<li><a href="#orgfa2b55a">20.2. Loop must haves</a></li>
+<li><a href="#org6e1c9fc">20.3. While loop</a></li>
+<li><a href="#orgca9828c">20.4. For loop</a></li>
+<li><a href="#org1ac75a1">20.5. The do-while loop</a></li>
+</ul>
+</li>
+<li><a href="#org6900cb2">21. Sentinel processing</a></li>
+<li><a href="#org24abfc4">22. Common Algorithms</a>
+<ul>
+<li><a href="#org2cab88e">22.1. Counting Matches</a></li>
+<li><a href="#org6702722">22.2. First Match</a></li>
+<li><a href="#orgfee15c4">22.3. Prompting until a match is found</a></li>
+<li><a href="#orgfdd6c4e">22.4. Maximum and Minimum</a></li>
+<li><a href="#orgfe88dfc">22.5. Comparing adjacent values</a></li>
+</ul>
+</li>
+<li><a href="#orgcb992fe">23. The break statement</a></li>
+<li><a href="#orga3cda6b">24. The continue statement</a></li>
+<li><a href="#orgd160071">25. Nested loops</a></li>
+<li><a href="#org56c1e4e">26. Random numbers</a></li>
+<li><a href="#org8ffc932">27. Methods</a>
+<ul>
+<li><a href="#org7b4df3f">27.1. Example</a></li>
+<li><a href="#orgb7c9dc9">27.2. Definition of a method</a></li>
+<li><a href="#org235da6b">27.3. Example of a method that does not take any parameters</a></li>
+<li><a href="#orgfdeebdb">27.4. Example of a method that takes in parameters</a></li>
+<li><a href="#org4bd2c8a">27.5. Example of overloading</a></li>
+<li><a href="#orgffe6b6b">27.6. Example of returning a value</a></li>
+<li><a href="#org96d1c61">27.7. Method Comments</a></li>
+<li><a href="#org31ffa46">27.8. Method Stubs</a></li>
+<li><a href="#org26c372b">27.9. Parameter variables</a></li>
+<li><a href="#orge0b8f8d">27.10. Variable scope</a></li>
+</ul>
+</li>
+<li><a href="#org1089ecf">28. Classes in separate files</a></li>
+<li><a href="#orgc541f06">29. Dealing with partially filled arrays</a></li>
+<li><a href="#orga2e6222">30. Linear Search</a></li>
+<li><a href="#orgf2534bb">31. Arrays</a>
+<ul>
+<li><a href="#orgae14a3c">31.1. Replace element from an array</a></li>
+<li><a href="#org12ac13f">31.2. Inserting an element to an array</a></li>
+<li><a href="#orge3e7d09">31.3. Swapping elements in an array</a></li>
+<li><a href="#org9d036ce">31.4. Copy of an array</a></li>
+</ul>
+</li>
+<li><a href="#orgc9f9d55">32. Sorting Algorithms</a>
+<ul>
+<li><a href="#orga80dfae">32.1. Selection Sort</a></li>
+<li><a href="#org4d4f3cb">32.2. Bubble Sort</a></li>
+</ul>
+</li>
+<li><a href="#org6bd7796">33. Two dimensional arrays</a>
+<ul>
+<li><a href="#org1f42db0">33.1. 1D array</a></li>
+<li><a href="#orga20def8">33.2. 2d array</a></li>
+</ul>
+</li>
+<li><a href="#org16b7767">34. Array Lists</a>
+<ul>
+<li><a href="#org2eccfef">34.1. Array List basic examples and definition</a></li>
+<li><a href="#orgc187e8d">34.2. Array Lists and Enhanced for loops</a></li>
+<li><a href="#org80774b1">34.3. Copying Array Lists</a></li>
+<li><a href="#orga5e0cbd">34.4. ArrayList Methods</a></li>
+<li><a href="#org1663869">34.5. Wrapper classes</a></li>
+<li><a href="#org3f565f1">34.6. When to use Arrays and when to use ArrayLists</a></li>
+</ul>
+</li>
+<li><a href="#orgfb2b02b">35. Objects and classes</a>
+<ul>
+<li><a href="#orgabf2dc6">35.1. Example of a Student class</a></li>
+<li><a href="#orgf276f08">35.2. Creating an instance of the Student class</a></li>
+<li><a href="#org5411e77">35.3. Encapsulation</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<p>
+<a href="index.html">Home Page</a>
+</p>
+
+<div id="outline-container-org3ee87e4" class="outline-2">
+<h2 id="org3ee87e4"><span class="section-number-2">1</span> Definitions</h2>
+<div class="outline-text-2" id="text-1">
+<ul class="org-ul">
+<li>TOC - transfer of control</li>
+<li>Formal parameter - is the name of the variable that in inserted into the method</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org45e87e7" class="outline-2">
+<h2 id="org45e87e7"><span class="section-number-2">2</span> Java</h2>
+<div class="outline-text-2" id="text-2">
+</div>
+<div id="outline-container-orgc0d29d8" class="outline-3">
+<h3 id="orgc0d29d8"><span class="section-number-3">2.1</span> Diagram of the java environment</h3>
+<div class="outline-text-3" id="text-2-1">
+
+<div class="figure">
+<p><img src="images/java.png" alt="java.png" />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgae7fa34" class="outline-3">
+<h3 id="orgae7fa34"><span class="section-number-3">2.2</span> Hello World program</h3>
+<div class="outline-text-3" id="text-2-2">
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #51afef; font-style: italic;">class</span> <span style="color: #ECBE7B;">HelloWorld</span>
+<span style="color: #fff0f5;">{</span>
+    <span style="color: #51afef; font-style: italic;">public</span> <span style="color: #51afef; font-style: italic;">static</span> <span style="color: #ECBE7B;">void</span> <span style="color: #c678dd;">main</span><span style="color: #c678dd;">(</span><span style="color: #ECBE7B;">String</span> <span style="color: #db5762;">args</span><span style="color: #98be65;">[]</span><span style="color: #c678dd;">)</span>
+    <span style="color: #c678dd;">{</span>
+    System.out.println<span style="color: #98be65;">(</span><span style="color: #98be65;">"Hello World!"</span><span style="color: #98be65;">)</span>;
+    <span style="color: #c678dd;">}</span>
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org62a206a" class="outline-3">
+<h3 id="org62a206a"><span class="section-number-3">2.3</span> Main steps to solving problems</h3>
+<div class="outline-text-3" id="text-2-3">
+<ul class="org-ul">
+<li>Get the required info</li>
+<li>Process the info</li>
+<li>Display the result</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org028a7f6" class="outline-2">
+<h2 id="org028a7f6"><span class="section-number-2">3</span> Data types</h2>
+<div class="outline-text-2" id="text-3">
+</div>
+<div id="outline-container-orgcb82a89" class="outline-3">
+<h3 id="orgcb82a89"><span class="section-number-3">3.1</span> Primitive data types that only contain a single value</h3>
+<div class="outline-text-3" id="text-3-1">
+<p>
+<b>WARNING! Exceeding a value wraps around aka Overflow</b>
+</p>
+</div>
+
+<div id="outline-container-org6848215" class="outline-4">
+<h4 id="org6848215">Whole numbers</h4>
+<div class="outline-text-4" id="text-org6848215">
+<ul class="org-ul">
+<li>byte: 8 bits <b>=&gt;</b> -128 -&gt; 127</li>
+<li>short: 16 bits <b>=&gt;</b> -32768 -&gt; 32767</li>
+<li>int: 32 bits <b>=&gt;</b> -2 147 483 648 -&gt; 2 147 483 647</li>
+<li>long: 64 bits <b>=&gt;</b> 19 digits lenght</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgd8b2768" class="outline-4">
+<h4 id="orgd8b2768">Decimal place numbers</h4>
+<div class="outline-text-4" id="text-orgd8b2768">
+<ul class="org-ul">
+<li>float: 32 bits <b>=&gt;</b> 10 ^ +- 38</li>
+<li>double: 64 bit <b>=&gt;</b> 10 ^ +- 308</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org428b556" class="outline-4">
+<h4 id="org428b556">Characters</h4>
+<div class="outline-text-4" id="text-org428b556">
+<ul class="org-ul">
+<li>char: 16 bits <b>=&gt;</b> 0 -&gt; 65535 (unicode)</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org12fecca" class="outline-2">
+<h2 id="org12fecca"><span class="section-number-2">4</span> Variables</h2>
+<div class="outline-text-2" id="text-4">
+</div>
+<div id="outline-container-org178a997" class="outline-3">
+<h3 id="org178a997"><span class="section-number-3">4.1</span> Declaration</h3>
+<div class="outline-text-3" id="text-4-1">
+<p>
+<b>Example</b>
+</p>
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #ECBE7B;">int</span> <span style="color: #db5762;">x</span> = 0;
+</pre>
+</div>
+<p class="verse">
+Basically <b>DataType</b> followed by <b>VariableName</b><br />
+</p>
+</div>
+</div>
+
+<div id="outline-container-org2cd8158" class="outline-3">
+<h3 id="org2cd8158"><span class="section-number-3">4.2</span> Naming rules</h3>
+<div class="outline-text-3" id="text-4-2">
+<ul class="org-ul">
+<li>Must start with a letter or an underscore</li>
+<li>Can only contain letters, numbers and underscores</li>
+<li>Cannot contain spaces</li>
+<li>Camel case, starting with a lowercase</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org0c65a5a" class="outline-2">
+<h2 id="org0c65a5a"><span class="section-number-2">5</span> Complex data types</h2>
+<div class="outline-text-2" id="text-5">
+</div>
+<div id="outline-container-org157df2e" class="outline-3">
+<h3 id="org157df2e"><span class="section-number-3">5.1</span> Strings</h3>
+<div class="outline-text-3" id="text-5-1">
+<ul class="org-ul">
+<li>Complex data types start with a capital letter</li>
+<li>Can store data, have methods to act upon the data</li>
+</ul>
+
+<p>
+<b>Example</b>
+</p>
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #ECBE7B;">String</span> <span style="color: #db5762;">name</span> = <span style="color: #98be65;">"John Doe"</span>;
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org88e5cdc" class="outline-4">
+<h4 id="org88e5cdc">String concatenation</h4>
+<div class="outline-text-4" id="text-org88e5cdc">
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #ECBE7B;">String</span> <span style="color: #db5762;">s1</span> = <span style="color: #98be65;">"John"</span>;
+<span style="color: #ECBE7B;">String</span> <span style="color: #db5762;">s2</span> = <span style="color: #98be65;">"Doe"</span>;
+<span style="color: #ECBE7B;">String</span> <span style="color: #db5762;">s3</span> = s1 + s2; <span style="color: #5B6268;">// </span><span style="color: #5B6268;">s3 = "JohnDoe"</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org03b6501" class="outline-4">
+<h4 id="org03b6501">String methods</h4>
+<div class="outline-text-4" id="text-org03b6501">
+<ul class="org-ul">
+<li>.charAt(x) : returns a character at index x</li>
+<li>.length() : returns the length of the string</li>
+<li>.substring(x, y) : substring from index x to y, but not including y</li>
+<li>.substring(x) : from index x to the end of the string</li>
+<li>.equals(X) : compare the string to string X</li>
+<li>.compareTo(X) : returns true if the strings are identical. Stops at the first difference found</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgc9a9613" class="outline-3">
+<h3 id="orgc9a9613"><span class="section-number-3">5.2</span> BigInteger and BigDecimal</h3>
+<div class="outline-text-3" id="text-5-2">
+<p>
+<b>Syntax</b>
+</p>
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #ECBE7B;">BigInteger</span> <span style="color: #db5762;">x</span> = <span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">BigInteger</span><span style="color: #fff0f5;">(</span><span style="color: #98be65;">"100"</span><span style="color: #fff0f5;">)</span>;
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org01963b9" class="outline-2">
+<h2 id="org01963b9"><span class="section-number-2">6</span> User input</h2>
+<div class="outline-text-2" id="text-6">
+<p>
+<b>Import the scanner</b>
+</p>
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #51afef; font-style: italic;">import</span> <span style="color: #a9a1e1;">java</span>.<span style="color: #a9a1e1;">util</span>.<span style="color: #ECBE7B;">Scanner</span>;
+</pre>
+</div>
+<p>
+<b>Create a Scanner object</b>
+</p>
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #ECBE7B;">Scanner</span> <span style="color: #db5762;">in</span> = <span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">Scanner</span><span style="color: #fff0f5;">(</span>System.in<span style="color: #fff0f5;">)</span>;
+</pre>
+</div>
+<p>
+<b>Take input with the following</b>
+</p>
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #ECBE7B;">int</span> <span style="color: #db5762;">x</span> = in.nextInt<span style="color: #fff0f5;">()</span>;  <span style="color: #5B6268;">// </span><span style="color: #5B6268;">read an integer</span>
+<span style="color: #ECBE7B;">double</span> <span style="color: #db5762;">x</span> = in.nextDouble<span style="color: #fff0f5;">()</span>;  <span style="color: #5B6268;">// </span><span style="color: #5B6268;">read a double</span>
+<span style="color: #ECBE7B;">String</span> <span style="color: #db5762;">x</span> = in.next<span style="color: #fff0f5;">()</span>;  <span style="color: #5B6268;">// </span><span style="color: #5B6268;">read a String</span>
+<span style="color: #ECBE7B;">String</span> <span style="color: #db5762;">x</span> = in.nextLine<span style="color: #fff0f5;">()</span>;  <span style="color: #5B6268;">// </span><span style="color: #5B6268;">read a String (including spaces)</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgd8c538a" class="outline-2">
+<h2 id="orgd8c538a"><span class="section-number-2">7</span> Constant variables and magic numbers</h2>
+<div class="outline-text-2" id="text-7">
+<ul class="org-ul">
+<li>A constant must have a variable assigned when initialized</li>
+<li>Namig is with ALL CAPITAL LETTERS separated with underscores</li>
+<li>Once initialized the value cannot be changed</li>
+</ul>
+
+<p>
+<b>Example code</b>
+</p>
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #51afef; font-style: italic;">final</span> <span style="color: #ECBE7B;">int</span> <span style="color: #db5762;">NO_OF_WHEELS</span> = 4;
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org79d3503" class="outline-2">
+<h2 id="org79d3503"><span class="section-number-2">8</span> Comments</h2>
+<div class="outline-text-2" id="text-8">
+<p>
+<b>In-line comment</b>
+</p>
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #5B6268;">// </span><span style="color: #5B6268;">this is an in-line comment</span>
+</pre>
+</div>
+<p>
+<b>Block comment</b>
+</p>
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #5B6268;">/*</span>
+<span style="color: #5B6268;">This is a block comment</span>
+<span style="color: #5B6268;">*/</span>
+</pre>
+</div>
+<p>
+<b>Block comment for documentation</b>
+</p>
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #83898d;">/**</span>
+<span style="color: #83898d;">*</span>
+<span style="color: #83898d;">*</span>
+<span style="color: #83898d;">*</span>
+<span style="color: #83898d;">*/</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orga64a315" class="outline-2">
+<h2 id="orga64a315"><span class="section-number-2">9</span> Round of errors</h2>
+<div class="outline-text-2" id="text-9">
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #ECBE7B;">double</span> <span style="color: #db5762;">price</span> = 4.35;
+<span style="color: #ECBE7B;">double</span> <span style="color: #db5762;">qunatity</span> = 100;
+<span style="color: #ECBE7B;">double</span> <span style="color: #db5762;">total</span> = price * quantity;
+System.out.println<span style="color: #fff0f5;">(</span>total<span style="color: #fff0f5;">)</span>;
+<span style="color: #5B6268;">//</span><span style="color: #5B6268;">prints 434.99999999999998</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org7bc30f4" class="outline-2">
+<h2 id="org7bc30f4"><span class="section-number-2">10</span> Integer division with integers</h2>
+<div class="outline-text-2" id="text-10">
+<div class="org-src-container">
+<pre class="src src-java">4 / 2 = 2;
+4 / 3 = 1;
+1 / 3 = 0;
+0 / 4 = 0;
+5 / 0 = error;
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org582b86a" class="outline-2">
+<h2 id="org582b86a"><span class="section-number-2">11</span> Powers and roots, maths library</h2>
+<div class="outline-text-2" id="text-11">
+<p>
+<b>Examples</b>
+</p>
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #ECBE7B;">double</span> <span style="color: #db5762;">x</span> = Math.sqrt<span style="color: #fff0f5;">(</span>9<span style="color: #fff0f5;">)</span>;  <span style="color: #5B6268;">// </span><span style="color: #5B6268;">Maths library returns a double</span>
+<span style="color: #ECBE7B;">double</span> <span style="color: #db5762;">x</span> = Math.pow<span style="color: #fff0f5;">(</span>2, 3<span style="color: #fff0f5;">)</span>;  <span style="color: #5B6268;">// </span><span style="color: #5B6268;">2 to the power of 3 = 8.0</span>
+</pre>
+</div>
+<p>
+<b>Other Maths library functions</b>
+</p>
+<ul class="org-ul">
+<li>.sin(x)</li>
+<li>.cos(x)</li>
+<li>.tan(x)</li>
+<li>.toDegrees(x)</li>
+<li>.toRadians(x)</li>
+<li>.round(x)</li>
+<li>.abs(x)</li>
+<li>.min(x, y)</li>
+<li>.max(x, y)</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgcab07fa" class="outline-2">
+<h2 id="orgcab07fa"><span class="section-number-2">12</span> Type casting - converting data types</h2>
+<div class="outline-text-2" id="text-12">
+</div>
+<div id="outline-container-orga7cbdea" class="outline-3">
+<h3 id="orga7cbdea"><span class="section-number-3">12.1</span> Implicit type conversion (done automatically)</h3>
+<div class="outline-text-3" id="text-12-1">
+<p>
+<b>Example</b>
+</p>
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #ECBE7B;">int</span> <span style="color: #db5762;">x</span> = 5;
+<span style="color: #ECBE7B;">double</span> <span style="color: #db5762;">d</span> = 10.5;
+x = d * x; <span style="color: #5B6268;">// </span><span style="color: #5B6268;">x = 50, automatically cuts off the decimal place</span>
+</pre>
+</div>
+
+<p>
+<b>Type casting order</b>
+</p>
+
+
+<div class="figure">
+<p><img src="images/type_casting_order.png" alt="type_casting_order.png" />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orga5e94d1" class="outline-3">
+<h3 id="orga5e94d1"><span class="section-number-3">12.2</span> Explicit type conversion</h3>
+<div class="outline-text-3" id="text-12-2">
+<ul class="org-ul">
+<li>It accepts any conversion</li>
+<li>Care must be taken when converting from a higher data type to a lower data type</li>
+<li>Put the data type in brackets before the expression</li>
+<li>The original expression is <b>unchanged</b> after the conversion is done</li>
+</ul>
+
+<p>
+<b>Example</b>
+</p>
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #ECBE7B;">int</span> <span style="color: #db5762;">x</span> = 3;
+<span style="color: #ECBE7B;">int</span> <span style="color: #db5762;">y</span> = 4;
+<span style="color: #ECBE7B;">double</span> <span style="color: #db5762;">z</span> = <span style="color: #fff0f5;">(</span><span style="color: #ECBE7B;">double</span><span style="color: #fff0f5;">)</span> x / y;
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org8ff193d" class="outline-2">
+<h2 id="org8ff193d"><span class="section-number-2">13</span> Formatting the output</h2>
+<div class="outline-text-2" id="text-13">
+<p>
+<b>Examples</b>
+</p>
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #ECBE7B;">int</span> <span style="color: #db5762;">x</span> = 55;
+<span style="color: #ECBE7B;">double</span> <span style="color: #db5762;">y</span> = 1.2345;
+<span style="color: #ECBE7B;">String</span> <span style="color: #db5762;">n</span> = <span style="color: #98be65;">"Joe"</span>;
+System.out.printf<span style="color: #fff0f5;">(</span><span style="color: #98be65;">"x = %d"</span>, x<span style="color: #fff0f5;">)</span>;  <span style="color: #5B6268;">// </span><span style="color: #5B6268;">print x = 55</span>
+System.out.printf<span style="color: #fff0f5;">(</span><span style="color: #98be65;">"x = %7d"</span> , x<span style="color: #fff0f5;">)</span>; <span style="color: #5B6268;">// </span><span style="color: #5B6268;">prints x = ____55</span>
+System.out.printf<span style="color: #fff0f5;">(</span><span style="color: #98be65;">"y = %.2f"</span>, y<span style="color: #fff0f5;">)</span>; <span style="color: #5B6268;">// </span><span style="color: #5B6268;">prints y = 1.23=</span>
+System.out.printf<span style="color: #fff0f5;">(</span><span style="color: #98be65;">"n = %s"</span>, n<span style="color: #fff0f5;">)</span>; <span style="color: #5B6268;">// </span><span style="color: #5B6268;">prints n = Joe</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgc261e63" class="outline-2">
+<h2 id="orgc261e63"><span class="section-number-2">14</span> Precedence and associativity</h2>
+<div class="outline-text-2" id="text-14">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">Precedence</td>
+<td class="org-left">Associativity</td>
+</tr>
+
+<tr>
+<td class="org-left">----------</td>
+<td class="org-left">-------------</td>
+</tr>
+
+<tr>
+<td class="org-left">.</td>
+<td class="org-left">Left</td>
+</tr>
+
+<tr>
+<td class="org-left">++ &#x2013; !</td>
+<td class="org-left">Right</td>
+</tr>
+
+<tr>
+<td class="org-left">* / %</td>
+<td class="org-left">Left</td>
+</tr>
+
+<tr>
+<td class="org-left">+ -</td>
+<td class="org-left">Left</td>
+</tr>
+
+<tr>
+<td class="org-left">&lt; &lt;= &gt; &gt;=</td>
+<td class="org-left">Left</td>
+</tr>
+
+<tr>
+<td class="org-left">equals,not equals</td>
+<td class="org-left">Left</td>
+</tr>
+
+<tr>
+<td class="org-left">AND</td>
+<td class="org-left">Left</td>
+</tr>
+
+<tr>
+<td class="org-left">OR</td>
+<td class="org-left">Left</td>
+</tr>
+
+<tr>
+<td class="org-left">? !</td>
+<td class="org-left">Right</td>
+</tr>
+
+<tr>
+<td class="org-left">= += -= /=</td>
+<td class="org-left">Right</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-orgca07715" class="outline-2">
+<h2 id="orgca07715"><span class="section-number-2">15</span> Decisions, Conditional Execution</h2>
+<div class="outline-text-2" id="text-15">
+<p class="verse">
+Conditional expression can have either of two answers: True or False.<br />
+<br />
+Relationship operators: &gt; &lt; <code>= &gt;</code> &lt;= !=<br />
+<br />
+Joining expressions: &amp;&amp;(AND) ||(OR)<br />
+</p>
+</div>
+<div id="outline-container-org67b8b9b" class="outline-3">
+<h3 id="org67b8b9b"><span class="section-number-3">15.1</span> If statement</h3>
+<div class="outline-text-3" id="text-15-1">
+<p>
+<b>Example Code</b>
+</p>
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #ECBE7B;">int</span> <span style="color: #db5762;">x</span> = 5;
+<span style="color: #51afef; font-style: italic;">if</span><span style="color: #fff0f5;">(</span>x &gt; 4<span style="color: #fff0f5;">)</span> <span style="color: #fff0f5;">{</span>
+    System.out.println<span style="color: #c678dd;">(</span><span style="color: #98be65;">"True"</span><span style="color: #c678dd;">)</span>;  <span style="color: #5B6268;">// </span><span style="color: #5B6268;">prints True, x is greater than 5</span>
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+
+
+<div class="figure">
+<p><img src="images/if.png" alt="if.png" />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org6a87142" class="outline-3">
+<h3 id="org6a87142"><span class="section-number-3">15.2</span> Else statement</h3>
+<div class="outline-text-3" id="text-15-2">
+<p>
+<b>Example Code</b>
+</p>
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #ECBE7B;">int</span> <span style="color: #db5762;">x</span> = 5;
+<span style="color: #51afef; font-style: italic;">if</span><span style="color: #fff0f5;">(</span>x &lt; 4<span style="color: #fff0f5;">)</span> <span style="color: #fff0f5;">{</span>
+    System.out.println<span style="color: #c678dd;">(</span><span style="color: #98be65;">"True"</span><span style="color: #c678dd;">)</span>;
+<span style="color: #fff0f5;">}</span>
+<span style="color: #51afef; font-style: italic;">else</span> <span style="color: #fff0f5;">{</span>
+    System.out.println<span style="color: #c678dd;">(</span><span style="color: #98be65;">"False"</span><span style="color: #c678dd;">)</span>; <span style="color: #5B6268;">// </span><span style="color: #5B6268;">print false because x is greater than 4</span>
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+
+
+<div class="figure">
+<p><img src="images/else.png" alt="else.png" />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgf1ecd06" class="outline-3">
+<h3 id="orgf1ecd06"><span class="section-number-3">15.3</span> Else If, Alternative Options</h3>
+<div class="outline-text-3" id="text-15-3">
+<p>
+<b>Example code</b>
+</p>
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #51afef; font-style: italic;">if</span> <span style="color: #fff0f5;">(</span>...<span style="color: #fff0f5;">)</span> <span style="color: #fff0f5;">{</span>
+
+<span style="color: #fff0f5;">}</span> <span style="color: #51afef; font-style: italic;">else</span> <span style="color: #51afef; font-style: italic;">if</span> <span style="color: #fff0f5;">(</span>...<span style="color: #fff0f5;">)</span> <span style="color: #fff0f5;">{</span>
+
+<span style="color: #fff0f5;">}</span> <span style="color: #51afef; font-style: italic;">else</span> <span style="color: #51afef; font-style: italic;">if</span> <span style="color: #fff0f5;">(</span>...<span style="color: #fff0f5;">)</span> <span style="color: #fff0f5;">{</span>
+
+<span style="color: #fff0f5;">}</span> <span style="color: #51afef; font-style: italic;">else</span> <span style="color: #51afef; font-style: italic;">if</span> <span style="color: #fff0f5;">(</span>...<span style="color: #fff0f5;">)</span> <span style="color: #fff0f5;">{</span>
+
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org5c11929" class="outline-3">
+<h3 id="org5c11929"><span class="section-number-3">15.4</span> Switch Statement</h3>
+<div class="outline-text-3" id="text-15-4">
+<p>
+Only works with integers, chars and as of Java 7 with Strings
+</p>
+
+<p>
+<b>Sample Code:</b>
+</p>
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #51afef; font-style: italic;">switch</span> <span style="color: #fff0f5;">(</span>ch<span style="color: #fff0f5;">)</span> <span style="color: #fff0f5;">{</span>
+<span style="color: #51afef; font-style: italic;">case</span> <span style="color: #98be65;">'a'</span>:
+    System.out.println<span style="color: #c678dd;">(</span><span style="color: #98be65;">"a was entered"</span><span style="color: #c678dd;">)</span>;
+    <span style="color: #51afef; font-style: italic;">break</span>;  <span style="color: #5B6268;">// </span><span style="color: #5B6268;">a break statement is necessary in here (otherwise everything gets checked)</span>
+<span style="color: #51afef; font-style: italic;">case</span> <span style="color: #98be65;">'b'</span>:
+    System.out.println<span style="color: #c678dd;">(</span><span style="color: #98be65;">"b was entered"</span><span style="color: #c678dd;">)</span>;
+    <span style="color: #51afef; font-style: italic;">break</span>;
+<span style="color: #51afef; font-style: italic;">default</span>:
+    System.out.println<span style="color: #c678dd;">(</span><span style="color: #98be65;">"Neither a or b were entered"</span><span style="color: #c678dd;">)</span>;
+<span style="color: #fff0f5;">}</span>
+
+<span style="color: #5B6268;">// </span><span style="color: #5B6268;">For all true in case statement:</span>
+<span style="color: #5B6268;">// </span><span style="color: #5B6268;">case 'a':</span>
+<span style="color: #5B6268;">// </span><span style="color: #5B6268;">case 'A':</span>
+<span style="color: #5B6268;">// </span><span style="color: #5B6268;">....do something here...</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgdb631ff" class="outline-3">
+<h3 id="orgdb631ff"><span class="section-number-3">15.5</span> Nested branches</h3>
+<div class="outline-text-3" id="text-15-5">
+<p>
+<b>Sample Code:</b>
+</p>
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #51afef; font-style: italic;">if</span> <span style="color: #fff0f5;">(</span>condition<span style="color: #fff0f5;">)</span> <span style="color: #fff0f5;">{</span>
+    <span style="color: #51afef; font-style: italic;">if</span> <span style="color: #c678dd;">(</span>condition<span style="color: #c678dd;">)</span> <span style="color: #c678dd;">{</span>
+    <span style="color: #51afef; font-style: italic;">if</span> <span style="color: #98be65;">(</span>condition<span style="color: #98be65;">)</span> <span style="color: #98be65;">{</span>
+        <span style="color: #5B6268;">// </span><span style="color: #5B6268;">some code here</span>
+    <span style="color: #98be65;">}</span>
+    <span style="color: #c678dd;">}</span>
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org89fdf2e" class="outline-2">
+<h2 id="org89fdf2e"><span class="section-number-2">16</span> Enumerated Types</h2>
+<div class="outline-text-2" id="text-16">
+<ul class="org-ul">
+<li>Have a finite set of values</li>
+<li>Makes reading of code easier</li>
+<li>Assign "Values" to simple names</li>
+</ul>
+
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #51afef; font-style: italic;">public</span> <span style="color: #51afef; font-style: italic;">enum</span> <span style="color: #ECBE7B;">Direction</span> <span style="color: #fff0f5;">{</span><span style="color: #db5762;">NORTH</span>, <span style="color: #db5762;">SOUTH</span>, <span style="color: #db5762;">EAST</span>, <span style="color: #db5762;">WEST</span><span style="color: #fff0f5;">}</span>
+
+<span style="color: #ECBE7B;">Direction</span> <span style="color: #db5762;">car</span> = <span style="color: #a9a1e1;">Direction</span>.NORTH;
+
+<span style="color: #51afef; font-style: italic;">switch</span> <span style="color: #fff0f5;">(</span>car<span style="color: #fff0f5;">)</span> <span style="color: #fff0f5;">{</span>
+<span style="color: #51afef; font-style: italic;">case</span> <span style="color: #a9a1e1;">Direction</span>.NORTH:
+    x--;
+    <span style="color: #51afef; font-style: italic;">break</span>;
+<span style="color: #51afef; font-style: italic;">case</span> <span style="color: #a9a1e1;">Direction</span>.SOUTH:
+    x++;
+    <span style="color: #51afef; font-style: italic;">break</span>;
+    <span style="color: #5B6268;">// </span><span style="color: #5B6268;">........</span>
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgf3114ff" class="outline-2">
+<h2 id="orgf3114ff"><span class="section-number-2">17</span> Logging</h2>
+<div class="outline-text-2" id="text-17">
+<p>
+<b>Sample code to output where the branch reaches</b>
+</p>
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #51afef; font-style: italic;">if</span><span style="color: #fff0f5;">(</span>x &gt; 0<span style="color: #fff0f5;">)</span> <span style="color: #fff0f5;">{</span>
+    System.out.println<span style="color: #c678dd;">(</span><span style="color: #98be65;">"x is positive"</span><span style="color: #c678dd;">)</span>;
+<span style="color: #fff0f5;">}</span> <span style="color: #51afef; font-style: italic;">else</span> <span style="color: #51afef; font-style: italic;">if</span><span style="color: #fff0f5;">(</span>x &lt; 0<span style="color: #fff0f5;">)</span> <span style="color: #fff0f5;">{</span>
+    System.out.println<span style="color: #c678dd;">(</span><span style="color: #98be65;">"x is negative"</span><span style="color: #c678dd;">)</span>;
+<span style="color: #fff0f5;">}</span> <span style="color: #51afef; font-style: italic;">else</span> <span style="color: #fff0f5;">{</span>
+    System.out.println<span style="color: #c678dd;">(</span><span style="color: #98be65;">"x equals zero"</span><span style="color: #c678dd;">)</span>;
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org414e495" class="outline-2">
+<h2 id="org414e495"><span class="section-number-2">18</span> Boolean data type</h2>
+<div class="outline-text-2" id="text-18">
+</div>
+<div id="outline-container-org90d364a" class="outline-3">
+<h3 id="org90d364a"><span class="section-number-3">18.1</span> Example and size</h3>
+<div class="outline-text-3" id="text-18-1">
+<p>
+Size of a boolean type is 1 bit
+</p>
+
+<p>
+<b>Example of assignment</b>
+</p>
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #ECBE7B;">boolean</span> <span style="color: #db5762;">someVar</span> = <span style="color: #a9a1e1;">true</span>;
+<span style="color: #ECBE7B;">boolean</span> <span style="color: #db5762;">someVar2</span> = <span style="color: #a9a1e1;">false</span>;
+
+<span style="color: #51afef; font-style: italic;">if</span><span style="color: #fff0f5;">(</span>someVar<span style="color: #fff0f5;">)</span> <span style="color: #fff0f5;">{</span>
+    <span style="color: #5B6268;">// </span><span style="color: #5B6268;">...code here</span>
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org94e1c50" class="outline-3">
+<h3 id="org94e1c50"><span class="section-number-3">18.2</span> Truth table with boolean expressions</h3>
+<div class="outline-text-3" id="text-18-2">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-right">P</th>
+<th scope="col" class="org-right">Q</th>
+<th scope="col" class="org-right">R</th>
+<th scope="col" class="org-right">(P and Q) or !R</th>
+<th scope="col" class="org-right">!(P and (Q or !R))</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-right">0</td>
+<td class="org-right">0</td>
+<td class="org-right">0</td>
+<td class="org-right">1</td>
+<td class="org-right">1</td>
+</tr>
+
+<tr>
+<td class="org-right">0</td>
+<td class="org-right">0</td>
+<td class="org-right">1</td>
+<td class="org-right">0</td>
+<td class="org-right">1</td>
+</tr>
+
+<tr>
+<td class="org-right">0</td>
+<td class="org-right">1</td>
+<td class="org-right">0</td>
+<td class="org-right">1</td>
+<td class="org-right">1</td>
+</tr>
+
+<tr>
+<td class="org-right">0</td>
+<td class="org-right">1</td>
+<td class="org-right">1</td>
+<td class="org-right">0</td>
+<td class="org-right">1</td>
+</tr>
+
+<tr>
+<td class="org-right">1</td>
+<td class="org-right">0</td>
+<td class="org-right">0</td>
+<td class="org-right">1</td>
+<td class="org-right">0</td>
+</tr>
+
+<tr>
+<td class="org-right">1</td>
+<td class="org-right">0</td>
+<td class="org-right">1</td>
+<td class="org-right">0</td>
+<td class="org-right">1</td>
+</tr>
+
+<tr>
+<td class="org-right">1</td>
+<td class="org-right">1</td>
+<td class="org-right">0</td>
+<td class="org-right">1</td>
+<td class="org-right">0</td>
+</tr>
+
+<tr>
+<td class="org-right">1</td>
+<td class="org-right">1</td>
+<td class="org-right">1</td>
+<td class="org-right">1</td>
+<td class="org-right">0</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-orgc619f9c" class="outline-3">
+<h3 id="orgc619f9c"><span class="section-number-3">18.3</span> Shortening expressions</h3>
+<div class="outline-text-3" id="text-18-3">
+<p>
+<b>Code example</b>
+</p>
+
+<div class="org-src-container">
+<pre class="src src-java">b == <span style="color: #a9a1e1;">true</span>; <span style="color: #5B6268;">// </span><span style="color: #5B6268;">if(b)</span>
+b == <span style="color: #a9a1e1;">false</span>; <span style="color: #5B6268;">// </span><span style="color: #5B6268;">if(!b)</span>
+b != <span style="color: #a9a1e1;">true</span>; <span style="color: #5B6268;">// </span><span style="color: #5B6268;">if(!b)</span>
+b != <span style="color: #a9a1e1;">false</span>; <span style="color: #5B6268;">// </span><span style="color: #5B6268;">if(b)</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orge10c905" class="outline-3">
+<h3 id="orge10c905"><span class="section-number-3">18.4</span> DeMorgan's Laws</h3>
+<div class="outline-text-3" id="text-18-4">
+<p>
+<b>!(A &amp;&amp; B) &#x2013;&gt;  !A || !B</b>
+<b>!(A || B) &#x2013;&gt;  !A &amp;&amp; !B</b>
+</p>
+
+<p>
+English version:
+</p>
+
+<p>
+<b>not(A and B)  &#x2013;&gt; not A or  not B</b>
+<b>not(A or  B)  &#x2013;&gt; not A and not B</b>
+</p>
+
+<p>
+<b>Code example</b>
+</p>
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #5B6268;">//</span><span style="color: #5B6268;">hard to read</span>
+<span style="color: #ECBE7B;">int</span> <span style="color: #db5762;">shippingCharge</span> = 10;
+<span style="color: #51afef; font-style: italic;">if</span> <span style="color: #fff0f5;">(</span><span style="color: #51afef; font-weight: bold;">!</span><span style="color: #c678dd;">(</span>country.equals<span style="color: #98be65;">(</span><span style="color: #98be65;">"USA"</span><span style="color: #98be65;">)</span>
+      &amp;&amp; <span style="color: #51afef; font-weight: bold;">!</span>state.equals<span style="color: #98be65;">(</span><span style="color: #98be65;">"AK"</span><span style="color: #98be65;">)</span>
+      &amp;&amp; <span style="color: #51afef; font-weight: bold;">!</span>state.equals<span style="color: #98be65;">(</span><span style="color: #98be65;">"HI"</span><span style="color: #98be65;">)</span><span style="color: #c678dd;">)</span><span style="color: #fff0f5;">)</span> <span style="color: #fff0f5;">{</span>
+    shippingCharge = 20;
+<span style="color: #fff0f5;">}</span>
+
+<span style="color: #5B6268;">// </span><span style="color: #5B6268;">after applying the DeMorgan's law</span>
+<span style="color: #ECBE7B;">int</span> <span style="color: #db5762;">shippingCharge</span> = 20;
+<span style="color: #51afef; font-style: italic;">if</span><span style="color: #fff0f5;">(</span><span style="color: #51afef; font-weight: bold;">!</span><span style="color: #c678dd;">(</span>country.equals<span style="color: #98be65;">(</span><span style="color: #98be65;">"USA"</span><span style="color: #98be65;">)</span>
+     || state.equals<span style="color: #98be65;">(</span><span style="color: #98be65;">"AK"</span><span style="color: #98be65;">)</span>
+     || state.equals<span style="color: #98be65;">(</span><span style="color: #98be65;">"HI"</span><span style="color: #98be65;">)</span><span style="color: #c678dd;">)</span><span style="color: #fff0f5;">)</span> <span style="color: #fff0f5;">{</span>
+    shippingCharge = 20;
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org8a504e5" class="outline-2">
+<h2 id="org8a504e5"><span class="section-number-2">19</span> Input Validation</h2>
+<div class="outline-text-2" id="text-19">
+</div>
+<div id="outline-container-org749ee16" class="outline-3">
+<h3 id="org749ee16"><span class="section-number-3">19.1</span> Reading an integer</h3>
+<div class="outline-text-3" id="text-19-1">
+<p>
+<b>Code example</b>
+</p>
+
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #ECBE7B;">int</span> <span style="color: #db5762;">x</span> = 0;
+System.out.print<span style="color: #fff0f5;">(</span><span style="color: #98be65;">"Please enter an integer: "</span><span style="color: #fff0f5;">)</span>;
+
+<span style="color: #51afef; font-style: italic;">if</span><span style="color: #fff0f5;">(</span>in.hasNextInt<span style="color: #c678dd;">()</span><span style="color: #fff0f5;">)</span> <span style="color: #fff0f5;">{</span>
+    x = in.nextInt<span style="color: #c678dd;">()</span>;
+    System.out.println<span style="color: #c678dd;">(</span><span style="color: #98be65;">"You entered "</span> + x<span style="color: #c678dd;">)</span>;
+
+<span style="color: #fff0f5;">}</span> <span style="color: #51afef; font-style: italic;">else</span> <span style="color: #fff0f5;">{</span>
+    System.out.println<span style="color: #c678dd;">(</span><span style="color: #98be65;">"Sorry invalid input"</span><span style="color: #c678dd;">)</span>;
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org52bcc17" class="outline-2">
+<h2 id="org52bcc17"><span class="section-number-2">20</span> Iteration - loops</h2>
+<div class="outline-text-2" id="text-20">
+</div>
+<div id="outline-container-orgd11df72" class="outline-3">
+<h3 id="orgd11df72"><span class="section-number-3">20.1</span> Types</h3>
+<div class="outline-text-3" id="text-20-1">
+<ul class="org-ul">
+<li>while</li>
+<li>for</li>
+<li>do-while</li>
+</ul>
+
+<p>
+<b>Flowchart</b>
+</p>
+
+
+<div class="figure">
+<p><img src="images/loop.png" alt="loop.png" />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgfa2b55a" class="outline-3">
+<h3 id="orgfa2b55a"><span class="section-number-3">20.2</span> Loop must haves</h3>
+<div class="outline-text-3" id="text-20-2">
+<p class="verse">
+All loops must have:<br />
+</p>
+<ol class="org-ol">
+<li>Initialization: this is where the variable is the condition is initialized.</li>
+<li>Condition: this is where the condition is evaluated, if it is true the loop body is executed, otherwise the loop is ended.</li>
+<li>Update: this is where the variable in the condition is updated (so that eventually it will become false)</li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-org6e1c9fc" class="outline-3">
+<h3 id="org6e1c9fc"><span class="section-number-3">20.3</span> While loop</h3>
+<div class="outline-text-3" id="text-20-3">
+<p>
+<b>Syntax</b>
+</p>
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #51afef; font-style: italic;">while</span><span style="color: #fff0f5;">(</span>condition<span style="color: #fff0f5;">)</span> <span style="color: #fff0f5;">{</span>
+    <span style="color: #5B6268;">// </span><span style="color: #5B6268;">code here</span>
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+<p class="verse">
+While the condition is true loop through the code inside or block of code.<br />
+</p>
+
+<p>
+<b>Examples of while loops</b>
+</p>
+
+<p>
+<b>Print numbers 1 to 5</b>
+</p>
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #ECBE7B;">int</span> <span style="color: #db5762;">x</span> = 1;
+<span style="color: #51afef; font-style: italic;">while</span><span style="color: #fff0f5;">(</span>x &lt;= 5<span style="color: #fff0f5;">)</span> <span style="color: #fff0f5;">{</span>
+    System.out.print<span style="color: #c678dd;">(</span>x + <span style="color: #98be65;">", "</span><span style="color: #c678dd;">)</span>;
+    x++;
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+
+<p>
+<b>Print numbers 5 to 1</b>
+</p>
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #ECBE7B;">int</span> <span style="color: #db5762;">x</span> = 5;
+<span style="color: #51afef; font-style: italic;">while</span><span style="color: #fff0f5;">(</span>x &gt; 0<span style="color: #fff0f5;">)</span> <span style="color: #fff0f5;">{</span>
+    System.out.print<span style="color: #c678dd;">(</span>x + <span style="color: #98be65;">", "</span><span style="color: #c678dd;">)</span>;
+    x--;
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+
+<p>
+<b>Print numbers 5 to 30</b>
+</p>
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #ECBE7B;">int</span> <span style="color: #db5762;">x</span> = 5;
+<span style="color: #51afef; font-style: italic;">while</span><span style="color: #fff0f5;">(</span>x &lt;= 30<span style="color: #fff0f5;">)</span> <span style="color: #fff0f5;">{</span>
+    System.out.print<span style="color: #c678dd;">(</span>x + <span style="color: #98be65;">", "</span><span style="color: #c678dd;">)</span>;
+    x += 5;
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgca9828c" class="outline-3">
+<h3 id="orgca9828c"><span class="section-number-3">20.4</span> For loop</h3>
+<div class="outline-text-3" id="text-20-4">
+<p>
+<b>Syntax</b>
+</p>
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #51afef; font-style: italic;">for</span><span style="color: #fff0f5;">(</span>init; condition; update<span style="color: #fff0f5;">)</span> <span style="color: #fff0f5;">{</span>
+    <span style="color: #5B6268;">// </span><span style="color: #5B6268;">code here;</span>
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+<ol class="org-ol">
+<li>The <b>init</b> statement is executed first and only executed once</li>
+<li>Before each iteration the <b>condition</b> is checked, if it is true then the next statement or block of statements are executed. If it is false then the loop is terminated and execution resumes at the statement immediately following the terminated statement</li>
+<li>After each loop the <b>update</b> is executed</li>
+</ol>
+
+<p>
+<b>Example</b>
+</p>
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #51afef; font-style: italic;">for</span><span style="color: #fff0f5;">(</span><span style="color: #ECBE7B;">int</span> <span style="color: #db5762;">x</span> = 1; x &lt;= 5; x++<span style="color: #fff0f5;">)</span> <span style="color: #fff0f5;">{</span>
+    System.out.println<span style="color: #c678dd;">(</span>x<span style="color: #c678dd;">)</span>;
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org1ac75a1" class="outline-3">
+<h3 id="org1ac75a1"><span class="section-number-3">20.5</span> The do-while loop</h3>
+<div class="outline-text-3" id="text-20-5">
+<p>
+<b>Syntax</b>
+</p>
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #51afef; font-style: italic;">do</span> <span style="color: #fff0f5;">{</span>
+    statement<span style="color: #c678dd;">(</span>s<span style="color: #c678dd;">)</span>;
+<span style="color: #fff0f5;">}</span> <span style="color: #51afef; font-style: italic;">while</span><span style="color: #fff0f5;">(</span>condition<span style="color: #fff0f5;">)</span>;
+</pre>
+</div>
+
+<p>
+<b>Example</b>
+</p>
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #ECBE7B;">int</span> <span style="color: #db5762;">x</span> = 1;
+<span style="color: #51afef; font-style: italic;">do</span> <span style="color: #fff0f5;">{</span>
+    System.out.println<span style="color: #c678dd;">(</span>x<span style="color: #c678dd;">)</span>;
+    x++;
+<span style="color: #fff0f5;">}</span> <span style="color: #51afef; font-style: italic;">while</span><span style="color: #fff0f5;">(</span>x &lt;= 5<span style="color: #fff0f5;">)</span>;
+</pre>
+</div>
+<p class="verse">
+Guaranteed to execute the block at least once.<br />
+Meaning the first iteration will always run.<br />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org6900cb2" class="outline-2">
+<h2 id="org6900cb2"><span class="section-number-2">21</span> Sentinel processing</h2>
+<div class="outline-text-2" id="text-21">
+<ul class="org-ul">
+<li>We are going to look at how to read and process a set of data values</li>
+<li>A Sentinel is a flag or marker that indicates that the processing of input data should end</li>
+</ul>
+
+<p>
+<b>Example of sentinel processing</b>
+</p>
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #ECBE7B;">Scanner</span> <span style="color: #db5762;">in</span> = <span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">Scanner</span><span style="color: #fff0f5;">(</span>System.in<span style="color: #fff0f5;">)</span>;
+
+<span style="color: #ECBE7B;">int</span> <span style="color: #db5762;">count</span> = 0;
+<span style="color: #ECBE7B;">int</span> <span style="color: #db5762;">sum</span> = 0;
+<span style="color: #ECBE7B;">int</span> <span style="color: #db5762;">value</span> = 0;
+
+System.out.print<span style="color: #fff0f5;">(</span><span style="color: #98be65;">"Please enter a list of positive numbers, -1 to end"</span><span style="color: #fff0f5;">)</span>;
+
+<span style="color: #51afef; font-style: italic;">while</span><span style="color: #fff0f5;">(</span>value != -1<span style="color: #fff0f5;">)</span> <span style="color: #fff0f5;">{</span>
+
+    <span style="color: #51afef; font-style: italic;">if</span> <span style="color: #c678dd;">(</span>in.hasNextInt<span style="color: #98be65;">()</span><span style="color: #c678dd;">)</span> <span style="color: #c678dd;">{</span>
+    value = in.nextInt<span style="color: #98be65;">()</span>;
+
+        <span style="color: #51afef; font-style: italic;">if</span><span style="color: #98be65;">(</span>value != -1<span style="color: #98be65;">){</span>
+            sum += value;
+            count++;
+        <span style="color: #98be65;">}</span>
+    <span style="color: #c678dd;">}</span>
+<span style="color: #fff0f5;">}</span>
+
+System.out.println<span style="color: #fff0f5;">(</span><span style="color: #98be65;">"The sum = "</span> + sum<span style="color: #fff0f5;">)</span>;
+
+<span style="color: #51afef; font-style: italic;">if</span> <span style="color: #fff0f5;">(</span>count &gt; 0<span style="color: #fff0f5;">)</span> <span style="color: #fff0f5;">{</span>
+    System.out.println<span style="color: #c678dd;">(</span><span style="color: #98be65;">"The average = "</span> + <span style="color: #98be65;">(</span><span style="color: #00bfff;">(</span><span style="color: #ECBE7B;">double</span><span style="color: #00bfff;">)</span> sum/count<span style="color: #98be65;">)</span><span style="color: #c678dd;">)</span>;
+
+<span style="color: #fff0f5;">}</span> <span style="color: #51afef; font-style: italic;">else</span> <span style="color: #fff0f5;">{</span>
+    System.out.println<span style="color: #c678dd;">(</span><span style="color: #98be65;">"No data entered. Average is zero"</span><span style="color: #c678dd;">)</span>;
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org24abfc4" class="outline-2">
+<h2 id="org24abfc4"><span class="section-number-2">22</span> Common Algorithms</h2>
+<div class="outline-text-2" id="text-22">
+</div>
+<div id="outline-container-org2cab88e" class="outline-3">
+<h3 id="org2cab88e"><span class="section-number-3">22.1</span> Counting Matches</h3>
+<div class="outline-text-3" id="text-22-1">
+<p>
+<b>Example code</b>
+</p>
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #ECBE7B;">String</span> <span style="color: #db5762;">str</span> = <span style="color: #98be65;">"My fair lady"</span>;
+<span style="color: #ECBE7B;">int</span> <span style="color: #db5762;">spaces</span> = 0;
+
+<span style="color: #51afef; font-style: italic;">for</span> <span style="color: #fff0f5;">(</span><span style="color: #ECBE7B;">int</span> <span style="color: #db5762;">i</span> = 0; i &lt; str.<span style="color: #ECBE7B;">length</span><span style="color: #c678dd;">()</span>; i++<span style="color: #fff0f5;">)</span> <span style="color: #fff0f5;">{</span>
+    <span style="color: #ECBE7B;">char</span> <span style="color: #db5762;">ch</span> = st.charAt<span style="color: #c678dd;">(</span>i<span style="color: #c678dd;">)</span>;
+    <span style="color: #51afef; font-style: italic;">if</span> <span style="color: #c678dd;">(</span>ch == <span style="color: #98be65;">' '</span><span style="color: #c678dd;">)</span> <span style="color: #c678dd;">{</span>
+    spaces++;
+    <span style="color: #c678dd;">}</span>
+<span style="color: #fff0f5;">}</span>
+System.out.println<span style="color: #fff0f5;">(</span><span style="color: #98be65;">"Total spaces = "</span> + spaces<span style="color: #fff0f5;">)</span>;
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org6702722" class="outline-3">
+<h3 id="org6702722"><span class="section-number-3">22.2</span> First Match</h3>
+<div class="outline-text-3" id="text-22-2">
+<p>
+<b>Example code. Using a while loop</b>
+</p>
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #ECBE7B;">String</span> <span style="color: #db5762;">str</span> = <span style="color: #98be65;">"My fair lady"</span>;
+<span style="color: #ECBE7B;">boolean</span> <span style="color: #db5762;">found</span> = <span style="color: #a9a1e1;">false</span>;
+<span style="color: #ECBE7B;">int</span> <span style="color: #db5762;">position</span> = 0;
+<span style="color: #51afef; font-style: italic;">while</span><span style="color: #fff0f5;">(</span><span style="color: #51afef; font-weight: bold;">!</span>found || position &lt; str.<span style="color: #ECBE7B;">length</span><span style="color: #c678dd;">()</span><span style="color: #fff0f5;">)</span> <span style="color: #fff0f5;">{</span>
+    <span style="color: #ECBE7B;">char</span> <span style="color: #db5762;">ch</span> = str.charAt<span style="color: #c678dd;">(</span>position<span style="color: #c678dd;">)</span>;
+    <span style="color: #51afef; font-style: italic;">if</span> <span style="color: #c678dd;">(</span>ch == <span style="color: #98be65;">' '</span><span style="color: #c678dd;">)</span> <span style="color: #c678dd;">{</span>
+    found = <span style="color: #a9a1e1;">true</span>;
+    <span style="color: #c678dd;">}</span>
+    <span style="color: #51afef; font-style: italic;">else</span> <span style="color: #c678dd;">{</span>
+    position++;
+    <span style="color: #c678dd;">}</span>
+<span style="color: #fff0f5;">}</span>
+System.out.println<span style="color: #fff0f5;">(</span><span style="color: #98be65;">"First space fount at index: "</span> + position<span style="color: #fff0f5;">)</span>;
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgfee15c4" class="outline-3">
+<h3 id="orgfee15c4"><span class="section-number-3">22.3</span> Prompting until a match is found</h3>
+<div class="outline-text-3" id="text-22-3">
+<p>
+<b>Example code</b>
+</p>
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #ECBE7B;">boolean</span> <span style="color: #db5762;">valid</span> = <span style="color: #a9a1e1;">false</span>;
+<span style="color: #ECBE7B;">double</span> <span style="color: #db5762;">input</span> = 0;
+<span style="color: #51afef; font-style: italic;">do</span> <span style="color: #fff0f5;">{</span>
+    System.out.print<span style="color: #c678dd;">(</span><span style="color: #98be65;">"Please enter a positive number &lt; 100 : "</span><span style="color: #c678dd;">)</span>;
+    input = in.nextDouble<span style="color: #c678dd;">()</span>;
+    <span style="color: #51afef; font-style: italic;">if</span> <span style="color: #c678dd;">(</span>input &gt;= 0 &amp;&amp; input &lt;= 100<span style="color: #c678dd;">)</span> <span style="color: #c678dd;">{</span>
+    valid = <span style="color: #a9a1e1;">true</span>;
+    <span style="color: #c678dd;">}</span>
+    <span style="color: #51afef; font-style: italic;">else</span> <span style="color: #c678dd;">{</span>
+    System.out.println<span style="color: #98be65;">(</span><span style="color: #98be65;">"Invalid input, try again!"</span><span style="color: #98be65;">)</span>;
+    <span style="color: #c678dd;">}</span>
+<span style="color: #fff0f5;">}</span> <span style="color: #51afef; font-style: italic;">while</span><span style="color: #fff0f5;">(</span><span style="color: #51afef; font-weight: bold;">!</span>valid<span style="color: #fff0f5;">)</span>;
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgfdd6c4e" class="outline-3">
+<h3 id="orgfdd6c4e"><span class="section-number-3">22.4</span> Maximum and Minimum</h3>
+<div class="outline-text-3" id="text-22-4">
+<p>
+<b>Example code, Maximum value</b>
+</p>
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #ECBE7B;">double</span> <span style="color: #db5762;">largest</span> = in.nextDouble<span style="color: #fff0f5;">()</span>;
+<span style="color: #51afef; font-style: italic;">while</span> <span style="color: #fff0f5;">(</span>in.hasNextDouble<span style="color: #c678dd;">()</span><span style="color: #fff0f5;">){</span>
+    <span style="color: #ECBE7B;">double</span> <span style="color: #db5762;">input</span> = in.nextDouble<span style="color: #c678dd;">()</span>;
+    <span style="color: #51afef; font-style: italic;">if</span> <span style="color: #c678dd;">(</span>input &gt; largest<span style="color: #c678dd;">)</span> <span style="color: #c678dd;">{</span>
+    largest = input;
+    <span style="color: #c678dd;">}</span>
+<span style="color: #fff0f5;">}</span>
+System.out.println<span style="color: #fff0f5;">(</span><span style="color: #98be65;">"Max value is: "</span> + largest<span style="color: #fff0f5;">)</span>;
+</pre>
+</div>
+
+<p>
+<b>Example code, Minimum value</b>
+</p>
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #ECBE7B;">double</span> <span style="color: #db5762;">smallest</span> = in.nextDouble<span style="color: #fff0f5;">()</span>;
+<span style="color: #51afef; font-style: italic;">while</span> <span style="color: #fff0f5;">(</span>in.hasNextDouble<span style="color: #c678dd;">()</span><span style="color: #fff0f5;">){</span>
+    <span style="color: #ECBE7B;">double</span> <span style="color: #db5762;">input</span> = in.nextDouble<span style="color: #c678dd;">()</span>;
+    <span style="color: #51afef; font-style: italic;">if</span> <span style="color: #c678dd;">(</span>input &lt; <span style="color: #ECBE7B;">smallest</span><span style="color: #c678dd;">)</span> <span style="color: #c678dd;">{</span>
+    smallest = input;
+    <span style="color: #c678dd;">}</span>
+<span style="color: #fff0f5;">}</span>
+System.out.println<span style="color: #fff0f5;">(</span><span style="color: #98be65;">"Min value is: "</span> + smallest<span style="color: #fff0f5;">)</span>;
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgfe88dfc" class="outline-3">
+<h3 id="orgfe88dfc"><span class="section-number-3">22.5</span> Comparing adjacent values</h3>
+<div class="outline-text-3" id="text-22-5">
+<p>
+<b>Example code</b>
+</p>
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #ECBE7B;">double</span> <span style="color: #db5762;">input</span> = in.nextDouble<span style="color: #fff0f5;">()</span>;
+
+<span style="color: #51afef; font-style: italic;">while</span><span style="color: #fff0f5;">(</span>in.hasNextDouble<span style="color: #c678dd;">()</span><span style="color: #fff0f5;">)</span> <span style="color: #fff0f5;">{</span>
+    <span style="color: #ECBE7B;">double</span> <span style="color: #db5762;">previous</span> = input;
+    input = in.nextDouble<span style="color: #c678dd;">()</span>;
+    <span style="color: #51afef; font-style: italic;">if</span> <span style="color: #c678dd;">(</span>previous == input<span style="color: #c678dd;">)</span> <span style="color: #c678dd;">{</span>
+    System.out.print<span style="color: #98be65;">(</span><span style="color: #98be65;">"Adjacent value founs; "</span> + input<span style="color: #98be65;">)</span>;
+    <span style="color: #c678dd;">}</span>
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orgcb992fe" class="outline-2">
+<h2 id="orgcb992fe"><span class="section-number-2">23</span> The break statement</h2>
+<div class="outline-text-2" id="text-23">
+<p class="verse">
+The break statement terminates the smallest enclosing while, do, for or switch statement.<br />
+Execution resumes at the statement immediately following the terminated statement.<br />
+</p>
+
+<p>
+<b>Sample structure</b>
+</p>
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #51afef; font-style: italic;">while</span><span style="color: #fff0f5;">(</span>...<span style="color: #fff0f5;">){</span>
+    <span style="color: #51afef; font-style: italic;">while</span><span style="color: #c678dd;">(</span>...<span style="color: #c678dd;">){</span>
+    <span style="color: #51afef; font-style: italic;">for</span><span style="color: #98be65;">(</span>...<span style="color: #98be65;">){</span>
+        <span style="color: #51afef; font-style: italic;">break</span>;  <span style="color: #5B6268;">//</span><span style="color: #5B6268;">breaks out of the 'for' loop</span>
+    <span style="color: #98be65;">}</span>
+    <span style="color: #51afef; font-style: italic;">break</span>;  <span style="color: #5B6268;">//</span><span style="color: #5B6268;">breaks out of the second 'while' loop</span>
+    <span style="color: #c678dd;">}</span>
+    <span style="color: #51afef; font-style: italic;">break</span>;  <span style="color: #5B6268;">//</span><span style="color: #5B6268;">breaks out of the first 'while' loop</span>
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+
+<p>
+<b>Sample code</b>
+</p>
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #ECBE7B;">int</span> <span style="color: #db5762;">x</span> = 1;
+<span style="color: #51afef; font-style: italic;">while</span><span style="color: #fff0f5;">(</span>x &lt;= 5<span style="color: #fff0f5;">){</span>
+    <span style="color: #51afef; font-style: italic;">if</span> <span style="color: #c678dd;">(</span>x &lt; 3<span style="color: #c678dd;">)</span> <span style="color: #c678dd;">{</span>
+    System.out.print<span style="color: #98be65;">(</span>x + <span style="color: #98be65;">","</span><span style="color: #98be65;">)</span>;
+    <span style="color: #c678dd;">}</span>
+    <span style="color: #51afef; font-style: italic;">else</span> <span style="color: #c678dd;">{</span>
+    <span style="color: #51afef; font-style: italic;">break</span>;
+    <span style="color: #c678dd;">}</span>
+    x++;
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orga3cda6b" class="outline-2">
+<h2 id="orga3cda6b"><span class="section-number-2">24</span> The continue statement</h2>
+<div class="outline-text-2" id="text-24">
+<p class="verse">
+The continue statement causes the current iteration of a loop to stop and the next iteration begin immediately.<br />
+</p>
+
+<p>
+<b>Sample code</b>
+</p>
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #51afef; font-style: italic;">for</span> <span style="color: #fff0f5;">(</span><span style="color: #ECBE7B;">int</span> <span style="color: #db5762;">x</span> = 1; x &lt;= 10; x++<span style="color: #fff0f5;">)</span>
+<span style="color: #fff0f5;">{</span>
+    <span style="color: #51afef; font-style: italic;">if</span> <span style="color: #c678dd;">(</span>x &gt; 2 &amp;&amp; x &lt; 9<span style="color: #c678dd;">)</span> <span style="color: #c678dd;">{</span>
+    <span style="color: #51afef; font-style: italic;">continue</span>;
+    <span style="color: #c678dd;">}</span>
+    System.out.print<span style="color: #c678dd;">(</span>x + <span style="color: #98be65;">","</span><span style="color: #c678dd;">)</span>;
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgd160071" class="outline-2">
+<h2 id="orgd160071"><span class="section-number-2">25</span> Nested loops</h2>
+<div class="outline-text-2" id="text-25">
+<ul class="org-ul">
+<li>a loop within a loop</li>
+</ul>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-right">1</td>
+<td class="org-right">2</td>
+<td class="org-right">3</td>
+<td class="org-right">4</td>
+<td class="org-right">5</td>
+</tr>
+
+<tr>
+<td class="org-right">2</td>
+<td class="org-right">4</td>
+<td class="org-right">6</td>
+<td class="org-right">8</td>
+<td class="org-right">10</td>
+</tr>
+
+<tr>
+<td class="org-right">3</td>
+<td class="org-right">6</td>
+<td class="org-right">9</td>
+<td class="org-right">12</td>
+<td class="org-right">15</td>
+</tr>
+
+<tr>
+<td class="org-right">4</td>
+<td class="org-right">8</td>
+<td class="org-right">12</td>
+<td class="org-right">16</td>
+<td class="org-right">20</td>
+</tr>
+
+<tr>
+<td class="org-right">5</td>
+<td class="org-right">10</td>
+<td class="org-right">15</td>
+<td class="org-right">20</td>
+<td class="org-right">25</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+<b>Code to create a multiplication tables, such as the one above</b>
+</p>
+
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #51afef; font-style: italic;">for</span> <span style="color: #fff0f5;">(</span><span style="color: #ECBE7B;">int</span> <span style="color: #db5762;">x</span> = 1; x &lt;= 5; x++<span style="color: #fff0f5;">)</span> <span style="color: #fff0f5;">{</span>
+    <span style="color: #51afef; font-style: italic;">for</span> <span style="color: #c678dd;">(</span><span style="color: #ECBE7B;">int</span> <span style="color: #db5762;">y</span> = 1; y &lt;= 5; y++<span style="color: #c678dd;">)</span> <span style="color: #c678dd;">{</span>
+    System.out.print<span style="color: #98be65;">(</span><span style="color: #00bfff;">(</span>x * y<span style="color: #00bfff;">)</span> + <span style="color: #98be65;">","</span><span style="color: #98be65;">)</span>;
+    <span style="color: #c678dd;">}</span>
+    System.out.println<span style="color: #c678dd;">()</span>;
+k<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org56c1e4e" class="outline-2">
+<h2 id="org56c1e4e"><span class="section-number-2">26</span> Random numbers</h2>
+<div class="outline-text-2" id="text-26">
+<p>
+<code>Math.random()</code> generates a random number between 0 and 0.999999999999998
+</p>
+
+<p>
+<b>6-sided dice roll</b>
+</p>
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #51afef; font-style: italic;">for</span> <span style="color: #fff0f5;">(</span><span style="color: #ECBE7B;">int</span> <span style="color: #db5762;">x</span> = 1; x &lt;= 10; x++<span style="color: #fff0f5;">)</span> <span style="color: #fff0f5;">{</span>
+    <span style="color: #ECBE7B;">int</span> <span style="color: #db5762;">dice1</span> = <span style="color: #c678dd;">(</span><span style="color: #ECBE7B;">int</span><span style="color: #c678dd;">)</span> <span style="color: #c678dd;">(</span>Math.random<span style="color: #98be65;">()</span> * 6<span style="color: #c678dd;">)</span> + 1;
+    <span style="color: #ECBE7B;">int</span> <span style="color: #db5762;">dice2</span> = <span style="color: #c678dd;">(</span><span style="color: #ECBE7B;">int</span><span style="color: #c678dd;">)</span> <span style="color: #c678dd;">(</span>Math.random<span style="color: #98be65;">()</span> * 6<span style="color: #c678dd;">)</span> + 1;
+    System.out.println<span style="color: #c678dd;">(</span>dice1 + <span style="color: #98be65;">" : "</span> + dice2<span style="color: #c678dd;">)</span>;
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org8ffc932" class="outline-2">
+<h2 id="org8ffc932"><span class="section-number-2">27</span> Methods</h2>
+<div class="outline-text-2" id="text-27">
+<p>
+Look at methods as a black box
+</p>
+</div>
+
+<div id="outline-container-org7b4df3f" class="outline-3">
+<h3 id="org7b4df3f"><span class="section-number-3">27.1</span> Example</h3>
+<div class="outline-text-3" id="text-27-1">
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #ECBE7B;">double</span> <span style="color: #db5762;">ans</span> = Math.pow<span style="color: #fff0f5;">(</span>2, 3<span style="color: #fff0f5;">)</span>;
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgb7c9dc9" class="outline-3">
+<h3 id="orgb7c9dc9"><span class="section-number-3">27.2</span> Definition of a method</h3>
+<div class="outline-text-3" id="text-27-2">
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #51afef; font-style: italic;">public</span> <span style="color: #51afef; font-style: italic;">static</span> <span style="color: #ECBE7B;">double</span> <span style="color: #c678dd;">pow</span> <span style="color: #fff0f5;">(</span><span style="color: #ECBE7B;">double</span> <span style="color: #db5762;">x</span>, <span style="color: #ECBE7B;">double</span> <span style="color: #db5762;">y</span><span style="color: #fff0f5;">)</span> <span style="color: #fff0f5;">{</span>
+    <span style="color: #5B6268;">// </span><span style="color: #5B6268;">code here</span>
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+<ul class="org-ul">
+<li>pow is the name</li>
+<li>double is the return type</li>
+<li>public defines that the method has public access(can be accessed form outside of the class)</li>
+<li>static means that the object is non-OOP</li>
+<li>inside brackets are the inputs aka arguments</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org235da6b" class="outline-3">
+<h3 id="org235da6b"><span class="section-number-3">27.3</span> Example of a method that does not take any parameters</h3>
+<div class="outline-text-3" id="text-27-3">
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #51afef; font-style: italic;">public</span> <span style="color: #51afef; font-style: italic;">class</span> <span style="color: #ECBE7B;">MyMethods</span> <span style="color: #fff0f5;">{</span>
+    <span style="color: #51afef; font-style: italic;">public</span> <span style="color: #51afef; font-style: italic;">static</span> <span style="color: #ECBE7B;">void</span> <span style="color: #c678dd;">drawRect</span><span style="color: #c678dd;">()</span> <span style="color: #c678dd;">{</span>
+    System.out.println<span style="color: #98be65;">(</span><span style="color: #98be65;">"*****"</span><span style="color: #98be65;">)</span>;
+    System.out.println<span style="color: #98be65;">(</span><span style="color: #98be65;">"*   *"</span><span style="color: #98be65;">)</span>;
+    System.out.println<span style="color: #98be65;">(</span><span style="color: #98be65;">"*****"</span><span style="color: #98be65;">)</span>;
+    <span style="color: #c678dd;">}</span>
+
+    <span style="color: #51afef; font-style: italic;">public</span> <span style="color: #51afef; font-style: italic;">static</span> <span style="color: #ECBE7B;">void</span> <span style="color: #c678dd;">main</span><span style="color: #c678dd;">(</span><span style="color: #ECBE7B;">String</span><span style="color: #98be65;">[]</span> <span style="color: #db5762;">args</span><span style="color: #c678dd;">)</span> <span style="color: #c678dd;">{</span>
+    drawRect<span style="color: #98be65;">()</span>;
+    drawRect<span style="color: #98be65;">()</span>;
+    <span style="color: #c678dd;">}</span>
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgfdeebdb" class="outline-3">
+<h3 id="orgfdeebdb"><span class="section-number-3">27.4</span> Example of a method that takes in parameters</h3>
+<div class="outline-text-3" id="text-27-4">
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #51afef; font-style: italic;">public</span> <span style="color: #51afef; font-style: italic;">class</span> <span style="color: #ECBE7B;">MyMethods</span> <span style="color: #fff0f5;">{</span>
+    <span style="color: #51afef; font-style: italic;">public</span> <span style="color: #51afef; font-style: italic;">static</span> <span style="color: #ECBE7B;">void</span> <span style="color: #c678dd;">drawRect</span><span style="color: #c678dd;">(</span><span style="color: #ECBE7B;">char</span> <span style="color: #db5762;">c</span><span style="color: #c678dd;">)</span> <span style="color: #c678dd;">{</span>
+    System.out.println<span style="color: #98be65;">(</span><span style="color: #98be65;">""</span> + c + c + c + c<span style="color: #98be65;">)</span>;
+    System.out.println<span style="color: #98be65;">(</span>c + <span style="color: #98be65;">"___"</span> + c<span style="color: #98be65;">)</span>;
+    System.out.println<span style="color: #98be65;">(</span><span style="color: #98be65;">""</span> + c + c + c + c<span style="color: #98be65;">)</span>;
+    <span style="color: #c678dd;">}</span>
+
+    <span style="color: #51afef; font-style: italic;">public</span> <span style="color: #51afef; font-style: italic;">static</span> <span style="color: #ECBE7B;">void</span> <span style="color: #c678dd;">main</span><span style="color: #c678dd;">(</span><span style="color: #ECBE7B;">String</span><span style="color: #98be65;">[]</span> <span style="color: #db5762;">args</span><span style="color: #c678dd;">)</span> <span style="color: #c678dd;">{</span>
+    drawRect<span style="color: #98be65;">(</span><span style="color: #98be65;">'x'</span><span style="color: #98be65;">)</span>;
+    drawRect<span style="color: #98be65;">(</span><span style="color: #98be65;">'z'</span><span style="color: #98be65;">)</span>;
+    <span style="color: #c678dd;">}</span>
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org4bd2c8a" class="outline-3">
+<h3 id="org4bd2c8a"><span class="section-number-3">27.5</span> Example of overloading</h3>
+<div class="outline-text-3" id="text-27-5">
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #51afef; font-style: italic;">public</span> <span style="color: #51afef; font-style: italic;">class</span> <span style="color: #ECBE7B;">MyMethods</span> <span style="color: #fff0f5;">{</span>
+    <span style="color: #5B6268;">// </span><span style="color: #5B6268;">example of overloading</span>
+    <span style="color: #51afef; font-style: italic;">public</span> <span style="color: #51afef; font-style: italic;">static</span> <span style="color: #ECBE7B;">void</span> <span style="color: #c678dd;">sum</span> <span style="color: #c678dd;">(</span><span style="color: #ECBE7B;">int</span> <span style="color: #db5762;">x</span>, <span style="color: #ECBE7B;">int</span> <span style="color: #db5762;">y</span><span style="color: #c678dd;">)</span> <span style="color: #c678dd;">{</span>
+    System.out.println<span style="color: #98be65;">(</span><span style="color: #98be65;">"Sum = "</span> + <span style="color: #00bfff;">(</span>x + y<span style="color: #00bfff;">)</span><span style="color: #98be65;">)</span>;
+    <span style="color: #c678dd;">}</span>
+
+    <span style="color: #51afef; font-style: italic;">public</span> <span style="color: #51afef; font-style: italic;">static</span> <span style="color: #ECBE7B;">void</span> <span style="color: #c678dd;">sum</span> <span style="color: #c678dd;">(</span><span style="color: #ECBE7B;">double</span> <span style="color: #db5762;">x</span>, <span style="color: #ECBE7B;">double</span> <span style="color: #db5762;">y</span><span style="color: #c678dd;">)</span> <span style="color: #c678dd;">{</span>
+    System.out.println<span style="color: #98be65;">(</span><span style="color: #98be65;">"Sum = "</span> + <span style="color: #00bfff;">(</span>x + y<span style="color: #00bfff;">)</span><span style="color: #98be65;">)</span>;
+    <span style="color: #c678dd;">}</span>
+
+    <span style="color: #51afef; font-style: italic;">public</span> <span style="color: #51afef; font-style: italic;">static</span> <span style="color: #ECBE7B;">void</span> <span style="color: #c678dd;">sum</span> <span style="color: #c678dd;">(</span><span style="color: #ECBE7B;">int</span> <span style="color: #db5762;">x</span>, <span style="color: #ECBE7B;">int</span> <span style="color: #db5762;">y</span>, <span style="color: #ECBE7B;">int</span> <span style="color: #db5762;">c</span><span style="color: #c678dd;">)</span> <span style="color: #c678dd;">{</span>
+    System.out.println<span style="color: #98be65;">(</span><span style="color: #98be65;">"Sum = "</span> + <span style="color: #00bfff;">(</span>x + y + c<span style="color: #00bfff;">)</span><span style="color: #98be65;">)</span>;
+    <span style="color: #c678dd;">}</span>
+
+    <span style="color: #51afef; font-style: italic;">public</span> <span style="color: #51afef; font-style: italic;">static</span> <span style="color: #ECBE7B;">void</span> <span style="color: #c678dd;">main</span><span style="color: #c678dd;">(</span><span style="color: #ECBE7B;">String</span><span style="color: #98be65;">[]</span> <span style="color: #db5762;">args</span><span style="color: #c678dd;">)</span> <span style="color: #c678dd;">{</span>
+    sum<span style="color: #98be65;">(</span>5, 5<span style="color: #98be65;">)</span>;  <span style="color: #5B6268;">// </span><span style="color: #5B6268;">outputs 10</span>
+    sum<span style="color: #98be65;">(</span>4, 4<span style="color: #98be65;">)</span>;  <span style="color: #5B6268;">// </span><span style="color: #5B6268;">outputs 8</span>
+    sum<span style="color: #98be65;">(</span>4.4, 3.6<span style="color: #98be65;">)</span>;  <span style="color: #5B6268;">// </span><span style="color: #5B6268;">outputs 8</span>
+    sum<span style="color: #98be65;">(</span>4, 4, 6<span style="color: #98be65;">)</span>;  <span style="color: #5B6268;">// </span><span style="color: #5B6268;">outputs 14</span>
+    <span style="color: #c678dd;">}</span>
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgffe6b6b" class="outline-3">
+<h3 id="orgffe6b6b"><span class="section-number-3">27.6</span> Example of returning a value</h3>
+<div class="outline-text-3" id="text-27-6">
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #51afef; font-style: italic;">public</span> <span style="color: #51afef; font-style: italic;">class</span> <span style="color: #ECBE7B;">MyMethods</span> <span style="color: #fff0f5;">{</span>
+    <span style="color: #51afef; font-style: italic;">public</span> <span style="color: #51afef; font-style: italic;">static</span> <span style="color: #ECBE7B;">int</span> <span style="color: #c678dd;">sum</span> <span style="color: #c678dd;">(</span><span style="color: #ECBE7B;">int</span> <span style="color: #db5762;">x</span>, <span style="color: #ECBE7B;">int</span> <span style="color: #db5762;">y</span><span style="color: #c678dd;">)</span> <span style="color: #c678dd;">{</span>
+    <span style="color: #51afef; font-style: italic;">return</span> <span style="color: #98be65;">(</span>x + y<span style="color: #98be65;">)</span>;
+    <span style="color: #c678dd;">}</span>
+
+    <span style="color: #51afef; font-style: italic;">public</span> <span style="color: #51afef; font-style: italic;">static</span> <span style="color: #ECBE7B;">void</span> <span style="color: #c678dd;">main</span><span style="color: #c678dd;">(</span><span style="color: #ECBE7B;">String</span><span style="color: #98be65;">[]</span> <span style="color: #db5762;">args</span><span style="color: #c678dd;">)</span> <span style="color: #c678dd;">{</span>
+    <span style="color: #ECBE7B;">int</span> <span style="color: #db5762;">z</span> = sum<span style="color: #98be65;">(</span>4, 5<span style="color: #98be65;">)</span>;
+    System.out.println<span style="color: #98be65;">(</span>z<span style="color: #98be65;">)</span>;
+    <span style="color: #c678dd;">}</span>
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+<ul class="org-ul">
+<li>The return statement terminates the method and execution returns from where the method was called</li>
+<li>The value being returned must match the return declaration of the method
+<ul class="org-ul">
+<li>blank return must have a void declaration, returning an int must have an int declaration etc.</li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org96d1c61" class="outline-3">
+<h3 id="org96d1c61"><span class="section-number-3">27.7</span> Method Comments</h3>
+<div class="outline-text-3" id="text-27-7">
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #83898d;">/**</span>
+<span style="color: #83898d;">Adds two numbers and returns the sum of them.</span>
+<span style="color: #a9a1e1;">@param</span><span style="color: #83898d;"> x The first number in summation</span>
+<span style="color: #a9a1e1;">@param</span><span style="color: #83898d;"> y The second number in summation</span>
+<span style="color: #a9a1e1;">@return</span><span style="color: #83898d;"> The sum</span>
+<span style="color: #83898d;"> */</span>
+<span style="color: #51afef; font-style: italic;">public</span> <span style="color: #51afef; font-style: italic;">static</span> <span style="color: #ECBE7B;">int</span> <span style="color: #c678dd;">add</span><span style="color: #fff0f5;">(</span><span style="color: #ECBE7B;">int</span> <span style="color: #db5762;">x</span>, <span style="color: #ECBE7B;">int</span> <span style="color: #db5762;">y</span><span style="color: #fff0f5;">)</span> <span style="color: #fff0f5;">{</span>
+    <span style="color: #51afef; font-style: italic;">return</span><span style="color: #c678dd;">(</span>x + y<span style="color: #c678dd;">)</span>;
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org31ffa46" class="outline-3">
+<h3 id="org31ffa46"><span class="section-number-3">27.8</span> Method Stubs</h3>
+<div class="outline-text-3" id="text-27-8">
+<p>
+Write a stub to have at least a default skeleton that returns a valid value
+</p>
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #51afef; font-style: italic;">public</span> <span style="color: #51afef; font-style: italic;">static</span> <span style="color: #ECBE7B;">String</span> <span style="color: #c678dd;">methodName</span><span style="color: #fff0f5;">(</span><span style="color: #ECBE7B;">int</span> <span style="color: #db5762;">x</span>, <span style="color: #ECBE7B;">int</span> <span style="color: #db5762;">y</span><span style="color: #fff0f5;">)</span> <span style="color: #fff0f5;">{</span>
+    <span style="color: #5B6268;">// </span><span style="color: #5B6268;">some code</span>
+    <span style="color: #51afef; font-style: italic;">return</span> <span style="color: #98be65;">"Hello"</span>;
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org26c372b" class="outline-3">
+<h3 id="org26c372b"><span class="section-number-3">27.9</span> Parameter variables</h3>
+<div class="outline-text-3" id="text-27-9">
+<ul class="org-ul">
+<li>Design rules would say that you should not change the value of a parameter variable that is passed into a method.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orge0b8f8d" class="outline-3">
+<h3 id="orge0b8f8d"><span class="section-number-3">27.10</span> Variable scope</h3>
+<div class="outline-text-3" id="text-27-10">
+<ul class="org-ul">
+<li>Scope defines that a variable is only available in the block where it was declared and any sub-block, unless re-declared. That will create a new local variable with a local scope</li>
+</ul>
+
+<p>
+Example:
+</p>
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #51afef; font-style: italic;">for</span> <span style="color: #fff0f5;">(</span><span style="color: #ECBE7B;">int</span> <span style="color: #db5762;">i</span> = 0; i &lt; <span style="color: #ECBE7B;">N</span>; i++<span style="color: #fff0f5;">)</span> <span style="color: #fff0f5;">{</span>
+    <span style="color: #51afef; font-style: italic;">for</span> <span style="color: #c678dd;">(</span><span style="color: #ECBE7B;">int</span> <span style="color: #db5762;">z</span> = 0; z &lt; <span style="color: #ECBE7B;">N</span>; z++<span style="color: #c678dd;">)</span> <span style="color: #c678dd;">{</span>
+    System.out.println<span style="color: #98be65;">(</span>z<span style="color: #98be65;">)</span>;  <span style="color: #5B6268;">// </span><span style="color: #5B6268;">in here both z and i variables are available</span>
+    System.out.println<span style="color: #98be65;">(</span>i<span style="color: #98be65;">)</span>;
+    <span style="color: #c678dd;">}</span>
+    System.out.println<span style="color: #c678dd;">(</span>z<span style="color: #c678dd;">)</span>; <span style="color: #5B6268;">// </span><span style="color: #5B6268;">in here only the i variable is available, z variable is out of scope</span>
+    System.out.println<span style="color: #c678dd;">(</span>i<span style="color: #c678dd;">)</span>;
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+
+<p>
+Example 2:
+</p>
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #ECBE7B;">double</span> <span style="color: #c678dd;">cubeVolume</span><span style="color: #fff0f5;">(</span><span style="color: #ECBE7B;">double</span> <span style="color: #db5762;">sidelength</span><span style="color: #fff0f5;">)</span>  <span style="color: #fff0f5;">{</span>
+    <span style="color: #51afef; font-style: italic;">return</span> sidelength * sidelength * sidelength;<span style="color: #5B6268;">// </span><span style="color: #5B6268;">in here the value of sidelength is not modified</span>
+    <span style="color: #5B6268;">// </span><span style="color: #5B6268;">as the method created its own local variable</span>
+<span style="color: #fff0f5;">}</span>
+
+<span style="color: #51afef; font-style: italic;">public</span> <span style="color: #51afef; font-style: italic;">static</span> <span style="color: #ECBE7B;">void</span> <span style="color: #c678dd;">main</span><span style="color: #fff0f5;">(</span><span style="color: #ECBE7B;">String</span><span style="color: #c678dd;">[]</span> <span style="color: #db5762;">args</span><span style="color: #fff0f5;">)</span> <span style="color: #fff0f5;">{</span>
+    <span style="color: #ECBE7B;">double</span> <span style="color: #db5762;">sidelength</span> = 10;
+    System.out.println<span style="color: #c678dd;">(</span><span style="color: #98be65;">"Volume = "</span> + cubeVolume<span style="color: #98be65;">(</span>sidelength<span style="color: #98be65;">)</span><span style="color: #c678dd;">)</span>;
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org1089ecf" class="outline-2">
+<h2 id="org1089ecf"><span class="section-number-2">28</span> Classes in separate files</h2>
+<div class="outline-text-2" id="text-28">
+<p>
+File 1 : HandyMethods.java
+</p>
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #51afef; font-style: italic;">class</span> <span style="color: #ECBE7B;">HandyMethods</span> <span style="color: #fff0f5;">{</span>
+    <span style="color: #51afef; font-style: italic;">public</span> <span style="color: #51afef; font-style: italic;">static</span> <span style="color: #ECBE7B;">int</span> <span style="color: #c678dd;">add</span> <span style="color: #c678dd;">(</span><span style="color: #ECBE7B;">int</span> <span style="color: #db5762;">x</span>, <span style="color: #ECBE7B;">int</span> <span style="color: #db5762;">y</span><span style="color: #c678dd;">)</span> <span style="color: #c678dd;">{</span>
+    <span style="color: #51afef; font-style: italic;">return</span> x + y;
+    <span style="color: #c678dd;">}</span>
+
+    <span style="color: #51afef; font-style: italic;">public</span> <span style="color: #51afef; font-style: italic;">static</span> <span style="color: #ECBE7B;">double</span> <span style="color: #c678dd;">add</span> <span style="color: #c678dd;">(</span><span style="color: #ECBE7B;">double</span> <span style="color: #db5762;">x</span>, <span style="color: #ECBE7B;">double</span> <span style="color: #db5762;">y</span><span style="color: #c678dd;">)</span> <span style="color: #c678dd;">{</span>
+    <span style="color: #51afef; font-style: italic;">return</span> x + y;
+    <span style="color: #c678dd;">}</span>
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+
+<p>
+File 2 : Question.java
+</p>
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #51afef; font-style: italic;">class</span> <span style="color: #ECBE7B;">Question</span> <span style="color: #fff0f5;">{</span>
+    <span style="color: #51afef; font-style: italic;">public</span> <span style="color: #51afef; font-style: italic;">static</span> <span style="color: #ECBE7B;">void</span> <span style="color: #c678dd;">main</span><span style="color: #c678dd;">(</span><span style="color: #ECBE7B;">String</span><span style="color: #98be65;">[]</span> <span style="color: #db5762;">args</span><span style="color: #c678dd;">)</span> <span style="color: #c678dd;">{</span>
+    <span style="color: #ECBE7B;">int</span> <span style="color: #db5762;">answer</span> = HandyMethods.add<span style="color: #98be65;">(</span>4, 5<span style="color: #98be65;">)</span>;
+    <span style="color: #ECBE7B;">double</span> <span style="color: #db5762;">answer2</span> = HandyMethods.add<span style="color: #98be65;">(</span>3.4, 4.5<span style="color: #98be65;">)</span>;
+    System.out.println<span style="color: #98be65;">(</span><span style="color: #98be65;">"Answer 1 = "</span> + answer<span style="color: #98be65;">)</span>;
+    System.out.println<span style="color: #98be65;">(</span><span style="color: #98be65;">"Answer 2 = "</span> + answer2<span style="color: #98be65;">)</span>;
+    <span style="color: #c678dd;">}</span>
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgc541f06" class="outline-2">
+<h2 id="orgc541f06"><span class="section-number-2">29</span> Dealing with partially filled arrays</h2>
+<div class="outline-text-2" id="text-29">
+<p>
+In here we use the currentSize variable to track the current size of the array.
+Normally the code would have to iterate through the whole array. In here we
+set a limit so that the algorithm is more efficient.
+</p>
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #51afef; font-style: italic;">final</span> <span style="color: #ECBE7B;">int</span> <span style="color: #db5762;">LENGTH</span> = 1000;
+<span style="color: #ECBE7B;">double</span> <span style="color: #fff0f5;">[]</span> <span style="color: #db5762;">values</span> = <span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">double</span><span style="color: #fff0f5;">(</span>LENGTH<span style="color: #fff0f5;">)</span>;
+<span style="color: #5B6268;">//</span><span style="color: #5B6268;">partially filling the array</span>
+<span style="color: #ECBE7B;">int</span> <span style="color: #db5762;">currentSize</span> = 0;
+<span style="color: #ECBE7B;">Scanner</span> <span style="color: #db5762;">in</span> = <span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">Scanner</span><span style="color: #fff0f5;">(</span>System.in<span style="color: #fff0f5;">)</span>;
+<span style="color: #51afef; font-style: italic;">while</span> <span style="color: #fff0f5;">(</span>in.hasNextDouble<span style="color: #c678dd;">()</span><span style="color: #fff0f5;">)</span> <span style="color: #fff0f5;">{</span>
+    <span style="color: #51afef; font-style: italic;">if</span><span style="color: #c678dd;">(</span>currentSize &lt; values.<span style="color: #ECBE7B;">length</span><span style="color: #c678dd;">)</span> <span style="color: #c678dd;">{</span>
+    value<span style="color: #98be65;">[</span>currentSize<span style="color: #98be65;">]</span> = in.nextDouble<span style="color: #98be65;">()</span>;
+    currentSize++;
+    <span style="color: #c678dd;">}</span>
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orga2e6222" class="outline-2">
+<h2 id="orga2e6222"><span class="section-number-2">30</span> Linear Search</h2>
+<div class="outline-text-2" id="text-30">
+<p>
+Incrementally finding a value in an array
+</p>
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #ECBE7B;">int</span> <span style="color: #db5762;">searchValue</span> = 2;
+<span style="color: #ECBE7B;">int</span> <span style="color: #db5762;">pos</span> = 0;
+<span style="color: #ECBE7B;">boolean</span> <span style="color: #db5762;">found</span> = <span style="color: #a9a1e1;">false</span>;
+<span style="color: #51afef; font-style: italic;">while</span> <span style="color: #fff0f5;">(</span>pos &lt; <span style="color: #ECBE7B;">currentSize</span> &amp;&amp; <span style="color: #51afef; font-weight: bold;">!</span>found<span style="color: #fff0f5;">)</span> <span style="color: #fff0f5;">{</span>
+    <span style="color: #51afef; font-style: italic;">if</span> <span style="color: #c678dd;">(</span>values<span style="color: #98be65;">[</span>pos<span style="color: #98be65;">]</span> == searchValue<span style="color: #c678dd;">)</span> <span style="color: #c678dd;">{</span>
+    found = <span style="color: #a9a1e1;">true</span>;
+    <span style="color: #c678dd;">}</span> <span style="color: #51afef; font-style: italic;">else</span> <span style="color: #c678dd;">{</span>
+    pos++;
+    <span style="color: #c678dd;">}</span>
+<span style="color: #fff0f5;">}</span>
+
+<span style="color: #51afef; font-style: italic;">if</span> <span style="color: #fff0f5;">(</span>found<span style="color: #fff0f5;">)</span> <span style="color: #fff0f5;">{</span>
+    System.out.println<span style="color: #c678dd;">(</span>searchValue + <span style="color: #98be65;">" found at index "</span> + pos<span style="color: #c678dd;">)</span>;
+<span style="color: #fff0f5;">}</span> <span style="color: #51afef; font-style: italic;">else</span> <span style="color: #fff0f5;">{</span>
+    System.out.println<span style="color: #c678dd;">(</span>searchValue + <span style="color: #98be65;">" not found!!!"</span><span style="color: #c678dd;">)</span>;
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgf2534bb" class="outline-2">
+<h2 id="orgf2534bb"><span class="section-number-2">31</span> Arrays</h2>
+<div class="outline-text-2" id="text-31">
+</div>
+<div id="outline-container-orgae14a3c" class="outline-3">
+<h3 id="orgae14a3c"><span class="section-number-3">31.1</span> Replace element from an array</h3>
+<div class="outline-text-3" id="text-31-1">
+<p>
+In an unordered list, remove the value and replace it with the last element from the array
+</p>
+<div class="org-src-container">
+<pre class="src src-java">values<span style="color: #fff0f5;">[</span>pos<span style="color: #fff0f5;">]</span> = values<span style="color: #fff0f5;">[</span>currentSize - 1<span style="color: #fff0f5;">]</span>;
+currentSize--;
+</pre>
+</div>
+
+<p>
+Ordered list, remove the value from the given position and shift the remainder of the array by one upwards
+</p>
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #51afef; font-style: italic;">for</span> <span style="color: #fff0f5;">(</span><span style="color: #ECBE7B;">int</span> <span style="color: #db5762;">i</span> = pos + 1; i &lt; <span style="color: #ECBE7B;">currentSize</span>; i++<span style="color: #fff0f5;">)</span> <span style="color: #fff0f5;">{</span>
+    values<span style="color: #c678dd;">[</span>i - 1<span style="color: #c678dd;">]</span> = values<span style="color: #c678dd;">[</span>i<span style="color: #c678dd;">]</span>;
+<span style="color: #fff0f5;">}</span>
+currentSize--;
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org12ac13f" class="outline-3">
+<h3 id="org12ac13f"><span class="section-number-3">31.2</span> Inserting an element to an array</h3>
+<div class="outline-text-3" id="text-31-2">
+<p>
+Unordered list, take the current value move it to the last index and increment currentSize
+</p>
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #51afef; font-style: italic;">if</span> <span style="color: #fff0f5;">(</span>currentSize &lt; values.<span style="color: #ECBE7B;">length</span><span style="color: #fff0f5;">)</span> <span style="color: #fff0f5;">{</span>
+    currentSize++;
+    values<span style="color: #c678dd;">[</span>currentSize - 1<span style="color: #c678dd;">]</span> = newElement;
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+<p>
+Ordered list, insert the element at a given index and shift the remaining indices by one downwards
+</p>
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #51afef; font-style: italic;">if</span> <span style="color: #fff0f5;">(</span>currentSize &lt; values.<span style="color: #ECBE7B;">length</span><span style="color: #fff0f5;">)</span> <span style="color: #fff0f5;">{</span>
+    currentSize++;
+    <span style="color: #51afef; font-style: italic;">for</span> <span style="color: #c678dd;">(</span><span style="color: #ECBE7B;">int</span> <span style="color: #db5762;">i</span> = currentSize - 1; i &gt; pos; i--<span style="color: #c678dd;">)</span> <span style="color: #c678dd;">{</span>
+    values<span style="color: #98be65;">[</span>i<span style="color: #98be65;">]</span> = values<span style="color: #98be65;">[</span>i - 1<span style="color: #98be65;">]</span>;
+    <span style="color: #c678dd;">}</span>
+    values<span style="color: #c678dd;">[</span>pos<span style="color: #c678dd;">]</span> = newElement;
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orge3e7d09" class="outline-3">
+<h3 id="orge3e7d09"><span class="section-number-3">31.3</span> Swapping elements in an array</h3>
+<div class="outline-text-3" id="text-31-3">
+<p>
+Pick an element, store it temporarily in a variable and the swap around safely
+</p>
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #ECBE7B;">int</span> <span style="color: #db5762;">temp</span> = values<span style="color: #fff0f5;">[</span>i1<span style="color: #fff0f5;">]</span>;
+values<span style="color: #fff0f5;">[</span>i1<span style="color: #fff0f5;">]</span> = values<span style="color: #fff0f5;">[</span>i2<span style="color: #fff0f5;">]</span>;
+values<span style="color: #fff0f5;">[</span>i2<span style="color: #fff0f5;">]</span> = temp;
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org9d036ce" class="outline-3">
+<h3 id="org9d036ce"><span class="section-number-3">31.4</span> Copy of an array</h3>
+<div class="outline-text-3" id="text-31-4">
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #ECBE7B;">String</span> <span style="color: #fff0f5;">[]</span> <span style="color: #db5762;">friends</span> = <span style="color: #fff0f5;">{</span><span style="color: #98be65;">"Tom"</span>, <span style="color: #98be65;">"Mary"</span>, <span style="color: #98be65;">"Joe"</span><span style="color: #fff0f5;">}</span>;
+
+<span style="color: #ECBE7B;">String</span> <span style="color: #fff0f5;">[]</span> <span style="color: #db5762;">team</span> = friends; <span style="color: #5B6268;">// </span><span style="color: #5B6268;">copy by reference</span>
+
+<span style="color: #ECBE7B;">String</span> <span style="color: #fff0f5;">[]</span> <span style="color: #db5762;">enemies</span> = Arrays.copyOf<span style="color: #fff0f5;">(</span>friends, friends.length<span style="color: #fff0f5;">)</span>; <span style="color: #5B6268;">// </span><span style="color: #5B6268;">original array, new length as the parameters</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orgc9f9d55" class="outline-2">
+<h2 id="orgc9f9d55"><span class="section-number-2">32</span> Sorting Algorithms</h2>
+<div class="outline-text-2" id="text-32">
+</div>
+<div id="outline-container-orga80dfae" class="outline-3">
+<h3 id="orga80dfae"><span class="section-number-3">32.1</span> Selection Sort</h3>
+<div class="outline-text-3" id="text-32-1">
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #51afef; font-style: italic;">for</span> <span style="color: #fff0f5;">(</span><span style="color: #ECBE7B;">int</span> <span style="color: #db5762;">i</span> = 0; i &lt; arr.<span style="color: #ECBE7B;">length</span>; i++<span style="color: #fff0f5;">)</span> <span style="color: #fff0f5;">{</span>
+    <span style="color: #51afef; font-style: italic;">for</span> <span style="color: #c678dd;">(</span><span style="color: #ECBE7B;">int</span> <span style="color: #db5762;">j</span> = 0; j &lt; arr.<span style="color: #ECBE7B;">length</span>; j++<span style="color: #c678dd;">)</span> <span style="color: #c678dd;">{</span>
+    <span style="color: #51afef; font-style: italic;">if</span> <span style="color: #98be65;">(</span>arr<span style="color: #00bfff;">[</span>j<span style="color: #00bfff;">]</span> &lt; arr<span style="color: #00bfff;">[</span>i<span style="color: #00bfff;">]</span><span style="color: #98be65;">)</span> <span style="color: #98be65;">{</span>
+        <span style="color: #ECBE7B;">int</span> <span style="color: #db5762;">tmp</span> = arr<span style="color: #00bfff;">[</span>j<span style="color: #00bfff;">]</span>;
+        arr<span style="color: #00bfff;">[</span>j<span style="color: #00bfff;">]</span> = arr<span style="color: #00bfff;">[</span>i<span style="color: #00bfff;">]</span>;
+        arr<span style="color: #00bfff;">[</span>i<span style="color: #00bfff;">]</span> = tmp;
+    <span style="color: #98be65;">}</span>
+    <span style="color: #c678dd;">}</span>
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org4d4f3cb" class="outline-3">
+<h3 id="org4d4f3cb"><span class="section-number-3">32.2</span> Bubble Sort</h3>
+<div class="outline-text-3" id="text-32-2">
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #ECBE7B;">boolean</span> <span style="color: #db5762;">sorted</span> = <span style="color: #a9a1e1;">false</span>;
+
+<span style="color: #51afef; font-style: italic;">while</span><span style="color: #fff0f5;">(</span><span style="color: #51afef; font-weight: bold;">!</span>sorted<span style="color: #fff0f5;">)</span> <span style="color: #fff0f5;">{</span>
+    sorted = <span style="color: #a9a1e1;">true</span>; <span style="color: #5B6268;">// </span><span style="color: #5B6268;">assume that the array is sorted</span>
+    <span style="color: #51afef; font-style: italic;">for</span> <span style="color: #c678dd;">(</span><span style="color: #ECBE7B;">int</span> <span style="color: #db5762;">i</span> = 0; i &lt; arr.<span style="color: #ECBE7B;">length</span> - 1; i++<span style="color: #c678dd;">)</span> <span style="color: #c678dd;">{</span>
+    <span style="color: #51afef; font-style: italic;">if</span> <span style="color: #98be65;">(</span>arr<span style="color: #00bfff;">[</span>i + 1<span style="color: #00bfff;">]</span> &lt; arr<span style="color: #00bfff;">[</span>i<span style="color: #00bfff;">]</span><span style="color: #98be65;">)</span> <span style="color: #98be65;">{</span>
+        <span style="color: #ECBE7B;">int</span> <span style="color: #db5762;">tmp</span> = arr<span style="color: #00bfff;">[</span>i + 1<span style="color: #00bfff;">]</span>;
+        arr<span style="color: #00bfff;">[</span>i + 1<span style="color: #00bfff;">]</span> = arr<span style="color: #00bfff;">[</span>i<span style="color: #00bfff;">]</span>;
+        arr<span style="color: #00bfff;">[</span>i<span style="color: #00bfff;">]</span> = tmp;
+        sorted = <span style="color: #a9a1e1;">false</span>; <span style="color: #5B6268;">// </span><span style="color: #5B6268;">array is not sorted, go again</span>
+    <span style="color: #98be65;">}</span>
+    <span style="color: #c678dd;">}</span>
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org6bd7796" class="outline-2">
+<h2 id="org6bd7796"><span class="section-number-2">33</span> Two dimensional arrays</h2>
+<div class="outline-text-2" id="text-33">
+</div>
+<div id="outline-container-org1f42db0" class="outline-3">
+<h3 id="org1f42db0"><span class="section-number-3">33.1</span> 1D array</h3>
+<div class="outline-text-3" id="text-33-1">
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #ECBE7B;">int</span> <span style="color: #fff0f5;">[]</span> <span style="color: #db5762;">oneD</span> = <span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">int</span><span style="color: #fff0f5;">[</span>4<span style="color: #fff0f5;">]</span>;
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orga20def8" class="outline-3">
+<h3 id="orga20def8"><span class="section-number-3">33.2</span> 2d array</h3>
+<div class="outline-text-3" id="text-33-2">
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #ECBE7B;">int</span> <span style="color: #fff0f5;">[][]</span> <span style="color: #db5762;">twoD</span> = <span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">int</span> <span style="color: #fff0f5;">[</span>4<span style="color: #fff0f5;">][</span>4<span style="color: #fff0f5;">]</span>;  <span style="color: #5B6268;">// </span><span style="color: #5B6268;">first index is the row and the second one is the column</span>
+</pre>
+</div>
+
+<p>
+The way this looks like in memory is that the first array consists of pointers 4000, 5000, 6000 etc.
+Each of these pointers point to an another array, which in this case holds the actual data.
+</p>
+
+<p>
+Example of a 2D array and the usage of <code>Arrays.deepToString</code> method:
+</p>
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #51afef; font-style: italic;">import</span> <span style="color: #a9a1e1;">java</span>.<span style="color: #a9a1e1;">util</span>.<span style="color: #ECBE7B;">Arrays</span>;
+
+<span style="color: #51afef; font-style: italic;">public</span> <span style="color: #51afef; font-style: italic;">class</span> <span style="color: #ECBE7B;">sample</span>
+<span style="color: #fff0f5;">{</span>
+    <span style="color: #51afef; font-style: italic;">public</span> <span style="color: #51afef; font-style: italic;">static</span> <span style="color: #ECBE7B;">void</span> <span style="color: #c678dd;">main</span><span style="color: #c678dd;">(</span><span style="color: #ECBE7B;">String</span> <span style="color: #db5762;">args</span><span style="color: #98be65;">[]</span><span style="color: #c678dd;">)</span>
+    <span style="color: #c678dd;">{</span>
+    <span style="color: #ECBE7B;">int</span> <span style="color: #98be65;">[][]</span> <span style="color: #db5762;">test</span> = <span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">int</span><span style="color: #98be65;">[</span>5<span style="color: #98be65;">][</span>5<span style="color: #98be65;">]</span>;
+    <span style="color: #51afef; font-style: italic;">for</span> <span style="color: #98be65;">(</span><span style="color: #ECBE7B;">int</span> <span style="color: #db5762;">i</span> = 0; i &lt; test.<span style="color: #ECBE7B;">length</span>; i++<span style="color: #98be65;">)</span> <span style="color: #98be65;">{</span>
+        <span style="color: #51afef; font-style: italic;">for</span> <span style="color: #00bfff;">(</span><span style="color: #ECBE7B;">int</span> <span style="color: #db5762;">j</span> = 0; j &lt; <span style="color: #ECBE7B;">test</span><span style="color: #a9a1e1;">[</span>i<span style="color: #a9a1e1;">]</span>.length; j++<span style="color: #00bfff;">)</span> <span style="color: #00bfff;">{</span>
+        test<span style="color: #a9a1e1;">[</span>i<span style="color: #a9a1e1;">][</span>j<span style="color: #a9a1e1;">]</span> = <span style="color: #a9a1e1;">(</span><span style="color: #ECBE7B;">int</span><span style="color: #a9a1e1;">)</span> <span style="color: #a9a1e1;">(</span>Math.random<span style="color: #32cd32;">()</span> * 100<span style="color: #a9a1e1;">)</span> + 1;
+        <span style="color: #00bfff;">}</span>
+    <span style="color: #98be65;">}</span>
+
+    <span style="color: #51afef; font-style: italic;">for</span> <span style="color: #98be65;">(</span><span style="color: #ECBE7B;">int</span> <span style="color: #db5762;">i</span> = 0; i &lt; test.<span style="color: #ECBE7B;">length</span>; i++<span style="color: #98be65;">)</span> <span style="color: #98be65;">{</span>
+        <span style="color: #51afef; font-style: italic;">for</span> <span style="color: #00bfff;">(</span><span style="color: #ECBE7B;">int</span> <span style="color: #db5762;">j</span> = 0; j &lt; <span style="color: #ECBE7B;">test</span><span style="color: #a9a1e1;">[</span>i<span style="color: #a9a1e1;">]</span>.length; j++<span style="color: #00bfff;">)</span> <span style="color: #00bfff;">{</span>
+        System.out.println<span style="color: #a9a1e1;">(</span><span style="color: #98be65;">"Index ["</span> + i + <span style="color: #98be65;">"]["</span> + j + <span style="color: #98be65;">"] = "</span> + test<span style="color: #32cd32;">[</span>i<span style="color: #32cd32;">][</span>j<span style="color: #32cd32;">]</span><span style="color: #a9a1e1;">)</span>;
+        <span style="color: #00bfff;">}</span>
+    <span style="color: #98be65;">}</span>
+    System.out.println<span style="color: #98be65;">(</span>Arrays.deepToString<span style="color: #00bfff;">(</span>test<span style="color: #00bfff;">)</span><span style="color: #98be65;">)</span>;
+    <span style="color: #c678dd;">}</span>
+<span style="color: #fff0f5;">}</span>
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org16b7767" class="outline-2">
+<h2 id="org16b7767"><span class="section-number-2">34</span> Array Lists</h2>
+<div class="outline-text-2" id="text-34">
+</div>
+<div id="outline-container-org2eccfef" class="outline-3">
+<h3 id="org2eccfef"><span class="section-number-3">34.1</span> Array List basic examples and definition</h3>
+<div class="outline-text-3" id="text-34-1">
+<p>
+Array Lists are arrays that do not have a fixed size. Their size can be changed dynamically.
+</p>
+
+<p>
+Example:
+</p>
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #51afef; font-style: italic;">import</span> <span style="color: #a9a1e1;">java</span>.<span style="color: #a9a1e1;">util</span>.<span style="color: #ECBE7B;">ArrayList</span>;
+
+<span style="color: #ECBE7B;">ArrayList</span><span style="color: #fff0f5;">&lt;</span><span style="color: #ECBE7B;">String</span><span style="color: #fff0f5;">&gt;</span> <span style="color: #db5762;">test</span> = <span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">ArrayList</span><span style="color: #fff0f5;">&lt;</span><span style="color: #ECBE7B;">String</span><span style="color: #fff0f5;">&gt;()</span>;
+</pre>
+</div>
+<p>
+<code>ArrayList</code> methods:
+</p>
+<ul class="org-ul">
+<li>add("Mary"), adds an element</li>
+<li>add(0, "Mary"), adds an alement at index 0, pushes the rest down</li>
+<li>set(0, "John"), replace at index 0</li>
+<li>remove("Mary"), remove the index with the word "Mary" in it</li>
+<li>remove(0), remove index 0</li>
+<li>get(0), get element from index 0</li>
+<li>size(), get the size of the list</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgc187e8d" class="outline-3">
+<h3 id="orgc187e8d"><span class="section-number-3">34.2</span> Array Lists and Enhanced for loops</h3>
+<div class="outline-text-3" id="text-34-2">
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #51afef; font-style: italic;">import</span> <span style="color: #a9a1e1;">java</span>.<span style="color: #a9a1e1;">util</span>.<span style="color: #ECBE7B;">Arrays</span>;
+
+<span style="color: #51afef; font-style: italic;">public</span> <span style="color: #51afef; font-style: italic;">class</span> <span style="color: #ECBE7B;">sample</span>
+<span style="color: #fff0f5;">{</span>
+    <span style="color: #51afef; font-style: italic;">public</span> <span style="color: #51afef; font-style: italic;">static</span> <span style="color: #ECBE7B;">void</span> <span style="color: #c678dd;">main</span><span style="color: #c678dd;">(</span><span style="color: #ECBE7B;">String</span> <span style="color: #db5762;">args</span><span style="color: #98be65;">[]</span><span style="color: #c678dd;">)</span>
+    <span style="color: #c678dd;">{</span>
+    <span style="color: #ECBE7B;">ArrayList</span><span style="color: #98be65;">&lt;</span><span style="color: #ECBE7B;">String</span><span style="color: #98be65;">&gt;</span> <span style="color: #db5762;">friends</span> = <span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">ArrayList</span><span style="color: #98be65;">&lt;</span><span style="color: #ECBE7B;">String</span><span style="color: #98be65;">&gt;()</span>;
+    friends.add<span style="color: #98be65;">(</span><span style="color: #98be65;">"Tom"</span><span style="color: #98be65;">)</span>;
+    friends.add<span style="color: #98be65;">(</span><span style="color: #98be65;">"Mary"</span><span style="color: #98be65;">)</span>;
+    friends.add<span style="color: #98be65;">(</span><span style="color: #98be65;">"Joe"</span><span style="color: #98be65;">)</span>;
+
+    <span style="color: #5B6268;">// </span><span style="color: #5B6268;">enhanced for loop</span>
+    <span style="color: #51afef; font-style: italic;">for</span><span style="color: #98be65;">(</span><span style="color: #ECBE7B;">String</span> <span style="color: #db5762;">name</span> : friends<span style="color: #98be65;">)</span> <span style="color: #98be65;">{</span>
+        System.out.println<span style="color: #00bfff;">(</span><span style="color: #98be65;">"Each friend "</span> + name<span style="color: #00bfff;">)</span>;
+    <span style="color: #98be65;">}</span>
+
+    <span style="color: #5B6268;">// </span><span style="color: #5B6268;">standard for loop</span>
+    <span style="color: #51afef; font-style: italic;">for</span> <span style="color: #98be65;">(</span><span style="color: #ECBE7B;">int</span> <span style="color: #db5762;">i</span> = 0; i &lt; friends.<span style="color: #ECBE7B;">size</span><span style="color: #00bfff;">()</span>; i++<span style="color: #98be65;">)</span> <span style="color: #98be65;">{</span>
+        <span style="color: #ECBE7B;">String</span> <span style="color: #db5762;">name</span> = friends.get<span style="color: #00bfff;">(</span>i<span style="color: #00bfff;">)</span>;
+        System.out.println<span style="color: #00bfff;">(</span><span style="color: #98be65;">"Each friend"</span> + name<span style="color: #00bfff;">)</span>;
+    <span style="color: #98be65;">}</span>
+    <span style="color: #c678dd;">}</span>
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org80774b1" class="outline-3">
+<h3 id="org80774b1"><span class="section-number-3">34.3</span> Copying Array Lists</h3>
+<div class="outline-text-3" id="text-34-3">
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #51afef; font-style: italic;">import</span> <span style="color: #a9a1e1;">java</span>.<span style="color: #a9a1e1;">util</span>.<span style="color: #ECBE7B;">Arrays</span>;
+
+<span style="color: #51afef; font-style: italic;">public</span> <span style="color: #51afef; font-style: italic;">class</span> <span style="color: #ECBE7B;">sample</span>
+<span style="color: #fff0f5;">{</span>
+    <span style="color: #51afef; font-style: italic;">public</span> <span style="color: #51afef; font-style: italic;">static</span> <span style="color: #ECBE7B;">void</span> <span style="color: #c678dd;">main</span><span style="color: #c678dd;">(</span><span style="color: #ECBE7B;">String</span> <span style="color: #db5762;">args</span><span style="color: #98be65;">[]</span><span style="color: #c678dd;">)</span>
+    <span style="color: #c678dd;">{</span>
+    <span style="color: #ECBE7B;">ArrayList</span><span style="color: #98be65;">&lt;</span><span style="color: #ECBE7B;">String</span><span style="color: #98be65;">&gt;</span> <span style="color: #db5762;">friends</span> = <span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">ArrayList</span><span style="color: #98be65;">&lt;</span><span style="color: #ECBE7B;">String</span><span style="color: #98be65;">&gt;()</span>;
+    friends.add<span style="color: #98be65;">(</span><span style="color: #98be65;">"Tom"</span><span style="color: #98be65;">)</span>;
+    friends.add<span style="color: #98be65;">(</span><span style="color: #98be65;">"Mary"</span><span style="color: #98be65;">)</span>;
+    friends.add<span style="color: #98be65;">(</span><span style="color: #98be65;">"Joe"</span><span style="color: #98be65;">)</span>;
+
+    <span style="color: #ECBE7B;">ArrayList</span><span style="color: #98be65;">&lt;</span><span style="color: #ECBE7B;">String</span><span style="color: #98be65;">&gt;</span> <span style="color: #db5762;">team</span> = friends; <span style="color: #5B6268;">// </span><span style="color: #5B6268;">creates a copy by reference (not an actual copy)</span>
+
+    team.add<span style="color: #98be65;">(</span><span style="color: #98be65;">"Adam"</span><span style="color: #98be65;">)</span>; <span style="color: #5B6268;">// </span><span style="color: #5B6268;">adds Adam to both the team and the friends Array Lists</span>
+
+    <span style="color: #ECBE7B;">ArrayList</span><span style="color: #98be65;">&lt;</span><span style="color: #ECBE7B;">String</span><span style="color: #98be65;">&gt;</span> <span style="color: #db5762;">enemies</span> = <span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">ArrayList</span><span style="color: #98be65;">&lt;</span><span style="color: #ECBE7B;">String</span><span style="color: #98be65;">&gt;(</span>friends<span style="color: #98be65;">)</span>;
+    <span style="color: #c678dd;">}</span>
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orga5e0cbd" class="outline-3">
+<h3 id="orga5e0cbd"><span class="section-number-3">34.4</span> ArrayList Methods</h3>
+<div class="outline-text-3" id="text-34-4">
+<p>
+Reverse of an ArrayList
+</p>
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #51afef; font-style: italic;">public</span> <span style="color: #51afef; font-style: italic;">static</span> <span style="color: #ECBE7B;">ArrayList</span><span style="color: #fff0f5;">&lt;</span><span style="color: #ECBE7B;">String</span><span style="color: #fff0f5;">&gt;</span> <span style="color: #c678dd;">reverse</span><span style="color: #fff0f5;">(</span><span style="color: #ECBE7B;">ArrayList</span><span style="color: #c678dd;">&lt;</span><span style="color: #ECBE7B;">String</span><span style="color: #c678dd;">&gt;</span> <span style="color: #db5762;">values</span><span style="color: #fff0f5;">)</span> <span style="color: #fff0f5;">{</span>
+    <span style="color: #ECBE7B;">ArrayList</span><span style="color: #c678dd;">&lt;</span><span style="color: #ECBE7B;">String</span><span style="color: #c678dd;">&gt;</span> <span style="color: #db5762;">answer</span> = <span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">ArrayList</span><span style="color: #c678dd;">&lt;</span><span style="color: #ECBE7B;">String</span><span style="color: #c678dd;">&gt;()</span>;
+    <span style="color: #51afef; font-style: italic;">for</span> <span style="color: #c678dd;">(</span><span style="color: #ECBE7B;">int</span> <span style="color: #db5762;">i</span> = values.size<span style="color: #98be65;">()</span>; i &gt;= 0; i--<span style="color: #c678dd;">)</span> <span style="color: #c678dd;">{</span>
+    answer.add<span style="color: #98be65;">(</span>values.get<span style="color: #00bfff;">(</span>i<span style="color: #00bfff;">)</span><span style="color: #98be65;">)</span>;
+    <span style="color: #c678dd;">}</span>
+    <span style="color: #51afef; font-style: italic;">return</span> answer;
+
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org1663869" class="outline-3">
+<h3 id="org1663869"><span class="section-number-3">34.5</span> Wrapper classes</h3>
+<div class="outline-text-3" id="text-34-5">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Primitive Type</th>
+<th scope="col" class="org-left">Complex Class</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">byte</td>
+<td class="org-left">Byte</td>
+</tr>
+
+<tr>
+<td class="org-left">boolean</td>
+<td class="org-left">Boolean</td>
+</tr>
+
+<tr>
+<td class="org-left">char</td>
+<td class="org-left">Character</td>
+</tr>
+
+<tr>
+<td class="org-left">short</td>
+<td class="org-left">Short</td>
+</tr>
+
+<tr>
+<td class="org-left">int</td>
+<td class="org-left">Integer</td>
+</tr>
+
+<tr>
+<td class="org-left">long</td>
+<td class="org-left">Long</td>
+</tr>
+
+<tr>
+<td class="org-left">float</td>
+<td class="org-left">Float</td>
+</tr>
+
+<tr>
+<td class="org-left">double</td>
+<td class="org-left">Double</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+Example:
+</p>
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #ECBE7B;">Integer</span> <span style="color: #db5762;">x</span> = 5; <span style="color: #5B6268;">// </span><span style="color: #5B6268;">auto-boxing</span>
+<span style="color: #ECBE7B;">int</span> <span style="color: #db5762;">y</span> = x; <span style="color: #5B6268;">// </span><span style="color: #5B6268;">un-boxing</span>
+
+<span style="color: #ECBE7B;">ArrayList</span><span style="color: #fff0f5;">&lt;</span><span style="color: #ECBE7B;">Integer</span><span style="color: #fff0f5;">&gt;</span> <span style="color: #db5762;">values</span> = <span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">ArrayList</span><span style="color: #fff0f5;">&lt;</span><span style="color: #ECBE7B;">Integer</span><span style="color: #fff0f5;">&gt;()</span>;
+values.add<span style="color: #fff0f5;">(</span>7<span style="color: #fff0f5;">)</span>;
+<span style="color: #ECBE7B;">int</span> <span style="color: #db5762;">number</span> = values.get<span style="color: #fff0f5;">(</span>0<span style="color: #fff0f5;">)</span>;
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org3f565f1" class="outline-3">
+<h3 id="org3f565f1"><span class="section-number-3">34.6</span> When to use Arrays and when to use ArrayLists</h3>
+<div class="outline-text-3" id="text-34-6">
+<p>
+<b>Arrays:</b>
+</p>
+<ul class="org-ul">
+<li>if size of the collection does not change</li>
+<li>if a collection is dealing with a huge amount of primitive data type. For efficiency an Array is used</li>
+</ul>
+
+<p>
+<b>ArrayLists:</b>
+</p>
+<ul class="org-ul">
+<li>in all other cases</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-orgfb2b02b" class="outline-2">
+<h2 id="orgfb2b02b"><span class="section-number-2">35</span> Objects and classes</h2>
+<div class="outline-text-2" id="text-35">
+</div>
+<div id="outline-container-orgabf2dc6" class="outline-3">
+<h3 id="orgabf2dc6"><span class="section-number-3">35.1</span> Example of a Student class</h3>
+<div class="outline-text-3" id="text-35-1">
+<p>
+<b>Without a constructor</b>
+</p>
+<ul class="org-ul">
+<li>A class does not need a constructor, but in this case Java will automatically set the variables to default values.</li>
+<li>Basically java creates a constructor by itself if it is missing.</li>
+<li>All complex data types are set to null, and all numerical promitives to zero.</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #5B6268;">// </span><span style="color: #5B6268;">The Student classG</span>
+<span style="color: #51afef; font-style: italic;">public</span> <span style="color: #51afef; font-style: italic;">class</span> <span style="color: #ECBE7B;">Student</span> <span style="color: #fff0f5;">{</span>
+    <span style="color: #ECBE7B;">String</span> <span style="color: #db5762;">id</span>;
+    <span style="color: #ECBE7B;">String</span> <span style="color: #db5762;">name</span>;
+    <span style="color: #ECBE7B;">int</span> <span style="color: #db5762;">age</span>;
+
+    <span style="color: #51afef; font-style: italic;">public</span> <span style="color: #ECBE7B;">void</span> <span style="color: #c678dd;">print</span><span style="color: #c678dd;">()</span> <span style="color: #c678dd;">{</span>
+    System.out.println<span style="color: #98be65;">(</span><span style="color: #98be65;">"Id:   "</span> + id<span style="color: #98be65;">)</span>;
+    System.out.println<span style="color: #98be65;">(</span><span style="color: #98be65;">"Name: "</span> + name<span style="color: #98be65;">)</span>;
+    System.out.println<span style="color: #98be65;">(</span><span style="color: #98be65;">"Age:  "</span> + age<span style="color: #98be65;">)</span>;
+    <span style="color: #c678dd;">}</span>
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+
+<p>
+<b>With a constructor</b>
+</p>
+<ul class="org-ul">
+<li>A class may have multiple constructors, some may provide all parameters to match the class variables, some do not provide any parameters, they just fill in the data.</li>
+<li>The constructor name must be the same as the class name</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #51afef; font-style: italic;">public</span> <span style="color: #51afef; font-style: italic;">class</span> <span style="color: #ECBE7B;">Student</span> <span style="color: #fff0f5;">{</span>
+    <span style="color: #ECBE7B;">String</span> <span style="color: #db5762;">id</span>;
+    <span style="color: #ECBE7B;">String</span> <span style="color: #db5762;">name</span>;
+    <span style="color: #ECBE7B;">int</span> <span style="color: #db5762;">age</span>;
+
+    <span style="color: #51afef; font-style: italic;">public</span> <span style="color: #c678dd;">Student</span><span style="color: #c678dd;">(</span><span style="color: #ECBE7B;">id</span>, <span style="color: #ECBE7B;">name</span>, <span style="color: #ECBE7B;">age</span><span style="color: #c678dd;">)</span> <span style="color: #c678dd;">{</span>
+    <span style="color: #5B6268;">// </span><span style="color: #5B6268;">use the this keyword to avoid confusion between a local variable and a class variable</span>
+    <span style="color: #51afef; font-style: italic;">this</span>.id = id;
+    <span style="color: #51afef; font-style: italic;">this</span>.name = name;
+    <span style="color: #51afef; font-style: italic;">this</span>.age = age;
+    <span style="color: #c678dd;">}</span>
+
+    <span style="color: #51afef; font-style: italic;">public</span> <span style="color: #c678dd;">Student</span><span style="color: #c678dd;">()</span> <span style="color: #c678dd;">{</span>
+        <span style="color: #5B6268;">// </span><span style="color: #5B6268;">don't have to use the this keyword as the parameters do not overlap(name-wise)</span>
+    id = <span style="color: #98be65;">""</span>;
+    name = <span style="color: #98be65;">""</span>;
+    age = 0;
+    <span style="color: #c678dd;">}</span>
+
+    <span style="color: #51afef; font-style: italic;">public</span> <span style="color: #ECBE7B;">void</span> <span style="color: #c678dd;">print</span><span style="color: #c678dd;">()</span> <span style="color: #c678dd;">{</span>
+    System.out.println<span style="color: #98be65;">(</span><span style="color: #98be65;">"Id:   "</span> + id<span style="color: #98be65;">)</span>;
+    System.out.println<span style="color: #98be65;">(</span><span style="color: #98be65;">"Name: "</span> + name<span style="color: #98be65;">)</span>;
+    System.out.println<span style="color: #98be65;">(</span><span style="color: #98be65;">"Age:  "</span> + age<span style="color: #98be65;">)</span>;
+    <span style="color: #c678dd;">}</span>
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgf276f08" class="outline-3">
+<h3 id="orgf276f08"><span class="section-number-3">35.2</span> Creating an instance of the Student class</h3>
+<div class="outline-text-3" id="text-35-2">
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #51afef; font-style: italic;">public</span> <span style="color: #51afef; font-style: italic;">class</span> <span style="color: #ECBE7B;">TestStudent</span> <span style="color: #fff0f5;">{</span>
+    <span style="color: #51afef; font-style: italic;">public</span> <span style="color: #51afef; font-style: italic;">static</span> <span style="color: #ECBE7B;">void</span> <span style="color: #c678dd;">main</span> <span style="color: #c678dd;">(</span><span style="color: #ECBE7B;">String</span> <span style="color: #98be65;">[]</span> <span style="color: #db5762;">args</span><span style="color: #c678dd;">)</span> <span style="color: #c678dd;">{</span>
+    <span style="color: #ECBE7B;">Student</span> <span style="color: #db5762;">s1</span> = <span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">Student</span><span style="color: #98be65;">()</span>;  <span style="color: #5B6268;">// </span><span style="color: #5B6268;">create and instance of the class (aka class' Object)</span>
+        <span style="color: #5B6268;">// </span><span style="color: #5B6268;">assign values to the class</span>
+    s1.id = <span style="color: #98be65;">"A00123456"</span>;
+    s1.name = <span style="color: #98be65;">"Joe Blogs"</span>;
+    s1.age = 21;
+    s1.print<span style="color: #98be65;">()</span>;
+    <span style="color: #c678dd;">}</span>
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org5411e77" class="outline-3">
+<h3 id="org5411e77"><span class="section-number-3">35.3</span> Encapsulation</h3>
+<div class="outline-text-3" id="text-35-3">
+<ul class="org-ul">
+<li>Is the process of hiding data</li>
+<li>access to encapsulated data is only allowed through methods we create</li>
+<li>to encapsulate the data, put the keyword "private" before it when it is being declared, e.g. <code>private int age;</code></li>
+</ul>
+
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #51afef; font-style: italic;">public</span> <span style="color: #51afef; font-style: italic;">class</span> <span style="color: #ECBE7B;">Student</span> <span style="color: #fff0f5;">{</span>
+    <span style="color: #51afef; font-style: italic;">private</span> <span style="color: #ECBE7B;">String</span> <span style="color: #db5762;">id</span>;
+    <span style="color: #51afef; font-style: italic;">private</span> <span style="color: #ECBE7B;">String</span> <span style="color: #db5762;">name</span>;
+    <span style="color: #51afef; font-style: italic;">private</span> <span style="color: #ECBE7B;">int</span> <span style="color: #db5762;">age</span>;
+
+    <span style="color: #51afef; font-style: italic;">public</span> <span style="color: #c678dd;">Student</span><span style="color: #c678dd;">(</span><span style="color: #ECBE7B;">id</span>, <span style="color: #ECBE7B;">name</span>, <span style="color: #ECBE7B;">age</span><span style="color: #c678dd;">)</span> <span style="color: #c678dd;">{</span>
+    <span style="color: #5B6268;">// </span><span style="color: #5B6268;">use the this keyword to avoid confusion between a local variable and a class variable</span>
+    <span style="color: #51afef; font-style: italic;">this</span>.id = id;
+    <span style="color: #51afef; font-style: italic;">this</span>.name = name;
+    setAge<span style="color: #98be65;">(</span>age<span style="color: #98be65;">)</span>;
+    <span style="color: #c678dd;">}</span>
+
+    <span style="color: #51afef; font-style: italic;">public</span> <span style="color: #ECBE7B;">void</span> <span style="color: #c678dd;">setAge</span><span style="color: #c678dd;">(</span><span style="color: #ECBE7B;">int</span> <span style="color: #db5762;">newAge</span><span style="color: #c678dd;">)</span> <span style="color: #c678dd;">{</span>
+    <span style="color: #51afef; font-style: italic;">if</span> <span style="color: #98be65;">(</span>newAge &gt;= 10 &amp;&amp; newAge &lt;= 130<span style="color: #98be65;">)</span> <span style="color: #98be65;">{</span>
+        age = newAge;
+    <span style="color: #98be65;">}</span> <span style="color: #51afef; font-style: italic;">else</span> <span style="color: #98be65;">{</span>
+        age = 21;
+    <span style="color: #98be65;">}</span>
+    <span style="color: #c678dd;">}</span>
+    <span style="color: #51afef; font-style: italic;">public</span> <span style="color: #ECBE7B;">void</span> <span style="color: #c678dd;">print</span><span style="color: #c678dd;">()</span> <span style="color: #c678dd;">{</span>
+    System.out.println<span style="color: #98be65;">(</span><span style="color: #98be65;">"Id:   "</span> + id<span style="color: #98be65;">)</span>;
+    System.out.println<span style="color: #98be65;">(</span><span style="color: #98be65;">"Name: "</span> + name<span style="color: #98be65;">)</span>;
+    System.out.println<span style="color: #98be65;">(</span><span style="color: #98be65;">"Age:  "</span> + age<span style="color: #98be65;">)</span>;
+    <span style="color: #c678dd;">}</span>
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+
+<button id="invert">Invert</button>
+<img src="images/arrow-up.png" alt="arrow-up" id="scroll-button" onclick="window.scroll(0, 0);">
+<script src="../assets/jquery-3.3.1.min.js"></script>
+<script src="../assets/notes.js"></script>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="date">Date: 2016-10-24 Mon 00:00</p>
+<p class="author">Author: Damian Chrzanowski</p>
+<p class="date">Created: 2018-12-13 Thu 17:24</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

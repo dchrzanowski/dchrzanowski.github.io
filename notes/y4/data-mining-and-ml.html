@@ -1,0 +1,1603 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2019-12-10 Tue 10:40 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Data Mining and Machine Learning</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="Damian Chrzanowski" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="../assets/org.css"/>
+<link rel="icon" href="../assets/favicon.ico">
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2019 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Data Mining and Machine Learning</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org130f3ac">1. On Exam</a></li>
+<li><a href="#org275a50e">2. Concepts</a></li>
+<li><a href="#org466cc48">3. Use Cases</a>
+<ul>
+<li><a href="#org8045d8c">3.1. Predicting Churns</a></li>
+<li><a href="#orga7dfb60">3.2. Advertising</a></li>
+<li><a href="#orgd688d4a">3.3. Marketing</a></li>
+<li><a href="#orgd00fd21">3.4. Fraud Detection</a></li>
+<li><a href="#org96593e2">3.5. Spam Filtering</a></li>
+<li><a href="#orgba904c2">3.6. Recommendations</a></li>
+<li><a href="#org332d900">3.7. Micro-transactions</a></li>
+<li><a href="#org717a8e5">3.8. Big Data (not covered during the course)</a></li>
+<li><a href="#orge044f82">3.9. Data as a strategic asset</a></li>
+</ul>
+</li>
+<li><a href="#org3e62b45">4. ML</a>
+<ul>
+<li><a href="#org94fdf4d">4.1. ML Data</a></li>
+<li><a href="#org3bbf2ce">4.2. Features</a></li>
+<li><a href="#org6ceb240">4.3. Models</a></li>
+<li><a href="#org3f1d84f">4.4. Model building</a></li>
+<li><a href="#org6528565">4.5. Prediction</a></li>
+</ul>
+</li>
+<li><a href="#org01525fb">5. Data Mining Process</a>
+<ul>
+<li><a href="#org9fcad99">5.1. Cross Industry Standard Process for Data Mining (CRISP DM)</a></li>
+<li><a href="#org3d5a4b7">5.2. Business Understanding</a></li>
+<li><a href="#org1edf28b">5.3. Data Understanding</a></li>
+<li><a href="#orgc7c496d">5.4. Data Preparation</a></li>
+<li><a href="#org5b3d903">5.5. Modeling</a></li>
+<li><a href="#org3303ac1">5.6. Evaluation</a></li>
+<li><a href="#orgbb2b487">5.7. Deployment</a></li>
+<li><a href="#org90fe930">5.8. Notes</a></li>
+</ul>
+</li>
+<li><a href="#org77e095b">6. Supervised v Unsupervised Learning</a>
+<ul>
+<li><a href="#org5a0b423">6.1. Supervised</a></li>
+<li><a href="#org25dd49b">6.2. Unsupervised</a></li>
+</ul>
+</li>
+<li><a href="#org23a4bc4">7. Types of problems</a>
+<ul>
+<li><a href="#org89ec35e">7.1. Regression</a></li>
+<li><a href="#orgb4a8cac">7.2. Classification</a></li>
+<li><a href="#org3fe7ccc">7.3. Clustering</a></li>
+<li><a href="#org4160781">7.4. Data Reduction/Feature Selection</a></li>
+</ul>
+</li>
+<li><a href="#orgf166127">8. Linear Regression</a>
+<ul>
+<li><a href="#orgd696b04">8.1. Definition</a></li>
+<li><a href="#org66913ce">8.2. Line of best fit</a></li>
+<li><a href="#org83c5aa8">8.3. What are residuals</a></li>
+<li><a href="#org4384b89">8.4. Probabilistic classifier</a></li>
+<li><a href="#orgfcbb8c8">8.5. Deterministic classifier</a></li>
+<li><a href="#org8b3d7d8">8.6. Correlation Coefficient (r)</a></li>
+<li><a href="#org198ca2c">8.7. Coefficient of Determination R<sup>2</sup> (r squared)</a></li>
+<li><a href="#org4502751">8.8. Equation</a></li>
+<li><a href="#org095d318">8.9. Conditions</a></li>
+</ul>
+</li>
+<li><a href="#org6d60282">9. Multiple Linear Regression</a>
+<ul>
+<li><a href="#org325f18e">9.1. Exploration</a></li>
+<li><a href="#org76b244f">9.2. Feature reduction</a></li>
+<li><a href="#orgea76513">9.3. Evaluation</a></li>
+<li><a href="#orgf544283">9.4. Statistical Significance of Predictors</a></li>
+<li><a href="#org641c94a">9.5. Prediction Interval</a></li>
+<li><a href="#org81c4e8f">9.6. Confidence Interval</a></li>
+</ul>
+</li>
+<li><a href="#org612d633">10. Polynomial Regression</a>
+<ul>
+<li><a href="#orgb0ee268">10.1. Definition</a></li>
+<li><a href="#org9c9ea0d">10.2. Orthogonal Polynomial</a></li>
+<li><a href="#org34d02ad">10.3. Over fitting with Orthogonal Polynomials</a></li>
+</ul>
+</li>
+<li><a href="#org4c13ee7">11. Decision Trees</a>
+<ul>
+<li><a href="#org8897e8b">11.1. Definition</a></li>
+<li><a href="#orgd0176da">11.2. When is the algorithm finished?</a></li>
+<li><a href="#org79b6df7">11.3. Advantages</a></li>
+<li><a href="#org1fa2e3a">11.4. Disadvantages</a></li>
+<li><a href="#org9864a09">11.5. How to apply</a></li>
+<li><a href="#org3438824">11.6. Algorithm</a></li>
+<li><a href="#orga3e7264">11.7. Node Impurity</a></li>
+<li><a href="#org133975f">11.8. Splits</a></li>
+<li><a href="#org71c407f">11.9. Overfitting</a></li>
+</ul>
+</li>
+<li><a href="#orgb40a00e">12. Nearest Neighbour Classification</a>
+<ul>
+<li><a href="#org7d146ee">12.1. Definition</a></li>
+<li><a href="#org971cc9f">12.2. Choosing the value of k</a></li>
+<li><a href="#org5068203">12.3. Scaling</a></li>
+<li><a href="#org755b794">12.4. Handling nominal values</a></li>
+<li><a href="#org529b18a">12.5. Handling ordinal values:</a></li>
+</ul>
+</li>
+<li><a href="#org95ae247">13. Logistic Regression</a>
+<ul>
+<li><a href="#org525d028">13.1. Definition</a></li>
+<li><a href="#orgb544593">13.2. Binary Classification</a></li>
+<li><a href="#org26767c9">13.3. Discrete Classifier</a></li>
+<li><a href="#orgd6c2de7">13.4. Probabilistic Classifier</a></li>
+<li><a href="#org60715f3">13.5. Sigmoid Function</a></li>
+<li><a href="#org47296bf">13.6. Decision Boundary</a></li>
+<li><a href="#org2af4fd1">13.7. Finding parameters</a></li>
+<li><a href="#orge26ff69">13.8. Linear models are hyperplanes</a></li>
+<li><a href="#orgb2392ac">13.9. Summary</a></li>
+</ul>
+</li>
+<li><a href="#org1dc96fd">14. ROC Graphs</a>
+<ul>
+<li><a href="#org860430e">14.1. Definition</a></li>
+<li><a href="#orgec6dd5c">14.2. Confusion Matrix</a></li>
+<li><a href="#orge920b47">14.3. True Positive Rate (aka Sensitivity, Hit Rate, Recall)</a></li>
+<li><a href="#org0a05cf1">14.4. Precision</a></li>
+<li><a href="#org53033de">14.5. Accuracy</a></li>
+<li><a href="#orgdc4076c">14.6. False Positive Rate</a></li>
+<li><a href="#org52013ea">14.7. Definition</a></li>
+<li><a href="#orgce77e79">14.8. ROC Space</a></li>
+<li><a href="#org067fc4e">14.9. Classifiers</a></li>
+<li><a href="#org92701c4">14.10. Recap</a></li>
+<li><a href="#org09ddd7b">14.11. Algorithm</a></li>
+<li><a href="#orge26053b">14.12. Area Under Curve (AUC)</a></li>
+</ul>
+</li>
+<li><a href="#org4cb7640">15. Clustering</a>
+<ul>
+<li><a href="#org45a3e56">15.1. Definition</a></li>
+<li><a href="#org62fdbf7">15.2. k-means algorithm</a></li>
+<li><a href="#org1f9d36a">15.3. Cost function</a></li>
+</ul>
+</li>
+<li><a href="#orged3a9de">16. Using R</a>
+<ul>
+<li><a href="#orgee7b6af">16.1. Combine</a></li>
+<li><a href="#orgb319446">16.2. Sequence <code>seq</code></a></li>
+<li><a href="#orgd86a4c8">16.3. Matrix</a></li>
+<li><a href="#org26682d2">16.4. Lists</a></li>
+</ul>
+</li>
+<li><a href="#org7011771">17. Exam Questions</a>
+<ul>
+<li><a href="#org55a3d22">17.1. Remember to draw diagrams</a></li>
+<li><a href="#orgddf02c3">17.2. What is a probabilistic classifier</a></li>
+<li><a href="#org45412e4">17.3. Deterministic classifier</a></li>
+<li><a href="#orgf02af08">17.4. What is logistic regression</a></li>
+<li><a href="#org1fd97f3">17.5. Confusion matrix for a binary classification, most used with ROC curves</a></li>
+<li><a href="#orgc978982">17.6. ROC Space</a></li>
+<li><a href="#org2e05bfd">17.7. kNN</a></li>
+<li><a href="#org9e424a1">17.8. Decision Tree</a></li>
+</ul>
+</li>
+<li><a href="#org634f790">18. Delete at the end</a></li>
+</ul>
+</div>
+</div>
+<p>
+<a href="index.html">Home Page</a>
+</p>
+<div id="outline-container-org130f3ac" class="outline-2">
+<h2 id="org130f3ac"><span class="section-number-2">1</span> On Exam</h2>
+<div class="outline-text-2" id="text-1">
+<ul class="org-ul">
+<li>For Logistic Regression
+<ul class="org-ul">
+<li>Explain the Sigmoid Function and Cost Function</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org275a50e" class="outline-2">
+<h2 id="org275a50e"><span class="section-number-2">2</span> Concepts</h2>
+<div class="outline-text-2" id="text-2">
+<ul class="org-ul">
+<li><b>Data Science</b>: Guide extractions of data</li>
+<li><b>Data Mining</b>: extraction of knowledge from data</li>
+<li><b>Machine Learning</b>: algorithms that learn from data</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org466cc48" class="outline-2">
+<h2 id="org466cc48"><span class="section-number-2">3</span> Use Cases</h2>
+<div class="outline-text-2" id="text-3">
+</div>
+<div id="outline-container-org8045d8c" class="outline-3">
+<h3 id="org8045d8c"><span class="section-number-3">3.1</span> Predicting Churns</h3>
+</div>
+<div id="outline-container-orga7dfb60" class="outline-3">
+<h3 id="orga7dfb60"><span class="section-number-3">3.2</span> Advertising</h3>
+</div>
+<div id="outline-container-orgd688d4a" class="outline-3">
+<h3 id="orgd688d4a"><span class="section-number-3">3.3</span> Marketing</h3>
+</div>
+<div id="outline-container-orgd00fd21" class="outline-3">
+<h3 id="orgd00fd21"><span class="section-number-3">3.4</span> Fraud Detection</h3>
+</div>
+<div id="outline-container-org96593e2" class="outline-3">
+<h3 id="org96593e2"><span class="section-number-3">3.5</span> Spam Filtering</h3>
+</div>
+<div id="outline-container-orgba904c2" class="outline-3">
+<h3 id="orgba904c2"><span class="section-number-3">3.6</span> Recommendations</h3>
+</div>
+<div id="outline-container-org332d900" class="outline-3">
+<h3 id="org332d900"><span class="section-number-3">3.7</span> Micro-transactions</h3>
+</div>
+<div id="outline-container-org717a8e5" class="outline-3">
+<h3 id="org717a8e5"><span class="section-number-3">3.8</span> Big Data (not covered during the course)</h3>
+</div>
+<div id="outline-container-orge044f82" class="outline-3">
+<h3 id="orge044f82"><span class="section-number-3">3.9</span> Data as a strategic asset</h3>
+</div>
+</div>
+<div id="outline-container-org3e62b45" class="outline-2">
+<h2 id="org3e62b45"><span class="section-number-2">4</span> ML</h2>
+<div class="outline-text-2" id="text-4">
+</div>
+<div id="outline-container-org94fdf4d" class="outline-3">
+<h3 id="org94fdf4d"><span class="section-number-3">4.1</span> ML Data</h3>
+<div class="outline-text-3" id="text-4-1">
+<ul class="org-ul">
+<li><b>Instances</b>: Like objects (e.g customer)</li>
+<li><b>Input</b>: Is a single relational table, often a csv file</li>
+<li><b>Rows</b>: Are instances</li>
+<li><b>Columns</b>: Are features (aka variables)</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org3bbf2ce" class="outline-3">
+<h3 id="org3bbf2ce"><span class="section-number-3">4.2</span> Features</h3>
+<div class="outline-text-3" id="text-4-2">
+<ul class="org-ul">
+<li>Can be <b>numerical</b> or <b>categorical</b></li>
+<li>Any standard attribute, such as: age, height, gender, etc.</li>
+<li>Nominal features are not ordered, such as colours (cannot determine if red is higher than blue for example)</li>
+<li><b>Numerical</b>: any numerical value, e.g. age, income</li>
+<li><b>Nominal</b>: e.g. make of car. <b>Unordered</b></li>
+<li><b>Ordinal</b>: e.g. high, medium, low. <b>Ordered</b></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org6ceb240" class="outline-3">
+<h3 id="org6ceb240"><span class="section-number-3">4.3</span> Models</h3>
+<div class="outline-text-3" id="text-4-3">
+<ul class="org-ul">
+<li>An example of a model is a <b>Decision Tree</b>
+<ul class="org-ul">
+<li>A <b>Decision Tree</b> of size 1 is referred to as 1R, i.e. there is only one <code>IF</code>, for instance: if number of calls tech support &gt; 10 then churn</li>
+</ul></li>
+<li><b>Data Mining Algorithm</b> crunches data that in turn provides the <b>Data Model</b></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org3f1d84f" class="outline-3">
+<h3 id="org3f1d84f"><span class="section-number-3">4.4</span> Model building</h3>
+<div class="outline-text-3" id="text-4-4">
+<ul class="org-ul">
+<li>Data &gt; Data Mining Algorithm &gt; Model</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org6528565" class="outline-3">
+<h3 id="org6528565"><span class="section-number-3">4.5</span> Prediction</h3>
+<div class="outline-text-3" id="text-4-5">
+<ul class="org-ul">
+<li>Data &gt; Model &gt; Result</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-org01525fb" class="outline-2">
+<h2 id="org01525fb"><span class="section-number-2">5</span> Data Mining Process</h2>
+<div class="outline-text-2" id="text-5">
+</div>
+<div id="outline-container-org9fcad99" class="outline-3">
+<h3 id="org9fcad99"><span class="section-number-3">5.1</span> Cross Industry Standard Process for Data Mining (CRISP DM)</h3>
+<div class="outline-text-3" id="text-5-1">
+
+<div class="figure">
+<p><img src="images/Data_Mining_Process/screenshot_2019-09-10_15-36-46.png" alt="screenshot_2019-09-10_15-36-46.png" />
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org3d5a4b7" class="outline-3">
+<h3 id="org3d5a4b7"><span class="section-number-3">5.2</span> Business Understanding</h3>
+<div class="outline-text-3" id="text-5-2">
+<ul class="org-ul">
+<li>What we are trying to solve</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org1edf28b" class="outline-3">
+<h3 id="org1edf28b"><span class="section-number-3">5.3</span> Data Understanding</h3>
+<div class="outline-text-3" id="text-5-3">
+<ul class="org-ul">
+<li>What are the costs of the data</li>
+<li>What data is available</li>
+<li>What data is required</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgc7c496d" class="outline-3">
+<h3 id="orgc7c496d"><span class="section-number-3">5.4</span> Data Preparation</h3>
+<div class="outline-text-3" id="text-5-4">
+<ul class="org-ul">
+<li>Clean the data before usage</li>
+<li>Deal with missing fields</li>
+<li>Deal with wrong types</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org5b3d903" class="outline-3">
+<h3 id="org5b3d903"><span class="section-number-3">5.5</span> Modeling</h3>
+<div class="outline-text-3" id="text-5-5">
+<ul class="org-ul">
+<li>Determining the model and any parameters</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org3303ac1" class="outline-3">
+<h3 id="org3303ac1"><span class="section-number-3">5.6</span> Evaluation</h3>
+<div class="outline-text-3" id="text-5-6">
+<ul class="org-ul">
+<li>Evaluation of the model before deployment</li>
+<li>Another iteration might be needed, so go back to business requirements</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgbb2b487" class="outline-3">
+<h3 id="orgbb2b487"><span class="section-number-3">5.7</span> Deployment</h3>
+<div class="outline-text-3" id="text-5-7">
+<ul class="org-ul">
+<li>The model is deployed</li>
+<li>Might need to change stack from R or Python to large scale deployment (e.g. Java + Hadoop)</li>
+<li>Pass from Data Scientists to Data Science Engineers</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org90fe930" class="outline-3">
+<h3 id="org90fe930"><span class="section-number-3">5.8</span> Notes</h3>
+<div class="outline-text-3" id="text-5-8">
+<ul class="org-ul">
+<li>CRISP is not an SDLC</li>
+<li>It is exploration based</li>
+<li>Outcomes are far less predictable</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-org77e095b" class="outline-2">
+<h2 id="org77e095b"><span class="section-number-2">6</span> Supervised v Unsupervised Learning</h2>
+<div class="outline-text-2" id="text-6">
+</div>
+<div id="outline-container-org5a0b423" class="outline-3">
+<h3 id="org5a0b423"><span class="section-number-3">6.1</span> Supervised</h3>
+<div class="outline-text-3" id="text-6-1">
+<ul class="org-ul">
+<li>Uses existing data</li>
+<li>We can use a set of existing training data</li>
+<li>Groups are predefined, or are simply known</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org25dd49b" class="outline-3">
+<h3 id="org25dd49b"><span class="section-number-3">6.2</span> Unsupervised</h3>
+<div class="outline-text-3" id="text-6-2">
+<ul class="org-ul">
+<li>Not a predefined set</li>
+<li>No training data</li>
+<li>Natural grouping</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-org23a4bc4" class="outline-2">
+<h2 id="org23a4bc4"><span class="section-number-2">7</span> Types of problems</h2>
+<div class="outline-text-2" id="text-7">
+</div>
+<div id="outline-container-org89ec35e" class="outline-3">
+<h3 id="org89ec35e"><span class="section-number-3">7.1</span> Regression</h3>
+<div class="outline-text-3" id="text-7-1">
+<ul class="org-ul">
+<li>Value estimation</li>
+<li>Supervised technique</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgb4a8cac" class="outline-3">
+<h3 id="orgb4a8cac"><span class="section-number-3">7.2</span> Classification</h3>
+<div class="outline-text-3" id="text-7-2">
+<ul class="org-ul">
+<li>Present a set of classified examples</li>
+<li>Expected to learn and be able to classify unseen examples</li>
+<li>The learning scheme/algorithm is presented with a set of classified examples.</li>
+<li>Expected to learn and be able to classify unseen examples</li>
+<li>Logistic Regression is classification based as well</li>
+<li>Produces a "Probabilistic Classifier"</li>
+<li>Produces a model in which an individual is placed into a particular group</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org3fe7ccc" class="outline-3">
+<h3 id="org3fe7ccc"><span class="section-number-3">7.3</span> Clustering</h3>
+<div class="outline-text-3" id="text-7-3">
+<ul class="org-ul">
+<li>Find groups of instances that cluster or belong together</li>
+<li>Identify clusters</li>
+<li>No training set given</li>
+<li>Success is often subjective, it depends which clusters are more important to the user</li>
+<li>Can be followed by classification</li>
+<li>Clusters can then be treated as classes and a classification algorithm can be used</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org4160781" class="outline-3">
+<h3 id="org4160781"><span class="section-number-3">7.4</span> Data Reduction/Feature Selection</h3>
+<div class="outline-text-3" id="text-7-4">
+<ul class="org-ul">
+<li>Often used to discard irrelevant data</li>
+<li>Especially handy when there is a lot of data</li>
+<li>Sometimes introduced for performance reasons</li>
+<li>Often performed by the algorithm itself</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-orgf166127" class="outline-2">
+<h2 id="orgf166127"><span class="section-number-2">8</span> Linear Regression</h2>
+<div class="outline-text-2" id="text-8">
+</div>
+<div id="outline-container-orgd696b04" class="outline-3">
+<h3 id="orgd696b04"><span class="section-number-3">8.1</span> Definition</h3>
+<div class="outline-text-3" id="text-8-1">
+<ul class="org-ul">
+<li>Regression analysis is used to predict the value of one variable (<b>the dependent variable</b>) based on other variables (<b>the independent variables</b>)</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org66913ce" class="outline-3">
+<h3 id="org66913ce"><span class="section-number-3">8.2</span> Line of best fit</h3>
+<div class="outline-text-3" id="text-8-2">
+<ul class="org-ul">
+<li>Minimize the sum of the squares of the errors (SSE aka RSS)</li>
+<li>The method used is called <b>Least Squares Method</b>: Produces a straight line that minimizes the sum of the squares of the errors</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org83c5aa8" class="outline-3">
+<h3 id="org83c5aa8"><span class="section-number-3">8.3</span> What are residuals</h3>
+<div class="outline-text-3" id="text-8-3">
+<ul class="org-ul">
+<li>Residuals are know as errors</li>
+<li>Its the difference between the point and the line, aka difference between the predicted value and the actual value of <b>y</b></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org4384b89" class="outline-3">
+<h3 id="org4384b89"><span class="section-number-3">8.4</span> Probabilistic classifier</h3>
+<div class="outline-text-3" id="text-8-4">
+<ul class="org-ul">
+<li>Outputs a probability, value between 0 and 1, usually used for binary data.</li>
+<li>To turn into a deterministic classifier we set a threshold (can use many thresholds)</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgfcbb8c8" class="outline-3">
+<h3 id="orgfcbb8c8"><span class="section-number-3">8.5</span> Deterministic classifier</h3>
+<div class="outline-text-3" id="text-8-5">
+<ul class="org-ul">
+<li>Is either positive or negative, it does not use probability</li>
+<li>Allows to fully determine the value of the dependent variable from the independent variable</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org8b3d7d8" class="outline-3">
+<h3 id="org8b3d7d8"><span class="section-number-3">8.6</span> Correlation Coefficient (r)</h3>
+<div class="outline-text-3" id="text-8-6">
+<ul class="org-ul">
+<li>If the coefficient is close to +1 then its a strong positive relationship</li>
+<li>If the coefficient is close to -1 then its a strong negative relationship</li>
+<li>If the coefficient is close to 0 then there is no correlation</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org198ca2c" class="outline-3">
+<h3 id="org198ca2c"><span class="section-number-3">8.7</span> Coefficient of Determination R<sup>2</sup> (r squared)</h3>
+<div class="outline-text-3" id="text-8-7">
+<ul class="org-ul">
+<li>Gives a percentage of variation of y explained by the variation in x</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org4502751" class="outline-3">
+<h3 id="org4502751"><span class="section-number-3">8.8</span> Equation</h3>
+<div class="outline-text-3" id="text-8-8">
+<p class="verse">
+b = (nΣxy - (Σx) (Σy)) / (nΣx² - (Σx)²)<br />
+a = (Σy - b(Σx)) / n<br />
+<br />
+y = a + bx<br />
+</p>
+</div>
+</div>
+<div id="outline-container-org095d318" class="outline-3">
+<h3 id="org095d318"><span class="section-number-3">8.9</span> Conditions</h3>
+<div class="outline-text-3" id="text-8-9">
+<ol class="org-ol">
+<li>The probability distribution of errors is normal</li>
+<li>The mean of the errors is 0</li>
+<li>The standard deviation of the errors is a constant regardless of the value of x</li>
+<li>The value of the error associated with any particular value of y is independent of the error associated with any other value of y</li>
+</ol>
+</div>
+</div>
+</div>
+<div id="outline-container-org6d60282" class="outline-2">
+<h2 id="org6d60282"><span class="section-number-2">9</span> Multiple Linear Regression</h2>
+<div class="outline-text-2" id="text-9">
+</div>
+<div id="outline-container-org325f18e" class="outline-3">
+<h3 id="org325f18e"><span class="section-number-3">9.1</span> Exploration</h3>
+<div class="outline-text-3" id="text-9-1">
+<ul class="org-ul">
+<li>Use scatter plots to find fitting pairs</li>
+<li>Note that a visual lack of correlation does not mean that there is no correlation between the <b>predictor</b> and the <b>output</b></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org76b244f" class="outline-3">
+<h3 id="org76b244f"><span class="section-number-3">9.2</span> Feature reduction</h3>
+<div class="outline-text-3" id="text-9-2">
+<ul class="org-ul">
+<li>It might be worthwhile to remove the amount of variables for performance sake</li>
+<li>If two predictors are strongly correlated then one can be possibly removed</li>
+<li>If a predictor has a low variance then it has a low meaning as well</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgea76513" class="outline-3">
+<h3 id="orgea76513"><span class="section-number-3">9.3</span> Evaluation</h3>
+<div class="outline-text-3" id="text-9-3">
+<ul class="org-ul">
+<li>Mean of the squares of the errors (MSE): good but not great</li>
+<li>Root mean square error (RMSE): the right choice</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgf544283" class="outline-3">
+<h3 id="orgf544283"><span class="section-number-3">9.4</span> Statistical Significance of Predictors</h3>
+<div class="outline-text-3" id="text-9-4">
+<ul class="org-ul">
+<li>The lower the <b>p</b> value the more significant the predictor is</li>
+<li>So if the p valus is 0.05 then the predictor has a 95% significance</li>
+<li>So if the p valus is 0.001 then the predictor has a 99.9% significance</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org641c94a" class="outline-3">
+<h3 id="org641c94a"><span class="section-number-3">9.5</span> Prediction Interval</h3>
+<div class="outline-text-3" id="text-9-5">
+<ul class="org-ul">
+<li>Gives the range of the predicted dependent variable, as opposed to a fixed number.</li>
+<li>This is based around given observations</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org81c4e8f" class="outline-3">
+<h3 id="org81c4e8f"><span class="section-number-3">9.6</span> Confidence Interval</h3>
+<div class="outline-text-3" id="text-9-6">
+<ul class="org-ul">
+<li>Same as prediction interval, but gives back a range based around a mean of the observations</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-org612d633" class="outline-2">
+<h2 id="org612d633"><span class="section-number-2">10</span> Polynomial Regression</h2>
+<div class="outline-text-2" id="text-10">
+</div>
+<div id="outline-container-orgb0ee268" class="outline-3">
+<h3 id="orgb0ee268"><span class="section-number-3">10.1</span> Definition</h3>
+<div class="outline-text-3" id="text-10-1">
+<ul class="org-ul">
+<li>Polynomial Regression is essentially performing a linear regression with a polynomial, such as x<sup>2</sup>.</li>
+<li>Linear regression with extra non-linear terms</li>
+<li>When we convert the original data with a polynomial then we can perform linear regression</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org9c9ea0d" class="outline-3">
+<h3 id="org9c9ea0d"><span class="section-number-3">10.2</span> Orthogonal Polynomial</h3>
+<div class="outline-text-3" id="text-10-2">
+<ul class="org-ul">
+<li>Adding too many polynomials can lead to a <b>singularity problem</b>, and hence we use orthogonals</li>
+<li>In R we use the <code>poly()</code> to find the best polynomial terms to use</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org34d02ad" class="outline-3">
+<h3 id="org34d02ad"><span class="section-number-3">10.3</span> Over fitting with Orthogonal Polynomials</h3>
+<div class="outline-text-3" id="text-10-3">
+<ul class="org-ul">
+<li>Starts to fit the noise variables and thus can provide invalid predictions</li>
+<li><b>Prevention</b>: Cross Validation or Regularization</li>
+</ul>
+</div>
+<div id="outline-container-org35fc215" class="outline-4">
+<h4 id="org35fc215">Cross Validation</h4>
+<div class="outline-text-4" id="text-org35fc215">
+<ul class="org-ul">
+<li>Build different models and see which one fits most by changing the degree of the polynomial</li>
+<li>The degree of the polynomial is known as the <b>Hyperparameter</b></li>
+<li><b>Best Suited Hyperparameter</b>: Found from building the data and <b>validating</b> it</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orge180bf1" class="outline-4">
+<h4 id="orge180bf1">Regularization</h4>
+<div class="outline-text-4" id="text-orge180bf1">
+<ul class="org-ul">
+<li>Chooses lower complexity polynomials over more complex ones</li>
+<li>It does this by adjusting the cost function, i.e. increase cost for higher polynomial terms</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org4c13ee7" class="outline-2">
+<h2 id="org4c13ee7"><span class="section-number-2">11</span> Decision Trees</h2>
+<div class="outline-text-2" id="text-11">
+</div>
+<div id="outline-container-org8897e8b" class="outline-3">
+<h3 id="org8897e8b"><span class="section-number-3">11.1</span> Definition</h3>
+<div class="outline-text-3" id="text-11-1">
+<ul class="org-ul">
+<li><b>Class</b>: feature that best separates the target variable</li>
+<li>Each must contain an attribute that can be classified (e.g. 'high', 'low')</li>
+<li>We want to build a model that predicts this attribute (class)</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgd0176da" class="outline-3">
+<h3 id="orgd0176da"><span class="section-number-3">11.2</span> When is the algorithm finished?</h3>
+<div class="outline-text-3" id="text-11-2">
+<ul class="org-ul">
+<li>When all data in the node is of the same class</li>
+<li>No remaining features to distinguish</li>
+<li>The tree has grown to a predefined size</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org79b6df7" class="outline-3">
+<h3 id="org79b6df7"><span class="section-number-3">11.3</span> Advantages</h3>
+<div class="outline-text-3" id="text-11-3">
+<ul class="org-ul">
+<li>Good all purpose classifier</li>
+<li>Can handle numerical and categorical features</li>
+<li>Can handle missing data</li>
+<li>Fast</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org1fa2e3a" class="outline-3">
+<h3 id="org1fa2e3a"><span class="section-number-3">11.4</span> Disadvantages</h3>
+<div class="outline-text-3" id="text-11-4">
+<ul class="org-ul">
+<li>Large trees are hard to read</li>
+<li>Large trees can look counter intuitive</li>
+<li>Small changes in the training data can severely modify the model</li>
+<li>All splits are parallel to the axis', issues with certain modeling shapes</li>
+<li>Easy to overfit data</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org9864a09" class="outline-3">
+<h3 id="org9864a09"><span class="section-number-3">11.5</span> How to apply</h3>
+<div class="outline-text-3" id="text-11-5">
+<ul class="org-ul">
+<li>A decision tree is a set of rules of the <code>IF THEN</code> type</li>
+<li>Traverse from the root of the tree through the leaf nodes</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org3438824" class="outline-3">
+<h3 id="org3438824"><span class="section-number-3">11.6</span> Algorithm</h3>
+<div class="outline-text-3" id="text-11-6">
+<ul class="org-ul">
+<li>Considers all splits before choosing the best ones</li>
+<li>The choice is made based on the level of a node's impurity</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orga3e7264" class="outline-3">
+<h3 id="orga3e7264"><span class="section-number-3">11.7</span> Node Impurity</h3>
+<div class="outline-text-3" id="text-11-7">
+<ul class="org-ul">
+<li>Three measure are: <b>GINI Index</b>, <b>Entropy</b> and <b>Misclassification Error</b>. We focus on <b>GINI</b></li>
+<li>Impure nodes are <b>inhomogeneous</b>, pure are <b>homogeneous</b></li>
+<li>If impurity is 0, then that means that the node has all class instances of the same type</li>
+<li>Calculating GINI:</li>
+</ul>
+<p class="verse">
+GINI (n) = 1 - Σ [P (c | n)]<sup>2</sup><br />
+P (c|n) is the probability of an instance in a node n being of class c<br />
+<br />
+Example:<br />
+If a node <i>n</i> consists of 2 instances of class <i>C1</i> and 4 instances of <i>C2</i> then:<br />
+P(C1|n) is 2/6 = 1 - (2/6)<sup>2</sup> - (4/6)<sup>2</sup> = 0.278<br />
+P(C2|n) is 6/6 = 1 - (6/6)<sup>2</sup> - (0/6)<sup>2</sup> = 0<br />
+</p>
+<ul class="org-ul">
+<li>GINI value is used to find node splits</li>
+<li><b>Weighted Average</b> of GINI of the child nodes is used to find the best split. Basically nodes with higher observation count are weighted higher</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org133975f" class="outline-3">
+<h3 id="org133975f"><span class="section-number-3">11.8</span> Splits</h3>
+<div class="outline-text-3" id="text-11-8">
+<ul class="org-ul">
+<li><b>Binary</b>: Budget &lt; 1m, Budget &gt;= 1m</li>
+<li><b>3-way split</b>: Budget &lt; 1m, Budget in between 1m and 2m, Budget &gt;= 2m</li>
+<li><b>Semi-open Ranges</b>:</li>
+</ul>
+<p class="verse">
+&lt; 10K<br />
+[10K, 20K)  aka 10k to 20k (20k is exclusive)<br />
+[20K, 30K)<br />
+&gt;= 30K<br />
+</p>
+<ul class="org-ul">
+<li><b>Nominal Binary</b>:
+<ul class="org-ul">
+<li>{family, sports} and {luxury}</li>
+<li>{family, luxury} and {sports}</li>
+</ul></li>
+<li><b>Nominal 3-way</b>:
+<ul class="org-ul">
+<li>{family}{sports}{luxury}</li>
+</ul></li>
+<li><b>Ordinal Binary</b>:
+<ul class="org-ul">
+<li>{low, medium}{high}</li>
+<li>{low}{medium,high}</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org71c407f" class="outline-3">
+<h3 id="org71c407f"><span class="section-number-3">11.9</span> Overfitting</h3>
+<div class="outline-text-3" id="text-11-9">
+<ul class="org-ul">
+<li>Noise points can negatively influence the data</li>
+<li>Continually splitting can lead to overfitting</li>
+<li>Overfitting will cause to for the Decision Tree to perform poorer</li>
+<li>Overfitting can cause over complicated trees</li>
+<li>Prevent overfitting with:
+<ul class="org-ul">
+<li><b>Pre-pruning</b>: Early stopping. Stop it before reaching a certain <b>bucket size</b>, or stop if GINI does not decrease.</li>
+<li><b>Post-pruning</b>: Grow the tree to max value. Trim the bottom of the tree. If error is smaller after trimming then replace the sub-tree with a single leaf node.</li>
+</ul></li>
+<li><b>Bucket size and Depth of the tree</b> are meta-parameters. They can only be obtained by running the model on unseen data (<b>holdout data</b>)</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-orgb40a00e" class="outline-2">
+<h2 id="orgb40a00e"><span class="section-number-2">12</span> Nearest Neighbour Classification</h2>
+<div class="outline-text-2" id="text-12">
+</div>
+<div id="outline-container-org7d146ee" class="outline-3">
+<h3 id="org7d146ee"><span class="section-number-3">12.1</span> Definition</h3>
+<div class="outline-text-3" id="text-12-1">
+<ul class="org-ul">
+<li>An instance based learner</li>
+<li>Uses <b>k</b> "closest" points for performing classification</li>
+<li>There is no trained model</li>
+<li>No training but slow classification</li>
+<li>Uses Euclidean distance to compute distance</li>
+</ul>
+<p class="verse">
+√Σ(p - q)<sup>2</sup><br />
+</p>
+<ul class="org-ul">
+<li>Take the majority vote of the k-nearest neighbours <b>or</b> weight the vote according to distance</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org971cc9f" class="outline-3">
+<h3 id="org971cc9f"><span class="section-number-3">12.2</span> Choosing the value of k</h3>
+<div class="outline-text-3" id="text-12-2">
+<ul class="org-ul">
+<li>Too small and it will be sensitive to noise</li>
+<li>Too large and it will include other classes</li>
+<li>Usually k is roughly the same as √n (where n is the instance count)</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org5068203" class="outline-3">
+<h3 id="org5068203"><span class="section-number-3">12.3</span> Scaling</h3>
+<div class="outline-text-3" id="text-12-3">
+<ul class="org-ul">
+<li>Is a necessity, since some values might have different ranges
+<ul class="org-ul">
+<li>E.g. Age could be 1 to 80, but income is say 10 000 - 120 000. But both need to fit on the same plane</li>
+</ul></li>
+<li><b>Min-Max Normalization</b>: Scales between 0 and 1
+<img src="images/Nearest_Neighbour_Classification/2019-12-06_12-54-32_screenshot.png" alt="2019-12-06_12-54-32_screenshot.png" /></li>
+<li><b>Z-score standardization</b>: Count the number of standard deviations from the mean. For a normal distribution, 95% of values are within 3 standard deviations of the mean
+<img src="images/Nearest_Neighbour_Classification/2019-12-06_12-55-05_screenshot.png" alt="2019-12-06_12-55-05_screenshot.png" /></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org755b794" class="outline-3">
+<h3 id="org755b794"><span class="section-number-3">12.4</span> Handling nominal values</h3>
+<div class="outline-text-3" id="text-12-4">
+<ul class="org-ul">
+<li>Convert them to numbers:
+<ul class="org-ul">
+<li>Green = 1</li>
+<li>Blue = 0</li>
+<li>So then (0,0) is red, green is (1, 0), blue is (0, 1)</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org529b18a" class="outline-3">
+<h3 id="org529b18a"><span class="section-number-3">12.5</span> Handling ordinal values:</h3>
+<div class="outline-text-3" id="text-12-5">
+<ul class="org-ul">
+<li>Temperature:
+<ul class="org-ul">
+<li>Hot = 1</li>
+<li>Warm = 0.5</li>
+<li>Cold = 0</li>
+</ul></li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-org95ae247" class="outline-2">
+<h2 id="org95ae247"><span class="section-number-2">13</span> Logistic Regression</h2>
+<div class="outline-text-2" id="text-13">
+</div>
+<div id="outline-container-org525d028" class="outline-3">
+<h3 id="org525d028"><span class="section-number-3">13.1</span> Definition</h3>
+</div>
+<div id="outline-container-orgb544593" class="outline-3">
+<h3 id="orgb544593"><span class="section-number-3">13.2</span> Binary Classification</h3>
+<div class="outline-text-3" id="text-13-2">
+<ul class="org-ul">
+<li><b>x</b> is one or more attributes</li>
+<li><b>y</b> is in the range of 0 to 1</li>
+<li>Example:
+<ul class="org-ul">
+<li><b>x</b> is the size of tumor</li>
+<li><b>y</b> - malignant? (yes or no)</li>
+<li><b>ŷ (or y')</b> - predicted value of y</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org26767c9" class="outline-3">
+<h3 id="org26767c9"><span class="section-number-3">13.3</span> Discrete Classifier</h3>
+<div class="outline-text-3" id="text-13-3">
+<ul class="org-ul">
+<li>Outputs a predicted class rather than a probability</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgd6c2de7" class="outline-3">
+<h3 id="orgd6c2de7"><span class="section-number-3">13.4</span> Probabilistic Classifier</h3>
+<div class="outline-text-3" id="text-13-4">
+<ul class="org-ul">
+<li>Outputs probabilities of an instance belonging to a particular class</li>
+<li><b>ŷ</b> is between 0 and 1</li>
+<li><b>ŷ</b> is the probability of a positive (e.g. likelihood of an illness)</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org60715f3" class="outline-3">
+<h3 id="org60715f3"><span class="section-number-3">13.5</span> Sigmoid Function</h3>
+<div class="outline-text-3" id="text-13-5">
+<ul class="org-ul">
+<li>Normally the date is in the range of -∞ to +∞. The sigmoid function gives values between 0 and 1</li>
+<li>So now if <b>ŷ</b> is 0.7 then the there is a positive probability that something will occur with a 70% likelihood</li>
+<li>Set a threshold for the prediction, so that if <b>ŷ</b> &gt; threshold then predict y as 1.</li>
+<li>A threshold converts a probabilistic classifier into a discrete classifier</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org47296bf" class="outline-3">
+<h3 id="org47296bf"><span class="section-number-3">13.6</span> Decision Boundary</h3>
+<div class="outline-text-3" id="text-13-6">
+<ul class="org-ul">
+<li>Is the line that separates the classes</li>
+<li>For non-linear values (e.g. circular) use non linear terms</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org2af4fd1" class="outline-3">
+<h3 id="org2af4fd1"><span class="section-number-3">13.7</span> Finding parameters</h3>
+<div class="outline-text-3" id="text-13-7">
+<ul class="org-ul">
+<li>Same as linear regression this is done by optimizing the cost function</li>
+<li>Optimize the cost function</li>
+<li>Cost function is sometimes called an objective function
+<ul class="org-ul">
+<li><b>n</b>: Number of factors</li>
+<li><b>m</b>: Number of training instances</li>
+<li><b>y<sup>i</sup></b>: <b>y</b> values for the training set</li>
+<li><b>ŷ<sup>i</sup></b>: Predicted <b>y</b> values for the training set</li>
+<li><b>a, b1, b2, &#x2026;</b>: Parameters</li>
+</ul></li>
+<li>Cost function (remember that <b>ŷ</b> is between 0 and 1)</li>
+</ul>
+<p class="verse">
+cost (ŷ, y) = -log ŷ if y = 1<br />
+</p>
+
+<div class="figure">
+<p><img src="images/Logistic_Regression/2019-12-09_19-59-15_screenshot.png" alt="2019-12-09_19-59-15_screenshot.png" />
+</p>
+</div>
+
+<p class="verse">
+cost (ŷ, y) = -log (1 - ŷ) if y = 0<br />
+</p>
+
+<div class="figure">
+<p><img src="images/Logistic_Regression/2019-12-09_20-00-01_screenshot.png" alt="2019-12-09_20-00-01_screenshot.png" />
+</p>
+</div>
+<ul class="org-ul">
+<li>Interpretation
+<ul class="org-ul">
+<li>If y = 1 and we predict a value close to 0, then there is a heavy cost (penalty)</li>
+<li>If y = 0 and we predict a value close to 1, then there is also a heavy cost (penalty)</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orge26ff69" class="outline-3">
+<h3 id="orge26ff69"><span class="section-number-3">13.8</span> Linear models are hyperplanes</h3>
+<div class="outline-text-3" id="text-13-8">
+<ul class="org-ul">
+<li>Decision boundary for two-class logistic regression is where probability equals 0.5</li>
+<li>Linear =&gt; logistic regression can only separate data by linear/flat hyperplanes</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgb2392ac" class="outline-3">
+<h3 id="orgb2392ac"><span class="section-number-3">13.9</span> Summary</h3>
+<div class="outline-text-3" id="text-13-9">
+<ul class="org-ul">
+<li>Find the equation of the line that best separates the classes</li>
+<li>z = a + b1 * x1 + b2 * x2 &#x2026;.. + bn + xn</li>
+<li>Minimise the function above by using the cost function on it</li>
+<li>To predict a class:
+<ul class="org-ul">
+<li>Calculate the values of z given above</li>
+<li>Find g(z) where g is the logistic function (sigmoid function)</li>
+<li>This gives the probability (of a positive)</li>
+</ul></li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-org1dc96fd" class="outline-2">
+<h2 id="org1dc96fd"><span class="section-number-2">14</span> ROC Graphs</h2>
+<div class="outline-text-2" id="text-14">
+</div>
+<div id="outline-container-org860430e" class="outline-3">
+<h3 id="org860430e"><span class="section-number-3">14.1</span> Definition</h3>
+<div class="outline-text-3" id="text-14-1">
+<ul class="org-ul">
+<li>ROC Graphs are drawn using True Positive Rates and False Positive Rates to summarize confusion matrices.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgec6dd5c" class="outline-3">
+<h3 id="orgec6dd5c"><span class="section-number-3">14.2</span> Confusion Matrix</h3>
+<div class="outline-text-3" id="text-14-2">
+<ul class="org-ul">
+<li>Explanation
+<img src="images/ROC_Curves/2019-12-09_20-36-14_screenshot.png" alt="2019-12-09_20-36-14_screenshot.png" /></li>
+<li>Example
+<img src="images/ROC_Curves/2019-12-09_20-36-53_screenshot.png" alt="2019-12-09_20-36-53_screenshot.png" /></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orge920b47" class="outline-3">
+<h3 id="orge920b47"><span class="section-number-3">14.3</span> True Positive Rate (aka Sensitivity, Hit Rate, Recall)</h3>
+<div class="outline-text-3" id="text-14-3">
+<ul class="org-ul">
+<li>True positive divided by all positives</li>
+<li>TP / P = TP / (TP + FN)</li>
+<li>So for the example above: 60 / 100 = 0.6</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org0a05cf1" class="outline-3">
+<h3 id="org0a05cf1"><span class="section-number-3">14.4</span> Precision</h3>
+<div class="outline-text-3" id="text-14-4">
+<ul class="org-ul">
+<li>True positives / All Instances classified as positive</li>
+<li>TP / (TP + FP)</li>
+<li>So for the example above: 60 / 80 = 0.75</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org53033de" class="outline-3">
+<h3 id="org53033de"><span class="section-number-3">14.5</span> Accuracy</h3>
+<div class="outline-text-3" id="text-14-5">
+<ul class="org-ul">
+<li>Correct classification / Total instances</li>
+<li>(TP + TN) / (P + N)</li>
+<li>So for the example above: 940 / 1000 = 0.94</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgdc4076c" class="outline-3">
+<h3 id="orgdc4076c"><span class="section-number-3">14.6</span> False Positive Rate</h3>
+<div class="outline-text-3" id="text-14-6">
+<ul class="org-ul">
+<li>Negatives incorrectly classified / Total negatives</li>
+<li>FP / N = FP / (FP + TN)</li>
+<li>So for the example above: 20 / 900 = 0.02</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org52013ea" class="outline-3">
+<h3 id="org52013ea"><span class="section-number-3">14.7</span> Definition</h3>
+<div class="outline-text-3" id="text-14-7">
+<ul class="org-ul">
+<li>ROC graphs are 2D charts with TPR on the y axis and FPR on the x axis</li>
+<li>Depicts trade-offs between benefits (true positives) and costs (false positives)</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgce77e79" class="outline-3">
+<h3 id="orgce77e79"><span class="section-number-3">14.8</span> ROC Space</h3>
+<div class="outline-text-3" id="text-14-8">
+<ul class="org-ul">
+<li>Each point in the ROC space corresponds to a discreet classifier</li>
+<li>(0, 0) - never classify as positive</li>
+<li>(1, 1) - classifying everything as positive</li>
+<li>(1, 0) - perfectly incorrect classifier</li>
+<li>(0, 1) - perfect classifier</li>
+<li>Lower left are conservative, maker few positives and few errors</li>
+<li>Upper right less conservative, make more positive classifications and more errors</li>
+<li>Line y = x is a random choice</li>
+<li>Bottom right performs worst, flipping it will produce a useful classifier (if it is dominant)</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org067fc4e" class="outline-3">
+<h3 id="org067fc4e"><span class="section-number-3">14.9</span> Classifiers</h3>
+<div class="outline-text-3" id="text-14-9">
+<ul class="org-ul">
+<li>Use a threshold to turn a Probabilistic Classifier into a Discrete Classifier</li>
+<li>If the probability or score is above the threshold then the classifier outputs Y, otherwise N</li>
+<li>Each threshold now produces a distinct point in ROC space</li>
+<li>Varying the threshold for a probabilistic classifier produces a ROC curve</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org92701c4" class="outline-3">
+<h3 id="org92701c4"><span class="section-number-3">14.10</span> Recap</h3>
+<div class="outline-text-3" id="text-14-10">
+<ul class="org-ul">
+<li>Discrete Classifier - point in ROC space</li>
+<li>Probabilistic Classifier - line in ROC space</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org09ddd7b" class="outline-3">
+<h3 id="org09ddd7b"><span class="section-number-3">14.11</span> Algorithm</h3>
+<div class="outline-text-3" id="text-14-11">
+<ul class="org-ul">
+<li>Go by the threshold score</li>
+<li>Start at 0, 0</li>
+<li>Then with every positive classifier move up with the threshold</li>
+<li>With every negative classifier move by one right</li>
+<li>So if you have 0.1 to 1 on both x and y axis' then you need a total of 20 classifiers to fill up the curve</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orge26053b" class="outline-3">
+<h3 id="orge26053b"><span class="section-number-3">14.12</span> Area Under Curve (AUC)</h3>
+<div class="outline-text-3" id="text-14-12">
+<ul class="org-ul">
+<li>Ranges between 0 and 1</li>
+<li>Area for a random guess is 0.5</li>
+<li>The bigger the area, and the more it goes up towards the left side and up, the higher the probability that a random observation will be classified as positive</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org4cb7640" class="outline-2">
+<h2 id="org4cb7640"><span class="section-number-2">15</span> Clustering</h2>
+<div class="outline-text-2" id="text-15">
+</div>
+<div id="outline-container-org45a3e56" class="outline-3">
+<h3 id="org45a3e56"><span class="section-number-3">15.1</span> Definition</h3>
+<div class="outline-text-3" id="text-15-1">
+<ul class="org-ul">
+<li>Is used when classes cannot be predicted but there are visible groupings of data</li>
+<li>These clusters presumably reflect some sort of mechanism that causes for the data to group together more than to other clusters</li>
+<li>Clusters can be:
+<ul class="org-ul">
+<li>Disjoint vs overlapping</li>
+<li>Deterministic vs probabilistic</li>
+<li>Flat vs hierarchical</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org62fdbf7" class="outline-3">
+<h3 id="org62fdbf7"><span class="section-number-3">15.2</span> k-means algorithm</h3>
+<div class="outline-text-3" id="text-15-2">
+<ol class="org-ol">
+<li>Select K centroids (K rows chosen randomly)</li>
+<li>Assigns each data point to its closest centroid</li>
+<li>Recalculate the centroids as the average of all data points in a cluster</li>
+<li>Assigns each data point to its closest centroid</li>
+<li>Repeat steps 3 and 4 until the observations are not reassigned or the maximum number of iterations is reached (R uses 10 as the default max).</li>
+</ol>
+</div>
+</div>
+<div id="outline-container-org1f9d36a" class="outline-3">
+<h3 id="org1f9d36a"><span class="section-number-3">15.3</span> Cost function</h3>
+<div class="outline-text-3" id="text-15-3">
+<ul class="org-ul">
+<li>Out of all the iterations of the algorithm the one with the lowest Sum of Squared Errors (SSE) is chosen as the "right" one. Except in this case the error is the distance from the centroid to the point</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-orged3a9de" class="outline-2">
+<h2 id="orged3a9de"><span class="section-number-2">16</span> Using R</h2>
+<div class="outline-text-2" id="text-16">
+</div>
+<div id="outline-container-orgee7b6af" class="outline-3">
+<h3 id="orgee7b6af"><span class="section-number-3">16.1</span> Combine</h3>
+<div class="outline-text-3" id="text-16-1">
+<ul class="org-ul">
+<li><code>c(1, 2, 4)</code>: convert individual values into a vector</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgb319446" class="outline-3">
+<h3 id="orgb319446"><span class="section-number-3">16.2</span> Sequence <code>seq</code></h3>
+<div class="outline-text-3" id="text-16-2">
+<ul class="org-ul">
+<li><code>seq(1, 10 , 3)</code>: produce a sequence from 1 to 10 with a step of 3. Step an be skipped</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgd86a4c8" class="outline-3">
+<h3 id="orgd86a4c8"><span class="section-number-3">16.3</span> Matrix</h3>
+<div class="outline-text-3" id="text-16-3">
+<ul class="org-ul">
+<li><code>matrix(c(1,2,3,4,5,6), nrow=2, byrow=TRUE)</code>: <code>nrow</code> describes the amount of rows and <code>byrow</code> fills by row and not by column</li>
+<li><code>cbind(A, B)</code>: combine two matrices together</li>
+<li><code>A %*% B</code> : multiple matrix A by matrix B, division is applied by <code>%/%</code></li>
+<li><code>dimnames(A) = list(c("row1", "row2"), c("col1", "col2", "col3"))</code>: provide names for the columns and rows</li>
+<li><code>c(A)</code>: deconstruct A to a vector</li>
+<li><code>t(A)</code>: transpose matrix A</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org26682d2" class="outline-3">
+<h3 id="org26682d2"><span class="section-number-3">16.4</span> Lists</h3>
+<div class="outline-text-3" id="text-16-4">
+<ul class="org-ul">
+<li><code>X &lt;- list(1, "hello", 4)</code>: create a list</li>
+<li><code>X[c(1,3)]</code>: show the key-values under the first and the third indices</li>
+<li><code>X[[2]]</code>: show the value of the second index</li>
+<li><code>X &lt;- list(name="Joe", age=24)</code>: create a named list</li>
+<li><code>X$name</code>: show the value of key <code>name</code></li>
+<li><code>X$age</code>: show the value of key <code>age</code></li>
+<li><code>X[1]</code>: show the name of the key under index 1</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-org7011771" class="outline-2">
+<h2 id="org7011771"><span class="section-number-2">17</span> Exam Questions</h2>
+<div class="outline-text-2" id="text-17">
+</div>
+<div id="outline-container-org55a3d22" class="outline-3">
+<h3 id="org55a3d22"><span class="section-number-3">17.1</span> Remember to draw diagrams</h3>
+</div>
+<div id="outline-container-orgddf02c3" class="outline-3">
+<h3 id="orgddf02c3"><span class="section-number-3">17.2</span> What is a probabilistic classifier</h3>
+<div class="outline-text-3" id="text-17-2">
+<ul class="org-ul">
+<li>Outputs a probability, value between 0 and 1, used for binary data.</li>
+<li>To turn into a deterministic classifier we set a threshold (can use many thresholds)</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org45412e4" class="outline-3">
+<h3 id="org45412e4"><span class="section-number-3">17.3</span> Deterministic classifier</h3>
+<div class="outline-text-3" id="text-17-3">
+<ul class="org-ul">
+<li>Is either positive or negative, it does not use probability</li>
+<li>Allows to fully determine the value of the dependent variable from the independent variable</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgf02af08" class="outline-3">
+<h3 id="orgf02af08"><span class="section-number-3">17.4</span> What is logistic regression</h3>
+<div class="outline-text-3" id="text-17-4">
+<ul class="org-ul">
+<li>Uses probabilistic classifier</li>
+<li>Tries to find a plane to best separate the classes</li>
+<li>Line tries to best separate the planes</li>
+<li>y is the actual value</li>
+<li>y hat is p, its the predicted value</li>
+<li>Cost function: -log hat p if y = 1, -log (1 - hat y) if y = 0</li>
+<li>Cost function graph is in the notes of logistic regression</li>
+<li>For y = 0, the cost is small for small hat y (p)</li>
+<li>For y = 1, the cost is small for high hat y (p)</li>
+<li>We use the sigmoid function to squash the values to be between 0 and 1 on the vertical axis, so that we can get a probabilistic classifier</li>
+<li>A value of hat y = 0.7 means that there is a 70 chance that the outcome is positive</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org1fd97f3" class="outline-3">
+<h3 id="org1fd97f3"><span class="section-number-3">17.5</span> Confusion matrix for a binary classification, most used with ROC curves</h3>
+<div class="outline-text-3" id="text-17-5">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">&#xa0;</th>
+<th scope="col" class="org-left">Positive</th>
+<th scope="col" class="org-left">Negative</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Yes</td>
+<td class="org-left">True Positive</td>
+<td class="org-left">False positive</td>
+</tr>
+
+<tr>
+<td class="org-left">No</td>
+<td class="org-left">False Negative</td>
+<td class="org-left">True negative</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">P</td>
+<td class="org-left">N</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+True class on the top
+Predicted class on the left
+</p>
+<ul class="org-ul">
+<li>From the confusion matrix we receive:
+<ul class="org-ul">
+<li>Sensitivity</li>
+<li>Precision</li>
+<li>Accuracy</li>
+<li>FPR (keep low, all previous one preferably keep high)</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgc978982" class="outline-3">
+<h3 id="orgc978982"><span class="section-number-3">17.6</span> ROC Space</h3>
+<div class="outline-text-3" id="text-17-6">
+<ul class="org-ul">
+<li>False positive rate is on the X axis</li>
+<li>True positive rate is on the Y axis</li>
+<li>The best point is on the top left, where the true positive is high and the false positives are low</li>
+<li>Every point in ROC space corresponds to a discrete classifier. Although a probabilistic classifier can also be used</li>
+<li>One can change the positive outcomes by changing the threshold</li>
+<li>A good ROC curve (close to top left) gives good options, otherwise if the curve is too low it does not provide too many viable options. It all depends whether we are after more true positives or false positives.</li>
+<li>The area under the curve determines how good the classifier is</li>
+<li>How to get the curve for a probabilistic classifier. We choose thresholds</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org2e05bfd" class="outline-3">
+<h3 id="org2e05bfd"><span class="section-number-3">17.7</span> kNN</h3>
+<div class="outline-text-3" id="text-17-7">
+<ul class="org-ul">
+<li>The main thing that stands out in kNN is the fact that it does not actually use training data</li>
+<li>To get a prediction we simply enter the data and distance calculations are executed to every point against the data-set. Say that the distance is k=5 then we check all distances up to 5 and we check the occurrences of data within that 5 distance circle. Once we know how many of each occurrences exist we can check the probability of the predicted data.</li>
+<li>One important aspect of kNN is the fact that all data needs to be scaled to the same range (usually 0 to 1)</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org9e424a1" class="outline-3">
+<h3 id="org9e424a1"><span class="section-number-3">17.8</span> Decision Tree</h3>
+<div class="outline-text-3" id="text-17-8">
+<ul class="org-ul">
+<li>Building: you introduce splits to the data, the data is cut into separate nodes. We have as many nodes as many classifiers there are.</li>
+<li>Node impurity is important, so that there is as little residue or foreign data in the classifier as possible</li>
+<li>Low impurity provides high purity</li>
+<li>GINI value is the impurity value</li>
+<li>Know how to calculate GINI</li>
+<li>Max value for GINI is 0.5 (highest impurity)</li>
+<li>There is more importance in big nodes than there is in small nodes</li>
+<li>Evaluating a split is done by the usage of weighted average of the GINI values</li>
+<li>Decision Trees considers all splits and chooses the best one</li>
+<li>Advantage:
+<ul class="org-ul">
+<li>works really well with most of classifications</li>
+<li>can deal with factored and numeric data</li>
+<li>they deal well with missing values</li>
+</ul></li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org634f790" class="outline-2">
+<h2 id="org634f790"><span class="section-number-2">18</span> Delete at the end</h2>
+<div class="outline-text-2" id="text-18">
+<script src="../assets/jquery-3.3.1.min.js"></script>
+<script src="../assets/notes.js"></script>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="date">Date: 2019-09-09 Mon 11:54</p>
+<p class="author">Author: Damian Chrzanowski</p>
+<p class="date">Created: 2019-12-10 Tue 10:40</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

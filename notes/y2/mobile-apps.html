@@ -1,0 +1,852 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2018-12-13 Thu 20:28 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Mobile Applications 2</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="Damian Chrzanowski" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="../assets/org.css"/>
+<link rel="icon" href="../assets/favicon.ico">
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2018 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Mobile Applications 2</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org1e8e8f9">1. Android</a></li>
+<li><a href="#org57b5e69">2. Apps categories</a></li>
+<li><a href="#org4929c79">3. Activity</a>
+<ul>
+<li><a href="#org077599b">3.1. Definition</a></li>
+<li><a href="#org524fc42">3.2. Lifecycle</a></li>
+<li><a href="#org0d742cb">3.3. Three common activity states</a></li>
+</ul>
+</li>
+<li><a href="#org74fab04">4. Views</a></li>
+<li><a href="#orgdb6a8ef">5. Layouts</a>
+<ul>
+<li><a href="#org4e52ba1">5.1. Definitions</a></li>
+<li><a href="#orgee7a340">5.2. Creation</a></li>
+<li><a href="#org2c86c95">5.3. Layout types</a></li>
+</ul>
+</li>
+<li><a href="#orgc4975a0">6. Screen orientation</a></li>
+<li><a href="#org8d05126">7. Handling click events</a></li>
+<li><a href="#org06f0547">8. Intents</a>
+<ul>
+<li><a href="#org994876d">8.1. Definition</a></li>
+<li><a href="#orgd0f6896">8.2. Constructing</a></li>
+<li><a href="#orgafdbf78">8.3. Receiving an Intent</a></li>
+<li><a href="#org369181d">8.4. Requesting information back from an Intent</a></li>
+</ul>
+</li>
+<li><a href="#orgd17f57e">9. Animations</a>
+<ul>
+<li><a href="#org18d7f96">9.1. Methods</a></li>
+<li><a href="#org8ee9d14">9.2. Attaching an animation</a></li>
+<li><a href="#orgddc0b92">9.3. Animation XML tags and attributes</a></li>
+</ul>
+</li>
+<li><a href="#orgb559d57">10. Selection Widgets</a>
+<ul>
+<li><a href="#org0ea4c2d">10.1. Small pool of options</a></li>
+<li><a href="#org182cba5">10.2. Large pool of options with Adapters</a></li>
+<li><a href="#org450b687">10.3. Menus</a></li>
+</ul>
+</li>
+<li><a href="#org73c1773">11. Images</a></li>
+<li><a href="#org9a4825e">12. Deployment</a>
+<ul>
+<li><a href="#org7850faa">12.1. Deployment options</a></li>
+<li><a href="#org0b09795">12.2. Monetizing</a></li>
+<li><a href="#orgdb3c66c">12.3. Strategies</a></li>
+<li><a href="#org327a110">12.4. Steps</a></li>
+</ul>
+</li>
+<li><a href="#org433f7c6">13. On Exam</a></li>
+</ul>
+</div>
+</div>
+<p>
+<a href="index.html">Home Page</a>
+</p>
+
+<div id="outline-container-org1e8e8f9" class="outline-2">
+<h2 id="org1e8e8f9"><span class="section-number-2">1</span> Android</h2>
+<div class="outline-text-2" id="text-1">
+<p class="verse">
+Linux-based operating system designed primarily for touch screen mobile devices<br />
+</p>
+</div>
+</div>
+
+<div id="outline-container-org57b5e69" class="outline-2">
+<h2 id="org57b5e69"><span class="section-number-2">2</span> Apps categories</h2>
+<div class="outline-text-2" id="text-2">
+<ul class="org-ul">
+<li>Communications</li>
+<li>Photography</li>
+<li>Audio/Video</li>
+<li>News</li>
+<li>Books</li>
+<li>Sports</li>
+<li>Travel</li>
+<li>Social</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org4929c79" class="outline-2">
+<h2 id="org4929c79"><span class="section-number-2">3</span> Activity</h2>
+<div class="outline-text-2" id="text-3">
+</div>
+<div id="outline-container-org077599b" class="outline-3">
+<h3 id="org077599b"><span class="section-number-3">3.1</span> Definition</h3>
+<div class="outline-text-3" id="text-3-1">
+<ul class="org-ul">
+<li>An Activity is  an application component that provides a screen with which users can interact in order to do something, such as dial the phone, etc.</li>
+<li>Each activity is given a window</li>
+<li>The window typically fills the screen, but it may be partial as well</li>
+<li>Applications consist (usually) of multiple activities, that may or may not interact with each other</li>
+<li>When an activity starts a new activity the old activity is stopped and its state is preserved in the <b>back stack</b></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org524fc42" class="outline-3">
+<h3 id="org524fc42"><span class="section-number-3">3.2</span> Lifecycle</h3>
+<div class="outline-text-3" id="text-3-2">
+<ul class="org-ul">
+<li><b>onCreate</b> - called when the activity is first created, usually used to setup the UI</li>
+<li><b>onStart</b> - called when the activity becomes visible to the user</li>
+<li><b>onResume</b> - called when the activity starts interacting with the user</li>
+<li><b>onPause</b> - called when the current activity is being paused and the previous activity is resumed or an another activity made the current activity loses focus</li>
+<li><b>onStop</b> - called when the activity is no longer visible</li>
+<li><b>onDestroy</b> - called when the activity is destroyed by the system (manually or to conserve memory)</li>
+<li><b>onRestart</b> - called when the activity gas been stopped and is restarting again</li>
+</ul>
+
+<div class="figure">
+<p><img src="images/MobileApps_AndroidActivityLifecycle.png" alt="MobileApps_AndroidActivityLifecycle.png" />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org0d742cb" class="outline-3">
+<h3 id="org0d742cb"><span class="section-number-3">3.3</span> Three common activity states</h3>
+<div class="outline-text-3" id="text-3-3">
+<ul class="org-ul">
+<li><b>Resumed/Active/Running</b> - is visible and has the focus</li>
+<li><b>Paused</b> - has lost its focus and may be partially hidden by other activities</li>
+<li><b>Stopped</b> - has lost focus and is completely hidden by another activity</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org74fab04" class="outline-2">
+<h2 id="org74fab04"><span class="section-number-2">4</span> Views</h2>
+<div class="outline-text-2" id="text-4">
+<ul class="org-ul">
+<li>The <b>View</b> class is the superclass for all widgets</li>
+<li>The <b>ViewGroup</b> class is the superclass for most widgets that can contain other widgets, such as <b>Layouts</b></li>
+<li>The <b>TextView</b> class is the superclass for widgets that display text and buttons</li>
+<li><b>ScrollView</b> allows to pack widgets beyond the screen size and scroll them</li>
+<li><b>GridView</b> allows to pack widgets in a 2D grid, some attributes:
+<ul class="org-ul">
+<li><code>numColumns</code></li>
+<li><code>verticalSpacing</code></li>
+<li><code>solumnWidth</code></li>
+<li><code>stretchMode</code></li>
+</ul></li>
+</ul>
+
+<div class="figure">
+<p><img src="images/MobileApps_ViewHierarchy.png" alt="MobileApps_ViewHierarchy.png" />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgdb6a8ef" class="outline-2">
+<h2 id="orgdb6a8ef"><span class="section-number-2">5</span> Layouts</h2>
+<div class="outline-text-2" id="text-5">
+</div>
+<div id="outline-container-org4e52ba1" class="outline-3">
+<h3 id="org4e52ba1"><span class="section-number-3">5.1</span> Definitions</h3>
+<div class="outline-text-3" id="text-5-1">
+<p class="verse">
+Layout defines the visual structure for a user interface<br />
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgee7a340" class="outline-3">
+<h3 id="orgee7a340"><span class="section-number-3">5.2</span> Creation</h3>
+<div class="outline-text-3" id="text-5-2">
+<ul class="org-ul">
+<li>Declared with an <b>XML</b> file
+<ul class="org-ul">
+<li>XML layout is a specification of the various UI components and their relationships</li>
+<li>XML layouts are resources</li>
+</ul></li>
+<li>Programmatically with <b>View</b> and <b>ViewGroup</b> classes or their sub-classes</li>
+<li>Either method can be used, or both at the same time</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org2c86c95" class="outline-3">
+<h3 id="org2c86c95"><span class="section-number-3">5.3</span> Layout types</h3>
+<div class="outline-text-3" id="text-5-3">
+<ul class="org-ul">
+<li><b>Frame</b> - with multiple widgets it stacks them on top of each other</li>
+<li><b>Linear</b> - displays in a column type fashion, <b>orientation</b> is either vertical or horizontal. Common attributes: orientation, weight, gravity.</li>
+<li><b>Relative</b> - displays each widget with the relation to an another widget: top of parent, bottom of parent, center to container, etc.</li>
+<li><b>Table</b> - layout widgets in rows and columns, sort of like a html table. Common attributes: layout<sub>span</sub>, layout<sub>column</sub>.</li>
+<li><b>Absolute</b> (Deprecated) - uses actual x and y coordinates to position widgets in relation to the screen size. Obvious issues due to different screen sizes.</li>
+<li><b>Nested</b>, as the name suggests it allows</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgc4975a0" class="outline-2">
+<h2 id="orgc4975a0"><span class="section-number-2">6</span> Screen orientation</h2>
+<div class="outline-text-2" id="text-6">
+<ul class="org-ul">
+<li>Prevent it by fixing an orientation in the AndroidManifest.xml</li>
+<li>Another way is to use the same layout for both orientations</li>
+<li>The last option is to use different XML files for both orientations</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org8d05126" class="outline-2">
+<h2 id="org8d05126"><span class="section-number-2">7</span> Handling click events</h2>
+<div class="outline-text-2" id="text-7">
+<ul class="org-ul">
+<li>The XML file needs to have an <code>onClick</code> attribute</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-xml">android:onClick="sendMessage"
+</pre>
+</div>
+<ul class="org-ul">
+<li>The Java file needs to have a corresponding method</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #51afef; font-style: italic;">public</span> <span style="color: #ECBE7B;">void</span> <span style="color: #c678dd;">sendMessage</span><span style="color: #fff0f5;">(</span><span style="color: #ECBE7B;">View</span> <span style="color: #db5762;">view</span><span style="color: #fff0f5;">)</span> <span style="color: #fff0f5;">{}</span>
+</pre>
+</div>
+<ul class="org-ul">
+<li>Must be public, must be void, and needs to have the view as the parameter</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org06f0547" class="outline-2">
+<h2 id="org06f0547"><span class="section-number-2">8</span> Intents</h2>
+<div class="outline-text-2" id="text-8">
+</div>
+<div id="outline-container-org994876d" class="outline-3">
+<h3 id="org994876d"><span class="section-number-3">8.1</span> Definition</h3>
+<div class="outline-text-3" id="text-8-1">
+<ul class="org-ul">
+<li>Provides a runtime binding between separate components (usually activities)</li>
+<li>Intent represents an app's "intent to do something"</li>
+<li>Usually used to start another activity</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgd0f6896" class="outline-3">
+<h3 id="orgd0f6896"><span class="section-number-3">8.2</span> Constructing</h3>
+<div class="outline-text-3" id="text-8-2">
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #ECBE7B;">Intent</span> <span style="color: #db5762;">intent</span> = <span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">Intent</span><span style="color: #fff0f5;">(</span><span style="color: #51afef; font-style: italic;">this</span>, ClassNameOfActivityToStart.<span style="color: #51afef; font-style: italic;">class</span><span style="color: #fff0f5;">)</span>;
+intent.putExtra<span style="color: #fff0f5;">(</span>KEY, message<span style="color: #fff0f5;">)</span>;
+startActivity<span style="color: #fff0f5;">(</span>intent<span style="color: #fff0f5;">)</span>;
+</pre>
+</div>
+<ul class="org-ul">
+<li><b>this</b> is the context, usually <b>this</b> is used as it is the simplest way to obtain a context</li>
+<li><b>KEY</b> is the key of the extra message and usually is a string in the resources, <b>message</b> is the string to be sent</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgafdbf78" class="outline-3">
+<h3 id="orgafdbf78"><span class="section-number-3">8.3</span> Receiving an Intent</h3>
+<div class="outline-text-3" id="text-8-3">
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #ECBE7B;">Intent</span> <span style="color: #db5762;">intent</span> = getIntent<span style="color: #fff0f5;">()</span>;
+<span style="color: #ECBE7B;">String</span> <span style="color: #db5762;">message</span> = intent.getStringExtra<span style="color: #fff0f5;">(</span>KEY<span style="color: #fff0f5;">)</span>;
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org369181d" class="outline-3">
+<h3 id="org369181d"><span class="section-number-3">8.4</span> Requesting information back from an Intent</h3>
+<div class="outline-text-3" id="text-8-4">
+<ul class="org-ul">
+<li>First start an activity, implying that you require a result back</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-java">startActivityForResult<span style="color: #fff0f5;">(</span><span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">Intent</span><span style="color: #c678dd;">(</span><span style="color: #51afef; font-style: italic;">this</span>, ClassNameOfActivityToStart.<span style="color: #51afef; font-style: italic;">class</span><span style="color: #c678dd;">)</span>, <span style="color: #ECBE7B;">request_Code</span><span style="color: #fff0f5;">)</span>;
+</pre>
+</div>
+<ul class="org-ul">
+<li>The activity the returns data needs to set the data</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #ECBE7B;">Intent</span> <span style="color: #db5762;">intent</span> = <span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">Intent</span><span style="color: #fff0f5;">()</span>;
+intent.setDate<span style="color: #fff0f5;">(</span>message<span style="color: #fff0f5;">)</span>;
+setResult<span style="color: #fff0f5;">(</span>RESULT_OK, intent<span style="color: #fff0f5;">)</span>;  <span style="color: #5B6268;">// </span><span style="color: #5B6268;">RESULT_OK or RESULT_CANCELLED</span>
+finish<span style="color: #fff0f5;">()</span>;
+</pre>
+</div>
+<ul class="org-ul">
+<li>The activity that receives the data needs to have the <code>onActivityResult</code> method</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #51afef; font-style: italic;">public</span> <span style="color: #ECBE7B;">void</span> <span style="color: #c678dd;">onActivityResult</span><span style="color: #fff0f5;">(</span><span style="color: #ECBE7B;">int</span> <span style="color: #db5762;">requestCode</span>, <span style="color: #ECBE7B;">int</span> <span style="color: #db5762;">resultCode</span>, <span style="color: #ECBE7B;">Intent</span> <span style="color: #db5762;">data</span><span style="color: #fff0f5;">)</span> <span style="color: #fff0f5;">{</span>
+    <span style="color: #51afef; font-style: italic;">if</span> <span style="color: #c678dd;">(</span>requestCode == request_Code<span style="color: #c678dd;">)</span> <span style="color: #c678dd;">{</span>
+        <span style="color: #51afef; font-style: italic;">if</span> <span style="color: #98be65;">(</span>resultCode == RESULT_OK<span style="color: #98be65;">)</span> <span style="color: #98be65;">{</span>
+            <span style="color: #5B6268;">// </span><span style="color: #5B6268;">do something</span>
+        <span style="color: #98be65;">}</span>
+    <span style="color: #c678dd;">}</span>
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgd17f57e" class="outline-2">
+<h2 id="orgd17f57e"><span class="section-number-2">9</span> Animations</h2>
+<div class="outline-text-2" id="text-9">
+</div>
+<div id="outline-container-org18d7f96" class="outline-3">
+<h3 id="org18d7f96"><span class="section-number-3">9.1</span> Methods</h3>
+<div class="outline-text-3" id="text-9-1">
+<ul class="org-ul">
+<li>start()</li>
+<li>setDuration(long duration)</li>
+<li>getDuration()</li>
+<li>end()</li>
+<li>cancel()</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org8ee9d14" class="outline-3">
+<h3 id="org8ee9d14"><span class="section-number-3">9.2</span> Attaching an animation</h3>
+<div class="outline-text-3" id="text-9-2">
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #ECBE7B;">ImageView</span> <span style="color: #db5762;">image</span> = findViewById<span style="color: #fff0f5;">(</span>R.id.imageView1<span style="color: #fff0f5;">)</span>;
+<span style="color: #ECBE7B;">Animation</span> <span style="color: #db5762;">animation</span> = AnimationUtils.loadAnimation<span style="color: #fff0f5;">(</span>getApplicationContext<span style="color: #c678dd;">()</span>, R.anim.zoom<span style="color: #fff0f5;">)</span>;
+image.startAnimation<span style="color: #fff0f5;">(</span>animation<span style="color: #fff0f5;">)</span>;
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgddc0b92" class="outline-3">
+<h3 id="orgddc0b92"><span class="section-number-3">9.3</span> Animation XML tags and attributes</h3>
+<div class="outline-text-3" id="text-9-3">
+<ul class="org-ul">
+<li><code>scale</code>
+<ul class="org-ul">
+<li><code>fromXScale</code></li>
+<li><code>fromYScale</code></li>
+<li><code>toXScale</code></li>
+<li><code>toYScale</code></li>
+</ul></li>
+<li><code>rotate</code>
+<ul class="org-ul">
+<li><code>fromDegrees</code></li>
+<li><code>toDegrees</code></li>
+</ul></li>
+<li><code>alpha</code>
+<ul class="org-ul">
+<li><code>fromAlpha</code></li>
+<li><code>toAlpha</code></li>
+</ul></li>
+<li><code>translate</code>
+<ul class="org-ul">
+<li><code>fromXDelta</code></li>
+<li><code>fromYDelta</code></li>
+</ul></li>
+<li>Common attributes
+<ul class="org-ul">
+<li><code>duration</code></li>
+<li><code>pivotX</code></li>
+<li><code>pivotY</code></li>
+<li><code>startOffset</code></li>
+<li><code>repeatMode</code> : reverse</li>
+<li><code>repeatCount</code> : 1, 2, 3, infinite</li>
+<li><code>interpolator</code> : linear, accelerate, etc.</li>
+</ul></li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgb559d57" class="outline-2">
+<h2 id="orgb559d57"><span class="section-number-2">10</span> Selection Widgets</h2>
+<div class="outline-text-2" id="text-10">
+</div>
+<div id="outline-container-org0ea4c2d" class="outline-3">
+<h3 id="org0ea4c2d"><span class="section-number-3">10.1</span> Small pool of options</h3>
+<div class="outline-text-3" id="text-10-1">
+<ul class="org-ul">
+<li>RadioButtons</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-xml">&lt;<span style="color: #c678dd;">RadioGroup</span>
+  <span style="color: #c678dd;">android</span>:<span style="color: #db5762;">id</span>=<span style="color: #98be65;">"@+id/rdGr1"</span>&gt;
+  &lt;<span style="color: #c678dd;">RadioButton</span>
+    <span style="color: #c678dd;">android</span>:<span style="color: #db5762;">id</span>=<span style="color: #98be65;">"@+id/rdBt1"</span>&gt;
+  &lt;<span style="color: #c678dd;">RadioButton</span>
+    <span style="color: #c678dd;">android</span>:<span style="color: #db5762;">id</span>=<span style="color: #98be65;">"@+id/rdBt2"</span>&gt;
+&lt;/<span style="color: #c678dd;">RadioGroup</span>&gt;
+</pre>
+</div>
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #ECBE7B;">RadioGroup</span> <span style="color: #db5762;">radio</span> = findViewById<span style="color: #fff0f5;">(</span>R.id.rdGr1<span style="color: #fff0f5;">)</span>;
+
+radio.setOnCheckedChangeListener<span style="color: #fff0f5;">(</span><span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">OnCheckedChangeListener</span><span style="color: #c678dd;">()</span> <span style="color: #c678dd;">{</span>
+        <span style="color: #51afef; font-style: italic;">public</span> <span style="color: #ECBE7B;">void</span> <span style="color: #c678dd;">onCheckedChanged</span><span style="color: #98be65;">(</span><span style="color: #ECBE7B;">RadioGroup</span> <span style="color: #db5762;">group</span>, <span style="color: #ECBE7B;">int</span> <span style="color: #db5762;">checkedId</span><span style="color: #98be65;">)</span> <span style="color: #98be65;">{</span>
+            <span style="color: #ECBE7B;">RadioButton</span> <span style="color: #db5762;">button</span> = findViewById<span style="color: #00bfff;">(</span>R.id.rdBt1<span style="color: #00bfff;">)</span>;
+
+            <span style="color: #51afef; font-style: italic;">if</span> <span style="color: #00bfff;">(</span>button.isChecked<span style="color: #a9a1e1;">()</span><span style="color: #00bfff;">)</span> <span style="color: #00bfff;">{</span>
+                <span style="color: #5B6268;">// </span><span style="color: #5B6268;">do something</span>
+            <span style="color: #00bfff;">}</span> <span style="color: #51afef; font-style: italic;">else</span> <span style="color: #00bfff;">{</span>
+                <span style="color: #5B6268;">// </span><span style="color: #5B6268;">something else</span>
+            <span style="color: #00bfff;">}</span>
+        <span style="color: #98be65;">}</span>
+    <span style="color: #c678dd;">}</span><span style="color: #fff0f5;">)</span>;
+</pre>
+</div>
+<ul class="org-ul">
+<li>CheckButtons</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #ECBE7B;">CheckBox</span> <span style="color: #db5762;">check</span> = findViewById<span style="color: #fff0f5;">(</span>R.id.star<span style="color: #fff0f5;">)</span>;
+
+check.setOnClickListener<span style="color: #fff0f5;">(</span><span style="color: #51afef; font-style: italic;">new</span> <span style="color: #a9a1e1;">View</span>.<span style="color: #ECBE7B;">OnClickListener</span><span style="color: #c678dd;">()</span> <span style="color: #c678dd;">{</span>
+        <span style="color: #51afef; font-style: italic;">public</span> <span style="color: #ECBE7B;">void</span> <span style="color: #c678dd;">onClick</span><span style="color: #98be65;">(</span><span style="color: #ECBE7B;">View</span> <span style="color: #db5762;">v</span><span style="color: #98be65;">)</span> <span style="color: #98be65;">{</span>
+            <span style="color: #51afef; font-style: italic;">if</span> <span style="color: #00bfff;">(</span><span style="color: #a9a1e1;">(</span><span style="color: #32cd32;">(</span><span style="color: #ECBE7B;">CheckBox</span><span style="color: #32cd32;">)</span> v<span style="color: #a9a1e1;">)</span>.isChecked<span style="color: #a9a1e1;">()</span><span style="color: #00bfff;">)</span> <span style="color: #00bfff;">{</span>
+                <span style="color: #5B6268;">// </span><span style="color: #5B6268;">do something</span>
+            <span style="color: #00bfff;">}</span>
+        <span style="color: #98be65;">}</span>
+    <span style="color: #c678dd;">}</span><span style="color: #fff0f5;">)</span>;
+</pre>
+</div>
+<ul class="org-ul">
+<li>ToggleButton</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #ECBE7B;">ToggleButton</span> <span style="color: #db5762;">toggle</span> = findViewById<span style="color: #fff0f5;">(</span>R.id.toggle<span style="color: #fff0f5;">)</span>;
+
+toggle.setOnClickListener<span style="color: #fff0f5;">(</span><span style="color: #51afef; font-style: italic;">new</span> <span style="color: #a9a1e1;">View</span>.<span style="color: #ECBE7B;">OnClickListener</span><span style="color: #c678dd;">()</span> <span style="color: #c678dd;">{</span>
+        <span style="color: #51afef; font-style: italic;">public</span> <span style="color: #ECBE7B;">void</span> <span style="color: #c678dd;">onClick</span><span style="color: #98be65;">(</span><span style="color: #ECBE7B;">View</span> <span style="color: #db5762;">v</span><span style="color: #98be65;">)</span> <span style="color: #98be65;">{</span>
+            <span style="color: #51afef; font-style: italic;">if</span> <span style="color: #00bfff;">(</span><span style="color: #a9a1e1;">(</span><span style="color: #32cd32;">(</span><span style="color: #ECBE7B;">ToggleButton</span><span style="color: #32cd32;">)</span> v<span style="color: #a9a1e1;">)</span>.isChecked<span style="color: #a9a1e1;">()</span><span style="color: #00bfff;">)</span> <span style="color: #00bfff;">{</span>
+                <span style="color: #5B6268;">// </span><span style="color: #5B6268;">do something</span>
+            <span style="color: #00bfff;">}</span>
+        <span style="color: #98be65;">}</span>
+    <span style="color: #c678dd;">}</span><span style="color: #fff0f5;">)</span>;
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org182cba5" class="outline-3">
+<h3 id="org182cba5"><span class="section-number-3">10.2</span> Large pool of options with Adapters</h3>
+<div class="outline-text-3" id="text-10-2">
+<ul class="org-ul">
+<li>ListView</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #51afef; font-style: italic;">public</span> <span style="color: #51afef; font-style: italic;">class</span> <span style="color: #ECBE7B;">ListViewEx</span> <span style="color: #51afef; font-style: italic;">extends</span> <span style="color: #ECBE7B;">ListActivity</span> <span style="color: #fff0f5;">{</span>
+    <span style="color: #ECBE7B;">String</span> <span style="color: #c678dd;">[]</span> <span style="color: #db5762;">data</span> = <span style="color: #c678dd;">{</span><span style="color: #98be65;">""</span>, <span style="color: #98be65;">""</span>, <span style="color: #98be65;">""</span>, ...<span style="color: #c678dd;">}</span>;
+
+    <span style="color: #51afef; font-style: italic;">public</span> <span style="color: #ECBE7B;">void</span> <span style="color: #c678dd;">onCreate</span><span style="color: #c678dd;">(</span><span style="color: #ECBE7B;">Bundle</span> <span style="color: #db5762;">savedInstanceState</span><span style="color: #c678dd;">)</span> <span style="color: #c678dd;">{</span>
+        <span style="color: #5B6268;">// </span><span style="color: #5B6268;">....</span>
+        setListAdapter<span style="color: #98be65;">(</span><span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">ArrayAdapter</span><span style="color: #00bfff;">&lt;</span><span style="color: #ECBE7B;">String</span><span style="color: #00bfff;">&gt;(</span><span style="color: #51afef; font-style: italic;">this</span>, <span style="color: #a9a1e1;">android</span>.R.layout.simple_list_item_1, data<span style="color: #00bfff;">)</span><span style="color: #98be65;">)</span>;
+    <span style="color: #c678dd;">}</span>
+
+    <span style="color: #51afef; font-style: italic;">public</span> <span style="color: #ECBE7B;">void</span> <span style="color: #c678dd;">onListItemClick</span> <span style="color: #c678dd;">(</span><span style="color: #ECBE7B;">ListView</span> <span style="color: #db5762;">parent</span>, <span style="color: #ECBE7B;">View</span> <span style="color: #db5762;">v</span>, <span style="color: #ECBE7B;">int</span> <span style="color: #db5762;">position</span>, <span style="color: #ECBE7B;">long</span> <span style="color: #db5762;">id</span><span style="color: #c678dd;">)</span> <span style="color: #c678dd;">{</span>
+        <span style="color: #5B6268;">// </span><span style="color: #5B6268;">do something</span>
+    <span style="color: #c678dd;">}</span>
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+<ul class="org-ul">
+<li>Spinner
+<ul class="org-ul">
+<li>Same as ListView, although usually one would have a spinner as not the main view of the activity and thus <code>setAdapter</code> method must be used</li>
+<li>as the listener the <code>setOnItemSelectedListener</code> method is used</li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org450b687" class="outline-3">
+<h3 id="org450b687"><span class="section-number-3">10.3</span> Menus</h3>
+<div class="outline-text-3" id="text-10-3">
+<ul class="org-ul">
+<li>Create an options menu using the XML <code>menu</code> tag and its id'ed <code>item</code> tags</li>
+<li>Override the <code>onCreateOptionsMenu</code> to inflate the menu</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #51afef; font-style: italic;">public</span> <span style="color: #ECBE7B;">boolean</span> <span style="color: #c678dd;">onCreateOptionsMenu</span><span style="color: #fff0f5;">(</span><span style="color: #ECBE7B;">Menu</span> <span style="color: #db5762;">menu</span><span style="color: #fff0f5;">)</span> <span style="color: #fff0f5;">{</span>
+    getMenuInflater<span style="color: #c678dd;">()</span>.inflate<span style="color: #c678dd;">(</span>R.menu.activity_main, menu<span style="color: #c678dd;">)</span>;
+    <span style="color: #51afef; font-style: italic;">return</span> <span style="color: #a9a1e1;">true</span>;
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+<ul class="org-ul">
+<li>Override the <code>onOptionsItemSelected</code></li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #51afef; font-style: italic;">public</span> <span style="color: #ECBE7B;">boolean</span> <span style="color: #c678dd;">onOptionsIemSelected</span><span style="color: #fff0f5;">(</span><span style="color: #ECBE7B;">MenuItem</span> <span style="color: #db5762;">item</span><span style="color: #fff0f5;">)</span> <span style="color: #fff0f5;">{</span>
+    <span style="color: #51afef; font-style: italic;">switch</span> <span style="color: #c678dd;">(</span>item.getItemId<span style="color: #98be65;">()</span><span style="color: #c678dd;">)</span> <span style="color: #c678dd;">{</span>
+    <span style="color: #51afef; font-style: italic;">case</span> R.id.menu_about:
+        <span style="color: #5B6268;">// </span><span style="color: #5B6268;">do something</span>
+        <span style="color: #51afef; font-style: italic;">return</span> <span style="color: #a9a1e1;">true</span>;
+    <span style="color: #51afef; font-style: italic;">default</span>:
+        <span style="color: #51afef; font-style: italic;">return</span> <span style="color: #51afef; font-style: italic;">super</span>.onOptionsItemSelected<span style="color: #98be65;">(</span>item<span style="color: #98be65;">)</span>;
+    <span style="color: #c678dd;">}</span>
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org73c1773" class="outline-2">
+<h2 id="org73c1773"><span class="section-number-2">11</span> Images</h2>
+<div class="outline-text-2" id="text-11">
+<ul class="org-ul">
+<li>Common attibutes
+<ul class="org-ul">
+<li><code>contentDescription</code> - image description in a string format</li>
+<li><code>src</code> - the location of the drawable resource</li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org9a4825e" class="outline-2">
+<h2 id="org9a4825e"><span class="section-number-2">12</span> Deployment</h2>
+<div class="outline-text-2" id="text-12">
+</div>
+<div id="outline-container-org7850faa" class="outline-3">
+<h3 id="org7850faa"><span class="section-number-3">12.1</span> Deployment options</h3>
+<div class="outline-text-3" id="text-12-1">
+<ul class="org-ul">
+<li>Google Play Store</li>
+<li>Amazon Store</li>
+<li>As an APK on a website, email, etc.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org0b09795" class="outline-3">
+<h3 id="org0b09795"><span class="section-number-3">12.2</span> Monetizing</h3>
+<div class="outline-text-3" id="text-12-2">
+<ul class="org-ul">
+<li>Paid app</li>
+<li>In-app billing</li>
+<li>Ads
+<ul class="org-ul">
+<li>Google AdMob</li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgdb3c66c" class="outline-3">
+<h3 id="orgdb3c66c"><span class="section-number-3">12.3</span> Strategies</h3>
+<div class="outline-text-3" id="text-12-3">
+<ul class="org-ul">
+<li>Provide ads in your app, have another paid version of the app that has no adds</li>
+<li>Provide an app with limited features that is free. Paid version has full features</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org327a110" class="outline-3">
+<h3 id="org327a110"><span class="section-number-3">12.4</span> Steps</h3>
+<div class="outline-text-3" id="text-12-4">
+<ul class="org-ul">
+<li>Set the final package name</li>
+<li>Set the final application icon</li>
+<li>Set the version numbers for the app and all of its components</li>
+<li>Add copyright info</li>
+<li>Add End User License Agreement</li>
+<li>Localize the app</li>
+<li>Remove old files</li>
+<li>Remove logging statements</li>
+<li>Sign the APK with a <b>release key</b>
+<ul class="org-ul">
+<li>Android system uses the signed certificate as a means of identifying the author of an application and establishing trust relationships between applications</li>
+<li>During development the app is signed with a <b>debug key</b></li>
+<li>Self store certificates are allowed and are stored in a <b>keystore</b></li>
+</ul></li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org433f7c6" class="outline-2">
+<h2 id="org433f7c6"><span class="section-number-2">13</span> On Exam</h2>
+<div class="outline-text-2" id="text-13">
+<ul class="org-ul">
+<li>What is an activity?</li>
+<li><p>
+Describe the Lifecycle of an activity
+</p>
+
+<script src="../assets/jquery-3.3.1.min.js"></script>
+<script src="../assets/notes.js"></script></li>
+</ul>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="date">Date: 2018-01-16 Tue 13:19</p>
+<p class="author">Author: Damian Chrzanowski</p>
+<p class="date">Created: 2018-12-13 Thu 20:28</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

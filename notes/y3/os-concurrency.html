@@ -1,0 +1,1396 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2018-12-13 Thu 20:23 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>OS and Concurrency 3</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="Damian Chrzanowski" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="../assets/org.css"/>
+<link rel="icon" href="../assets/favicon.ico">
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2018 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">OS and Concurrency 3</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org16cb04b">1. Process</a>
+<ul>
+<li><a href="#orgca56c1e">1.1. Cycle Executions</a></li>
+<li><a href="#org17f736f">1.2. Switching</a></li>
+<li><a href="#orge88e006">1.3. State</a></li>
+<li><a href="#org4c62921">1.4. Process State Transitions</a></li>
+<li><a href="#orgeabb32f">1.5. Context Switching</a></li>
+<li><a href="#org43019d0">1.6. Process Table and the Process Control Block (PCB)</a></li>
+<li><a href="#orgae45db6">1.7. Run (ready) and Blocked Queues</a></li>
+<li><a href="#org5bfd3e9">1.8. Additional facts</a></li>
+</ul>
+</li>
+<li><a href="#orgf27e964">2. Threads</a>
+<ul>
+<li><a href="#org82b7d42">2.1. Creating a thread in Java</a></li>
+<li><a href="#org73935e6">2.2. Thread methods</a></li>
+<li><a href="#org9e2a217">2.3. Thread priorities</a></li>
+<li><a href="#org5315158">2.4. Important notes</a></li>
+<li><a href="#orgb2f94f2">2.5. Thread vs Process</a></li>
+</ul>
+</li>
+<li><a href="#orgb884bab">3. Process Scheduling</a>
+<ul>
+<li><a href="#org3a485d3">3.1. Scheduling vs Dispatching</a></li>
+<li><a href="#orgafbe763">3.2. Behaviour of Processes</a></li>
+<li><a href="#org8637e55">3.3. Round Robin Scheduling</a></li>
+<li><a href="#orge6b6736">3.4. Priority Scheduling</a></li>
+<li><a href="#org29b6e7b">3.5. Dynamic Priority Scheduling</a></li>
+</ul>
+</li>
+<li><a href="#org737699f">4. Thread Safety and Visibility</a>
+<ul>
+<li><a href="#orgbd93e2f">4.1. Data Corruption, Race Condition and Critical Section</a></li>
+<li><a href="#org72cb674">4.2. Thread Safety</a></li>
+<li><a href="#org5d1661c">4.3. The Java Memory Model</a></li>
+<li><a href="#org7c78ec1">4.4. Cache Coherence</a></li>
+<li><a href="#org4e3d2dd">4.5. The <code>volatile</code> Keyword</a></li>
+</ul>
+</li>
+<li><a href="#org15024a8">5. Mutual Exclusion and Locks</a>
+<ul>
+<li><a href="#org9174df5">5.1. Synchronizing</a></li>
+<li><a href="#org6f8f15a">5.2. Locks</a></li>
+</ul>
+</li>
+<li><a href="#org6aa496a">6. Thread Signalling and Liveness</a>
+<ul>
+<li><a href="#orgf04b7d5">6.1. Liveness</a></li>
+<li><a href="#org59b4973">6.2. Thread Signalling</a></li>
+<li><a href="#org5e72daa">6.3. Deadlock</a></li>
+<li><a href="#org8676b5a">6.4. Starvation</a></li>
+<li><a href="#org7af0c73">6.5. Livelock</a></li>
+</ul>
+</li>
+<li><a href="#org2cce8f3">7. Using Concurrency</a>
+<ul>
+<li><a href="#org9658ee5">7.1. Parallelism</a></li>
+<li><a href="#orgd70958c">7.2. Amdahl's Law</a></li>
+</ul>
+</li>
+<li><a href="#org353414d">8. Producer-Consumer Pattern</a>
+<ul>
+<li><a href="#orgc956bfd">8.1. The Producer-Consumer Problem</a></li>
+<li><a href="#orgb2c23d0">8.2. Solution</a></li>
+</ul>
+</li>
+<li><a href="#org4f14eed">9. Task Execution</a>
+<ul>
+<li><a href="#org08c047e">9.1. Multi-threaded web server</a></li>
+<li><a href="#org8436545">9.2. Solution</a></li>
+</ul>
+</li>
+<li><a href="#org9fd88c0">10. The Executor Framework</a>
+<ul>
+<li><a href="#org28ae51e">10.1. Usage</a></li>
+<li><a href="#orgbca6ead">10.2. Note</a></li>
+</ul>
+</li>
+<li><a href="#orga91055e">11. Callable And Future Interface</a></li>
+</ul>
+</div>
+</div>
+<p>
+<a href="index.html">Home Page</a>
+</p>
+
+<div id="outline-container-org16cb04b" class="outline-2">
+<h2 id="org16cb04b"><span class="section-number-2">1</span> Process</h2>
+<div class="outline-text-2" id="text-1">
+<ul class="org-ul">
+<li><b>Simply</b>: A program in execution (running)</li>
+<li>A computer uses a <b>Program Counter</b> (<b>PC</b>) register that keeps a track of the running program. It basically determines the next instruction to be executed.</li>
+<li><b>PC</b> passes the current "pointer" to the Current Instruction Register (<b>CIR</b>)</li>
+<li><b>Multi-tasking</b>: Modern OSes support a number of programs executing at the same time and is achieved by <b>context-switching</b></li>
+</ul>
+</div>
+
+<div id="outline-container-orgca56c1e" class="outline-3">
+<h3 id="orgca56c1e"><span class="section-number-3">1.1</span> Cycle Executions</h3>
+<div class="outline-text-3" id="text-1-1">
+<ul class="org-ul">
+<li>Programs are executed using the <b>Fetch-Execute</b> cycle
+<ul class="org-ul">
+<li><b>Initialize</b>: When a program is to be executed the <b>PC</b> is set to contain the memory location of the first instruction of the program</li>
+<li><b>Fetch</b>: Get the machine instruction pointed to by the <b>PC</b> and store it in the <b>CIR</b></li>
+<li><b>Increment</b>: The <b>PC</b> gets incremented</li>
+<li><b>Execute</b>: Execute the instruction in the <b>CIR</b></li>
+</ul></li>
+</ul>
+
+<div class="figure">
+<p><img src="images/Process/screenshot_2018-12-06_11-10-26.png" alt="screenshot_2018-12-06_11-10-26.png" />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org17f736f" class="outline-3">
+<h3 id="org17f736f"><span class="section-number-3">1.2</span> Switching</h3>
+<div class="outline-text-3" id="text-1-2">
+<ul class="org-ul">
+<li>Only one program can be executing on one CPU at a particular time</li>
+<li>Multi-tasking is achieved by switching back and forth between processes</li>
+<li>Uses a concept of time-share. Basically the computer assigns a given amount of time for each task (usually a given amount of clock cycles)</li>
+<li>This is accomplished by having the <b>PC</b> switch from program <b>A</b> to <b>B</b></li>
+</ul>
+
+<div class="figure">
+<p><img src="images/Process/screenshot_2018-09-19_11-30-41.png" alt="screenshot_2018-09-19_11-30-41.png" />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orge88e006" class="outline-3">
+<h3 id="orge88e006"><span class="section-number-3">1.3</span> State</h3>
+<div class="outline-text-3" id="text-1-3">
+<ul class="org-ul">
+<li><b>Ready (or Runnable)</b>: The process is waiting for the CPU</li>
+<li><b>Running</b>: The process is using the CPU</li>
+<li><b>Blocked</b>: The process is waiting for some event to happen (such as user input)</li>
+</ul>
+
+<div class="figure">
+<p><img src="images/Process/screenshot_2018-09-19_11-30-08.png" alt="screenshot_2018-09-19_11-30-08.png" />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org4c62921" class="outline-3">
+<h3 id="org4c62921"><span class="section-number-3">1.4</span> Process State Transitions</h3>
+<div class="outline-text-3" id="text-1-4">
+<ul class="org-ul">
+<li><b>Dispatch</b>: The process is made to execute (some address of instruction in the process is copied into the <b>PC</b>)</li>
+<li><b>Timerunout</b>: The process is switched out from the CPU and is replaced by another process</li>
+<li><b>Sleep</b>: The process requests input. Now it has no need for the CPU until that input arrives.</li>
+<li><b>Wakeup</b>: Requested input arrives and the process now is waiting for the CPU again.</li>
+</ul>
+</div>
+
+<div id="outline-container-org32ffe82" class="outline-4">
+<h4 id="org32ffe82">Example</h4>
+<div class="outline-text-4" id="text-org32ffe82">
+<ul class="org-ul">
+<li>Word is started. First the program is loaded (copied) into memory. Its initial state is <b>ready</b>.</li>
+<li>Shortly afterwards the program is dispatched and it starts executing (<b>running</b>). A splash screen is displayed on the screen and then the Word window itself appears.</li>
+<li>Then the program enters the <b>blocked</b> state. It is waiting for you to type.</li>
+<li>You type one character. That character is delivered to the program Word and its state is changed from blocked to <b>ready</b> (wakeup).</li>
+<li>At some stage the operating system dispatches the program (state changes to <b>running</b>) and the Word program decides and puts that character on the screen.</li>
+<li>Then the process state changes from running to <b>blocked</b> again (sleep).</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgeabb32f" class="outline-3">
+<h3 id="orgeabb32f"><span class="section-number-3">1.5</span> Context Switching</h3>
+<div class="outline-text-3" id="text-1-5">
+<ul class="org-ul">
+<li>When an OS stops a process and replaces it with another, this is known as <b>context-switching</b></li>
+<li>The proper term is to: <b>context-switch into the CPU</b> and <b>context-switch out of the CPU</b></li>
+</ul>
+</div>
+
+<div id="outline-container-org742e08f" class="outline-4">
+<h4 id="org742e08f">Context switching happens when:</h4>
+<div class="outline-text-4" id="text-org742e08f">
+<ul class="org-ul">
+<li>You start a program</li>
+<li>A program finishes execution</li>
+<li>A program requests an input (its state changes to blocked)</li>
+<li>A program has deemed enough CPU time (pre-emptive multi-tasking)
+<ul class="org-ul">
+<li>OSes impose a time-slice and take processes off the CPU at the end of this time slice. All OSes these days are pre-emptive</li>
+</ul></li>
+<li>Example of context-switching with two processes P0 and P1</li>
+</ul>
+
+<div class="figure">
+<p><img src="images/Process/screenshot_2018-09-19_11-33-46.png" alt="screenshot_2018-09-19_11-33-46.png" />
+</p>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org43019d0" class="outline-3">
+<h3 id="org43019d0"><span class="section-number-3">1.6</span> Process Table and the Process Control Block (PCB)</h3>
+<div class="outline-text-3" id="text-1-6">
+<ul class="org-ul">
+<li>When a context-switch occurs the computer needs to remember enough of the previous program's information, so that it can resume later where it left off. The process table is used just for this purpose.</li>
+<li><b>Process Table</b>: holds all the information necessary about the program.</li>
+<li><b>Process Control Block (PCB)</b> aka <b>Process Table Entry</b> or <b>Process Descriptor</b>: Contains information about a process. The process' information is stored in the <b>PCB</b> when <b>context-switching</b> occurs. The process' information is restored from the <b>PCB</b> when the process resumes operation</li>
+</ul>
+</div>
+
+<div id="outline-container-org68c03f5" class="outline-4">
+<h4 id="org68c03f5">The Process Table/PCB diagram</h4>
+<div class="outline-text-4" id="text-org68c03f5">
+
+<div class="figure">
+<p><img src="images/Process/screenshot_2018-12-06_11-33-48.png" alt="screenshot_2018-12-06_11-33-48.png" />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org0e60313" class="outline-4">
+<h4 id="org0e60313">Process Table</h4>
+<div class="outline-text-4" id="text-org0e60313">
+<ul class="org-ul">
+<li>Contains <b>PCBs</b> for each process, contain all the information required by the OS to manage processes in the system</li>
+<li>In particular it allows the OS to restart a process</li>
+<li>In order to do this the contents of all registers must be saved (e.g. LD R1, X)</li>
+<li>This is often known as the <b>volatile environment</b> of a process</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgeeb8e44" class="outline-4">
+<h4 id="orgeeb8e44">Content of a PCB</h4>
+<div class="outline-text-4" id="text-orgeeb8e44">
+<ul class="org-ul">
+<li>In general it holds the information about a process, but more specifically it holds:
+<ul class="org-ul">
+<li>Registers (volatile environment)</li>
+<li>Memory management information (location of page tables)</li>
+<li>The current state of a process (blocked, ready or running)</li>
+<li>Unique identification of the process <b>pid</b> and <b>ppid</b></li>
+<li>Identification of the process's children</li>
+<li>The process' priority</li>
+<li>Current directory</li>
+<li>I/O status (allocated devices)</li>
+<li>Accounting information</li>
+</ul></li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgae45db6" class="outline-3">
+<h3 id="orgae45db6"><span class="section-number-3">1.7</span> Run (ready) and Blocked Queues</h3>
+<div class="outline-text-3" id="text-1-7">
+<ul class="org-ul">
+<li>The <b>ready queue</b> is a list of processes waiting to use the CPU</li>
+<li>The <b>blocked queue</b> is a list of blocked processes (for example, waiting for an input)</li>
+<li>The <b>PCBs</b> for all processes are stored on
+<ul class="org-ul">
+<li>An ordered run (ready) queue</li>
+<li>An unordered blocked queue</li>
+</ul></li>
+<li>When the dispatcher is called, it replaces the existing running process with the process at the head of the ready queue</li>
+</ul>
+</div>
+
+<div id="outline-container-org50154d1" class="outline-4">
+<h4 id="org50154d1">The Process Table with a blocked-jump-over example</h4>
+<div class="outline-text-4" id="text-org50154d1">
+
+<div class="figure">
+<p><img src="images/Process/screenshot_2018-09-19_11-40-23.png" alt="screenshot_2018-09-19_11-40-23.png" />
+</p>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org5bfd3e9" class="outline-3">
+<h3 id="org5bfd3e9"><span class="section-number-3">1.8</span> Additional facts</h3>
+<div class="outline-text-3" id="text-1-8">
+<ul class="org-ul">
+<li>Process scheduling is concerned with what process to run next</li>
+<li>I/O bound processes spend most of their time blocked (waiting for input)</li>
+<li>CPU bound processes make heavy use of the CPU</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgf27e964" class="outline-2">
+<h2 id="orgf27e964"><span class="section-number-2">2</span> Threads</h2>
+<div class="outline-text-2" id="text-2">
+<ul class="org-ul">
+<li>As an example on Java: Java allows to run in a multi-threaded fashion. Each thread has its own separate path of execution.</li>
+<li>When a Java program starts, it automatically starts with one thread -&gt; the <b>main thread</b></li>
+<li>From the <b>main thread</b> other <b>child</b> threads are spawned</li>
+<li>Use the <code>currentThread()</code> method to retrieve the reference to the current thread</li>
+<li>The default priority is 5, all children inherit this priority automatically</li>
+</ul>
+</div>
+
+<div id="outline-container-org82b7d42" class="outline-3">
+<h3 id="org82b7d42"><span class="section-number-3">2.1</span> Creating a thread in Java</h3>
+<div class="outline-text-3" id="text-2-1">
+<ul class="org-ul">
+<li>Either extend the Thread class and create its object and call the <code>start()</code> method, or implement the <code>Runnable</code> interface and pass in the class as an argument to the thread</li>
+</ul>
+
+<div class="figure">
+<p><img src="images/Threads/screenshot_2018-12-06_12-19-34.png" alt="screenshot_2018-12-06_12-19-34.png" />
+</p>
+</div>
+<ul class="org-ul">
+<li>Example of <code>extends Thread</code></li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #51afef; font-style: italic;">class</span> <span style="color: #ECBE7B;">SimpleThread1</span> <span style="color: #51afef; font-style: italic;">extends</span> <span style="color: #ECBE7B;">Thread</span> <span style="color: #fff0f5;">{</span>
+    <span style="color: #51afef; font-style: italic;">public</span> <span style="color: #c678dd;">SimpleThread1</span><span style="color: #c678dd;">(</span><span style="color: #ECBE7B;">String</span> <span style="color: #db5762;">name</span><span style="color: #c678dd;">)</span> <span style="color: #c678dd;">{</span>
+        <span style="color: #51afef; font-style: italic;">super</span><span style="color: #98be65;">(</span>name<span style="color: #98be65;">)</span>;
+    <span style="color: #c678dd;">}</span>
+    <span style="color: #51afef; font-style: italic;">public</span> <span style="color: #ECBE7B;">void</span> <span style="color: #c678dd;">run</span><span style="color: #c678dd;">()</span> <span style="color: #c678dd;">{</span>
+        <span style="color: #51afef; font-style: italic;">for</span> <span style="color: #98be65;">(</span><span style="color: #ECBE7B;">int</span> <span style="color: #db5762;">i</span> = 0; i &lt; 100; i++<span style="color: #98be65;">)</span> <span style="color: #98be65;">{</span>
+            System.out.println<span style="color: #00bfff;">(</span>i + <span style="color: #98be65;">" "</span> + getName<span style="color: #a9a1e1;">()</span><span style="color: #00bfff;">)</span>;
+        <span style="color: #98be65;">}</span>
+    <span style="color: #c678dd;">}</span>
+<span style="color: #fff0f5;">}</span>
+
+<span style="color: #51afef; font-style: italic;">public</span> <span style="color: #51afef; font-style: italic;">class</span> <span style="color: #ECBE7B;">Example1</span> <span style="color: #fff0f5;">{</span>
+    <span style="color: #51afef; font-style: italic;">public</span> <span style="color: #51afef; font-style: italic;">static</span> <span style="color: #ECBE7B;">void</span> <span style="color: #c678dd;">main</span><span style="color: #c678dd;">(</span><span style="color: #ECBE7B;">String</span><span style="color: #98be65;">[]</span> <span style="color: #db5762;">args</span><span style="color: #c678dd;">)</span> <span style="color: #c678dd;">{</span>
+        <span style="color: #ECBE7B;">Thread</span> <span style="color: #db5762;">t1</span> = <span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">SimpleThread1</span><span style="color: #98be65;">(</span><span style="color: #98be65;">"Google"</span><span style="color: #98be65;">)</span>;
+        <span style="color: #ECBE7B;">Thread</span> <span style="color: #db5762;">t2</span> = <span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">SimpleThread1</span><span style="color: #98be65;">(</span><span style="color: #98be65;">"Yahoo"</span><span style="color: #98be65;">)</span>;
+        t1.start<span style="color: #98be65;">()</span>;
+        t2.start<span style="color: #98be65;">()</span>;
+        System.out.println<span style="color: #98be65;">(</span><span style="color: #98be65;">"Main thread complete"</span><span style="color: #98be65;">)</span>;
+    <span style="color: #c678dd;">}</span>
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+<ul class="org-ul">
+<li>Example of <code>implements Runnable</code></li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #51afef; font-style: italic;">public</span> <span style="color: #51afef; font-style: italic;">class</span> <span style="color: #ECBE7B;">Calculator</span> <span style="color: #51afef; font-style: italic;">implements</span> <span style="color: #ECBE7B;">Runnable</span> <span style="color: #fff0f5;">{</span>
+    <span style="color: #51afef; font-style: italic;">public</span> <span style="color: #c678dd;">Calculator</span><span style="color: #c678dd;">()</span> <span style="color: #c678dd;">{</span>
+    <span style="color: #c678dd;">}</span>
+    <span style="color: #51afef; font-style: italic;">public</span> <span style="color: #ECBE7B;">void</span> <span style="color: #c678dd;">run</span><span style="color: #c678dd;">()</span> <span style="color: #c678dd;">{</span>
+        <span style="color: #5B6268;">// </span><span style="color: #5B6268;">do something here</span>
+    <span style="color: #c678dd;">}</span>
+<span style="color: #fff0f5;">}</span>
+
+<span style="color: #51afef; font-style: italic;">public</span> <span style="color: #51afef; font-style: italic;">class</span> <span style="color: #ECBE7B;">ExampleCalc</span> <span style="color: #fff0f5;">{</span>
+    <span style="color: #51afef; font-style: italic;">public</span> <span style="color: #51afef; font-style: italic;">static</span> <span style="color: #ECBE7B;">void</span> <span style="color: #c678dd;">main</span><span style="color: #c678dd;">(</span><span style="color: #ECBE7B;">String</span><span style="color: #98be65;">[]</span> <span style="color: #db5762;">args</span><span style="color: #c678dd;">)</span> <span style="color: #c678dd;">{</span>
+        <span style="color: #ECBE7B;">Calculator</span> <span style="color: #db5762;">calc</span> = <span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">Calculator</span><span style="color: #98be65;">()</span>;
+        <span style="color: #ECBE7B;">Thread</span> <span style="color: #db5762;">thread</span> = <span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">Thread</span><span style="color: #98be65;">(</span>calc<span style="color: #98be65;">)</span>;
+        thread.start<span style="color: #98be65;">()</span>;
+    <span style="color: #c678dd;">}</span>
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org73935e6" class="outline-3">
+<h3 id="org73935e6"><span class="section-number-3">2.2</span> Thread methods</h3>
+<div class="outline-text-3" id="text-2-2">
+<ul class="org-ul">
+<li><code>void start()</code>
+<ul class="org-ul">
+<li>Start the thread execution</li>
+</ul></li>
+<li><code>void sleep(int miliseconds)</code>
+<ul class="org-ul">
+<li>Block the thread for a number of ms</li>
+</ul></li>
+<li><code>void yield()</code>
+<ul class="org-ul">
+<li>Temporarily stop and let any other runnable thread run</li>
+</ul></li>
+<li><code>join()</code>
+<ul class="org-ul">
+<li>Stop the current (parent) thread until thread <code>t</code> finishes</li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org9e2a217" class="outline-3">
+<h3 id="org9e2a217"><span class="section-number-3">2.3</span> Thread priorities</h3>
+<div class="outline-text-3" id="text-2-3">
+<ul class="org-ul">
+<li>Can have a value between 1 and 10 (inclusive)</li>
+<li>Three static variables exists as well:
+<ul class="org-ul">
+<li><code>Thread.MIN_PRIORITY</code> = 1</li>
+<li><code>Thread.NORM_PRIORITY</code> = 5</li>
+<li><code>Thread.MAX_PRIORITY</code> = 10</li>
+</ul></li>
+<li>Use the <code>getPriority()</code> method to get the current thread's priority</li>
+<li>Use the <code>setPriority(int priority)</code> method to set the current thread's priority</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org5315158" class="outline-3">
+<h3 id="org5315158"><span class="section-number-3">2.4</span> Important notes</h3>
+<div class="outline-text-3" id="text-2-4">
+<ul class="org-ul">
+<li>If any executing thread <code>t1</code> calls <code>join()</code> on <code>t2</code> (<code>t2.join()</code>). This mean that <code>t1</code> will stop execution and immediately enter into a waiting state until <code>t2</code> completes its execution</li>
+<li>You can provide a timeout in a <code>join</code> by passing in the amount of time(ms) when the <code>join</code> will be canceled, e.g. <code>t2.join(5000)</code></li>
+<li>Always call <code>start()</code> and not the <code>run()</code> of a thread</li>
+<li>How the instructions interleave between each other cannot be controlled. It will normally vary from execution to execution.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgb2f94f2" class="outline-3">
+<h3 id="orgb2f94f2"><span class="section-number-3">2.5</span> Thread vs Process</h3>
+<div class="outline-text-3" id="text-2-5">
+<ul class="org-ul">
+<li>Threads are like mini-processes. The main difference is that threads normally share data (variables) while processes don't.</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgb884bab" class="outline-2">
+<h2 id="orgb884bab"><span class="section-number-2">3</span> Process Scheduling</h2>
+<div class="outline-text-2" id="text-3">
+</div>
+<div id="outline-container-org3a485d3" class="outline-3">
+<h3 id="org3a485d3"><span class="section-number-3">3.1</span> Scheduling vs Dispatching</h3>
+<div class="outline-text-3" id="text-3-1">
+<ul class="org-ul">
+<li><b>Dispatching</b> is a mechanism
+<ul class="org-ul">
+<li>The first process is taken off the ready queue and context switched in to the CPU</li>
+</ul></li>
+<li><b>Scheduling</b> is a policy
+<ul class="org-ul">
+<li>It is concerned with ordering the ready queue so that there is optimum utilization of the CPU</li>
+<li>It helps to maximize throughput</li>
+<li>It controls response time for interactive programs</li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgafbe763" class="outline-3">
+<h3 id="orgafbe763"><span class="section-number-3">3.2</span> Behaviour of Processes</h3>
+<div class="outline-text-3" id="text-3-2">
+<ul class="org-ul">
+<li>An alternating sequence of
+<ul class="org-ul">
+<li>CPU bursts (running)</li>
+<li>I/O (blocked)</li>
+</ul></li>
+<li>Example of CPU bound processes: scientific calculations, compilations, etc.</li>
+<li>Example of I/O bound processes: editors, etc.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org8637e55" class="outline-3">
+<h3 id="org8637e55"><span class="section-number-3">3.3</span> Round Robin Scheduling</h3>
+<div class="outline-text-3" id="text-3-3">
+<ul class="org-ul">
+<li>Uses time slices assigned to each process in an equal portion and in a circular order</li>
+<li>Handles all processes without priority</li>
+<li>The behaviour of the system depends of the size of the time slice
+<ul class="org-ul">
+<li>Larger time slice increases throughput</li>
+<li>Smaller time slice increases responsiveness</li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orge6b6736" class="outline-3">
+<h3 id="orge6b6736"><span class="section-number-3">3.4</span> Priority Scheduling</h3>
+<div class="outline-text-3" id="text-3-4">
+<ul class="org-ul">
+<li>Processes are assigned a priority 0.. MAX and processes with higher priority are placed at the head of the ready queue.</li>
+<li>Priorities can be dynamic or static</li>
+<li>Care needs to be taken about low priority process' starvation</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org29b6e7b" class="outline-3">
+<h3 id="org29b6e7b"><span class="section-number-3">3.5</span> Dynamic Priority Scheduling</h3>
+<div class="outline-text-3" id="text-3-5">
+<ul class="org-ul">
+<li>It is advantageous to give I/O bound processes a higher priority than CPU bound processes, as they use the CPU for shorter periods of time</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org737699f" class="outline-2">
+<h2 id="org737699f"><span class="section-number-2">4</span> Thread Safety and Visibility</h2>
+<div class="outline-text-2" id="text-4">
+</div>
+<div id="outline-container-orgbd93e2f" class="outline-3">
+<h3 id="orgbd93e2f"><span class="section-number-3">4.1</span> Data Corruption, Race Condition and Critical Section</h3>
+<div class="outline-text-3" id="text-4-1">
+<ul class="org-ul">
+<li>If two threads access a piece of the same data, then the data may become corrupted</li>
+<li><b>Race condition</b> is a special condition that may occur inside a critical section
+<ul class="org-ul">
+<li>More formally: The situation where two threads compete for the same resource, <b>where the sequence</b> in which the resource is accessed <b>is significant</b>, is called race conditions. A code section that leads to <b>race conditions</b> is called a <b>critical section</b>.</li>
+</ul></li>
+<li><b>Critical Section</b> is a section of code that is executed by multiple threads and where the sequence of execution of the threads makes a difference in the result of the concurrent execution of the critical section</li>
+<li>It is safe for multiple threads to <b>read</b> the same resources, as long as they do not modify them</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org72cb674" class="outline-3">
+<h3 id="org72cb674"><span class="section-number-3">4.2</span> Thread Safety</h3>
+<div class="outline-text-3" id="text-4-2">
+<ul class="org-ul">
+<li><b>Thread Safety</b>: Is achieved when a piece of code can be ran by multiple threads and has <b>no race condition</b></li>
+<li><b>Local Variables</b>: Are stored in each thread's own stack, local variables are never shared between threads. All local primitive variables are thread safe.</li>
+<li>When a thread in Java executes, it works on a <b>copy</b> of the variables rather than on the variables themselves. This can lead to unexpected behaviour.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org5d1661c" class="outline-3">
+<h3 id="org5d1661c"><span class="section-number-3">4.3</span> The Java Memory Model</h3>
+<div class="outline-text-3" id="text-4-3">
+</div>
+<div id="outline-container-orgcf90540" class="outline-4">
+<h4 id="orgcf90540">Heap</h4>
+<div class="outline-text-4" id="text-orgcf90540">
+<ul class="org-ul">
+<li>Objects on the heap can be accessed by all threads that have a reference to the object. When a thread has access to an object, it can also get access to that object's member variables.</li>
+</ul>
+
+<div class="figure">
+<p><img src="images/Thread%20Safety%20and%20Visibility/screenshot_2018-12-06_14-15-21.png" alt="screenshot_2018-12-06_14-15-21.png" />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org634c73d" class="outline-4">
+<h4 id="org634c73d">Main Memory</h4>
+<div class="outline-text-4" id="text-org634c73d">
+<ul class="org-ul">
+<li>A processor writes a value by sending the address and the new data to memory, and the memory sends back an acknowledgment when the new data has been installed.</li>
+<li>On modern architectures a main memory access may take hundreds of cycles</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgda221ef" class="outline-4">
+<h4 id="orgda221ef">Cache Memory</h4>
+<div class="outline-text-4" id="text-orgda221ef">
+<ul class="org-ul">
+<li>Closer to the processor, faster and runs on a higher clock speed</li>
+<li>L1 cache typically takes 1 or 2 CPU cycles to access</li>
+<li>L2 cache typically takes 10 CPU cycles to access</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org7c78ec1" class="outline-3">
+<h3 id="org7c78ec1"><span class="section-number-3">4.4</span> Cache Coherence</h3>
+<div class="outline-text-3" id="text-4-4">
+<ul class="org-ul">
+<li><b>Cache Coherence</b>: Refers to the problem of keeping the data in these caches consistent. The main problem is dealing with writes by a processor.</li>
+</ul>
+</div>
+
+<div id="outline-container-org6b37b64" class="outline-4">
+<h4 id="org6b37b64">The Problem Explained</h4>
+<div class="outline-text-4" id="text-org6b37b64">
+
+<div class="figure">
+<p><img src="images/Thread%20Safety%20and%20Visibility/screenshot_2018-12-06_21-07-00.png" alt="screenshot_2018-12-06_21-07-00.png" />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org1b870ca" class="outline-4">
+<h4 id="org1b870ca">The Solution is Bus Snooping</h4>
+<div class="outline-text-4" id="text-org1b870ca">
+<ul class="org-ul">
+<li>Using a scheme where every CPU knows who has a copy of its cached data is far too complex.</li>
+<li>So each CPU (cache system) "snoops" (i.e. watches continually) for write activity concerned with data addresses which it has cached.</li>
+<li>This assumes a bus structure which is "global", i.e. all communication can be seen by all.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orga90f523" class="outline-4">
+<h4 id="orga90f523">Cache Coherence Algorithm</h4>
+<div class="outline-text-4" id="text-orga90f523">
+<ul class="org-ul">
+<li>A cache coherence algorithm ensures that data is not out of date</li>
+<li>The <b>MESI</b> protocol works with 4 states of data in a cache:
+<ul class="org-ul">
+<li><b>Modified</b>: Cache line has been modified, is different from main memory - is the only cached copy. (multiprocessor ‘dirty’)</li>
+<li><b>Exclusive</b>: Cache line is the same as main memory and is the only cached copy</li>
+<li><b>Shared</b>: Same as main memory but copies may exist in other caches.</li>
+<li><b>Invalid</b>: Line data is not valid (as in simple cache)</li>
+</ul></li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org4e3d2dd" class="outline-3">
+<h3 id="org4e3d2dd"><span class="section-number-3">4.5</span> The <code>volatile</code> Keyword</h3>
+<div class="outline-text-3" id="text-4-5">
+<ul class="org-ul">
+<li>The following example highlights the importance of the <code>volatile</code> keyword</li>
+<li>A volatile variable is shared across threads, otherwise each thread would have its own copy</li>
+<li>A care must be taken when using <code>long</code> or <code>double</code> primitives. Theses are 64-bit in length and are not atomic (one clock cycle), therefore it will take more than one clock cycle to manipulate them, and thus issues will occur.</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #51afef; font-style: italic;">public</span> <span style="color: #51afef; font-style: italic;">class</span> <span style="color: #ECBE7B;">VisibilityDemo</span> <span style="color: #fff0f5;">{</span>
+    <span style="color: #51afef; font-style: italic;">private</span> <span style="color: #51afef; font-style: italic;">volatile</span> <span style="color: #51afef; font-style: italic;">static</span> <span style="color: #ECBE7B;">int</span> <span style="color: #db5762;">MY_INT</span> = 0;  <span style="color: #5B6268;">// </span><span style="color: #5B6268;">usage of volatile here</span>
+    <span style="color: #51afef; font-style: italic;">public</span> <span style="color: #51afef; font-style: italic;">static</span> <span style="color: #ECBE7B;">void</span> <span style="color: #c678dd;">main</span><span style="color: #c678dd;">(</span><span style="color: #ECBE7B;">String</span><span style="color: #98be65;">[]</span> <span style="color: #db5762;">args</span><span style="color: #c678dd;">)</span> <span style="color: #51afef; font-style: italic;">throws</span> <span style="color: #ECBE7B;">InterruptedException</span> <span style="color: #c678dd;">{</span>
+        <span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">ChangeListener</span><span style="color: #98be65;">()</span>.start<span style="color: #98be65;">()</span>;
+        System.out.println<span style="color: #98be65;">(</span><span style="color: #98be65;">"Starting now......"</span><span style="color: #98be65;">)</span>;
+        Thread.sleep<span style="color: #98be65;">(</span>2000<span style="color: #98be65;">)</span>;
+        <span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">ChangeMaker</span><span style="color: #98be65;">()</span>.start<span style="color: #98be65;">()</span>;
+    <span style="color: #c678dd;">}</span>
+    <span style="color: #51afef; font-style: italic;">static</span> <span style="color: #51afef; font-style: italic;">class</span> <span style="color: #ECBE7B;">ChangeListener</span> <span style="color: #51afef; font-style: italic;">extends</span> <span style="color: #ECBE7B;">Thread</span> <span style="color: #c678dd;">{</span>
+        <span style="color: #a9a1e1;">@Override</span>
+        <span style="color: #51afef; font-style: italic;">public</span> <span style="color: #ECBE7B;">void</span> <span style="color: #c678dd;">run</span><span style="color: #98be65;">()</span> <span style="color: #98be65;">{</span>
+            <span style="color: #ECBE7B;">int</span> <span style="color: #db5762;">local_value</span> = MY_INT;
+            <span style="color: #51afef; font-style: italic;">while</span> <span style="color: #00bfff;">(</span>local_value &lt; 5<span style="color: #00bfff;">){</span>
+                <span style="color: #51afef; font-style: italic;">if</span><span style="color: #a9a1e1;">(</span> local_value != MY_INT<span style="color: #a9a1e1;">){</span>
+                    System.out.println<span style="color: #32cd32;">(</span><span style="color: #98be65;">"Got Change for MY_INT : "</span>+ MY_INT<span style="color: #32cd32;">)</span>;
+                    local_value = MY_INT;
+                <span style="color: #a9a1e1;">}</span>
+            <span style="color: #00bfff;">}</span>
+        <span style="color: #98be65;">}</span>
+    <span style="color: #c678dd;">}</span>
+    <span style="color: #51afef; font-style: italic;">static</span> <span style="color: #51afef; font-style: italic;">class</span> <span style="color: #ECBE7B;">ChangeMaker</span> <span style="color: #51afef; font-style: italic;">extends</span> <span style="color: #ECBE7B;">Thread</span><span style="color: #c678dd;">{</span>
+        <span style="color: #a9a1e1;">@Override</span>
+        <span style="color: #51afef; font-style: italic;">public</span> <span style="color: #ECBE7B;">void</span> <span style="color: #c678dd;">run</span><span style="color: #98be65;">()</span> <span style="color: #98be65;">{</span>
+            <span style="color: #ECBE7B;">int</span> <span style="color: #db5762;">local_value</span> = MY_INT;
+            <span style="color: #51afef; font-style: italic;">while</span> <span style="color: #00bfff;">(</span>MY_INT &lt; 5<span style="color: #00bfff;">){</span>
+                System.out.println<span style="color: #a9a1e1;">(</span><span style="color: #98be65;">"Incrementing MY_INT to "</span> + <span style="color: #32cd32;">(</span>local_value + 1<span style="color: #32cd32;">)</span><span style="color: #a9a1e1;">)</span>;
+                MY_INT = ++local_value;
+                <span style="color: #51afef; font-style: italic;">try</span> <span style="color: #a9a1e1;">{</span>
+                    Thread.sleep<span style="color: #32cd32;">(</span>500<span style="color: #32cd32;">)</span>;
+                <span style="color: #a9a1e1;">}</span> <span style="color: #51afef; font-style: italic;">catch</span> <span style="color: #a9a1e1;">(</span><span style="color: #ECBE7B;">InterruptedException</span> <span style="color: #db5762;">e</span><span style="color: #a9a1e1;">)</span> <span style="color: #a9a1e1;">{</span> e.printStackTrace<span style="color: #32cd32;">()</span>; <span style="color: #a9a1e1;">}</span>
+            <span style="color: #00bfff;">}</span>
+        <span style="color: #98be65;">}</span>
+    <span style="color: #c678dd;">}</span>
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org15024a8" class="outline-2">
+<h2 id="org15024a8"><span class="section-number-2">5</span> Mutual Exclusion and Locks</h2>
+<div class="outline-text-2" id="text-5">
+<ul class="org-ul">
+<li><b>Mutual Exclusion</b>: Occurs when two threads can not be in their critical sections a the same time</li>
+<li><b>TestAndSetLock (TSL)</b>: Is a special hardware instruction that supports <b>mutual exclusion</b> by using atomic operations</li>
+</ul>
+</div>
+
+<div id="outline-container-org9174df5" class="outline-3">
+<h3 id="org9174df5"><span class="section-number-3">5.1</span> Synchronizing</h3>
+<div class="outline-text-3" id="text-5-1">
+<ul class="org-ul">
+<li><b>Synchronized blocks</b> in Java are marked with the <code>synchronized</code> keyword</li>
+<li>All <b>synchronized</b> blocks <b>synchronized</b> on the same object can only have one thread executing inside them at a time</li>
+<li>All other threads attempting to enter the synchronized block are blocked until the thread inside the synchronized block exits the block</li>
+<li>The lock is released after the synchronized block</li>
+<li>Example of a synchronized block that uses its own class as a lock:</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #ECBE7B;">void</span> <span style="color: #c678dd;">increment</span><span style="color: #fff0f5;">()</span> <span style="color: #fff0f5;">{</span>
+    <span style="color: #51afef; font-style: italic;">synchronized</span><span style="color: #c678dd;">(</span><span style="color: #51afef; font-style: italic;">this</span><span style="color: #c678dd;">)</span> <span style="color: #c678dd;">{</span>
+        <span style="color: #ECBE7B;">int</span> <span style="color: #db5762;">temp</span> = value;
+        <span style="color: #51afef; font-style: italic;">try</span> <span style="color: #98be65;">{</span>
+            Thread.sleep<span style="color: #00bfff;">(</span>1000<span style="color: #00bfff;">)</span>;
+        <span style="color: #98be65;">}</span> <span style="color: #51afef; font-style: italic;">catch</span> <span style="color: #98be65;">(</span><span style="color: #ECBE7B;">Exception</span> <span style="color: #db5762;">e</span><span style="color: #98be65;">)</span> <span style="color: #98be65;">{</span>
+            e.printStackTrace<span style="color: #00bfff;">()</span>;
+        <span style="color: #98be65;">}</span>
+        temp++;
+        value = temp;
+    <span style="color: #c678dd;">}</span>
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org6f8f15a" class="outline-3">
+<h3 id="org6f8f15a"><span class="section-number-3">5.2</span> Locks</h3>
+<div class="outline-text-3" id="text-5-2">
+<ul class="org-ul">
+<li>A lock can be associated with any Java object, and therefore does not work on primitives</li>
+<li>Locks can be applied in three different ways:
+<ul class="org-ul">
+<li>Using client side synchronization, i.e. lock on the object from caller's side</li>
+<li>Using synchronized blocks inside of the object itself (preferred way)</li>
+<li>Using synchronized methods, by adding the <code>synchronized</code> keyword to the methods signature. Applies a <code>this</code> type lock, i.e. a lock on the class where the <code>synchronized</code> method exists.</li>
+</ul></li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org6aa496a" class="outline-2">
+<h2 id="org6aa496a"><span class="section-number-2">6</span> Thread Signalling and Liveness</h2>
+<div class="outline-text-2" id="text-6">
+</div>
+<div id="outline-container-orgf04b7d5" class="outline-3">
+<h3 id="orgf04b7d5"><span class="section-number-3">6.1</span> Liveness</h3>
+<div class="outline-text-3" id="text-6-1">
+<ul class="org-ul">
+<li>A concurrent application's ability to execute in a timely manner is known as <b>liveness</b>.</li>
+<li>There exist three kinds of <b>liveness</b> problems:
+<ul class="org-ul">
+<li>Deadlock</li>
+<li>Starvation</li>
+<li>Livelock</li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org59b4973" class="outline-3">
+<h3 id="org59b4973"><span class="section-number-3">6.2</span> Thread Signalling</h3>
+<div class="outline-text-3" id="text-6-2">
+<ul class="org-ul">
+<li>The purpose of <b>thread signalling</b> is to enable threads to send signals to each other. Additionally, <b>thread signalling</b> enables threads to wait for signals from other threads.</li>
+<li>The <code>java.lang.Object</code> defines three methods for <b>signalling</b>:
+<ul class="org-ul">
+<li><code>wait()</code>: A thread that calls <code>wait()</code> on any object becomes inactive until another thread calls <code>notify()</code> on that object</li>
+<li><code>notify()</code>: Wakes up a thread that got blocked by using <code>wait()</code></li>
+<li><code>notifyAll()</code>: Wakes up all threads that got blocked by using <code>wait()</code></li>
+</ul></li>
+<li>In order to use any of the signals the calling thread must first obtain the lock on that object, i.e. call from a synchronized block</li>
+<li>If a thread calls any of the signals outside of a synchronized block then an <code>IllegalMonitorStateException</code> will be thrown</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org5e72daa" class="outline-3">
+<h3 id="org5e72daa"><span class="section-number-3">6.3</span> Deadlock</h3>
+<div class="outline-text-3" id="text-6-3">
+<ul class="org-ul">
+<li>When we use a lock, we stop a thread from running until it obtains the lock</li>
+<li>In an extreme case, all threads can stop running because they are all waiting to obtain locks. This is known as <b>deadlock</b>.</li>
+<li>A simple scenario exists where we have two threads and two locks. Each thread requires both locks to run. If one thread holds one of the locks and the second one holds the other lock then we have a <b>deadlock</b></li>
+<li><b>Avoid</b> the usage of empty strings as locks. They share the same instance across threads and are not safe to use. What this means is that deadlocks may occur or one thread can end up notifying a completely different instance of a lock.</li>
+<li><b>Deadlock</b> occurs when multiple threads need the same locks but obtain them in different order</li>
+</ul>
+</div>
+
+<div id="outline-container-org216d6ed" class="outline-4">
+<h4 id="org216d6ed">Deadlock Prevention</h4>
+<div class="outline-text-4" id="text-org216d6ed">
+<ul class="org-ul">
+<li>Make sure that all locks are always taken in the same order by any thread, deadlocks cannot then occur</li>
+</ul>
+
+<div class="figure">
+<p><img src="images/Thread%20Signalling%20and%20Liveness/screenshot_2018-12-06_19-40-36.png" alt="screenshot_2018-12-06_19-40-36.png" />
+</p>
+</div>
+<ul class="org-ul">
+<li>Another mechanism is to put a timeout on lock attempts meaning a thread trying to obtain a lock will only try for so long before giving up</li>
+</ul>
+
+<div class="figure">
+<p><img src="images/Thread%20Signalling%20and%20Liveness/screenshot_2018-12-06_19-40-56.png" alt="screenshot_2018-12-06_19-40-56.png" />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org6f190ec" class="outline-4">
+<h4 id="org6f190ec">Deadlock Detection</h4>
+<div class="outline-text-4" id="text-org6f190ec">
+<ul class="org-ul">
+<li>Option 1
+<ul class="org-ul">
+<li>A simple solution is to release all locks, back up, wait a random amount of time and retry</li>
+<li>However, if a lot of threads are competing for the same locks they may repeatedly end up in a deadlock situation even if they back up and wait</li>
+</ul></li>
+<li>Option 2
+<ul class="org-ul">
+<li>A better option is to determine or assign a priority of the threads so that only one (or a few) thread backs up. The rest of the threads continue taking the locks they need as if no deadlock had occurred.</li>
+<li>If the priority assigned to the threads is fixed, the same threads will always be given higher priority. To avoid this you may assign the priority randomly whenever a deadlock is detected.</li>
+</ul></li>
+<li>Option 3
+<ul class="org-ul">
+<li>We can lock a small amount of data (fine grained lock), or a large amount of data (course grained lock).</li>
+<li>In the extreme case, if we lock all the data in the system with a single lock, we have a course grained lock but essentially we have no concurrency in our program any more as only one thread can run at a time. But we <b>can't</b> get deadlock.</li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org47494ec" class="outline-4">
+<h4 id="org47494ec">Slipped Conditions</h4>
+<div class="outline-text-4" id="text-org47494ec">
+<ul class="org-ul">
+<li>A <b>Slipped Condition</b> means, that from the time a thread has checked a certain condition until it acts upon it, the condition has been changed by another thread so that it is erroneous for the first thread to act.</li>
+<li>To avoid <b>slipped conditions</b> always make sure to use atomic operations so that the variable used for the condition checked is correctly updated</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org8676b5a" class="outline-3">
+<h3 id="org8676b5a"><span class="section-number-3">6.4</span> Starvation</h3>
+<div class="outline-text-3" id="text-6-4">
+<ul class="org-ul">
+<li>Starvation describes a situation where a thread is unable to gain regular access to shared resources and is unable to make progress. This happens when shared resources are made unavailable for long periods by "greedy" threads.</li>
+<li>For example, suppose an object provides a synchronized method that often takes a long time to return. If one thread invokes this method frequently, other threads that also need frequent synchronized access to the same object will often be blocked.</li>
+</ul>
+</div>
+
+<div id="outline-container-orgb9b50fa" class="outline-4">
+<h4 id="orgb9b50fa">Causes of Starvation</h4>
+<div class="outline-text-4" id="text-orgb9b50fa">
+<ul class="org-ul">
+<li>Threads with high priority swallow all CPU time from threads with lower priority.</li>
+<li>Threads are blocked indefinitely waiting to enter a synchronized block, because other threads are constantly allowed access before it.</li>
+<li>Threads waiting on an object (called <code>wait()</code> on it) remain waiting indefinitely because other threads are constantly awakened instead of it.</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org7af0c73" class="outline-3">
+<h3 id="org7af0c73"><span class="section-number-3">6.5</span> Livelock</h3>
+<div class="outline-text-3" id="text-6-5">
+<ul class="org-ul">
+<li>A thread often acts in response to the action of another thread. If the other thread's action is also a response to the action of another thread, then livelock may result.</li>
+<li>As with deadlock, livelocked threads are unable to make further progress. However, the threads are not blocked — they are simply too busy responding to each other to resume work.</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org2cce8f3" class="outline-2">
+<h2 id="org2cce8f3"><span class="section-number-2">7</span> Using Concurrency</h2>
+<div class="outline-text-2" id="text-7">
+<ul class="org-ul">
+<li>Preferably use I/O bound rather than CPU bound threads to boost performance</li>
+<li>I/O type threads are often used in Web Servers/Applications. While one request is busy with an I/O process, then another thread can pick up a new request</li>
+<li>One problem is the a thread is created for each request, which will overflow memory quickly if the traffic is high</li>
+</ul>
+</div>
+
+<div id="outline-container-org9658ee5" class="outline-3">
+<h3 id="org9658ee5"><span class="section-number-3">7.1</span> Parallelism</h3>
+<div class="outline-text-3" id="text-7-1">
+<ul class="org-ul">
+<li>To continue to get a performance increase out of a CPU bound thread on a multi-core architecture <b>parallelism</b> is used</li>
+<li>In <b>parallel</b> computing a task is broken down into smaller tasks and is being processed independently</li>
+<li>As a contrast <b>concurrent</b> computing often relates to tasks that do not handle a single job on multiple threads</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgd70958c" class="outline-3">
+<h3 id="orgd70958c"><span class="section-number-3">7.2</span> Amdahl's Law</h3>
+<div class="outline-text-3" id="text-7-2">
+
+<div class="figure">
+<p><img src="images/Using%20Concurrency/screenshot_2018-12-06_20-03-14.png" alt="screenshot_2018-12-06_20-03-14.png" />
+</p>
+</div>
+<ul class="org-ul">
+<li>If F is the fraction of a calculation that is sequential, and (1-F) is the fraction that can be parallelized, then the maximum speed-up that can be achieved by using P processors is <code>1 / (F + (1 - F) / P)</code>.</li>
+<li>Example
+<ul class="org-ul">
+<li>If 90% of a calculation can be parallelized (i.e. 10% is sequential) then the maximum speed-up which can be achieved on 5 processors is 1/(0.1+(1-0.1)/5) or roughly a 3.6 times speedup</li>
+</ul></li>
+<li>The actual speed, however, is always lower that expected. And at its peak it actually starts falling off, because of the computing power necessary to run and coordinate the threads</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org353414d" class="outline-2">
+<h2 id="org353414d"><span class="section-number-2">8</span> Producer-Consumer Pattern</h2>
+<div class="outline-text-2" id="text-8">
+<ul class="org-ul">
+<li>The general idea of a producer-consumer architecture is related to building a pipeline of threads</li>
+<li>Each step of the processing will now be done by a specialized threads; whenever one thread is done with its part of the processing, it forwards the data to the next stage of the pipeline, like a factory assembly line.</li>
+</ul>
+</div>
+
+<div id="outline-container-orgc956bfd" class="outline-3">
+<h3 id="orgc956bfd"><span class="section-number-3">8.1</span> The Producer-Consumer Problem</h3>
+<div class="outline-text-3" id="text-8-1">
+<ul class="org-ul">
+<li>Now suppose that the producer invokes <code>insert()</code> and the buffer is full.</li>
+<li>We want the thread to block, but need the lock released, otherwise the consumer can′t take an element out of the queue.</li>
+<li>It would also be nice if the thread was woken up when the buffer was no longer full (after an <code>extract()</code>).</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgb2c23d0" class="outline-3">
+<h3 id="orgb2c23d0"><span class="section-number-3">8.2</span> Solution</h3>
+<div class="outline-text-3" id="text-8-2">
+<ul class="org-ul">
+<li>Usage of <code>wait()</code> and <code>notify()</code></li>
+<li>One way of solving this is to implement our own (in this case, primitive) Blocking Queue</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #51afef; font-style: italic;">public</span> <span style="color: #51afef; font-style: italic;">class</span> <span style="color: #ECBE7B;">BlockingQueue</span> <span style="color: #fff0f5;">{</span>
+    <span style="color: #51afef; font-style: italic;">final</span> <span style="color: #ECBE7B;">int</span> <span style="color: #db5762;">BUFFERSIZE</span> = 10 ;
+    <span style="color: #ECBE7B;">Element</span><span style="color: #c678dd;">[]</span> <span style="color: #db5762;">bufferArray</span> = <span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">Element</span><span style="color: #c678dd;">[</span>BUFFERSIZE<span style="color: #c678dd;">]</span> ;
+    <span style="color: #ECBE7B;">int</span> <span style="color: #db5762;">nextIn</span>, <span style="color: #db5762;">nextOut</span>, <span style="color: #db5762;">inUse</span> ;
+    <span style="color: #51afef; font-style: italic;">public</span> <span style="color: #c678dd;">BlockingQueue</span> <span style="color: #c678dd;">()</span> <span style="color: #c678dd;">{</span>
+        nextIn = 0 ;
+        nextOut = 0 ;
+        inUse = 0 ;
+    <span style="color: #c678dd;">}</span>
+    <span style="color: #51afef; font-style: italic;">synchronized</span> <span style="color: #51afef; font-style: italic;">public</span> <span style="color: #ECBE7B;">void</span> <span style="color: #c678dd;">insert</span><span style="color: #c678dd;">(</span><span style="color: #ECBE7B;">Element</span> <span style="color: #db5762;">item</span><span style="color: #c678dd;">)</span> <span style="color: #c678dd;">{</span>
+        <span style="color: #51afef; font-style: italic;">try</span> <span style="color: #98be65;">{</span>
+            <span style="color: #51afef; font-style: italic;">while</span><span style="color: #00bfff;">(</span>inUse == BUFFERSIZE<span style="color: #00bfff;">)</span> <span style="color: #00bfff;">{</span>
+                wait<span style="color: #a9a1e1;">()</span> ;
+            <span style="color: #00bfff;">}</span>
+            bufferArray<span style="color: #00bfff;">[</span>nextIn<span style="color: #00bfff;">]</span> = item ;
+            inUse++ ;
+            nextIn++;
+            notifyAll<span style="color: #00bfff;">()</span> ;
+        <span style="color: #98be65;">}</span> <span style="color: #51afef; font-style: italic;">catch</span> <span style="color: #98be65;">(</span><span style="color: #ECBE7B;">InterruptedException</span> <span style="color: #db5762;">e</span><span style="color: #98be65;">)</span> <span style="color: #98be65;">{}</span>
+    <span style="color: #c678dd;">}</span>
+    <span style="color: #51afef; font-style: italic;">synchronized</span> <span style="color: #51afef; font-style: italic;">public</span> <span style="color: #ECBE7B;">Element</span> <span style="color: #c678dd;">extract</span><span style="color: #c678dd;">()</span> <span style="color: #c678dd;">{</span>
+        <span style="color: #ECBE7B;">Element</span> <span style="color: #db5762;">item</span> = <span style="color: #a9a1e1;">null</span> ;
+        <span style="color: #51afef; font-style: italic;">try</span> <span style="color: #98be65;">{</span>
+            <span style="color: #51afef; font-style: italic;">while</span><span style="color: #00bfff;">(</span>inUse == 0<span style="color: #00bfff;">)</span> <span style="color: #00bfff;">{</span>
+                wait<span style="color: #a9a1e1;">()</span> ;
+            <span style="color: #00bfff;">}</span>
+            item = bufferArray<span style="color: #00bfff;">[</span>nextOut<span style="color: #00bfff;">]</span> ;
+            inUse--;
+            nextOut++;
+            notifyAll<span style="color: #00bfff;">()</span> ;
+        <span style="color: #98be65;">}</span> <span style="color: #51afef; font-style: italic;">catch</span> <span style="color: #98be65;">(</span><span style="color: #ECBE7B;">InterruptedException</span> <span style="color: #db5762;">e</span><span style="color: #98be65;">)</span> <span style="color: #98be65;">{}</span>
+        <span style="color: #51afef; font-style: italic;">return</span> item ;
+    <span style="color: #c678dd;">}</span>
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+<ul class="org-ul">
+<li>Another solution is to use the built-in <code>java.util.concurrent.ArrayBlockingQueue</code></li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #51afef; font-style: italic;">public</span> <span style="color: #51afef; font-style: italic;">class</span> <span style="color: #ECBE7B;">BlockingQueueExample</span> <span style="color: #fff0f5;">{</span>
+    <span style="color: #51afef; font-style: italic;">public</span> <span style="color: #51afef; font-style: italic;">static</span> <span style="color: #ECBE7B;">void</span> <span style="color: #c678dd;">main</span><span style="color: #c678dd;">(</span><span style="color: #ECBE7B;">String</span><span style="color: #98be65;">[]</span> <span style="color: #db5762;">args</span><span style="color: #c678dd;">)</span> <span style="color: #51afef; font-style: italic;">throws</span> <span style="color: #ECBE7B;">Exception</span> <span style="color: #c678dd;">{</span>
+        <span style="color: #ECBE7B;">BlockingQueue</span><span style="color: #98be65;">&lt;</span><span style="color: #ECBE7B;">String</span><span style="color: #98be65;">&gt;</span> <span style="color: #db5762;">queue</span> = <span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">ArrayBlockingQueue</span><span style="color: #98be65;">&lt;</span><span style="color: #ECBE7B;">String</span><span style="color: #98be65;">&gt;(</span>1024<span style="color: #98be65;">)</span>;  <span style="color: #5B6268;">// </span><span style="color: #5B6268;">note the array queue size</span>
+        <span style="color: #ECBE7B;">Producer</span> <span style="color: #db5762;">producer</span> = <span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">Producer</span><span style="color: #98be65;">(</span>queue<span style="color: #98be65;">)</span>;
+        <span style="color: #ECBE7B;">Consumer</span> <span style="color: #db5762;">consumer</span> = <span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">Consumer</span><span style="color: #98be65;">(</span>queue<span style="color: #98be65;">)</span>;
+        <span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">Thread</span><span style="color: #98be65;">(</span>producer<span style="color: #98be65;">)</span>.start<span style="color: #98be65;">()</span>;
+        <span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">Thread</span><span style="color: #98be65;">(</span>consumer<span style="color: #98be65;">)</span>.start<span style="color: #98be65;">()</span>;
+        Thread.sleep<span style="color: #98be65;">(</span>4000<span style="color: #98be65;">)</span>;
+    <span style="color: #c678dd;">}</span>
+<span style="color: #fff0f5;">}</span>
+<span style="color: #51afef; font-style: italic;">public</span> <span style="color: #51afef; font-style: italic;">class</span> <span style="color: #ECBE7B;">Producer</span> <span style="color: #51afef; font-style: italic;">implements</span> <span style="color: #ECBE7B;">Runnable</span><span style="color: #fff0f5;">{</span>
+    <span style="color: #51afef; font-style: italic;">protected</span> <span style="color: #ECBE7B;">BlockingQueue</span> <span style="color: #db5762;">queue</span> = <span style="color: #a9a1e1;">null</span>;
+    <span style="color: #51afef; font-style: italic;">public</span> <span style="color: #c678dd;">Producer</span><span style="color: #c678dd;">(</span><span style="color: #ECBE7B;">BlockingQueue</span> <span style="color: #db5762;">queue</span><span style="color: #c678dd;">)</span> <span style="color: #c678dd;">{</span>
+        <span style="color: #51afef; font-style: italic;">this</span>.queue = queue;
+    <span style="color: #c678dd;">}</span>
+    <span style="color: #51afef; font-style: italic;">public</span> <span style="color: #ECBE7B;">void</span> <span style="color: #c678dd;">run</span><span style="color: #c678dd;">()</span> <span style="color: #c678dd;">{</span>
+        <span style="color: #51afef; font-style: italic;">try</span> <span style="color: #98be65;">{</span>
+            queue.put<span style="color: #00bfff;">(</span><span style="color: #98be65;">"1"</span><span style="color: #00bfff;">)</span>;
+            Thread.sleep<span style="color: #00bfff;">(</span>1000<span style="color: #00bfff;">)</span>;
+            queue.put<span style="color: #00bfff;">(</span><span style="color: #98be65;">"2"</span><span style="color: #00bfff;">)</span>;
+            Thread.sleep<span style="color: #00bfff;">(</span>1000<span style="color: #00bfff;">)</span>;
+            queue.put<span style="color: #00bfff;">(</span><span style="color: #98be65;">"3"</span><span style="color: #00bfff;">)</span>;
+        <span style="color: #98be65;">}</span> <span style="color: #51afef; font-style: italic;">catch</span> <span style="color: #98be65;">(</span><span style="color: #ECBE7B;">InterruptedException</span> <span style="color: #db5762;">e</span><span style="color: #98be65;">)</span> <span style="color: #98be65;">{</span> e.printStackTrace<span style="color: #00bfff;">()</span>; <span style="color: #98be65;">}</span>
+    <span style="color: #c678dd;">}</span>
+<span style="color: #fff0f5;">}</span>
+<span style="color: #51afef; font-style: italic;">public</span> <span style="color: #51afef; font-style: italic;">class</span> <span style="color: #ECBE7B;">Consumer</span> <span style="color: #51afef; font-style: italic;">implements</span> <span style="color: #ECBE7B;">Runnable</span><span style="color: #fff0f5;">{</span>
+    <span style="color: #51afef; font-style: italic;">protected</span> <span style="color: #ECBE7B;">BlockingQueue</span> <span style="color: #db5762;">queue</span> = <span style="color: #a9a1e1;">null</span>;
+    <span style="color: #51afef; font-style: italic;">public</span> <span style="color: #c678dd;">Consumer</span><span style="color: #c678dd;">(</span><span style="color: #ECBE7B;">BlockingQueue</span> <span style="color: #db5762;">queue</span><span style="color: #c678dd;">)</span> <span style="color: #c678dd;">{</span>
+        <span style="color: #51afef; font-style: italic;">this</span>.queue = queue;
+    <span style="color: #c678dd;">}</span>
+    <span style="color: #51afef; font-style: italic;">public</span> <span style="color: #ECBE7B;">void</span> <span style="color: #c678dd;">run</span><span style="color: #c678dd;">()</span> <span style="color: #c678dd;">{</span>
+        <span style="color: #51afef; font-style: italic;">try</span> <span style="color: #98be65;">{</span>
+            System.out.println<span style="color: #00bfff;">(</span>queue.take<span style="color: #a9a1e1;">()</span><span style="color: #00bfff;">)</span>;
+            System.out.println<span style="color: #00bfff;">(</span>queue.take<span style="color: #a9a1e1;">()</span><span style="color: #00bfff;">)</span>;
+            System.out.println<span style="color: #00bfff;">(</span>queue.take<span style="color: #a9a1e1;">()</span><span style="color: #00bfff;">)</span>;
+        <span style="color: #98be65;">}</span> <span style="color: #51afef; font-style: italic;">catch</span> <span style="color: #98be65;">(</span><span style="color: #ECBE7B;">InterruptedException</span> <span style="color: #db5762;">e</span><span style="color: #98be65;">)</span> <span style="color: #98be65;">{</span>
+            e.printStackTrace<span style="color: #00bfff;">()</span>;
+        <span style="color: #98be65;">}</span>
+    <span style="color: #c678dd;">}</span>
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org4f14eed" class="outline-2">
+<h2 id="org4f14eed"><span class="section-number-2">9</span> Task Execution</h2>
+<div class="outline-text-2" id="text-9">
+</div>
+<div id="outline-container-org08c047e" class="outline-3">
+<h3 id="org08c047e"><span class="section-number-3">9.1</span> Multi-threaded web server</h3>
+<div class="outline-text-3" id="text-9-1">
+<ul class="org-ul">
+<li>For every request, a new thread is created to handle that request. So, rather than processing the incoming requests in the same thread that accepts the client connection, the connection is handed off to a worker thread that will process the request.</li>
+<li>If too many threads are created, the application can run out of memory.</li>
+<li>Also there can be a limit on the number of threads that an Operating System will create.</li>
+<li>Creating too many threads wastes resources and costs time creating the unused threads.</li>
+<li>Destroying too many threads requires more time later when creating them again.</li>
+<li>Creating threads too slowly might result in poor client performance (long wait times).</li>
+<li>Destroying threads too slowly may starve other processes of resources.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org8436545" class="outline-3">
+<h3 id="org8436545"><span class="section-number-3">9.2</span> Solution</h3>
+<div class="outline-text-3" id="text-9-2">
+<ul class="org-ul">
+<li>Using a <b>Thread Pool</b>
+<ul class="org-ul">
+<li>Requests are passed to a thread taken from the pool</li>
+<li>The thread is returned to the pool when the request has been processed</li>
+<li>Pros: Multiple threads and threads are not being continuously created and destroyed</li>
+<li>Cons: Limited number of threads</li>
+</ul></li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org9fd88c0" class="outline-2">
+<h2 id="org9fd88c0"><span class="section-number-2">10</span> The Executor Framework</h2>
+<div class="outline-text-2" id="text-10">
+<ul class="org-ul">
+<li>Is a part of the <code>java.util.concurrent</code> package</li>
+<li>Higher level API than using threads directly</li>
+<li>Includes a flexible pool implementation</li>
+<li>The primary abstraction for task execution is the interface <code>Executor</code></li>
+<li>Available interfaces are:
+<ul class="org-ul">
+<li><code>Executor</code>: A simple interface that supports launching new tasks</li>
+<li><code>ExecutorService</code>: A subinterface of <code>Executor</code>, which adds features that help manage the lifecycle, both of the individual tasks and of the executor itself. The <b>lifecycles</b> are: initiation phase, service phase and the destruction phase.</li>
+<li><code>ScheduledExecutorService</code>: A sub-interface of <code>ExecutorService</code>, supports future and/or periodic execution of tasks.</li>
+</ul></li>
+</ul>
+</div>
+
+<div id="outline-container-org28ae51e" class="outline-3">
+<h3 id="org28ae51e"><span class="section-number-3">10.1</span> Usage</h3>
+<div class="outline-text-3" id="text-10-1">
+<ul class="org-ul">
+<li><code>e.execute(r)</code>, where <code>e</code> is the instance of the <code>Executor</code> and <code>r</code> is the instance of a Runnable object</li>
+<li>Obtaining thread pools:
+<ul class="org-ul">
+<li><code>Executor.newSingleThreadExecutor()</code>: Thread pool with only one thread. Essentially a sequential execution.</li>
+<li><code>Executor.newCachedThreadPool()</code>: Creates as many threads a possible to execute the tasks in parallel. By default a thread is terminated if it is idle for 60 seconds.</li>
+<li><code>Executor.newFixedThreadPool(int threads)</code>: A thread pool with a fixed amount of threads. It puts a thread in a queue if the limit is exceeded.</li>
+<li><code>Executor.newScheduledThreadPool()</code>: A thread pool made to schedule future tasks.</li>
+<li><code>Executor.newSingleThreadScheduledExecutor()</code>: A thread pool with only one thread to schedule future tasks.</li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgbca6ead" class="outline-3">
+<h3 id="orgbca6ead"><span class="section-number-3">10.2</span> Note</h3>
+<div class="outline-text-3" id="text-10-2">
+<ul class="org-ul">
+<li><b>Task Submission</b>: Calling <code>execute()</code> on the <code>Executor</code></li>
+<li><b>Task Execution</b>: Carried out by the Executor
+<ul class="org-ul">
+<li>The advantage of such a separation is that we can change the task execution by simply changing the Executor.</li>
+</ul></li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orga91055e" class="outline-2">
+<h2 id="orga91055e"><span class="section-number-2">11</span> Callable And Future Interface</h2>
+<div class="outline-text-2" id="text-11">
+<ul class="org-ul">
+<li>Is used to define tasks that return a result</li>
+<li>Use the <code>Callable&lt;T&gt;</code> interface to define a class with a <code>call()</code> method that return a value of the <code>T</code> type</li>
+<li>Use the <code>Executor's</code> <code>submit()</code> method to receive a <code>Future&lt;T&gt;</code> object that has a <code>get()</code> method from which we can obtain the result.</li>
+<li>Example:</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #51afef; font-style: italic;">class</span> <span style="color: #ECBE7B;">CallableExample</span> <span style="color: #51afef; font-style: italic;">implements</span> <span style="color: #ECBE7B;">Callable</span><span style="color: #fff0f5;">&lt;</span><span style="color: #ECBE7B;">Integer</span><span style="color: #fff0f5;">&gt;</span> <span style="color: #fff0f5;">{</span>
+    <span style="color: #51afef; font-style: italic;">private</span> <span style="color: #ECBE7B;">Integer</span> <span style="color: #db5762;">number</span>;
+
+    <span style="color: #a9a1e1;">@Override</span>
+    <span style="color: #51afef; font-style: italic;">public</span> <span style="color: #ECBE7B;">Integer</span> <span style="color: #c678dd;">call</span><span style="color: #c678dd;">()</span> <span style="color: #51afef; font-style: italic;">throws</span> <span style="color: #ECBE7B;">Exception</span> <span style="color: #c678dd;">{</span>
+        <span style="color: #51afef; font-style: italic;">return</span> 15;
+    <span style="color: #c678dd;">}</span>
+<span style="color: #fff0f5;">}</span>
+<span style="color: #51afef; font-style: italic;">class</span> <span style="color: #ECBE7B;">CallCallable</span> <span style="color: #fff0f5;">{</span>
+    <span style="color: #51afef; font-style: italic;">public</span> <span style="color: #51afef; font-style: italic;">static</span> <span style="color: #ECBE7B;">void</span> <span style="color: #c678dd;">main</span><span style="color: #c678dd;">(</span><span style="color: #ECBE7B;">String</span><span style="color: #98be65;">[]</span> <span style="color: #db5762;">args</span><span style="color: #c678dd;">)</span> <span style="color: #c678dd;">{</span>
+        <span style="color: #ECBE7B;">ExecutorService</span> <span style="color: #db5762;">exec</span> = Executor.newCachedThreadPool<span style="color: #98be65;">()</span>;
+        <span style="color: #ECBE7B;">Future</span><span style="color: #98be65;">&lt;</span><span style="color: #ECBE7B;">Integer</span><span style="color: #98be65;">&gt;</span> <span style="color: #db5762;">result</span> = exec.submit<span style="color: #98be65;">(</span><span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">CallableExample</span><span style="color: #00bfff;">()</span><span style="color: #98be65;">)</span>;
+        <span style="color: #51afef; font-style: italic;">try</span> <span style="color: #98be65;">{</span>
+            System.out.println<span style="color: #00bfff;">(</span><span style="color: #98be65;">"Result: "</span> = result.get<span style="color: #a9a1e1;">()</span><span style="color: #00bfff;">)</span>;  <span style="color: #5B6268;">// </span><span style="color: #5B6268;">block here and waits for the result</span>
+        <span style="color: #98be65;">}</span> <span style="color: #51afef; font-style: italic;">catch</span> <span style="color: #98be65;">(</span><span style="color: #ECBE7B;">Exception</span> <span style="color: #db5762;">e</span><span style="color: #98be65;">)</span> <span style="color: #98be65;">{</span>
+            <span style="color: #5B6268;">//</span>
+        <span style="color: #98be65;">}</span>
+    <span style="color: #c678dd;">}</span>
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+<ul class="org-ul">
+<li><p>
+<code>Future</code> object has a few convenience methods:
+</p>
+<ul class="org-ul">
+<li><code>cancel()</code>: To cancel the task</li>
+<li><code>isDone()</code>: To verify if the task is completed</li>
+<li><code>isCancelled()</code>: To verify if the task has been cancelled</li>
+</ul>
+
+<script src="../assets/jquery-3.3.1.min.js"></script>
+<script src="../assets/notes.js"></script></li>
+</ul>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="date">Date: 2018-09-10 Mon 11:54</p>
+<p class="author">Author: Damian Chrzanowski</p>
+<p class="date">Created: 2018-12-13 Thu 20:23</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

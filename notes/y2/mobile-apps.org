@@ -1,0 +1,324 @@
+#+TITLE: Mobile Applications 2
+#+DATE: [2018-01-16 Tue 13:19]
+#+AUTHOR: Damian Chrzanowski
+#+EMAIL: pjdamian.chrzanowski@gmail.com
+#+OPTIONS: TOC:2 num:2
+#+HTML_HEAD: <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="../assets/org.css"/>
+#+HTML_HEAD: <link rel="icon" href="../assets/favicon.ico">
+
+[[file:index.org][Home Page]]
+
+* Android
+  #+BEGIN_VERSE
+  Linux-based operating system designed primarily for touch screen mobile devices
+  #+END_VERSE
+
+* Apps categories
+  - Communications
+  - Photography
+  - Audio/Video
+  - News
+  - Books
+  - Sports
+  - Travel
+  - Social
+
+* Activity
+
+** Definition
+   - An Activity is  an application component that provides a screen with which users can interact in order to do something, such as dial the phone, etc.
+   - Each activity is given a window
+   - The window typically fills the screen, but it may be partial as well
+   - Applications consist (usually) of multiple activities, that may or may not interact with each other
+   - When an activity starts a new activity the old activity is stopped and its state is preserved in the *back stack*
+
+** Lifecycle
+   - *onCreate* - called when the activity is first created, usually used to setup the UI
+   - *onStart* - called when the activity becomes visible to the user
+   - *onResume* - called when the activity starts interacting with the user
+   - *onPause* - called when the current activity is being paused and the previous activity is resumed or an another activity made the current activity loses focus
+   - *onStop* - called when the activity is no longer visible
+   - *onDestroy* - called when the activity is destroyed by the system (manually or to conserve memory)
+   - *onRestart* - called when the activity gas been stopped and is restarting again
+   [[file:images/MobileApps_AndroidActivityLifecycle.png]]
+
+** Three common activity states
+   - *Resumed/Active/Running* - is visible and has the focus
+   - *Paused* - has lost its focus and may be partially hidden by other activities
+   - *Stopped* - has lost focus and is completely hidden by another activity
+
+* Views
+  - The *View* class is the superclass for all widgets
+  - The *ViewGroup* class is the superclass for most widgets that can contain other widgets, such as *Layouts*
+  - The *TextView* class is the superclass for widgets that display text and buttons
+  - *ScrollView* allows to pack widgets beyond the screen size and scroll them
+  - *GridView* allows to pack widgets in a 2D grid, some attributes:
+    - ~numColumns~
+    - ~verticalSpacing~
+    - ~solumnWidth~
+    - ~stretchMode~
+  [[file:images/MobileApps_ViewHierarchy.png]]
+
+* Layouts
+
+** Definitions
+   #+BEGIN_VERSE
+   Layout defines the visual structure for a user interface
+   #+END_VERSE
+
+** Creation
+   - Declared with an *XML* file
+     - XML layout is a specification of the various UI components and their relationships
+     - XML layouts are resources
+   - Programmatically with *View* and *ViewGroup* classes or their sub-classes
+   - Either method can be used, or both at the same time
+
+** Layout types
+   - *Frame* - with multiple widgets it stacks them on top of each other
+   - *Linear* - displays in a column type fashion, *orientation* is either vertical or horizontal. Common attributes: orientation, weight, gravity.
+   - *Relative* - displays each widget with the relation to an another widget: top of parent, bottom of parent, center to container, etc.
+   - *Table* - layout widgets in rows and columns, sort of like a html table. Common attributes: layout_span, layout_column.
+   - *Absolute* (Deprecated) - uses actual x and y coordinates to position widgets in relation to the screen size. Obvious issues due to different screen sizes.
+   - *Nested*, as the name suggests it allows
+
+* Screen orientation
+  - Prevent it by fixing an orientation in the AndroidManifest.xml
+  - Another way is to use the same layout for both orientations
+  - The last option is to use different XML files for both orientations
+
+* Handling click events
+  - The XML file needs to have an ~onClick~ attribute
+  #+BEGIN_SRC xml
+  android:onClick="sendMessage"
+  #+END_SRC
+  - The Java file needs to have a corresponding method
+  #+BEGIN_SRC java
+  public void sendMessage(View view) {}
+  #+END_SRC
+  - Must be public, must be void, and needs to have the view as the parameter
+
+* Intents
+
+** Definition
+   - Provides a runtime binding between separate components (usually activities)
+   - Intent represents an app's "intent to do something"
+   - Usually used to start another activity
+
+** Constructing
+   #+BEGIN_SRC java
+   Intent intent = new Intent(this, ClassNameOfActivityToStart.class);
+   intent.putExtra(KEY, message);
+   startActivity(intent);
+   #+END_SRC
+   - *this* is the context, usually *this* is used as it is the simplest way to obtain a context
+   - *KEY* is the key of the extra message and usually is a string in the resources, *message* is the string to be sent
+
+** Receiving an Intent
+   #+BEGIN_SRC java
+   Intent intent = getIntent();
+   String message = intent.getStringExtra(KEY);
+   #+END_SRC
+
+** Requesting information back from an Intent
+   - First start an activity, implying that you require a result back
+   #+BEGIN_SRC java
+   startActivityForResult(new Intent(this, ClassNameOfActivityToStart.class), request_Code);
+   #+END_SRC
+   - The activity the returns data needs to set the data
+   #+BEGIN_SRC java
+   Intent intent = new Intent();
+   intent.setDate(message);
+   setResult(RESULT_OK, intent);  // RESULT_OK or RESULT_CANCELLED
+   finish();
+   #+END_SRC
+   - The activity that receives the data needs to have the ~onActivityResult~ method
+   #+BEGIN_SRC java
+   public void onActivityResult(int requestCode, int resultCode, Intent data) {
+       if (requestCode == request_Code) {
+           if (resultCode == RESULT_OK) {
+               // do something
+           }
+       }
+   }
+   #+END_SRC
+
+* Animations
+
+** Methods
+   - start()
+   - setDuration(long duration)
+   - getDuration()
+   - end()
+   - cancel()
+
+** Attaching an animation
+   #+BEGIN_SRC java
+   ImageView image = findViewById(R.id.imageView1);
+   Animation animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.zoom);
+   image.startAnimation(animation);
+   #+END_SRC
+
+** Animation XML tags and attributes
+   - ~scale~
+     - ~fromXScale~
+     - ~fromYScale~
+     - ~toXScale~
+     - ~toYScale~
+   - ~rotate~
+     - ~fromDegrees~
+     - ~toDegrees~
+   - ~alpha~
+     - ~fromAlpha~
+     - ~toAlpha~
+   - ~translate~
+     - ~fromXDelta~
+     - ~fromYDelta~
+   - Common attributes
+     - ~duration~
+     - ~pivotX~
+     - ~pivotY~
+     - ~startOffset~
+     - ~repeatMode~ : reverse
+     - ~repeatCount~ : 1, 2, 3, infinite
+     - ~interpolator~ : linear, accelerate, etc.
+
+* Selection Widgets
+
+** Small pool of options
+   - RadioButtons
+   #+BEGIN_SRC xml
+  <RadioGroup
+    android:id="@+id/rdGr1">
+    <RadioButton
+      android:id="@+id/rdBt1">
+    <RadioButton
+      android:id="@+id/rdBt2">
+  </RadioGroup>
+   #+END_SRC
+   #+BEGIN_SRC java
+RadioGroup radio = findViewById(R.id.rdGr1);
+
+radio.setOnCheckedChangeListener(new OnCheckedChangeListener() {
+        public void onCheckedChanged(RadioGroup group, int checkedId) {
+            RadioButton button = findViewById(R.id.rdBt1);
+
+            if (button.isChecked()) {
+                // do something
+            } else {
+                // something else
+            }
+        }
+    });
+   #+END_SRC
+   - CheckButtons
+   #+BEGIN_SRC java
+CheckBox check = findViewById(R.id.star);
+
+check.setOnClickListener(new View.OnClickListener() {
+        public void onClick(View v) {
+            if (((CheckBox) v).isChecked()) {
+                // do something
+            }
+        }
+    });
+   #+END_SRC
+   - ToggleButton
+   #+BEGIN_SRC java
+ToggleButton toggle = findViewById(R.id.toggle);
+
+toggle.setOnClickListener(new View.OnClickListener() {
+        public void onClick(View v) {
+            if (((ToggleButton) v).isChecked()) {
+                // do something
+            }
+        }
+    });
+   #+END_SRC
+
+** Large pool of options with Adapters
+   - ListView
+   #+BEGIN_SRC java
+public class ListViewEx extends ListActivity {
+    String [] data = {"", "", "", ...};
+
+    public void onCreate(Bundle savedInstanceState) {
+        // ....
+        setListAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, data));
+    }
+
+    public void onListItemClick (ListView parent, View v, int position, long id) {
+        // do something
+    }
+}
+   #+END_SRC
+   - Spinner
+     - Same as ListView, although usually one would have a spinner as not the main view of the activity and thus ~setAdapter~ method must be used
+     - as the listener the ~setOnItemSelectedListener~ method is used
+
+** Menus
+   - Create an options menu using the XML ~menu~ tag and its id'ed ~item~ tags
+   - Override the ~onCreateOptionsMenu~ to inflate the menu
+   #+BEGIN_SRC java
+public boolean onCreateOptionsMenu(Menu menu) {
+    getMenuInflater().inflate(R.menu.activity_main, menu);
+    return true;
+}
+   #+END_SRC
+   - Override the ~onOptionsItemSelected~
+   #+BEGIN_SRC java
+public boolean onOptionsIemSelected(MenuItem item) {
+    switch (item.getItemId()) {
+    case R.id.menu_about:
+        // do something
+        return true;
+    default:
+        return super.onOptionsItemSelected(item);
+    }
+}
+   #+END_SRC
+
+* Images
+  - Common attibutes
+    - ~contentDescription~ - image description in a string format
+    - ~src~ - the location of the drawable resource
+
+* Deployment
+
+** Deployment options
+   - Google Play Store
+   - Amazon Store
+   - As an APK on a website, email, etc.
+
+** Monetizing
+   - Paid app
+   - In-app billing
+   - Ads
+     - Google AdMob
+
+** Strategies
+   - Provide ads in your app, have another paid version of the app that has no adds
+   - Provide an app with limited features that is free. Paid version has full features
+
+** Steps
+   - Set the final package name
+   - Set the final application icon
+   - Set the version numbers for the app and all of its components
+   - Add copyright info
+   - Add End User License Agreement
+   - Localize the app
+   - Remove old files
+   - Remove logging statements
+   - Sign the APK with a *release key*
+     - Android system uses the signed certificate as a means of identifying the author of an application and establishing trust relationships between applications
+     - During development the app is signed with a *debug key*
+     - Self store certificates are allowed and are stored in a *keystore*
+
+* On Exam
+  - What is an activity?
+  - Describe the Lifecycle of an activity
+
+   #+BEGIN_EXPORT html
+   <script src="../assets/jquery-3.3.1.min.js"></script>
+   <script src="../assets/notes.js"></script>
+   #+END_EXPORT

@@ -1,0 +1,110 @@
+#+TITLE: Webpack
+#+DATE: [2017-05-26 Fri 10:28]
+#+AUTHOR: Damian Chrzanowski
+#+EMAIL: pjdamian.chrzanowski@gmail.com
+#+OPTIONS: H:2 toc:2
+#+HTML_HEAD: <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="../../assets/org.css"/>
+#+HTML_HEAD: <link rel="icon" href="../../assets/favicon.ico">
+
+[[file:../../index.org][Home Page]]
+
+* First init npm and install dependencies
+  #+BEGIN_VERSE
+~npm init~
+~npm install webpack --save-dev~
+~npm install webpack-dev-server --save-dev~
+  #+END_VERSE
+
+* Create the config file
+  #+BEGIN_VERSE
+~touch webpack.config.js~
+  #+END_VERSE
+
+** Add this to the package.json
+   #+BEGIN_SRC json
+"scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack-dev-server",
+    "build:prod": "webpack"
+}
+   #+END_SRC
+
+** webpack.config.js sample
+   #+BEGIN_SRC js
+var path = require ('path');  // helps to create an absolute path
+
+module.exports = {
+    entry: './js/comand.js',
+    output: {
+        path: path.resolve(__dirname, 'dist'),
+        filename: 'bundle.js',
+        publicPath: '/dist'
+    }
+};
+   #+END_SRC
+
+** Adding plugins
+   - Add a package via ~npm install package_name --save-dev~
+   - Add plugins to the webpack.config.js, example:
+   #+BEGIN_VERSE
+plugins: [
+    new webpack.ProvidePlugin({
+        $: "jquery",
+        jQuery: "jquery"
+    }),
+    new webpack.ProvidePlugin({
+        BigPicture: "bigpicture",
+        bigpicture: "bigpicture"
+    })
+]
+   #+END_VERSE
+
+** Adding modules
+
+*** Adding modules to webpack.config.js
+    - example of adding a css loader
+    #+BEGIN_VERSE
+module: {
+    rules: [
+        {
+            test: /\.css$/,
+            use: [
+                'style-loader',
+                'css-loader'
+            ]
+        }
+    #+END_VERSE
+
+*** CSS modules
+    - ~npm install css-loader style-loader --save-dev~
+
+*** File and URL loaders
+    - ~npm install file-loader url-loader --save-dev~
+
+*** Extract loader
+    - ~npm install extract-loader extract-text-webpack html-loader html-webpack-plugin --save-dev~
+
+*** For es2015
+    - ~npm install babel-core babel-loader babel-preset-es2015 --save-dev~
+
+*** For cleaning the dist
+    - ~npm install clean-webpack-plugin --save-dev~
+
+* Running webpack
+  #+BEGIN_VERSE
+~npm run build~
+~npm run build:prod~
+  #+END_VERSE
+
+* Serving with auto-refresh
+  #+BEGIN_VERSE
+Open up the app in the browser as:
+~http://localhost:8080/webpack-dev-server/index.html~
+  #+END_VERSE
+
+
+  #+BEGIN_EXPORT html
+  <script src="../../assets/jquery-3.3.1.min.js"></script>
+  <script src="../../assets/notes.js"></script>
+  #+END_EXPORT

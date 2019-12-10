@@ -1,0 +1,41 @@
+#+TITLE: Heroku Starter Manual
+#+DATE: [2017-07-30 Sun 19:50]
+#+AUTHOR: Damian Chrzanowski
+#+EMAIL: pjdamian.chrzanowski@gmail.com
+#+OPTIONS: H:2 toc:2
+#+HTML_HEAD: <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="../../assets/org.css"/>
+#+HTML_HEAD: <link rel="icon" href="../../assets/favicon.ico">
+
+[[file:../../index.org][Home Page]]
+
+* Installation
+  1. Install heroku cli
+  2. Run ~heroku login~
+
+* Setting up
+  1. Create a repo link: ~heroku create~ pass in a parameter to add a custom name
+  2. Preferably use ~--save-exact~ with ~npm install~ to avoid versioning issues
+  3. Push code to heroku: ~git push heroku master~
+  4. Set dyno scaling: ~heroku ps:scale web=1~
+  5. Downscale ~heroku ps:scale web=0~
+
+* Maintenance
+  1. Open app in the browser: ~heroku open~
+  2. Change the ~Procfile~ if there is a need to run a different command than ~node index.js~ on the server
+  3. View logs ~heroku logs --tail~
+  4. Check the dyno ~heroku ps~
+  5. Run a remote node console ~heroku run node~
+  6. Run a remote console ~heroku run bash~
+
+* Additional
+  1. Display env vars ~heroku config~
+  2. Use addons with a verified account
+  3. Set an env var ~heroku config:set TIMES=2~ where ~TIMES~ is the env variable
+  4. Add postgresql ~heroku addons:create heroku-postgresql:hobby-dev~
+     - This will create the database and set the ~DATABASE_URL~ env
+
+  #+BEGIN_EXPORT html
+  <script src="../../assets/jquery-3.3.1.min.js"></script>
+  <script src="../../assets/notes.js"></script>
+  #+END_EXPORT

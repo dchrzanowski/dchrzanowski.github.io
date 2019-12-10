@@ -1,0 +1,976 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2018-12-19 Wed 10:12 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Server Side Web Development 3</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="Damian Chrzanowski" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="../assets/org.css"/>
+<link rel="icon" href="../assets/favicon.ico">
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2018 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Server Side Web Development 3</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org0bd83be">1. Request/Response</a>
+<ul>
+<li><a href="#org1adc962">1.1. Headers</a></li>
+<li><a href="#org44a41e0">1.2. HTTP Response Codes</a></li>
+<li><a href="#orgc852bd5">1.3. Parameters</a></li>
+<li><a href="#org7a855f2">1.4. Methods</a></li>
+<li><a href="#orgb366f42">1.5. Example Requests</a></li>
+<li><a href="#org560fe07">1.6. Example Response</a></li>
+</ul>
+</li>
+<li><a href="#org0387ee8">2. Java on the Server Side</a></li>
+<li><a href="#orgbe0ac04">3. Servlets</a>
+<ul>
+<li><a href="#org2c1a01d">3.1. Writing Servlets</a></li>
+</ul>
+</li>
+<li><a href="#org71d119e">4. MVC</a>
+<ul>
+<li><a href="#org900ceb7">4.1. Example Post to a <code>HelloControllerServlet</code></a></li>
+<li><a href="#org77f0344">4.2. Receiving with <code>doPost</code> and dispatching a <code>JSP</code></a></li>
+<li><a href="#orgc21885c">4.3. The <code>ShowUser.jsp</code></a></li>
+</ul>
+</li>
+<li><a href="#org1cdf56f">5. Data Access Object (DAO)</a>
+<ul>
+<li><a href="#org21d8ba9">5.1. Example <code>UserDAO.java</code></a></li>
+</ul>
+</li>
+<li><a href="#orgeeafd8d">6. JSP</a>
+<ul>
+<li><a href="#org394203f">6.1. Usage</a></li>
+<li><a href="#org067dd91">6.2. Scope</a></li>
+</ul>
+</li>
+<li><a href="#orgd6265e1">7. Sessions</a>
+<ul>
+<li><a href="#org7bb181c">7.1. Hidden Data Fields</a></li>
+<li><a href="#orge522216">7.2. <code>HttpSession</code></a></li>
+<li><a href="#orgbdfb33c">7.3. Cookies</a></li>
+</ul>
+</li>
+<li><a href="#org2048a44">8. Eclipse Project setup</a></li>
+</ul>
+</div>
+</div>
+<p>
+<a href="index.html">Home Page</a>
+</p>
+
+<div id="outline-container-org0bd83be" class="outline-2">
+<h2 id="org0bd83be"><span class="section-number-2">1</span> Request/Response</h2>
+<div class="outline-text-2" id="text-1">
+<ul class="org-ul">
+<li>A HTTP request/response is a stateless protocol</li>
+<li>HTTP1.1 provides support for persistent connections via <b>sockets</b></li>
+</ul>
+</div>
+
+<div id="outline-container-org1adc962" class="outline-3">
+<h3 id="org1adc962"><span class="section-number-3">1.1</span> Headers</h3>
+<div class="outline-text-3" id="text-1-1">
+<ul class="org-ul">
+<li>Start Line</li>
+</ul>
+<p class="verse">
+<code>GET index.jsp HTTP/1.1</code> -&gt; GET Example<br />
+<code>POST myApp/book/update HTTP/1.1</code> -&gt; POST Example<br />
+<code>HTTP/1.1 200 OK</code> -&gt; Response Example<br />
+</p>
+<ul class="org-ul">
+<li>Headers</li>
+</ul>
+<p class="verse">
+<code>Content-type: text/plain</code><br />
+<code>Content-length: 19</code><br />
+</p>
+<ul class="org-ul">
+<li>Body</li>
+</ul>
+<p class="verse">
+GET has none<br />
+Normally key value pairs, in particular in a POST or PUT<br />
+In a response the <code>body</code> contains the resource requested<br />
+</p>
+</div>
+</div>
+
+<div id="outline-container-org44a41e0" class="outline-3">
+<h3 id="org44a41e0"><span class="section-number-3">1.2</span> HTTP Response Codes</h3>
+<div class="outline-text-3" id="text-1-2">
+<ul class="org-ul">
+<li>100-101 Informational</li>
+<li>200-206 Successful
+<ul class="org-ul">
+<li>200 OK</li>
+<li>201 Created</li>
+<li>202 Accepted</li>
+<li>204 No content</li>
+</ul></li>
+<li>300-305 Redirection
+<ul class="org-ul">
+<li>301 Moved permanently</li>
+<li>302 Moved temporarily</li>
+<li>304 Not modified</li>
+</ul></li>
+<li>400-415 Client Error
+<ul class="org-ul">
+<li>400 Bad request</li>
+<li>401 Unauthorized</li>
+<li>403 Forbidden</li>
+<li>404 Not found</li>
+</ul></li>
+<li>500-505 Server Error
+<ul class="org-ul">
+<li>500 Internal server error</li>
+<li>501 Not implemented</li>
+<li>502 Bad gateway</li>
+<li>503 Service unavailable</li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgc852bd5" class="outline-3">
+<h3 id="orgc852bd5"><span class="section-number-3">1.3</span> Parameters</h3>
+<div class="outline-text-3" id="text-1-3">
+<ul class="org-ul">
+<li><code>Form Data Set</code> is a set of name value pairs, separated by an <code>&amp;</code> and are appended to the <code>URL</code></li>
+<li>In a POST the parameters are put into the body</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org7a855f2" class="outline-3">
+<h3 id="org7a855f2"><span class="section-number-3">1.4</span> Methods</h3>
+<div class="outline-text-3" id="text-1-4">
+<ul class="org-ul">
+<li><code>HEAD</code>: Just get the header information</li>
+<li><code>PUT</code>: Upload a resource</li>
+<li><code>DELETE</code>: Delete a resource</li>
+<li><code>TRACE</code>: Trace the message through Proxy Servers to the Server</li>
+<li><code>OPTIONS</code>: Check which methods are available on the Server</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgb366f42" class="outline-3">
+<h3 id="orgb366f42"><span class="section-number-3">1.5</span> Example Requests</h3>
+<div class="outline-text-3" id="text-1-5">
+</div>
+<div id="outline-container-orga8f309c" class="outline-4">
+<h4 id="orga8f309c">GET</h4>
+<div class="outline-text-4" id="text-orga8f309c">
+<pre class="example">
+GET /myApp/insert?name=paul&amp;address=athlone
+User-agent:Chrome/3.0.195.38
+Host:Host
+Accept:application/xml,application/xhtml+xml,text/html;q=0.9,
+text/plain;q=0.8,image/png,*/*;q=0.5
+</pre>
+</div>
+</div>
+<div id="outline-container-org35c8c28" class="outline-4">
+<h4 id="org35c8c28">POST</h4>
+<div class="outline-text-4" id="text-org35c8c28">
+<pre class="example">
+POST /myApp/insert
+User-agent:Chrome/3.0.195.38
+Host:Host
+Accept:application/xml,application/xhtml+xml,text/html;q=0.9,
+text/plain;q=0.8,image/png,*/*;q=0.5
+Content-length:25
+
+name=paul&amp;address=athlone
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org560fe07" class="outline-3">
+<h3 id="org560fe07"><span class="section-number-3">1.6</span> Example Response</h3>
+<div class="outline-text-3" id="text-1-6">
+<pre class="example">
+HTTP/1.1 200 OK
+Date: Thu, 20 May 2004 21:12:58 GMT
+Connection: Cose
+Server: Apache/1.3.27
+Accept-Ranges: bytes
+Content-Type: text/html
+Content-Length: 170
+
+&lt;html&gt;
+.
+.
+.
+&lt;/html&gt;
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org0387ee8" class="outline-2">
+<h2 id="org0387ee8"><span class="section-number-2">2</span> Java on the Server Side</h2>
+<div class="outline-text-2" id="text-2">
+<ul class="org-ul">
+<li>Dynamic Website Operations Diagram</li>
+</ul>
+
+<div class="figure">
+<p><img src="images/Servlets/screenshot_2018-12-10_13-51-34.png" alt="screenshot_2018-12-10_13-51-34.png" />
+</p>
+</div>
+<ul class="org-ul">
+<li><b>Web Server</b>:
+<ul class="org-ul">
+<li>Serve up Web pages (Apache)</li>
+<li>Most handled Java based Web Applications as well (Apache Tomcat)</li>
+<li>Became know as Application Server</li>
+</ul></li>
+<li><b>Application Server</b>:
+<ul class="org-ul">
+<li>Handled Java based Web Applications</li>
+<li>Also started to provide much more, such as:
+<ul class="org-ul">
+<li>Transaction support</li>
+<li>Security support</li>
+<li>Range of other services</li>
+</ul></li>
+<li>JBoss, Glassfish, WebLogic, WebSphere</li>
+</ul></li>
+<li><b>Container</b>
+<ul class="org-ul">
+<li>We can think of the Application Server as a container which can contain
+<ul class="org-ul">
+<li>Web Applications</li>
+<li>EJB components</li>
+</ul></li>
+<li>The Application Server can accept request and pass them to the contained Web Application.</li>
+<li>Servlet Container, EJB container, - most Application servers are both.</li>
+</ul></li>
+<li>Application Server as a <b>Container</b></li>
+</ul>
+
+<div class="figure">
+<p><img src="images/Java%20on%20the%20Server%20Side/screenshot_2018-12-10_13-57-57.png" alt="screenshot_2018-12-10_13-57-57.png" />
+</p>
+</div>
+<ul class="org-ul">
+<li>Web Application</li>
+</ul>
+
+<div class="figure">
+<p><img src="images/Java%20on%20the%20Server%20Side/screenshot_2018-12-10_13-58-24.png" alt="screenshot_2018-12-10_13-58-24.png" />
+</p>
+</div>
+<ul class="org-ul">
+<li>Typical Web Application:
+<ul class="org-ul">
+<li>HTML pages</li>
+<li>Forms</li>
+<li>Form Processing Agents
+<ul class="org-ul">
+<li>Servlets and/or Java Server Pages (JSP)</li>
+<li>Or built on top of Servlets</li>
+</ul></li>
+<li>Database backend</li>
+</ul></li>
+<li>J2EE is a Servlet Specification that is frequently used because of a standardized way of how it is structured, etc.</li>
+<li>Web Applications can be packaged into a <code>WAR</code> file</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgbe0ac04" class="outline-2">
+<h2 id="orgbe0ac04"><span class="section-number-2">3</span> Servlets</h2>
+<div class="outline-text-2" id="text-3">
+<ul class="org-ul">
+<li>Are written in Java and run as threads on a web server</li>
+<li>Typically used with HTML forms and connect to JDBC</li>
+<li>Library classes and methods are used to parse the input stream</li>
+<li>Architecture Diagram</li>
+</ul>
+
+<div class="figure">
+<p><img src="images/Servlets/screenshot_2018-12-10_14-04-33.png" alt="screenshot_2018-12-10_14-04-33.png" />
+</p>
+</div>
+</div>
+
+<div id="outline-container-org2c1a01d" class="outline-3">
+<h3 id="org2c1a01d"><span class="section-number-3">3.1</span> Writing Servlets</h3>
+<div class="outline-text-3" id="text-3-1">
+<ul class="org-ul">
+<li>Use the J2EE Eclipse Perspective</li>
+<li>Create a new Dynamic Web Project</li>
+</ul>
+</div>
+
+<div id="outline-container-orgdec2dfd" class="outline-4">
+<h4 id="orgdec2dfd">The <code>doGet()</code> Method</h4>
+<div class="outline-text-4" id="text-orgdec2dfd">
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #a9a1e1;">@WebServlet</span><span style="color: #fff0f5;">(</span><span style="color: #98be65;">"/HelloServlet"</span><span style="color: #fff0f5;">)</span>
+<span style="color: #51afef; font-style: italic;">public</span> <span style="color: #51afef; font-style: italic;">class</span> <span style="color: #ECBE7B;">HelloServlet</span> <span style="color: #51afef; font-style: italic;">extends</span> <span style="color: #ECBE7B;">HttpServlet</span> <span style="color: #fff0f5;">{</span>
+    <span style="color: #51afef; font-style: italic;">protected</span> <span style="color: #ECBE7B;">void</span> <span style="color: #c678dd;">doGet</span><span style="color: #c678dd;">(</span><span style="color: #ECBE7B;">HttpServletRequest</span> <span style="color: #db5762;">request</span>, <span style="color: #ECBE7B;">HttpServletResponse</span> <span style="color: #db5762;">response</span><span style="color: #c678dd;">)</span>
+        <span style="color: #51afef; font-style: italic;">throws</span> <span style="color: #ECBE7B;">ServletException</span>, <span style="color: #ECBE7B;">IOException</span> <span style="color: #c678dd;">{</span>
+        <span style="color: #ECBE7B;">PrintWriter</span> <span style="color: #db5762;">p</span> = response.getWriter<span style="color: #98be65;">()</span>;
+        p.println<span style="color: #98be65;">(</span><span style="color: #98be65;">"&lt;h1&gt;Hello World&lt;/h1&gt;"</span><span style="color: #98be65;">)</span>;
+        p.close<span style="color: #98be65;">()</span>;
+    <span style="color: #c678dd;">}</span>
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org7ce0e0f" class="outline-4">
+<h4 id="org7ce0e0f">The <code>doPost()</code> Method</h4>
+<div class="outline-text-4" id="text-org7ce0e0f">
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #a9a1e1;">@WebServlet</span><span style="color: #fff0f5;">(</span><span style="color: #98be65;">"/HelloServlet"</span><span style="color: #fff0f5;">)</span>
+<span style="color: #51afef; font-style: italic;">public</span> <span style="color: #51afef; font-style: italic;">class</span> <span style="color: #ECBE7B;">HelloServlet</span> <span style="color: #51afef; font-style: italic;">extends</span> <span style="color: #ECBE7B;">HttpServlet</span> <span style="color: #fff0f5;">{</span>
+    <span style="color: #51afef; font-style: italic;">protected</span> <span style="color: #ECBE7B;">void</span> <span style="color: #c678dd;">doPost</span><span style="color: #c678dd;">(</span><span style="color: #ECBE7B;">HttpServletRequest</span> <span style="color: #db5762;">request</span>, <span style="color: #ECBE7B;">HttpServletResponse</span> <span style="color: #db5762;">response</span><span style="color: #c678dd;">)</span>
+        <span style="color: #51afef; font-style: italic;">throws</span> <span style="color: #ECBE7B;">ServletException</span>, <span style="color: #ECBE7B;">IOException</span> <span style="color: #c678dd;">{</span>
+        <span style="color: #ECBE7B;">PrintWriter</span> <span style="color: #db5762;">p</span> = response.getWriter<span style="color: #98be65;">()</span>;
+        <span style="color: #ECBE7B;">String</span> <span style="color: #db5762;">name</span> = request.getParameter<span style="color: #98be65;">(</span><span style="color: #98be65;">"name"</span><span style="color: #98be65;">)</span>;  <span style="color: #5B6268;">// </span><span style="color: #5B6268;">get the name from the submitted form</span>
+        p.println<span style="color: #98be65;">(</span><span style="color: #98be65;">"&lt;h1&gt;Hello "</span> + name + <span style="color: #98be65;">"&lt;/h1&gt;"</span><span style="color: #98be65;">)</span>;
+        p.close<span style="color: #98be65;">()</span>;
+    <span style="color: #c678dd;">}</span>
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org71d119e" class="outline-2">
+<h2 id="org71d119e"><span class="section-number-2">4</span> MVC</h2>
+<div class="outline-text-2" id="text-4">
+<ul class="org-ul">
+<li><b>Model</b>: Are any data classes associated with their DB entities, also are very likely to contain <code>DAOs</code></li>
+<li><b>View</b>: Are the <b>JSP</b> files that get the data from the <b>Model</b> via the <b>Controller</b></li>
+<li><b>Controller</b>: Are the <b>Servlets</b> that coordinate communication between the <b>Model</b> and the <b>View</b></li>
+<li>Example Diagram of <b>MVC</b> with <b>Servlets</b></li>
+</ul>
+
+<div class="figure">
+<p><img src="images/Servlets/screenshot_2018-12-10_14-23-17.png" alt="screenshot_2018-12-10_14-23-17.png" />
+</p>
+</div>
+</div>
+
+<div id="outline-container-org900ceb7" class="outline-3">
+<h3 id="org900ceb7"><span class="section-number-3">4.1</span> Example Post to a <code>HelloControllerServlet</code></h3>
+<div class="outline-text-3" id="text-4-1">
+<div class="org-src-container">
+<pre class="src src-html">&lt;<span style="color: #c678dd;">form</span> <span style="color: #db5762;">action</span>=<span style="color: #98be65;">"HelloControllerServlet"</span> <span style="color: #db5762;">method</span>=<span style="color: #98be65;">"post"</span>&gt;
+    &lt;<span style="color: #c678dd;">input</span> <span style="color: #db5762;">type</span>=<span style="color: #98be65;">"text"</span> <span style="color: #db5762;">name</span>=<span style="color: #98be65;">"name"</span>&gt;
+    &lt;<span style="color: #c678dd;">input</span> <span style="color: #db5762;">type</span>=<span style="color: #98be65;">"submit"</span> <span style="color: #db5762;">value</span>=<span style="color: #98be65;">"Submit"</span>&gt;
+&lt;/<span style="color: #c678dd;">form</span>&gt;
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org77f0344" class="outline-3">
+<h3 id="org77f0344"><span class="section-number-3">4.2</span> Receiving with <code>doPost</code> and dispatching a <code>JSP</code></h3>
+<div class="outline-text-3" id="text-4-2">
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #a9a1e1;">@WebServlet</span><span style="color: #fff0f5;">(</span><span style="color: #98be65;">"/HelloServlet"</span><span style="color: #fff0f5;">)</span>
+<span style="color: #51afef; font-style: italic;">public</span> <span style="color: #51afef; font-style: italic;">class</span> <span style="color: #ECBE7B;">HelloServlet</span> <span style="color: #51afef; font-style: italic;">extends</span> <span style="color: #ECBE7B;">HttpServlet</span> <span style="color: #fff0f5;">{</span>
+    <span style="color: #51afef; font-style: italic;">protected</span> <span style="color: #ECBE7B;">void</span> <span style="color: #c678dd;">doPost</span><span style="color: #c678dd;">(</span><span style="color: #ECBE7B;">HttpServletRequest</span> <span style="color: #db5762;">request</span>, <span style="color: #ECBE7B;">HttpServletResponse</span> <span style="color: #db5762;">response</span><span style="color: #c678dd;">)</span>
+        <span style="color: #51afef; font-style: italic;">throws</span> <span style="color: #ECBE7B;">ServletException</span>, <span style="color: #ECBE7B;">IOException</span> <span style="color: #c678dd;">{</span>
+        <span style="color: #ECBE7B;">String</span> <span style="color: #db5762;">name</span> = request.getParameter<span style="color: #98be65;">(</span><span style="color: #98be65;">"name"</span><span style="color: #98be65;">)</span>;  <span style="color: #5B6268;">// </span><span style="color: #5B6268;">get the name from the submitted form</span>
+        <span style="color: #ECBE7B;">User</span> <span style="color: #db5762;">user</span> = <span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">User</span><span style="color: #98be65;">(</span>name<span style="color: #98be65;">)</span>;
+        request.setAttribute<span style="color: #98be65;">(</span><span style="color: #98be65;">"user"</span>, user<span style="color: #98be65;">)</span>; <span style="color: #5B6268;">// </span><span style="color: #5B6268;">inject user into the request</span>
+        <span style="color: #5B6268;">// </span><span style="color: #5B6268;">dispatch the JSP and forward the request and the response</span>
+        request.getRequestDispatcher<span style="color: #98be65;">(</span><span style="color: #98be65;">"ShowUser.jsp"</span><span style="color: #98be65;">)</span>.forward<span style="color: #98be65;">(</span>request, response<span style="color: #98be65;">)</span>;
+    <span style="color: #c678dd;">}</span>
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgc21885c" class="outline-3">
+<h3 id="orgc21885c"><span class="section-number-3">4.3</span> The <code>ShowUser.jsp</code></h3>
+<div class="outline-text-3" id="text-4-3">
+<div class="org-src-container">
+<pre class="src src-html">&lt;%@ taglib <span style="color: #db5762;">uri</span>=<span style="color: #98be65;">"http://java.sun.com/jsp/jstl/core"</span> <span style="color: #db5762;">prefix</span>=<span style="color: #98be65;">"c"</span> %&gt;
+
+&lt;<span style="color: #c678dd;">body</span>&gt;
+    Name: &lt;<span style="color: #c678dd;">c</span>:<span style="color: #c678dd;">out</span> <span style="color: #db5762;">value</span>=<span style="color: #98be65;">"${user.name}"</span>/&gt;
+&lt;/<span style="color: #c678dd;">body</span>&gt;
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org1cdf56f" class="outline-2">
+<h2 id="org1cdf56f"><span class="section-number-2">5</span> Data Access Object (DAO)</h2>
+<div class="outline-text-2" id="text-5">
+<ul class="org-ul">
+<li>A layer in your application where all the database access code goes</li>
+</ul>
+</div>
+
+<div id="outline-container-org21d8ba9" class="outline-3">
+<h3 id="org21d8ba9"><span class="section-number-3">5.1</span> Example <code>UserDAO.java</code></h3>
+<div class="outline-text-3" id="text-5-1">
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #51afef; font-style: italic;">public</span> <span style="color: #51afef; font-style: italic;">enum</span> <span style="color: #ECBE7B;">UserDAO</span> <span style="color: #fff0f5;">{</span>
+    <span style="color: #db5762;">instance</span>;
+    <span style="color: #51afef; font-style: italic;">public</span> <span style="color: #ECBE7B;">Connection</span> <span style="color: #c678dd;">getConnection</span><span style="color: #c678dd;">()</span> <span style="color: #c678dd;">{</span>
+        <span style="color: #ECBE7B;">Connection</span> <span style="color: #db5762;">con</span> = <span style="color: #a9a1e1;">null</span>;
+        <span style="color: #51afef; font-style: italic;">try</span> <span style="color: #98be65;">{</span>
+            Class.forName<span style="color: #00bfff;">(</span><span style="color: #98be65;">"org.hsqldb.jdbcDriver"</span><span style="color: #00bfff;">)</span>;
+            con = DriverManager.getConnection<span style="color: #00bfff;">(</span><span style="color: #98be65;">"jdbc:hsqldb:hsql://localhost/oneDB"</span>, <span style="color: #98be65;">"sa"</span>, <span style="color: #98be65;">""</span><span style="color: #00bfff;">)</span>;
+            <span style="color: #51afef; font-style: italic;">return</span> con;
+        <span style="color: #98be65;">}</span> <span style="color: #51afef; font-style: italic;">catch</span> <span style="color: #98be65;">(</span><span style="color: #ECBE7B;">SQLException</span> <span style="color: #db5762;">e</span><span style="color: #98be65;">)</span> <span style="color: #98be65;">{</span>
+            e.printStackTrace<span style="color: #00bfff;">()</span>;
+        <span style="color: #98be65;">}</span> <span style="color: #51afef; font-style: italic;">catch</span> <span style="color: #98be65;">(</span><span style="color: #ECBE7B;">ClassNotFoundException</span> <span style="color: #db5762;">e</span><span style="color: #98be65;">)</span> <span style="color: #98be65;">{</span>
+            e.printStackTrace<span style="color: #00bfff;">()</span>;
+        <span style="color: #98be65;">}</span>
+        <span style="color: #51afef; font-style: italic;">return</span> con;
+    <span style="color: #c678dd;">}</span>
+    <span style="color: #51afef; font-style: italic;">public</span> <span style="color: #ECBE7B;">boolean</span> <span style="color: #c678dd;">save</span><span style="color: #c678dd;">(</span><span style="color: #ECBE7B;">User</span> <span style="color: #db5762;">user</span><span style="color: #c678dd;">)</span> <span style="color: #c678dd;">{</span>
+        <span style="color: #ECBE7B;">Connection</span> <span style="color: #db5762;">con</span> = getConnection<span style="color: #98be65;">()</span>;
+        <span style="color: #51afef; font-style: italic;">if</span> <span style="color: #98be65;">(</span>con == <span style="color: #a9a1e1;">null</span><span style="color: #98be65;">)</span> <span style="color: #98be65;">{</span>
+            System.out.println<span style="color: #00bfff;">(</span><span style="color: #98be65;">"Connection cannot be established!!!"</span><span style="color: #00bfff;">)</span>;
+            <span style="color: #51afef; font-style: italic;">return</span> <span style="color: #a9a1e1;">false</span>;
+        <span style="color: #98be65;">}</span>
+        <span style="color: #ECBE7B;">String</span> <span style="color: #db5762;">name</span> = user.getName<span style="color: #98be65;">()</span>;
+        <span style="color: #51afef; font-style: italic;">try</span> <span style="color: #98be65;">{</span>
+            <span style="color: #ECBE7B;">PreparedStatement</span> <span style="color: #db5762;">psmt</span> = con.prepareStatement<span style="color: #00bfff;">(</span><span style="color: #98be65;">"INSERT INTO USER (name) VALUES (?)"</span><span style="color: #00bfff;">)</span>;
+            psmt.setString<span style="color: #00bfff;">(</span>1, name<span style="color: #00bfff;">)</span>;
+            psmt.executeUpdate<span style="color: #00bfff;">()</span>;
+            <span style="color: #51afef; font-style: italic;">return</span> <span style="color: #a9a1e1;">true</span>;
+        <span style="color: #98be65;">}</span> <span style="color: #51afef; font-style: italic;">catch</span> <span style="color: #98be65;">(</span><span style="color: #ECBE7B;">SQLException</span> <span style="color: #db5762;">e</span><span style="color: #98be65;">)</span> <span style="color: #98be65;">{</span>
+            e.printStackTrace<span style="color: #00bfff;">()</span>;
+            <span style="color: #51afef; font-style: italic;">return</span> <span style="color: #a9a1e1;">false</span>;
+        <span style="color: #98be65;">}</span>
+    <span style="color: #c678dd;">}</span>
+    <span style="color: #51afef; font-style: italic;">public</span> <span style="color: #ECBE7B;">ArrayList</span><span style="color: #c678dd;">&lt;</span><span style="color: #ECBE7B;">User</span><span style="color: #c678dd;">&gt;</span> <span style="color: #c678dd;">findAll</span><span style="color: #c678dd;">()</span> <span style="color: #c678dd;">{</span>
+        <span style="color: #ECBE7B;">Connection</span> <span style="color: #db5762;">con</span> = getConnection<span style="color: #98be65;">()</span>;
+        <span style="color: #51afef; font-style: italic;">if</span> <span style="color: #98be65;">(</span>con == <span style="color: #a9a1e1;">null</span><span style="color: #98be65;">)</span> <span style="color: #98be65;">{</span>
+            System.out.println<span style="color: #00bfff;">(</span><span style="color: #98be65;">"Connection cannot be established!!!"</span><span style="color: #00bfff;">)</span>;
+            <span style="color: #51afef; font-style: italic;">return</span> <span style="color: #a9a1e1;">false</span>;
+        <span style="color: #98be65;">}</span>
+        <span style="color: #ECBE7B;">ArrayList</span><span style="color: #98be65;">&lt;</span><span style="color: #ECBE7B;">User</span><span style="color: #98be65;">&gt;</span> <span style="color: #db5762;">users</span> = <span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">ArrayList</span><span style="color: #98be65;">&lt;</span><span style="color: #ECBE7B;">User</span><span style="color: #98be65;">&gt;()</span>;
+        <span style="color: #ECBE7B;">ResultSet</span> <span style="color: #db5762;">result</span>;
+        <span style="color: #51afef; font-style: italic;">try</span> <span style="color: #98be65;">{</span>
+            <span style="color: #ECBE7B;">PreparedStatement</span> <span style="color: #db5762;">psmt</span> = con.prepareStatement<span style="color: #00bfff;">(</span> <span style="color: #98be65;">"SELECT * FROM User"</span><span style="color: #00bfff;">)</span>;
+            result = psmt.executeQuery<span style="color: #00bfff;">()</span>;
+            <span style="color: #51afef; font-style: italic;">while</span> <span style="color: #00bfff;">(</span>result.next<span style="color: #a9a1e1;">()</span><span style="color: #00bfff;">)</span> <span style="color: #00bfff;">{</span>
+                <span style="color: #ECBE7B;">User</span> <span style="color: #db5762;">user</span> = <span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">User</span><span style="color: #a9a1e1;">()</span>;
+                user.setName<span style="color: #a9a1e1;">(</span>result.getString<span style="color: #32cd32;">(</span><span style="color: #98be65;">"name"</span><span style="color: #32cd32;">)</span><span style="color: #a9a1e1;">)</span>;
+                users.add<span style="color: #a9a1e1;">(</span>user<span style="color: #a9a1e1;">)</span>;
+            <span style="color: #00bfff;">}</span>
+            <span style="color: #51afef; font-style: italic;">return</span> users;
+        <span style="color: #98be65;">}</span>
+        <span style="color: #51afef; font-style: italic;">catch</span> <span style="color: #98be65;">(</span><span style="color: #ECBE7B;">SQLException</span> <span style="color: #db5762;">e</span><span style="color: #98be65;">)</span> <span style="color: #98be65;">{</span>
+            e.printStackTrace<span style="color: #00bfff;">()</span>;
+            <span style="color: #51afef; font-style: italic;">return</span> users;
+        <span style="color: #98be65;">}</span>
+    <span style="color: #c678dd;">}</span>
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgeeafd8d" class="outline-2">
+<h2 id="orgeeafd8d"><span class="section-number-2">6</span> JSP</h2>
+<div class="outline-text-2" id="text-6">
+<ul class="org-ul">
+<li>Needed <code>jar</code> files:
+<ul class="org-ul">
+<li><code>javax.servlet.jsp.jstl-1.2.1.jar</code></li>
+<li><code>javax.servlet.jsp.jstl-api-1.2.1.jar</code></li>
+</ul></li>
+<li><code>jar</code> files need to be inserted into the <code>lib</code> folder and added to the build-path, also they need to be added to the <code>WEB-INF/lib</code> folder and not added to the build-path from there</li>
+<li>Every <code>jsp</code> file that wants to use the directives needs to add this directive on the second line:
+<ul class="org-ul">
+<li><code>&lt;%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%&gt;</code></li>
+</ul></li>
+</ul>
+</div>
+
+<div id="outline-container-org394203f" class="outline-3">
+<h3 id="org394203f"><span class="section-number-3">6.1</span> Usage</h3>
+<div class="outline-text-3" id="text-6-1">
+<ul class="org-ul">
+<li><code>${varName}</code>: Access variables</li>
+<li><code>&lt;jsp:include page="b.jsp"</code>: Include a page</li>
+<li><code>&lt;jsp:forward&gt;</code>: Forward to another JSP page</li>
+<li><code>&lt;c:out value="${varName}"&gt;</code>: Output a variable <code>varName</code>
+<ul class="org-ul">
+<li><code>&lt;c:out value="${1 + 1}"&gt;</code>: Output the expression <code>1 + 1</code> i.e. <code>2</code>, aka Expression Language (<b>EL</b>)</li>
+<li><code>&lt;c:out value="${varName}" default="unknown"&gt;</code>: Falls back to <code>unknown</code> if the expression fails</li>
+</ul></li>
+<li><code>if</code></li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-html">&lt;<span style="color: #c678dd;">c</span>:<span style="color: #c678dd;">if</span> <span style="color: #db5762;">test</span>=<span style="color: #98be65;">"${user.role != 'admin'}"</span>&gt;
+    Hello &lt;<span style="color: #c678dd;">c</span>:<span style="color: #c678dd;">out</span> <span style="color: #db5762;">value</span>=<span style="color: #98be65;">"${user.name}"</span>/&gt;
+&lt;/<span style="color: #c678dd;">c</span>:<span style="color: #c678dd;">if</span>&gt;
+<span style="color: #5B6268;">&lt;!-- </span><span style="color: #5B6268;">set a var with if (var becomes the result of the if) </span><span style="color: #5B6268;">--&gt;</span>
+&lt;<span style="color: #c678dd;">c</span>:<span style="color: #c678dd;">if</span> <span style="color: #db5762;">test</span>=<span style="color: #98be65;">"${user.role}"</span> <span style="color: #db5762;">var</span>=<span style="color: #98be65;">"role"</span>&gt;
+    Hello User of role: &lt;<span style="color: #c678dd;">c</span>:<span style="color: #c678dd;">out</span> <span style="color: #db5762;">value</span>=<span style="color: #98be65;">"${role}"</span>/&gt;
+&lt;/<span style="color: #c678dd;">c</span>:<span style="color: #c678dd;">if</span>&gt;
+</pre>
+</div>
+<ul class="org-ul">
+<li><code>choose</code></li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-html">&lt;<span style="color: #c678dd;">c</span>:<span style="color: #c678dd;">choose</span>&gt;
+    &lt;<span style="color: #c678dd;">c</span>:<span style="color: #c678dd;">when</span> <span style="color: #db5762;">test</span>=<span style="color: #98be65;">"condition"</span>&gt;
+        body
+    &lt;/<span style="color: #c678dd;">c</span>:<span style="color: #c678dd;">when</span>&gt;
+    &lt;<span style="color: #c678dd;">c</span>:<span style="color: #c678dd;">when</span> <span style="color: #db5762;">test</span>=<span style="color: #98be65;">"condition"</span>&gt;
+        body
+    &lt;/<span style="color: #c678dd;">c</span>:<span style="color: #c678dd;">when</span>&gt;
+    &lt;<span style="color: #c678dd;">c</span>:<span style="color: #c678dd;">otherwise</span>&gt;
+        body
+    &lt;/<span style="color: #c678dd;">c</span>:<span style="color: #c678dd;">otherwise</span>&gt;
+&lt;/<span style="color: #c678dd;">c</span>:<span style="color: #c678dd;">choose</span>&gt;
+</pre>
+</div>
+<ul class="org-ul">
+<li><code>for</code></li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-html">&lt;<span style="color: #c678dd;">c</span>:<span style="color: #c678dd;">forEach</span> <span style="color: #db5762;">items</span>=<span style="color: #98be65;">"${userList}"</span> <span style="color: #db5762;">var</span>=<span style="color: #98be65;">"user"</span>&gt;
+    &lt;<span style="color: #c678dd;">c</span>:<span style="color: #c678dd;">out</span> <span style="color: #db5762;">value</span>=<span style="color: #98be65;">"${user.name}"</span> /&gt;
+    &lt;<span style="color: #c678dd;">c</span>:<span style="color: #c678dd;">out</span> <span style="color: #db5762;">value</span>=<span style="color: #98be65;">"${user.address}"</span> /&gt;
+    &lt;<span style="color: #c678dd;">br</span> /&gt;
+&lt;/<span style="color: #c678dd;">c</span>:<span style="color: #c678dd;">forEach</span>&gt;
+<span style="color: #5B6268;">&lt;!-- </span><span style="color: #5B6268;">iterate over tokens with a specific delimiter </span><span style="color: #5B6268;">--&gt;</span>
+&lt;<span style="color: #c678dd;">c</span>:<span style="color: #c678dd;">forTokens</span> <span style="color: #db5762;">var</span>=<span style="color: #98be65;">"token"</span>
+             <span style="color: #db5762;">items</span>=<span style="color: #98be65;">"Java, J2EE, JSTL, JSP, Servlet"</span>
+             <span style="color: #db5762;">delims</span>=<span style="color: #98be65;">","</span>&gt;
+    &lt;<span style="color: #c678dd;">c</span>:<span style="color: #c678dd;">out</span> <span style="color: #db5762;">value</span>=<span style="color: #98be65;">"${token}"</span>/&gt; &lt;/<span style="color: #c678dd;">br</span>&gt;
+&lt;/<span style="color: #c678dd;">c</span>:<span style="color: #c678dd;">forTokens</span>&gt;
+</pre>
+</div>
+<ul class="org-ul">
+<li><code>for</code> attributes
+<ul class="org-ul">
+<li><code>items</code>: the input data, default <code>None</code></li>
+<li><code>begin</code>: element to start with, default <code>0</code></li>
+<li><code>end</code>: element to end with, default <code>lastElement</code></li>
+<li><code>step</code>: process every <code>step</code>, default <code>1</code></li>
+<li><code>var</code>: the variable to expose as the current item</li>
+<li><code>varStatus</code>: the variable to expose as the loop status
+<ul class="org-ul">
+<li><code>status.index</code></li>
+<li><code>status.count</code>, same as index, except starts at <code>1</code></li>
+<li><code>status.first</code></li>
+<li><code>status.last</code></li>
+</ul></li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+
+<div id="outline-container-org067dd91" class="outline-3">
+<h3 id="org067dd91"><span class="section-number-3">6.2</span> Scope</h3>
+<div class="outline-text-3" id="text-6-2">
+<ul class="org-ul">
+<li>When a variable occurs in an expression <b>JSP</b> will look for it in the following order</li>
+<li><b>page</b>: stored in the <code>PageContext</code></li>
+<li><b>request</b>: stored in the <code>HttpRequest</code></li>
+<li><b>session</b>: stored in the <code>HttpSession</code></li>
+<li><b>application</b>: stored in the <code>ServletContext</code></li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgd6265e1" class="outline-2">
+<h2 id="orgd6265e1"><span class="section-number-2">7</span> Sessions</h2>
+<div class="outline-text-2" id="text-7">
+</div>
+<div id="outline-container-org7bb181c" class="outline-3">
+<h3 id="org7bb181c"><span class="section-number-3">7.1</span> Hidden Data Fields</h3>
+<div class="outline-text-3" id="text-7-1">
+<ul class="org-ul">
+<li><code>file1.jsp</code></li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-html">&lt;<span style="color: #c678dd;">form</span> <span style="color: #db5762;">method</span>=<span style="color: #98be65;">"post"</span> <span style="color: #db5762;">action</span>=<span style="color: #98be65;">"file2.jsp"</span>&gt;
+    Enter Name: &lt;<span style="color: #c678dd;">input</span> <span style="color: #db5762;">type</span>=<span style="color: #98be65;">"text"</span> <span style="color: #db5762;">name</span>=<span style="color: #98be65;">"name"</span>&gt; &lt;<span style="color: #c678dd;">br</span>&gt;
+    &lt;<span style="color: #c678dd;">input</span> <span style="color: #db5762;">type</span>=<span style="color: #98be65;">"submit"</span> <span style="color: #db5762;">value</span>=<span style="color: #98be65;">"submit"</span>&gt;
+&lt;/<span style="color: #c678dd;">form</span>&gt;
+</pre>
+</div>
+<ul class="org-ul">
+<li><code>file2.jsp</code></li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-html"><span style="color: #5B6268;">&lt;!-- </span><span style="color: #5B6268;">note the hidden input that will get passed further, </span><span style="color: #5B6268;">--&gt;</span>
+<span style="color: #5B6268;">&lt;!-- </span><span style="color: #5B6268;">but it contains the name variable from the previous form </span><span style="color: #5B6268;">--&gt;</span>
+&lt;<span style="color: #c678dd;">form</span> <span style="color: #db5762;">method</span>=<span style="color: #98be65;">"post"</span> <span style="color: #db5762;">action</span>=<span style="color: #98be65;">"PrintData"</span>&gt;
+    &lt;<span style="color: #c678dd;">input</span> <span style="color: #db5762;">type</span>=<span style="color: #98be65;">"hidden"</span> <span style="color: #db5762;">name</span>=<span style="color: #98be65;">"name"</span> <span style="color: #db5762;">value</span>=<span style="color: #98be65;">"${param.name}"</span>&gt;
+    Enter Name: &lt;<span style="color: #c678dd;">input</span> <span style="color: #db5762;">type</span>=<span style="color: #98be65;">"text"</span> <span style="color: #db5762;">name</span>=<span style="color: #98be65;">"name"</span>&gt; &lt;<span style="color: #c678dd;">br</span>&gt;
+    &lt;<span style="color: #c678dd;">input</span> <span style="color: #db5762;">type</span>=<span style="color: #98be65;">"submit"</span> <span style="color: #db5762;">value</span>=<span style="color: #98be65;">"submit"</span>&gt;
+&lt;/<span style="color: #c678dd;">form</span>&gt;
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orge522216" class="outline-3">
+<h3 id="orge522216"><span class="section-number-3">7.2</span> <code>HttpSession</code></h3>
+<div class="outline-text-3" id="text-7-2">
+<ul class="org-ul">
+<li>Setting a User for a session</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #51afef; font-style: italic;">protected</span> <span style="color: #ECBE7B;">void</span> <span style="color: #c678dd;">doPost</span><span style="color: #fff0f5;">(</span><span style="color: #ECBE7B;">HttpServletRequest</span> <span style="color: #db5762;">request</span>, <span style="color: #ECBE7B;">HttpServletResponse</span> <span style="color: #db5762;">response</span><span style="color: #fff0f5;">)</span>
+    <span style="color: #51afef; font-style: italic;">throws</span> <span style="color: #ECBE7B;">ServletException</span>, <span style="color: #ECBE7B;">IOException</span> <span style="color: #fff0f5;">{</span>
+    <span style="color: #ECBE7B;">String</span> <span style="color: #db5762;">password</span> = request.getParameter<span style="color: #c678dd;">(</span><span style="color: #98be65;">"password"</span><span style="color: #c678dd;">)</span>;
+    <span style="color: #ECBE7B;">String</span> <span style="color: #db5762;">email</span> = request.getParameter<span style="color: #c678dd;">(</span><span style="color: #98be65;">"email"</span><span style="color: #c678dd;">)</span>;
+    <span style="color: #ECBE7B;">User</span> <span style="color: #db5762;">user</span> = UserDAO.instance.checkLogin<span style="color: #c678dd;">(</span>email, password<span style="color: #c678dd;">)</span>;
+    <span style="color: #51afef; font-style: italic;">if</span> <span style="color: #c678dd;">(</span>user != <span style="color: #a9a1e1;">null</span><span style="color: #c678dd;">)</span> <span style="color: #c678dd;">{</span>
+        <span style="color: #ECBE7B;">HttpSession</span> <span style="color: #db5762;">session</span> = request.getSession<span style="color: #98be65;">()</span>;
+        session.setAttribute<span style="color: #98be65;">(</span><span style="color: #98be65;">"user"</span>, user<span style="color: #98be65;">)</span>;
+        response.sendRedirect<span style="color: #98be65;">(</span><span style="color: #98be65;">"index.jsp"</span><span style="color: #98be65;">)</span>;
+    <span style="color: #c678dd;">}</span>
+    <span style="color: #51afef; font-style: italic;">else</span>
+        response.sendRedirect<span style="color: #c678dd;">(</span><span style="color: #98be65;">"login.jsp"</span><span style="color: #c678dd;">)</span>;
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+<ul class="org-ul">
+<li>Checking a session User</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #51afef; font-style: italic;">protected</span> <span style="color: #ECBE7B;">void</span> <span style="color: #c678dd;">doPost</span><span style="color: #fff0f5;">(</span><span style="color: #ECBE7B;">HttpServletRequest</span> <span style="color: #db5762;">request</span>, <span style="color: #ECBE7B;">HttpServletResponse</span> <span style="color: #db5762;">response</span><span style="color: #fff0f5;">)</span> <span style="color: #51afef; font-style: italic;">throws</span> <span style="color: #ECBE7B;">ServletException</span>, <span style="color: #ECBE7B;">IOException</span> <span style="color: #fff0f5;">{</span>
+    <span style="color: #ECBE7B;">HttpSession</span> <span style="color: #db5762;">session</span> = request.getSession<span style="color: #c678dd;">()</span>;
+    <span style="color: #ECBE7B;">User</span> <span style="color: #db5762;">sessionUser</span> = <span style="color: #c678dd;">(</span><span style="color: #ECBE7B;">User</span><span style="color: #c678dd;">)</span> session.getAttribute<span style="color: #c678dd;">(</span><span style="color: #98be65;">"user"</span><span style="color: #c678dd;">)</span>;
+    <span style="color: #51afef; font-style: italic;">if</span> <span style="color: #c678dd;">(</span>sessionUser == <span style="color: #a9a1e1;">null</span><span style="color: #c678dd;">)</span> <span style="color: #c678dd;">{</span>
+        response.sendRedirect<span style="color: #98be65;">(</span><span style="color: #98be65;">"login.jsp"</span><span style="color: #98be65;">)</span>;
+    <span style="color: #c678dd;">}</span>
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-orgbdfb33c" class="outline-3">
+<h3 id="orgbdfb33c"><span class="section-number-3">7.3</span> Cookies</h3>
+<div class="outline-text-3" id="text-7-3">
+<ul class="org-ul">
+<li>Setting a cookie</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #ECBE7B;">Cookie</span> <span style="color: #db5762;">cookie</span> = <span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">Cookie</span><span style="color: #fff0f5;">(</span><span style="color: #98be65;">"name"</span>, name<span style="color: #fff0f5;">)</span>;
+cookie.setMaxAge<span style="color: #fff0f5;">(</span><span style="color: #a9a1e1;">Integer</span>.MAX_VALUE<span style="color: #fff0f5;">)</span>;
+response.addCookie<span style="color: #fff0f5;">(</span>cookie<span style="color: #fff0f5;">)</span>;
+</pre>
+</div>
+<ul class="org-ul">
+<li>Getting cookies</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #51afef; font-style: italic;">protected</span> <span style="color: #ECBE7B;">void</span> <span style="color: #c678dd;">doGet</span><span style="color: #fff0f5;">(</span><span style="color: #ECBE7B;">HttpServletRequest</span> <span style="color: #db5762;">request</span>, <span style="color: #ECBE7B;">HttpServletResponse</span> <span style="color: #db5762;">response</span><span style="color: #fff0f5;">)</span>
+    <span style="color: #51afef; font-style: italic;">throws</span> <span style="color: #ECBE7B;">ServletException</span>, <span style="color: #ECBE7B;">IOException</span> <span style="color: #fff0f5;">{</span>
+    <span style="color: #ECBE7B;">Cookie</span><span style="color: #c678dd;">[]</span> <span style="color: #db5762;">cookies</span> = request.getCookies<span style="color: #c678dd;">()</span>;
+    <span style="color: #51afef; font-style: italic;">if</span> <span style="color: #c678dd;">(</span>cookies != <span style="color: #a9a1e1;">null</span><span style="color: #c678dd;">)</span> <span style="color: #c678dd;">{</span>
+        System.out.println<span style="color: #98be65;">(</span>cookies.length<span style="color: #98be65;">)</span>;
+        <span style="color: #ECBE7B;">String</span> <span style="color: #db5762;">name</span> = getCookieValue<span style="color: #98be65;">(</span>cookies, <span style="color: #98be65;">"savedName"</span><span style="color: #98be65;">)</span>;
+    <span style="color: #c678dd;">}</span>
+<span style="color: #fff0f5;">}</span>
+
+<span style="color: #ECBE7B;">String</span> <span style="color: #c678dd;">getCookieValue</span><span style="color: #fff0f5;">(</span><span style="color: #ECBE7B;">Cookie</span><span style="color: #c678dd;">[]</span> <span style="color: #db5762;">cookies</span>, <span style="color: #ECBE7B;">String</span> <span style="color: #db5762;">cookieKey</span><span style="color: #fff0f5;">)</span> <span style="color: #fff0f5;">{</span>
+    <span style="color: #51afef; font-style: italic;">for</span> <span style="color: #c678dd;">(</span><span style="color: #ECBE7B;">int</span> <span style="color: #db5762;">i</span> = 0; i &lt; cookies.<span style="color: #ECBE7B;">length</span>; i++<span style="color: #c678dd;">)</span> <span style="color: #c678dd;">{</span>
+        <span style="color: #51afef; font-style: italic;">if</span> <span style="color: #98be65;">(</span>cookies<span style="color: #00bfff;">[</span>i<span style="color: #00bfff;">]</span>.getName<span style="color: #00bfff;">()</span>.equals<span style="color: #00bfff;">(</span>cookieKey<span style="color: #00bfff;">)</span><span style="color: #98be65;">)</span> <span style="color: #98be65;">{</span>
+            <span style="color: #51afef; font-style: italic;">return</span> cookies<span style="color: #00bfff;">[</span>i<span style="color: #00bfff;">]</span>.getValue<span style="color: #00bfff;">()</span>;
+        <span style="color: #98be65;">}</span>
+    <span style="color: #c678dd;">}</span>
+    <span style="color: #51afef; font-style: italic;">return</span> <span style="color: #a9a1e1;">null</span>;
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+
+
+<div id="outline-container-org2048a44" class="outline-2">
+<h2 id="org2048a44"><span class="section-number-2">8</span> Eclipse Project setup</h2>
+<div class="outline-text-2" id="text-8">
+<ul class="org-ul">
+<li>Add 2 JSTL and the hsqldb jar files to the <code>lib</code> folder that needs to be created. Add these files to the build path.</li>
+<li>Add the above files to the <code>WebContent/WEB-INF/lib</code>, but do NOT add them to the build path</li>
+<li><p>
+Add the tag lib directive into the jsp files on the second line of every jsp file
+</p>
+<div class="org-src-container">
+<pre class="src src-html">&lt;%@ taglib <span style="color: #db5762;">uri</span>=<span style="color: #98be65;">"http://java.sun.com/jsp/jstl/core"</span> <span style="color: #db5762;">prefix</span>=<span style="color: #98be65;">"c"</span>%&gt;
+</pre>
+</div></li>
+<li>Add a doc folder and add a <code>README.txt</code> file with any information, startup, build process, SQL generation, etc</li>
+<li>Add a db folder and add the <code>manageDB.xml</code> that will manage our hsqldb server
+<ul class="org-ul">
+<li>Open the <code>manageDB.xml</code> in the ANT view</li>
+<li>Run the server first</li>
+<li>Then run the client, with the name of the DB, and select the 3rd option from the drop-down (HSQL Database Engine Server)</li>
+</ul></li>
+<li>Set the targeted runtime for Apache Tomcat 8.5</li>
+<li><p>
+Set the Web Project Settings in the project's properties, basically it is the root path.
+</p>
+
+<script src="../assets/jquery-3.3.1.min.js"></script>
+<script src="../assets/notes.js"></script></li>
+</ul>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="date">Date: 2018-09-10 Mon 11:54</p>
+<p class="author">Author: Damian Chrzanowski</p>
+<p class="date">Created: 2018-12-19 Wed 10:12</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

@@ -1,0 +1,1147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2018-12-13 Thu 17:22 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Digital Media</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="Damian Chrzanowski" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="../assets/org.css"/>
+<link rel="icon" href="../assets/favicon.ico">
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2018 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Digital Media</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org431393f">1. Media vs Multimedia</a>
+<ul>
+<li><a href="#org7686083">1.1. Media</a></li>
+<li><a href="#orgd0a8b04">1.2. Multimedia</a></li>
+<li><a href="#orgd67a579">1.3. Interactive-time, time and static</a></li>
+<li><a href="#orgd371e60">1.4. Linear and non-linear</a></li>
+<li><a href="#orgb3ea8db">1.5. Media models</a></li>
+</ul>
+</li>
+<li><a href="#orgb39bf62">2. Digital Media</a>
+<ul>
+<li><a href="#orge866dab">2.1. Digital Media vs Multimedia</a></li>
+<li><a href="#orgc16cc39">2.2. Digital media definition</a></li>
+<li><a href="#orgea8f57c">2.3. Poor website design</a></li>
+<li><a href="#orgd7a18f3">2.4. Aspects of digital media</a></li>
+<li><a href="#org2401b4e">2.5. Multimedia</a></li>
+<li><a href="#org45d5eeb">2.6. Spreading multimedia</a></li>
+<li><a href="#org36e7974">2.7. Media history</a></li>
+<li><a href="#org2af5a0a">2.8. WEB 2.0</a></li>
+<li><a href="#orga60da25">2.9. The future</a></li>
+</ul>
+</li>
+<li><a href="#orged21c1c">3. Digital data</a>
+<ul>
+<li><a href="#org4055628">3.1. ASCII</a></li>
+<li><a href="#org52939b8">3.2. Digitization</a></li>
+<li><a href="#orgb2b3763">3.3. Compression</a></li>
+<li><a href="#orgabb4c64">3.4. Transmission</a></li>
+</ul>
+</li>
+<li><a href="#org8a5774f">4. Images</a>
+<ul>
+<li><a href="#orgddc175c">4.1. Images representation</a></li>
+<li><a href="#orgd17421e">4.2. Posterization</a></li>
+<li><a href="#org250c605">4.3. Moire effect</a></li>
+<li><a href="#orgce61d73">4.4. Image Compression</a></li>
+</ul>
+</li>
+<li><a href="#org4385681">5. Graphics</a>
+<ul>
+<li><a href="#org6b30044">5.1. Pixel</a></li>
+<li><a href="#org5941e83">5.2. Color Representation and bit depth</a></li>
+<li><a href="#org2215acb">5.3. Color models</a></li>
+<li><a href="#org571dd4d">5.4. Look Up Tables</a></li>
+<li><a href="#orgc4cc510">5.5. Resolutions</a></li>
+<li><a href="#org65d2d9e">5.6. File formats</a></li>
+</ul>
+</li>
+<li><a href="#org9892096">6. Audio</a>
+<ul>
+<li><a href="#org3d0eb47">6.1. Digitization</a></li>
+<li><a href="#orgf1d6f97">6.2. Wide Quantization</a></li>
+<li><a href="#org2ef6f95">6.3. Characteristics</a></li>
+<li><a href="#org9c3b7e4">6.4. Quality of digital audio</a></li>
+</ul>
+</li>
+<li><a href="#org2fe0b34">7. Animation</a>
+<ul>
+<li><a href="#org6b1276b">7.1. Used in</a></li>
+<li><a href="#orgabc77fc">7.2. Definitions</a></li>
+<li><a href="#orgd61fa45">7.3. History</a></li>
+<li><a href="#org830b4c5">7.4. Types of animation</a></li>
+</ul>
+</li>
+<li><a href="#orgec6bbc0">8. Video</a>
+<ul>
+<li><a href="#org16181f4">8.1. Digital Video</a></li>
+<li><a href="#orgfca0e2c">8.2. Compression technologies</a></li>
+<li><a href="#org8016d42">8.3. Two types of compression</a></li>
+<li><a href="#orgd105863">8.4. Video Compression Technologies</a></li>
+<li><a href="#org466544a">8.5. Popular codec software</a></li>
+<li><a href="#orgcc969e5">8.6. Video formats</a></li>
+<li><a href="#orgf6c639f">8.7. Four parts to every video</a></li>
+</ul>
+</li>
+<li><a href="#org80b4c3d">9. SVG</a></li>
+</ul>
+</div>
+</div>
+<p>
+<a href="index.html">Home Page</a>
+</p>
+
+<div id="outline-container-org431393f" class="outline-2">
+<h2 id="org431393f"><span class="section-number-2">1</span> Media vs Multimedia</h2>
+<div class="outline-text-2" id="text-1">
+</div>
+<div id="outline-container-org7686083" class="outline-3">
+<h3 id="org7686083"><span class="section-number-3">1.1</span> Media</h3>
+<div class="outline-text-3" id="text-1-1">
+<p class="verse">
+Different types of forms of communication be it audible, visual, etc.<br />
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgd0a8b04" class="outline-3">
+<h3 id="orgd0a8b04"><span class="section-number-3">1.2</span> Multimedia</h3>
+<div class="outline-text-3" id="text-1-2">
+<p class="verse">
+When media are combined, the outcome is multimedia. Some examples include WWW, illustrated books, TV etc.<br />
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgd67a579" class="outline-3">
+<h3 id="orgd67a579"><span class="section-number-3">1.3</span> Interactive-time, time and static</h3>
+<div class="outline-text-3" id="text-1-3">
+<ul class="org-ul">
+<li>Static media is the type of media that simply does not change</li>
+<li>Time based may change over time</li>
+<li>Interactive-time is a media type in which the media is type based but can be interacted with, the user can jump around segments or chapters so to speak like in a flash animation</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgd371e60" class="outline-3">
+<h3 id="orgd371e60"><span class="section-number-3">1.4</span> Linear and non-linear</h3>
+<div class="outline-text-3" id="text-1-4">
+<p class="verse">
+Linear for example can be a book or a TV show, movie. The essence of non-linearity is the essence of multimedia where the user can interact with the multimedia presented.<br />
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgb3ea8db" class="outline-3">
+<h3 id="orgb3ea8db"><span class="section-number-3">1.5</span> Media models</h3>
+<div class="outline-text-3" id="text-1-5">
+<ul class="org-ul">
+<li>Page based: text, images etc. two dimensional arrangement</li>
+<li>Time based: video clips, sounds</li>
+<li>Hypermedia: where user can jump around the media provided, like the WWW</li>
+<li>Gaming: it is the most ambitious application of media as it very demanding on both the creators and the users</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgb39bf62" class="outline-2">
+<h2 id="orgb39bf62"><span class="section-number-2">2</span> Digital Media</h2>
+<div class="outline-text-2" id="text-2">
+</div>
+<div id="outline-container-orge866dab" class="outline-3">
+<h3 id="orge866dab"><span class="section-number-3">2.1</span> Digital Media vs Multimedia</h3>
+<div class="outline-text-3" id="text-2-1">
+<p class="verse">
+The most important difference is the fact that digital media is stored as data and can be easily manipulated and interacted with. Standard multimedia unfortunately does not have that benefit.<br />
+</p>
+</div>
+</div>
+<div id="outline-container-orgc16cc39" class="outline-3">
+<h3 id="orgc16cc39"><span class="section-number-3">2.2</span> Digital media definition</h3>
+<div class="outline-text-3" id="text-2-2">
+<p class="verse">
+Content that is encoded in a digital format and therefore readable by some sort of computer software<br />
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgea8f57c" class="outline-3">
+<h3 id="orgea8f57c"><span class="section-number-3">2.3</span> Poor website design</h3>
+<div class="outline-text-3" id="text-2-3">
+<ul class="org-ul">
+<li>Auto loading audio/video</li>
+<li>Boring</li>
+<li>Poor readability</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgd7a18f3" class="outline-3">
+<h3 id="orgd7a18f3"><span class="section-number-3">2.4</span> Aspects of digital media</h3>
+<div class="outline-text-3" id="text-2-4">
+<ul class="org-ul">
+<li>Text</li>
+<li>Image</li>
+<li>Sound</li>
+<li>Animation</li>
+<li>Video</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org2401b4e" class="outline-3">
+<h3 id="org2401b4e"><span class="section-number-3">2.5</span> Multimedia</h3>
+<div class="outline-text-3" id="text-2-5">
+<ul class="org-ul">
+<li>Multimedia is everything you can touch or see, on the technical level it is:
+<ul class="org-ul">
+<li>text</li>
+<li>images</li>
+<li>sounds</li>
+<li>animation</li>
+<li>video</li>
+</ul></li>
+<li>Touch, sound, sight, smell, taste</li>
+<li>Used to: inform, educate, entertain</li>
+</ul>
+</div>
+
+<div id="outline-container-org6b174c9" class="outline-4">
+<h4 id="org6b174c9">Features</h4>
+<div class="outline-text-4" id="text-org6b174c9">
+<ul class="org-ul">
+<li>Interactivity</li>
+<li>Hyperlinking</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org4ac4bcd" class="outline-4">
+<h4 id="org4ac4bcd">Categories where media/multimedia usually occurs:</h4>
+<div class="outline-text-4" id="text-org4ac4bcd">
+<ul class="org-ul">
+<li>Education</li>
+<li>Entertainment</li>
+<li>Reference</li>
+<li>Business</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgb9e50d8" class="outline-4">
+<h4 id="orgb9e50d8">Delivery</h4>
+<div class="outline-text-4" id="text-orgb9e50d8">
+<ul class="org-ul">
+<li>CD/DVD/Blueray (solid media), quick access time, cannot change content</li>
+<li>WWW, modern access time is excellent, can update content very easily</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org45d5eeb" class="outline-3">
+<h3 id="org45d5eeb"><span class="section-number-3">2.6</span> Spreading multimedia</h3>
+<div class="outline-text-3" id="text-2-6">
+<p class="verse">
+<b>Current tools</b><br />
+</p>
+<ul class="org-ul">
+<li>Other people</li>
+<li>Telephone</li>
+<li>Radio</li>
+<li>TV</li>
+<li>Internet
+<ul class="org-ul">
+<li>It is fast</li>
+<li>It is cheap</li>
+<li>Accessibility: reaches people everywhere</li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org36e7974" class="outline-3">
+<h3 id="org36e7974"><span class="section-number-3">2.7</span> Media history</h3>
+<div class="outline-text-3" id="text-2-7">
+<ul class="org-ul">
+<li>15,000 - 13,000 Prehistoric human paint in caves</li>
+<li>1914 Silent movies incorporate text with captions and images</li>
+<li>1928 Walt Disney's Steamboat Willie</li>
+<li>1928 - 1931 Movies with sounds replace silent movies</li>
+<li>1969 Arpanet (advanced research projects agency network) links UCLA, Stanford, UC Santa Barbara, University of Utah. First implementation of TCP/IP. Introduced packet switching as well.</li>
+<li>1977 Apple leads the way</li>
+<li>1981 IBM PC</li>
+<li>1991 WWW</li>
+<li>1992 Windows 3.1</li>
+<li>1992 HTML</li>
+<li>1993 First graphical browser (Netscape)</li>
+<li>1994 Rolling stones first internet live performance</li>
+<li>1995 Toy Story</li>
+<li>1996 Digital Cameras</li>
+<li>1998 Google</li>
+<li>1999 Napster</li>
+<li>2003 Android</li>
+<li>2005 YouTube</li>
+<li>2007 iOS</li>
+<li>2013 Disney's last traditionally animated film</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org2af5a0a" class="outline-3">
+<h3 id="org2af5a0a"><span class="section-number-3">2.8</span> WEB 2.0</h3>
+<div class="outline-text-3" id="text-2-8">
+<p class="verse">
+Is a trend in web design, development and can refer to a perceived<br />
+second generation of web-based communities and hosted services<br />
+such as social-networking sites, wikis, blogs, and folksonomies<br />
+which aim to facilitate creativity, collaboration, and sharing<br />
+between users.<br />
+</p>
+</div>
+</div>
+
+<div id="outline-container-orga60da25" class="outline-3">
+<h3 id="orga60da25"><span class="section-number-3">2.9</span> The future</h3>
+<div class="outline-text-3" id="text-2-9">
+<ul class="org-ul">
+<li>A lot of legal issues due to quickly expanding technologies</li>
+<li>Multi skilled developers are likely to be required</li>
+<li>Think globally and have a business setting</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orged21c1c" class="outline-2">
+<h2 id="orged21c1c"><span class="section-number-2">3</span> Digital data</h2>
+<div class="outline-text-2" id="text-3">
+</div>
+<div id="outline-container-org4055628" class="outline-3">
+<h3 id="org4055628"><span class="section-number-3">3.1</span> ASCII</h3>
+<div class="outline-text-3" id="text-3-1">
+<p class="verse">
+American Standard Code for Information Exchange<br />
+</p>
+</div>
+</div>
+
+<div id="outline-container-org52939b8" class="outline-3">
+<h3 id="org52939b8"><span class="section-number-3">3.2</span> Digitization</h3>
+<div class="outline-text-3" id="text-3-2">
+<ul class="org-ul">
+<li>Is a process of translating a piece of information(book, sound, picture, video) into binary bits.</li>
+<li>Digitization is also described as converting from analogue to digital.</li>
+</ul>
+</div>
+
+<div id="outline-container-org87ec73e" class="outline-4">
+<h4 id="org87ec73e">Quantization</h4>
+<div class="outline-text-4" id="text-org87ec73e">
+<ul class="org-ul">
+<li>Quantization specifies the number of intervals the analogue value can have.</li>
+<li>Too few quantization levels leads to <b>posterization</b> in pictures and to <b>quantization noise</b> in sound</li>
+<li><b>Posterization</b> presents itself in a form of non-gradual transition from one colour to another</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgb93ea09" class="outline-4">
+<h4 id="orgb93ea09">Sampling</h4>
+<div class="outline-text-4" id="text-orgb93ea09">
+<ul class="org-ul">
+<li>Sampling rate describes how many samples are taken in a given amount of time. Example : 10 samples a second</li>
+<li>Poor sampling can lead to <b>Moire Effect</b>, which looks like lines cutting across the image at points where there are not enough samples</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgb2b3763" class="outline-3">
+<h3 id="orgb2b3763"><span class="section-number-3">3.3</span> Compression</h3>
+<div class="outline-text-3" id="text-3-3">
+<ul class="org-ul">
+<li>Different algorithms suit different data</li>
+<li>There are established ways of representing media</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgabb4c64" class="outline-3">
+<h3 id="orgabb4c64"><span class="section-number-3">3.4</span> Transmission</h3>
+<div class="outline-text-3" id="text-3-4">
+<ul class="org-ul">
+<li>Media such as copper wires and optical fibres transmit time-varying signals; digital information must be encoded for transmission</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org8a5774f" class="outline-2">
+<h2 id="org8a5774f"><span class="section-number-2">4</span> Images</h2>
+<div class="outline-text-2" id="text-4">
+</div>
+<div id="outline-container-orgddc175c" class="outline-3">
+<h3 id="orgddc175c"><span class="section-number-3">4.1</span> Images representation</h3>
+<div class="outline-text-3" id="text-4-1">
+<ul class="org-ul">
+<li>An image is an array of pixels. It is represented in a form of an array</li>
+</ul>
+</div>
+
+<div id="outline-container-orgae53e35" class="outline-4">
+<h4 id="orgae53e35">Character set</h4>
+<div class="outline-text-4" id="text-orgae53e35">
+<ul class="org-ul">
+<li>Is a mapping from characters to character codes</li>
+<li>Unicode is a character set capable of representing text in all known languages</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org57c4b0d" class="outline-4">
+<h4 id="org57c4b0d">Font</h4>
+<div class="outline-text-4" id="text-org57c4b0d">
+<ul class="org-ul">
+<li>A font is a set of character shapes, called glyphs</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgd17421e" class="outline-3">
+<h3 id="orgd17421e"><span class="section-number-3">4.2</span> Posterization</h3>
+<div class="outline-text-3" id="text-4-2">
+<ul class="org-ul">
+<li>This effect occurs due to underquantization. It is especially visible when one color does not transition to an another smoothly</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org250c605" class="outline-3">
+<h3 id="org250c605"><span class="section-number-3">4.3</span> Moire effect</h3>
+<div class="outline-text-3" id="text-4-3">
+<ul class="org-ul">
+<li>Is a sudden and abrupt change in colour (from one to another) in imagery. It is an effect of undersampling and is especially visible in striped patterns</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgce61d73" class="outline-3">
+<h3 id="orgce61d73"><span class="section-number-3">4.4</span> Image Compression</h3>
+<div class="outline-text-3" id="text-4-4">
+</div>
+<div id="outline-container-orgf7a30a1" class="outline-4">
+<h4 id="orgf7a30a1">LZW</h4>
+<div class="outline-text-4" id="text-orgf7a30a1">
+<p class="verse">
+Used in GIFs, it is lossless.<br />
+</p>
+</div>
+</div>
+<div id="outline-container-org6d53737" class="outline-4">
+<h4 id="org6d53737">RLE</h4>
+<div class="outline-text-4" id="text-org6d53737">
+<p class="verse">
+Run Length Encoding (Entropy Coding) checks for repeated occurrence of 4 or more bytes.<br />
+eg. AAAA = A!4<br />
+</p>
+</div>
+</div>
+<div id="outline-container-org0278f6a" class="outline-4">
+<h4 id="org0278f6a">JPEG</h4>
+<div class="outline-text-4" id="text-org0278f6a">
+<p class="verse">
+Uses a complex algorithm (intensity can be set by the user). It uses an algorithm<br />
+that looks for adjacent pixels of similar brightness, as opposed to colour.<br />
+Usually done on pixels in blocks of 8x8.<br />
+</p>
+</div>
+</div>
+<div id="outline-container-orgd7fd31b" class="outline-4">
+<h4 id="orgd7fd31b">Dithering</h4>
+<div class="outline-text-4" id="text-orgd7fd31b">
+<p class="verse">
+Reduce range to 256 colours or less. Puts pixels side-by-side to give an illusion of a<br />
+third one in between. Dithering is a process of <b>juxtaposing</b> (arranging pixels).<br />
+</p>
+</div>
+</div>
+<div id="outline-container-org5e5986e" class="outline-4">
+<h4 id="org5e5986e">Interlacing(GIF) Progressive(JPEG)</h4>
+<div class="outline-text-4" id="text-org5e5986e">
+<p class="verse">
+Increases files size but allows for a preload. Used specifically on websites.<br />
+</p>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org4385681" class="outline-2">
+<h2 id="org4385681"><span class="section-number-2">5</span> Graphics</h2>
+<div class="outline-text-2" id="text-5">
+</div>
+<div id="outline-container-org6b30044" class="outline-3">
+<h3 id="org6b30044"><span class="section-number-3">5.1</span> Pixel</h3>
+<div class="outline-text-3" id="text-5-1">
+<ul class="org-ul">
+<li>The word pixel is based on pix ("pictures") and el (for "element")</li>
+<li>In digital imaging it is the smallest physical point in an image, or the smallest addressable element</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org5941e83" class="outline-3">
+<h3 id="org5941e83"><span class="section-number-3">5.2</span> Color Representation and bit depth</h3>
+<div class="outline-text-3" id="text-5-2">
+<ul class="org-ul">
+<li>Each bit is 2 to the power of that bit color possibilities. So a 4 bit image has 16 colours, it is also know then as a 4 bit colour depth (bit-depth)</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org2215acb" class="outline-3">
+<h3 id="org2215acb"><span class="section-number-3">5.3</span> Color models</h3>
+<div class="outline-text-3" id="text-5-3">
+<ul class="org-ul">
+<li>Additive RGB, three colours Red Green and Blue are added to create white at its max level, otherwise variations of levels of addition of these three colours can create any other colour known</li>
+<li>Subtractive CMYK, colors are subtracted from white to create black at max level, otherwise variations of levels of subtraction of these colours can create any other colour
+<ul class="org-ul">
+<li>Yellow absorbs short waves (blue) and allows the rest to pass</li>
+<li>Magenta absorbs medium waves (green) and allows the rest to pass</li>
+<li>Cyan absorbs long waves (red) and allows the rest to pass</li>
+</ul></li>
+<li>Greyscale, small size, colour-blind friendly, immune to colour reproduction on different monitors</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org571dd4d" class="outline-3">
+<h3 id="org571dd4d"><span class="section-number-3">5.4</span> Look Up Tables</h3>
+<div class="outline-text-3" id="text-5-4">
+<ul class="org-ul">
+<li>If an images contains only a few colours (256 for example), but it needs to look realistic, then the LUT is used to translate from a true colour picture to a smaller value of only 256 unique colours.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgc4cc510" class="outline-3">
+<h3 id="orgc4cc510"><span class="section-number-3">5.5</span> Resolutions</h3>
+<div class="outline-text-3" id="text-5-5">
+<ul class="org-ul">
+<li>Web, set to 72 dpi</li>
+<li>Monitors and still cameras, set to 72 dpi</li>
+<li>Laser printers, 300 - 600 dpi</li>
+<li>High end imagesetters 1200 dpi, 2400 dpi or even higher</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org65d2d9e" class="outline-3">
+<h3 id="org65d2d9e"><span class="section-number-3">5.6</span> File formats</h3>
+<div class="outline-text-3" id="text-5-6">
+
+<div class="figure">
+<p><img src="images/graph_file_formats.png" alt="graph_file_formats.png" />
+</p>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org9892096" class="outline-2">
+<h2 id="org9892096"><span class="section-number-2">6</span> Audio</h2>
+<div class="outline-text-2" id="text-6">
+</div>
+<div id="outline-container-org3d0eb47" class="outline-3">
+<h3 id="org3d0eb47"><span class="section-number-3">6.1</span> Digitization</h3>
+<div class="outline-text-3" id="text-6-1">
+<ul class="org-ul">
+<li>Sampling (samples per second), <b>vertical</b></li>
+<li>Quantization: number of intervals of the <b>horizontal</b> line the analogue value can have
+<ul class="org-ul">
+<li>Using too few quantizations can lead to <b>quantization noise</b> in the sound</li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgf1d6f97" class="outline-3">
+<h3 id="orgf1d6f97"><span class="section-number-3">6.2</span> Wide Quantization</h3>
+<div class="outline-text-3" id="text-6-2">
+<ul class="org-ul">
+<li>Leads to posterization and Moire effect</li>
+<li>Creates more noise</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org2ef6f95" class="outline-3">
+<h3 id="org2ef6f95"><span class="section-number-3">6.3</span> Characteristics</h3>
+<div class="outline-text-3" id="text-6-3">
+<ul class="org-ul">
+<li>Amplitude: height determines the volume. It is also the measure of displacement of the air pressure wave from its mean or quiescent state. Measured in decibels <b>dB</b>.</li>
+<li>Volume: the higher the wave the louder the sound</li>
+<li>Frequency: width determines the pitch, high frequency - high pitch, low frequency - low pitch. Very low pitch is also called <b>infrasound</b>, very high pitch is also called <b>ultrasound</b></li>
+<li>Pitch or frequency: the closer together the waves the higher the pitch. It is a description of how high or low the sounds seem to a person.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org9c3b7e4" class="outline-3">
+<h3 id="org9c3b7e4"><span class="section-number-3">6.4</span> Quality of digital audio</h3>
+<div class="outline-text-3" id="text-6-4">
+<ul class="org-ul">
+<li>Sample rate</li>
+<li>Sample size</li>
+<li>Channels</li>
+<li>Codecs</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org2fe0b34" class="outline-2">
+<h2 id="org2fe0b34"><span class="section-number-2">7</span> Animation</h2>
+<div class="outline-text-2" id="text-7">
+</div>
+<div id="outline-container-org6b1276b" class="outline-3">
+<h3 id="org6b1276b"><span class="section-number-3">7.1</span> Used in</h3>
+<div class="outline-text-3" id="text-7-1">
+<ul class="org-ul">
+<li>Entertainment</li>
+<li>Education</li>
+<li>Information</li>
+<li>Etc.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgabc77fc" class="outline-3">
+<h3 id="orgabc77fc"><span class="section-number-3">7.2</span> Definitions</h3>
+<div class="outline-text-3" id="text-7-2">
+<ul class="org-ul">
+<li>Key Frame: Used as an indicator of an important frame that always needs to be rendered</li>
+<li>Animation: is a simulation of movement via a series of pictures</li>
+<li>Frame: each individual picture/image/drawing in an animation</li>
+<li>FPS: frames per second</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgd61fa45" class="outline-3">
+<h3 id="orgd61fa45"><span class="section-number-3">7.3</span> History</h3>
+<div class="outline-text-3" id="text-7-3">
+<ul class="org-ul">
+<li>"Cel" (Celluloid): clear sheet material used to draw pictures on.
+<ul class="org-ul">
+<li>Cel sheets were displayed rapidly to create an illusion of a movement.</li>
+</ul></li>
+<li>Traditional Cel: individual frames were mostly hand drawn.</li>
+<li>Digital Cel: assisted by computers. Use of various assistive technologies.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org830b4c5" class="outline-3">
+<h3 id="org830b4c5"><span class="section-number-3">7.4</span> Types of animation</h3>
+<div class="outline-text-3" id="text-7-4">
+</div>
+<div id="outline-container-orgdccb434" class="outline-4">
+<h4 id="orgdccb434">Sprite sheets</h4>
+<div class="outline-text-4" id="text-orgdccb434">
+<ul class="org-ul">
+<li>Sprite sheets are used in computer animation or games and are a frame-by-frame type of animation.</li>
+<li>Sprite sheets are a collection of static images on a single sheet. Not like a gif, where the images are saved in a sequence.</li>
+<li>Each sprite can be a collection of images aka <i>sprite faces</i>, which can be substituted in sequence to produce composite animation</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org25d40bf" class="outline-4">
+<h4 id="org25d40bf">Frame-by-frame, frame based animation</h4>
+<div class="outline-text-4" id="text-org25d40bf">
+<ul class="org-ul">
+<li>In a frame-by-frame animation every frame is a key frame. Huge size, as every frame is individual, therefore every frame changes the content of stage.</li>
+<li>Animation sequence is created out of a series of pictures.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgabcad98" class="outline-4">
+<h4 id="orgabcad98">Key frame animation</h4>
+<div class="outline-text-4" id="text-orgabcad98">
+<ul class="org-ul">
+<li>Traditional: key frames are drawn by chief animators at important points, in-between frames are drawn by less skilled animators</li>
+<li>Computer-based: key frames are drawn explicitly, in-between frames are drawn by software</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgcefd5e3" class="outline-4">
+<h4 id="orgcefd5e3">Variables of transitions, aspects of animation</h4>
+<div class="outline-text-4" id="text-orgcefd5e3">
+<ul class="org-ul">
+<li>Frame rate: speed of the animation</li>
+<li>Transitions: special effects, fades etc.</li>
+<li>User Control: playback control, pause, rewind, etc.</li>
+<li>Looping: loop until it is stopped by the user</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org4ef8970" class="outline-4">
+<h4 id="org4ef8970">Morphing</h4>
+<div class="outline-text-4" id="text-org4ef8970">
+<ul class="org-ul">
+<li>Transition(blending) from one picture to another</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org4b13d72" class="outline-4">
+<h4 id="org4b13d72">Animated gifs</h4>
+<div class="outline-text-4" id="text-org4b13d72">
+<ul class="org-ul">
+<li>Formerly called the multi-block gif. Very popular standard for animations.</li>
+<li>Characterized by a small files size due to small amount of colours and the usage of blocks, repeated parts.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org3d2f668" class="outline-4">
+<h4 id="org3d2f668">Flash (SWF)</h4>
+<div class="outline-text-4" id="text-org3d2f668">
+<p class="verse">
+Outdated format of animations for the web. It is being phased out due to security issues.<br />
+It is still vastly used to produce quick animations for cartoons etc.<br />
+</p>
+</div>
+
+<ul class="org-ul">
+<li><a id="org3220009"></a>Timeline<br />
+<div class="outline-text-5" id="text-org3220009">
+<p class="verse">
+Graphical representation of frames<br />
+</p>
+<ul class="org-ul">
+<li>Key frames</li>
+<li>Simple frames</li>
+<li>A frame is a measure of time on the Timeline</li>
+</ul>
+</div>
+</li>
+
+<li><a id="orge71c410"></a>Symbol<br />
+<div class="outline-text-5" id="text-orge71c410">
+<ul class="org-ul">
+<li>An instance of an object. Allows for a fast copy of drawing objects</li>
+</ul>
+</div>
+</li>
+
+<li><a id="orgbf9ec09"></a>Motion tweening<br />
+<div class="outline-text-5" id="text-orgbf9ec09">
+<ul class="org-ul">
+<li>Tweening is how the object moves from point A to B</li>
+<li>Allows for different transition types, speed, etc</li>
+</ul>
+</div>
+</li>
+
+<li><a id="orgbb86804"></a>Shape tweening<br />
+<div class="outline-text-5" id="text-orgbb86804">
+<ul class="org-ul">
+<li>Morphing, etc.</li>
+</ul>
+</div>
+</li>
+
+<li><a id="org18b8aac"></a>Onion skinning<br />
+<div class="outline-text-5" id="text-org18b8aac">
+<ul class="org-ul">
+<li>Shows the previous frame, to allow for an easier depiction of the movement</li>
+</ul>
+</div>
+</li>
+
+<li><a id="org5eebe48"></a>What can be tweened?<br />
+<div class="outline-text-5" id="text-org5eebe48">
+<ul class="org-ul">
+<li>position</li>
+<li>shape</li>
+<li>rotation</li>
+<li>size</li>
+<li>color</li>
+<li>opacity</li>
+</ul>
+</div>
+</li>
+
+<li><a id="orge8fb337"></a>Drawing Modes<br />
+<div class="outline-text-5" id="text-orge8fb337">
+<ul class="org-ul">
+<li>In merge mode: Shapes drawn onto the stage</li>
+<li>In object drawing: Each object is a separate instance of the project.</li>
+<li>In primitive drawing: Allows for full customization: angles, shapes, sizes etc.</li>
+</ul>
+</div>
+</li>
+
+<li><a id="org85326c9"></a>Frames and key frames in flash<br />
+<div class="outline-text-5" id="text-org85326c9">
+<ul class="org-ul">
+<li>Creating motion with <b>key frames and tweening</b> : content gets placed only within key frames, the software fills in the gaps between key frames making it very easy to produce animation quickly.</li>
+<li>Creating motion with <b>frame-by-frame rendering</b> : content needs to placed and adjusted on a frame-to-frame basis. Very accurate but also very time consuming.</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgec6bbc0" class="outline-2">
+<h2 id="orgec6bbc0"><span class="section-number-2">8</span> Video</h2>
+<div class="outline-text-2" id="text-8">
+</div>
+<div id="outline-container-org16181f4" class="outline-3">
+<h3 id="org16181f4"><span class="section-number-3">8.1</span> Digital Video</h3>
+<div class="outline-text-3" id="text-8-1">
+<p class="verse">
+Composed of multiple frames. Series of bitmap graphics.<br />
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgfca0e2c" class="outline-3">
+<h3 id="orgfca0e2c"><span class="section-number-3">8.2</span> Compression technologies</h3>
+<div class="outline-text-3" id="text-8-2">
+<p class="verse">
+In order to reduce internet bandwidth and the storage of personal computers and servers compression is used<br />
+</p>
+</div>
+</div>
+
+<div id="outline-container-org8016d42" class="outline-3">
+<h3 id="org8016d42"><span class="section-number-3">8.3</span> Two types of compression</h3>
+<div class="outline-text-3" id="text-8-3">
+<ul class="org-ul">
+<li>Lossless: the file size is reduced but the quality is the same</li>
+<li>Lossy: the file size is reduced but at a cost of quality</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgd105863" class="outline-3">
+<h3 id="orgd105863"><span class="section-number-3">8.4</span> Video Compression Technologies</h3>
+<div class="outline-text-3" id="text-8-4">
+<ul class="org-ul">
+<li>Spatial Redundancy Removal: intraframe coding (JPEG), It actually compresses individual frames, like a series of JPEGs</li>
+<li>Temporal: interframe coding. Greater compression but the difference between frames is noticeable. Based on calculating the differences between separate frames</li>
+<li>Spatial and Temporal Redundancy removal: intraframe and interframe coding (H.261, MPEG)</li>
+<li>Temporal correlation: Using the differences between frames to reduce the size of the output</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org466544a" class="outline-3">
+<h3 id="org466544a"><span class="section-number-3">8.5</span> Popular codec software</h3>
+<div class="outline-text-3" id="text-8-5">
+<ul class="org-ul">
+<li>H.264: standardized by MPEG</li>
+<li>Theora: developed by Xiph.org</li>
+<li>VP8: developed by Google</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgcc969e5" class="outline-3">
+<h3 id="orgcc969e5"><span class="section-number-3">8.6</span> Video formats</h3>
+<div class="outline-text-3" id="text-8-6">
+<p class="verse">
+A lot of these are or aren't supported by certain browsers. Refer to the comparison charts online.<br />
+</p>
+
+<ul class="org-ul">
+<li>Ogg: uses Theora and Vorbis</li>
+<li>Mpeg4: uses H.264 and AAC</li>
+<li>WebM: uses VP8 and Vorbis</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgf6c639f" class="outline-3">
+<h3 id="orgf6c639f"><span class="section-number-3">8.7</span> Four parts to every video</h3>
+<div class="outline-text-3" id="text-8-7">
+<ul class="org-ul">
+<li>Video stream</li>
+<li>Audio stream</li>
+<li>Meta data</li>
+<li>Container</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org80b4c3d" class="outline-2">
+<h2 id="org80b4c3d"><span class="section-number-2">9</span> SVG</h2>
+<div class="outline-text-2" id="text-9">
+<ul class="org-ul">
+<li>SVGs are vector images</li>
+<li>Vector images scale very well
+<ul class="org-ul">
+<li>They do not lose quality when they are stretched or shrunk</li>
+</ul></li>
+<li><p>
+SVG images are a strong recommendation for websites and publishing
+</p>
+
+<button id="invert">Invert</button>
+<img src="images/arrow-up.png" alt="arrow-up" id="scroll-button" onclick="window.scroll(0, 0);">
+<script src="../assets/jquery-3.3.1.min.js"></script>
+<script src="../assets/notes.js"></script></li>
+</ul>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="date">Date: 2016-10-17 Mon 00:00</p>
+<p class="author">Author: Damian Chrzanowski</p>
+<p class="date">Created: 2018-12-13 Thu 17:22</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

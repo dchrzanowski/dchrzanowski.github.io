@@ -1,0 +1,842 @@
+#+TITLE: Databases 2
+#+DATE: [2017-09-11 Mon 12:14]
+#+AUTHOR: Damian Chrzanowski
+#+EMAIL: pjdamian.chrzanowski@gmail.com
+#+OPTIONS: H:2 toc:2
+#+HTML_HEAD: <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="../assets/org.css"/>
+#+HTML_HEAD: <link rel="icon" href="../assets/favicon.ico">
+
+[[file:index.org][Home Page]]
+
+* Database and Database Management System (DBMS)
+
+** Definition
+   - Organised collection of data
+   - The data refers to several applications
+   - The data should not contain any duplicates
+   - Models relevant aspects of reality, supports processes requiring this information
+   - Started in the mid 1960s, known as "Codasyl Approach"
+   - 1970s relational DBMS was born
+     - Edgar Codd at IBM wrote "A Relational Model of Data for Large Shared Data Banks"
+     - said spec was used in Berkley to create INGRES
+
+** Data vs Information
+   - Data: Raw facts, building blocks of information, unprocessed information
+   - Information: Data procecssed to reveal meaning
+
+** Database vs DBMS
+   - Database: shared, integrated computer structure that houses: end user data (raw facts), metadata (data about data)
+   - DBMS:
+     - Collection of programs that manages database structure and controls access to data
+     - Possible to share data among multiple applications or users
+     - Makes data management more efficient and effective
+     - Performs functions that guarantee integrity and consistency of data
+       - Data dictionary management
+       - Data storage management
+       - Data transformation and presentation
+       - Security management
+       - Multi-user access control
+       - Backup and recovery management
+       - Data integrity management
+       - DAtabase access languages and application programming interfaces
+       - Database communication interfaces
+   - *End user have better access to more and better-managed data*
+
+** Types of databases
+   - Single-user
+   - Desktop
+   - Multi-user
+   - Workgroup
+   - Enterprise
+
+** Location of Databases
+   - Centralized, data at a single site
+   - Distributed, data distributed across several sites
+
+** Uses of Databases
+   - Transactional (or production), supports a company's day to day operations
+   - Data warehouse, stores data to generate information required for tactical or strategic desicions, often used to store historical data
+
+** Why design databases
+   - Define expected use
+   - Different approach is necessary for different types
+   - Avoid redundant data
+   - Poor design may lead to errors, bad desicions and potentially to an failure of the organisation
+
+** Database System Environment
+   - Hardware
+   - Software
+     - OS Software
+     - DBMS Software
+     - Application programs and utilities
+   - People
+   - Procedures
+   - Data
+
+** Advantages and Disadvantages of DB processing
+
+*** Advantages
+    - More information can be produced for a given amount of data, ie combining facts
+    - Reduce Data Duplicates
+    - Creation of program/data independence
+
+*** Disadvantages
+    - Expensive (DBMS = additional software)
+    - Complex structures and inter-relationships difficulty
+    - Security and Accuracy (Integrity) problems
+
+* Data Model
+
+** Definition
+   - Relatively simple representation, usually graphical of complex real-world data structures
+   - Communications tool to facilitate interaction among the designer, the applications programmer, and the end user
+   - Good database model has an appropriate data model at its foundation
+   - End-users have different needs and views for the data
+   - Data model organises data for various users
+
+** Basic building blocks
+   - Entity: is anything about which data is to be collected and stored
+   - Attribute: is a characteristic of an entity
+   - Relationship: describes an association among (two or more) entities
+     - One to many (1:M) relationship
+     - Many to many (M:N or M:M) relationship
+     - One to one (1:1) relationship
+
+** Evolution of data models
+   - Hierarchical
+   - Network
+   - Relational <- _only these are covered_
+   - Entity relationship <- _only these are covered_
+   - Object oriented
+
+** Entity Model as in Entity Relationship (ER)
+   - An ER model is an abstract way of describing a database.
+   - In the case of a relational model, which stores data in tables, some of the data in these tables point to data in other tables - for instance, your entry in the database could point to several entries for each of the phone numbers that are yours.
+   - The ER model would say that you are an entity, and each phone number is an entity, and the relationship between you and the phone numbers is *has a phone number*.
+   - Diagrams created to design these entities and relationships are called entity–relationship diagrams or ER diagrams
+
+** Conceptual Model
+   - Represents global view of the database
+   - Enterprie-wide representation of data as viewd by high-level managers
+   - Basis for identification and description of main data objects, avoiding details
+   - Most widely used conceptual mode is the entity relationship (ER) model
+   - Provides a relatively easily understood macro level view of data environment
+   - Independent from both software and hardware
+
+** Internal Model
+   - Representation od the database as "seen" by the DBMS, the software itself
+   - Adapts the Conceptual Model to the DBMS
+   - Software dependent
+   - Hardware independent
+
+** External Model
+   - End users' view of the data environment
+   - Requires that the modeler subdivides the set of requirements and constraints into functional modules that can be examined
+   - Good design should:
+     - Consider such relationships between views
+     - Provide programmers with a set of restrictions that govern common entities
+   - Use of database subsets makes application program development much simpler
+   - Provides feedback about the Conceptual Model's adequacy
+   - Creation of external models help to ensure security constraints in the DB design
+   - DBMS dependent
+   - Hardware independent
+
+** The Physical Model
+   - Operates at the lowest level of abstraction, describes the way the data is stored in the hardware
+   - Software and Hardware dependent
+   - Requires for the DB designers to have the knowledge about the hardware and the software
+
+** Database Users
+   - Are either applications or on-line terminal users via query languages
+
+** User languages, Data Sublanguage (DSL)
+
+*** Data Definition Langauge (DDL)
+    - Definition and description of database objects by the user. e.g. definition of table, attribute names and values ranges
+
+*** Data Manipulation Language (DML)
+    - Provides queries for read / writing and processing of database objects. e.g. inserting, deleting, reading or updating data in the tables
+
+* Relational Database Model
+
+** Relational Model
+   - Enables us to view data logically rather than physically
+   - Reminds us of simpler file concept of data storage
+
+** Table
+   - Has advantages of structural and data independence
+   - Resembles a file from conceptual point of view
+   - Easier to understand than its hierarchical and network database predecessors
+
+* College access
+  - Use ~admin~ as password for college acccess
+
+* Basic queries on databases
+
+** Show all local databases
+   #+BEGIN_SRC sql
+  SHOW DATABASES;
+   #+END_SRC
+
+** Change the current database
+   #+BEGIN_SRC sql
+   USE some_database;
+   #+END_SRC
+
+** Create new database
+   #+BEGIN_SRC sql
+   CREATE database some_database;
+   #+END_SRC
+
+* Basic queries on tables
+
+** Show all tables within the database
+   #+BEGIN_SRC sql
+  SHOW TABLES FROM some_database;
+   #+END_SRC
+
+** Show information about a table
+   #+BEGIN_SRC sql
+   DESCRIBE some_database.some_table;
+   #+END_SRC
+   - alternatively use
+   #+BEGIN_SRC sql
+   SHOW columns some_table;
+   #+END_SRC
+
+** Deleting a table
+   #+BEGIN_SRC sql
+   DROP TABLE table_name;
+   #+END_SRC
+
+** Creating a table
+   #+BEGIN_SRC sql
+CREATE TABEL my_info (
+       id INTEGER NOT NULL,
+       first_name CHAR (12),
+       last_name CHAR (20),
+       gender CHAR(1)
+);
+   #+END_SRC
+
+** Removing a table
+   #+BEGIN_SRC sql
+   DROP TABLE some_table;
+   #+END_SRC
+
+* Inserting data
+
+** Inserting data into the table
+   #+BEGIN_SRC sql
+INSERT INTO my_info(id, first_name, last_name, gender)
+VALUES (1, 'joe', 'blogs', 'M');
+   #+END_SRC
+
+   alternatively do not specify the individual columns
+   #+BEGIN_SRC sql
+INSERT INTO my_info
+VALUES (1, 'joe', 'blogs', 'M');
+   #+END_SRC
+
+* Deleting data
+
+** Deleting information
+   #+BEGIN_SRC sql
+   DELETE FROM my_info WHERE gender = 'F';
+   #+END_SRC
+
+   mind the slight variation where the column is a ~null~. use ~IS NULL~
+   #+BEGIN_SRC sql
+   DELETE FROM my_info WHERE gender IS NULL;
+   #+END_SRC
+
+   deleting all rows
+   #+BEGIN_SRC sql
+   DELETE FROM table_name;
+   #+END_SRC
+
+* Updating data example
+  #+BEGIN_SRC sql
+UPDATE customers SET lastname = "Dolan" WHERE cus_id = 1;
+  #+END_SRC
+
+* Selecting data
+
+** Select all from a table
+   #+BEGIN_SRC sql
+   SELECT * FROM some_table;
+   #+END_SRC
+
+** Selecting specific columns, aka Projection
+   #+BEGIN_SRC sql
+   SELECT first_name, last_name FROM some_table;
+   #+END_SRC
+
+** Selecting distinct data from columns
+   #+BEGIN_SRC sql
+   SELECT DISTINCT first_name FROM some_table;
+   #+END_SRC
+
+** Selecting specific columns and renaming them
+   #+BEGIN_SRC sql
+   SELECT first_name AS fName, last_name AS surname FROM my_info;
+   #+END_SRC
+
+** Selecting specific columns with a condition
+   #+BEGIN_SRC sql
+   SELECT first_name, last_name FROM my_info WHERE gender = 'M';
+   #+END_SRC
+
+** Selecting data in-between values
+   #+BEGIN_SRC sql
+   SELECT first_name, last_name FROM my_info WHERE age BETWEEN 30 AND 40;
+   #+END_SRC
+
+* Using wildcards
+  - the ~percent~ is an any wildcard
+  - match all firstNames starting with ~Da~
+  #+BEGIN_SRC sql
+  SELECT * FROM my_info WHERE firstName LIKE "Da%";
+  #+END_SRC
+
+  - match all firstNames ending with ~Da~
+  #+BEGIN_SRC sql
+  SELECT * FROM my_info WHERE firstName LIKE "%Da";
+  #+END_SRC
+
+  - match all firstNames that contain ~Da~
+  #+BEGIN_SRC sql
+  SELECT * FROM my_info WHERE firstName LIKE "%Da%";
+  #+END_SRC
+
+  - match all firstNames that end with second last letter ~e~
+  - the ~underscore~ replaces any character
+  #+BEGIN_SRC sql
+  SELECT * FROM my_info WHERE firstName LIKE "%e_";
+  #+END_SRC
+
+* Ordering selected data
+
+** Ordering data
+   - ascending order
+   #+BEGIN_SRC sql
+   SELECT * FROM my_info ORDER BY some_column;
+   #+END_SRC
+
+   - descending order
+   #+BEGIN_SRC sql
+   SELECT * FROM my_info ORDER BY some_column DESC;
+   #+END_SRC
+
+   - combining
+   #+BEGIN_SRC sql
+   SELECT * FROM my_info ORDER BY some_column DESC AND some_other_column ASC;
+   #+END_SRC
+
+* Expressions
+
+** Calculation and expressions in the query
+   #+BEGIN_SRC sql
+   SELECT *, (65 - age) AS yearToRetire FROM details;
+   #+END_SRC
+
+* Aggregation functions
+
+** Count
+   #+BEGIN_SRC sql
+   SELECT COUNT(*) FROM details;
+   #+END_SRC
+
+** Max
+   #+BEGIN_SRC sql
+   SELECT MAX(age) as averageAge FROM details;
+   #+END_SRC
+
+** Min
+   #+BEGIN_SRC sql
+   SELECT MIN(age) as averageAge FROM details;
+   #+END_SRC
+
+** Average
+   #+BEGIN_SRC sql
+   SELECT AVG(age) as averageAge FROM details;
+   #+END_SRC
+
+** Sum
+   #+BEGIN_SRC sql
+   SELECT SUM(age) as averageAge FROM details;
+   #+END_SRC
+
+* Having clause
+  #+BEGIN_SRC sql
+SELECT department, COUNT(*) AS employees
+FROM details
+GROUP BY department HAVING COUNT(*) > 3;
+  #+END_SRC
+
+* Limit clause
+  - ascending
+  #+BEGIN_SRC sql
+  SELECT * FROM details LIMIT 5;
+  #+END_SRC
+  -descending
+  #+BEGIN_SRC sql
+  SELECT * FROM details ORDER BY id DESC LIMIT 5;
+  #+END_SRC
+  - offset
+  #+BEGIN_SRC sql
+  SELECT * FROM details LIMIT 5 OFFSET 15;
+  #+END_SRC
+
+* Subqueries
+  #+BEGIN_SRC sql
+SELECT *
+FROM details
+WHERE age > (SELECT AVG(age) FROM details);
+  #+END_SRC
+
+* Complex queries
+
+** Union example (both need to have the same column count)
+   #+BEGIN_SRC sql
+(select firstName, lastName, town from customers)
+UNION
+(select firstName, lastName, town from employees);
+   #+END_SRC
+
+** Inner join (intersection)
+   - with shorthands
+   #+BEGIN_SRC sql
+select c.firstName, c.lastName, c.town
+from customers as c
+inner join employees as e
+on c.firstName = e.firstName
+and c.lastName = e.lastName
+and c.town = e.town;
+   #+END_SRC
+   - without shorthands
+   #+BEGIN_SRC sql
+select customer.firstName, customer.lastName, customer.town
+from customers
+inner join employees
+on customer.firstName = employees.firstName
+and customer.lastName = employees.lastName
+and customer.town = employees.town;
+   #+END_SRC
+
+   - with an ~EXISTS~ keyword
+   #+BEGIN_SRC sql
+select c.firstName, c.lastName, c.town
+from customers as c
+where exists
+(select e.firstName, e.lastName, e.town
+from employees as e
+where c.firstName = e.firstName
+and c.lastName = e.lastName
+and c.town = e.town);
+   #+END_SRC
+
+** Except (~NOT EXISTS~), basically set A - B
+   #+BEGIN_SRC sql
+select c.firstName, c.lastName, c.town
+from customers as c
+where not exists
+(select e.firstName, e.lastName, e.town
+from employees as e
+where c.firstName = e.firstName
+and c.lastName = e.lastName
+and c.town = e.town);
+   #+END_SRC
+
+** Division
+   #+BEGIN_SRC sql
+select distinct c1.y as y from c c1
+where not exists
+(select d.x
+from d
+where d.x not in
+(select c2.x
+from c c2
+where c2.y = c1.y));
+   #+END_SRC
+
+* Time and Date functions
+  - current date
+  #+BEGIN_SRC sql
+  select current_date();
+  #+END_SRC
+
+  - current date and time
+  #+BEGIN_SRC sql
+  select now();
+  #+END_SRC
+
+  - day name
+  #+BEGIN_SRC sql
+  select dayname(now());
+  #+END_SRC
+
+  - month name
+  #+BEGIN_SRC sql
+  select monthname(now());
+  #+END_SRC
+
+  - numeric values of days, months, years
+  #+BEGIN_SRC sql
+  select day(now()), month(now()), year(now())
+  #+END_SRC
+
+  - also available are day of month(same as ~day()~), day of week and day of year
+  #+BEGIN_SRC sql
+  select dayofmonth(now()), dayofweek(now()), dayofyear(now())
+  #+END_SRC
+
+  - ~date_add~ adds a specific interval(amount of time) to the passed in date
+  #+BEGIN_SRC sql
+  select now(), date_add(now(), interval 4 day);
+  select now(), date_add(now(), interval 5 month);
+  select now(), date_add(now(), interval 1 year);
+  #+END_SRC
+
+  - ~date_sub~ subtracts a specific interval(amount of time) from the passed in date
+  #+BEGIN_SRC sql
+  select now(), date_sub(now(), interval 4 day);
+  select now(), date_sub(now(), interval 5 month);
+  select now(), date_sub(now(), interval 1 year);
+  #+END_SRC
+
+  - difference between two dates (in days) is done with ~datediff~
+  #+BEGIN_SRC sql
+  select datediff(now(), "2017-05-17");
+  #+END_SRC
+
+  - days alive
+  #+BEGIN_SRC sql
+  select datediff(now(), "1983-09-17");
+  #+END_SRC
+
+  - formatting the output with ~date_format~
+  #+BEGIN_SRC sql
+  select date_format(now(), '%y') as year;
+  #+END_SRC
+
+* Random numbers
+  - random int from 0 to 10
+  #+BEGIN_SRC sql
+  select cast( (rand() * 10) as unsigned integer);
+  #+END_SRC
+
+* Sample DVD DB questions
+  - select oldest employee
+  #+BEGIN_SRC sql
+select firstname, lastname, dateofbirth
+from employees
+order by dateofbirth
+limit 1;
+
+select firstname, lastname, dateofbirth
+from employees
+where (select min(dateofbirth) from employess);
+  #+END_SRC
+
+  - oldest employees
+  #+BEGIN_SRC sql
+  select *, datediff(now(), dateofbirth) as doba from employees;
+  #+END_SRC
+
+  - name of the most rented product
+  #+BEGIN_SRC sql
+select products.prod_id, name, count(*) as total
+from products, rentals
+where products.prod_id = rentals.prod_id
+group by name
+order by total desc
+limit 1;
+  #+END_SRC
+
+  - who is the best customer
+  #+BEGIN_SRC sql
+select customers.cus_id, firstname, lastname, count(*) as total
+from rentals, customers
+where customers.cus_id = rentals.cus_id
+group by cus_id
+order by total desc
+limit 1;
+  #+END_SRC
+
+  - top rentals per genre
+  #+BEGIN_SRC sql
+(select products.prod_id, name, count(*) as total, genre
+from products, rentals
+where products.prod_id = rentals.prod_id
+and genre = "Science Fiction"
+group by prod_id
+order by total desc
+limit 1)
+UNION
+(select products.prod_id, name, count(*) as total, genre
+from products, rentals
+where products.prod_id = rentals.prod_id
+and genre = "Drama"
+group by prod_id
+order by total desc
+limit 1)
+UNION
+(select products.prod_id, name, count(*) as total, genre
+from products, rentals
+where products.prod_id = rentals.prod_id
+and genre = "Comedy"
+group by prod_id
+order by total desc
+limit 1);
+  #+END_SRC
+
+  - which product was rented first
+  #+BEGIN_SRC sql
+select name, dateRented
+from rentals, products
+where rentals.prod_id = products.prod_id
+order by daterented
+limit 1;
+  #+END_SRC
+
+  - which product was never rented
+  #+BEGIN_SRC sql
+select name
+from products
+where prod_id
+not in
+(select distinct prod_id from rentals);
+  #+END_SRC
+
+  - top 3 rentals in september 2010
+  #+BEGIN_SRC sql
+select products.prod_id, name, count(*) as total
+from products, rentals
+where products.prod_id = rentals.prod_id
+and monthname(rentals.daterented) = "September"
+and year(rentals.daterented) = 2010
+group by name
+order by total desc
+limit 3;
+  #+END_SRC
+  - list the products that the customers haven't rented
+  #+BEGIN_SRC sql
+select name, firstname, lastname
+from customers c, products p
+where not exists
+(select distinct name, firstname, lastname
+from rentals, products p1, customers c1
+where rentals.prod_id = p1.prod_id
+and rentals.cus_id = c1.cus_id
+and p.name = p1.name
+and c.firstname = c1.firstname
+and c.lastname = c1.lastname);
+  #+END_SRC
+
+  - pretty print table
+  #+BEGIN_SRC sql
+select rentals.rental_id,
+name,
+customers.firstname as cfName,
+customers.lastname clName,
+employees.firstname as efName,
+employees.lastname as elName,
+date_format(rentals.daterented, "%W %M %e %Y") as "Date Rented"
+from rentals, products, employees, customers
+where rentals.prod_id = products.prod_id
+and rentals.cus_id = customers.cus_id
+and rentals.emp_id = employees.emp_id
+order by rental_id;
+  #+END_SRC
+  - can customer 'Carey' rent out a film for 21s?
+  - first: the age of all customers
+  #+BEGIN_SRC sql
+select firstname, lastname, dateofbirth,
+date_format(from_days(datediff(now(), dateofbirth)), '%y') as age
+from customers;
+  #+END_SRC
+  - second: customers who can rent a 21s film
+  #+BEGIN_SRC sql
+select firstname, lastname, dateofbirth,
+date_format(from_days(datediff(now(), dateofbirth)), '%y') as age
+from customers
+where date_format(from_days(datediff(now(), dateofbirth)), '%y') >= 21;
+  #+END_SRC
+  - third: customers who cannot rent a 21s film
+  #+BEGIN_SRC sql
+select firstname, lastname, dateofbirth,
+date_format(from_days(datediff(now(), dateofbirth)), '%y') as age
+from customers
+where date_format(from_days(datediff(now(), dateofbirth)), '%y') < 21;
+  #+END_SRC
+  - who is the worst employee
+  #+BEGIN_SRC sql
+select firstname, lastname,
+employees.emp_id as emp_id,
+count(*) as total
+from employees, rentals
+where rentals.emp_id = employees.emp_id
+group by employees.emp_id
+order by total;
+  #+END_SRC
+  - calculate the sales of dvd (5eur) and blurays (6eur) in september
+  #+BEGIN_SRC sql
+select 5 * dvd.total + 6 * blu.total as total
+from (select format, count(*) as total
+from products, rentals
+where products.prod_id = rentals.prod_id
+and year(daterented) = 2010 and month(daterented) = 9
+and format = 'DVD') as dvd,
+(select format, count(*) as total
+from products, rentals
+where products.prod_id = rentals.prod_id
+and year(daterented) = 2010 and month(daterented) = 9
+and format = 'Blu-ray') as blu;
+  #+END_SRC
+
+* Sample questions for the test
+  - show all regions in africa
+  #+BEGIN_SRC sql
+select distinct region from country where continent = 'Africa';
+  #+END_SRC
+  - show the population of the world
+  #+BEGIN_SRC sql
+select sum(population) as total from country;
+  #+END_SRC
+  - count the countries in the world
+  #+BEGIN_SRC sql
+select count(*) as total from country;
+  #+END_SRC
+  - count all languages
+  #+BEGIN_SRC sql
+select count(distinct language) as "total languages"
+from countrylanguage;
+  #+END_SRC
+  - total surface area of Earth, oceans are 2/3 of the earth's surface, thus we multiply by 3 to get the total surface
+  #+BEGIN_SRC sql
+select sum(surfacearea) * 3 from country;
+  #+END_SRC
+  - get the total amount of cities in a country
+  #+BEGIN_SRC sql
+select country.name, count(city.name)
+from country, city
+where code = countrycode
+and country.name = 'Ireland';
+  #+END_SRC
+  - find the city with the highest population in a specific country
+  #+BEGIN_SRC sql
+select country.name, city.name, city.population
+from country, city
+where code = countrycode
+and city.population = (select max(population) from city);
+  #+END_SRC
+  - display the total population of a country and the list of all cities with their population
+  #+BEGIN_SRC sql
+(select name as 'Details', population as 'Inhabitants'
+from country
+where name = 'Spain')
+union
+(select city.name, city.population
+from city, country
+where countrycode = code
+and country.name = 'Spain');
+  #+END_SRC
+  - find all languages in Ireland and Canada that are not common in each of those countries
+  #+BEGIN_SRC sql
+select cl1.language
+from country as c1, countrylanguage as cl1
+where c1.code = cl1.countrycode
+and c1.name = 'Ireland'
+and NOT EXISTS
+(select cl2.language
+from country as c2, countrylanguage as cl2
+where c2.code = cl2.countrycode
+and cl1.language = cl2.language
+and c2.name = 'Canada');
+  #+END_SRC
+  - find all langauges that are common in Canada and Ireland
+  #+BEGIN_SRC sql
+select cl1.language
+from country as c1, countrylanguage as cl1
+where c1.code = cl1.countrycode
+and c1.name = 'Ireland'
+and EXISTS
+(select cl2.language
+from country as c2, countrylanguage as cl2
+where c2.code = cl2.countrycode
+and cl1.language = cl2.language
+and c2.name = 'Canada');
+  #+END_SRC
+
+* Table creation example
+  #+BEGIN_SRC sql
+CREATE TABLE details (
+       id INTEGER auto_increment NOT NULL PRIMARY KEY,
+       firstName VARCHAR(15) NOT NULL,
+       lastName VARCHAR(20) NOT NULL,
+       age INTEGER NOT NULL,
+       gender VARCHAR(1) NOT NULL,
+       position VARCHAR(15) NOT NULL,
+       department VARCHAR(20) NOT NULL,
+       rate DECIMAL(7, 2) NOT NULL,
+       hours INTEGER NOT NULL
+);
+  #+END_SRC
+
+* Sample database insert
+  #+BEGIN_SRC sql
+DROP DATABASE IF EXISTS lab1SQL;
+CREATE DATABASE IF NOT EXISTS lab1SQL;
+USE lab1SQL;
+
+SELECT 'CREATING DATABASE STRUCTURE' as 'INFO';
+
+DROP TABLE IF EXISTS details;
+
+
+CREATE TABLE details (
+    id INTEGER AUTO_INCREMENT NOT NULL PRIMARY KEY,
+    firstName VARCHAR(15) NOT NULL,
+    lastName VARCHAR(20) NOT NULL,
+    age INTEGER NOT NULL,
+    gender VARCHAR(1) NOT NULL,
+    position VARCHAR(15) NOT NULL,
+    department VARCHAR(20) NOT NULL,
+    rate DECIMAL(7, 2) NOT NULL,
+    hours INTEGER NOT NULL);
+
+SELECT 'INSERTING DATA INTO DATABASE' as 'INFO';
+
+INSERT INTO details VALUES ( null, 'Joe', 'Mullins', 64, 'M', 'Lecturer', 'Engineering', 63.08, 12);
+INSERT INTO details VALUES ( null, 'Joan', 'Macgill', 27, 'F', 'Researcher', 'Science', 38, 35);
+INSERT INTO details VALUES ( null, 'Jim', 'Mitchell', 51, 'M', 'Researcher', 'Business', 38, 25);
+INSERT INTO details VALUES ( null, 'John', 'Magner', 47, 'M', 'Lecturer', 'Humanities', 63.08, 16);
+INSERT INTO details VALUES ( null, 'Jack', 'Minogue', 61, 'M', 'Administrator', 'Hospitality', 45.57, 37);
+INSERT INTO details VALUES ( null, 'Jean', 'Madden', 45, 'F', 'Professor', 'Design', 76.45, 14);
+INSERT INTO details VALUES ( null, 'Josephine', 'Mahony', 33, 'F', 'Head', 'Nursing', 98.56, 40);
+INSERT INTO details VALUES ( null, 'Juan', 'Mosley', 56, 'M', 'Professor', 'Engineering', 76.45, 11);
+INSERT INTO details VALUES ( null, 'Jamie', 'Mulllen', 45, 'M', 'Researcher', 'Science', 38, 37);
+INSERT INTO details VALUES ( null, 'Julie', 'Mooney', 39, 'F', 'Lecturer', 'Business', 63.08, 18);
+INSERT INTO details VALUES ( null, 'Jane', 'Mccarthy', 37, 'F', 'Administrator', 'Design', 45.57, 45);
+INSERT INTO details VALUES ( null, 'James', 'May', 38, 'M', 'Researcher', 'Hospitality', 38, 9);
+INSERT INTO details VALUES ( null, 'Joseph', 'Manning', 32, 'M', 'Lecturer', 'Hospitality', 63.08, 16);
+INSERT INTO details VALUES ( null, 'Judith', 'Milner', 36, 'F', 'Lecturer', 'Nursing', 63.08, 20);
+INSERT INTO details VALUES ( null, 'Jerome', 'Murphy', 26, 'M', 'Head', 'Engineering', 98.56, 42);
+INSERT INTO details VALUES ( null, 'Jude', 'Manley', 28, 'M', 'Head', 'Science', 98.56, 41);
+INSERT INTO details VALUES ( null, 'Juanita', 'Mahon', 59, 'F', 'Administrator', 'Engineering', 45.57, 49);
+INSERT INTO details VALUES ( null, 'Justin', 'Maguire', 25, 'M', 'Lecturer', 'Business', 63.08, 16);
+INSERT INTO details VALUES ( null, 'Jacqulinen', 'Musgrave', 43, 'F', 'Professor', 'Business', 76.45, 10);
+INSERT INTO details VALUES ( null, 'Julia', 'Moore', 36, 'F', 'Administrator', 'Science', 45.57, 38);
+
+SELECT 'CHECKING TO SEE IF EVERYTHING WORKED' as 'INFO';
+
+SELECT * from details;
+  #+END_SRC
+
+
+  #+BEGIN_EXPORT html
+  <script src="../assets/jquery-3.3.1.min.js"></script>
+  <script src="../assets/notes.js"></script>
+  #+END_EXPORT

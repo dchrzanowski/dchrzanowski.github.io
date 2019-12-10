@@ -1,0 +1,110 @@
+#+TITLE: Game Development
+#+DATE: <2016-10-27 Thu>
+#+AUTHOR: Damian Chrzanowski
+#+EMAIL: pjdamian.chrzanowski@gmail.com
+#+OPTIONS: TOC:2 num:2
+#+HTML_HEAD: <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="../assets/org.css"/>
+#+HTML_HEAD: <link rel="icon" href="../assets/favicon.ico">
+
+[[file:index.org][Home Page]]
+
+* Ludology
+
+** Definition
+   Ludology is an academic view of the games.
+
+** Info
+   Some people say that making games is an art, knack or a craft.
+   Game design DOES require talent.
+   People play games for different reasons and require different a different "fix".
+   Varius genres fill a different desire.
+
+** Genres
+   These days games mix genres. They are called hybrids.
+   On the top level there are realistically only a few genres.
+
+   Some examples:
+   - Action games are very popular and are very fast paced.
+   - FPS (first person shooters), also very popular and fast paced
+   - Adventure games
+   - Role Playing Games (RPGs)
+   - Strategy (RTS, turn based strategies, etc.)
+   - Simulation games
+   - Sport games
+   - Fighting games (beat-em-up)
+   - Casual games
+   - God games
+   - Educational games
+   - Platform games (side-scrollers, etc.)
+
+** Popular aspects
+   Hunter gatherer, human roots, evolving skills, physical fun, social fun, multipurpose fun
+
+** Choices in games
+*** Convexity
+    Arguably the most popular and the most fun of ways of orginizing choices in games.
+    Start at one point, branch out and finish at the same place.
+    Examples: building a technology tree, exploring an island.
+    Many games have many convexities or so called chains of convexities.
+    Example here would be a gradual progressiona and ending up fighting a boss and the starting a new convexity.
+
+*** Flow Channel
+    Start with a low difficulty and gradually increase it as the game does progress.
+    One needs to be careful not to increase the difficulty to quickly.
+    It is a common practice as we (humans), like to evolve and progress.
+
+** Storytelling
+   Blend storytelling with design early. Use experienced interactive writers (prefereably).
+   The shouldn't make choices for the player. A story should add an emotional context to the choices the user makes.
+
+** Gameplay
+   Gameplay always trumps story.
+* Gameplay Design
+
+  - Many designers prefer a player-centric approach to game design
+    - You are not your player. Do not assume that others player are like you
+    - Your player is not your opponent
+  - Entertain the player
+    - Know what they want
+    - Know what they expect
+    - Anticipate the reactions
+  - Duty to Empathize
+    - Do not make it too hard
+    - Do not make it tedious to play
+    - Empathising makes the production generally faster and cheaper
+  - Remember motivations
+    - Easy to learn
+    - Difficult to master
+  - Feedback
+    - Visual
+    - Audible
+    - Tips, etc.
+    - A game should inform the player, especially if it seems too difficult to operate
+  - Grounding the Player
+    - A player should always know what they are supposed to do
+    - A player should always know where they should go next
+    - Player should always have a goal
+  - Moment-to-moment experience
+    - At every moment in the game tha player should have something to do
+    - Avoid overfrustrating
+    - Avoid boredom and frustration
+  - Immersion
+    - The game completely involves the player
+    - "Sucks the player in and doesn't let go", so to speak
+  - Realism
+    - Realistic physics
+    - Minimise bugs
+    - Minimise glitches
+    - Attention to detail
+    - Audio (need to be spot on)
+      - Voice talent
+    - Graphics (people generally don't mind the surreal)
+  - Writing
+    - Good writing is invisible
+    - Bad writing is very wisible
+
+    #+BEGIN_EXPORT html
+    <script src="../assets/jquery-3.3.1.min.js"></script>
+    <script src="../assets/notes.js"></script>
+    #+END_EXPORT

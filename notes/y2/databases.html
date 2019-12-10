@@ -1,0 +1,1734 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2018-12-13 Thu 20:27 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Databases 2</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="Damian Chrzanowski" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="../assets/org.css"/>
+<link rel="icon" href="../assets/favicon.ico">
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2018 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Databases 2</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org7f0501e">1. Database and Database Management System (DBMS)</a>
+<ul>
+<li><a href="#orgf44b1dc">1.1. Definition</a></li>
+<li><a href="#orge9b18c2">1.2. Data vs Information</a></li>
+<li><a href="#orgff4e735">1.3. Database vs DBMS</a></li>
+<li><a href="#orgaa1303d">1.4. Types of databases</a></li>
+<li><a href="#orgb3c6cd8">1.5. Location of Databases</a></li>
+<li><a href="#orgcd6fc11">1.6. Uses of Databases</a></li>
+<li><a href="#org0f01c48">1.7. Why design databases</a></li>
+<li><a href="#orga4a0d57">1.8. Database System Environment</a></li>
+<li><a href="#org71d5e23">1.9. Advantages and Disadvantages of DB processing</a></li>
+</ul>
+</li>
+<li><a href="#org5d142e0">2. Data Model</a>
+<ul>
+<li><a href="#orgcd2d75b">2.1. Definition</a></li>
+<li><a href="#org21eef50">2.2. Basic building blocks</a></li>
+<li><a href="#org7f0ee88">2.3. Evolution of data models</a></li>
+<li><a href="#org186db9a">2.4. Entity Model as in Entity Relationship (ER)</a></li>
+<li><a href="#org020944e">2.5. Conceptual Model</a></li>
+<li><a href="#org0cc8a31">2.6. Internal Model</a></li>
+<li><a href="#org822de14">2.7. External Model</a></li>
+<li><a href="#org6942ae6">2.8. The Physical Model</a></li>
+<li><a href="#org32a3047">2.9. Database Users</a></li>
+<li><a href="#org120848b">2.10. User languages, Data Sublanguage (DSL)</a></li>
+</ul>
+</li>
+<li><a href="#orgd0223c5">3. Relational Database Model</a>
+<ul>
+<li><a href="#orgc4572ab">3.1. Relational Model</a></li>
+<li><a href="#orgd0d8e26">3.2. Table</a></li>
+</ul>
+</li>
+<li><a href="#org77257fa">4. College access</a></li>
+<li><a href="#orgf376dd0">5. Basic queries on databases</a>
+<ul>
+<li><a href="#orgdd9977e">5.1. Show all local databases</a></li>
+<li><a href="#org88b5f2b">5.2. Change the current database</a></li>
+<li><a href="#org6bf6b02">5.3. Create new database</a></li>
+</ul>
+</li>
+<li><a href="#org7ef60a2">6. Basic queries on tables</a>
+<ul>
+<li><a href="#org13ede84">6.1. Show all tables within the database</a></li>
+<li><a href="#org794e75c">6.2. Show information about a table</a></li>
+<li><a href="#org45b5d21">6.3. Deleting a table</a></li>
+<li><a href="#org197b5e8">6.4. Creating a table</a></li>
+<li><a href="#org2f09a76">6.5. Removing a table</a></li>
+</ul>
+</li>
+<li><a href="#org1a99372">7. Inserting data</a>
+<ul>
+<li><a href="#orgb1a93e0">7.1. Inserting data into the table</a></li>
+</ul>
+</li>
+<li><a href="#org4d56124">8. Deleting data</a>
+<ul>
+<li><a href="#orgb44f040">8.1. Deleting information</a></li>
+</ul>
+</li>
+<li><a href="#org8c62035">9. Updating data example</a></li>
+<li><a href="#org14983da">10. Selecting data</a>
+<ul>
+<li><a href="#orgb553809">10.1. Select all from a table</a></li>
+<li><a href="#orgb81d553">10.2. Selecting specific columns, aka Projection</a></li>
+<li><a href="#org6b58257">10.3. Selecting distinct data from columns</a></li>
+<li><a href="#org8226e1d">10.4. Selecting specific columns and renaming them</a></li>
+<li><a href="#org0a6650d">10.5. Selecting specific columns with a condition</a></li>
+<li><a href="#org82597c8">10.6. Selecting data in-between values</a></li>
+</ul>
+</li>
+<li><a href="#orgeed31c9">11. Using wildcards</a></li>
+<li><a href="#org01195c2">12. Ordering selected data</a>
+<ul>
+<li><a href="#org2c64777">12.1. Ordering data</a></li>
+</ul>
+</li>
+<li><a href="#org13dc213">13. Expressions</a>
+<ul>
+<li><a href="#org1b6fb34">13.1. Calculation and expressions in the query</a></li>
+</ul>
+</li>
+<li><a href="#org045edc4">14. Aggregation functions</a>
+<ul>
+<li><a href="#orga62a0af">14.1. Count</a></li>
+<li><a href="#orgf845cea">14.2. Max</a></li>
+<li><a href="#orgfde02d3">14.3. Min</a></li>
+<li><a href="#org37335bc">14.4. Average</a></li>
+<li><a href="#org3d0b3fe">14.5. Sum</a></li>
+</ul>
+</li>
+<li><a href="#org38777f0">15. Having clause</a></li>
+<li><a href="#org74c7077">16. Limit clause</a></li>
+<li><a href="#org2dff419">17. Subqueries</a></li>
+<li><a href="#orgf3f1478">18. Complex queries</a>
+<ul>
+<li><a href="#orgc6d8abd">18.1. Union example (both need to have the same column count)</a></li>
+<li><a href="#org95cf2bf">18.2. Inner join (intersection)</a></li>
+<li><a href="#org1dd2524">18.3. Except (<code>NOT EXISTS</code>), basically set A - B</a></li>
+<li><a href="#org6501c52">18.4. Division</a></li>
+</ul>
+</li>
+<li><a href="#org9527040">19. Time and Date functions</a></li>
+<li><a href="#org1bdc738">20. Random numbers</a></li>
+<li><a href="#orgc27180a">21. Sample DVD DB questions</a></li>
+<li><a href="#org3c291d9">22. Sample questions for the test</a></li>
+<li><a href="#orgb4e1219">23. Table creation example</a></li>
+<li><a href="#orga4c0faf">24. Sample database insert</a></li>
+</ul>
+</div>
+</div>
+<p>
+<a href="index.html">Home Page</a>
+</p>
+
+<div id="outline-container-org7f0501e" class="outline-2">
+<h2 id="org7f0501e"><span class="section-number-2">1</span> Database and Database Management System (DBMS)</h2>
+<div class="outline-text-2" id="text-1">
+</div>
+<div id="outline-container-orgf44b1dc" class="outline-3">
+<h3 id="orgf44b1dc"><span class="section-number-3">1.1</span> Definition</h3>
+<div class="outline-text-3" id="text-1-1">
+<ul class="org-ul">
+<li>Organised collection of data</li>
+<li>The data refers to several applications</li>
+<li>The data should not contain any duplicates</li>
+<li>Models relevant aspects of reality, supports processes requiring this information</li>
+<li>Started in the mid 1960s, known as "Codasyl Approach"</li>
+<li>1970s relational DBMS was born
+<ul class="org-ul">
+<li>Edgar Codd at IBM wrote "A Relational Model of Data for Large Shared Data Banks"</li>
+<li>said spec was used in Berkley to create INGRES</li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orge9b18c2" class="outline-3">
+<h3 id="orge9b18c2"><span class="section-number-3">1.2</span> Data vs Information</h3>
+<div class="outline-text-3" id="text-1-2">
+<ul class="org-ul">
+<li>Data: Raw facts, building blocks of information, unprocessed information</li>
+<li>Information: Data procecssed to reveal meaning</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgff4e735" class="outline-3">
+<h3 id="orgff4e735"><span class="section-number-3">1.3</span> Database vs DBMS</h3>
+<div class="outline-text-3" id="text-1-3">
+<ul class="org-ul">
+<li>Database: shared, integrated computer structure that houses: end user data (raw facts), metadata (data about data)</li>
+<li>DBMS:
+<ul class="org-ul">
+<li>Collection of programs that manages database structure and controls access to data</li>
+<li>Possible to share data among multiple applications or users</li>
+<li>Makes data management more efficient and effective</li>
+<li>Performs functions that guarantee integrity and consistency of data
+<ul class="org-ul">
+<li>Data dictionary management</li>
+<li>Data storage management</li>
+<li>Data transformation and presentation</li>
+<li>Security management</li>
+<li>Multi-user access control</li>
+<li>Backup and recovery management</li>
+<li>Data integrity management</li>
+<li>DAtabase access languages and application programming interfaces</li>
+<li>Database communication interfaces</li>
+</ul></li>
+</ul></li>
+<li><b>End user have better access to more and better-managed data</b></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgaa1303d" class="outline-3">
+<h3 id="orgaa1303d"><span class="section-number-3">1.4</span> Types of databases</h3>
+<div class="outline-text-3" id="text-1-4">
+<ul class="org-ul">
+<li>Single-user</li>
+<li>Desktop</li>
+<li>Multi-user</li>
+<li>Workgroup</li>
+<li>Enterprise</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgb3c6cd8" class="outline-3">
+<h3 id="orgb3c6cd8"><span class="section-number-3">1.5</span> Location of Databases</h3>
+<div class="outline-text-3" id="text-1-5">
+<ul class="org-ul">
+<li>Centralized, data at a single site</li>
+<li>Distributed, data distributed across several sites</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgcd6fc11" class="outline-3">
+<h3 id="orgcd6fc11"><span class="section-number-3">1.6</span> Uses of Databases</h3>
+<div class="outline-text-3" id="text-1-6">
+<ul class="org-ul">
+<li>Transactional (or production), supports a company's day to day operations</li>
+<li>Data warehouse, stores data to generate information required for tactical or strategic desicions, often used to store historical data</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org0f01c48" class="outline-3">
+<h3 id="org0f01c48"><span class="section-number-3">1.7</span> Why design databases</h3>
+<div class="outline-text-3" id="text-1-7">
+<ul class="org-ul">
+<li>Define expected use</li>
+<li>Different approach is necessary for different types</li>
+<li>Avoid redundant data</li>
+<li>Poor design may lead to errors, bad desicions and potentially to an failure of the organisation</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orga4a0d57" class="outline-3">
+<h3 id="orga4a0d57"><span class="section-number-3">1.8</span> Database System Environment</h3>
+<div class="outline-text-3" id="text-1-8">
+<ul class="org-ul">
+<li>Hardware</li>
+<li>Software
+<ul class="org-ul">
+<li>OS Software</li>
+<li>DBMS Software</li>
+<li>Application programs and utilities</li>
+</ul></li>
+<li>People</li>
+<li>Procedures</li>
+<li>Data</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org71d5e23" class="outline-3">
+<h3 id="org71d5e23"><span class="section-number-3">1.9</span> Advantages and Disadvantages of DB processing</h3>
+<div class="outline-text-3" id="text-1-9">
+</div>
+<ol class="org-ol">
+<li><a id="orgb077231"></a>Advantages<br />
+<div class="outline-text-4" id="text-1-9-1">
+<ul class="org-ul">
+<li>More information can be produced for a given amount of data, ie combining facts</li>
+<li>Reduce Data Duplicates</li>
+<li>Creation of program/data independence</li>
+</ul>
+</div>
+</li>
+
+<li><a id="orge3a042b"></a>Disadvantages<br />
+<div class="outline-text-4" id="text-1-9-2">
+<ul class="org-ul">
+<li>Expensive (DBMS = additional software)</li>
+<li>Complex structures and inter-relationships difficulty</li>
+<li>Security and Accuracy (Integrity) problems</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-org5d142e0" class="outline-2">
+<h2 id="org5d142e0"><span class="section-number-2">2</span> Data Model</h2>
+<div class="outline-text-2" id="text-2">
+</div>
+<div id="outline-container-orgcd2d75b" class="outline-3">
+<h3 id="orgcd2d75b"><span class="section-number-3">2.1</span> Definition</h3>
+<div class="outline-text-3" id="text-2-1">
+<ul class="org-ul">
+<li>Relatively simple representation, usually graphical of complex real-world data structures</li>
+<li>Communications tool to facilitate interaction among the designer, the applications programmer, and the end user</li>
+<li>Good database model has an appropriate data model at its foundation</li>
+<li>End-users have different needs and views for the data</li>
+<li>Data model organises data for various users</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org21eef50" class="outline-3">
+<h3 id="org21eef50"><span class="section-number-3">2.2</span> Basic building blocks</h3>
+<div class="outline-text-3" id="text-2-2">
+<ul class="org-ul">
+<li>Entity: is anything about which data is to be collected and stored</li>
+<li>Attribute: is a characteristic of an entity</li>
+<li>Relationship: describes an association among (two or more) entities
+<ul class="org-ul">
+<li>One to many (1:M) relationship</li>
+<li>Many to many (M:N or M:M) relationship</li>
+<li>One to one (1:1) relationship</li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org7f0ee88" class="outline-3">
+<h3 id="org7f0ee88"><span class="section-number-3">2.3</span> Evolution of data models</h3>
+<div class="outline-text-3" id="text-2-3">
+<ul class="org-ul">
+<li>Hierarchical</li>
+<li>Network</li>
+<li>Relational &lt;- <span class="underline">only these are covered</span></li>
+<li>Entity relationship &lt;- <span class="underline">only these are covered</span></li>
+<li>Object oriented</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org186db9a" class="outline-3">
+<h3 id="org186db9a"><span class="section-number-3">2.4</span> Entity Model as in Entity Relationship (ER)</h3>
+<div class="outline-text-3" id="text-2-4">
+<ul class="org-ul">
+<li>An ER model is an abstract way of describing a database.</li>
+<li>In the case of a relational model, which stores data in tables, some of the data in these tables point to data in other tables - for instance, your entry in the database could point to several entries for each of the phone numbers that are yours.</li>
+<li>The ER model would say that you are an entity, and each phone number is an entity, and the relationship between you and the phone numbers is <b>has a phone number</b>.</li>
+<li>Diagrams created to design these entities and relationships are called entity–relationship diagrams or ER diagrams</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org020944e" class="outline-3">
+<h3 id="org020944e"><span class="section-number-3">2.5</span> Conceptual Model</h3>
+<div class="outline-text-3" id="text-2-5">
+<ul class="org-ul">
+<li>Represents global view of the database</li>
+<li>Enterprie-wide representation of data as viewd by high-level managers</li>
+<li>Basis for identification and description of main data objects, avoiding details</li>
+<li>Most widely used conceptual mode is the entity relationship (ER) model</li>
+<li>Provides a relatively easily understood macro level view of data environment</li>
+<li>Independent from both software and hardware</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org0cc8a31" class="outline-3">
+<h3 id="org0cc8a31"><span class="section-number-3">2.6</span> Internal Model</h3>
+<div class="outline-text-3" id="text-2-6">
+<ul class="org-ul">
+<li>Representation od the database as "seen" by the DBMS, the software itself</li>
+<li>Adapts the Conceptual Model to the DBMS</li>
+<li>Software dependent</li>
+<li>Hardware independent</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org822de14" class="outline-3">
+<h3 id="org822de14"><span class="section-number-3">2.7</span> External Model</h3>
+<div class="outline-text-3" id="text-2-7">
+<ul class="org-ul">
+<li>End users' view of the data environment</li>
+<li>Requires that the modeler subdivides the set of requirements and constraints into functional modules that can be examined</li>
+<li>Good design should:
+<ul class="org-ul">
+<li>Consider such relationships between views</li>
+<li>Provide programmers with a set of restrictions that govern common entities</li>
+</ul></li>
+<li>Use of database subsets makes application program development much simpler</li>
+<li>Provides feedback about the Conceptual Model's adequacy</li>
+<li>Creation of external models help to ensure security constraints in the DB design</li>
+<li>DBMS dependent</li>
+<li>Hardware independent</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org6942ae6" class="outline-3">
+<h3 id="org6942ae6"><span class="section-number-3">2.8</span> The Physical Model</h3>
+<div class="outline-text-3" id="text-2-8">
+<ul class="org-ul">
+<li>Operates at the lowest level of abstraction, describes the way the data is stored in the hardware</li>
+<li>Software and Hardware dependent</li>
+<li>Requires for the DB designers to have the knowledge about the hardware and the software</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org32a3047" class="outline-3">
+<h3 id="org32a3047"><span class="section-number-3">2.9</span> Database Users</h3>
+<div class="outline-text-3" id="text-2-9">
+<ul class="org-ul">
+<li>Are either applications or on-line terminal users via query languages</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org120848b" class="outline-3">
+<h3 id="org120848b"><span class="section-number-3">2.10</span> User languages, Data Sublanguage (DSL)</h3>
+<div class="outline-text-3" id="text-2-10">
+</div>
+<ol class="org-ol">
+<li><a id="org65060e9"></a>Data Definition Langauge (DDL)<br />
+<div class="outline-text-4" id="text-2-10-1">
+<ul class="org-ul">
+<li>Definition and description of database objects by the user. e.g. definition of table, attribute names and values ranges</li>
+</ul>
+</div>
+</li>
+
+<li><a id="org0c2a9c7"></a>Data Manipulation Language (DML)<br />
+<div class="outline-text-4" id="text-2-10-2">
+<ul class="org-ul">
+<li>Provides queries for read / writing and processing of database objects. e.g. inserting, deleting, reading or updating data in the tables</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-orgd0223c5" class="outline-2">
+<h2 id="orgd0223c5"><span class="section-number-2">3</span> Relational Database Model</h2>
+<div class="outline-text-2" id="text-3">
+</div>
+<div id="outline-container-orgc4572ab" class="outline-3">
+<h3 id="orgc4572ab"><span class="section-number-3">3.1</span> Relational Model</h3>
+<div class="outline-text-3" id="text-3-1">
+<ul class="org-ul">
+<li>Enables us to view data logically rather than physically</li>
+<li>Reminds us of simpler file concept of data storage</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgd0d8e26" class="outline-3">
+<h3 id="orgd0d8e26"><span class="section-number-3">3.2</span> Table</h3>
+<div class="outline-text-3" id="text-3-2">
+<ul class="org-ul">
+<li>Has advantages of structural and data independence</li>
+<li>Resembles a file from conceptual point of view</li>
+<li>Easier to understand than its hierarchical and network database predecessors</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org77257fa" class="outline-2">
+<h2 id="org77257fa"><span class="section-number-2">4</span> College access</h2>
+<div class="outline-text-2" id="text-4">
+<ul class="org-ul">
+<li>Use <code>admin</code> as password for college acccess</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgf376dd0" class="outline-2">
+<h2 id="orgf376dd0"><span class="section-number-2">5</span> Basic queries on databases</h2>
+<div class="outline-text-2" id="text-5">
+</div>
+<div id="outline-container-orgdd9977e" class="outline-3">
+<h3 id="orgdd9977e"><span class="section-number-3">5.1</span> Show all local databases</h3>
+<div class="outline-text-3" id="text-5-1">
+<div class="org-src-container">
+<pre class="src src-sql">SHOW DATABASES;
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org88b5f2b" class="outline-3">
+<h3 id="org88b5f2b"><span class="section-number-3">5.2</span> Change the current database</h3>
+<div class="outline-text-3" id="text-5-2">
+<div class="org-src-container">
+<pre class="src src-sql">USE some_database;
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org6bf6b02" class="outline-3">
+<h3 id="org6bf6b02"><span class="section-number-3">5.3</span> Create new database</h3>
+<div class="outline-text-3" id="text-5-3">
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #51afef; font-style: italic;">CREATE</span> database some_database;
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org7ef60a2" class="outline-2">
+<h2 id="org7ef60a2"><span class="section-number-2">6</span> Basic queries on tables</h2>
+<div class="outline-text-2" id="text-6">
+</div>
+<div id="outline-container-org13ede84" class="outline-3">
+<h3 id="org13ede84"><span class="section-number-3">6.1</span> Show all tables within the database</h3>
+<div class="outline-text-3" id="text-6-1">
+<div class="org-src-container">
+<pre class="src src-sql">SHOW TABLES <span style="color: #51afef; font-style: italic;">FROM</span> some_database;
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org794e75c" class="outline-3">
+<h3 id="org794e75c"><span class="section-number-3">6.2</span> Show information about a table</h3>
+<div class="outline-text-3" id="text-6-2">
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #51afef; font-style: italic;">DESCRIBE</span> some_database.some_table;
+</pre>
+</div>
+<ul class="org-ul">
+<li>alternatively use</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-sql">SHOW columns some_table;
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org45b5d21" class="outline-3">
+<h3 id="org45b5d21"><span class="section-number-3">6.3</span> Deleting a table</h3>
+<div class="outline-text-3" id="text-6-3">
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #51afef; font-style: italic;">DROP</span> <span style="color: #51afef; font-style: italic;">TABLE</span> <span style="color: #51afef; font-style: italic;">table_name</span>;
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org197b5e8" class="outline-3">
+<h3 id="org197b5e8"><span class="section-number-3">6.4</span> Creating a table</h3>
+<div class="outline-text-3" id="text-6-4">
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #51afef; font-style: italic;">CREATE</span> TABEL my_info <span style="color: #fff0f5;">(</span>
+       id <span style="color: #ECBE7B;">INTEGER</span> <span style="color: #51afef; font-style: italic;">NOT</span> <span style="color: #51afef; font-style: italic;">NULL</span>,
+       first_name <span style="color: #ECBE7B;">CHAR</span> <span style="color: #c678dd;">(</span>12<span style="color: #c678dd;">)</span>,
+       last_name <span style="color: #ECBE7B;">CHAR</span> <span style="color: #c678dd;">(</span>20<span style="color: #c678dd;">)</span>,
+       gender <span style="color: #ECBE7B;">CHAR</span><span style="color: #c678dd;">(</span>1<span style="color: #c678dd;">)</span>
+<span style="color: #fff0f5;">)</span>;
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org2f09a76" class="outline-3">
+<h3 id="org2f09a76"><span class="section-number-3">6.5</span> Removing a table</h3>
+<div class="outline-text-3" id="text-6-5">
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #51afef; font-style: italic;">DROP</span> <span style="color: #51afef; font-style: italic;">TABLE</span> <span style="color: #c678dd;">some_table</span>;
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org1a99372" class="outline-2">
+<h2 id="org1a99372"><span class="section-number-2">7</span> Inserting data</h2>
+<div class="outline-text-2" id="text-7">
+</div>
+<div id="outline-container-orgb1a93e0" class="outline-3">
+<h3 id="orgb1a93e0"><span class="section-number-3">7.1</span> Inserting data into the table</h3>
+<div class="outline-text-3" id="text-7-1">
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #51afef; font-style: italic;">INSERT</span> <span style="color: #51afef; font-style: italic;">INTO</span> my_info<span style="color: #fff0f5;">(</span>id, first_name, last_name, gender<span style="color: #fff0f5;">)</span>
+<span style="color: #51afef; font-style: italic;">VALUES</span> <span style="color: #fff0f5;">(</span>1, <span style="color: #98be65;">'joe'</span>, <span style="color: #98be65;">'blogs'</span>, <span style="color: #98be65;">'M'</span><span style="color: #fff0f5;">)</span>;
+</pre>
+</div>
+
+<p>
+alternatively do not specify the individual columns
+</p>
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #51afef; font-style: italic;">INSERT</span> <span style="color: #51afef; font-style: italic;">INTO</span> my_info
+<span style="color: #51afef; font-style: italic;">VALUES</span> <span style="color: #fff0f5;">(</span>1, <span style="color: #98be65;">'joe'</span>, <span style="color: #98be65;">'blogs'</span>, <span style="color: #98be65;">'M'</span><span style="color: #fff0f5;">)</span>;
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org4d56124" class="outline-2">
+<h2 id="org4d56124"><span class="section-number-2">8</span> Deleting data</h2>
+<div class="outline-text-2" id="text-8">
+</div>
+<div id="outline-container-orgb44f040" class="outline-3">
+<h3 id="orgb44f040"><span class="section-number-3">8.1</span> Deleting information</h3>
+<div class="outline-text-3" id="text-8-1">
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #51afef; font-style: italic;">DELETE</span> <span style="color: #51afef; font-style: italic;">FROM</span> my_info <span style="color: #51afef; font-style: italic;">WHERE</span> gender = <span style="color: #98be65;">'F'</span>;
+</pre>
+</div>
+
+<p>
+mind the slight variation where the column is a <code>null</code>. use <code>IS NULL</code>
+</p>
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #51afef; font-style: italic;">DELETE</span> <span style="color: #51afef; font-style: italic;">FROM</span> my_info <span style="color: #51afef; font-style: italic;">WHERE</span> gender <span style="color: #51afef; font-style: italic;">IS</span> <span style="color: #51afef; font-style: italic;">NULL</span>;
+</pre>
+</div>
+
+<p>
+deleting all rows
+</p>
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #51afef; font-style: italic;">DELETE</span> <span style="color: #51afef; font-style: italic;">FROM</span> <span style="color: #51afef; font-style: italic;">table_name</span>;
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org8c62035" class="outline-2">
+<h2 id="org8c62035"><span class="section-number-2">9</span> Updating data example</h2>
+<div class="outline-text-2" id="text-9">
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #51afef; font-style: italic;">UPDATE</span> customers <span style="color: #51afef; font-style: italic;">SET</span> lastname = "Dolan" <span style="color: #51afef; font-style: italic;">WHERE</span> cus_id = 1;
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org14983da" class="outline-2">
+<h2 id="org14983da"><span class="section-number-2">10</span> Selecting data</h2>
+<div class="outline-text-2" id="text-10">
+</div>
+<div id="outline-container-orgb553809" class="outline-3">
+<h3 id="orgb553809"><span class="section-number-3">10.1</span> Select all from a table</h3>
+<div class="outline-text-3" id="text-10-1">
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #51afef; font-style: italic;">SELECT</span> * <span style="color: #51afef; font-style: italic;">FROM</span> some_table;
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgb81d553" class="outline-3">
+<h3 id="orgb81d553"><span class="section-number-3">10.2</span> Selecting specific columns, aka Projection</h3>
+<div class="outline-text-3" id="text-10-2">
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #51afef; font-style: italic;">SELECT</span> first_name, last_name <span style="color: #51afef; font-style: italic;">FROM</span> some_table;
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org6b58257" class="outline-3">
+<h3 id="org6b58257"><span class="section-number-3">10.3</span> Selecting distinct data from columns</h3>
+<div class="outline-text-3" id="text-10-3">
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #51afef; font-style: italic;">SELECT</span> <span style="color: #51afef; font-style: italic;">DISTINCT</span> first_name <span style="color: #51afef; font-style: italic;">FROM</span> some_table;
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org8226e1d" class="outline-3">
+<h3 id="org8226e1d"><span class="section-number-3">10.4</span> Selecting specific columns and renaming them</h3>
+<div class="outline-text-3" id="text-10-4">
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #51afef; font-style: italic;">SELECT</span> first_name <span style="color: #51afef; font-style: italic;">AS</span> fName, last_name <span style="color: #51afef; font-style: italic;">AS</span> surname <span style="color: #51afef; font-style: italic;">FROM</span> my_info;
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org0a6650d" class="outline-3">
+<h3 id="org0a6650d"><span class="section-number-3">10.5</span> Selecting specific columns with a condition</h3>
+<div class="outline-text-3" id="text-10-5">
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #51afef; font-style: italic;">SELECT</span> first_name, last_name <span style="color: #51afef; font-style: italic;">FROM</span> my_info <span style="color: #51afef; font-style: italic;">WHERE</span> gender = <span style="color: #98be65;">'M'</span>;
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org82597c8" class="outline-3">
+<h3 id="org82597c8"><span class="section-number-3">10.6</span> Selecting data in-between values</h3>
+<div class="outline-text-3" id="text-10-6">
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #51afef; font-style: italic;">SELECT</span> first_name, last_name <span style="color: #51afef; font-style: italic;">FROM</span> my_info <span style="color: #51afef; font-style: italic;">WHERE</span> age <span style="color: #51afef; font-style: italic;">BETWEEN</span> 30 <span style="color: #51afef; font-style: italic;">AND</span> 40;
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgeed31c9" class="outline-2">
+<h2 id="orgeed31c9"><span class="section-number-2">11</span> Using wildcards</h2>
+<div class="outline-text-2" id="text-11">
+<ul class="org-ul">
+<li>the <code>percent</code> is an any wildcard</li>
+<li>match all firstNames starting with <code>Da</code></li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #51afef; font-style: italic;">SELECT</span> * <span style="color: #51afef; font-style: italic;">FROM</span> my_info <span style="color: #51afef; font-style: italic;">WHERE</span> firstName <span style="color: #51afef; font-style: italic;">LIKE</span> "Da%";
+</pre>
+</div>
+
+<ul class="org-ul">
+<li>match all firstNames ending with <code>Da</code></li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #51afef; font-style: italic;">SELECT</span> * <span style="color: #51afef; font-style: italic;">FROM</span> my_info <span style="color: #51afef; font-style: italic;">WHERE</span> firstName <span style="color: #51afef; font-style: italic;">LIKE</span> "%Da";
+</pre>
+</div>
+
+<ul class="org-ul">
+<li>match all firstNames that contain <code>Da</code></li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #51afef; font-style: italic;">SELECT</span> * <span style="color: #51afef; font-style: italic;">FROM</span> my_info <span style="color: #51afef; font-style: italic;">WHERE</span> firstName <span style="color: #51afef; font-style: italic;">LIKE</span> "%Da%";
+</pre>
+</div>
+
+<ul class="org-ul">
+<li>match all firstNames that end with second last letter <code>e</code></li>
+<li>the <code>underscore</code> replaces any character</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #51afef; font-style: italic;">SELECT</span> * <span style="color: #51afef; font-style: italic;">FROM</span> my_info <span style="color: #51afef; font-style: italic;">WHERE</span> firstName <span style="color: #51afef; font-style: italic;">LIKE</span> "%e_";
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org01195c2" class="outline-2">
+<h2 id="org01195c2"><span class="section-number-2">12</span> Ordering selected data</h2>
+<div class="outline-text-2" id="text-12">
+</div>
+<div id="outline-container-org2c64777" class="outline-3">
+<h3 id="org2c64777"><span class="section-number-3">12.1</span> Ordering data</h3>
+<div class="outline-text-3" id="text-12-1">
+<ul class="org-ul">
+<li>ascending order</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #51afef; font-style: italic;">SELECT</span> * <span style="color: #51afef; font-style: italic;">FROM</span> my_info <span style="color: #51afef; font-style: italic;">ORDER</span> <span style="color: #51afef; font-style: italic;">BY</span> some_column;
+</pre>
+</div>
+
+<ul class="org-ul">
+<li>descending order</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #51afef; font-style: italic;">SELECT</span> * <span style="color: #51afef; font-style: italic;">FROM</span> my_info <span style="color: #51afef; font-style: italic;">ORDER</span> <span style="color: #51afef; font-style: italic;">BY</span> some_column <span style="color: #51afef; font-style: italic;">DESC</span>;
+</pre>
+</div>
+
+<ul class="org-ul">
+<li>combining</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #51afef; font-style: italic;">SELECT</span> * <span style="color: #51afef; font-style: italic;">FROM</span> my_info <span style="color: #51afef; font-style: italic;">ORDER</span> <span style="color: #51afef; font-style: italic;">BY</span> some_column <span style="color: #51afef; font-style: italic;">DESC</span> <span style="color: #51afef; font-style: italic;">AND</span> some_other_column <span style="color: #51afef; font-style: italic;">ASC</span>;
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org13dc213" class="outline-2">
+<h2 id="org13dc213"><span class="section-number-2">13</span> Expressions</h2>
+<div class="outline-text-2" id="text-13">
+</div>
+<div id="outline-container-org1b6fb34" class="outline-3">
+<h3 id="org1b6fb34"><span class="section-number-3">13.1</span> Calculation and expressions in the query</h3>
+<div class="outline-text-3" id="text-13-1">
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #51afef; font-style: italic;">SELECT</span> *, <span style="color: #fff0f5;">(</span>65 - age<span style="color: #fff0f5;">)</span> <span style="color: #51afef; font-style: italic;">AS</span> yearToRetire <span style="color: #51afef; font-style: italic;">FROM</span> details;
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org045edc4" class="outline-2">
+<h2 id="org045edc4"><span class="section-number-2">14</span> Aggregation functions</h2>
+<div class="outline-text-2" id="text-14">
+</div>
+<div id="outline-container-orga62a0af" class="outline-3">
+<h3 id="orga62a0af"><span class="section-number-3">14.1</span> Count</h3>
+<div class="outline-text-3" id="text-14-1">
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #51afef; font-style: italic;">SELECT</span> <span style="color: #c678dd;">COUNT</span><span style="color: #fff0f5;">(</span>*<span style="color: #fff0f5;">)</span> <span style="color: #51afef; font-style: italic;">FROM</span> details;
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgf845cea" class="outline-3">
+<h3 id="orgf845cea"><span class="section-number-3">14.2</span> Max</h3>
+<div class="outline-text-3" id="text-14-2">
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #51afef; font-style: italic;">SELECT</span> <span style="color: #c678dd;">MAX</span><span style="color: #fff0f5;">(</span>age<span style="color: #fff0f5;">)</span> <span style="color: #51afef; font-style: italic;">as</span> averageAge <span style="color: #51afef; font-style: italic;">FROM</span> details;
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgfde02d3" class="outline-3">
+<h3 id="orgfde02d3"><span class="section-number-3">14.3</span> Min</h3>
+<div class="outline-text-3" id="text-14-3">
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #51afef; font-style: italic;">SELECT</span> <span style="color: #c678dd;">MIN</span><span style="color: #fff0f5;">(</span>age<span style="color: #fff0f5;">)</span> <span style="color: #51afef; font-style: italic;">as</span> averageAge <span style="color: #51afef; font-style: italic;">FROM</span> details;
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org37335bc" class="outline-3">
+<h3 id="org37335bc"><span class="section-number-3">14.4</span> Average</h3>
+<div class="outline-text-3" id="text-14-4">
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #51afef; font-style: italic;">SELECT</span> <span style="color: #c678dd;">AVG</span><span style="color: #fff0f5;">(</span>age<span style="color: #fff0f5;">)</span> <span style="color: #51afef; font-style: italic;">as</span> averageAge <span style="color: #51afef; font-style: italic;">FROM</span> details;
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org3d0b3fe" class="outline-3">
+<h3 id="org3d0b3fe"><span class="section-number-3">14.5</span> Sum</h3>
+<div class="outline-text-3" id="text-14-5">
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #51afef; font-style: italic;">SELECT</span> <span style="color: #c678dd;">SUM</span><span style="color: #fff0f5;">(</span>age<span style="color: #fff0f5;">)</span> <span style="color: #51afef; font-style: italic;">as</span> averageAge <span style="color: #51afef; font-style: italic;">FROM</span> details;
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org38777f0" class="outline-2">
+<h2 id="org38777f0"><span class="section-number-2">15</span> Having clause</h2>
+<div class="outline-text-2" id="text-15">
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #51afef; font-style: italic;">SELECT</span> department, <span style="color: #c678dd;">COUNT</span><span style="color: #fff0f5;">(</span>*<span style="color: #fff0f5;">)</span> <span style="color: #51afef; font-style: italic;">AS</span> employees
+<span style="color: #51afef; font-style: italic;">FROM</span> details
+<span style="color: #51afef; font-style: italic;">GROUP</span> <span style="color: #51afef; font-style: italic;">BY</span> department <span style="color: #51afef; font-style: italic;">HAVING</span> <span style="color: #c678dd;">COUNT</span><span style="color: #fff0f5;">(</span>*<span style="color: #fff0f5;">)</span> &gt; 3;
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org74c7077" class="outline-2">
+<h2 id="org74c7077"><span class="section-number-2">16</span> Limit clause</h2>
+<div class="outline-text-2" id="text-16">
+<ul class="org-ul">
+<li>ascending</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #51afef; font-style: italic;">SELECT</span> * <span style="color: #51afef; font-style: italic;">FROM</span> details <span style="color: #51afef; font-style: italic;">LIMIT</span> 5;
+</pre>
+</div>
+<p>
+-descending
+</p>
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #51afef; font-style: italic;">SELECT</span> * <span style="color: #51afef; font-style: italic;">FROM</span> details <span style="color: #51afef; font-style: italic;">ORDER</span> <span style="color: #51afef; font-style: italic;">BY</span> id <span style="color: #51afef; font-style: italic;">DESC</span> <span style="color: #51afef; font-style: italic;">LIMIT</span> 5;
+</pre>
+</div>
+<ul class="org-ul">
+<li>offset</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #51afef; font-style: italic;">SELECT</span> * <span style="color: #51afef; font-style: italic;">FROM</span> details <span style="color: #51afef; font-style: italic;">LIMIT</span> 5 OFFSET 15;
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org2dff419" class="outline-2">
+<h2 id="org2dff419"><span class="section-number-2">17</span> Subqueries</h2>
+<div class="outline-text-2" id="text-17">
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #51afef; font-style: italic;">SELECT</span> *
+<span style="color: #51afef; font-style: italic;">FROM</span> details
+<span style="color: #51afef; font-style: italic;">WHERE</span> age &gt; <span style="color: #fff0f5;">(</span><span style="color: #51afef; font-style: italic;">SELECT</span> <span style="color: #c678dd;">AVG</span><span style="color: #c678dd;">(</span>age<span style="color: #c678dd;">)</span> <span style="color: #51afef; font-style: italic;">FROM</span> details<span style="color: #fff0f5;">)</span>;
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgf3f1478" class="outline-2">
+<h2 id="orgf3f1478"><span class="section-number-2">18</span> Complex queries</h2>
+<div class="outline-text-2" id="text-18">
+</div>
+<div id="outline-container-orgc6d8abd" class="outline-3">
+<h3 id="orgc6d8abd"><span class="section-number-3">18.1</span> Union example (both need to have the same column count)</h3>
+<div class="outline-text-3" id="text-18-1">
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #fff0f5;">(</span><span style="color: #51afef; font-style: italic;">select</span> firstName, lastName, town <span style="color: #51afef; font-style: italic;">from</span> customers<span style="color: #fff0f5;">)</span>
+<span style="color: #51afef; font-style: italic;">UNION</span>
+<span style="color: #fff0f5;">(</span><span style="color: #51afef; font-style: italic;">select</span> firstName, lastName, town <span style="color: #51afef; font-style: italic;">from</span> employees<span style="color: #fff0f5;">)</span>;
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org95cf2bf" class="outline-3">
+<h3 id="org95cf2bf"><span class="section-number-3">18.2</span> Inner join (intersection)</h3>
+<div class="outline-text-3" id="text-18-2">
+<ul class="org-ul">
+<li>with shorthands</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #51afef; font-style: italic;">select</span> c.firstName, c.lastName, c.town
+<span style="color: #51afef; font-style: italic;">from</span> customers <span style="color: #51afef; font-style: italic;">as</span> c
+<span style="color: #51afef; font-style: italic;">inner</span> <span style="color: #51afef; font-style: italic;">join</span> employees <span style="color: #51afef; font-style: italic;">as</span> e
+<span style="color: #51afef; font-style: italic;">on</span> c.firstName = e.firstName
+<span style="color: #51afef; font-style: italic;">and</span> c.lastName = e.lastName
+<span style="color: #51afef; font-style: italic;">and</span> c.town = e.town;
+</pre>
+</div>
+<ul class="org-ul">
+<li>without shorthands</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #51afef; font-style: italic;">select</span> customer.firstName, customer.lastName, customer.town
+<span style="color: #51afef; font-style: italic;">from</span> customers
+<span style="color: #51afef; font-style: italic;">inner</span> <span style="color: #51afef; font-style: italic;">join</span> employees
+<span style="color: #51afef; font-style: italic;">on</span> customer.firstName = employees.firstName
+<span style="color: #51afef; font-style: italic;">and</span> customer.lastName = employees.lastName
+<span style="color: #51afef; font-style: italic;">and</span> customer.town = employees.town;
+</pre>
+</div>
+
+<ul class="org-ul">
+<li>with an <code>EXISTS</code> keyword</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #51afef; font-style: italic;">select</span> c.firstName, c.lastName, c.town
+<span style="color: #51afef; font-style: italic;">from</span> customers <span style="color: #51afef; font-style: italic;">as</span> c
+<span style="color: #51afef; font-style: italic;">where</span> <span style="color: #51afef; font-style: italic;">exists</span>
+<span style="color: #fff0f5;">(</span><span style="color: #51afef; font-style: italic;">select</span> e.firstName, e.lastName, e.town
+<span style="color: #51afef; font-style: italic;">from</span> employees <span style="color: #51afef; font-style: italic;">as</span> e
+<span style="color: #51afef; font-style: italic;">where</span> c.firstName = e.firstName
+<span style="color: #51afef; font-style: italic;">and</span> c.lastName = e.lastName
+<span style="color: #51afef; font-style: italic;">and</span> c.town = e.town<span style="color: #fff0f5;">)</span>;
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org1dd2524" class="outline-3">
+<h3 id="org1dd2524"><span class="section-number-3">18.3</span> Except (<code>NOT EXISTS</code>), basically set A - B</h3>
+<div class="outline-text-3" id="text-18-3">
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #51afef; font-style: italic;">select</span> c.firstName, c.lastName, c.town
+<span style="color: #51afef; font-style: italic;">from</span> customers <span style="color: #51afef; font-style: italic;">as</span> c
+<span style="color: #51afef; font-style: italic;">where</span> <span style="color: #51afef; font-style: italic;">not</span> <span style="color: #51afef; font-style: italic;">exists</span>
+<span style="color: #fff0f5;">(</span><span style="color: #51afef; font-style: italic;">select</span> e.firstName, e.lastName, e.town
+<span style="color: #51afef; font-style: italic;">from</span> employees <span style="color: #51afef; font-style: italic;">as</span> e
+<span style="color: #51afef; font-style: italic;">where</span> c.firstName = e.firstName
+<span style="color: #51afef; font-style: italic;">and</span> c.lastName = e.lastName
+<span style="color: #51afef; font-style: italic;">and</span> c.town = e.town<span style="color: #fff0f5;">)</span>;
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org6501c52" class="outline-3">
+<h3 id="org6501c52"><span class="section-number-3">18.4</span> Division</h3>
+<div class="outline-text-3" id="text-18-4">
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #51afef; font-style: italic;">select</span> <span style="color: #51afef; font-style: italic;">distinct</span> c1.y <span style="color: #51afef; font-style: italic;">as</span> y <span style="color: #51afef; font-style: italic;">from</span> c c1
+<span style="color: #51afef; font-style: italic;">where</span> <span style="color: #51afef; font-style: italic;">not</span> <span style="color: #51afef; font-style: italic;">exists</span>
+<span style="color: #fff0f5;">(</span><span style="color: #51afef; font-style: italic;">select</span> d.x
+<span style="color: #51afef; font-style: italic;">from</span> d
+<span style="color: #51afef; font-style: italic;">where</span> d.x <span style="color: #51afef; font-style: italic;">not</span> <span style="color: #51afef; font-style: italic;">in</span>
+<span style="color: #c678dd;">(</span><span style="color: #51afef; font-style: italic;">select</span> c2.x
+<span style="color: #51afef; font-style: italic;">from</span> c c2
+<span style="color: #51afef; font-style: italic;">where</span> c2.y = c1.y<span style="color: #c678dd;">)</span><span style="color: #fff0f5;">)</span>;
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org9527040" class="outline-2">
+<h2 id="org9527040"><span class="section-number-2">19</span> Time and Date functions</h2>
+<div class="outline-text-2" id="text-19">
+<ul class="org-ul">
+<li>current date</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #51afef; font-style: italic;">select</span> <span style="color: #c678dd;">current_date</span><span style="color: #fff0f5;">()</span>;
+</pre>
+</div>
+
+<ul class="org-ul">
+<li>current date and time</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #51afef; font-style: italic;">select</span> now<span style="color: #fff0f5;">()</span>;
+</pre>
+</div>
+
+<ul class="org-ul">
+<li>day name</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #51afef; font-style: italic;">select</span> dayname<span style="color: #fff0f5;">(</span>now<span style="color: #c678dd;">()</span><span style="color: #fff0f5;">)</span>;
+</pre>
+</div>
+
+<ul class="org-ul">
+<li>month name</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #51afef; font-style: italic;">select</span> monthname<span style="color: #fff0f5;">(</span>now<span style="color: #c678dd;">()</span><span style="color: #fff0f5;">)</span>;
+</pre>
+</div>
+
+<ul class="org-ul">
+<li>numeric values of days, months, years</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #51afef; font-style: italic;">select</span> <span style="color: #51afef; font-style: italic;">day</span><span style="color: #fff0f5;">(</span>now<span style="color: #c678dd;">()</span><span style="color: #fff0f5;">)</span>, <span style="color: #51afef; font-style: italic;">month</span><span style="color: #fff0f5;">(</span>now<span style="color: #c678dd;">()</span><span style="color: #fff0f5;">)</span>, <span style="color: #51afef; font-style: italic;">year</span><span style="color: #fff0f5;">(</span>now<span style="color: #c678dd;">()</span><span style="color: #fff0f5;">)</span>
+</pre>
+</div>
+
+<ul class="org-ul">
+<li>also available are day of month(same as <code>day()</code>), day of week and day of year</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #51afef; font-style: italic;">select</span> dayofmonth<span style="color: #fff0f5;">(</span>now<span style="color: #c678dd;">()</span><span style="color: #fff0f5;">)</span>, dayofweek<span style="color: #fff0f5;">(</span>now<span style="color: #c678dd;">()</span><span style="color: #fff0f5;">)</span>, dayofyear<span style="color: #fff0f5;">(</span>now<span style="color: #c678dd;">()</span><span style="color: #fff0f5;">)</span>
+</pre>
+</div>
+
+<ul class="org-ul">
+<li><code>date_add</code> adds a specific interval(amount of time) to the passed in date</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #51afef; font-style: italic;">select</span> now<span style="color: #fff0f5;">()</span>, date_add<span style="color: #fff0f5;">(</span>now<span style="color: #c678dd;">()</span>, <span style="color: #ECBE7B;">interval</span> 4 <span style="color: #51afef; font-style: italic;">day</span><span style="color: #fff0f5;">)</span>;
+<span style="color: #51afef; font-style: italic;">select</span> now<span style="color: #fff0f5;">()</span>, date_add<span style="color: #fff0f5;">(</span>now<span style="color: #c678dd;">()</span>, <span style="color: #ECBE7B;">interval</span> 5 <span style="color: #51afef; font-style: italic;">month</span><span style="color: #fff0f5;">)</span>;
+<span style="color: #51afef; font-style: italic;">select</span> now<span style="color: #fff0f5;">()</span>, date_add<span style="color: #fff0f5;">(</span>now<span style="color: #c678dd;">()</span>, <span style="color: #ECBE7B;">interval</span> 1 <span style="color: #51afef; font-style: italic;">year</span><span style="color: #fff0f5;">)</span>;
+</pre>
+</div>
+
+<ul class="org-ul">
+<li><code>date_sub</code> subtracts a specific interval(amount of time) from the passed in date</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #51afef; font-style: italic;">select</span> now<span style="color: #fff0f5;">()</span>, date_sub<span style="color: #fff0f5;">(</span>now<span style="color: #c678dd;">()</span>, <span style="color: #ECBE7B;">interval</span> 4 <span style="color: #51afef; font-style: italic;">day</span><span style="color: #fff0f5;">)</span>;
+<span style="color: #51afef; font-style: italic;">select</span> now<span style="color: #fff0f5;">()</span>, date_sub<span style="color: #fff0f5;">(</span>now<span style="color: #c678dd;">()</span>, <span style="color: #ECBE7B;">interval</span> 5 <span style="color: #51afef; font-style: italic;">month</span><span style="color: #fff0f5;">)</span>;
+<span style="color: #51afef; font-style: italic;">select</span> now<span style="color: #fff0f5;">()</span>, date_sub<span style="color: #fff0f5;">(</span>now<span style="color: #c678dd;">()</span>, <span style="color: #ECBE7B;">interval</span> 1 <span style="color: #51afef; font-style: italic;">year</span><span style="color: #fff0f5;">)</span>;
+</pre>
+</div>
+
+<ul class="org-ul">
+<li>difference between two dates (in days) is done with <code>datediff</code></li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #51afef; font-style: italic;">select</span> datediff<span style="color: #fff0f5;">(</span>now<span style="color: #c678dd;">()</span>, "2017-05-17"<span style="color: #fff0f5;">)</span>;
+</pre>
+</div>
+
+<ul class="org-ul">
+<li>days alive</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #51afef; font-style: italic;">select</span> datediff<span style="color: #fff0f5;">(</span>now<span style="color: #c678dd;">()</span>, "1983-09-17"<span style="color: #fff0f5;">)</span>;
+</pre>
+</div>
+
+<ul class="org-ul">
+<li>formatting the output with <code>date_format</code></li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #51afef; font-style: italic;">select</span> date_format<span style="color: #fff0f5;">(</span>now<span style="color: #c678dd;">()</span>, <span style="color: #98be65;">'%y'</span><span style="color: #fff0f5;">)</span> <span style="color: #51afef; font-style: italic;">as</span> <span style="color: #51afef; font-style: italic;">year</span>;
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org1bdc738" class="outline-2">
+<h2 id="org1bdc738"><span class="section-number-2">20</span> Random numbers</h2>
+<div class="outline-text-2" id="text-20">
+<ul class="org-ul">
+<li>random int from 0 to 10</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #51afef; font-style: italic;">select</span> <span style="color: #c678dd;">cast</span><span style="color: #fff0f5;">(</span> <span style="color: #c678dd;">(</span>rand<span style="color: #98be65;">()</span> * 10<span style="color: #c678dd;">)</span> <span style="color: #51afef; font-style: italic;">as</span> unsigned <span style="color: #ECBE7B;">integer</span><span style="color: #fff0f5;">)</span>;
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgc27180a" class="outline-2">
+<h2 id="orgc27180a"><span class="section-number-2">21</span> Sample DVD DB questions</h2>
+<div class="outline-text-2" id="text-21">
+<ul class="org-ul">
+<li>select oldest employee</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #51afef; font-style: italic;">select</span> firstname, lastname, dateofbirth
+<span style="color: #51afef; font-style: italic;">from</span> employees
+<span style="color: #51afef; font-style: italic;">order</span> <span style="color: #51afef; font-style: italic;">by</span> dateofbirth
+<span style="color: #51afef; font-style: italic;">limit</span> 1;
+
+<span style="color: #51afef; font-style: italic;">select</span> firstname, lastname, dateofbirth
+<span style="color: #51afef; font-style: italic;">from</span> employees
+<span style="color: #51afef; font-style: italic;">where</span> <span style="color: #fff0f5;">(</span><span style="color: #51afef; font-style: italic;">select</span> <span style="color: #c678dd;">min</span><span style="color: #c678dd;">(</span>dateofbirth<span style="color: #c678dd;">)</span> <span style="color: #51afef; font-style: italic;">from</span> employess<span style="color: #fff0f5;">)</span>;
+</pre>
+</div>
+
+<ul class="org-ul">
+<li>oldest employees</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #51afef; font-style: italic;">select</span> *, datediff<span style="color: #fff0f5;">(</span>now<span style="color: #c678dd;">()</span>, dateofbirth<span style="color: #fff0f5;">)</span> <span style="color: #51afef; font-style: italic;">as</span> doba <span style="color: #51afef; font-style: italic;">from</span> employees;
+</pre>
+</div>
+
+<ul class="org-ul">
+<li>name of the most rented product</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #51afef; font-style: italic;">select</span> products.prod_id, <span style="color: #51afef; font-style: italic;">name</span>, <span style="color: #c678dd;">count</span><span style="color: #fff0f5;">(</span>*<span style="color: #fff0f5;">)</span> <span style="color: #51afef; font-style: italic;">as</span> total
+<span style="color: #51afef; font-style: italic;">from</span> products, rentals
+<span style="color: #51afef; font-style: italic;">where</span> products.prod_id = rentals.prod_id
+<span style="color: #51afef; font-style: italic;">group</span> <span style="color: #51afef; font-style: italic;">by</span> <span style="color: #51afef; font-style: italic;">name</span>
+<span style="color: #51afef; font-style: italic;">order</span> <span style="color: #51afef; font-style: italic;">by</span> total <span style="color: #51afef; font-style: italic;">desc</span>
+<span style="color: #51afef; font-style: italic;">limit</span> 1;
+</pre>
+</div>
+
+<ul class="org-ul">
+<li>who is the best customer</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #51afef; font-style: italic;">select</span> customers.cus_id, firstname, lastname, <span style="color: #c678dd;">count</span><span style="color: #fff0f5;">(</span>*<span style="color: #fff0f5;">)</span> <span style="color: #51afef; font-style: italic;">as</span> total
+<span style="color: #51afef; font-style: italic;">from</span> rentals, customers
+<span style="color: #51afef; font-style: italic;">where</span> customers.cus_id = rentals.cus_id
+<span style="color: #51afef; font-style: italic;">group</span> <span style="color: #51afef; font-style: italic;">by</span> cus_id
+<span style="color: #51afef; font-style: italic;">order</span> <span style="color: #51afef; font-style: italic;">by</span> total <span style="color: #51afef; font-style: italic;">desc</span>
+<span style="color: #51afef; font-style: italic;">limit</span> 1;
+</pre>
+</div>
+
+<ul class="org-ul">
+<li>top rentals per genre</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #fff0f5;">(</span><span style="color: #51afef; font-style: italic;">select</span> products.prod_id, <span style="color: #51afef; font-style: italic;">name</span>, <span style="color: #c678dd;">count</span><span style="color: #c678dd;">(</span>*<span style="color: #c678dd;">)</span> <span style="color: #51afef; font-style: italic;">as</span> total, genre
+<span style="color: #51afef; font-style: italic;">from</span> products, rentals
+<span style="color: #51afef; font-style: italic;">where</span> products.prod_id = rentals.prod_id
+<span style="color: #51afef; font-style: italic;">and</span> genre = "Science Fiction"
+<span style="color: #51afef; font-style: italic;">group</span> <span style="color: #51afef; font-style: italic;">by</span> prod_id
+<span style="color: #51afef; font-style: italic;">order</span> <span style="color: #51afef; font-style: italic;">by</span> total <span style="color: #51afef; font-style: italic;">desc</span>
+<span style="color: #51afef; font-style: italic;">limit</span> 1<span style="color: #fff0f5;">)</span>
+<span style="color: #51afef; font-style: italic;">UNION</span>
+<span style="color: #fff0f5;">(</span><span style="color: #51afef; font-style: italic;">select</span> products.prod_id, <span style="color: #51afef; font-style: italic;">name</span>, <span style="color: #c678dd;">count</span><span style="color: #c678dd;">(</span>*<span style="color: #c678dd;">)</span> <span style="color: #51afef; font-style: italic;">as</span> total, genre
+<span style="color: #51afef; font-style: italic;">from</span> products, rentals
+<span style="color: #51afef; font-style: italic;">where</span> products.prod_id = rentals.prod_id
+<span style="color: #51afef; font-style: italic;">and</span> genre = "Drama"
+<span style="color: #51afef; font-style: italic;">group</span> <span style="color: #51afef; font-style: italic;">by</span> prod_id
+<span style="color: #51afef; font-style: italic;">order</span> <span style="color: #51afef; font-style: italic;">by</span> total <span style="color: #51afef; font-style: italic;">desc</span>
+<span style="color: #51afef; font-style: italic;">limit</span> 1<span style="color: #fff0f5;">)</span>
+<span style="color: #51afef; font-style: italic;">UNION</span>
+<span style="color: #fff0f5;">(</span><span style="color: #51afef; font-style: italic;">select</span> products.prod_id, <span style="color: #51afef; font-style: italic;">name</span>, <span style="color: #c678dd;">count</span><span style="color: #c678dd;">(</span>*<span style="color: #c678dd;">)</span> <span style="color: #51afef; font-style: italic;">as</span> total, genre
+<span style="color: #51afef; font-style: italic;">from</span> products, rentals
+<span style="color: #51afef; font-style: italic;">where</span> products.prod_id = rentals.prod_id
+<span style="color: #51afef; font-style: italic;">and</span> genre = "Comedy"
+<span style="color: #51afef; font-style: italic;">group</span> <span style="color: #51afef; font-style: italic;">by</span> prod_id
+<span style="color: #51afef; font-style: italic;">order</span> <span style="color: #51afef; font-style: italic;">by</span> total <span style="color: #51afef; font-style: italic;">desc</span>
+<span style="color: #51afef; font-style: italic;">limit</span> 1<span style="color: #fff0f5;">)</span>;
+</pre>
+</div>
+
+<ul class="org-ul">
+<li>which product was rented first</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #51afef; font-style: italic;">select</span> <span style="color: #51afef; font-style: italic;">name</span>, dateRented
+<span style="color: #51afef; font-style: italic;">from</span> rentals, products
+<span style="color: #51afef; font-style: italic;">where</span> rentals.prod_id = products.prod_id
+<span style="color: #51afef; font-style: italic;">order</span> <span style="color: #51afef; font-style: italic;">by</span> daterented
+<span style="color: #51afef; font-style: italic;">limit</span> 1;
+</pre>
+</div>
+
+<ul class="org-ul">
+<li>which product was never rented</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #51afef; font-style: italic;">select</span> <span style="color: #51afef; font-style: italic;">name</span>
+<span style="color: #51afef; font-style: italic;">from</span> products
+<span style="color: #51afef; font-style: italic;">where</span> prod_id
+<span style="color: #51afef; font-style: italic;">not</span> <span style="color: #51afef; font-style: italic;">in</span>
+<span style="color: #fff0f5;">(</span><span style="color: #51afef; font-style: italic;">select</span> <span style="color: #51afef; font-style: italic;">distinct</span> prod_id <span style="color: #51afef; font-style: italic;">from</span> rentals<span style="color: #fff0f5;">)</span>;
+</pre>
+</div>
+
+<ul class="org-ul">
+<li>top 3 rentals in september 2010</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #51afef; font-style: italic;">select</span> products.prod_id, <span style="color: #51afef; font-style: italic;">name</span>, <span style="color: #c678dd;">count</span><span style="color: #fff0f5;">(</span>*<span style="color: #fff0f5;">)</span> <span style="color: #51afef; font-style: italic;">as</span> total
+<span style="color: #51afef; font-style: italic;">from</span> products, rentals
+<span style="color: #51afef; font-style: italic;">where</span> products.prod_id = rentals.prod_id
+<span style="color: #51afef; font-style: italic;">and</span> monthname<span style="color: #fff0f5;">(</span>rentals.daterented<span style="color: #fff0f5;">)</span> = "September"
+<span style="color: #51afef; font-style: italic;">and</span> <span style="color: #51afef; font-style: italic;">year</span><span style="color: #fff0f5;">(</span>rentals.daterented<span style="color: #fff0f5;">)</span> = 2010
+<span style="color: #51afef; font-style: italic;">group</span> <span style="color: #51afef; font-style: italic;">by</span> <span style="color: #51afef; font-style: italic;">name</span>
+<span style="color: #51afef; font-style: italic;">order</span> <span style="color: #51afef; font-style: italic;">by</span> total <span style="color: #51afef; font-style: italic;">desc</span>
+<span style="color: #51afef; font-style: italic;">limit</span> 3;
+</pre>
+</div>
+<ul class="org-ul">
+<li>list the products that the customers haven't rented</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #51afef; font-style: italic;">select</span> <span style="color: #51afef; font-style: italic;">name</span>, firstname, lastname
+<span style="color: #51afef; font-style: italic;">from</span> customers c, products p
+<span style="color: #51afef; font-style: italic;">where</span> <span style="color: #51afef; font-style: italic;">not</span> <span style="color: #51afef; font-style: italic;">exists</span>
+<span style="color: #fff0f5;">(</span><span style="color: #51afef; font-style: italic;">select</span> <span style="color: #51afef; font-style: italic;">distinct</span> <span style="color: #51afef; font-style: italic;">name</span>, firstname, lastname
+<span style="color: #51afef; font-style: italic;">from</span> rentals, products p1, customers c1
+<span style="color: #51afef; font-style: italic;">where</span> rentals.prod_id = p1.prod_id
+<span style="color: #51afef; font-style: italic;">and</span> rentals.cus_id = c1.cus_id
+<span style="color: #51afef; font-style: italic;">and</span> p.<span style="color: #51afef; font-style: italic;">name</span> = p1.<span style="color: #51afef; font-style: italic;">name</span>
+<span style="color: #51afef; font-style: italic;">and</span> c.firstname = c1.firstname
+<span style="color: #51afef; font-style: italic;">and</span> c.lastname = c1.lastname<span style="color: #fff0f5;">)</span>;
+</pre>
+</div>
+
+<ul class="org-ul">
+<li>pretty print table</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #51afef; font-style: italic;">select</span> rentals.rental_id,
+<span style="color: #51afef; font-style: italic;">name</span>,
+customers.firstname <span style="color: #51afef; font-style: italic;">as</span> cfName,
+customers.lastname clName,
+employees.firstname <span style="color: #51afef; font-style: italic;">as</span> efName,
+employees.lastname <span style="color: #51afef; font-style: italic;">as</span> elName,
+date_format<span style="color: #fff0f5;">(</span>rentals.daterented, "%W %<span style="color: #51afef; font-style: italic;">M</span> %e %Y"<span style="color: #fff0f5;">)</span> <span style="color: #51afef; font-style: italic;">as</span> "<span style="color: #ECBE7B;">Date</span> Rented"
+<span style="color: #51afef; font-style: italic;">from</span> rentals, products, employees, customers
+<span style="color: #51afef; font-style: italic;">where</span> rentals.prod_id = products.prod_id
+<span style="color: #51afef; font-style: italic;">and</span> rentals.cus_id = customers.cus_id
+<span style="color: #51afef; font-style: italic;">and</span> rentals.emp_id = employees.emp_id
+<span style="color: #51afef; font-style: italic;">order</span> <span style="color: #51afef; font-style: italic;">by</span> rental_id;
+</pre>
+</div>
+<ul class="org-ul">
+<li>can customer 'Carey' rent out a film for 21s?</li>
+<li>first: the age of all customers</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #51afef; font-style: italic;">select</span> firstname, lastname, dateofbirth,
+date_format<span style="color: #fff0f5;">(</span>from_days<span style="color: #c678dd;">(</span>datediff<span style="color: #98be65;">(</span>now<span style="color: #00bfff;">()</span>, dateofbirth<span style="color: #98be65;">)</span><span style="color: #c678dd;">)</span>, <span style="color: #98be65;">'%y'</span><span style="color: #fff0f5;">)</span> <span style="color: #51afef; font-style: italic;">as</span> age
+<span style="color: #51afef; font-style: italic;">from</span> customers;
+</pre>
+</div>
+<ul class="org-ul">
+<li>second: customers who can rent a 21s film</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #51afef; font-style: italic;">select</span> firstname, lastname, dateofbirth,
+date_format<span style="color: #fff0f5;">(</span>from_days<span style="color: #c678dd;">(</span>datediff<span style="color: #98be65;">(</span>now<span style="color: #00bfff;">()</span>, dateofbirth<span style="color: #98be65;">)</span><span style="color: #c678dd;">)</span>, <span style="color: #98be65;">'%y'</span><span style="color: #fff0f5;">)</span> <span style="color: #51afef; font-style: italic;">as</span> age
+<span style="color: #51afef; font-style: italic;">from</span> customers
+<span style="color: #51afef; font-style: italic;">where</span> date_format<span style="color: #fff0f5;">(</span>from_days<span style="color: #c678dd;">(</span>datediff<span style="color: #98be65;">(</span>now<span style="color: #00bfff;">()</span>, dateofbirth<span style="color: #98be65;">)</span><span style="color: #c678dd;">)</span>, <span style="color: #98be65;">'%y'</span><span style="color: #fff0f5;">)</span> &gt;= 21;
+</pre>
+</div>
+<ul class="org-ul">
+<li>third: customers who cannot rent a 21s film</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #51afef; font-style: italic;">select</span> firstname, lastname, dateofbirth,
+date_format<span style="color: #fff0f5;">(</span>from_days<span style="color: #c678dd;">(</span>datediff<span style="color: #98be65;">(</span>now<span style="color: #00bfff;">()</span>, dateofbirth<span style="color: #98be65;">)</span><span style="color: #c678dd;">)</span>, <span style="color: #98be65;">'%y'</span><span style="color: #fff0f5;">)</span> <span style="color: #51afef; font-style: italic;">as</span> age
+<span style="color: #51afef; font-style: italic;">from</span> customers
+<span style="color: #51afef; font-style: italic;">where</span> date_format<span style="color: #fff0f5;">(</span>from_days<span style="color: #c678dd;">(</span>datediff<span style="color: #98be65;">(</span>now<span style="color: #00bfff;">()</span>, dateofbirth<span style="color: #98be65;">)</span><span style="color: #c678dd;">)</span>, <span style="color: #98be65;">'%y'</span><span style="color: #fff0f5;">)</span> &lt; 21;
+</pre>
+</div>
+<ul class="org-ul">
+<li>who is the worst employee</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #51afef; font-style: italic;">select</span> firstname, lastname,
+employees.emp_id <span style="color: #51afef; font-style: italic;">as</span> emp_id,
+<span style="color: #c678dd;">count</span><span style="color: #fff0f5;">(</span>*<span style="color: #fff0f5;">)</span> <span style="color: #51afef; font-style: italic;">as</span> total
+<span style="color: #51afef; font-style: italic;">from</span> employees, rentals
+<span style="color: #51afef; font-style: italic;">where</span> rentals.emp_id = employees.emp_id
+<span style="color: #51afef; font-style: italic;">group</span> <span style="color: #51afef; font-style: italic;">by</span> employees.emp_id
+<span style="color: #51afef; font-style: italic;">order</span> <span style="color: #51afef; font-style: italic;">by</span> total;
+</pre>
+</div>
+<ul class="org-ul">
+<li>calculate the sales of dvd (5eur) and blurays (6eur) in september</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #51afef; font-style: italic;">select</span> 5 * dvd.total + 6 * blu.total <span style="color: #51afef; font-style: italic;">as</span> total
+<span style="color: #51afef; font-style: italic;">from</span> <span style="color: #fff0f5;">(</span><span style="color: #51afef; font-style: italic;">select</span> format, <span style="color: #c678dd;">count</span><span style="color: #c678dd;">(</span>*<span style="color: #c678dd;">)</span> <span style="color: #51afef; font-style: italic;">as</span> total
+<span style="color: #51afef; font-style: italic;">from</span> products, rentals
+<span style="color: #51afef; font-style: italic;">where</span> products.prod_id = rentals.prod_id
+<span style="color: #51afef; font-style: italic;">and</span> <span style="color: #51afef; font-style: italic;">year</span><span style="color: #c678dd;">(</span>daterented<span style="color: #c678dd;">)</span> = 2010 <span style="color: #51afef; font-style: italic;">and</span> <span style="color: #51afef; font-style: italic;">month</span><span style="color: #c678dd;">(</span>daterented<span style="color: #c678dd;">)</span> = 9
+<span style="color: #51afef; font-style: italic;">and</span> format = <span style="color: #98be65;">'DVD'</span><span style="color: #fff0f5;">)</span> <span style="color: #51afef; font-style: italic;">as</span> dvd,
+<span style="color: #fff0f5;">(</span><span style="color: #51afef; font-style: italic;">select</span> format, <span style="color: #c678dd;">count</span><span style="color: #c678dd;">(</span>*<span style="color: #c678dd;">)</span> <span style="color: #51afef; font-style: italic;">as</span> total
+<span style="color: #51afef; font-style: italic;">from</span> products, rentals
+<span style="color: #51afef; font-style: italic;">where</span> products.prod_id = rentals.prod_id
+<span style="color: #51afef; font-style: italic;">and</span> <span style="color: #51afef; font-style: italic;">year</span><span style="color: #c678dd;">(</span>daterented<span style="color: #c678dd;">)</span> = 2010 <span style="color: #51afef; font-style: italic;">and</span> <span style="color: #51afef; font-style: italic;">month</span><span style="color: #c678dd;">(</span>daterented<span style="color: #c678dd;">)</span> = 9
+<span style="color: #51afef; font-style: italic;">and</span> format = <span style="color: #98be65;">'Blu-ray'</span><span style="color: #fff0f5;">)</span> <span style="color: #51afef; font-style: italic;">as</span> blu;
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org3c291d9" class="outline-2">
+<h2 id="org3c291d9"><span class="section-number-2">22</span> Sample questions for the test</h2>
+<div class="outline-text-2" id="text-22">
+<ul class="org-ul">
+<li>show all regions in africa</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #51afef; font-style: italic;">select</span> <span style="color: #51afef; font-style: italic;">distinct</span> region <span style="color: #51afef; font-style: italic;">from</span> country <span style="color: #51afef; font-style: italic;">where</span> continent = <span style="color: #98be65;">'Africa'</span>;
+</pre>
+</div>
+<ul class="org-ul">
+<li>show the population of the world</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #51afef; font-style: italic;">select</span> <span style="color: #c678dd;">sum</span><span style="color: #fff0f5;">(</span>population<span style="color: #fff0f5;">)</span> <span style="color: #51afef; font-style: italic;">as</span> total <span style="color: #51afef; font-style: italic;">from</span> country;
+</pre>
+</div>
+<ul class="org-ul">
+<li>count the countries in the world</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #51afef; font-style: italic;">select</span> <span style="color: #c678dd;">count</span><span style="color: #fff0f5;">(</span>*<span style="color: #fff0f5;">)</span> <span style="color: #51afef; font-style: italic;">as</span> total <span style="color: #51afef; font-style: italic;">from</span> country;
+</pre>
+</div>
+<ul class="org-ul">
+<li>count all languages</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #51afef; font-style: italic;">select</span> <span style="color: #c678dd;">count</span><span style="color: #fff0f5;">(</span><span style="color: #51afef; font-style: italic;">distinct</span> <span style="color: #51afef; font-style: italic;">language</span><span style="color: #fff0f5;">)</span> <span style="color: #51afef; font-style: italic;">as</span> "total languages"
+<span style="color: #51afef; font-style: italic;">from</span> countrylanguage;
+</pre>
+</div>
+<ul class="org-ul">
+<li>total surface area of Earth, oceans are 2/3 of the earth's surface, thus we multiply by 3 to get the total surface</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #51afef; font-style: italic;">select</span> <span style="color: #c678dd;">sum</span><span style="color: #fff0f5;">(</span>surfacearea<span style="color: #fff0f5;">)</span> * 3 <span style="color: #51afef; font-style: italic;">from</span> country;
+</pre>
+</div>
+<ul class="org-ul">
+<li>get the total amount of cities in a country</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #51afef; font-style: italic;">select</span> country.<span style="color: #51afef; font-style: italic;">name</span>, <span style="color: #c678dd;">count</span><span style="color: #fff0f5;">(</span>city.<span style="color: #51afef; font-style: italic;">name</span><span style="color: #fff0f5;">)</span>
+<span style="color: #51afef; font-style: italic;">from</span> country, city
+<span style="color: #51afef; font-style: italic;">where</span> code = countrycode
+<span style="color: #51afef; font-style: italic;">and</span> country.<span style="color: #51afef; font-style: italic;">name</span> = <span style="color: #98be65;">'Ireland'</span>;
+</pre>
+</div>
+<ul class="org-ul">
+<li>find the city with the highest population in a specific country</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #51afef; font-style: italic;">select</span> country.<span style="color: #51afef; font-style: italic;">name</span>, city.<span style="color: #51afef; font-style: italic;">name</span>, city.population
+<span style="color: #51afef; font-style: italic;">from</span> country, city
+<span style="color: #51afef; font-style: italic;">where</span> code = countrycode
+<span style="color: #51afef; font-style: italic;">and</span> city.population = <span style="color: #fff0f5;">(</span><span style="color: #51afef; font-style: italic;">select</span> <span style="color: #c678dd;">max</span><span style="color: #c678dd;">(</span>population<span style="color: #c678dd;">)</span> <span style="color: #51afef; font-style: italic;">from</span> city<span style="color: #fff0f5;">)</span>;
+</pre>
+</div>
+<ul class="org-ul">
+<li>display the total population of a country and the list of all cities with their population</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #fff0f5;">(</span><span style="color: #51afef; font-style: italic;">select</span> <span style="color: #51afef; font-style: italic;">name</span> <span style="color: #51afef; font-style: italic;">as</span> <span style="color: #98be65;">'Details'</span>, population <span style="color: #51afef; font-style: italic;">as</span> <span style="color: #98be65;">'Inhabitants'</span>
+<span style="color: #51afef; font-style: italic;">from</span> country
+<span style="color: #51afef; font-style: italic;">where</span> <span style="color: #51afef; font-style: italic;">name</span> = <span style="color: #98be65;">'Spain'</span><span style="color: #fff0f5;">)</span>
+<span style="color: #51afef; font-style: italic;">union</span>
+<span style="color: #fff0f5;">(</span><span style="color: #51afef; font-style: italic;">select</span> city.<span style="color: #51afef; font-style: italic;">name</span>, city.population
+<span style="color: #51afef; font-style: italic;">from</span> city, country
+<span style="color: #51afef; font-style: italic;">where</span> countrycode = code
+<span style="color: #51afef; font-style: italic;">and</span> country.<span style="color: #51afef; font-style: italic;">name</span> = <span style="color: #98be65;">'Spain'</span><span style="color: #fff0f5;">)</span>;
+</pre>
+</div>
+<ul class="org-ul">
+<li>find all languages in Ireland and Canada that are not common in each of those countries</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #51afef; font-style: italic;">select</span> cl1.<span style="color: #51afef; font-style: italic;">language</span>
+<span style="color: #51afef; font-style: italic;">from</span> country <span style="color: #51afef; font-style: italic;">as</span> c1, countrylanguage <span style="color: #51afef; font-style: italic;">as</span> cl1
+<span style="color: #51afef; font-style: italic;">where</span> c1.code = cl1.countrycode
+<span style="color: #51afef; font-style: italic;">and</span> c1.<span style="color: #51afef; font-style: italic;">name</span> = <span style="color: #98be65;">'Ireland'</span>
+<span style="color: #51afef; font-style: italic;">and</span> <span style="color: #51afef; font-style: italic;">NOT</span> <span style="color: #51afef; font-style: italic;">EXISTS</span>
+<span style="color: #fff0f5;">(</span><span style="color: #51afef; font-style: italic;">select</span> cl2.<span style="color: #51afef; font-style: italic;">language</span>
+<span style="color: #51afef; font-style: italic;">from</span> country <span style="color: #51afef; font-style: italic;">as</span> c2, countrylanguage <span style="color: #51afef; font-style: italic;">as</span> cl2
+<span style="color: #51afef; font-style: italic;">where</span> c2.code = cl2.countrycode
+<span style="color: #51afef; font-style: italic;">and</span> cl1.<span style="color: #51afef; font-style: italic;">language</span> = cl2.<span style="color: #51afef; font-style: italic;">language</span>
+<span style="color: #51afef; font-style: italic;">and</span> c2.<span style="color: #51afef; font-style: italic;">name</span> = <span style="color: #98be65;">'Canada'</span><span style="color: #fff0f5;">)</span>;
+</pre>
+</div>
+<ul class="org-ul">
+<li>find all langauges that are common in Canada and Ireland</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #51afef; font-style: italic;">select</span> cl1.<span style="color: #51afef; font-style: italic;">language</span>
+<span style="color: #51afef; font-style: italic;">from</span> country <span style="color: #51afef; font-style: italic;">as</span> c1, countrylanguage <span style="color: #51afef; font-style: italic;">as</span> cl1
+<span style="color: #51afef; font-style: italic;">where</span> c1.code = cl1.countrycode
+<span style="color: #51afef; font-style: italic;">and</span> c1.<span style="color: #51afef; font-style: italic;">name</span> = <span style="color: #98be65;">'Ireland'</span>
+<span style="color: #51afef; font-style: italic;">and</span> <span style="color: #51afef; font-style: italic;">EXISTS</span>
+<span style="color: #fff0f5;">(</span><span style="color: #51afef; font-style: italic;">select</span> cl2.<span style="color: #51afef; font-style: italic;">language</span>
+<span style="color: #51afef; font-style: italic;">from</span> country <span style="color: #51afef; font-style: italic;">as</span> c2, countrylanguage <span style="color: #51afef; font-style: italic;">as</span> cl2
+<span style="color: #51afef; font-style: italic;">where</span> c2.code = cl2.countrycode
+<span style="color: #51afef; font-style: italic;">and</span> cl1.<span style="color: #51afef; font-style: italic;">language</span> = cl2.<span style="color: #51afef; font-style: italic;">language</span>
+<span style="color: #51afef; font-style: italic;">and</span> c2.<span style="color: #51afef; font-style: italic;">name</span> = <span style="color: #98be65;">'Canada'</span><span style="color: #fff0f5;">)</span>;
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgb4e1219" class="outline-2">
+<h2 id="orgb4e1219"><span class="section-number-2">23</span> Table creation example</h2>
+<div class="outline-text-2" id="text-23">
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #51afef; font-style: italic;">CREATE</span> <span style="color: #51afef; font-style: italic;">TABLE</span> <span style="color: #c678dd;">details</span> <span style="color: #fff0f5;">(</span>
+       id <span style="color: #ECBE7B;">INTEGER</span> auto_increment <span style="color: #51afef; font-style: italic;">NOT</span> <span style="color: #51afef; font-style: italic;">NULL</span> <span style="color: #51afef; font-style: italic;">PRIMARY</span> <span style="color: #51afef; font-style: italic;">KEY</span>,
+       firstName <span style="color: #ECBE7B;">VARCHAR</span><span style="color: #c678dd;">(</span>15<span style="color: #c678dd;">)</span> <span style="color: #51afef; font-style: italic;">NOT</span> <span style="color: #51afef; font-style: italic;">NULL</span>,
+       lastName <span style="color: #ECBE7B;">VARCHAR</span><span style="color: #c678dd;">(</span>20<span style="color: #c678dd;">)</span> <span style="color: #51afef; font-style: italic;">NOT</span> <span style="color: #51afef; font-style: italic;">NULL</span>,
+       age <span style="color: #ECBE7B;">INTEGER</span> <span style="color: #51afef; font-style: italic;">NOT</span> <span style="color: #51afef; font-style: italic;">NULL</span>,
+       gender <span style="color: #ECBE7B;">VARCHAR</span><span style="color: #c678dd;">(</span>1<span style="color: #c678dd;">)</span> <span style="color: #51afef; font-style: italic;">NOT</span> <span style="color: #51afef; font-style: italic;">NULL</span>,
+       <span style="color: #51afef; font-style: italic;">position</span> <span style="color: #ECBE7B;">VARCHAR</span><span style="color: #c678dd;">(</span>15<span style="color: #c678dd;">)</span> <span style="color: #51afef; font-style: italic;">NOT</span> <span style="color: #51afef; font-style: italic;">NULL</span>,
+       department <span style="color: #ECBE7B;">VARCHAR</span><span style="color: #c678dd;">(</span>20<span style="color: #c678dd;">)</span> <span style="color: #51afef; font-style: italic;">NOT</span> <span style="color: #51afef; font-style: italic;">NULL</span>,
+       rate <span style="color: #ECBE7B;">DECIMAL</span><span style="color: #c678dd;">(</span>7, 2<span style="color: #c678dd;">)</span> <span style="color: #51afef; font-style: italic;">NOT</span> <span style="color: #51afef; font-style: italic;">NULL</span>,
+       hours <span style="color: #ECBE7B;">INTEGER</span> <span style="color: #51afef; font-style: italic;">NOT</span> <span style="color: #51afef; font-style: italic;">NULL</span>
+<span style="color: #fff0f5;">)</span>;
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orga4c0faf" class="outline-2">
+<h2 id="orga4c0faf"><span class="section-number-2">24</span> Sample database insert</h2>
+<div class="outline-text-2" id="text-24">
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #51afef; font-style: italic;">DROP</span> DATABASE IF <span style="color: #51afef; font-style: italic;">EXISTS</span> lab1SQL;
+<span style="color: #51afef; font-style: italic;">CREATE</span> DATABASE IF <span style="color: #51afef; font-style: italic;">NOT</span> <span style="color: #51afef; font-style: italic;">EXISTS</span> lab1SQL;
+USE lab1SQL;
+
+<span style="color: #51afef; font-style: italic;">SELECT</span> <span style="color: #98be65;">'CREATING DATABASE STRUCTURE'</span> <span style="color: #51afef; font-style: italic;">as</span> <span style="color: #98be65;">'INFO'</span>;
+
+<span style="color: #51afef; font-style: italic;">DROP</span> <span style="color: #51afef; font-style: italic;">TABLE</span> <span style="color: #c678dd;">IF</span> <span style="color: #51afef; font-style: italic;">EXISTS</span> details;
+
+
+<span style="color: #51afef; font-style: italic;">CREATE</span> <span style="color: #51afef; font-style: italic;">TABLE</span> <span style="color: #c678dd;">details</span> <span style="color: #fff0f5;">(</span>
+    id <span style="color: #ECBE7B;">INTEGER</span> AUTO_INCREMENT <span style="color: #51afef; font-style: italic;">NOT</span> <span style="color: #51afef; font-style: italic;">NULL</span> <span style="color: #51afef; font-style: italic;">PRIMARY</span> <span style="color: #51afef; font-style: italic;">KEY</span>,
+    firstName <span style="color: #ECBE7B;">VARCHAR</span><span style="color: #c678dd;">(</span>15<span style="color: #c678dd;">)</span> <span style="color: #51afef; font-style: italic;">NOT</span> <span style="color: #51afef; font-style: italic;">NULL</span>,
+    lastName <span style="color: #ECBE7B;">VARCHAR</span><span style="color: #c678dd;">(</span>20<span style="color: #c678dd;">)</span> <span style="color: #51afef; font-style: italic;">NOT</span> <span style="color: #51afef; font-style: italic;">NULL</span>,
+    age <span style="color: #ECBE7B;">INTEGER</span> <span style="color: #51afef; font-style: italic;">NOT</span> <span style="color: #51afef; font-style: italic;">NULL</span>,
+    gender <span style="color: #ECBE7B;">VARCHAR</span><span style="color: #c678dd;">(</span>1<span style="color: #c678dd;">)</span> <span style="color: #51afef; font-style: italic;">NOT</span> <span style="color: #51afef; font-style: italic;">NULL</span>,
+    <span style="color: #51afef; font-style: italic;">position</span> <span style="color: #ECBE7B;">VARCHAR</span><span style="color: #c678dd;">(</span>15<span style="color: #c678dd;">)</span> <span style="color: #51afef; font-style: italic;">NOT</span> <span style="color: #51afef; font-style: italic;">NULL</span>,
+    department <span style="color: #ECBE7B;">VARCHAR</span><span style="color: #c678dd;">(</span>20<span style="color: #c678dd;">)</span> <span style="color: #51afef; font-style: italic;">NOT</span> <span style="color: #51afef; font-style: italic;">NULL</span>,
+    rate <span style="color: #ECBE7B;">DECIMAL</span><span style="color: #c678dd;">(</span>7, 2<span style="color: #c678dd;">)</span> <span style="color: #51afef; font-style: italic;">NOT</span> <span style="color: #51afef; font-style: italic;">NULL</span>,
+    hours <span style="color: #ECBE7B;">INTEGER</span> <span style="color: #51afef; font-style: italic;">NOT</span> <span style="color: #51afef; font-style: italic;">NULL</span><span style="color: #fff0f5;">)</span>;
+
+<span style="color: #51afef; font-style: italic;">SELECT</span> <span style="color: #98be65;">'INSERTING DATA INTO DATABASE'</span> <span style="color: #51afef; font-style: italic;">as</span> <span style="color: #98be65;">'INFO'</span>;
+
+<span style="color: #51afef; font-style: italic;">INSERT</span> <span style="color: #51afef; font-style: italic;">INTO</span> details <span style="color: #51afef; font-style: italic;">VALUES</span> <span style="color: #fff0f5;">(</span> <span style="color: #51afef; font-style: italic;">null</span>, <span style="color: #98be65;">'Joe'</span>, <span style="color: #98be65;">'Mullins'</span>, 64, <span style="color: #98be65;">'M'</span>, <span style="color: #98be65;">'Lecturer'</span>, <span style="color: #98be65;">'Engineering'</span>, 63.08, 12<span style="color: #fff0f5;">)</span>;
+<span style="color: #51afef; font-style: italic;">INSERT</span> <span style="color: #51afef; font-style: italic;">INTO</span> details <span style="color: #51afef; font-style: italic;">VALUES</span> <span style="color: #fff0f5;">(</span> <span style="color: #51afef; font-style: italic;">null</span>, <span style="color: #98be65;">'Joan'</span>, <span style="color: #98be65;">'Macgill'</span>, 27, <span style="color: #98be65;">'F'</span>, <span style="color: #98be65;">'Researcher'</span>, <span style="color: #98be65;">'Science'</span>, 38, 35<span style="color: #fff0f5;">)</span>;
+<span style="color: #51afef; font-style: italic;">INSERT</span> <span style="color: #51afef; font-style: italic;">INTO</span> details <span style="color: #51afef; font-style: italic;">VALUES</span> <span style="color: #fff0f5;">(</span> <span style="color: #51afef; font-style: italic;">null</span>, <span style="color: #98be65;">'Jim'</span>, <span style="color: #98be65;">'Mitchell'</span>, 51, <span style="color: #98be65;">'M'</span>, <span style="color: #98be65;">'Researcher'</span>, <span style="color: #98be65;">'Business'</span>, 38, 25<span style="color: #fff0f5;">)</span>;
+<span style="color: #51afef; font-style: italic;">INSERT</span> <span style="color: #51afef; font-style: italic;">INTO</span> details <span style="color: #51afef; font-style: italic;">VALUES</span> <span style="color: #fff0f5;">(</span> <span style="color: #51afef; font-style: italic;">null</span>, <span style="color: #98be65;">'John'</span>, <span style="color: #98be65;">'Magner'</span>, 47, <span style="color: #98be65;">'M'</span>, <span style="color: #98be65;">'Lecturer'</span>, <span style="color: #98be65;">'Humanities'</span>, 63.08, 16<span style="color: #fff0f5;">)</span>;
+<span style="color: #51afef; font-style: italic;">INSERT</span> <span style="color: #51afef; font-style: italic;">INTO</span> details <span style="color: #51afef; font-style: italic;">VALUES</span> <span style="color: #fff0f5;">(</span> <span style="color: #51afef; font-style: italic;">null</span>, <span style="color: #98be65;">'Jack'</span>, <span style="color: #98be65;">'Minogue'</span>, 61, <span style="color: #98be65;">'M'</span>, <span style="color: #98be65;">'Administrator'</span>, <span style="color: #98be65;">'Hospitality'</span>, 45.57, 37<span style="color: #fff0f5;">)</span>;
+<span style="color: #51afef; font-style: italic;">INSERT</span> <span style="color: #51afef; font-style: italic;">INTO</span> details <span style="color: #51afef; font-style: italic;">VALUES</span> <span style="color: #fff0f5;">(</span> <span style="color: #51afef; font-style: italic;">null</span>, <span style="color: #98be65;">'Jean'</span>, <span style="color: #98be65;">'Madden'</span>, 45, <span style="color: #98be65;">'F'</span>, <span style="color: #98be65;">'Professor'</span>, <span style="color: #98be65;">'Design'</span>, 76.45, 14<span style="color: #fff0f5;">)</span>;
+<span style="color: #51afef; font-style: italic;">INSERT</span> <span style="color: #51afef; font-style: italic;">INTO</span> details <span style="color: #51afef; font-style: italic;">VALUES</span> <span style="color: #fff0f5;">(</span> <span style="color: #51afef; font-style: italic;">null</span>, <span style="color: #98be65;">'Josephine'</span>, <span style="color: #98be65;">'Mahony'</span>, 33, <span style="color: #98be65;">'F'</span>, <span style="color: #98be65;">'Head'</span>, <span style="color: #98be65;">'Nursing'</span>, 98.56, 40<span style="color: #fff0f5;">)</span>;
+<span style="color: #51afef; font-style: italic;">INSERT</span> <span style="color: #51afef; font-style: italic;">INTO</span> details <span style="color: #51afef; font-style: italic;">VALUES</span> <span style="color: #fff0f5;">(</span> <span style="color: #51afef; font-style: italic;">null</span>, <span style="color: #98be65;">'Juan'</span>, <span style="color: #98be65;">'Mosley'</span>, 56, <span style="color: #98be65;">'M'</span>, <span style="color: #98be65;">'Professor'</span>, <span style="color: #98be65;">'Engineering'</span>, 76.45, 11<span style="color: #fff0f5;">)</span>;
+<span style="color: #51afef; font-style: italic;">INSERT</span> <span style="color: #51afef; font-style: italic;">INTO</span> details <span style="color: #51afef; font-style: italic;">VALUES</span> <span style="color: #fff0f5;">(</span> <span style="color: #51afef; font-style: italic;">null</span>, <span style="color: #98be65;">'Jamie'</span>, <span style="color: #98be65;">'Mulllen'</span>, 45, <span style="color: #98be65;">'M'</span>, <span style="color: #98be65;">'Researcher'</span>, <span style="color: #98be65;">'Science'</span>, 38, 37<span style="color: #fff0f5;">)</span>;
+<span style="color: #51afef; font-style: italic;">INSERT</span> <span style="color: #51afef; font-style: italic;">INTO</span> details <span style="color: #51afef; font-style: italic;">VALUES</span> <span style="color: #fff0f5;">(</span> <span style="color: #51afef; font-style: italic;">null</span>, <span style="color: #98be65;">'Julie'</span>, <span style="color: #98be65;">'Mooney'</span>, 39, <span style="color: #98be65;">'F'</span>, <span style="color: #98be65;">'Lecturer'</span>, <span style="color: #98be65;">'Business'</span>, 63.08, 18<span style="color: #fff0f5;">)</span>;
+<span style="color: #51afef; font-style: italic;">INSERT</span> <span style="color: #51afef; font-style: italic;">INTO</span> details <span style="color: #51afef; font-style: italic;">VALUES</span> <span style="color: #fff0f5;">(</span> <span style="color: #51afef; font-style: italic;">null</span>, <span style="color: #98be65;">'Jane'</span>, <span style="color: #98be65;">'Mccarthy'</span>, 37, <span style="color: #98be65;">'F'</span>, <span style="color: #98be65;">'Administrator'</span>, <span style="color: #98be65;">'Design'</span>, 45.57, 45<span style="color: #fff0f5;">)</span>;
+<span style="color: #51afef; font-style: italic;">INSERT</span> <span style="color: #51afef; font-style: italic;">INTO</span> details <span style="color: #51afef; font-style: italic;">VALUES</span> <span style="color: #fff0f5;">(</span> <span style="color: #51afef; font-style: italic;">null</span>, <span style="color: #98be65;">'James'</span>, <span style="color: #98be65;">'May'</span>, 38, <span style="color: #98be65;">'M'</span>, <span style="color: #98be65;">'Researcher'</span>, <span style="color: #98be65;">'Hospitality'</span>, 38, 9<span style="color: #fff0f5;">)</span>;
+<span style="color: #51afef; font-style: italic;">INSERT</span> <span style="color: #51afef; font-style: italic;">INTO</span> details <span style="color: #51afef; font-style: italic;">VALUES</span> <span style="color: #fff0f5;">(</span> <span style="color: #51afef; font-style: italic;">null</span>, <span style="color: #98be65;">'Joseph'</span>, <span style="color: #98be65;">'Manning'</span>, 32, <span style="color: #98be65;">'M'</span>, <span style="color: #98be65;">'Lecturer'</span>, <span style="color: #98be65;">'Hospitality'</span>, 63.08, 16<span style="color: #fff0f5;">)</span>;
+<span style="color: #51afef; font-style: italic;">INSERT</span> <span style="color: #51afef; font-style: italic;">INTO</span> details <span style="color: #51afef; font-style: italic;">VALUES</span> <span style="color: #fff0f5;">(</span> <span style="color: #51afef; font-style: italic;">null</span>, <span style="color: #98be65;">'Judith'</span>, <span style="color: #98be65;">'Milner'</span>, 36, <span style="color: #98be65;">'F'</span>, <span style="color: #98be65;">'Lecturer'</span>, <span style="color: #98be65;">'Nursing'</span>, 63.08, 20<span style="color: #fff0f5;">)</span>;
+<span style="color: #51afef; font-style: italic;">INSERT</span> <span style="color: #51afef; font-style: italic;">INTO</span> details <span style="color: #51afef; font-style: italic;">VALUES</span> <span style="color: #fff0f5;">(</span> <span style="color: #51afef; font-style: italic;">null</span>, <span style="color: #98be65;">'Jerome'</span>, <span style="color: #98be65;">'Murphy'</span>, 26, <span style="color: #98be65;">'M'</span>, <span style="color: #98be65;">'Head'</span>, <span style="color: #98be65;">'Engineering'</span>, 98.56, 42<span style="color: #fff0f5;">)</span>;
+<span style="color: #51afef; font-style: italic;">INSERT</span> <span style="color: #51afef; font-style: italic;">INTO</span> details <span style="color: #51afef; font-style: italic;">VALUES</span> <span style="color: #fff0f5;">(</span> <span style="color: #51afef; font-style: italic;">null</span>, <span style="color: #98be65;">'Jude'</span>, <span style="color: #98be65;">'Manley'</span>, 28, <span style="color: #98be65;">'M'</span>, <span style="color: #98be65;">'Head'</span>, <span style="color: #98be65;">'Science'</span>, 98.56, 41<span style="color: #fff0f5;">)</span>;
+<span style="color: #51afef; font-style: italic;">INSERT</span> <span style="color: #51afef; font-style: italic;">INTO</span> details <span style="color: #51afef; font-style: italic;">VALUES</span> <span style="color: #fff0f5;">(</span> <span style="color: #51afef; font-style: italic;">null</span>, <span style="color: #98be65;">'Juanita'</span>, <span style="color: #98be65;">'Mahon'</span>, 59, <span style="color: #98be65;">'F'</span>, <span style="color: #98be65;">'Administrator'</span>, <span style="color: #98be65;">'Engineering'</span>, 45.57, 49<span style="color: #fff0f5;">)</span>;
+<span style="color: #51afef; font-style: italic;">INSERT</span> <span style="color: #51afef; font-style: italic;">INTO</span> details <span style="color: #51afef; font-style: italic;">VALUES</span> <span style="color: #fff0f5;">(</span> <span style="color: #51afef; font-style: italic;">null</span>, <span style="color: #98be65;">'Justin'</span>, <span style="color: #98be65;">'Maguire'</span>, 25, <span style="color: #98be65;">'M'</span>, <span style="color: #98be65;">'Lecturer'</span>, <span style="color: #98be65;">'Business'</span>, 63.08, 16<span style="color: #fff0f5;">)</span>;
+<span style="color: #51afef; font-style: italic;">INSERT</span> <span style="color: #51afef; font-style: italic;">INTO</span> details <span style="color: #51afef; font-style: italic;">VALUES</span> <span style="color: #fff0f5;">(</span> <span style="color: #51afef; font-style: italic;">null</span>, <span style="color: #98be65;">'Jacqulinen'</span>, <span style="color: #98be65;">'Musgrave'</span>, 43, <span style="color: #98be65;">'F'</span>, <span style="color: #98be65;">'Professor'</span>, <span style="color: #98be65;">'Business'</span>, 76.45, 10<span style="color: #fff0f5;">)</span>;
+<span style="color: #51afef; font-style: italic;">INSERT</span> <span style="color: #51afef; font-style: italic;">INTO</span> details <span style="color: #51afef; font-style: italic;">VALUES</span> <span style="color: #fff0f5;">(</span> <span style="color: #51afef; font-style: italic;">null</span>, <span style="color: #98be65;">'Julia'</span>, <span style="color: #98be65;">'Moore'</span>, 36, <span style="color: #98be65;">'F'</span>, <span style="color: #98be65;">'Administrator'</span>, <span style="color: #98be65;">'Science'</span>, 45.57, 38<span style="color: #fff0f5;">)</span>;
+
+<span style="color: #51afef; font-style: italic;">SELECT</span> <span style="color: #98be65;">'CHECKING TO SEE IF EVERYTHING WORKED'</span> <span style="color: #51afef; font-style: italic;">as</span> <span style="color: #98be65;">'INFO'</span>;
+
+<span style="color: #51afef; font-style: italic;">SELECT</span> * <span style="color: #51afef; font-style: italic;">from</span> details;
+</pre>
+</div>
+
+
+<script src="../assets/jquery-3.3.1.min.js"></script>
+<script src="../assets/notes.js"></script>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="date">Date: 2017-09-11 Mon 12:14</p>
+<p class="author">Author: Damian Chrzanowski</p>
+<p class="date">Created: 2018-12-13 Thu 20:27</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

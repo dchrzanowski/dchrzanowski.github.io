@@ -1,0 +1,2283 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2018-12-13 Thu 20:29 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Networks 2</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="Damian Chrzanowski" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="../assets/org.css"/>
+<link rel="icon" href="../assets/favicon.ico">
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2018 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Networks 2</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org13ec3d1">1. On the Exam</a></li>
+<li><a href="#org9e46cf3">2. IP Calculator</a></li>
+<li><a href="#org52c8caa">3. Cloud Computing</a>
+<ul>
+<li><a href="#org7b9a54c">3.1. What is Cloud Computing?</a></li>
+<li><a href="#orgfbcd087">3.2. Goal</a></li>
+<li><a href="#orgabd0878">3.3. Characteristics</a></li>
+<li><a href="#org6e304fe">3.4. Cloud Deployment Models</a></li>
+<li><a href="#org9e852a9">3.5. Cloud Service Models</a></li>
+<li><a href="#orge007375">3.6. Advantages of cloud computing</a></li>
+<li><a href="#org973d695">3.7. Disadvantages of Cloud Computing</a></li>
+</ul>
+</li>
+<li><a href="#org949f7a8">4. Internet Structure</a>
+<ul>
+<li><a href="#org184aef0">4.1. Hosts: End systems</a></li>
+<li><a href="#org2dc67be">4.2. Network Edge</a></li>
+<li><a href="#orge8f73e9">4.3. Physical media</a></li>
+<li><a href="#org416e441">4.4. Access networks</a></li>
+<li><a href="#org63a66f2">4.5. Network Core:</a></li>
+<li><a href="#orgc53190c">4.6. Hierarchy</a></li>
+<li><a href="#org0858f17">4.7. Internet Standards</a></li>
+<li><a href="#org9698aea">4.8. Infrastructure that provides services to applications</a></li>
+<li><a href="#orgaa3c460">4.9. Provides APIs</a></li>
+<li><a href="#org55c898b">4.10. Protocols</a></li>
+<li><a href="#orge5a223a">4.11. Share access networks</a></li>
+</ul>
+</li>
+<li><a href="#orgba82bea">5. Delays</a>
+<ul>
+<li><a href="#orge9d5c1c">5.1. Packet data transmission delay</a></li>
+<li><a href="#org77e9f97">5.2. Packet Switching: queuing delay, loss</a></li>
+<li><a href="#org4161780">5.3. Lookup table delay</a></li>
+<li><a href="#orgd0721a6">5.4. Alternative: Circuit switching</a></li>
+<li><a href="#org8ab1bb7">5.5. Packet Switching vs Circuit Switching</a></li>
+<li><a href="#orgc566043">5.6. FDM vs TDM</a></li>
+<li><a href="#org983eb81">5.7. Transmission delay</a></li>
+<li><a href="#org0617cd9">5.8. Propagation delay</a></li>
+<li><a href="#org9df8233">5.9. Four usual sources of delays</a></li>
+</ul>
+</li>
+<li><a href="#org75d003c">6. Internet protocol stack</a></li>
+<li><a href="#org6bf4114">7. Layers</a>
+<ul>
+<li><a href="#orgf558659">7.1. Layering</a></li>
+<li><a href="#org7efff91">7.2. Encapsulation</a></li>
+</ul>
+</li>
+<li><a href="#orgb3419ce">8. The application layer</a>
+<ul>
+<li><a href="#org9c39dbc">8.1. Application architecture types</a></li>
+<li><a href="#orge506df8">8.2. Processes communication</a></li>
+<li><a href="#org91ffd8e">8.3. Sockets</a></li>
+<li><a href="#org2f79077">8.4. Receiving messages</a></li>
+<li><a href="#org26ac585">8.5. Application layer protocols</a></li>
+<li><a href="#org30c558d">8.6. Transport services that are necessary for an App</a></li>
+</ul>
+</li>
+<li><a href="#org47d92dd">9. HTTP Connections, Application layer</a>
+<ul>
+<li><a href="#org59b2e05">9.1. Definitions</a></li>
+<li><a href="#orgcfd59fe">9.2. Flow of a non-persistent connection</a></li>
+<li><a href="#org4382bf2">9.3. Flow for a persistent connection</a></li>
+<li><a href="#org461eef9">9.4. HTTP request header</a></li>
+<li><a href="#org8c6415b">9.5. HTTP response header</a></li>
+</ul>
+</li>
+<li><a href="#org8939078">10. Email</a>
+<ul>
+<li><a href="#orgf07bfb1">10.1. Major components</a></li>
+<li><a href="#org7b7324a">10.2. Sending phases</a></li>
+<li><a href="#orge57adc2">10.3. Email's life</a></li>
+<li><a href="#org75dd446">10.4. Message format</a></li>
+<li><a href="#org7618da7">10.5. Mail access protocols</a></li>
+</ul>
+</li>
+<li><a href="#org4f5ae07">11. Cookies</a>
+<ul>
+<li><a href="#org08d4ac9">11.1. Components</a></li>
+</ul>
+</li>
+<li><a href="#org913b6c0">12. Transport layer - TCP vs UDP</a>
+<ul>
+<li><a href="#org8bfac43">12.1. TCP</a></li>
+<li><a href="#org1e5f690">12.2. UDP</a></li>
+<li><a href="#org070b58c">12.3. Usage</a></li>
+<li><a href="#org2997a74">12.4. TCP and UDP</a></li>
+<li><a href="#org2c9e894">12.5. Securing via SSL</a></li>
+</ul>
+</li>
+<li><a href="#orgec95805">13. Transport Layer</a>
+<ul>
+<li><a href="#org775c917">13.1. Goals</a></li>
+<li><a href="#org7ac87d8">13.2. Protocols</a></li>
+<li><a href="#org8376ee0">13.3. Multiplexing/demultiplexing</a></li>
+<li><a href="#org48cc183">13.4. Connectionless demultiplexing</a></li>
+<li><a href="#orga716178">13.5. Connection-oriented demultiplexing</a></li>
+<li><a href="#org4b67d9e">13.6. Reliable data transfer</a></li>
+<li><a href="#orgf5946cd">13.7. Pipeline protocols</a></li>
+</ul>
+</li>
+<li><a href="#org0c6a830">14. Transport Layer, TCP</a>
+<ul>
+<li><a href="#org0eeac9c">14.1. Characteristics</a></li>
+<li><a href="#org649af2f">14.2. Segment structure</a></li>
+<li><a href="#org424cb45">14.3. Transmission of Seq and ACK</a></li>
+<li><a href="#orgd62d3ea">14.4. Flow control</a></li>
+<li><a href="#org5979f9f">14.5. Connection management</a></li>
+<li><a href="#org98dc992">14.6. Congestion</a></li>
+</ul>
+</li>
+<li><a href="#orgb4f451f">15. DNS</a>
+<ul>
+<li><a href="#org8a526f5">15.1. Structure</a></li>
+<li><a href="#orgcb12ed3">15.2. Processing</a></li>
+<li><a href="#orgd462c61">15.3. Root servers</a></li>
+<li><a href="#org830b688">15.4. TLD, Top Level Domain servers</a></li>
+<li><a href="#org14261e4">15.5. Authorative servers</a></li>
+<li><a href="#orga4d0218">15.6. Local DSN name server</a></li>
+<li><a href="#org1583625">15.7. DNS resolution example</a></li>
+<li><a href="#orgff1c811">15.8. Caching</a></li>
+<li><a href="#org775c92f">15.9. DNS records</a></li>
+<li><a href="#org6a33864">15.10. DNS protocol, messages</a></li>
+</ul>
+</li>
+<li><a href="#orgc026312">16. Network Layer</a>
+<ul>
+<li><a href="#org0da03f0">16.1. Two core functions</a></li>
+<li><a href="#org2f38a42">16.2. Date Plane</a></li>
+<li><a href="#orgc4d4c88">16.3. Control Plane</a></li>
+<li><a href="#orgd3558b4">16.4. Datagram Format</a></li>
+<li><a href="#org13e7dec">16.5. Fragmentation and Reassembly</a></li>
+<li><a href="#orge80afed">16.6. IPv4</a></li>
+<li><a href="#org2296a89">16.7. Network Address Translation (NAT)</a></li>
+<li><a href="#org806a59c">16.8. IPv6</a></li>
+</ul>
+</li>
+<li><a href="#org1896b61">17. Link Layer</a>
+<ul>
+<li><a href="#org0d00d16">17.1. Terminology</a></li>
+<li><a href="#org2fa4002">17.2. Link layer service</a></li>
+<li><a href="#org136a4c1">17.3. Where is it implemented</a></li>
+<li><a href="#org0320ded">17.4. Types of links</a></li>
+<li><a href="#orga3b8f33">17.5. MAC protocols</a></li>
+<li><a href="#orgfa533e0">17.6. Address Resolution Protocol (ARP)</a></li>
+</ul>
+</li>
+<li><a href="#orgc06aa98">18. Recap, overview of a request</a>
+<ul>
+<li><a href="#org4ed5a34">18.1. First Step get IP, first-hop and DNS</a></li>
+<li><a href="#orgb0493cf">18.2. ARP</a></li>
+<li><a href="#org6f7424a">18.3. DNS</a></li>
+<li><a href="#orgd0f8524">18.4. TCP</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<p>
+<a href="index.html">Home Page</a>
+</p>
+
+<div id="outline-container-org13ec3d1" class="outline-2">
+<h2 id="org13ec3d1"><span class="section-number-2">1</span> On the Exam</h2>
+<div class="outline-text-2" id="text-1">
+<ul class="org-ul">
+<li>Cloud</li>
+<li>Transport protocol (video streaming)</li>
+<li>Network layer</li>
+<li>Link layer, reading material</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org9e46cf3" class="outline-2">
+<h2 id="org9e46cf3"><span class="section-number-2">2</span> <a href="http://jodies.de/ipcalc">IP Calculator</a></h2>
+</div>
+<div id="outline-container-org52c8caa" class="outline-2">
+<h2 id="org52c8caa"><span class="section-number-2">3</span> Cloud Computing</h2>
+<div class="outline-text-2" id="text-3">
+</div>
+<div id="outline-container-org7b9a54c" class="outline-3">
+<h3 id="org7b9a54c"><span class="section-number-3">3.1</span> What is Cloud Computing?</h3>
+<div class="outline-text-3" id="text-3-1">
+<ul class="org-ul">
+<li>Cloud computing is the delivery of computing services - servers, storage, databases, networking, software, analytics and more - over the internet (the cloud)</li>
+</ul>
+
+<div class="figure">
+<p><img src="images/Cloud Computing/screenshot_2018-05-10_15-30-07.png" alt="screenshot_2018-05-10_15-30-07.png" />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgfbcd087" class="outline-3">
+<h3 id="orgfbcd087"><span class="section-number-3">3.2</span> Goal</h3>
+<div class="outline-text-3" id="text-3-2">
+<ul class="org-ul">
+<li>Is to apply traditional super-computing, or high-performance computing power, normally used by military and research facilities, to perform tens of trillions of computations per send, in consumer-oriented applications</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgabd0878" class="outline-3">
+<h3 id="orgabd0878"><span class="section-number-3">3.3</span> Characteristics</h3>
+<div class="outline-text-3" id="text-3-3">
+</div>
+<div id="outline-container-org43b8728" class="outline-4">
+<h4 id="org43b8728">Business will secure cloud-hosting services from the usual software vendor</h4>
+<div class="outline-text-4" id="text-org43b8728">
+<ul class="org-ul">
+<li>Access to services and the power to change those services via a control panel</li>
+<li>Add or delete user and change storage networks and software as needed</li>
+<li>Billed with a monthly subscription or a pay-for-what-you-use scenario</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgcbf7c84" class="outline-4">
+<h4 id="orgcbf7c84">Broad network access</h4>
+<div class="outline-text-4" id="text-orgcbf7c84">
+<ul class="org-ul">
+<li>Access business management solutions from any device</li>
+<li>Access the resources from Mobile Devices in particular</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org5387573" class="outline-4">
+<h4 id="org5387573">Resource pooling</h4>
+<div class="outline-text-4" id="text-org5387573">
+<ul class="org-ul">
+<li>Allow employees to enter and use data within the business management software hosted in the cloud at the same time, from any location, and at any time</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org73a488a" class="outline-4">
+<h4 id="org73a488a">Rapid elasticity</h4>
+<div class="outline-text-4" id="text-org73a488a">
+<ul class="org-ul">
+<li>Cloud is flexible to needs</li>
+<li>Cloud is scalable to needs</li>
+<li>Add/remove users, features, resources</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orga33d201" class="outline-4">
+<h4 id="orga33d201">Measured service</h4>
+<div class="outline-text-4" id="text-orga33d201">
+<ul class="org-ul">
+<li>Pay for what you use</li>
+<li>Measure storage levels, processing, bandwidth, number of user accounts and get billed appropriately</li>
+<li>Control and monitor</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org6e304fe" class="outline-3">
+<h3 id="org6e304fe"><span class="section-number-3">3.4</span> Cloud Deployment Models</h3>
+<div class="outline-text-3" id="text-3-4">
+</div>
+<div id="outline-container-org1332a35" class="outline-4">
+<h4 id="org1332a35">Public Cloud</h4>
+<div class="outline-text-4" id="text-org1332a35">
+<ul class="org-ul">
+<li>Set of hardware, networking, storage, services, applications and interfaces owned and operated by a third party for use by other companies or individuals. Highly scalable.</li>
+<li>Highly scalable</li>
+<li>Viable due to repetitive and/or straightforward workload, e.g. e-mail</li>
+<li>Storage or computing services are optimized thanks to the use of hardware and software for this particular use case</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgd80667e" class="outline-4">
+<h4 id="orgd80667e">Private Cloud</h4>
+<div class="outline-text-4" id="text-orgd80667e">
+<ul class="org-ul">
+<li>Set of hardware, networking, storage, services, applications and interfaces owned and operated by a third party for use by other companies or individuals</li>
+<li>Highly controlled environment not open for public consumption</li>
+<li>Sits behind a firewall</li>
+<li>Highly automated with a focus on governance, security and compliance</li>
+<li>Business rules and processes can be implemented inside software, making the environment predictable, manageable and automated</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org60e2a46" class="outline-4">
+<h4 id="org60e2a46">Hybrid Cloud</h4>
+<div class="outline-text-4" id="text-org60e2a46">
+<ul class="org-ul">
+<li>Combination of private cloud with a us of public services</li>
+<li>The goal is to combine services and data form a variety of loud models to create a unified, automated, and well-managed computing environment</li>
+<li>Applies when
+<ul class="org-ul">
+<li>Company uses a public development platform that sends data to a private cloud or a data center-based application</li>
+<li>When a company leverages a number of SaaS applications and moves data between private or data center resources</li>
+</ul></li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org9e852a9" class="outline-3">
+<h3 id="org9e852a9"><span class="section-number-3">3.5</span> Cloud Service Models</h3>
+<div class="outline-text-3" id="text-3-5">
+
+<div class="figure">
+<p><img src="images/Cloud Computing/screenshot_2018-05-10_16-55-26.png" alt="screenshot_2018-05-10_16-55-26.png" />
+</p>
+</div>
+</div>
+
+<div id="outline-container-org3744e24" class="outline-4">
+<h4 id="org3744e24">IaaS</h4>
+<div class="outline-text-4" id="text-org3744e24">
+<ul class="org-ul">
+<li>Self-service models for accessing, monitoring, and managing remote datacenter infrastructures, such as:
+<ul class="org-ul">
+<li>Computing services</li>
+<li>Storage services</li>
+<li>Networking services</li>
+</ul></li>
+<li>Instead of purchasing hardware, the user can purchase IaaS based on consumption, just like electricity</li>
+<li>The user is responsible for application, data, runtime, middleware and OS maintenance</li>
+<li>Providers manage virtualization, servers, hard-drives and networking</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org3e76e50" class="outline-4">
+<h4 id="org3e76e50">PaaS</h4>
+<div class="outline-text-4" id="text-org3e76e50">
+<ul class="org-ul">
+<li>Used for applications and other development, while providing cloud components</li>
+<li>Developers get a "ready-made" framework they can build upon applications</li>
+<li>Makes the development, testing and deployment quick, simple and cost-effective</li>
+<li>PaaS allows you to create applications using software components that are built into the PaaS</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org4624c83" class="outline-4">
+<h4 id="org4624c83">SaaS</h4>
+<div class="outline-text-4" id="text-org4624c83">
+<ul class="org-ul">
+<li>Represents the largest cloud market and quickly growing</li>
+<li>Uses the web to deliver applications that are managed by a third-party vendor</li>
+<li>Most SaaS can be run directly from a Web browser</li>
+<li>Eliminates the need to install applications on devices</li>
+<li>All backend is managed by the vendor:
+<ul class="org-ul">
+<li>Applications</li>
+<li>Runtime</li>
+<li>Data</li>
+<li>Middleware</li>
+<li>OS</li>
+<li>Virtualization</li>
+<li>Servers</li>
+<li>Storage</li>
+<li>Networking</li>
+</ul></li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orge007375" class="outline-3">
+<h3 id="orge007375"><span class="section-number-3">3.6</span> Advantages of cloud computing</h3>
+<div class="outline-text-3" id="text-3-6">
+</div>
+<div id="outline-container-orgd375fa6" class="outline-4">
+<h4 id="orgd375fa6">Cost Saving</h4>
+<div class="outline-text-4" id="text-orgd375fa6">
+<ul class="org-ul">
+<li>No server storage and application requirements</li>
+<li>No extra power costs, air conditioning and administration</li>
+<li>Pay-as-you-go</li>
+<li>Affordable</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org50dce6c" class="outline-4">
+<h4 id="org50dce6c">Reliability</h4>
+<div class="outline-text-4" id="text-org50dce6c">
+<ul class="org-ul">
+<li>Managed services are much more reliable than an in-house platform</li>
+<li>Most providers give 24/7/365 99.99% reliability</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org4551ad5" class="outline-4">
+<h4 id="org4551ad5">Manageability</h4>
+<div class="outline-text-4" id="text-org4551ad5">
+<ul class="org-ul">
+<li>Enhanced and simplified management and maintenance</li>
+<li>Central administration of resources</li>
+<li>No maintenance or infrastructure update, hence all is provided by the vendor</li>
+<li>All accessible through a web interface</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgb33328f" class="outline-4">
+<h4 id="orgb33328f">Strategic Edge</h4>
+<div class="outline-text-4" id="text-orgb33328f">
+<ul class="org-ul">
+<li>Ever-increasing computing resources give you a competitive edge over the competition</li>
+<li>Deploy mission critical applications without upfront costs and minimal provision time</li>
+<li>Cloud allows to forget about technology and focus on your key business activities and objectives</li>
+<li>Reduce the time to market newer applications and services</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org973d695" class="outline-3">
+<h3 id="org973d695"><span class="section-number-3">3.7</span> Disadvantages of Cloud Computing</h3>
+<div class="outline-text-3" id="text-3-7">
+</div>
+<div id="outline-container-org7950636" class="outline-4">
+<h4 id="org7950636">Downtime</h4>
+<div class="outline-text-4" id="text-org7950636">
+<ul class="org-ul">
+<li>Vendor might be overwhelmed</li>
+<li>Suspension of business processes</li>
+<li>Inability to access any of applications, and/or data</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org63341fb" class="outline-4">
+<h4 id="org63341fb">Security</h4>
+<div class="outline-text-4" id="text-org63341fb">
+<ul class="org-ul">
+<li>Storing data on external servers always poses a risk</li>
+<li>Providing the vendor with important business data</li>
+<li>Public service is open to security challenges</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org375c85a" class="outline-4">
+<h4 id="org375c85a">Vendor Lock-In</h4>
+<div class="outline-text-4" id="text-org375c85a">
+<ul class="org-ul">
+<li>Switching cloud vendors is usually difficult, since each have their own infrastructure</li>
+<li>Difficult to migrate from one service to another</li>
+<li>Switching might cause interoperability and support issues</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgdab28f0" class="outline-4">
+<h4 id="orgdab28f0">Limited Control</h4>
+<div class="outline-text-4" id="text-orgdab28f0">
+<ul class="org-ul">
+<li>Minimal control on the customer's behalf</li>
+<li>Cannot control the backend infrastructure if required</li>
+<li>Shell access, updates and firmware management may not be passed to the customer</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org949f7a8" class="outline-2">
+<h2 id="org949f7a8"><span class="section-number-2">4</span> Internet Structure</h2>
+<div class="outline-text-2" id="text-4">
+</div>
+<div id="outline-container-org184aef0" class="outline-3">
+<h3 id="org184aef0"><span class="section-number-3">4.1</span> Hosts: End systems</h3>
+<div class="outline-text-3" id="text-4-1">
+<ul class="org-ul">
+<li>Takes the message from an application</li>
+<li>Breaks the message into smaller chunks (packets) of length <b>L</b> bits</li>
+<li>Transmits packet into access network at <b>transmission rate R</b></li>
+</ul>
+
+<div class="figure">
+<p><img src="images/What is the internet/screenshot_2018-05-09_12-28-28.png" alt="screenshot_2018-05-09_12-28-28.png" />
+</p>
+</div>
+<ul class="org-ul">
+<li>Example of transmission time
+<ul class="org-ul">
+<li>L = 7.5 Mbits</li>
+<li>R = 1.5 Mbps</li>
+<li>One hop transmission is 5 sec</li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org2dc67be" class="outline-3">
+<h3 id="org2dc67be"><span class="section-number-3">4.2</span> Network Edge</h3>
+<div class="outline-text-3" id="text-4-2">
+<ul class="org-ul">
+<li><b>Hosts</b>: Clients and servers</li>
+<li><b>Servers</b>: Often in data centers</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orge8f73e9" class="outline-3">
+<h3 id="orge8f73e9"><span class="section-number-3">4.3</span> Physical media</h3>
+<div class="outline-text-3" id="text-4-3">
+</div>
+<div id="outline-container-org07a7034" class="outline-4">
+<h4 id="org07a7034">Types</h4>
+<div class="outline-text-4" id="text-org07a7034">
+<ul class="org-ul">
+<li><b>Bit</b>: propagates between transmitter/receiver pairs</li>
+<li><b>Physical link</b>: what lies between transmitter and receiver</li>
+<li><b>Guided media</b>: signals propagate in solid media: copper, fiber, coax</li>
+<li><b>Unguided media</b>: signals propagate freely: radio</li>
+<li><b>Twisted pair (TP)</b>: two insulated copper wires: Cat 5, Cat 6</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgc6ddea6" class="outline-4">
+<h4 id="orgc6ddea6">Communication links</h4>
+<div class="outline-text-4" id="text-orgc6ddea6">
+<ul class="org-ul">
+<li><b>Fiber</b>
+<ul class="org-ul">
+<li>Huge data transfer rates</li>
+<li>Huge distance via repeaters</li>
+<li>Used by ISPs and continental links</li>
+</ul></li>
+<li><b>Copper</b>
+<ul class="org-ul">
+<li>Capable of big transfer rates</li>
+<li>Good distance</li>
+<li>Used mainly by ISPs</li>
+</ul></li>
+<li><b>Radio</b>
+<ul class="org-ul">
+<li>Great distance</li>
+<li>Slower speeds</li>
+<li>Used in WiFi, mobile networks, etc.</li>
+</ul></li>
+<li><b>Satellite</b>
+<ul class="org-ul">
+<li>Huge area coverage</li>
+<li>Slower speeds due to distance-time delay</li>
+<li>Used by NASA and the like</li>
+</ul></li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org416e441" class="outline-3">
+<h3 id="org416e441"><span class="section-number-3">4.4</span> Access networks</h3>
+<div class="outline-text-3" id="text-4-4">
+<ul class="org-ul">
+<li>DSL</li>
+<li>Cable</li>
+<li>Wireless access networks: WiFi, Mobile</li>
+<li>Home network</li>
+<li>Enterprise access networks</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org63a66f2" class="outline-3">
+<h3 id="org63a66f2"><span class="section-number-3">4.5</span> Network Core:</h3>
+<div class="outline-text-3" id="text-4-5">
+<ul class="org-ul">
+<li>Interconnected routers</li>
+<li>Network of networks</li>
+<li>Packet switching
+<ul class="org-ul">
+<li>Forward packets from one router to the next</li>
+<li><b>Store and forward</b>: entire packet must arrive before it is forwarded to the next link</li>
+<li>End-end delay = 2 * L/R</li>
+</ul></li>
+<li>Queuing and loss
+<ul class="org-ul">
+<li>If arrival rate to the link exceeds transmission rate of the link then the packets will queue, if the buffer overfills the packets will be dropped</li>
+</ul></li>
+<li>Two core functions
+<ul class="org-ul">
+<li><b>Routing</b>: determines source-destination route taken by packets</li>
+<li><b>Forwarding</b>: Move packets from router's input to appropriate router output</li>
+<li>Each router has a <b>forwarding table</b> that moves the packet to the needed output</li>
+</ul></li>
+<li>Alternative options of Network Core: <b>Circuit Switching</b> in which there is no network sharing, each router has a dedicated link to each other
+<ul class="org-ul">
+<li>Does not suit networks with a lot of users</li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgc53190c" class="outline-3">
+<h3 id="orgc53190c"><span class="section-number-3">4.6</span> Hierarchy</h3>
+<div class="outline-text-3" id="text-4-6">
+<ul class="org-ul">
+<li>Mobile networks</li>
+<li>Global ISP</li>
+<li>Regional ISP</li>
+<li>Home Network</li>
+<li>Institutional Network
+<img src="images/NetworksNetworksHierarchy.png" alt="NetworksNetworksHierarchy.png" /></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org0858f17" class="outline-3">
+<h3 id="org0858f17"><span class="section-number-3">4.7</span> Internet Standards</h3>
+<div class="outline-text-3" id="text-4-7">
+<ul class="org-ul">
+<li><b>RFC</b>: Request for comments</li>
+<li><b>IETF</b>: Internet Engineering Task Force</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org9698aea" class="outline-3">
+<h3 id="org9698aea"><span class="section-number-3">4.8</span> Infrastructure that provides services to applications</h3>
+<div class="outline-text-3" id="text-4-8">
+<ul class="org-ul">
+<li>Web</li>
+<li>VoIP</li>
+<li>email</li>
+<li>games</li>
+<li>e-commerce</li>
+<li>etc.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgaa3c460" class="outline-3">
+<h3 id="orgaa3c460"><span class="section-number-3">4.9</span> Provides APIs</h3>
+</div>
+
+<div id="outline-container-org55c898b" class="outline-3">
+<h3 id="org55c898b"><span class="section-number-3">4.10</span> Protocols</h3>
+<div class="outline-text-3" id="text-4-10">
+<ul class="org-ul">
+<li><b>Protocol definition</b>: is a set of standards that defines the format and order of transmission</li>
+<li>Some example types:
+<ul class="org-ul">
+<li>TCP/IP</li>
+<li>HTTP</li>
+<li>Skype</li>
+<li>802.11</li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orge5a223a" class="outline-3">
+<h3 id="orge5a223a"><span class="section-number-3">4.11</span> Share access networks</h3>
+<div class="outline-text-3" id="text-4-11">
+<ul class="org-ul">
+<li>Limitation because of shared packet usage and bandwidth limitation</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-orgba82bea" class="outline-2">
+<h2 id="orgba82bea"><span class="section-number-2">5</span> Delays</h2>
+<div class="outline-text-2" id="text-5">
+</div>
+<div id="outline-container-orge9d5c1c" class="outline-3">
+<h3 id="orge9d5c1c"><span class="section-number-3">5.1</span> Packet data transmission delay</h3>
+<div class="outline-text-3" id="text-5-1">
+<ul class="org-ul">
+<li>Packet transmission delay = time neeeded to transmit L-bit packet into link = L (bits) / R(bits/sec)</li>
+<li>For example L = 8000 bits (one packet is 8000 bits), R = 100Mbps (speed), then it takes 0.00008s to transfer a packet. With the same values one can transfer 12,500 packets per second.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org77e9f97" class="outline-3">
+<h3 id="org77e9f97"><span class="section-number-3">5.2</span> Packet Switching: queuing delay, loss</h3>
+<div class="outline-text-3" id="text-5-2">
+<ul class="org-ul">
+<li>If the receiving end has a much lower speed than the actual input then packets get lost and the transmission speed drops due to packets needing re-sending</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org4161780" class="outline-3">
+<h3 id="org4161780"><span class="section-number-3">5.3</span> Lookup table delay</h3>
+<div class="outline-text-3" id="text-5-3">
+<ul class="org-ul">
+<li>Routers take time to lookup the IP tables to know where to send the packet</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgd0721a6" class="outline-3">
+<h3 id="orgd0721a6"><span class="section-number-3">5.4</span> Alternative: Circuit switching</h3>
+<div class="outline-text-3" id="text-5-4">
+<ul class="org-ul">
+<li>Routes are predefined so that the route does not need to be looked up</li>
+<li>The downside is that it predefined and does not ever get the potential full speed</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org8ab1bb7" class="outline-3">
+<h3 id="org8ab1bb7"><span class="section-number-3">5.5</span> Packet Switching vs Circuit Switching</h3>
+<div class="outline-text-3" id="text-5-5">
+<ul class="org-ul">
+<li>Packet switching provides full bandwith for a single user and a queue based packets for more users</li>
+<li>Circuit Switching allows to "slice" the bandwidth individually on a per-user basis</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgc566043" class="outline-3">
+<h3 id="orgc566043"><span class="section-number-3">5.6</span> FDM vs TDM</h3>
+<div class="outline-text-3" id="text-5-6">
+
+<div class="figure">
+<p><img src="images/FDMvsTDM.png" alt="FDMvsTDM.png" />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org983eb81" class="outline-3">
+<h3 id="org983eb81"><span class="section-number-3">5.7</span> Transmission delay</h3>
+<div class="outline-text-3" id="text-5-7">
+<p>
+Is the time it takes to send a single bit
+</p>
+</div>
+</div>
+
+<div id="outline-container-org0617cd9" class="outline-3">
+<h3 id="org0617cd9"><span class="section-number-3">5.8</span> Propagation delay</h3>
+<div class="outline-text-3" id="text-5-8">
+<p>
+Is the time to send a full packet
+</p>
+</div>
+</div>
+
+<div id="outline-container-org9df8233" class="outline-3">
+<h3 id="org9df8233"><span class="section-number-3">5.9</span> Four usual sources of delays</h3>
+<div class="outline-text-3" id="text-5-9">
+<ul class="org-ul">
+<li>Delay = transmission + propagation + nodal processing + queuing</li>
+<li>Transmission</li>
+<li>Propagation</li>
+<li>Nodal processing
+<ul class="org-ul">
+<li>Check bit errors</li>
+<li>Determine output link</li>
+<li>Typically &lt; msec</li>
+</ul></li>
+<li>Queuing</li>
+</ul>
+
+<div class="figure">
+<p><img src="images/Delays/screenshot_2018-05-09_12-57-31.png" alt="screenshot_2018-05-09_12-57-31.png" />
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org75d003c" class="outline-2">
+<h2 id="org75d003c"><span class="section-number-2">6</span> Internet protocol stack</h2>
+<div class="outline-text-2" id="text-6">
+<ul class="org-ul">
+<li><b>Applications</b>, supporting network applications: FPT, SMTP, HTTP</li>
+<li><b>Transport</b>, process-process data transfer: TCP, UDP</li>
+<li><b>Network</b>, routing of datagrams from source to destination: IP, routing protocols</li>
+<li><b>Link</b>, data transfer between network elements: Ethernet, 802.111 (WiFi)</li>
+<li><b>Physical</b>: bits "on a wire"</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org6bf4114" class="outline-2">
+<h2 id="org6bf4114"><span class="section-number-2">7</span> Layers</h2>
+<div class="outline-text-2" id="text-7">
+<ul class="org-ul">
+<li>Hosts</li>
+<li>Routers</li>
+<li>Links of various media</li>
+<li>Applications</li>
+<li>Protocols</li>
+<li>Hardware, software</li>
+</ul>
+</div>
+
+<div id="outline-container-orgf558659" class="outline-3">
+<h3 id="orgf558659"><span class="section-number-3">7.1</span> Layering</h3>
+<div class="outline-text-3" id="text-7-1">
+<ul class="org-ul">
+<li>Messages in the network are send between layers, and are composed of protocols</li>
+<li>Layers are used due to the complexity of the architecture and the different protocols</li>
+<li>Layers allow for an easier maintenance</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org7efff91" class="outline-3">
+<h3 id="org7efff91"><span class="section-number-3">7.2</span> Encapsulation</h3>
+<div class="outline-text-3" id="text-7-2">
+
+<div class="figure">
+<p><img src="images/Networks_Data_Encapsulation.png" alt="Networks_Data_Encapsulation.png" />
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orgb3419ce" class="outline-2">
+<h2 id="orgb3419ce"><span class="section-number-2">8</span> The application layer</h2>
+<div class="outline-text-2" id="text-8">
+<ul class="org-ul">
+<li>FTP</li>
+<li>SMTP</li>
+<li>HTTP</li>
+</ul>
+</div>
+
+<div id="outline-container-org9c39dbc" class="outline-3">
+<h3 id="org9c39dbc"><span class="section-number-3">8.1</span> Application architecture types</h3>
+<div class="outline-text-3" id="text-8-1">
+<ul class="org-ul">
+<li><b>Client-to-server</b>
+<ul class="org-ul">
+<li>Server is always-on type host</li>
+<li>Server has a permanent IP</li>
+<li>Client communicates with the server</li>
+<li>Client may be connected intermittently, may have a dynamic IP</li>
+<li>Clients do not directly communicate with each other</li>
+</ul></li>
+<li><b>Peer-to-peer</b> (P2P)
+<ul class="org-ul">
+<li>No always-on server</li>
+<li>Arbitrary end-systems communicate directly</li>
+<li>Peers request services from other peers</li>
+<li>Peers are intermittently connected and change IP addresses</li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orge506df8" class="outline-3">
+<h3 id="orge506df8"><span class="section-number-3">8.2</span> Processes communication</h3>
+<div class="outline-text-3" id="text-8-2">
+<ul class="org-ul">
+<li><b>Client process</b>: process that initiates communication</li>
+<li><b>Server process</b>: process that waits to be contacted with</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org91ffd8e" class="outline-3">
+<h3 id="org91ffd8e"><span class="section-number-3">8.3</span> Sockets</h3>
+<div class="outline-text-3" id="text-8-3">
+<ul class="org-ul">
+<li>Processes often use sockets for communication purposes</li>
+<li>Processes send/receive messages to/from its sockets</li>
+<li>Sockets are analogous to doors</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org2f79077" class="outline-3">
+<h3 id="org2f79077"><span class="section-number-3">8.4</span> Receiving messages</h3>
+<div class="outline-text-3" id="text-8-4">
+<ul class="org-ul">
+<li>One of the most important information that needs to be transferred is the <b>indentifier</b></li>
+<li><b>Identifier</b> contains the <b>IP</b>, <b>protocol</b> and <b>port number</b>. This exactly indicates the intent of the message</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org26ac585" class="outline-3">
+<h3 id="org26ac585"><span class="section-number-3">8.5</span> Application layer protocols</h3>
+<div class="outline-text-3" id="text-8-5">
+<ul class="org-ul">
+<li><b>Type of message exchanged</b>: e.g. request, response</li>
+<li><b>Message syntax</b>: what fields in messages and how fields are delineated</li>
+<li><b>Message semantic</b>: meaning of information in fields</li>
+<li><b>Rules</b>: how processes send and respond to messages</li>
+<li><b>Open protocol</b>: defined in RFCs, allows for interoperability, e.g. HTTP, SMTP</li>
+<li><b>Proprietary protocol</b>: e.g. Skype</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org30c558d" class="outline-3">
+<h3 id="org30c558d"><span class="section-number-3">8.6</span> Transport services that are necessary for an App</h3>
+<div class="outline-text-3" id="text-8-6">
+<ul class="org-ul">
+<li><b>Data integrity</b>
+<ul class="org-ul">
+<li>Some apps like Web browser require 100% reliability</li>
+<li>Some apps tolerate loss: e.g. audio, video</li>
+</ul></li>
+<li><b>Timing</b>
+<ul class="org-ul">
+<li>Some apps are OK with low delay to be effective</li>
+</ul></li>
+<li><b>Throughput</b>
+<ul class="org-ul">
+<li>Some apps require a minimum throughput</li>
+<li>Some apps are elastic in this area</li>
+</ul></li>
+<li><b>Security</b>
+<ul class="org-ul">
+<li>Encryption</li>
+<li>Data integrity</li>
+</ul></li>
+</ul>
+
+<div class="figure">
+<p><img src="images/The application layer/screenshot_2018-05-09_14-20-07.png" alt="screenshot_2018-05-09_14-20-07.png" />
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org47d92dd" class="outline-2">
+<h2 id="org47d92dd"><span class="section-number-2">9</span> HTTP Connections, Application layer</h2>
+<div class="outline-text-2" id="text-9">
+</div>
+<div id="outline-container-org59b2e05" class="outline-3">
+<h3 id="org59b2e05"><span class="section-number-3">9.1</span> Definitions</h3>
+<div class="outline-text-3" id="text-9-1">
+<ul class="org-ul">
+<li>Web's application layer protocol</li>
+<li><b>Persistent</b>, allows for multiple objects to be sent over a single connection</li>
+<li><b>Non-persistent</b>, only one object per connection is allowed</li>
+<li><b>RTT</b>: time for a small packet to travel from client to server and back</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgcfd59fe" class="outline-3">
+<h3 id="orgcfd59fe"><span class="section-number-3">9.2</span> Flow of a non-persistent connection</h3>
+<div class="outline-text-3" id="text-9-2">
+<ul class="org-ul">
+<li>Client initiates TCP connection to server over port 80</li>
+<li>Server accepts TCP connection from client</li>
+<li>Client requests a specific object</li>
+<li>Server sends object back, TCP connection closed</li>
+<li>Client receives object</li>
+<li>Repeat all steps for every object</li>
+<li>2 RTT + file transmission, per objects</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org4382bf2" class="outline-3">
+<h3 id="org4382bf2"><span class="section-number-3">9.3</span> Flow for a persistent connection</h3>
+<div class="outline-text-3" id="text-9-3">
+<ul class="org-ul">
+<li>The server leaves the connection open after sending the initial response</li>
+<li>Subsequent HTTP messages are sent over the open connection</li>
+<li>As little as one RTT for all the referenced objects</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org461eef9" class="outline-3">
+<h3 id="org461eef9"><span class="section-number-3">9.4</span> HTTP request header</h3>
+<div class="outline-text-3" id="text-9-4">
+</div>
+<div id="outline-container-org3ec027b" class="outline-4">
+<h4 id="org3ec027b">Example header</h4>
+<div class="outline-text-4" id="text-org3ec027b">
+
+<div class="figure">
+<p><img src="images/HTTP Connections/screenshot_2018-05-09_14-34-54.png" alt="screenshot_2018-05-09_14-34-54.png" />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgcb3d008" class="outline-4">
+<h4 id="orgcb3d008">Format</h4>
+<div class="outline-text-4" id="text-orgcb3d008">
+
+<div class="figure">
+<p><img src="images/HTTP Connections/screenshot_2018-05-09_14-36-20.png" alt="screenshot_2018-05-09_14-36-20.png" />
+</p>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org8c6415b" class="outline-3">
+<h3 id="org8c6415b"><span class="section-number-3">9.5</span> HTTP response header</h3>
+<div class="outline-text-3" id="text-9-5">
+</div>
+<div id="outline-container-orga49c65c" class="outline-4">
+<h4 id="orga49c65c">Example header</h4>
+<div class="outline-text-4" id="text-orga49c65c">
+
+<div class="figure">
+<p><img src="images/HTTP Connections/screenshot_2018-05-09_14-38-06.png" alt="screenshot_2018-05-09_14-38-06.png" />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org271c625" class="outline-4">
+<h4 id="org271c625">Status messages</h4>
+<div class="outline-text-4" id="text-org271c625">
+<ul class="org-ul">
+<li><b>200 OK</b> - request successful, requested object in the body</li>
+<li><b>301 Moved Permanently</b> - requested object moved, new location specified in the <b>Location:</b> field</li>
+<li><b>400 Bad Request</b> - request message not understood by server</li>
+<li><b>404 Not Found</b> - Requested document not found on this server</li>
+<li><b>505 HTTP Version Not Supported</b></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org8939078" class="outline-2">
+<h2 id="org8939078"><span class="section-number-2">10</span> Email</h2>
+<div class="outline-text-2" id="text-10">
+</div>
+<div id="outline-container-orgf07bfb1" class="outline-3">
+<h3 id="orgf07bfb1"><span class="section-number-3">10.1</span> Major components</h3>
+<div class="outline-text-3" id="text-10-1">
+<ul class="org-ul">
+<li>User agents</li>
+<li>Mail servers
+<ul class="org-ul">
+<li>Mailbox</li>
+<li>Message queue</li>
+<li>SMTP protocol</li>
+</ul></li>
+<li>Simple mail transfer protocol: SMTP
+<ul class="org-ul">
+<li>Uses TCP on port 25</li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org7b7324a" class="outline-3">
+<h3 id="org7b7324a"><span class="section-number-3">10.2</span> Sending phases</h3>
+<div class="outline-text-3" id="text-10-2">
+<ul class="org-ul">
+<li>Handshaking</li>
+<li>Transfer of messages</li>
+<li>Closure</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orge57adc2" class="outline-3">
+<h3 id="orge57adc2"><span class="section-number-3">10.3</span> Email's life</h3>
+<div class="outline-text-3" id="text-10-3">
+<ul class="org-ul">
+<li>Alice composes a message to bob</li>
+<li>Alice sends the message via UA to the server</li>
+<li>The server contacts Bob's server via SMTP and TCP</li>
+<li>The server sends Alice's message to Bob's server</li>
+<li>Bob's mail server places the message in his mailbox</li>
+<li>Bob uses UA to read the message</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org75dd446" class="outline-3">
+<h3 id="org75dd446"><span class="section-number-3">10.4</span> Message format</h3>
+<div class="outline-text-3" id="text-10-4">
+<ul class="org-ul">
+<li>Header
+<ul class="org-ul">
+<li>To:</li>
+<li>From:</li>
+<li>Subject</li>
+</ul></li>
+<li>Body</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org7618da7" class="outline-3">
+<h3 id="org7618da7"><span class="section-number-3">10.5</span> Mail access protocols</h3>
+<div class="outline-text-3" id="text-10-5">
+<ul class="org-ul">
+<li>SMTP: Send email</li>
+<li>POP: Retrieve email
+<ul class="org-ul">
+<li>Authorize phase</li>
+<li>Transaction phase</li>
+</ul></li>
+<li>IMAP; Retrieve and manipulate emails on the server</li>
+<li>HTTP: Web-mail</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-org4f5ae07" class="outline-2">
+<h2 id="org4f5ae07"><span class="section-number-2">11</span> Cookies</h2>
+<div class="outline-text-2" id="text-11">
+</div>
+<div id="outline-container-org08d4ac9" class="outline-3">
+<h3 id="org08d4ac9"><span class="section-number-3">11.1</span> Components</h3>
+<div class="outline-text-3" id="text-11-1">
+<ul class="org-ul">
+<li>Cookie header line of HTTP response message</li>
+<li>Cookie header line in next HTTP request message</li>
+<li>Cookie file kept on user's hots, managed by user's browser</li>
+<li>Back-end database at web site</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-org913b6c0" class="outline-2">
+<h2 id="org913b6c0"><span class="section-number-2">12</span> Transport layer - TCP vs UDP</h2>
+<div class="outline-text-2" id="text-12">
+</div>
+<div id="outline-container-org8bfac43" class="outline-3">
+<h3 id="org8bfac43"><span class="section-number-3">12.1</span> TCP</h3>
+<div class="outline-text-3" id="text-12-1">
+<ul class="org-ul">
+<li><b>Reliable transport</b>
+<ul class="org-ul">
+<li>Between sending and receiving processes</li>
+</ul></li>
+<li><b>Flow control</b>
+<ul class="org-ul">
+<li>Sender won't overwhelm receiver</li>
+</ul></li>
+<li><b>Congestion control</b>
+<ul class="org-ul">
+<li>Throttle sender when network overloaded</li>
+</ul></li>
+<li><b>Does not provide timing</b>
+<ul class="org-ul">
+<li>Timing, minimum throughput guarantee, security</li>
+</ul></li>
+<li><b>Connection-oriented</b>
+<ul class="org-ul">
+<li>Setup required between client and server processes</li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org1e5f690" class="outline-3">
+<h3 id="org1e5f690"><span class="section-number-3">12.2</span> UDP</h3>
+<div class="outline-text-3" id="text-12-2">
+<ul class="org-ul">
+<li><b>Unreliable data transfer</b>
+<ul class="org-ul">
+<li>Between sending and receiving process</li>
+</ul></li>
+<li><b>Does not provide</b>
+<ul class="org-ul">
+<li>Reliability, flow control, congestion control, timing, throughput guarantee, security, or connection setup</li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org070b58c" class="outline-3">
+<h3 id="org070b58c"><span class="section-number-3">12.3</span> Usage</h3>
+<div class="outline-text-3" id="text-12-3">
+<ul class="org-ul">
+<li><b>TCP</b> - SMTP, Telnet, HTTP, FTP, RTP</li>
+<li><b>UDP</b> - HTTP, RTP, proprietary Skype</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org2997a74" class="outline-3">
+<h3 id="org2997a74"><span class="section-number-3">12.4</span> TCP and UDP</h3>
+<div class="outline-text-3" id="text-12-4">
+<ul class="org-ul">
+<li>Provide no encryption</li>
+<li>Clear text passwords sent into sockets traverse Internet</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org2c9e894" class="outline-3">
+<h3 id="org2c9e894"><span class="section-number-3">12.5</span> Securing via SSL</h3>
+<div class="outline-text-3" id="text-12-5">
+<ul class="org-ul">
+<li>Provides TCP with encryption</li>
+<li>Exists in the Application Layer</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-orgec95805" class="outline-2">
+<h2 id="orgec95805"><span class="section-number-2">13</span> Transport Layer</h2>
+<div class="outline-text-2" id="text-13">
+</div>
+<div id="outline-container-org775c917" class="outline-3">
+<h3 id="org775c917"><span class="section-number-3">13.1</span> Goals</h3>
+<div class="outline-text-3" id="text-13-1">
+<ul class="org-ul">
+<li>Provide logical communication between app processes running on different hosts</li>
+<li>Transport protocol run in end systems
+<ul class="org-ul">
+<li><b>Sending side</b>: breaks application messages into <b>segments</b> and passes them to the Network Layer</li>
+<li><b>Receiving side</b>: reassembles segments into messages, passes to application layer</li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org7ac87d8" class="outline-3">
+<h3 id="org7ac87d8"><span class="section-number-3">13.2</span> Protocols</h3>
+<div class="outline-text-3" id="text-13-2">
+<ul class="org-ul">
+<li><b>TCP</b> - Reliable, in-order delivery
+<ul class="org-ul">
+<li>Congestion control</li>
+<li>Flow control</li>
+<li>Connection setup</li>
+</ul></li>
+<li><b>UDP</b> - unreliable, unordered delivery
+<ul class="org-ul">
+<li>No-frills extension of "best-effort" IP</li>
+<li>No handshaking between sender and receiver</li>
+<li>Uses a checksum to validate the data</li>
+</ul></li>
+<li>Services not available
+<ul class="org-ul">
+<li>Delay guarantees</li>
+<li>Bandwidth guarantees</li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org8376ee0" class="outline-3">
+<h3 id="org8376ee0"><span class="section-number-3">13.3</span> Multiplexing/demultiplexing</h3>
+<div class="outline-text-3" id="text-13-3">
+
+<div class="figure">
+<p><img src="images/Transport Layer/screenshot_2018-05-10_13-56-13.png" alt="screenshot_2018-05-10_13-56-13.png" />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org48cc183" class="outline-3">
+<h3 id="org48cc183"><span class="section-number-3">13.4</span> Connectionless demultiplexing</h3>
+<div class="outline-text-3" id="text-13-4">
+<ul class="org-ul">
+<li>Created socket has host-local port number</li>
+<li>When creating a datagram to send into UDP socket, must specify
+<ul class="org-ul">
+<li>Destination IP address</li>
+<li>Destination port number</li>
+</ul></li>
+<li>When host receives UDP segments
+<ul class="org-ul">
+<li>Check destination port</li>
+<li>Direct UDP segment to socket with the port number</li>
+</ul></li>
+<li>Diagram</li>
+</ul>
+
+<div class="figure">
+<p><img src="images/Transport Layer/screenshot_2018-05-10_13-57-29.png" alt="screenshot_2018-05-10_13-57-29.png" />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orga716178" class="outline-3">
+<h3 id="orga716178"><span class="section-number-3">13.5</span> Connection-oriented demultiplexing</h3>
+<div class="outline-text-3" id="text-13-5">
+<ul class="org-ul">
+<li>TCP socket identified by a 4-tuple:
+<ul class="org-ul">
+<li>source IP</li>
+<li>source port number</li>
+<li>destination IP</li>
+<li>destination port number</li>
+</ul></li>
+<li>Demultiplexing receiver uses all four values to direct segment to appropriate socket</li>
+<li>Server host may support many simultaneous TCP sockets
+<ul class="org-ul">
+<li>Each socket identified by its own 4-tuple</li>
+</ul></li>
+<li>Web servers have different sockets for each connecting client</li>
+<li>Diagram</li>
+</ul>
+
+<div class="figure">
+<p><img src="images/Transport Layer/screenshot_2018-05-10_13-58-35.png" alt="screenshot_2018-05-10_13-58-35.png" />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org4b67d9e" class="outline-3">
+<h3 id="org4b67d9e"><span class="section-number-3">13.6</span> Reliable data transfer</h3>
+<div class="outline-text-3" id="text-13-6">
+
+<div class="figure">
+<p><img src="images/Transport Layer/screenshot_2018-05-10_14-06-22.png" alt="screenshot_2018-05-10_14-06-22.png" />
+</p>
+</div>
+<ul class="org-ul">
+<li>rdt1.0
+<ul class="org-ul">
+<li>Underlying channel reliable</li>
+<li>No bit errors</li>
+<li>No loss of packets</li>
+</ul></li>
+<li>rdt2.0
+<ul class="org-ul">
+<li>Checksum to detect bit flip errors</li>
+<li>Receiver sends an ACK or NAK to the sender to acknowledge the package</li>
+<li>Crucial flaw when the ACK/NAK is corrupted</li>
+<li>Stop and wait mechanism with <b>sequence numbers</b></li>
+<li>Sender re-transmits if necessary</li>
+</ul></li>
+<li>rdt3.0
+<ul class="org-ul">
+<li>Uses same principles as rdt2.0, but:</li>
+<li>Sender waits a "reasonable" amount of time for ACK</li>
+<li>Re-transmission if ACK not received</li>
+<li>If an unnecessary re-transmission occurs then the sequence number handles the duplicate</li>
+</ul></li>
+<li>rdt3.0 example operation</li>
+</ul>
+
+<div class="figure">
+<p><img src="images/Transport Layer/screenshot_2018-05-10_14-16-30.png" alt="screenshot_2018-05-10_14-16-30.png" />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgf5946cd" class="outline-3">
+<h3 id="orgf5946cd"><span class="section-number-3">13.7</span> Pipeline protocols</h3>
+<div class="outline-text-3" id="text-13-7">
+<ul class="org-ul">
+<li>Sender allows multiple, "in-flight", yet-to-be-acknowledged packets
+<ul class="org-ul">
+<li>Range of sequence numbers is increased</li>
+<li>Buffering at sender and/or receiver</li>
+</ul></li>
+<li>Two forms of pipelined protocols
+<ul class="org-ul">
+<li><b>go-Back-N</b>
+<ul class="org-ul">
+<li>Sender can have up to N unACKed packets in pipeline</li>
+<li>Receiver only sends <b>cumulative ACK</b>. Doesn't ACK packets if there is a gap</li>
+<li>Server has timer for the oldest unACKed packet</li>
+</ul></li>
+<li><b>Selective repeat</b>
+<ul class="org-ul">
+<li>Sender can have up to N unACKed packets in pipeline</li>
+<li>Receiver sends <b>individual ACK</b> for each packet</li>
+<li>Server has timer for each unACKed packet</li>
+</ul></li>
+</ul></li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-org0c6a830" class="outline-2">
+<h2 id="org0c6a830"><span class="section-number-2">14</span> Transport Layer, TCP</h2>
+<div class="outline-text-2" id="text-14">
+</div>
+<div id="outline-container-org0eeac9c" class="outline-3">
+<h3 id="org0eeac9c"><span class="section-number-3">14.1</span> Characteristics</h3>
+<div class="outline-text-3" id="text-14-1">
+<ul class="org-ul">
+<li>TCP provides reliable end-to-end data transmission using full-duplex buffered communication</li>
+<li>Strongly influences IP network performance</li>
+<li>Sets up and closes down the logical connection</li>
+<li>Reliable data transfer</li>
+<li>Flow control</li>
+<li>Congestion control</li>
+<li>TCP creates <b>rdt</b> service on top of IP's unreliable service
+<ul class="org-ul">
+<li>Pipelined segments</li>
+<li>Cumulative ACKs</li>
+<li>Single Re-transmission timer, triggered by:
+<ul class="org-ul">
+<li>Timeout event</li>
+<li>Duplicate ACKs</li>
+</ul></li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org649af2f" class="outline-3">
+<h3 id="org649af2f"><span class="section-number-3">14.2</span> Segment structure</h3>
+<div class="outline-text-3" id="text-14-2">
+
+<div class="figure">
+<p><img src="images/Transport Layer, TCP/screenshot_2018-05-10_14-29-41.png" alt="screenshot_2018-05-10_14-29-41.png" />
+</p>
+</div>
+<ul class="org-ul">
+<li><b>Sequence numbers</b>
+<ul class="org-ul">
+<li>Byte stream number of first byte in segment's data</li>
+</ul></li>
+<li><b>Acknowledgements</b>
+<ul class="org-ul">
+<li>Sequence number of next byte expected from other side</li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org424cb45" class="outline-3">
+<h3 id="org424cb45"><span class="section-number-3">14.3</span> Transmission of Seq and ACK</h3>
+<div class="outline-text-3" id="text-14-3">
+
+<div class="figure">
+<p><img src="images/Transport Layer, TCP/screenshot_2018-05-10_14-33-02.png" alt="screenshot_2018-05-10_14-33-02.png" />
+</p>
+</div>
+</div>
+<div id="outline-container-orgedc76b1" class="outline-4">
+<h4 id="orgedc76b1">Sender events</h4>
+<div class="outline-text-4" id="text-orgedc76b1">
+<ul class="org-ul">
+<li>Data received from app, create segment with <b>Seq</b> number
+<ul class="org-ul">
+<li><b>Seq</b> number is byte-stream number of first data byte in segment</li>
+<li>Start timer if not already running</li>
+</ul></li>
+<li>Timeout
+<ul class="org-ul">
+<li>Re-transmit segment</li>
+<li>Restart timer</li>
+</ul></li>
+<li><b>ACK</b> received
+<ul class="org-ul">
+<li>If <b>ACK</b> acknowledges previously unACKed segments: update what is know to be ACKed</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org682241a" class="outline-4">
+<h4 id="org682241a">Receiver events</h4>
+<div class="outline-text-4" id="text-org682241a">
+<ul class="org-ul">
+<li>Arrival of in-order segment with expected <b>Seq</b> number. All data up to expected <b>Seq</b> number already ACKed
+<ul class="org-ul">
+<li>Action: Delayed <b>ACK</b>. Wait up to 500ms for next segment. If no next segment, send cumulative <b>ACK</b></li>
+</ul></li>
+<li>Arrival of in-order segment with expected <b>Seq</b> number. One other segment has <b>ACK</b> pending
+<ul class="org-ul">
+<li>Action: Immediately send singly cumulative <b>ACK</b>, ACKing both in-order segments</li>
+</ul></li>
+<li>Arrival of out of order segment higher-than-expected <b>Seq</b> number. Gap detected.
+<ul class="org-ul">
+<li>Immediately send <b>duplicate ACK</b>, indicating <b>Seq</b> number of next expected byte</li>
+</ul></li>
+<li>Arrival of segment that partially or completely fills gap
+<ul class="org-ul">
+<li>Immediate send ACK, provided that segment starts at lower end of gap</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgfe3ae48" class="outline-4">
+<h4 id="orgfe3ae48">Fast re-transmit</h4>
+<div class="outline-text-4" id="text-orgfe3ae48">
+<ul class="org-ul">
+<li>If sender receives 3 ACKs for same data (triple duplicate ACKs), resend unACKed segment with smallest <b>Seq</b> number</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgd62d3ea" class="outline-3">
+<h3 id="orgd62d3ea"><span class="section-number-3">14.4</span> Flow control</h3>
+<div class="outline-text-3" id="text-14-4">
+<ul class="org-ul">
+<li>Receiver controls the sender, so that the sender does not overflow receiver's buffer by transmitting too much, too fast</li>
+<li>Receiver announces his buffer size in the TCP header in the <b>rwnd</b> value</li>
+<li><b>rwnd</b> enables the sender to check how many "in-flight" packets need to be sent</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org5979f9f" class="outline-3">
+<h3 id="org5979f9f"><span class="section-number-3">14.5</span> Connection management</h3>
+<div class="outline-text-3" id="text-14-5">
+<ul class="org-ul">
+<li>Before data exchange, sender and receiver "handshake"
+<ul class="org-ul">
+<li>Agree to establish a connection</li>
+<li>Agree on connection parameters</li>
+</ul></li>
+<li>3-way handshake</li>
+</ul>
+
+<div class="figure">
+<p><img src="images/Transport Layer, TCP/screenshot_2018-05-10_14-54-42.png" alt="screenshot_2018-05-10_14-54-42.png" />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org98dc992" class="outline-3">
+<h3 id="org98dc992"><span class="section-number-3">14.6</span> Congestion</h3>
+<div class="outline-text-3" id="text-14-6">
+<ul class="org-ul">
+<li>"Too many sources sending too much data too fast for network to handle"</li>
+<li>Different from flow control</li>
+<li>Causes lost packets and long delays</li>
+</ul>
+</div>
+
+<div id="outline-container-org2ee3b12" class="outline-4">
+<h4 id="org2ee3b12">Approach</h4>
+<div class="outline-text-4" id="text-org2ee3b12">
+<ul class="org-ul">
+<li>Sender increases transmission rate (window size), probing for usable bandwidth, until a loss occurs
+<ul class="org-ul">
+<li><b>Additive increase</b>: increase <b>cwnd</b> by 1 <b>MSS</b> every <b>RTT</b> until loss detected</li>
+<li><b>Multiplicative decrease</b>: cut <b>cwnd</b> in half after loss</li>
+</ul></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orgb4f451f" class="outline-2">
+<h2 id="orgb4f451f"><span class="section-number-2">15</span> DNS</h2>
+<div class="outline-text-2" id="text-15">
+<ul class="org-ul">
+<li>Distributed database, implemented in hierarchy of many name servers</li>
+<li>Application-layer protocol, hosts, name servers communicate to resolve names</li>
+</ul>
+</div>
+
+<div id="outline-container-org8a526f5" class="outline-3">
+<h3 id="org8a526f5"><span class="section-number-3">15.1</span> Structure</h3>
+<div class="outline-text-3" id="text-15-1">
+<ul class="org-ul">
+<li>DNS service
+<ul class="org-ul">
+<li>hostname to IP address translation</li>
+<li>Host aliasing</li>
+<li>Mail server aliasing</li>
+<li>Load distribution
+<img src="images/Networks_DNS_hierarchy.png" alt="Networks_DNS_hierarchy.png" /></li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgcb12ed3" class="outline-3">
+<h3 id="orgcb12ed3"><span class="section-number-3">15.2</span> Processing</h3>
+<div class="outline-text-3" id="text-15-2">
+<ul class="org-ul">
+<li>Client wants IP from www.amazon.com</li>
+<li>Client queries root server to get the .com DNS server</li>
+<li>Client queries .com DNS server to get amazon.com DNS server</li>
+<li>Client queries amazon.com DNS server to get the IP address for www.amazon.com</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgd462c61" class="outline-3">
+<h3 id="orgd462c61"><span class="section-number-3">15.3</span> Root servers</h3>
+<div class="outline-text-3" id="text-15-3">
+<ul class="org-ul">
+<li>There are 13 main logical root servers around the world</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org830b688" class="outline-3">
+<h3 id="org830b688"><span class="section-number-3">15.4</span> TLD, Top Level Domain servers</h3>
+<div class="outline-text-3" id="text-15-4">
+<ul class="org-ul">
+<li>Responsible for: com, org, net, edu, aero, jobs, museums and all other country domains, like .ie .co.uk etc.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org14261e4" class="outline-3">
+<h3 id="org14261e4"><span class="section-number-3">15.5</span> Authorative servers</h3>
+<div class="outline-text-3" id="text-15-5">
+<ul class="org-ul">
+<li>DNS servers owned by organizations themselves</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orga4d0218" class="outline-3">
+<h3 id="orga4d0218"><span class="section-number-3">15.6</span> Local DSN name server</h3>
+<div class="outline-text-3" id="text-15-6">
+<ul class="org-ul">
+<li>Does not strictly belong to a hierachy</li>
+<li>Each ISP (ISP, company, university)</li>
+<li>When hosts make a DNS query, query is sent to its local DNS wher it is possibly cached, and thus making connections much faste</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org1583625" class="outline-3">
+<h3 id="org1583625"><span class="section-number-3">15.7</span> DNS resolution example</h3>
+<div class="outline-text-3" id="text-15-7">
+<ul class="org-ul">
+<li>Host want to contact cis.ait.ie and want the IP address</li>
+<li>Contacts the Local DNS server. The server replies "I don't know, ask the Root DNS server"</li>
+<li>Contacts the Root DNS server. The server replies "I don't know, ask the TLD DNS server"</li>
+<li>Contacts the TLD DNS server. The server replies "I don't know, ask the Authoritative DNS server"</li>
+<li>Contacts the Authoritative DNS server. The server replies "I now this, its&#x2026;.."</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgff1c811" class="outline-3">
+<h3 id="orgff1c811"><span class="section-number-3">15.8</span> Caching</h3>
+<div class="outline-text-3" id="text-15-8">
+<ul class="org-ul">
+<li>Cached entries timeout after the interval time <b>TTL</b></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org775c92f" class="outline-3">
+<h3 id="org775c92f"><span class="section-number-3">15.9</span> DNS records</h3>
+<div class="outline-text-3" id="text-15-9">
+<ul class="org-ul">
+<li>DNS records are stored in the RR (resource records)</li>
+<li>RR format <code>(name, value, type, ttl)</code></li>
+<li><code>type A</code>
+<ul class="org-ul">
+<li><code>name</code> is hostname</li>
+<li><code>value</code> is IP address</li>
+</ul></li>
+<li><code>type NS</code>
+<ul class="org-ul">
+<li><code>name</code> is domain (eg. foo.com)</li>
+<li><code>value</code> is hostname of authorative name server for this domain</li>
+</ul></li>
+<li><code>type CNAME</code>
+<ul class="org-ul">
+<li><code>name</code> is alias name for some "canonical" (the real) name</li>
+<li><code>www.ibm.com</code> is really <code>servereast.backup2.ibm.com</code></li>
+<li><code>value</code> is canonical name</li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org6a33864" class="outline-3">
+<h3 id="org6a33864"><span class="section-number-3">15.10</span> DNS protocol, messages</h3>
+<div class="outline-text-3" id="text-15-10">
+<ul class="org-ul">
+<li>query and reply have the same format
+<img src="images/Networks_DNS_message_format.png" alt="Networks_DNS_message_format.png" />
+<img src="images/Networks_DNS_message_format1.png" alt="Networks_DNS_message_format1.png" /></li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-orgc026312" class="outline-2">
+<h2 id="orgc026312"><span class="section-number-2">16</span> Network Layer</h2>
+<div class="outline-text-2" id="text-16">
+<ul class="org-ul">
+<li>Transport segments from sending to receiving host</li>
+<li>On send encapsulate segments into datagrams</li>
+<li>On receive deliver segments to the Transport Layer</li>
+<li>Network layer protocols in <b>every</b> host, router</li>
+<li>Router examines the header in all IP datagrams passing through it</li>
+</ul>
+</div>
+
+<div id="outline-container-org0da03f0" class="outline-3">
+<h3 id="org0da03f0"><span class="section-number-3">16.1</span> Two core functions</h3>
+<div class="outline-text-3" id="text-16-1">
+<ul class="org-ul">
+<li><b>Forwarding</b> - move packets from the router's input to the appropriate output</li>
+<li><b>Routing</b> - determine the route that the packet needs to take</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org2f38a42" class="outline-3">
+<h3 id="org2f38a42"><span class="section-number-3">16.2</span> Date Plane</h3>
+<div class="outline-text-3" id="text-16-2">
+<ul class="org-ul">
+<li>Local, per-router function</li>
+<li>Determines how datagram arriving on router input port is forwarded to router output port</li>
+<li>Forwarding function</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgc4d4c88" class="outline-3">
+<h3 id="orgc4d4c88"><span class="section-number-3">16.3</span> Control Plane</h3>
+<div class="outline-text-3" id="text-16-3">
+<ul class="org-ul">
+<li>Network-wide logic</li>
+<li>Determines how datagram is routed among routers along end-to-end path from source host to destination host
+<ul class="org-ul">
+<li><b>Traditional routing algorithms</b>: implemented in routers</li>
+<li><b>Software-defined networking (SDN)</b>: implemented in (remote) routers</li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgd3558b4" class="outline-3">
+<h3 id="orgd3558b4"><span class="section-number-3">16.4</span> Datagram Format</h3>
+<div class="outline-text-3" id="text-16-4">
+
+<div class="figure">
+<p><img src="images/Network Layer/screenshot_2018-05-10_17-35-34.png" alt="screenshot_2018-05-10_17-35-34.png" />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org13e7dec" class="outline-3">
+<h3 id="org13e7dec"><span class="section-number-3">16.5</span> Fragmentation and Reassembly</h3>
+<div class="outline-text-3" id="text-16-5">
+<ul class="org-ul">
+<li><b>MTU</b> - maximum transfer size, largest possible frame</li>
+<li>An IP datagram can be divided (fragmented) into smaller due to a smaller MTU</li>
+<li>The datagram is the reassembled at the destination</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orge80afed" class="outline-3">
+<h3 id="orge80afed"><span class="section-number-3">16.6</span> IPv4</h3>
+<div class="outline-text-3" id="text-16-6">
+</div>
+<div id="outline-container-org5316ca7" class="outline-4">
+<h4 id="org5316ca7">Definitions</h4>
+<div class="outline-text-4" id="text-org5316ca7">
+<ul class="org-ul">
+<li>32 bit identifier for host, router interface</li>
+<li><b>Interface</b> - connection between host/router and physical link
+<ul class="org-ul">
+<li>Routers typically have multiple interfaces</li>
+<li>Host usually has one or more interfaces (e.g. LAN, WiFi)</li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org0992f7b" class="outline-4">
+<h4 id="org0992f7b">IP Addressing Classes</h4>
+<div class="outline-text-4" id="text-org0992f7b">
+
+<div class="figure">
+<p><img src="images/Network Layer/screenshot_2018-05-10_17-47-46.png" alt="screenshot_2018-05-10_17-47-46.png" />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org3ff4ac6" class="outline-4">
+<h4 id="org3ff4ac6">Subnet mask</h4>
+<div class="outline-text-4" id="text-org3ff4ac6">
+<ul class="org-ul">
+<li>Device interfaces with same subnet part of IP address</li>
+<li>Is a number that defines a range of IP addresses that can be used in a network.</li>
+<li>Systems within the same subnet can communicate directly with each other, while systems on different subnets must communicate through a router</li>
+<li>Used to partition networks and limit traffic between them</li>
+<li>Hides the network part of a system's IP address and leaves only the host part as the machine identifier</li>
+<li>A common subnet mask for a Class C IP address is 255.255.255.0.</li>
+<li><b>IP address</b> - subnet part is the high order bits, host part is the low order bits</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org1ad85a6" class="outline-4">
+<h4 id="org1ad85a6">Determining the subnet</h4>
+<div class="outline-text-4" id="text-org1ad85a6">
+<ul class="org-ul">
+<li>Step 1. Determine the class from the first octet
+<ul class="org-ul">
+<li>169.199.109.137 =&gt; 169 is in class B</li>
+<li>255.255.255.192 is the given subnet</li>
+</ul></li>
+<li>Step 2. Use the class of the address to determine which octets are available for hosts
+<ul class="org-ul">
+<li>Class B is Network, Network, Host, Host and thus:</li>
+<li><b>169.199</b>.109.137</li>
+<li><b>255.255</b>.255.192</li>
+</ul></li>
+<li>Step 3. Look at the host octet in the subnet mask. If no bits are set to one, there are no subnets. If any bits are set to one, proceed to step four
+<ul class="org-ul">
+<li><b>255.255</b>.255.192 = 11111111 1100000000 (host octets only)</li>
+</ul></li>
+<li>Step 4. Count the number of 1s in the subnet mask and calculate 2<sup>n</sup> - 2
+<ul class="org-ul">
+<li><b>255.255</b>.255.192 = 11111111 1100000000 = 10 ones, 2<sup>10</sup> = 1024 - 2 = <b>1022 usable subnets created</b></li>
+</ul></li>
+<li>Step 5. Count the number of zeros and raise 2<sup>n</sup> - 2
+<ul class="org-ul">
+<li><b>255.255</b>.255.192 = 11111111 1100000000 = 6 zeros, 2<sup>6</sup> = 64 - 2 = <b>62 usable host addresses created</b></li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org153eeac" class="outline-4">
+<h4 id="org153eeac">Dynamic Host Configuring Protocol (DHCP)</h4>
+<div class="outline-text-4" id="text-org153eeac">
+<ul class="org-ul">
+<li>Allow host to dynamically obtain its IP address from network server when it joins in</li>
+<li>Process
+<ul class="org-ul">
+<li>Host broadcasts "DHCP discover" message</li>
+<li>DHCP sever responds with "DHCP offer" message</li>
+<li>Host requests IP address "DHCP request" message</li>
+<li>DHCP server sends address "DHCP ack" message</li>
+</ul></li>
+<li>DHCP also returns
+<ul class="org-ul">
+<li>Address of first-hop router for client</li>
+<li>Name and IP address of DNS server</li>
+<li>Network mask</li>
+</ul></li>
+<li>Implementation</li>
+</ul>
+
+<div class="figure">
+<p><img src="images/Network Layer/screenshot_2018-05-10_18-35-42.png" alt="screenshot_2018-05-10_18-35-42.png" />
+</p>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org2296a89" class="outline-3">
+<h3 id="org2296a89"><span class="section-number-3">16.7</span> Network Address Translation (NAT)</h3>
+<div class="outline-text-3" id="text-16-7">
+<ul class="org-ul">
+<li>Local network uses just one IP address as far as outside world is concerned
+<ul class="org-ul">
+<li>Range of addresses not needed from ISP</li>
+<li>Can change addresses of local machines without the knowledge of the ISP</li>
+<li>Can change ISP without changing local addresses</li>
+<li>Devices inside the local network not explicitly addressable by the outside world</li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+
+<div id="outline-container-org806a59c" class="outline-3">
+<h3 id="org806a59c"><span class="section-number-3">16.8</span> IPv6</h3>
+<div class="outline-text-3" id="text-16-8">
+<ul class="org-ul">
+<li>Replace IPv4 since the amount of IPs is running out</li>
+<li>Header format speeds up processing/forwarding</li>
+<li>Header Changes to facilitate QoS</li>
+<li>Convering IPv4 to IPv6
+<ul class="org-ul">
+<li><b>Tunneling</b> - IPv6 datagram carried as payload in IPv4 datagram among IPv4 routers</li>
+</ul></li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org1896b61" class="outline-2">
+<h2 id="org1896b61"><span class="section-number-2">17</span> Link Layer</h2>
+<div class="outline-text-2" id="text-17">
+</div>
+<div id="outline-container-org0d00d16" class="outline-3">
+<h3 id="org0d00d16"><span class="section-number-3">17.1</span> Terminology</h3>
+<div class="outline-text-3" id="text-17-1">
+<ul class="org-ul">
+<li><b>Nodes</b> - hosts and routers</li>
+<li><b>Links</b> - communication channels: wired links, wireless, LANs</li>
+<li><b>Frame</b> - encapsulates the datagram, packet of sorts</li>
+<li><b>Data-link layer</b> - has the responsibility of transferring datagram from one node to <b>physically adjacent</b> node over a link</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org2fa4002" class="outline-3">
+<h3 id="org2fa4002"><span class="section-number-3">17.2</span> Link layer service</h3>
+<div class="outline-text-3" id="text-17-2">
+<ul class="org-ul">
+<li><b>Framing, link access</b>: Encapsulate datagram into a frame, adding header and trailer</li>
+<li><b>Reliable delivery between adjacent nodes</b></li>
+<li><b>Flow control</b>: Pacing between adjacent sending and receiving nodes</li>
+<li><b>Error detection</b>: Errors caused by signal attenuation, noise; re-transmit data</li>
+<li><b>Half-duplex and Full-duplex</b>: With half duplex, nodes at both ends of link can transmit, but not at the same time</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org136a4c1" class="outline-3">
+<h3 id="org136a4c1"><span class="section-number-3">17.3</span> Where is it implemented</h3>
+<div class="outline-text-3" id="text-17-3">
+<ul class="org-ul">
+<li>Network card, aka Network Interface Card (NIC)</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org0320ded" class="outline-3">
+<h3 id="org0320ded"><span class="section-number-3">17.4</span> Types of links</h3>
+<div class="outline-text-3" id="text-17-4">
+<ul class="org-ul">
+<li><b>Point-to-point</b>:
+<ul class="org-ul">
+<li>PPP for dialup</li>
+<li>Ethernet links</li>
+</ul></li>
+<li>Broadcast (shared wire or medium)
+<ul class="org-ul">
+<li>Old Ethernet</li>
+<li>WiFi</li>
+<li>Upstream HFC (Hybrid fiber-coaxial)</li>
+<li>Multiple Access Protocol: Algorithm that determines how nodes share channel</li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orga3b8f33" class="outline-3">
+<h3 id="orga3b8f33"><span class="section-number-3">17.5</span> MAC protocols</h3>
+<div class="outline-text-3" id="text-17-5">
+<ul class="org-ul">
+<li>MAC used locally to get frame from one interface to another physically-connected interface</li>
+<li><b>Channel Partitioning</b>
+<ul class="org-ul">
+<li>Divide channel into smaller pieces</li>
+<li><b>FDMA</b> - Frequency division multiple access</li>
+<li><b>CSMA</b> - listen before transmit</li>
+</ul></li>
+<li><b>Random Access</b>
+<ul class="org-ul">
+<li>Channel not divided, allow collision</li>
+<li>"Recover" from collision</li>
+</ul></li>
+<li><b>"Taking turns"</b>
+<ul class="org-ul">
+<li>Nodes take turns, but nodes with more to send will take longer</li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgfa533e0" class="outline-3">
+<h3 id="orgfa533e0"><span class="section-number-3">17.6</span> Address Resolution Protocol (ARP)</h3>
+<div class="outline-text-3" id="text-17-6">
+<ul class="org-ul">
+<li>Each IP node on LAN has a table with IP/MAC address mappings</li>
+<li>Used to lookup "where to send information", if the address is not in the ARP table then look further</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgc06aa98" class="outline-2">
+<h2 id="orgc06aa98"><span class="section-number-2">18</span> Recap, overview of a request</h2>
+<div class="outline-text-2" id="text-18">
+</div>
+<div id="outline-container-org4ed5a34" class="outline-3">
+<h3 id="org4ed5a34"><span class="section-number-3">18.1</span> First Step get IP, first-hop and DNS</h3>
+<div class="outline-text-3" id="text-18-1">
+<ul class="org-ul">
+<li>Connecting laptop needs to get its own IP address, address of first-hop router and address of DNS server: use <b>DHCP</b></li>
+<li>DHCP request <b>encapsulated</b> in <b>UDP</b>, encapsulated in <b>IP</b>, encapsulated in <b>802.3</b> Ethernet</li>
+<li>Ethernet frame <b>broadcast</b> on LAN, received at router running <b>DHCP</b> server</li>
+<li>Ethernet <b>demuxed</b> to IP demuxed, UDP demuxed to DHCP</li>
+<li>DHCP server formulates <b>DHCP ACK</b> containing clients IP address, IP address of first-hop router and name and address of DNS server</li>
+<li>Encapsulation at DHCP server, frame forwarded (<b>switch learning</b>) through LAN, demultiplexing at client</li>
+<li>DHCP client receives DHCP ACK reply</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgb0493cf" class="outline-3">
+<h3 id="orgb0493cf"><span class="section-number-3">18.2</span> ARP</h3>
+<div class="outline-text-3" id="text-18-2">
+<ul class="org-ul">
+<li>Before sending <b>HTTP</b> request, need IP address of www.google.com: <b>DNS</b></li>
+<li>DNS query created, encapsulated in UDP, encapsulated in IP, encapsulated in Ethernet. To send frame to router, need MAC address of router interface: <b>ARP</b></li>
+<li><b>ARP query</b> broadcast, received by router, which replies with <b>ARP reply</b> giving MAC address of router interface</li>
+<li>Client now knows MAC address of first hop router, so can now send frame containing DNS query</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org6f7424a" class="outline-3">
+<h3 id="org6f7424a"><span class="section-number-3">18.3</span> DNS</h3>
+<div class="outline-text-3" id="text-18-3">
+<ul class="org-ul">
+<li>IP datagram containing DNS query forwarded via LAN switch from client to 1st hop-router</li>
+<li>IP datagram forwarded from campus network into Comcast network, routed to DNS server</li>
+<li>Demuxed to DNS server</li>
+<li>DNS server replies to client with IP address of www.google.com</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgd0f8524" class="outline-3">
+<h3 id="orgd0f8524"><span class="section-number-3">18.4</span> TCP</h3>
+<div class="outline-text-3" id="text-18-4">
+<ul class="org-ul">
+<li>To send HTTP request, client first opens <b>TCP socket</b> to web server</li>
+<li>TCP <b>SYN segment</b> (step 1 in 3-way handshake) inter-domain routed to web server</li>
+<li>Web server responds with <b>TCP SYNACK</b> (step 2 in handshake)</li>
+<li>TCP <b>connection established</b></li>
+<li><b>HTTP request</b> sent into TCP socket</li>
+<li>IP datagram containing HTTP request routed to www.google.com</li>
+<li>Web server responds with <b>HTTP reply</b> (containing web page)</li>
+<li>IP datagram containing HTTP reply routed back to client</li>
+</ul>
+
+<script src="../assets/jquery-3.3.1.min.js"></script>
+<script src="../assets/notes.js"></script>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="date">Date: 2018-01-15 Mon 16:09</p>
+<p class="author">Author: Damian Chrzanowski</p>
+<p class="date">Created: 2018-12-13 Thu 20:29</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

@@ -1,0 +1,1018 @@
+#+TITLE: Web Development
+#+DATE: [2017-09-15 Fri 12:43]
+#+AUTHOR: Damian Chrzanowski
+#+EMAIL: pjdamian.chrzanowski@gmail.com
+#+OPTIONS: TOC:2 num:2
+#+HTML_HEAD: <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="../assets/org.css"/>
+#+HTML_HEAD: <link rel="icon" href="../assets/favicon.ico">
+
+[[file:index.org][Home Page]]
+
+* XML
+
+** Definition
+   - XML E *x* tensible *M* arkup *L* anguage
+   - XML is a stripped down version of SGML (Standard Generalised Markup Language)
+   - Is a *Meta* language
+     - Meta language is a language that enables you to create other languages
+   - XML describes information, as opposed to HTML which displays information
+   - In XML you create your own elements/tags and attributes
+   - Provides a separation of Content and Format
+
+** Markup types
+   - Elements
+     - One or more of theses
+     - Start tag and an end tag, and everything in between
+     - Elements can be empty
+     - Elements can be self-closing
+     - Are case sensitive
+   - Entity references
+     - Used to save on repetitive typing, example: ~&lt;~, ~&euro;~
+   - Comments
+     - Begin with ~<!--~ and end with ~-->~
+   - Processing instructions
+     - Are an escape hatch to provide information to the parser/application
+     - E.g. ~<? xml version="1.0"?>~
+   - CDATA sections
+     - Are sections in which the parser ignores the markup characters
+     - E.g.
+       #+BEGIN_SRC xml
+       <![CDATA[
+       *p = &q;
+       b = (i <= 3);
+       ]]>
+       #+END_SRC
+   - Document type declarations
+
+** Well formed XML
+   - Apart from being syntactically correct it also needs to have:
+   - One top elements
+   - All open tags have a corresponding close tag
+   - All tags are correctly nested
+
+* DTD (Document Type Definitions)
+
+** Definition
+   - Provides a schema for what constitutes a valid XML document.
+   - A well formed XML document that conforms to its associated DTD is said to be valid.
+   - If the DTD is declared within the XML document it needs to be wrapped in a DOCTYPE as follow ~<!DOCTYPE root-element [element-declarations]>~
+   - If the DTD is declared in a separate file it needs to be wrapped in a DOCTYPE as follows ~<!DOCTYPE root-element SYSTEM "filename">~
+
+** Declaring elements
+   - ~DOCTYPE~ ~name~ declares the top level element
+   - ~ELEMENT~ ~name~ ~type~ declares the each sub-element
+   - ~*~ means 0 or more
+   - ~+~ means 1 or more
+   - ~?~ means 0 or 1
+   - ~,~ sequence, as in ~(to,from,heading,body)~
+   - ~(news|film|sport)~ means -> news or film or sport
+   - ~#PCDATA~ means a character sequence, basically string content
+   - ~<!ELEMENT para (#PCDATA | emph)*>~ is a special declaration that allows a mixture of text and child elements in any order
+     #+BEGIN_SRC xml
+<?xml version="1.0" standalone="yes"?>
+<!DOCTYPE note [
+<!ELEMENT note (to,from,heading,body)>
+<!ELEMENT to (#PCDATA)>
+<!ELEMENT from (#PCDATA)>
+<!ELEMENT heading (#PCDATA)>
+<!ELEMENT body (#PCDATA)>
+]>
+
+<note>
+  <to>Damian</to>
+  <from>Matthew</from>
+  <heading>Hello</heading>
+  <body>Hello World</body>
+</note>
+     #+END_SRC
+
+** Declaring entities
+   - ~ENTITY~ ~which~ ~"content"~
+     #+BEGIN_SRC xml
+<!DOCTYPE note [
+<!ENTITY nbsp "&#xA0;">
+<!ENTITY writer "Writer: Donald Duck.">
+<!ENTITY copyright "Copyright: W3Schools.">
+]>
+     #+END_SRC
+** Declaring attributes
+   - Syntax: ~<!ATTLIST element-name attr-name attr-type default-value>~
+   - ~CDATA~ is a string type value
+   - ~<!ATTLIST payment type CDATA "cheque">~, is the declaration for ~<payment type="cheque">~
+   - ~<!ATTLIST phone type (Pre-pay | Bill-pay) #REQUIRED>~,  Enumeration and required
+   - ~<!ATTLIST phone freeCallCredit (10 | 20 | 30) "10">~, Enumeration and default value added
+   - The default value can have the following:
+     - The value itself
+     - ~#REQUIRED~, the attribute must be included, eg ~<!ATTLIST phone type (Pre-pay | Bill-pay) #REQUIRED>~
+     - ~#IMPLIED~, the attribute does not have to be included
+     - ~#FIXED~, the attribute value is fixed, eg ~<!ATTLIST phone currency CDATA #FIXED "Euro">~
+** Example
+   - One or more phone elements in phones
+   - The sold element can appear once or not at all (0 or 1 times)
+   - The mandatory type attribute has an enumeration of Pre-pay and Bill-pay
+   - The freeCallCredit attribute has an enumeration of 10 or 20 or 30 with a default of 10
+   - The currency attribute can only ever be Euro (i.e. it is fixed)
+   - The mandatory name attribute has an enumeration of Meteor, O2 and Vodafone
+   - The mandatory profit attribute has an enumeration of yes and no
+   - The mandatory location attribute is text
+   - The standalone attribute in the XML when set to *no* implies an external DTD file
+     #+BEGIN_SRC xml
+   <?xml version="1.0" standalone="no"?>
+   <!DOCTYPE phones SYSTEM "phones.dtd">
+   <phones>
+     <phone type="Pre-pay" freeCallCredit="20" currency="Euro">
+       <number>085-123456</number>
+       <provider name="Meteor" />
+       <sold profit = "yes"/>
+       <maker location="Sweden">Nokia</maker>
+     </phone>
+     <phone type="Bill-pay">
+       <number>086-654321</number>
+       <provider name="O2" />
+       <maker location="USA">Apple</maker>
+     </phone>
+   </phones>
+     #+END_SRC
+     #+BEGIN_SRC sgml
+   <!ELEMENT phones (phone+)>
+   <!ELEMENT phone (number, provider, sold?, maker)>
+   <!ELEMENT number (#PCDATA)>
+   <!ELEMENT provider (#PCDATA)>
+   <!ELEMENT sold (#PCDATA)>
+   <!ELEMENT maker (#PCDATA)>
+
+   <!ATTLIST phone type (Pre-pay | Bill-pay) #REQUIRED>
+   <!ATTLIST phone freeCallCredit (10 | 20 | 30) "10">
+   <!ATTLIST phone currency CDATA #FIXED "Euro">
+
+   <!ATTLIST provider name (Meteor | O2 | Vodafone) #REQUIRED>
+   <!ATTLIST sold profit (yes | no) #REQUIRED>
+   <!ATTLIST maker location CDATA #REQUIRED>
+     #+END_SRC
+
+* XSL
+
+** Definition
+   - Consists of the *transformation* langauge and the *formatting* language
+   - [[file:images/WebDev_xsl.png]]
+   - The transformation language is used to transform an XML document into another type of document. E.g. transforming XML into HTML
+
+
+** Example
+   - DTD for the sample input
+     #+BEGIN_SRC xml
+ <!ELEMENT people (person)*>
+ <!ELEMENT person (name,age,sex,address)>
+ <!ELEMENT name (#PCDATA)>
+ <!ELEMENT age (#PCDATA)>
+ <!ELEMENT sex (#PCDATA)>
+ <!ELEMENT address (#PCDATA)>
+     #+END_SRC
+     - Sample xml input
+       #+BEGIN_SRC xml
+     <?xml version="1.0" standalone="no"?>
+     <?xml-stylesheet type="text/xsl" href="people.xsl"?>
+     <!DOCTYPE people SYSTEM "people.dtd">
+     <people>
+       <person>
+         <name>John</name>
+         <age>2</age>
+         <sex>male</sex>
+         <address>athlone</address>
+       </person>
+       <person>
+         <name>Paul</name>
+         <age>15</age>
+         <sex>male</sex>
+         <address>kerry</address>
+       </person>
+     </people>
+       #+END_SRC
+     - Sample xsl input
+       #+BEGIN_SRC xml
+     <?xml version="1.0"?>
+     <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+       <xsl:template match="/">
+         <html>
+           <head><title>People</title></head>
+           <body>
+             <xsl:apply-templates/>
+           </body>
+         </html>
+       </xsl:template>
+       <xsl:template match="people">
+         <H1> People </H1>
+         <UL>
+           <xsl:for-each select="person">
+             Name : <xsl:value-of select="name"/><br />
+             Age  : <xsl:value-of select="age"/><br />
+             Sex  : <xsl:value-of select="sex"/><br />
+             Address : <xsl:value-of select="address"/><br />
+             <HR />
+           </xsl:for-each>
+         </UL>
+       </xsl:template>
+     </xsl:stylesheet>
+       #+END_SRC
+** Another XSL example
+   #+BEGIN_SRC xml
+<?xml version="1.0" standalone="no"?>
+<?xml-stylesheet type="text/xsl" href="cars.xsl"?>
+<!DOCTYPE cars SYSTEM "cars.dtd">
+<cars>
+  <car>
+    <make model="3 Series" type="Convertible">bmw</make>
+    <engine numCylinders="6">3.0D</engine>
+    <regNo>06W123</regNo>
+    <owner>
+      <name title="Mr." age="23">Joe Bloggs</name>
+      <address>
+        <town>Athlone</town>
+        <county>Westmeath</county>
+      </address>
+    </owner>
+  </car>
+  <car>
+    <make model="Focus" type="Saloon">Ford</make>
+    <engine>2.0D</engine>
+    <regNo>07G776</regNo>
+    <owner>
+      <name title="Ms." age="28">Paula Bloggs</name>
+      <address>
+        <town>Ballinasloe</town>
+        <county>Galway</county>
+      </address>
+    </owner>
+  </car>
+</cars>
+   #+END_SRC
+   #+BEGIN_SRC xml
+<?xml version="1.0"?>
+<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+  <xsl:template match="/">
+    <html>
+      <head><title>Cars</title></head>
+      <body>
+        <xsl:apply-templates/>
+      </body>
+    </html>
+  </xsl:template>
+  <xsl:template match="cars">
+    <table>
+      <tr>
+        <th>Make</th>
+        <th>Model</th>
+        <th>Type</th>
+        <th>Engine Size</th>
+        <th>Reg</th>
+        <th>Owner</th>
+        <th>Town</th>
+        <th>County</th>
+      </tr>
+      <xsl:for-each select="car">
+        <tr>
+          <td><xsl:value-of select="make"/></td>
+          <td><xsl:value-of select="make/@model"/></td>
+          <td><xsl:value-of select="make/@type"/></td>
+          <td><xsl:value-of select="engine"/></td>
+          <td><xsl:value-of select="regNo"/></td>
+          <td><xsl:value-of select="owner/name"/></td>
+          <td><xsl:value-of select="owner/address/town"/></td>
+          <td><xsl:value-of select="owner/address/county"/></td>
+        </tr>
+      </xsl:for-each>
+    </table>
+  </xsl:template>
+</xsl:stylesheet>
+   #+END_SRC
+
+* XML Schema Namespaces
+
+** Definition
+   - An XML vocabulary for expressing your data's business rules or constraints
+   - Similar to DTD but gives more control
+   - XML Schema creates the XML vocabulary
+   - It specifies the contents of each element and the restrictions in the content
+   - XML Schema specifies XML vocabulary for a specified *Namespace*
+   - XML Schema provides two important aspects:
+     - The structure of instance documents
+     - The datatype of each element/attribute
+   - Advantages over DTD
+     - Same syntax as XML
+     - 44+ datatypes as opposed to 10 in DTD
+     - Create own datatypes
+     - Object oriented'ish
+
+** Namespace example
+   [[file:images/XML Schema Namespaces/screenshot_2018-05-07_11-33-18.png]]
+
+** The XMLSchema Namespace
+   [[file:images/XML Schema Namespaces/screenshot_2018-05-07_11-39-51.png]]
+
+** XSD's ~xsd:schema~ attribute declarations
+   - ~xmlns:xsd~ is the source xsd schema, usually ~http://www.w3.org/2001/XMLSchema~
+   - ~targetNamespace~ indicates that the elements defined in this schema are to go into this specified namespace
+   - ~xmlns~ the default namespace
+   - ~elementFormDefault~ directive for any instance document using this schema: any elements used by the instance document, which were declared in this schema must be namespace qualified, i.e. must be included in the namespace
+
+** Instance document's XSD schema referencing
+   - ~xmlns~ is the default namespace used in this document
+   - ~xmlns:xsi~ defines the syntax for the ~xsi:schemaLocation~ attribute
+   - ~xsi:schemaLocation~ is to location of the schema that defines the namespace
+
+** No namespace definition
+   - Skip the ~targetNamespace~ attribute in the XSD schema declaration, and thus also the default namespace
+   - As a consequence:
+     - Do not namespace qualify the instance document
+     - Instance document should use ~noNamespaceSchemaLocation~ instead of ~schemaLocation~ attribute, e.g. ~xsi:noNamespaceSchemaLocation="BookStore.xsd"~
+
+** Multiple schema locations
+   - An instance document can be validated against multiple schemas
+   - The ~xsi:schemaLocation~ could look like this: ~xsd:schemaLocation="http://www.boog.org Book.xsd http://www.employee.org Employee.xsd"~
+
+** Schema from multiple schemas
+   [[file:images/XML Schema Namespaces/screenshot_2018-05-07_12-02-24.png]]
+
+** Lax vs Strict validation
+   - Lax validation is when the validator skips the elements for which there is no schema provided
+   - Strict validation is when the validator requires a schema for every element
+
+* Global vs Local types definitions
+  - Only global types can be referenced (reused)
+  - Local elements are "invisible" to the rest of the schema
+  [[file:images/Global vs Local types definitions/screenshot_2018-05-07_12-43-16.png]]
+
+* XSD Example
+  #+BEGIN_SRC xml
+<?xml version="1.0" encoding="iso-8859-1"?>
+<cars xmlns="http://www.cars.com"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.cars.com cars.xsd">
+  <!-- instance document -->
+  <car>
+    <make>
+      <company>BMW</company>
+      <model>3 Series</model>
+      <type>Convertible</type>
+    </make>
+    <engine>
+      <size>3.0D</size>
+      <numCylinders>6</numCylinders>
+    </engine>
+    <regNo>06W123</regNo>
+    <owner>
+      <name>Joe Bloggs</name>
+      <age>23</age>
+      <address>Athlone, Co. Westmeath</address>
+    </owner>
+  </car>
+</cars>
+  #+END_SRC
+  - Example xsd schema
+    #+BEGIN_SRC xml
+<?xml version="1.0"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            targetNamespace="http://www.cars.com"
+            xmlns="http://www.cars.com"
+            elementFormDefault="qualified">
+
+  <xsd:element name="cars">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="car"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+
+  <xsd:element name="car">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="make"/>
+        <xsd:element ref="engine"/>
+        <xsd:element ref="regNo"/>
+        <xsd:element ref="owner"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+
+  <xsd:element name="make">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="company"/>
+        <xsd:element ref="model"/>
+        <xsd:element ref="type"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+
+  <xsd:element name="engine">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="size"/>
+        <xsd:element ref="numCylinders"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+
+  <xsd:element name="owner">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="name"/>
+        <xsd:element ref="age"/>
+        <xsd:element ref="address"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+
+  <xsd:element name="regNo" type="xsd:string"/>
+  <xsd:element name="company" type="xsd:string"/>
+  <xsd:element name="model" type="xsd:string"/>
+  <xsd:element name="type" type="xsd:string"/>
+  <xsd:element name="size" type="xsd:string"/>
+  <xsd:element name="numCylinders" type="xsd:string"/>
+  <xsd:element name="name" type="xsd:string"/>
+  <xsd:element name="age" type="xsd:string"/>
+  <xsd:element name="address" type="xsd:string"/>
+
+</xsd:schema>
+    #+END_SRC
+
+* XSD attribute declaration
+  - ~<xsd:attribute name="name" type="simple-type" use="how-its-used" default/fixed="value" />~
+  - ~use~ can be: required, optional, ...
+
+* XSD Example with complex types, simple types and attribute definitions
+  - XML
+  #+BEGIN_SRC xml
+<?xml version="1.0"?>
+<student xmlns="http://www.student.com"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://www.student.com student.xsd" >
+
+  <personal>
+    <name>Joe Bloggs</name>
+    <dob>2000-01-22</dob>
+    <time>10:12:03</time>
+    <sex>Male</sex>
+    <weight>8.7</weight>
+    <phoneNo>087-1234567</phoneNo>
+  </personal>
+
+  <college name="AIT" studentID="A00123457">
+    <course name="MSc in S/W Eng">
+      <semmester>1</semmester>
+      <classSize>7</classSize>
+      <favouriteSubject>SOA</favouriteSubject>
+    </course>
+  </college>
+
+</student>
+  #+END_SRC
+  - XSD
+  #+BEGIN_SRC xml
+<?xml version="1.0"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            targetNamespace="http://www.student.com"
+            xmlns="http://www.student.com"
+            elementFormDefault="qualified">
+
+  <xsd:simpleType name="nameType">
+    <xsd:restriction base="xsd:string">
+      <xsd:pattern value="\p{Lu}(\p{Ll})+\s\p{Lu}(\p{Ll})+"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+
+  <xsd:simpleType name="sexType">
+    <xsd:restriction base="xsd:string">
+      <xsd:pattern value="(Male|Female)"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+
+  <xsd:simpleType name="phoneType">
+    <xsd:restriction base="xsd:string">
+      <xsd:pattern value="[\d]{3}-[\d]{7}"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+
+  <xsd:simpleType name="collegeNameType">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="AIT"/>
+      <xsd:enumeration value="DIT"/>
+      <xsd:enumeration value="NUIG"/>
+      <xsd:enumeration value="GMIT"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+
+  <xsd:simpleType name="studentIDType">
+    <xsd:restriction base="xsd:string">
+      <xsd:pattern value="A0[\d]{7}"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+
+  <xsd:simpleType name="semmesterType">
+    <xsd:restriction base="xsd:integer">
+      <xsd:minInclusive value="1"/>
+      <xsd:maxInclusive value="2"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+
+  <xsd:simpleType name="classSizeType">
+    <xsd:restriction base="xsd:integer">
+      <xsd:minInclusive value="2"/>
+      <xsd:maxInclusive value="30"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+
+  <xsd:simpleType name="favSubType">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="SOA"/>
+      <xsd:enumeration value="Data Science"/>
+      <xsd:enumeration value="Agile Build and Delivery"/>
+      <xsd:enumeration value="Computer Networks/Telecoms"/>
+      <xsd:enumeration value="Software Design"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+
+  <xsd:element name="student">
+    <xsd:complexType>
+      <xsd:sequence>
+
+        <xsd:element name="personal">
+          <xsd:complexType>
+            <xsd:sequence>
+
+              <xsd:element name="name" type="nameType"/>
+              <xsd:element name="dob" type="xsd:date"/>
+              <xsd:element name="time" type="xsd:time"/>
+              <xsd:element name="sex" type="sexType"/>
+              <xsd:element name="weight" type="xsd:double"/>
+              <xsd:element name="phoneNo" type="phoneType"/>
+
+            </xsd:sequence>
+          </xsd:complexType>
+        </xsd:element>
+
+        <xsd:element name="college">
+          <xsd:complexType>
+            <xsd:sequence>
+
+              <xsd:element name="course">
+                <xsd:complexType>
+                  <xsd:sequence>
+
+                    <xsd:element name="semmester" type="semmesterType"/>
+                    <xsd:element name="classSize" type="classSizeType"/>
+                    <xsd:element name="favouriteSubject" type="favSubType"/>
+
+                  </xsd:sequence>
+                  <xsd:attribute name="name" type="xsd:string"/>
+                </xsd:complexType>
+              </xsd:element>
+
+            </xsd:sequence>
+            <xsd:attribute name="name" type="collegeNameType"/>
+            <xsd:attribute name="studentID" type="studentIDType"/>
+          </xsd:complexType>
+        </xsd:element>
+
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+</xsd:schema>
+  #+END_SRC
+
+* XML B2B Example
+  [[file:images/XML B2B Example/screenshot_2018-05-07_12-33-18.png]]
+  - XML Schema provides:
+    - Data Model - The data model clearly specifies how the XML document is organised
+    - Contract - Organisations agree of the document/data structure and thus create a contract between themselves
+    - Rich source of metadata - contains lots of data about the data in the XML instance documents
+
+* REST
+
+** Definition
+   - *RE* presentational *S* tate *T* ransfer
+   - Architectural style, not a protocol
+   - Aims to stick close to the original aims of HTTP
+   - HTTP is itself a REST architecture
+
+** Resources
+   - In REST, one accesses *resources*
+   - Resources are abstract, e.g. one might want to access the "home page" resource and a "representation" of the resource is returned i.e. html code
+   - Resources can be anything that can be referenced by itself
+     - List of customers
+     - A customer
+     - List of orders
+     - Etc.
+
+** Resource State vs Application State
+   - *Resource State*: is the state that is common to all the clients and resides on the server. Usually it is the data that gets pulled from the database
+   - *Application State*: is client-specific and is submitted in the client request. Requesting a specific document from the server places the client in a specific state.
+
+** Example REST Methods
+   - *GET* - retrieve/receive/display data
+   - *POST* - create/submit data
+   - *PUT* - update data
+   - *DELETE* - delete data
+
+** REST principles
+*** Identifiable Resources
+    - Every resource has an ID. Customer, order, etc.
+*** Hypermedia as the Engine of Application State (HATEOAS)
+    - User can take actions based on the resources he/she receives
+    - An example is a list of links that a user might receive in a document
+*** Uniform Interface
+    - Every resource supports the same interface
+    - In HTTP this refers to GET, PUT, POST, DELETE, HEAD, OPTIONS
+    - Idempotence: an operation yields the same result no matter how many times it is executed. The GET, PUT and DELETE methods are one of the examples.
+*** Resources Representation
+    - Service can return various representations of the same data: HTML, XHTML, XML, JSON, plain-text, etc.
+    - Using HTTP content-negotiation the client can specify the format of the required content
+    - Server uses the *Content-type* header to indicate the format of the resource
+*** Stateless Communication
+    - Every request happens in complete isolation
+    - The request contains all the information necessary to fulfill the request
+    - Server never relies on information from previous requests
+    - The application state is not stored on the server
+    - HTTP is stateless
+* Conditional GET
+  - Adds intelligence to the HTTP GET
+  - Server checks the server version against the client's version
+  - If the resource is the same the server does not return a value
+  - Headers are used to inform the timestamp or hash values associated with the resources
+  - May return HTTP 304 instead of 200 to identify that nothing has changed
+  - Two approaches in the header exist to send a Conditional GET:
+    - Last-modified - If-Modified-Since/If-Unmodified-Since
+    - ETag - If-Match/If-None-Match
+
+* JSON
+
+** JSON is
+   - Lightweight data-interchange format
+   - JSON is valid JavaScript
+   - JSON is language independent
+   - Is a collection of key value pairs, and/or ordered list of values
+   - Easy to understand, manipulate and generate
+
+** JSON is not
+   - Overly Complex
+   - A markup language
+   - A programming language
+
+** Why use JSON
+   - Simple syntax
+   - Easy to create and manipulate
+   - Can be natively parsed by JS
+   - Supported by all major programming languages
+   - Supported by all major backend technologies
+* XML vs JSON
+  - Both are "self describing", aka human readable
+  - Both are hierarchical, aka values with values
+  - Both can be parsed and used by all major programming languages
+  - Both can be fetched by XMLHttpRequest (AJAX)
+  - XML needs a special parser, JSON can be executed by JS
+  - JSON can use arrays
+  - JSON does not use tags
+  - JSON is shorter
+  - JSON is easier to read
+  - JSON is quicker to read and write
+
+* XML Parsing
+** Different parsers
+   - DOM parser, loads the whole document into memory
+   - SAX parser, is event driven, works on triggers, does not load the whole code into memory
+   - StAX parser, similar to SAX but more efficient
+** DOM parser
+   - Easy to navigate the whole code
+   - Easy to append, delete, modify nodes. Nodes exist in the memory
+   - Disadvantage is that it is memory expensive with big documents
+   - Usually used for files smaller than 10MB
+   - Example of a DOM parser that grabs string settings from an xml file and puts those settings in hash maps
+   #+BEGIN_SRC java
+import java.io.File;
+import java.util.HashMap;
+
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.DocumentBuilder;
+import org.w3c.dom.Document;
+import org.w3c.dom.NodeList;
+import org.w3c.dom.Node;
+import org.w3c.dom.Element;
+
+public class Settings {
+
+    HashMap<String, String> hmString = new HashMap<>();
+    HashMap<String, Integer> hmInteger = new HashMap<>();
+    HashMap<String, String[]> hmStringArray = new HashMap<>();
+
+    NodeList xmlNodeList;
+    Document doc;
+
+    String fileName;
+
+    public Settings(String fileName) {
+        this.fileName = fileName;
+        loadFile();
+        parseData("string");
+        parseData("integer");
+        parseData("stringArray");
+    }
+
+    public String getString(String key) {
+        return hmString.get(key);
+    }
+
+    public int getInt(String key) {
+        return hmInteger.get(key);
+    }
+
+    public String [] getStringArray(String key) {
+        return hmStringArray.get(key);
+    }
+
+    private void loadFile() {
+
+        try {
+            File inputFile = new File(this.fileName);
+            DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+            DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+
+            this.doc = dBuilder.parse(inputFile);
+
+            this.doc.getDocumentElement().normalize();
+
+        } catch (Exception e) {
+
+            System.out.println("Settings file " + this.fileName + ", loading error!!!");
+            System.out.println(e.getMessage());
+        }
+    }
+
+    private void parseData(String tagName) {
+
+        this.xmlNodeList = doc.getElementsByTagName(tagName);
+
+        for (int i = 0; i < xmlNodeList.getLength(); i++) {
+
+            Node node = xmlNodeList.item(i);
+
+            if (node.getNodeType() == Node.ELEMENT_NODE) {
+                Element element = (Element) node;
+
+                String name = element.getAttribute("name");
+                String content = element.getTextContent();
+
+                if (tagName.equals("string")) {
+                    hmString.put(name, content);
+
+                } else if (tagName.equals("integer")) {
+                    hmInteger.put(name, new Integer(content));
+
+                } else if (tagName.equals("stringArray")) {
+                    hmStringArray.put(name, content.split(","));
+                }
+            }
+        }
+    }
+}
+   #+END_SRC
+** DOM inserting data
+   #+BEGIN_SRC java
+import java.io.File;
+import java.util.HashMap;
+
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.DocumentBuilder;
+import org.w3c.dom.Document;
+import org.w3c.dom.NodeList;
+import org.w3c.dom.Node;
+import org.w3c.dom.Element;
+
+public class Settings {
+
+    HashMap<String, String> hmString = new HashMap<>();
+    HashMap<String, Integer> hmInteger = new HashMap<>();
+    HashMap<String, String[]> hmStringArray = new HashMap<>();
+
+    NodeList xmlNodeList;
+    Document doc;
+
+    String fileName;
+
+    public Settings(String fileName) {
+        this.fileName = fileName;
+        loadFile();
+        parseData("string");
+        parseData("integer");
+        parseData("stringArray");
+    }
+
+    public String getString(String key) {
+        return hmString.get(key);
+    }
+
+    public int getInt(String key) {
+        return hmInteger.get(key);
+    }
+
+    public String [] getStringArray(String key) {
+        return hmStringArray.get(key);
+    }
+
+    private void loadFile() {
+
+        try {
+            File inputFile = new File(this.fileName);
+            DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+            DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+
+            this.doc = dBuilder.parse(inputFile);
+
+            this.doc.getDocumentElement().normalize();
+
+        } catch (Exception e) {
+
+            System.out.println("Settings file " + this.fileName + ", loading error!!!");
+            System.out.println(e.getMessage());
+        }
+    }
+
+    private void parseData(String tagName) {
+
+        this.xmlNodeList = doc.getElementsByTagName(tagName);
+
+        for (int i = 0; i < xmlNodeList.getLength(); i++) {
+
+            Node node = xmlNodeList.item(i);
+
+            if (node.getNodeType() == Node.ELEMENT_NODE) {
+                Element element = (Element) node;
+
+                String name = element.getAttribute("name");
+                String content = element.getTextContent();
+
+                if (tagName.equals("string")) {
+                    hmString.put(name, content);
+
+                } else if (tagName.equals("integer")) {
+                    hmInteger.put(name, new Integer(content));
+
+                } else if (tagName.equals("stringArray")) {
+                    hmStringArray.put(name, content.split(","));
+                }
+            }
+        }
+    }
+}
+   #+END_SRC
+** SAX
+   - Memory efficient
+   - Read only
+   - Usually used for files larger than 10MB
+   - Example of a basic SAX Parser
+   #+BEGIN_SRC java
+import org.xml.sax.SAXException;
+
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.parsers.SAXParser;
+import javax.xml.parsers.SAXParserFactory;
+import java.io.File;
+import java.io.IOException;
+
+public class SaxParserExample {
+    public static  void main (String [] args) throws ParserConfigurationException, SAXException, IOException {
+        File inputFile = new File("./AppSettings.xml");
+        SAXParserFactory saxParserFactory = SAXParserFactory.newInstance();
+        SAXParser saxParser = saxParserFactory.newSAXParser();
+
+        SaxParserEventHandler saxParserEventHandler = new SaxParserEventHandler();
+        saxParser.parse(inputFile, saxParserEventHandler);
+    }
+}
+   #+END_SRC
+   - And the event handler, the elements in the xml are called: string, integer and stringArray, hence the relevant boolean flags
+   #+BEGIN_SRC java
+import org.xml.sax.Attributes;
+import org.xml.sax.SAXException;
+import org.xml.sax.helpers.DefaultHandler;
+
+public class SaxParserEventHandler extends DefaultHandler {
+
+    boolean inString = false;
+    boolean inInteger = false;
+    boolean inStringArray = false;
+
+    @Override
+    public void startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException {
+        System.out.println("Start element = " + qName);
+        if (qName.equalsIgnoreCase("string")) {
+            System.out.println("String attribute name = " + getNameAttrib(attributes));
+            inString = true;
+        } else if (qName.equalsIgnoreCase("integer")) {
+            System.out.println("Integer attribute name = " + getNameAttrib(attributes));
+            inInteger = true;
+        } else if (qName.equalsIgnoreCase("stringArray")) {
+            System.out.println("StringArray attribute name = " + getNameAttrib(attributes));
+            inStringArray = true;
+        }
+    }
+
+    public void characters(char [] ch, int start, int end) {
+        if (inString) {
+            System.out.println("Content of string : " + new String(ch, start, end));
+            inString = false;
+        } else if (inInteger) {
+            System.out.println("Content of integer : " + new String(ch, start, end));
+            inInteger = false;
+        } else  if (inStringArray) {
+            System.out.println("Content of string array : " + new String(ch, start, end));
+            inStringArray = false;
+        }
+    }
+
+    @Override
+    public void endElement(String uri, String localName, String qName) throws SAXException {
+        System.out.println("End element = " + qName);
+    }
+
+    private String getNameAttrib(Attributes attributes) {
+        return attributes.getValue("name");
+    }
+}
+   #+END_SRC
+** StAX
+   - Memory efficient
+   - Read and write
+   - Example of a StAX Parser (as in the example above this also is based around xml elements called: string, integer, stringArray)
+   #+BEGIN_SRC java
+import javax.xml.namespace.QName;
+import javax.xml.stream.*;
+import javax.xml.stream.events.*;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.util.Iterator;
+
+public class StaxParserExample {
+
+    static boolean inString = false;
+    static boolean inInteger = false;
+    static boolean inStringArray = false;
+
+    public static void main(String[] args) throws FileNotFoundException, XMLStreamException {
+        String qName = "";
+        File inputFile = new File("./AppSettings.xml");
+
+        XMLInputFactory xmlInputFactory = XMLInputFactory.newInstance();
+        XMLEventReader xmlEventReader = xmlInputFactory.createXMLEventReader(new FileInputStream(inputFile));
+
+        while (xmlEventReader.hasNext()) {
+            XMLEvent xmlEvent = xmlEventReader.nextEvent();
+
+            switch (xmlEvent.getEventType()) {
+                case XMLStreamConstants.START_ELEMENT:
+                    StartElement startElement = xmlEvent.asStartElement();
+                    qName = startElement.getName().getLocalPart();
+                    System.out.println("Element name = " + qName);
+
+                    Attribute attribute = startElement.getAttributeByName(new QName("name"));
+                    if (attribute != null) {
+                        System.out.println("Value of name = " + attribute.getValue());
+                    }
+
+                    if (qName.equalsIgnoreCase("string")) {
+                        inString = true;
+                    } else if (qName.equalsIgnoreCase("integer")) {
+                        inInteger = true;
+                    } else if (qName.equalsIgnoreCase("stringArray")) {
+                        inStringArray = true;
+                    }
+                    break;
+                case XMLStreamConstants.END_ELEMENT:
+                    EndElement endElement = xmlEvent.asEndElement();
+                    qName = endElement.getName().getLocalPart();
+                    System.out.println("End element name = " + qName);
+                    break;
+                case XMLStreamConstants.CHARACTERS:
+                    Characters characters = xmlEvent.asCharacters();
+                    if (inString) {
+                        System.out.println("String data : " + characters.getData());
+                        inString = false;
+                    } else if (inInteger) {
+                        System.out.println("Integer data : " + characters.getData());
+                        inInteger = false;
+                    } else if (inStringArray) {
+                        System.out.println("String array data : " + characters.getData());
+                        inStringArray = false;
+                    }
+            }
+        }
+    }
+}
+   #+END_SRC
+
+   #+BEGIN_EXPORT html
+   <script src="../assets/jquery-3.3.1.min.js"></script>
+   <script src="../assets/notes.js"></script>
+   #+END_EXPORT

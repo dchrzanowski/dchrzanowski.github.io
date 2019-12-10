@@ -1,0 +1,722 @@
+#+TITLE: Software Development 3
+#+DATE: [2018-09-10 Mon 11:54]
+#+AUTHOR: Damian Chrzanowski
+#+EMAIL: pjdamian.chrzanowski@gmail.com
+#+OPTIONS: TOC:2 num:2
+#+HTML_HEAD: <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="../assets/org.css"/>
+#+HTML_HEAD: <link rel="icon" href="../assets/favicon.ico">
+
+[[file:index.org][Home Page]]
+
+* Definitions
+
+** Compiler
+   A compiler takes source code and compiles it into machine code which can be understood by one particular operating system. C++ is compiled in this way i.e. the .C code files are compiled to .exe machine code files on a PC.
+
+   The compiler is dependent on the operating system.
+
+* Java Overview
+
+** Compiling in Java
+   - In Java compiling is split into a 2 stage process - *compiling* and *interpreting* the resulting byte code
+   - Each machine has its own set of machine instructions called machine code
+   - Java compiler creates common byte code
+   - A platform *dependent* JVM interprets the byte code (i.e. converts the common byte code into a particular machine code)
+   - .java file -> java compiler -> java bytecode -> interpreter -> platform (SPARC, PC, PowerPC)
+   - Java uses a Just-in-time compiler (JIT) which increases code execution
+   - *JVM* is the java interpreter and is platform *dependent*
+   - *JRE* is a set of files that contains the *JVM*, core classes and supporting files
+   - *JDK* is a set of tools used by software designers to develop Java code, the *JDK* includes the *JRE*
+
+* Object Oriented Design
+
+** Definitions
+   - *Class*: Is a blueprint or a template that defines the variables and methods common to all objects of a certain kind
+   - *Object*: Is the "instance" (built or constructed) of the class that has been created out of the blueprint. An object is an instance of a class with a group of attributes and related methods. There are two parts to an object: the data the object stores and the methods the object has
+
+** Two main approaches exist
+   - *Functional Oriented Design*: Starting point when designing a system is: "What will the system do"
+   - *Object Oriented Design*: Starting point when designing a system is: "What data will be stored in the system"
+
+** Relationship with Relational Databases
+   - The class name is the table name
+   - The column names are the class attributes
+   - The row of a table is the instance or object
+   - The id of a table row is the instance's memory reference (object reference)
+
+** Methods visibility
+   - *Private*:  Visible within the class where they are defined (methods and attributes are not visible in sub-classes)
+   - *Package*: Visible within the class where they are defined and also within any class within the same package
+   - *Protected*: Visible within the class where they are defined and also within any class within the same package and any sub-classes
+   - *Public*: Visible anywhere
+
+** The constructor
+   - Is the *method* that is called upon the object's instantiation
+   - It must have the same name as the class
+   - It has no return type, however, the constructor returns the instance of the object
+
+** Encapsulation
+   - All data store in a class should be stored “private”. This means that only the class which owns the data can alter it. An external class can not alter the data without the knowledge of the owning class.
+   - Each attribute in a class should have 2 methods which allow the value of the attribute to be read and modified. These 2 methods are commonly known as "set and get methods" (setters and getters).
+   - The usage of getters and setters allows for additional error checking to be present within the getter and setter methods
+
+* Collections And Generics
+
+** Overview
+   - Originally Java provided ad hoc classes such as Vector and Stack. Useful but lacked a central unifying theme
+   - Java Collections Framework (*JCF*) provides high performance
+   - *JCF* work in a similar manner have a common interface and have a certain degree of interoperability
+   - All *JCF* contain the following:
+     - *Interfaces*: Interfaces allow collections to be manipulated independently of the details of their representation
+     - *Implementations*: These are the concrete implementations of the collection interfaces. In essence, they are reusable data structures
+     - *Algorithms*: These are the methods that perform useful computations, such as searching and sorting, on objects that implement collection interfaces. The algorithms are said to be polymorphic: that is, the same method can be used on many different implementations of the appropriate collection interface.
+   - *JCF* is interface based
+   - *JCF* has two main class hierarchies:
+     - *Collection*: Store individual objects as elements
+     - *Map*: Store objects in a key-value pair structure
+   - Most commonly used *JCF* classes are: ~ArrayList~, ~LinkedList~, ~HashSet~, ~HashMap~ and ~TreeMap~
+   - *JCF* Diagram
+   [[file:images/Collections%20And%20Generics/screenshot_2018-12-04_15-31-49.png]]
+   - *JCF* Interfaces
+   [[file:images/Collections%20And%20Generics/screenshot_2018-12-04_15-33-06.png]]
+
+** Iterators
+   - Allows for an easy traversal of the Collection
+   - Two iterators exist:
+     - ~Iterator~: One directional traversal
+       - Methods: ~boolean hasNext()~, ~Object next()~, ~void remove()~
+     - ~ListIterator~: Two directional traversal, extends ~Iterator~
+       - Methods: ~void add(Object obj)~, ~boolean hasNext()~, ~boolean hasPrevious()~, ~Object next()~, ~Object previous()~, ~void remove()~, ~void set(Object obj)~, ~int nextIndex()~, ~int previousIndex()~
+   - Each collection has a ~iterator()~ method that returns an iterator
+
+*** Example of an ~Iterator~ on an ~ArrayList~
+    #+BEGIN_SRC java
+      ArrayList al = new ArrayList();
+
+      Iterator itr = al.listIterator();
+      while(itr.hasNext()) {
+          Object element = itr.next();
+          System.out.print(element + " ");
+      }
+    #+END_SRC
+
+** List Interface
+   - In addition to the standard methods provided by the *Collection* the ~List~ also has additional methods
+   - ~List~ methods: ~void add(int idx, Object obj)~, ~boolean addAll(int idx, Collection c)~, ~Object get(int idx)~, ~int indexOf(Object obj)~, ~int lastIndexOf(Object obj)~, ~ListIterator listIterator()~, ~ListIterator listIterator(int idx)~, ~Object remove(int idx)~, ~Object set(int idx, Object obj)~, ~List subList(int start, int end)~
+
+** Map Interface
+   - Has additional throws in comparison to the standard *Collection*
+     - ~NoSuchElementException~: When no items exist in the invoking map
+     - ~ClassCastException~: When an object is incompatible with the elements of the map
+   - ~Map~ methods: ~void clear()~, ~boolean containsKey(Object k)~, ~boolean containsValue(Object v)~, ~Set entrySet()~, ~boolean equals(Object obj)~, ~Object get(Object k)~, ~int hashCode()~, ~boolean isEmpty()~, ~Set keySet()~, ~Object put(Object k, Object v)~, ~void putAll(Map m)~, ~Object remove(Object k)~, ~int size()~, ~Collection values()~
+
+** Generics
+   - Java Generic methods and generic classes enable programmers to specify, with a single method declaration, a set of related methods or, with a single class declaration, a set of related types, respectively.
+   - Using Java Generic concept, we might write a generic method for sorting an array of objects, then invoke the generic method with Integer arrays, Double arrays, String arrays and so on, to sort the array elements.
+   - Generics naming conventions:
+     - *E*: Element
+     - *K*: Key
+     - *N*: Number
+     - *T*: Type
+     - *V*: Value
+
+*** Example of a method that prints out any array
+    #+BEGIN_SRC java
+      public static <E> void printArray( E[] inputArray ) {
+          for ( E element : inputArray ){
+              System.out.printf( "%s ", element );
+          }
+          System.out.println();
+      }
+    #+END_SRC
+* GUI Design
+
+** Swing Overview
+   - *Swing* is a library of Java components which can be used to create GUIs
+   - *Swing* is a part of the Java Foundation Classes (JFC) in the Java Platform
+   - *Container* is a component that can contain other components e.g.: ~JFrame~, ~JPanel~
+   - *Swing* has full flexibility of how the components are displayed
+   - Exists in the ~javax.swing~ package
+   - Three top level containers:
+     - ~JFrame~
+     - ~JDialog~
+     - ~JApplet~
+
+** AWT Overview
+   - Abstract Window Toolkit (*AWT*)
+   - Original windowing library for Java
+   - Basic UI components and containers
+   - *AWT* was not portable, it was implemented using native code, *Swing* uses non-native code
+   - *AWT* always displays components in a native way
+   - Exists in the ~java.awt~ package
+   - Used primarily for event handling these days
+
+** ~JFrame~ example
+   - Needs to import ~java.awt.*~ and ~java.awt.event.*~. Swing components rely on AWT's event handling
+   #+BEGIN_SRC java
+     JFrame frame = new JFrame("I am a Swing Frame");
+     JLabel label = new JLabel("I am a Swing Label");
+     frame.getContentPane().add(label);
+     frame.pack();
+     frame.setVisible(true);
+   #+END_SRC
+
+** Layout management
+   - By default, each container has a layout manager - an object that performs layout management for the components within the container.
+   - Components can provide size and alignment hints to layout managers, but layout managers have the final say on the size and position of those components.
+
+*** Some types are:
+    - *BorderLayout* (default on a ~JFrame~)
+      - Has five areas to which components are added: North, South, East, West and Center
+    - *BoxLayout*
+      - Components are added on the X axis or the Y axis (~BoxLayout.Y_AXIS~, ~BoxLayout.X_AXIS~)
+    - *FlowLayout* (default on a ~JPanel~)
+      - Components are centered by default, they can also be left of right aligned
+    - *GridLayout*
+      - Components are placed on a grid of X and Y size, e.g. ~new GridLayout(3, 2)~
+    - *GridBagLayout*
+      - In a sense resembles a HTML table in which components can span multiple columns or rows
+* JTable
+** Simple ~JTable~
+   - Simply insert the headings and the data into the JTable's constructor
+   #+BEGIN_SRC java
+     String data[][]={
+         {"101","Amit","670000"},
+         {"102","Jai","780000"},
+         {"101","Sachin","700000"}
+     };
+     String headings[] = {"ID", "Name", "Salary"};
+
+     JTable table = new JTable(data, headings);
+     JScrollPane scrollPane = new JScrollPane(table);
+
+     panel.add(scrollPane);
+   #+END_SRC
+
+** With the ~DefaultTableModel~
+   - Define the ~DefaultTableModel~
+   #+BEGIN_SRC java
+     DefaultTableModel tableModel =
+         // provide empty row and column data at first
+         new DefaultTableModel(new Object[][] {},
+                               new String[] {}) {
+             // Define column types
+             Class[] types = new Class[] {
+                 java.lang.Integer.class,
+                 java.lang.Object.class,
+                 java.lang.Integer.class,
+             };
+             // Column type checker (required)
+             public Class getColumnClass(int columnIndex) {
+                 return types[columnIndex];
+             }
+             // all editable, so just return true, otherwise provide
+             // logic based on the column or row index
+             public boolean isCellEditable(int rowIndex, int columnIndex) {
+                 return true;
+             }
+         };
+     // set the column headings
+     tableModel.setColumnIdentifiers(headings);
+     // add array to the table, must comply with the heading types (Integer, Object, Integer)
+     for (int i = 0; i < data.size(); i++) {
+         tableModel.addRow(data.get(i));
+     }
+     // set the table data
+     jTable.setModel(tableModel);
+     // just in case Update
+     jTable.updateUI();
+   #+END_SRC
+
+** Attaching a listener to the table
+   - Attach the listener method example
+   #+BEGIN_SRC java
+     public void attachTableListener(TableModelListener listener) {
+         jTable.getModel().addTableModelListener(listener);
+     }
+   #+END_SRC
+   - Listener example
+   #+BEGIN_SRC java
+     attachTableListener((tableModelEvent) -> {
+             // get the data from the row
+             int row = tableModelEvent.getFirstRow();
+             int col = tableModelEvent.getColumn();
+             // use the view's getString/Bool/IntAt() to get the data
+             // from the specifi row and col and do something with them
+         });
+   #+END_SRC
+
+** Getting / Setting Values to the Model
+   - Get
+   #+BEGIN_SRC java
+     public String getStringAt(int row, int column) {
+         return (String) jTable1.getModel().getValueAt(row, column);
+     }
+     public boolean getBoolAt(int row, int column) {
+         return (boolean) jTable1.getModel().getValueAt(row, column);
+     }
+     public int getIntAt(int row, int column) {
+         return (int) jTable1.getModel().getValueAt(row, column);
+     }
+   #+END_SRC
+   - Set (if needed, although usually you'd edit directly on the table)
+   #+BEGIN_SRC java
+     public void setStringAt(String value, int row, int column) {
+         return jTable1.getModel().setValueAt(value, row, column);
+     }
+     public void setBoolAt(boolean value, int row, int column) {
+         return jTable1.getModel().setValueAt(value, row, column);
+     }
+     public void setIntAt(int value, int row, int column) {
+         return jTable1.getModel().setValueAt(value, row, column);
+     }
+   #+END_SRC
+
+* Charts
+** PieChart
+   - Step 1, add data to the ~DefaultPieDataset~
+   #+BEGIN_SRC java
+     DefaultPieDataset dataset = new DefaultPieDataset();
+     for (Car each : Cars) {
+         // Each chart slice will have the name of the car
+         // And the charts angle size is determined by the car's mileage
+         dataset.setValue(each.getName(), each.getMileage());
+     }
+   #+END_SRC
+   - Step 2, add the dataset to the chart panel factory
+   #+BEGIN_SRC java
+     JFreeChart chart = ChartFactory.createPieChart
+         ("ChartTitle",  // Chart Title
+          dataset,  // the dataset
+          true,  // legend
+          true,  // tooltip
+          false);  // urls
+   #+END_SRC
+   - Step 3, add the chart to a panel or a frame
+   #+BEGIN_SRC java
+   panel.add(chart);
+   #+END_SRC
+** BarChart
+   - Step 1, add data to the ~DefaultCategoryDataset~
+   #+BEGIN_SRC java
+     DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+     // each bar represtets the car's name, and its mileage
+     for (Car each : cars) {
+         dataset.setValue
+             (car.getMileage(),  // bar y value
+              "Mileage",  // bar y axis name
+              car.getName());  // bar name
+     }
+   #+END_SRC
+   - Step 2, add the dataset to the chart panel factory
+   #+BEGIN_SRC java
+     JFreeChart chart = ChartFactory.createBarChart
+         ("Chart Title",  // chart title
+          "Mileage",  // x axis name
+          "Car Name",  // y axis name
+          dataset); // the dataset
+   #+END_SRC
+   - Step 3, add the chart to a panel or a frame
+   #+BEGIN_SRC java
+   panel.add(chart);
+   #+END_SRC
+** XYChart
+   - Step 1, add data to the ~XYSeries~ and to ~XYSeriesCollection~ respectively
+   #+BEGIN_SRC java
+     XYSeries series = new XYSeries(lineName);
+     // add x and y values in this case, the car's mileage
+     // and the year the car was manufactured at
+     for (Car each : cars) {
+         series.add(each.getMileage(), each.getYear());
+     }
+     // add the series to the dataset
+     XYSeriesCollection dataset = new XYSeriesCollection();
+     dataset.addSeries(series);
+   #+END_SRC
+   - Step 2, add the dataset to the chart panel factory
+   #+BEGIN_SRC java
+     // scatter plot
+     chart = ChartFactory.createScatterPlot
+         ("Chart Title",  // chart title
+          "Mileage",  // x axis name
+          "Year Manufactured",  // y asix name
+          dataset);  // the dataset
+     // or line chart
+     chart = ChartFactory.createXYLineChart
+         ("Chart Title",  // chart title
+          "Mileage",  // x axis name
+          "Year Manufactured",  // y asix name
+          dataset);  // the dataset
+   #+END_SRC
+   - Step 3, add the chart to a panel or a frame
+   #+BEGIN_SRC java
+   panel.add(chart);
+   #+END_SRC
+
+* Event Driven Programming
+  - Reacts to mouse or keyboard events
+  - Objects need to implement a listening interface that will listen on the event that may occur on it
+
+** Some listener types ~Interfaces~
+   - *ActionListener*: Reacts to mouse clicks
+   - *FocusListener*: Keyboard focus events on a component
+   - *KeyListener*: Listening for keystrokes
+   - *MouseListener*: Full mouse event support (press, release, click, enter, exit, etx.)
+   - *MouseMotionListener*: Listening for mouse motion events
+   - *MouseWheelListener*: Mouse wheel listener
+   - *WindowFocusListener*: Window focus change listener
+   - *WindowListener*: Window general events
+
+** Example button click listener
+   #+BEGIN_SRC java
+     public class ButtonFrame extends JFrame implements ActionListener {
+
+         public static void main(String[] args) {
+             .
+             .
+             .
+             button.addActionListener(this);
+         }
+
+         public void actionPerformed(ActionEvent e){
+             if(e.getSource().equals(theLeftButton)){
+                 theLabel.setText("Left button was pressed");
+             }
+             else if(e.getSource().equals(theMiddleButton)){
+                 theLabel.setText("Middle button was pressed");
+             }
+             else if(e.getSource().equals(theRightButton)){
+                 theLabel.setText("Right button was pressed");
+             }
+         }
+     }
+   #+END_SRC
+
+* Abstract Classes
+  - *Abstract* class is a conceptual class
+  - Cannot be instantiated, but can be subclassed
+  - Provide a common root for a group of classes
+  - They force structure and subclasses and define base behavior
+  - Allows to define a common root class that can be used as a collection
+  - If the class that extends the abstract class defines all the abstract methods then the class is *complete*, otherwise it has *incomplete* methods
+
+** Example abstract class
+   #+BEGIN_SRC java
+     public abstract class FootballSupporter {
+         public abstract String getTeamName();
+         public abstract void setTeamName(String teamName);
+         public abstract String getHomeGround();
+         public abstract void setHomeGround(String teamName);
+     }
+   #+END_SRC
+
+* Interfaces
+  - An ~Interface~ describes methods but does not provide bodies for them
+  - An ~Interface~ cannot be instantiated
+  - An ~Interface~ has all methods implicitly ~abstract~
+  - A class can implement multiple interfaces
+  - With an ~Interface~ it is possible to write methods for two unrelated class that share a common interface than can be used in a collection
+
+** Example on ~KeyListener~
+   #+BEGIN_SRC java
+     interface KeyListener {
+         public void keyPressed(KeyEvent e);
+         public void keyReleased(KeyEvent e);
+         public void keyTyped(KeyEvent e);
+     }
+   #+END_SRC
+
+* Design Patterns
+  - The goal of a design pattern is to create a documentation to help software designers resolve recurring problems encountered throughout all of software development
+  - A shared language for communicating insight and experience about problems and their solutions
+  - "Each pattern descibes a problem which occurs over and over again in our environment, and then describes the core of the solution to that problem, in such a way that you can use this solution a million times over, without ever doing it the same way twice" - /Christopher Alexander/
+  - Alexander presented 253 patterns in 35 groups at different levels of abstraction
+  - In 1994, four authors Erich Gamma, Richard Helm, Ralph Johnson und John Vlissides published a book titled Design Patterns - Elements of Reusable Object-Oriented Software which initiated the concept of Design Pattern in Software development.
+  - Two main usages in software development
+    - Common platform for developers
+    - Best Practices
+  - Design patterns provide a standard terminology and are specific to particular scenario
+  - A pattern is made by four elements:
+    - Name
+    - Problem
+    - Solution
+    - Consequences
+
+** Singleton Pattern
+   #+BEGIN_SRC java
+     public class SingletonExample{
+         private static SingletonExample instance;
+
+         private SingletonExample(){}
+
+         public static SingletonExample getInstance(){
+             if(instance == null)
+                 instance = new SingletonExample();
+             return instance;
+         }
+     }
+   #+END_SRC
+
+** Factory Pattern
+   - Is a creational pattern
+   #+BEGIN_SRC java
+     public class SingletonExample{
+         private static SingletonExample instance;
+
+         private SingletonExample(){}
+
+         public static SingletonExample getInstance(){
+             if(instance == null)
+                 instance = new SingletonExample();
+             return instance;
+         }
+
+         public IStudent createStudent(int year) {
+             if (year == 1) {
+                 StudentYOne studentOne = new StudentYOne();
+                 return (IStudent) studentOne;
+             }
+             else {
+                 StudentNonYOne studentNonYOne = new StudentNonYOne();
+                 return (IStudent) studentNonYOne;
+             }
+         }
+     }
+   #+END_SRC
+
+** Mode-View-Controller (MVC)
+   - Is a design pattern for user-facing software that separates the representation of information from the user's interaction with it
+     - *Model*: The data of your application, along with the business logic that defines how to change and access that data. The model can be shared among any number of view and controller objects.
+     - *View*: The means of presenting the model's data to the outside world. This could take the form of a GUI, generated speech, audible tones, printouts, or even non-user oriented output, such as turning on an air conditioner.
+     - *Controller* - The means of gathering user or other environmental input and providing feedback to the model, normally changing some of the data in that model.
+
+** Decorator Pattern
+   - Allows to add new functionality to an existing object without altering its structure
+
+*** Example on shape
+    - Step 1. Create the interface
+    #+BEGIN_SRC java
+      public interface Shape {
+          void draw();
+      }
+    #+END_SRC
+    - Step 2. Create concrete classes implementing the interface
+    #+BEGIN_SRC java
+      public class Rectangle implements Shape {
+         @Override
+         public void draw() {
+            System.out.println("Shape: Rectangle");
+         }
+      }
+
+    #+END_SRC
+    - Step 3. Create an abstract decorator class implementing the ~Shape~ interface
+    #+BEGIN_SRC java
+      public abstract class ShapeDecorator implements Shape {
+          protected Shape decoratedShape;
+          public ShapeDecorator(Shape decoratedShape){
+              this.decoratedShape = decoratedShape;
+          }
+
+          public void draw(){
+              decoratedShape.draw();
+          }
+      }
+    #+END_SRC
+    - Step 4. Create a concrete class that extends the ~ShapeDecorator~ class
+    #+BEGIN_SRC java
+      public class RedShapeDecorator extends ShapeDecorator {
+          public RedShapeDecorator(Shape decoratedShape) {
+              super(decoratedShape);
+          }
+          @Override
+          public void draw() {
+              decoratedShape.draw();
+              setRedBorder(decoratedShape);
+          }
+          private void setRedBorder(Shape decoratedShape){
+              System.out.println("Border Color: Red");
+          }
+      }
+    #+END_SRC
+    - Step 5. Usage
+    #+BEGIN_SRC java
+      public class MainClass {
+          public static void main(String[] args) {
+              Shape redRectangle = new RedShapeDecorator(new Rectangle());
+              redRectangle.draw();
+          }
+      }
+    #+END_SRC
+
+* Remote Method Invocation (RMI)
+  - In distributed programming one can use:
+    - Low level sockets
+    - JDBC
+    - RMI
+    - Object request broker
+  - *RMI* generally comprises of two separate programs: Client and Server
+  - *RMI* provides the mechanism by which the server and the client communicate and pass information back and forth. Such an application is sometimes referred to as a distributed object application.
+
+** Remote Class (aka Distributed Class)
+   - A Remote Class has two parts: the interface and the class itself.
+   - The Remote interface must have the following properties:
+     - The interface must be public.
+     - The interface must extend the interface ~java.rmi.Remote~
+   - Every method in the interface must declare that it throws ~java.rmi.RemoteException~. Other exceptions may also be thrown.
+
+** Example on a ~Product~ class
+   - ~Register~: At least one remote object must be registered with the Object Registry. The ~rmiregistry~ Object Registry only accepts requests to bind and unbind objects running on the same machine, so it is never necessary to specify the name of the machine when one is registering an object
+   - It has to extend the ~java.rmi.server.UnicastRemoteObject~
+   - Step 1. Create the interface
+   #+BEGIN_SRC java
+     import java.rmi.*;
+     public interface ProductInterface extends Remote {
+         public String getDescription() throws RemoteException;
+     }
+   #+END_SRC
+   - Step 2. Create the remote (distributed) ~Product~ class
+   #+BEGIN_SRC java
+     import java.rmi.*;
+     import java.rmi.server.*;
+     public class Product extends UnicastRemoteObject implements ProductInterface {
+         private String description;
+         public Product(String description) throws RemoteException {
+             this.description = description;
+         }
+         public String getDescription(){
+             return description;
+         }
+     }
+   #+END_SRC
+   - Step 3. Create the server
+   #+BEGIN_SRC java
+     import java.rmi.*;
+     import java.rmi.server.*;
+     public class ProductServer {
+         public static void main(String args[]){
+             try {
+                 Product carObject = new Product("car");
+                 Product busObject = new Product("bus");
+                 Naming.rebind("car", carObject);
+                 Naming.rebind("bus", busObject);
+             }
+             catch(Exception e){
+                 e.printStackTrace();
+             }
+         }
+     }
+   #+END_SRC
+   - Step 4. Create the client
+   #+BEGIN_SRC java
+     import java.rmi.*;
+     public class ProductClient {
+         public static void main(String args[]) {
+             String url = "rmi:///";
+
+             try {
+                 ProductInterface product1 = (ProductInterface) Naming.lookup(url + "car");
+                 String aDescription = product1.getDescription();
+                 System.out.println("Result: "+ aDescription);
+
+                 ProductInterface product2 = (ProductInterface) Naming.lookup(url + "bus");
+                 String aDescription1 = product2.getDescription();
+                 System.out.println("Result: "+ aDescription1);
+             }
+             catch (Exception e) {
+                 e.printStackTrace();
+             }
+         }
+     }
+   #+END_SRC
+   - Step 5. Running
+     1. Compile the ~Product.class~ file with the ~rmic~ command (this step generates the product stub)
+     2. Start the RMI registry with the ~rmiregistry~ command
+     3. In a new shell start the product server with ~java ProductServer~
+     4. In a new shell start the product client with ~java ProductClient~
+
+* Serialization
+  - Is a process of transforming an in-memory object to a byte stream
+  - *Deserialization* is the inverse process of reconstructing an object from a byte stream to the same state in which the object was previously serialized
+  - To implement serialization a class needs to implement the ~Serializable~ interface
+  - Usually enclosed in a ~try/catch~ block in which the ~try~ tries to read, if there is no file then create a new object in the ~catch~ block and serialize it to the file
+
+** Example of Serialization
+   #+BEGIN_SRC java
+     FileOutputStream out = new FileOutputStream("save.ser");
+     ObjectOutputStream oos = new ObjectOutputStream(out);
+     oos.writeObject(new Date());
+     oos.close();
+   #+END_SRC
+
+** Example Deserialization
+   - Remember to cast the object upon retrieval
+   #+BEGIN_SRC java
+     FileInputStream in = new FileInputStream("save.ser");
+     ObjectInputStream ois = new ObjectInputStream(in);
+     Date d = (Date) ois.readObject();
+     ois.close();
+   #+END_SRC
+
+   #+BEGIN_EXPORT html
+   <script src="../assets/jquery-3.3.1.min.js"></script>
+   <script src="../assets/notes.js"></script>
+   #+END_EXPORT
+* New Date and Time API
+** Methods
+   - ~now()~: Today's data
+   - ~minusYears()/Months()/Days()~: Subtract years/monts/days
+   - ~plusYears()/Months()/Days()~: Add years/monts/days
+   - ~isBefore()~: Is before a certain date
+   - ~isAfter()~: Is after a certain date
+** Creating the ~LocalDate~ objects
+   #+BEGIN_SRC java
+     import java.time.*;
+
+     class test {
+         public static void main(String[] args) {
+             LocalDate now = LocalDate.now();
+             LocalDate nowMinus30Years = LocalDate.now().minusYears(30);
+             LocalDate parsedDate = LocalDate.parse("2006-10-28");
+             LocalDate parsedDateWithOf = LocalDate.of(2006, 10, 28);
+             // is the parsed date 30 years ago?
+             System.out.println("Is 30 years ago: " + nowMinus30Years.isAfter(parsedDate));  // false
+         }
+     }
+   #+END_SRC
+** Creating the ~LocalTime~ objects
+   #+BEGIN_SRC java
+     import java.time.*;
+
+     class test {
+         public static void main(String[] args) {
+             LocalTime now = LocalTime.now();
+             LocalTime nowMinus3Hours = LocalTime.now().minusHours(4);
+             LocalTime parseTime = LocalTime.parse("06:30");
+             LocalTime parseTimeWithOf = LocalTime.of(10, 45);
+
+             System.out.println(parseTime); // 6:30
+             System.out.println(parseTimeWithOf);  // 10:45
+             System.out.println(parseTime.isBefore(parseTimeWithOf));  // true
+
+         }
+     }
+   #+END_SRC
+** A combined class of date and time is called ~LocalDateTime~
+   #+BEGIN_SRC java
+     import java.time.*;
+
+     class test {
+         public static void main(String[] args) {
+             LocalDateTime now = LocalDateTime.now();
+             LocalDateTime nowMinus4Years = LocalDateTime.now().minusYears(4);
+             LocalDateTime parseDateTime = LocalDateTime.parse("2018-12-16T06:30:00");
+             LocalDateTime parseDateTimeWithOf = LocalDateTime.of(2018, 12, 16, 10, 45);
+
+             System.out.println(parseDateTime); // 2018-12-16T06:30
+             System.out.println(parseDateTimeWithOf);  // 2018-12-16T10:45
+             System.out.println(parseDateTime.isBefore(parseDateTimeWithOf));  // true
+         }
+     }
+   #+END_SRC

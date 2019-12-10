@@ -1,0 +1,453 @@
+#+TITLE: Server Side Web Development 3
+#+DATE: [2018-09-10 Mon 11:54]
+#+AUTHOR: Damian Chrzanowski
+#+EMAIL: pjdamian.chrzanowski@gmail.com
+#+OPTIONS: TOC:2 num:2
+#+HTML_HEAD: <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="../assets/org.css"/>
+#+HTML_HEAD: <link rel="icon" href="../assets/favicon.ico">
+
+[[file:index.org][Home Page]]
+
+* Request/Response
+  - A HTTP request/response is a stateless protocol
+  - HTTP1.1 provides support for persistent connections via *sockets*
+
+** Headers
+   - Start Line
+   #+BEGIN_VERSE
+   ~GET index.jsp HTTP/1.1~ -> GET Example
+   ~POST myApp/book/update HTTP/1.1~ -> POST Example
+   ~HTTP/1.1 200 OK~ -> Response Example
+   #+END_VERSE
+   - Headers
+   #+BEGIN_VERSE
+   ~Content-type: text/plain~
+   ~Content-length: 19~
+   #+END_VERSE
+   - Body
+   #+BEGIN_VERSE
+   GET has none
+   Normally key value pairs, in particular in a POST or PUT
+   In a response the ~body~ contains the resource requested
+   #+END_VERSE
+
+** HTTP Response Codes
+   - 100-101 Informational
+   - 200-206 Successful
+     - 200 OK
+     - 201 Created
+     - 202 Accepted
+     - 204 No content
+   - 300-305 Redirection
+     - 301 Moved permanently
+     - 302 Moved temporarily
+     - 304 Not modified
+   - 400-415 Client Error
+     - 400 Bad request
+     - 401 Unauthorized
+     - 403 Forbidden
+     - 404 Not found
+   - 500-505 Server Error
+     - 500 Internal server error
+     - 501 Not implemented
+     - 502 Bad gateway
+     - 503 Service unavailable
+
+** Parameters
+   - ~Form Data Set~ is a set of name value pairs, separated by an ~&~ and are appended to the ~URL~
+   - In a POST the parameters are put into the body
+
+** Methods
+   - ~HEAD~: Just get the header information
+   - ~PUT~: Upload a resource
+   - ~DELETE~: Delete a resource
+   - ~TRACE~: Trace the message through Proxy Servers to the Server
+   - ~OPTIONS~: Check which methods are available on the Server
+
+** Example Requests
+
+*** GET
+    #+BEGIN_SRC
+    GET /myApp/insert?name=paul&address=athlone
+    User-agent:Chrome/3.0.195.38
+    Host:Host
+    Accept:application/xml,application/xhtml+xml,text/html;q=0.9,
+    text/plain;q=0.8,image/png,*/*;q=0.5
+    #+END_SRC
+*** POST
+
+    #+BEGIN_SRC
+    POST /myApp/insert
+    User-agent:Chrome/3.0.195.38
+    Host:Host
+    Accept:application/xml,application/xhtml+xml,text/html;q=0.9,
+    text/plain;q=0.8,image/png,*/*;q=0.5
+    Content-length:25
+
+    name=paul&address=athlone
+    #+END_SRC
+
+** Example Response
+   #+BEGIN_SRC
+   HTTP/1.1 200 OK
+   Date: Thu, 20 May 2004 21:12:58 GMT
+   Connection: Cose
+   Server: Apache/1.3.27
+   Accept-Ranges: bytes
+   Content-Type: text/html
+   Content-Length: 170
+
+   <html>
+   .
+   .
+   .
+   </html>
+   #+END_SRC
+
+* Java on the Server Side
+  - Dynamic Website Operations Diagram
+  [[file:images/Servlets/screenshot_2018-12-10_13-51-34.png]]
+  - *Web Server*:
+    - Serve up Web pages (Apache)
+    - Most handled Java based Web Applications as well (Apache Tomcat)
+    - Became know as Application Server
+  - *Application Server*:
+    - Handled Java based Web Applications
+    - Also started to provide much more, such as:
+      - Transaction support
+      - Security support
+      - Range of other services
+    - JBoss, Glassfish, WebLogic, WebSphere
+  - *Container*
+    - We can think of the Application Server as a container which can contain
+      - Web Applications
+      - EJB components
+    - The Application Server can accept request and pass them to the contained Web Application.
+    - Servlet Container, EJB container, - most Application servers are both.
+  - Application Server as a *Container*
+  [[file:images/Java%20on%20the%20Server%20Side/screenshot_2018-12-10_13-57-57.png]]
+  - Web Application
+  [[file:images/Java%20on%20the%20Server%20Side/screenshot_2018-12-10_13-58-24.png]]
+  - Typical Web Application:
+    - HTML pages
+    - Forms
+    - Form Processing Agents
+      - Servlets and/or Java Server Pages (JSP)
+      - Or built on top of Servlets
+    - Database backend
+  - J2EE is a Servlet Specification that is frequently used because of a standardized way of how it is structured, etc.
+  - Web Applications can be packaged into a ~WAR~ file
+
+* Servlets
+  - Are written in Java and run as threads on a web server
+  - Typically used with HTML forms and connect to JDBC
+  - Library classes and methods are used to parse the input stream
+  - Architecture Diagram
+  [[file:images/Servlets/screenshot_2018-12-10_14-04-33.png]]
+
+** Writing Servlets
+   - Use the J2EE Eclipse Perspective
+   - Create a new Dynamic Web Project
+
+*** The ~doGet()~ Method
+    #+BEGIN_SRC java
+      @WebServlet("/HelloServlet")
+      public class HelloServlet extends HttpServlet {
+          protected void doGet(HttpServletRequest request, HttpServletResponse response)
+              throws ServletException, IOException {
+              PrintWriter p = response.getWriter();
+              p.println("<h1>Hello World</h1>");
+              p.close();
+          }
+      }
+    #+END_SRC
+
+*** The ~doPost()~ Method
+    #+BEGIN_SRC java
+      @WebServlet("/HelloServlet")
+      public class HelloServlet extends HttpServlet {
+          protected void doPost(HttpServletRequest request, HttpServletResponse response)
+              throws ServletException, IOException {
+              PrintWriter p = response.getWriter();
+              String name = request.getParameter("name");  // get the name from the submitted form
+              p.println("<h1>Hello " + name + "</h1>");
+              p.close();
+          }
+      }
+    #+END_SRC
+
+* MVC
+  - *Model*: Are any data classes associated with their DB entities, also are very likely to contain ~DAOs~
+  - *View*: Are the *JSP* files that get the data from the *Model* via the *Controller*
+  - *Controller*: Are the *Servlets* that coordinate communication between the *Model* and the *View*
+  - Example Diagram of *MVC* with *Servlets*
+  [[file:images/Servlets/screenshot_2018-12-10_14-23-17.png]]
+
+** Example Post to a ~HelloControllerServlet~
+   #+BEGIN_SRC html
+     <form action="HelloControllerServlet" method="post">
+         <input type="text" name="name">
+         <input type="submit" value="Submit">
+     </form>
+   #+END_SRC
+
+** Receiving with ~doPost~ and dispatching a ~JSP~
+   #+BEGIN_SRC java
+     @WebServlet("/HelloServlet")
+     public class HelloServlet extends HttpServlet {
+         protected void doPost(HttpServletRequest request, HttpServletResponse response)
+             throws ServletException, IOException {
+             String name = request.getParameter("name");  // get the name from the submitted form
+             User user = new User(name);
+             request.setAttribute("user", user); // inject user into the request
+             // dispatch the JSP and forward the request and the response
+             request.getRequestDispatcher("ShowUser.jsp").forward(request, response);
+         }
+     }
+   #+END_SRC
+
+** The ~ShowUser.jsp~
+   #+BEGIN_SRC html
+     <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
+     <body>
+         Name: <c:out value="${user.name}"/>
+     </body>
+   #+END_SRC
+
+* Data Access Object (DAO)
+  - A layer in your application where all the database access code goes
+
+** Example ~UserDAO.java~
+   #+BEGIN_SRC java
+     public enum UserDAO {
+         instance;
+         public Connection getConnection() {
+             Connection con = null;
+             try {
+                 Class.forName("org.hsqldb.jdbcDriver");
+                 con = DriverManager.getConnection("jdbc:hsqldb:hsql://localhost/oneDB", "sa", "");
+                 return con;
+             } catch (SQLException e) {
+                 e.printStackTrace();
+             } catch (ClassNotFoundException e) {
+                 e.printStackTrace();
+             }
+             return con;
+         }
+         public boolean save(User user) {
+             Connection con = getConnection();
+             if (con == null) {
+                 System.out.println("Connection cannot be established!!!");
+                 return false;
+             }
+             String name = user.getName();
+             try {
+                 PreparedStatement psmt = con.prepareStatement("INSERT INTO USER (name) VALUES (?)");
+                 psmt.setString(1, name);
+                 psmt.executeUpdate();
+                 return true;
+             } catch (SQLException e) {
+                 e.printStackTrace();
+                 return false;
+             }
+         }
+         public ArrayList<User> findAll() {
+             Connection con = getConnection();
+             if (con == null) {
+                 System.out.println("Connection cannot be established!!!");
+                 return false;
+             }
+             ArrayList<User> users = new ArrayList<User>();
+             ResultSet result;
+             try {
+                 PreparedStatement psmt = con.prepareStatement( "SELECT * FROM User");
+                 result = psmt.executeQuery();
+                 while (result.next()) {
+                     User user = new User();
+                     user.setName(result.getString("name"));
+                     users.add(user);
+                 }
+                 return users;
+             }
+             catch (SQLException e) {
+                 e.printStackTrace();
+                 return users;
+             }
+         }
+     }
+   #+END_SRC
+
+* JSP
+  - Needed ~jar~ files:
+    - ~javax.servlet.jsp.jstl-1.2.1.jar~
+    - ~javax.servlet.jsp.jstl-api-1.2.1.jar~
+  - ~jar~ files need to be inserted into the ~lib~ folder and added to the build-path, also they need to be added to the ~WEB-INF/lib~ folder and not added to the build-path from there
+  - Every ~jsp~ file that wants to use the directives needs to add this directive on the second line:
+    - ~<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>~
+
+** Usage
+   - ~${varName}~: Access variables
+   - ~<jsp:include page="b.jsp"~: Include a page
+   - ~<jsp:forward>~: Forward to another JSP page
+   - ~<c:out value="${varName}">~: Output a variable ~varName~
+     - ~<c:out value="${1 + 1}">~: Output the expression ~1 + 1~ i.e. ~2~, aka Expression Language (*EL*)
+     - ~<c:out value="${varName}" default="unknown">~: Falls back to ~unknown~ if the expression fails
+   - ~if~
+   #+BEGIN_SRC html
+     <c:if test="${user.role != 'admin'}">
+         Hello <c:out value="${user.name}"/>
+     </c:if>
+     <!-- set a var with if (var becomes the result of the if) -->
+     <c:if test="${user.role}" var="role">
+         Hello User of role: <c:out value="${role}"/>
+     </c:if>
+   #+END_SRC
+   - ~choose~
+   #+BEGIN_SRC html
+     <c:choose>
+         <c:when test="condition">
+             body
+         </c:when>
+         <c:when test="condition">
+             body
+         </c:when>
+         <c:otherwise>
+             body
+         </c:otherwise>
+     </c:choose>
+   #+END_SRC
+   - ~for~
+   #+BEGIN_SRC html
+     <c:forEach items="${userList}" var="user">
+         <c:out value="${user.name}" />
+         <c:out value="${user.address}" />
+         <br />
+     </c:forEach>
+     <!-- iterate over tokens with a specific delimiter -->
+     <c:forTokens var="token"
+                  items="Java, J2EE, JSTL, JSP, Servlet"
+                  delims=",">
+         <c:out value="${token}"/> </br>
+     </c:forTokens>
+   #+END_SRC
+   - ~for~ attributes
+     - ~items~: the input data, default ~None~
+     - ~begin~: element to start with, default ~0~
+     - ~end~: element to end with, default ~lastElement~
+     - ~step~: process every ~step~, default ~1~
+     - ~var~: the variable to expose as the current item
+     - ~varStatus~: the variable to expose as the loop status
+       - ~status.index~
+       - ~status.count~, same as index, except starts at ~1~
+       - ~status.first~
+       - ~status.last~
+
+
+** Scope
+   - When a variable occurs in an expression *JSP* will look for it in the following order
+   - *page*: stored in the ~PageContext~
+   - *request*: stored in the ~HttpRequest~
+   - *session*: stored in the ~HttpSession~
+   - *application*: stored in the ~ServletContext~
+
+* Sessions
+
+** Hidden Data Fields
+   - ~file1.jsp~
+   #+BEGIN_SRC html
+     <form method="post" action="file2.jsp">
+         Enter Name: <input type="text" name="name"> <br>
+         <input type="submit" value="submit">
+     </form>
+   #+END_SRC
+   - ~file2.jsp~
+   #+BEGIN_SRC html
+     <!-- note the hidden input that will get passed further, -->
+     <!-- but it contains the name variable from the previous form -->
+     <form method="post" action="PrintData">
+         <input type="hidden" name="name" value="${param.name}">
+         Enter Name: <input type="text" name="name"> <br>
+         <input type="submit" value="submit">
+     </form>
+   #+END_SRC
+
+** ~HttpSession~
+   - Setting a User for a session
+   #+BEGIN_SRC java
+     protected void doPost(HttpServletRequest request, HttpServletResponse response)
+         throws ServletException, IOException {
+         String password = request.getParameter("password");
+         String email = request.getParameter("email");
+         User user = UserDAO.instance.checkLogin(email, password);
+         if (user != null) {
+             HttpSession session = request.getSession();
+             session.setAttribute("user", user);
+             response.sendRedirect("index.jsp");
+         }
+         else
+             response.sendRedirect("login.jsp");
+     }
+   #+END_SRC
+   - Checking a session User
+   #+BEGIN_SRC java
+     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+         HttpSession session = request.getSession();
+         User sessionUser = (User) session.getAttribute("user");
+         if (sessionUser == null) {
+             response.sendRedirect("login.jsp");
+         }
+     }
+   #+END_SRC
+
+
+** Cookies
+   - Setting a cookie
+   #+BEGIN_SRC java
+     Cookie cookie = new Cookie("name", name);
+     cookie.setMaxAge(Integer.MAX_VALUE);
+     response.addCookie(cookie);
+   #+END_SRC
+   - Getting cookies
+   #+BEGIN_SRC java
+     protected void doGet(HttpServletRequest request, HttpServletResponse response)
+         throws ServletException, IOException {
+         Cookie[] cookies = request.getCookies();
+         if (cookies != null) {
+             System.out.println(cookies.length);
+             String name = getCookieValue(cookies, "savedName");
+         }
+     }
+
+     String getCookieValue(Cookie[] cookies, String cookieKey) {
+         for (int i = 0; i < cookies.length; i++) {
+             if (cookies[i].getName().equals(cookieKey)) {
+                 return cookies[i].getValue();
+             }
+         }
+         return null;
+     }
+   #+END_SRC
+
+
+
+* Eclipse Project setup
+  - Add 2 JSTL and the hsqldb jar files to the ~lib~ folder that needs to be created. Add these files to the build path.
+  - Add the above files to the ~WebContent/WEB-INF/lib~, but do NOT add them to the build path
+  - Add the tag lib directive into the jsp files on the second line of every jsp file
+    #+BEGIN_SRC html
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+    #+END_SRC
+  - Add a doc folder and add a ~README.txt~ file with any information, startup, build process, SQL generation, etc
+  - Add a db folder and add the ~manageDB.xml~ that will manage our hsqldb server
+    - Open the ~manageDB.xml~ in the ANT view
+    - Run the server first
+    - Then run the client, with the name of the DB, and select the 3rd option from the drop-down (HSQL Database Engine Server)
+  - Set the targeted runtime for Apache Tomcat 8.5
+  - Set the Web Project Settings in the project's properties, basically it is the root path.
+
+    #+BEGIN_EXPORT html
+    <script src="../assets/jquery-3.3.1.min.js"></script>
+    <script src="../assets/notes.js"></script>
+    #+END_EXPORT

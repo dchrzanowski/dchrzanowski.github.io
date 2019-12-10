@@ -1,0 +1,1310 @@
+#+TITLE: Software Development
+#+DATE: <2016-10-24 Mon>
+#+AUTHOR: Damian Chrzanowski
+#+EMAIL: pjdamian.chrzanowski@gmail.com
+#+OPTIONS: TOC:2 num:2
+#+HTML_HEAD: <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="../assets/org.css"/>
+#+HTML_HEAD: <link rel="icon" href="../assets/favicon.ico">
+
+[[file:index.org][Home Page]]
+
+* Definitions
+  - TOC - transfer of control
+  - Formal parameter - is the name of the variable that in inserted into the method
+
+* Java
+
+** Diagram of the java environment
+
+   [[file:images/java.png]]
+
+** Hello World program
+   #+BEGIN_SRC java
+class HelloWorld
+{
+    public static void main(String args[])
+    {
+    System.out.println("Hello World!");
+    }
+}
+   #+END_SRC
+
+** Main steps to solving problems
+
+   - Get the required info
+   - Process the info
+   - Display the result
+
+* Data types
+
+** Primitive data types that only contain a single value
+
+   *WARNING! Exceeding a value wraps around aka Overflow*
+
+*** Whole numbers
+    - byte: 8 bits *=>* -128 -> 127
+    - short: 16 bits *=>* -32768 -> 32767
+    - int: 32 bits *=>* -2 147 483 648 -> 2 147 483 647
+    - long: 64 bits *=>* 19 digits lenght
+
+*** Decimal place numbers
+    - float: 32 bits *=>* 10 ^ +- 38
+    - double: 64 bit *=>* 10 ^ +- 308
+
+*** Characters
+    - char: 16 bits *=>* 0 -> 65535 (unicode)
+
+* Variables
+
+** Declaration
+   *Example*
+   #+BEGIN_SRC java
+int x = 0;
+   #+END_SRC
+   #+BEGIN_VERSE
+Basically *DataType* followed by *VariableName*
+   #+END_VERSE
+
+** Naming rules
+
+   - Must start with a letter or an underscore
+   - Can only contain letters, numbers and underscores
+   - Cannot contain spaces
+   - Camel case, starting with a lowercase
+
+* Complex data types
+
+** Strings
+   - Complex data types start with a capital letter
+   - Can store data, have methods to act upon the data
+
+   *Example*
+   #+BEGIN_SRC java
+String name = "John Doe";
+   #+END_SRC
+
+*** String concatenation
+    #+BEGIN_SRC java
+String s1 = "John";
+String s2 = "Doe";
+String s3 = s1 + s2; // s3 = "JohnDoe"
+    #+END_SRC
+
+*** String methods
+
+    - .charAt(x) : returns a character at index x
+    - .length() : returns the length of the string
+    - .substring(x, y) : substring from index x to y, but not including y
+    - .substring(x) : from index x to the end of the string
+    - .equals(X) : compare the string to string X
+    - .compareTo(X) : returns true if the strings are identical. Stops at the first difference found
+
+** BigInteger and BigDecimal
+   *Syntax*
+   #+BEGIN_SRC java
+BigInteger x = new BigInteger("100");
+   #+END_SRC
+* User input
+
+  *Import the scanner*
+  #+BEGIN_SRC java
+import java.util.Scanner;
+  #+END_SRC
+  *Create a Scanner object*
+  #+BEGIN_SRC java
+Scanner in = new Scanner(System.in);
+  #+END_SRC
+  *Take input with the following*
+  #+BEGIN_SRC java
+int x = in.nextInt();  // read an integer
+double x = in.nextDouble();  // read a double
+String x = in.next();  // read a String
+String x = in.nextLine();  // read a String (including spaces)
+  #+END_SRC
+
+* Constant variables and magic numbers
+
+  - A constant must have a variable assigned when initialized
+  - Namig is with ALL CAPITAL LETTERS separated with underscores
+  - Once initialized the value cannot be changed
+
+  *Example code*
+  #+BEGIN_SRC java
+final int NO_OF_WHEELS = 4;
+  #+END_SRC
+
+* Comments
+
+  *In-line comment*
+  #+BEGIN_SRC java
+// this is an in-line comment
+  #+END_SRC
+  *Block comment*
+  #+BEGIN_SRC java
+/*
+This is a block comment
+*/
+  #+END_SRC
+  *Block comment for documentation*
+  #+BEGIN_SRC java
+/**
+*
+*
+*
+*/
+  #+END_SRC
+* Round of errors
+  #+BEGIN_SRC java
+double price = 4.35;
+double qunatity = 100;
+double total = price * quantity;
+System.out.println(total);
+//prints 434.99999999999998
+  #+END_SRC
+* Integer division with integers
+  #+BEGIN_SRC java
+4 / 2 = 2;
+4 / 3 = 1;
+1 / 3 = 0;
+0 / 4 = 0;
+5 / 0 = error;
+  #+END_SRC
+* Powers and roots, maths library
+  *Examples*
+  #+BEGIN_SRC java
+double x = Math.sqrt(9);  // Maths library returns a double
+double x = Math.pow(2, 3);  // 2 to the power of 3 = 8.0
+  #+END_SRC
+  *Other Maths library functions*
+  - .sin(x)
+  - .cos(x)
+  - .tan(x)
+  - .toDegrees(x)
+  - .toRadians(x)
+  - .round(x)
+  - .abs(x)
+  - .min(x, y)
+  - .max(x, y)
+
+* Type casting - converting data types
+
+** Implicit type conversion (done automatically)
+
+   *Example*
+   #+BEGIN_SRC java
+int x = 5;
+double d = 10.5;
+x = d * x; // x = 50, automatically cuts off the decimal place
+   #+END_SRC
+
+   *Type casting order*
+
+   [[file:images/type_casting_order.png]]
+
+** Explicit type conversion
+
+   - It accepts any conversion
+   - Care must be taken when converting from a higher data type to a lower data type
+   - Put the data type in brackets before the expression
+   - The original expression is *unchanged* after the conversion is done
+
+   *Example*
+   #+BEGIN_SRC java
+int x = 3;
+int y = 4;
+double z = (double) x / y;
+   #+END_SRC
+
+* Formatting the output
+
+  *Examples*
+  #+BEGIN_SRC java
+int x = 55;
+double y = 1.2345;
+String n = "Joe";
+System.out.printf("x = %d", x);  // print x = 55
+System.out.printf("x = %7d" , x); // prints x = ____55
+System.out.printf("y = %.2f", y); // prints y = 1.23=
+System.out.printf("n = %s", n); // prints n = Joe
+  #+END_SRC
+
+* Precedence and associativity
+
+  | Precedence        | Associativity |
+  | ----------        | ------------- |
+  | .                 | Left          |
+  | ++ -- !           | Right         |
+  | * / %             | Left          |
+  | + -               | Left          |
+  | < <= > >=         | Left          |
+  | equals,not equals | Left          |
+  | AND               | Left          |
+  | OR                | Left          |
+  | ? !               | Right         |
+  | = += -= /=        | Right         |
+
+* Decisions, Conditional Execution
+  #+BEGIN_VERSE
+Conditional expression can have either of two answers: True or False.
+
+Relationship operators: > < == >= <= !=
+
+Joining expressions: &&(AND) ||(OR)
+  #+END_VERSE
+** If statement
+   *Example Code*
+   #+BEGIN_SRC java
+int x = 5;
+if(x > 4) {
+    System.out.println("True");  // prints True, x is greater than 5
+}
+   #+END_SRC
+
+   [[file:images/if.png]]
+
+** Else statement
+   *Example Code*
+   #+BEGIN_SRC java
+int x = 5;
+if(x < 4) {
+    System.out.println("True");
+}
+else {
+    System.out.println("False"); // print false because x is greater than 4
+}
+   #+END_SRC
+
+   [[file:images/else.png]]
+
+** Else If, Alternative Options
+
+   *Example code*
+   #+BEGIN_SRC java
+if (...) {
+
+} else if (...) {
+
+} else if (...) {
+
+} else if (...) {
+
+}
+   #+END_SRC
+
+** Switch Statement
+
+   Only works with integers, chars and as of Java 7 with Strings
+
+   *Sample Code:*
+   #+BEGIN_SRC java
+switch (ch) {
+case 'a':
+    System.out.println("a was entered");
+    break;  // a break statement is necessary in here (otherwise everything gets checked)
+case 'b':
+    System.out.println("b was entered");
+    break;
+default:
+    System.out.println("Neither a or b were entered");
+}
+
+// For all true in case statement:
+// case 'a':
+// case 'A':
+// ....do something here...
+   #+END_SRC
+
+** Nested branches
+
+   *Sample Code:*
+   #+BEGIN_SRC java
+if (condition) {
+    if (condition) {
+    if (condition) {
+        // some code here
+    }
+    }
+}
+   #+END_SRC
+
+* Enumerated Types
+
+  - Have a finite set of values
+  - Makes reading of code easier
+  - Assign "Values" to simple names
+
+  #+BEGIN_SRC java
+public enum Direction {NORTH, SOUTH, EAST, WEST}
+
+Direction car = Direction.NORTH;
+
+switch (car) {
+case Direction.NORTH:
+    x--;
+    break;
+case Direction.SOUTH:
+    x++;
+    break;
+    // ........
+}
+  #+END_SRC
+
+* Logging
+
+  *Sample code to output where the branch reaches*
+  #+BEGIN_SRC java
+if(x > 0) {
+    System.out.println("x is positive");
+} else if(x < 0) {
+    System.out.println("x is negative");
+} else {
+    System.out.println("x equals zero");
+}
+  #+END_SRC
+
+* Boolean data type
+
+** Example and size
+
+   Size of a boolean type is 1 bit
+
+   *Example of assignment*
+   #+BEGIN_SRC java
+boolean someVar = true;
+boolean someVar2 = false;
+
+if(someVar) {
+    // ...code here
+}
+   #+END_SRC
+
+** Truth table with boolean expressions
+
+   | P | Q | R | (P and Q) or !R | !(P and (Q or !R)) |
+   |---+---+---+-----------------+--------------------|
+   | 0 | 0 | 0 | 1               | 1                  |
+   | 0 | 0 | 1 | 0               | 1                  |
+   | 0 | 1 | 0 | 1               | 1                  |
+   | 0 | 1 | 1 | 0               | 1                  |
+   | 1 | 0 | 0 | 1               | 0                  |
+   | 1 | 0 | 1 | 0               | 1                  |
+   | 1 | 1 | 0 | 1               | 0                  |
+   | 1 | 1 | 1 | 1               | 0                  |
+
+** Shortening expressions
+
+   *Code example*
+
+   #+BEGIN_SRC java
+b == true; // if(b)
+b == false; // if(!b)
+b != true; // if(!b)
+b != false; // if(b)
+   #+END_SRC
+
+** DeMorgan's Laws
+
+   *!(A && B) -->  !A || !B*
+   *!(A || B) -->  !A && !B*
+
+   English version:
+
+   *not(A and B)  --> not A or  not B*
+   *not(A or  B)  --> not A and not B*
+
+   *Code example*
+   #+BEGIN_SRC java
+//hard to read
+int shippingCharge = 10;
+if (!(country.equals("USA")
+      && !state.equals("AK")
+      && !state.equals("HI"))) {
+    shippingCharge = 20;
+}
+
+// after applying the DeMorgan's law
+int shippingCharge = 20;
+if(!(country.equals("USA")
+     || state.equals("AK")
+     || state.equals("HI"))) {
+    shippingCharge = 20;
+}
+   #+END_SRC
+* Input Validation
+** Reading an integer
+
+   *Code example*
+
+   #+BEGIN_SRC java
+int x = 0;
+System.out.print("Please enter an integer: ");
+
+if(in.hasNextInt()) {
+    x = in.nextInt();
+    System.out.println("You entered " + x);
+
+} else {
+    System.out.println("Sorry invalid input");
+}
+   #+END_SRC
+* Iteration - loops
+** Types
+   - while
+   - for
+   - do-while
+
+   *Flowchart*
+
+   [[file:images/loop.png]]
+
+** Loop must haves
+   #+BEGIN_VERSE
+All loops must have:
+   #+END_VERSE
+   1. Initialization: this is where the variable is the condition is initialized.
+   2. Condition: this is where the condition is evaluated, if it is true the loop body is executed, otherwise the loop is ended.
+   3. Update: this is where the variable in the condition is updated (so that eventually it will become false)
+
+** While loop
+
+   *Syntax*
+   #+BEGIN_SRC java
+while(condition) {
+    // code here
+}
+   #+END_SRC
+   #+BEGIN_VERSE
+While the condition is true loop through the code inside or block of code.
+   #+END_VERSE
+
+   *Examples of while loops*
+
+   *Print numbers 1 to 5*
+   #+BEGIN_SRC java
+int x = 1;
+while(x <= 5) {
+    System.out.print(x + ", ");
+    x++;
+}
+   #+END_SRC
+
+   *Print numbers 5 to 1*
+   #+BEGIN_SRC java
+int x = 5;
+while(x > 0) {
+    System.out.print(x + ", ");
+    x--;
+}
+   #+END_SRC
+
+   *Print numbers 5 to 30*
+   #+BEGIN_SRC java
+int x = 5;
+while(x <= 30) {
+    System.out.print(x + ", ");
+    x += 5;
+}
+   #+END_SRC
+
+** For loop
+
+   *Syntax*
+   #+BEGIN_SRC java
+for(init; condition; update) {
+    // code here;
+}
+   #+END_SRC
+   1. The *init* statement is executed first and only executed once
+   2. Before each iteration the *condition* is checked, if it is true then the next statement or block of statements are executed. If it is false then the loop is terminated and execution resumes at the statement immediately following the terminated statement
+   3. After each loop the *update* is executed
+
+   *Example*
+   #+BEGIN_SRC java
+for(int x = 1; x <= 5; x++) {
+    System.out.println(x);
+}
+   #+END_SRC
+** The do-while loop
+
+   *Syntax*
+   #+BEGIN_SRC java
+do {
+    statement(s);
+} while(condition);
+   #+END_SRC
+
+   *Example*
+   #+BEGIN_SRC java
+int x = 1;
+do {
+    System.out.println(x);
+    x++;
+} while(x <= 5);
+   #+END_SRC
+   #+BEGIN_VERSE
+Guaranteed to execute the block at least once.
+Meaning the first iteration will always run.
+   #+END_VERSE
+
+* Sentinel processing
+
+  - We are going to look at how to read and process a set of data values
+  - A Sentinel is a flag or marker that indicates that the processing of input data should end
+
+  *Example of sentinel processing*
+  #+BEGIN_SRC java
+Scanner in = new Scanner(System.in);
+
+int count = 0;
+int sum = 0;
+int value = 0;
+
+System.out.print("Please enter a list of positive numbers, -1 to end");
+
+while(value != -1) {
+
+    if (in.hasNextInt()) {
+    value = in.nextInt();
+
+        if(value != -1){
+            sum += value;
+            count++;
+        }
+    }
+}
+
+System.out.println("The sum = " + sum);
+
+if (count > 0) {
+    System.out.println("The average = " + ((double) sum/count));
+
+} else {
+    System.out.println("No data entered. Average is zero");
+}
+  #+END_SRC
+* Common Algorithms
+
+** Counting Matches
+
+   *Example code*
+   #+BEGIN_SRC java
+String str = "My fair lady";
+int spaces = 0;
+
+for (int i = 0; i < str.length(); i++) {
+    char ch = st.charAt(i);
+    if (ch == ' ') {
+    spaces++;
+    }
+}
+System.out.println("Total spaces = " + spaces);
+   #+END_SRC
+
+** First Match
+
+   *Example code. Using a while loop*
+   #+BEGIN_SRC java
+String str = "My fair lady";
+boolean found = false;
+int position = 0;
+while(!found || position < str.length()) {
+    char ch = str.charAt(position);
+    if (ch == ' ') {
+    found = true;
+    }
+    else {
+    position++;
+    }
+}
+System.out.println("First space fount at index: " + position);
+   #+END_SRC
+
+** Prompting until a match is found
+
+   *Example code*
+   #+BEGIN_SRC java
+boolean valid = false;
+double input = 0;
+do {
+    System.out.print("Please enter a positive number < 100 : ");
+    input = in.nextDouble();
+    if (input >= 0 && input <= 100) {
+    valid = true;
+    }
+    else {
+    System.out.println("Invalid input, try again!");
+    }
+} while(!valid);
+   #+END_SRC
+
+** Maximum and Minimum
+
+   *Example code, Maximum value*
+   #+BEGIN_SRC java
+double largest = in.nextDouble();
+while (in.hasNextDouble()){
+    double input = in.nextDouble();
+    if (input > largest) {
+    largest = input;
+    }
+}
+System.out.println("Max value is: " + largest);
+   #+END_SRC
+
+   *Example code, Minimum value*
+   #+BEGIN_SRC java
+double smallest = in.nextDouble();
+while (in.hasNextDouble()){
+    double input = in.nextDouble();
+    if (input < smallest) {
+    smallest = input;
+    }
+}
+System.out.println("Min value is: " + smallest);
+   #+END_SRC
+
+** Comparing adjacent values
+
+   *Example code*
+   #+BEGIN_SRC java
+double input = in.nextDouble();
+
+while(in.hasNextDouble()) {
+    double previous = input;
+    input = in.nextDouble();
+    if (previous == input) {
+    System.out.print("Adjacent value founs; " + input);
+    }
+}
+   #+END_SRC
+* The break statement
+  #+BEGIN_VERSE
+The break statement terminates the smallest enclosing while, do, for or switch statement.
+Execution resumes at the statement immediately following the terminated statement.
+  #+END_VERSE
+
+  *Sample structure*
+  #+BEGIN_SRC java
+while(...){
+    while(...){
+    for(...){
+        break;  //breaks out of the 'for' loop
+    }
+    break;  //breaks out of the second 'while' loop
+    }
+    break;  //breaks out of the first 'while' loop
+}
+  #+END_SRC
+
+  *Sample code*
+  #+BEGIN_SRC java
+int x = 1;
+while(x <= 5){
+    if (x < 3) {
+    System.out.print(x + ",");
+    }
+    else {
+    break;
+    }
+    x++;
+}
+  #+END_SRC
+
+* The continue statement
+  #+BEGIN_VERSE
+The continue statement causes the current iteration of a loop to stop and the next iteration begin immediately.
+  #+END_VERSE
+
+  *Sample code*
+  #+BEGIN_SRC java
+for (int x = 1; x <= 10; x++)
+{
+    if (x > 2 && x < 9) {
+    continue;
+    }
+    System.out.print(x + ",");
+}
+  #+END_SRC
+
+* Nested loops
+
+  - a loop within a loop
+
+  | 1 |  2 |  3 |  4 |  5 |
+  | 2 |  4 |  6 |  8 | 10 |
+  | 3 |  6 |  9 | 12 | 15 |
+  | 4 |  8 | 12 | 16 | 20 |
+  | 5 | 10 | 15 | 20 | 25 |
+
+  *Code to create a multiplication tables, such as the one above*
+
+  #+BEGIN_SRC java
+for (int x = 1; x <= 5; x++) {
+    for (int y = 1; y <= 5; y++) {
+    System.out.print((x * y) + ",");
+    }
+    System.out.println();
+k}
+  #+END_SRC
+
+* Random numbers
+
+  ~Math.random()~ generates a random number between 0 and 0.999999999999998
+
+  *6-sided dice roll*
+  #+BEGIN_SRC java
+for (int x = 1; x <= 10; x++) {
+    int dice1 = (int) (Math.random() * 6) + 1;
+    int dice2 = (int) (Math.random() * 6) + 1;
+    System.out.println(dice1 + " : " + dice2);
+}
+  #+END_SRC
+* Methods
+
+  Look at methods as a black box
+
+** Example
+   #+BEGIN_SRC java
+double ans = Math.pow(2, 3);
+   #+END_SRC
+
+** Definition of a method
+   #+BEGIN_SRC java
+public static double pow (double x, double y) {
+    // code here
+}
+   #+END_SRC
+   - pow is the name
+   - double is the return type
+   - public defines that the method has public access(can be accessed form outside of the class)
+   - static means that the object is non-OOP
+   - inside brackets are the inputs aka arguments
+
+** Example of a method that does not take any parameters
+   #+BEGIN_SRC java
+public class MyMethods {
+    public static void drawRect() {
+    System.out.println("*****");
+    System.out.println("*   *");
+    System.out.println("*****");
+    }
+
+    public static void main(String[] args) {
+    drawRect();
+    drawRect();
+    }
+}
+   #+END_SRC
+
+** Example of a method that takes in parameters
+   #+BEGIN_SRC java
+public class MyMethods {
+    public static void drawRect(char c) {
+    System.out.println("" + c + c + c + c);
+    System.out.println(c + "___" + c);
+    System.out.println("" + c + c + c + c);
+    }
+
+    public static void main(String[] args) {
+    drawRect('x');
+    drawRect('z');
+    }
+}
+   #+END_SRC
+
+** Example of overloading
+   #+BEGIN_SRC java
+public class MyMethods {
+    // example of overloading
+    public static void sum (int x, int y) {
+    System.out.println("Sum = " + (x + y));
+    }
+
+    public static void sum (double x, double y) {
+    System.out.println("Sum = " + (x + y));
+    }
+
+    public static void sum (int x, int y, int c) {
+    System.out.println("Sum = " + (x + y + c));
+    }
+
+    public static void main(String[] args) {
+    sum(5, 5);  // outputs 10
+    sum(4, 4);  // outputs 8
+    sum(4.4, 3.6);  // outputs 8
+    sum(4, 4, 6);  // outputs 14
+    }
+}
+   #+END_SRC
+
+** Example of returning a value
+   #+BEGIN_SRC java
+public class MyMethods {
+    public static int sum (int x, int y) {
+    return (x + y);
+    }
+
+    public static void main(String[] args) {
+    int z = sum(4, 5);
+    System.out.println(z);
+    }
+}
+   #+END_SRC
+   - The return statement terminates the method and execution returns from where the method was called
+   - The value being returned must match the return declaration of the method
+     - blank return must have a void declaration, returning an int must have an int declaration etc.
+
+** Method Comments
+   #+BEGIN_SRC java
+/**
+Adds two numbers and returns the sum of them.
+@param x The first number in summation
+@param y The second number in summation
+@return The sum
+ */
+public static int add(int x, int y) {
+    return(x + y);
+}
+   #+END_SRC
+
+** Method Stubs
+   Write a stub to have at least a default skeleton that returns a valid value
+   #+BEGIN_SRC java
+public static String methodName(int x, int y) {
+    // some code
+    return "Hello";
+}
+   #+END_SRC
+
+** Parameter variables
+
+   - Design rules would say that you should not change the value of a parameter variable that is passed into a method.
+
+** Variable scope
+
+   - Scope defines that a variable is only available in the block where it was declared and any sub-block, unless re-declared. That will create a new local variable with a local scope
+
+   Example:
+   #+BEGIN_SRC java
+for (int i = 0; i < N; i++) {
+    for (int z = 0; z < N; z++) {
+    System.out.println(z);  // in here both z and i variables are available
+    System.out.println(i);
+    }
+    System.out.println(z); // in here only the i variable is available, z variable is out of scope
+    System.out.println(i);
+}
+   #+END_SRC
+
+   Example 2:
+   #+BEGIN_SRC java
+double cubeVolume(double sidelength)  {
+    return sidelength * sidelength * sidelength;// in here the value of sidelength is not modified
+    // as the method created its own local variable
+}
+
+public static void main(String[] args) {
+    double sidelength = 10;
+    System.out.println("Volume = " + cubeVolume(sidelength));
+}
+   #+END_SRC
+
+* Classes in separate files
+
+  File 1 : HandyMethods.java
+  #+BEGIN_SRC java
+class HandyMethods {
+    public static int add (int x, int y) {
+    return x + y;
+    }
+
+    public static double add (double x, double y) {
+    return x + y;
+    }
+}
+  #+END_SRC
+
+  File 2 : Question.java
+  #+BEGIN_SRC java
+class Question {
+    public static void main(String[] args) {
+    int answer = HandyMethods.add(4, 5);
+    double answer2 = HandyMethods.add(3.4, 4.5);
+    System.out.println("Answer 1 = " + answer);
+    System.out.println("Answer 2 = " + answer2);
+    }
+}
+  #+END_SRC
+* Dealing with partially filled arrays
+  In here we use the currentSize variable to track the current size of the array.
+  Normally the code would have to iterate through the whole array. In here we
+  set a limit so that the algorithm is more efficient.
+  #+BEGIN_SRC java
+final int LENGTH = 1000;
+double [] values = new double(LENGTH);
+//partially filling the array
+int currentSize = 0;
+Scanner in = new Scanner(System.in);
+while (in.hasNextDouble()) {
+    if(currentSize < values.length) {
+    value[currentSize] = in.nextDouble();
+    currentSize++;
+    }
+}
+  #+END_SRC
+* Linear Search
+  Incrementally finding a value in an array
+  #+BEGIN_SRC java
+int searchValue = 2;
+int pos = 0;
+boolean found = false;
+while (pos < currentSize && !found) {
+    if (values[pos] == searchValue) {
+    found = true;
+    } else {
+    pos++;
+    }
+}
+
+if (found) {
+    System.out.println(searchValue + " found at index " + pos);
+} else {
+    System.out.println(searchValue + " not found!!!");
+}
+  #+END_SRC
+* Arrays
+** Replace element from an array
+   In an unordered list, remove the value and replace it with the last element from the array
+   #+BEGIN_SRC java
+values[pos] = values[currentSize - 1];
+currentSize--;
+   #+END_SRC
+
+   Ordered list, remove the value from the given position and shift the remainder of the array by one upwards
+   #+BEGIN_SRC java
+for (int i = pos + 1; i < currentSize; i++) {
+    values[i - 1] = values[i];
+}
+currentSize--;
+   #+END_SRC
+** Inserting an element to an array
+   Unordered list, take the current value move it to the last index and increment currentSize
+   #+BEGIN_SRC java
+if (currentSize < values.length) {
+    currentSize++;
+    values[currentSize - 1] = newElement;
+}
+   #+END_SRC
+   Ordered list, insert the element at a given index and shift the remaining indices by one downwards
+   #+BEGIN_SRC java
+if (currentSize < values.length) {
+    currentSize++;
+    for (int i = currentSize - 1; i > pos; i--) {
+    values[i] = values[i - 1];
+    }
+    values[pos] = newElement;
+}
+   #+END_SRC
+** Swapping elements in an array
+   Pick an element, store it temporarily in a variable and the swap around safely
+   #+BEGIN_SRC java
+int temp = values[i1];
+values[i1] = values[i2];
+values[i2] = temp;
+   #+END_SRC
+** Copy of an array
+   #+BEGIN_SRC java
+String [] friends = {"Tom", "Mary", "Joe"};
+
+String [] team = friends; // copy by reference
+
+String [] enemies = Arrays.copyOf(friends, friends.length); // original array, new length as the parameters
+   #+END_SRC
+* Sorting Algorithms
+** Selection Sort
+   #+BEGIN_SRC java
+for (int i = 0; i < arr.length; i++) {
+    for (int j = 0; j < arr.length; j++) {
+    if (arr[j] < arr[i]) {
+        int tmp = arr[j];
+        arr[j] = arr[i];
+        arr[i] = tmp;
+    }
+    }
+}
+   #+END_SRC
+
+** Bubble Sort
+   #+BEGIN_SRC java
+boolean sorted = false;
+
+while(!sorted) {
+    sorted = true; // assume that the array is sorted
+    for (int i = 0; i < arr.length - 1; i++) {
+    if (arr[i + 1] < arr[i]) {
+        int tmp = arr[i + 1];
+        arr[i + 1] = arr[i];
+        arr[i] = tmp;
+        sorted = false; // array is not sorted, go again
+    }
+    }
+}
+   #+END_SRC
+* Two dimensional arrays
+
+** 1D array
+   #+BEGIN_SRC java
+int [] oneD = new int[4];
+   #+END_SRC
+** 2d array
+   #+BEGIN_SRC java
+int [][] twoD = new int [4][4];  // first index is the row and the second one is the column
+   #+END_SRC
+
+   The way this looks like in memory is that the first array consists of pointers 4000, 5000, 6000 etc.
+   Each of these pointers point to an another array, which in this case holds the actual data.
+
+   Example of a 2D array and the usage of ~Arrays.deepToString~ method:
+   #+BEGIN_SRC java
+import java.util.Arrays;
+
+public class sample
+{
+    public static void main(String args[])
+    {
+    int [][] test = new int[5][5];
+    for (int i = 0; i < test.length; i++) {
+        for (int j = 0; j < test[i].length; j++) {
+        test[i][j] = (int) (Math.random() * 100) + 1;
+        }
+    }
+
+    for (int i = 0; i < test.length; i++) {
+        for (int j = 0; j < test[i].length; j++) {
+        System.out.println("Index [" + i + "][" + j + "] = " + test[i][j]);
+        }
+    }
+    System.out.println(Arrays.deepToString(test));
+    }
+}
+
+   #+END_SRC
+
+* Array Lists
+** Array List basic examples and definition
+   Array Lists are arrays that do not have a fixed size. Their size can be changed dynamically.
+
+   Example:
+   #+BEGIN_SRC java
+import java.util.ArrayList;
+
+ArrayList<String> test = new ArrayList<String>();
+   #+END_SRC
+   ~ArrayList~ methods:
+   - add("Mary"), adds an element
+   - add(0, "Mary"), adds an alement at index 0, pushes the rest down
+   - set(0, "John"), replace at index 0
+   - remove("Mary"), remove the index with the word "Mary" in it
+   - remove(0), remove index 0
+   - get(0), get element from index 0
+   - size(), get the size of the list
+
+** Array Lists and Enhanced for loops
+
+   #+BEGIN_SRC java
+import java.util.Arrays;
+
+public class sample
+{
+    public static void main(String args[])
+    {
+    ArrayList<String> friends = new ArrayList<String>();
+    friends.add("Tom");
+    friends.add("Mary");
+    friends.add("Joe");
+
+    // enhanced for loop
+    for(String name : friends) {
+        System.out.println("Each friend " + name);
+    }
+
+    // standard for loop
+    for (int i = 0; i < friends.size(); i++) {
+        String name = friends.get(i);
+        System.out.println("Each friend" + name);
+    }
+    }
+}
+   #+END_SRC
+** Copying Array Lists
+
+   #+BEGIN_SRC java
+import java.util.Arrays;
+
+public class sample
+{
+    public static void main(String args[])
+    {
+    ArrayList<String> friends = new ArrayList<String>();
+    friends.add("Tom");
+    friends.add("Mary");
+    friends.add("Joe");
+
+    ArrayList<String> team = friends; // creates a copy by reference (not an actual copy)
+
+    team.add("Adam"); // adds Adam to both the team and the friends Array Lists
+
+    ArrayList<String> enemies = new ArrayList<String>(friends);
+    }
+}
+   #+END_SRC
+
+** ArrayList Methods
+
+   Reverse of an ArrayList
+   #+BEGIN_SRC java
+public static ArrayList<String> reverse(ArrayList<String> values) {
+    ArrayList<String> answer = new ArrayList<String>();
+    for (int i = values.size(); i >= 0; i--) {
+    answer.add(values.get(i));
+    }
+    return answer;
+
+}
+   #+END_SRC
+
+** Wrapper classes
+
+   | Primitive Type | Complex Class |
+   |----------------+---------------|
+   | byte           | Byte          |
+   | boolean        | Boolean       |
+   | char           | Character     |
+   | short          | Short         |
+   | int            | Integer       |
+   | long           | Long          |
+   | float          | Float         |
+   | double         | Double        |
+
+   Example:
+   #+BEGIN_SRC java
+Integer x = 5; // auto-boxing
+int y = x; // un-boxing
+
+ArrayList<Integer> values = new ArrayList<Integer>();
+values.add(7);
+int number = values.get(0);
+   #+END_SRC
+
+** When to use Arrays and when to use ArrayLists
+
+   *Arrays:*
+   - if size of the collection does not change
+   - if a collection is dealing with a huge amount of primitive data type. For efficiency an Array is used
+
+   *ArrayLists:*
+   - in all other cases
+* Objects and classes
+** Example of a Student class
+   *Without a constructor*
+   - A class does not need a constructor, but in this case Java will automatically set the variables to default values.
+   - Basically java creates a constructor by itself if it is missing.
+   - All complex data types are set to null, and all numerical promitives to zero.
+   #+BEGIN_SRC java
+// The Student classG
+public class Student {
+    String id;
+    String name;
+    int age;
+
+    public void print() {
+    System.out.println("Id:   " + id);
+    System.out.println("Name: " + name);
+    System.out.println("Age:  " + age);
+    }
+}
+   #+END_SRC
+
+   *With a constructor*
+   - A class may have multiple constructors, some may provide all parameters to match the class variables, some do not provide any parameters, they just fill in the data.
+   - The constructor name must be the same as the class name
+   #+BEGIN_SRC java
+public class Student {
+    String id;
+    String name;
+    int age;
+
+    public Student(id, name, age) {
+    // use the this keyword to avoid confusion between a local variable and a class variable
+    this.id = id;
+    this.name = name;
+    this.age = age;
+    }
+
+    public Student() {
+        // don't have to use the this keyword as the parameters do not overlap(name-wise)
+    id = "";
+    name = "";
+    age = 0;
+    }
+
+    public void print() {
+    System.out.println("Id:   " + id);
+    System.out.println("Name: " + name);
+    System.out.println("Age:  " + age);
+    }
+}
+   #+END_SRC
+** Creating an instance of the Student class
+   #+BEGIN_SRC java
+public class TestStudent {
+    public static void main (String [] args) {
+    Student s1 = new Student();  // create and instance of the class (aka class' Object)
+        // assign values to the class
+    s1.id = "A00123456";
+    s1.name = "Joe Blogs";
+    s1.age = 21;
+    s1.print();
+    }
+}
+   #+END_SRC
+
+** Encapsulation
+
+   - Is the process of hiding data
+   - access to encapsulated data is only allowed through methods we create
+   - to encapsulate the data, put the keyword "private" before it when it is being declared, e.g. ~private int age;~
+
+   #+BEGIN_SRC java
+public class Student {
+    private String id;
+    private String name;
+    private int age;
+
+    public Student(id, name, age) {
+    // use the this keyword to avoid confusion between a local variable and a class variable
+    this.id = id;
+    this.name = name;
+    setAge(age);
+    }
+
+    public void setAge(int newAge) {
+    if (newAge >= 10 && newAge <= 130) {
+        age = newAge;
+    } else {
+        age = 21;
+    }
+    }
+    public void print() {
+    System.out.println("Id:   " + id);
+    System.out.println("Name: " + name);
+    System.out.println("Age:  " + age);
+    }
+}
+   #+END_SRC
+
+   #+BEGIN_EXPORT html
+   <script src="../assets/jquery-3.3.1.min.js"></script>
+   <script src="../assets/notes.js"></script>
+   #+END_EXPORT

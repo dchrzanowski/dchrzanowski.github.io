@@ -1,0 +1,454 @@
+#+TITLE: Networks 4
+#+DATE: [2019-09-09 Mon 11:54]
+#+AUTHOR: Damian Chrzanowski
+#+EMAIL: pjdamian.chrzanowski@gmail.com
+#+OPTIONS: TOC:2 num:2
+#+HTML_HEAD: <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="../assets/org.css"/>
+#+HTML_HEAD: <link rel="icon" href="../assets/favicon.ico">
+[[file:index.org][Home Page]]
+* Possible exam questions
+  - Security and history, not on the exam
+  - Four Sources of packet delay
+  - Persistent HTTP vs non-persistent HTTP
+  - TCP vs UDP
+  - Describe a scenario in which email travels from A to B, describe the journey through the servers
+  - SMTP
+  - SCTP be able to draw the multistreams
+* Grade breakdown
+  - CA 30%, 20% lab and 10% assessment (1 hour in-class, usually after Halloween)
+  - Exam 70% (no history)
+* Definitions
+  - *RFC*: Request for comments
+  - *IETF*: Internet Engineering Task Force
+  - *Protocol*: protocols define format, order of msgs sent and received among network entities, and actions taken on msg transmission, receipt
+* Network Edge
+  - *Hosts*: clients and servers. Servers often in data centers
+  - *Access Networks, Physical Media*: wired, wireless communication links
+  - *Network Core*: Interconnected routers, network of networks
+    - *Packet-switching*: hosts break *application-layer* messages into packets
+    - Two core function:
+      - *Routing*: determines source-destination route taken by packets
+      - *Forwarding*: move packets from router's input to appropriate output
+  - Connecting *end systems* to *edge router* is done via: residential access nets, institutional access networks, mobile access networks
+* Network Structure
+  [[file:images/Network_Structure/screenshot_2019-11-04_23-02-16.png]]
+* Packet delay
+  - There are four sources of packet delay: nodal processing, queuing delay, transmission delay, propagation delay
+
+  [[file:images/Packet_delay/screenshot_2019-11-04_23-07-20.png]]
+
+  [[file:images/Packet_delay/screenshot_2019-11-04_23-08-30.png]]
+* QoS Metrics
+  - Throughput
+  - Data loss
+  - Time sensitive
+* Layering
+  - *Application*: supporting network applications; FTP, SMTP, HTTP
+  - *Transport*: process-process data transfer; TCP, UDP
+  - *Network*: routing of datagrams from source to destination; IP, routing protocols
+  - *Link*: data transfer between neighbouring network elements: Ethernet, 802.11 (WiFi), PPP
+  - *Physical*: bits "on the wire"
+  [[file:images/Layering/screenshot_2019-11-04_23-34-07.png]]
+* Application Layer
+** Application architectures
+*** Client-server
+    - *Server*: always-on host, permanent IP address, data centers for scaling
+    - *Clients*: communicate with server, may be intermittently connected, may have dynamic IP address, clients do not communicate directly with each other
+*** Peer-to-peer
+    - No "always-on" server
+    - Arbitrary systems directly communicate
+    - Peers request services from other peers
+** Process
+   - A program running within a host
+   - Within the same host processes use *inter-process communication*
+   - On different hosts processes communicate via *exchanging messages*
+   - Applications with P2P have both the client and the server process
+** Sockets
+   - Processes use sockets to send messages in/out
+   - Sockets are analogous to doors
+** Addressing processes
+   - To receive a message, process must have an *identifier*. The *identifier* contains both the IP and the port number
+   - Host device has a unique 32 bit IP address
+** Application layer protocol defines
+   - Types of messages exchanged: request, response
+   - Message syntax: what fields in messages & how fields are delineated
+   - Message semantics: meaning of information in fields
+   - Rules: when and how processes send & respond to messages
+   - Open Protocols: defined in RFC, allows for interoperability, e.g. HTTP, SMTP
+   - Proprietary Protocols: e.g. Skype
+** What transport service does an app need?
+   - Data Integrity: some apps need 100% data reliability, e.g. file transfer. Some can tolerate a loss, e.g. audio
+   - Timing: e.g. Telephony require a low delay
+   - Throughput: some apps (e.g. multimedia) require minimum amount of throughput to be effective, other apps ("elastic apps") make use of whatever they can get
+   - Security: encryption, data integrity, etc
+** HTTP
+   - Client-server model: Client is the requester and the server provides a response
+   - Uses TCP:
+     - Client initiates TCP connection (creates a socket) to server
+     - Server accepts TCP connection from client
+     - HTTP messages (app layer protocol messages) exchanged between browser (HTTP client) and Web server (HTTP server)
+     - TCP connection closed
+   - HTTP is *stateless*
+   - Protocols that maintain state are *complex*!
+** HTTP connections
+   - *Non-persistent*: at most one object sent over TCP, downloading multiple objects requires multiple connections
+   - *Persistent*: multiple object can be sent over a single TCP connection
+** Non-persistent order
+   1. HTTP Client initiates TCP connection to HTTP server (process) at www.foo.bar on port 80
+   2. HTTP server waits for connections on port 80 and accepts the connection, notifies the client about it
+   3. HTTP client sends a HTTP request message (with URL) into TCP connection socket. Message indicates that the client wants some object
+   4. HTTP server receives the request, forms a response containing the requested object and sends it into the socket
+   5. HTTP server closes TCP connection
+   6. HTTP client receives the response, finds out references to 10 more jpegs
+   7. Steps 1-6 repeat
+** Non-persistent vs persistent HTTP
+*** Non-persistent
+    - requires 2 RTTs per object
+    - OS overhead for each TCP connection
+    - browsers often open parallel connections
+*** Persistent
+    - Server leaves connection open after sending response
+    - Subsequent HTTP massages between same client/server sent over open connection
+    - Client sends requests as soon as it encounters references
+    - As little as one RTT for all the referenced objects
+** Sample HTTP response codes
+   - 200 OK
+   - 301 Moved Permanently
+   - 400 Bad Request
+   - 404 Not Found
+   - 500 Server Error
+** Proxy Servers (Web Caches)
+   - Provides a cached version of a website at a closer range, i.e. proximity
+   - Typically installed by the ISP
+   - *Conditional GET* is an another way of dealing with cached results
+** Electronic Mail
+*** Three major components
+    - User agents: mail reader
+    - Mail servers:
+      - Mailbox: contains incoming messages
+      - Message Queue: messages to go out
+    - SMTP:
+      - Uses TCP over port 25
+      - Three phases of transfer: handshaking, transfer of messages, closure
+      - Command/Response: Command (ASCII text), Response (Status Code)
+      - Messages in 7-bit ASCII
+*** Mail sending process
+    - Alice uses UA to compose mail to x@foo.bar
+    - Alice's UA places the message on her mailserver
+    - Client side of Alice's server opens TCP with x@foo.bar's mailserver
+    - SMTP sends the message over TCP to the other mailserver
+    - x's mailserver places the message in x's mailbox
+    - x invokes UA to retrieve new messages
+*** Mail access protocols
+**** POP3, Post Office Protocol
+     - Authorization
+     - Download
+**** IMAP, Internet Mail Access Protocol
+     - More features, i.e. manipulation of messages on the server
+**** HTTP
+*** POP3
+    - Authorization Phase
+      - User gives auth details, servers responds with OK or ERR
+    - Transaction Phase
+      - Client gives:
+        - ~list~: list message numbers
+        - ~retr~: retrieve message by number
+        - ~dele~: delete
+        - ~quit~
+** DNS
+*** Domain Name System
+    - Distributed Database
+    - Application-layer protocol: hosts, name servers communicate to resolve names
+    - Hostname to IP translation
+    - Host aliasing
+    - Mail server aliasing
+    - Load distribution
+*** Why not centralized DNS
+    - Single point of failure
+    - Traffic volume
+    - Distance issues
+    - Maintenance
+      [[file:images/DNS/screenshot_2019-11-05_15-36-07.png]]
+*** Root name servers
+    - Are contacted when local servers cannot resolve a hostname
+    - Root name server contacts the authoritative name server if name mapping is not known
+*** Authoritative servers
+    - Hold top-level domains: com, edu, org, etc. also all national domains
+    - Some organizations may have their own authoritative servers
+*** Local DNS
+    - Every ISP has one
+    - When a host makes a DNS query, the local DNS server is the first one contacted
+*** Example
+    - When a server does not know the IP then it returns the address to the server that may have it, i.e. "I don't know this name, but ask this server"
+** P2P
+   - No always on servers
+   - Peers contact each other directly via IP addresses
+   - Example: Torrents, Skype (VoIP)
+** Socket Programming
+   - *Goal*: learn how to build client/server applications that communicate using sockets
+   - *Socket*: door between application process and end-to-end-transport protocol
+   - UDP and TCP socket types are used
+   - In UDP: there is no "connection" the data is just continuously streamed, no handshaking. Data may be lost.
+     - UDP provides unreliable transfer  of groups of bytes (“datagrams”)  between client and server
+   - In TCP: client must contact the server
+     - TCP provides reliable, in-order byte-stream transfer (“pipe”) between client and server
+* Transport Layer
+** Transport layer provides
+   - Process-to-process data delivery
+   - Error checking
+   - Additionally: reliable data transfer, congestion control
+   - *Logical Communication* between app processes running on different hosts
+** Transport protocols run on end systems
+   - Sending side breaks app messages into segments, passes to network layer
+   - Receiving side reassembles segments into messages, passes to app layer
+** Transport vs network layer
+   - Network layer: logical communication between hosts
+   - Transport layer: logical communication between processes
+** Transport Layer protocols
+*** Services not available
+    - Delay guarantees
+    - Bandwidth guarantees
+*** TCP
+    - Reliable, in-order delivery
+    - Congestion control
+    - Flow control
+    - Connection setup
+    - 3 way handshake: SYN, SYN-ACK, ACK
+    - Teardown: FIN, FIN-ACK, ACK
+*** UDP
+    - Unreliable, unordered delivery
+    - No-frills extension of "best-effort" IP
+    - No handshake
+*** SCTP
+    - Connection oriented
+    - Reliable data transfer
+    - Sequence preservation
+    - Flow and congestion control
+    - Multi-streams
+    - Multi-homing
+    - Preservation of msg boundaries
+    - Unordered reliable msg delivery
+    - 4 way handshake: INIT, INIT-ACK, COOKIE-ECHO, COOKIE-ACK
+    - Teardown process: SHUTDOWN, SHUTDOWN-ACK, SHUTDOWN-COMPLETE
+** TCP vs UDP
+*** TCP
+    - Reliable
+    - Flow control
+    - Congestion control
+    - Does not provide: timing, minimum throughput guaranteed, security
+    - Connection-oriented
+*** UDP
+    - Unreliable data transfer
+    - Dos not provide: reliability, flow control, congestion control, timing, throughput guarantee, security, connection setup
+** Multiplexing and Demultiplexing
+   - Multiplexing happens on the sending side: handle data from multiple sockets, add transport header (later used for demultiplexing)
+   - Demultiplexing happens on the receiving side: use header info to deliver received segments to correct socket
+*** Demultiplexing
+    - Host receives an IP datagram
+    - Each datagram has source IP address and destination IP address
+    - Each datagram carries one transport-layer segment
+    - Each segment has source and destination port numbers
+    - Host uses IP addresses & port numbers to direct segment to appropriate socket
+*** Connectionless demux
+    - When a host sends a datagram into a UDP socket, it must specify destination IP and PORT, source is not needed!
+    - When host receives UDP segment checks destination port
+    - Directs the segment to a socket with the given port
+*** Connection-oriented demux
+    - TCP socket identified by 4 tuple: source IP, source PORT, destination IP, destination PORT
+    - Receiver uses all four values to direct the segment to an appropriate socket
+    - Server host may support many simultaneous TCP sockets, each identified by the 4 tuple
+    - Web servers have different sockets for each connecting client
+** Principles of Reliable Data Transfer (rdt)
+   - rdt is built on top of IP's unreliable service
+     - Pipelined segments
+     - Cumulative ACKs
+     - Single retransmission timer, triggered by:
+       - timeouts
+       - duplicate ACKs
+   - TCP provides a reliable channel of communication for the application layer
+   [[file:images/Transport_Layer/screenshot_2019-11-05_21-26-50.png]]
+   - rdt 3.0 in action
+   [[file:images/Transport_Layer/screenshot_2019-11-05_21-28-04.png]]
+   - rdt stop-and-wait operation
+
+   [[file:images/Transport_Layer/screenshot_2019-11-05_21-44-30.png]]
+
+   [[file:images/Transport_Layer/screenshot_2019-11-05_21-44-04.png]]
+
+   [[file:images/Transport_Layer/screenshot_2019-11-05_21-46-14.png]]
+
+** Pipelined protocols overview
+   - Go-back-N:
+     - Sender can have up to N unacked packets in pipeline
+     - Receiver only send *cumulative ACK*
+     - Sender has a timer for the oldest unacked packet
+       [[file:images/Transport_Layer/screenshot_2019-11-05_21-53-51.png]]
+   - Selective Repeat:
+     - Same as above, except receiver sends an ack for each of the received packets
+     - Sender maintains a timer for each of the packets
+       [[file:images/Transport_Layer/screenshot_2019-11-05_21-54-12.png]]
+** TCP Overview
+   - Point-to-point: one sender, one receiver
+   - Reliable, in-order byte stream
+   - Pipelined: TCP congestion and flow control set window size
+   - Full duplex data: bi-directional data flow in same connection; MSS: maximum segment size
+   - Connection oriented, handshaking
+   - Flow controlled: sender will not overwhelm receiver
+*** Segment Structure
+    [[file:images/Transport_Layer/screenshot_2019-11-05_22-08-46.png]]
+*** Sequencing
+    - Sequence Numbers: Byte stream "number" of first byte in segment's data
+    - Acknowledgements: sequence number of next byte expected from other side, cumulative ACK
+    - TCP does not specify how to handle out of order segments
+*** RTT and Timeout
+    - SampleRTT: measured time from segment transmission until ACK received
+    - Timeout: longer than RTT, too short and premature timeouts occur, too long and the reaction to segments loss will be too large
+*** Sender events
+    - ~data rcvd from app~:
+      - Create segment with sequence number
+      - Seq number is byte-stream number of first data byte in segment
+      - Start the timer
+    - ~timeout~:
+      - Retransmit segment that caused timeout
+      - Restart timer
+    - ~ack rcvd~:
+      - If ack acknowledges a previously unacked segments
+        - Update what is known to be ACKed
+        - Start timer if there are still unacked segments
+    [[file:images/Transport_Layer/screenshot_2019-11-05_22-20-42.png]]
+
+    [[file:images/Transport_Layer/screenshot_2019-11-05_22-21-10.png]]
+** Flow Control
+   - Receiver controls the sender, so that sender won't overflow the receiver buffer
+   - Receiver advertises free buffer space in the ~rwnd~ value
+** Congestion Control
+   - "Too many sources sending too much data too fast for network to handle"
+   - Poor congestion control can cause: lost packets and long delays
+*** TCP Additive Increase Multiplicative Decrease (AIMD)
+    - Sender increases transmission rate (window size), probing for usable bandwidth, until loss occurs
+    - Increases ~cwnd~ (congestion window) by 1 MSS (max segment size) every RTT until a loss occurs, then it cuts ~cwnd~ by half and starts over again
+    - Saw tooth like behaviour
+*** TCP Slow Start
+    - Start with ~cwnd~ set to 1 MSS
+    - Increase the window size exponentially, until a loss occurs (indicated by 3 duplicate ACKs)
+    - Then proceed with linear increase
+** TCP Fairness
+   - The goal is to provide the same amount of bandwidth to multiple sessions sharing the same bottleneck (i.e. router)
+   - Because of AIMD the connection bandwidth remains balanced between multiple competing sessions
+   - A lot of Video/Audio applications choose UDP because they do not want to have their transmission throttled and they also do tolerate packet loss
+* Network Layer (not on midterm exam)
+  - Protocol: IP (Internet Protocol)
+** Key Functions
+   - Forwarding: move packets from router's input to appropriate router output
+   - Routing: determine route taken by packets from source to destination
+** Planes
+   - Data Plane: determines how datagram arriving on router input port is forwarded to router output port
+   - Control Plane: determines how datagram is routed among routers along end-to-end devices
+** Switching Fabric
+   - Transfers packets from the input to the output, usually this NEEDS to happen at line speed, otherwise queuing might occur
+** Internet Protocol (IP)
+*** Characteristics
+    - Packet-based network protocol
+    - Provides
+      - Physical network independence
+    - Connectionless
+      - Best-effort service
+    - Runs over any type of underlying transport
+      - Ethernet
+* Exam papers sample questions
+** Questions
+   - Telecoms (3G/LTE)
+   - Network layer
+   - Transport layer
+   - Mixture
+** Queuing is NOT on the paper
+** 2017 Q3 (b), IP address here is different
+   #+begin_verse
+   Network address: 192.228.17.0
+   192 is class C address => meaning that the first 3 octets are the *network*, and the last octet is the *host*
+   Network is thus: 192.228.17
+   Host is thus: 0
+   Host in binary is: 00000000, we need 6 subnets so we need three bits to be able to assign 6 networks (2^3 = 8, place for 6)
+   3 x 8 + 3 => 27 bits  (i.e. class C, 3 octets times 8 + 3 bits for assigning)
+   11111111.11111111.11111111.11100000
+   so the subnet mask is: 11100000 => in decimal is 224
+   (i) subnet mask is: 255.255.255.224
+   (ii)
+   subnet (0): 192.228.17.(000|00001) to 192.228.17.(000|11110)
+               192.228.17.1 to 192.228.17.30
+
+   subnet (1): 192.228.17.(001|00001) to 192.228.17.(001|11110)
+               192.228.17.33 to 192.228.17.62
+
+   subnet (2): 192.228.17.(010|00001) to 192.228.17.(010|11110)
+               192.228.17.65 to 192.228.17.94
+
+   subnet (3): 192.228.17.(011|00001) to 192.228.17.(011|11110)
+               192.228.17.97 to 192.228.17.126
+
+   subnet (4): 192.228.17.(100|00001) to 192.228.17.(100|11110)
+               192.228.17.129 to 192.228.17.158
+
+   subnet (5): 192.228.17.(101|00001) to 192.228.17.(101|11110)
+               192.228.17.161 to 192.228.17.190
+   #+end_verse
+** Answers to question
+*** 8, IPv4 vs IPv6
+    - No fragmentation
+    - Increased security
+    - Labeling
+    - 32 bits vs 128 bits length
+    - No fixed header length
+    - There will be flag day, one day to convert from v4 to v6
+*** 9, done before
+*** 10
+    - Variations in delay, aka fluctuations
+*** 11
+    - Buffer
+    - Delay the playout time and use a buffer to minimise jitter
+*** 12
+    - 6
+    - HELLO
+    - MAIL
+    - RCPT
+    - DATA
+    - BODY
+    - QUIT
+*** 13
+    - CIDR (class inter-domain routing)
+    - It is used if the standard classes don't fit the use case, either too small or too big
+    - Then we use CIDR to create subnets as we see fit
+*** 14
+    - Reliability and expand
+*** 15, done before
+*** 16, done before
+    - there is a controversial part about it in which the router peeks at the port number and is no supposed to
+*** 17
+    - double check the answer here
+*** 18
+*** 19
+    - RTP uses timestamping for its own stream
+    - NTP is used to synchronize with the global time (wall clock)
+*** 20
+    - You can differentiate it by SSRC (different source IPs)
+*** 21
+    - It uses TCP and expand
+    - Flow control, etc.
+    - Sequencing
+    - Checksum (sometimes)
+*** 22
+    - Only in TCP
+    - TCP probes the network, listens for packetloss
+*** 23
+    - Mux, Demux, easy
+*** 24
+    - Multihoming, multistreaming
+*** 25
+    - Easy, in the notes
+
+* Delete at the end
+  #+BEGIN_EXPORT html
+  <script src="../assets/jquery-3.3.1.min.js"></script>
+  <script src="../assets/notes.js"></script>
+  #+END_EXPORT

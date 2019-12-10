@@ -1,0 +1,1711 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2019-03-10 Sun 20:01 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Nativescript</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="Damian Chrzanowski" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="../../assets/org.css"/>
+<link rel="icon" href="../../assets/favicon.ico">
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2019 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Nativescript</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orgd60f2fa">1. Setup</a></li>
+<li><a href="#org345a2d3">2. Running</a></li>
+<li><a href="#orga2fce59">3. Debugging</a></li>
+<li><a href="#org333b84a">4. Samples</a></li>
+<li><a href="#org364e03b">5. Plugins</a></li>
+<li><a href="#orgfd22b0d">6. Important Module Imports</a></li>
+<li><a href="#orgae3401b">7. Core Modules</a>
+<ul>
+<li><a href="#orgd8cfe96">7.1. Full List Of Core Modules</a></li>
+<li><a href="#orgddbbb6e">7.2. Console</a></li>
+<li><a href="#orgde7fe81">7.3. Application</a></li>
+<li><a href="#org73ebca5">7.4. Application Settings</a></li>
+<li><a href="#org938e562">7.5. Timer</a></li>
+<li><a href="#org8f6e3e8">7.6. Connectivity</a></li>
+</ul>
+</li>
+<li><a href="#orga9a6202">8. Device Functionality Modules</a>
+<ul>
+<li><a href="#org3842955">8.1. Platform</a></li>
+<li><a href="#orgab817f0">8.2. File System</a></li>
+<li><a href="#orgcc29690">8.3. Gestures</a></li>
+</ul>
+</li>
+<li><a href="#org5eea481">9. User Interface Modules</a>
+<ul>
+<li><a href="#org864d006">9.1. Frame</a></li>
+<li><a href="#org54fa1e4">9.2. Page</a></li>
+<li><a href="#org74b5cfd">9.3. Color</a></li>
+<li><a href="#org69f9243">9.4. XML Parsing</a></li>
+</ul>
+</li>
+<li><a href="#org9f67350">10. Styling</a></li>
+<li><a href="#org9cf471a">11. Themes</a></li>
+<li><a href="#orge8cb941">12. Utils</a></li>
+<li><a href="#org3cc1c65">13. Layouts</a>
+<ul>
+<li><a href="#org16dc667">13.1. Stack Layout</a></li>
+<li><a href="#orgf8aff79">13.2. Grid Layout</a></li>
+<li><a href="#org3796bfa">13.3. Absolute Layout</a></li>
+<li><a href="#org949e0da">13.4. Wrap Layout</a></li>
+<li><a href="#orgffca3d7">13.5. Dock Layout</a></li>
+</ul>
+</li>
+<li><a href="#orgef20a6a">14. Widgets</a>
+<ul>
+<li><a href="#org85c95a0">14.1. ActionBar</a></li>
+<li><a href="#orgb9b54f7">14.2. ActivityIndicator</a></li>
+<li><a href="#orgbb1711e">14.3. Animations</a></li>
+<li><a href="#org5142c4e">14.4. Button</a></li>
+<li><a href="#org143d310">14.5. DatePicker</a></li>
+<li><a href="#org8b4076c">14.6. Dialogs</a></li>
+<li><a href="#org9b7b357">14.7. FormattedString</a></li>
+<li><a href="#orgd620c17">14.8. Gestures</a></li>
+<li><a href="#org2d248ff">14.9. HtmlView</a></li>
+<li><a href="#orgf1c56f2">14.10. Image</a></li>
+<li><a href="#org1090af2">14.11. Label</a></li>
+<li><a href="#org50f7623">14.12. Layouts</a></li>
+<li><a href="#orge014e03">14.13. ListPicker</a></li>
+<li><a href="#org1626336">14.14. ListView</a></li>
+<li><a href="#org1c8a30a">14.15. Progress</a></li>
+<li><a href="#orgb60d806">14.16. ScrollView</a></li>
+<li><a href="#org5b2df3b">14.17. SearchBar</a></li>
+<li><a href="#orgb173cb9">14.18. SegmentedBar</a></li>
+<li><a href="#org84ae98f">14.19. Slider</a></li>
+<li><a href="#org90a1149">14.20. Styling</a></li>
+<li><a href="#org606073e">14.21. Switch</a></li>
+<li><a href="#orge872ade">14.22. TabView</a></li>
+<li><a href="#org0f5bc7d">14.23. TextField</a></li>
+<li><a href="#orgbe454c9">14.24. TextView</a></li>
+<li><a href="#org32fbb66">14.25. TimePicker</a></li>
+<li><a href="#orgad900f3">14.26. WebView</a></li>
+<li><a href="#orgc0ec6eb">14.27. NG Directives</a></li>
+<li><a href="#org41b1c71">14.28. Icon Fonts</a></li>
+</ul>
+</li>
+<li><a href="#org8270ccb">15. Navigation</a>
+<ul>
+<li><a href="#org2f3f64b">15.1. Introduction</a></li>
+<li><a href="#orgddfb345">15.2. Configuration</a></li>
+<li><a href="#orgdb4bd23">15.3. <code>RouterExtensions</code></a></li>
+</ul>
+</li>
+<li><a href="#org3ce1bb6">16. Multithreading with workers</a></li>
+<li><a href="#org0705b28">17. Delete Heading once notes are completed, leave exports behind</a></li>
+</ul>
+</div>
+</div>
+<p>
+<a href="../../index.html">Home Page</a>
+</p>
+<div id="outline-container-orgd60f2fa" class="outline-2">
+<h2 id="orgd60f2fa"><span class="section-number-2">1</span> Setup</h2>
+<div class="outline-text-2" id="text-1">
+<ul class="org-ul">
+<li>Installing the Nativescript CLI</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-shell">npm i -g nativescript
+</pre>
+</div>
+<ul class="org-ul">
+<li>Verify installation</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-shell">tns
+</pre>
+</div>
+<ul class="org-ul">
+<li>Verify environment setup</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-shell">tns doctor
+</pre>
+</div>
+<ul class="org-ul">
+<li>Creating a project from a template</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-shell">tns create &lt;APP NAME&gt; --template &lt;TEMPLATE NAME&gt;
+</pre>
+</div>
+<p class="verse">
+<a href="https://market.nativescript.org/?tab=templates&amp;category=all_templates">Templates List</a><br />
+</p>
+</div>
+</div>
+<div id="outline-container-org345a2d3" class="outline-2">
+<h2 id="org345a2d3"><span class="section-number-2">2</span> Running</h2>
+<div class="outline-text-2" id="text-2">
+<ul class="org-ul">
+<li>Playground Integration</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-shell">tns preview
+</pre>
+</div>
+<ul class="org-ul">
+<li>Run Android or iOS</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-shell">tns run android
+tns run ios
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orga2fce59" class="outline-2">
+<h2 id="orga2fce59"><span class="section-number-2">3</span> Debugging</h2>
+<div class="outline-text-2" id="text-3">
+<ul class="org-ul">
+<li>Use standard <code>console.log()</code> or <code>console.dir()</code> to output vars</li>
+<li>Run in debug mode</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-shell">tns debug android
+tns debug ios
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org333b84a" class="outline-2">
+<h2 id="org333b84a"><span class="section-number-2">4</span> Samples</h2>
+<div class="outline-text-2" id="text-4">
+<ul class="org-ul">
+<li><a href="https://market.nativescript.org/?tab=samples&amp;framework=all_frameworks&amp;category=all_samples">Features and code samples</a></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org364e03b" class="outline-2">
+<h2 id="org364e03b"><span class="section-number-2">5</span> Plugins</h2>
+<div class="outline-text-2" id="text-5">
+<ul class="org-ul">
+<li>Find plugins in the <a href="http://market.nativescript.org/?_ga=2.20034875.2035096062.1552165814-1266045410.1549810337">marketplace</a></li>
+<li>Install</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-shell">tns plugin add &lt;PLUGIN NAME&gt;
+tns plugin add nativescript-camera
+</pre>
+</div>
+<ul class="org-ul">
+<li>Use</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-typescript"><span style="color: #51afef; font-style: italic;">import</span> * <span style="color: #51afef; font-style: italic;">as</span> camera <span style="color: #51afef; font-style: italic;">from</span> <span style="color: #98be65;">"nativescript-camera"</span>; <span style="color: #5B6268;">// </span><span style="color: #5B6268;">Requiring the plugin module</span>
+camera.requestPermissions<span style="color: #fff0f5;">()</span>;
+
+<span style="color: #5B6268;">// </span><span style="color: #5B6268;">or import only a specific class/method/property of the plugin</span>
+<span style="color: #51afef; font-style: italic;">import</span> <span style="color: #fff0f5;">{</span> requestPermissions <span style="color: #fff0f5;">}</span> <span style="color: #51afef; font-style: italic;">from</span> <span style="color: #98be65;">"nativescript-camera"</span>; <span style="color: #5B6268;">// </span><span style="color: #5B6268;">Requiring only the needed code</span>
+requestPermissions<span style="color: #fff0f5;">()</span>;
+</pre>
+</div>
+<ul class="org-ul">
+<li>Remove</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-shell">tns plugin remove nativescript-camera
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgfd22b0d" class="outline-2">
+<h2 id="orgfd22b0d"><span class="section-number-2">6</span> Important Module Imports</h2>
+<div class="outline-text-2" id="text-6">
+<ul class="org-ul">
+<li><code>NativeScriptFormsModule</code>: Two-way data binding (wrapper around Angular Forms)</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-typescript"><span style="color: #51afef; font-style: italic;">import</span> <span style="color: #fff0f5;">{</span>NativeScriptFormsModule<span style="color: #fff0f5;">}</span> <span style="color: #51afef; font-style: italic;">from</span> <span style="color: #98be65;">"nativescript-angular/forms"</span>
+@NgModule<span style="color: #fff0f5;">(</span><span style="color: #c678dd;">{</span>
+    imports: <span style="color: #98be65;">[</span>
+        NativeScriptFormsModule, <span style="color: #5B6268;">// </span><span style="color: #5B6268;">RIGHT HERE</span>
+    <span style="color: #98be65;">]</span>,
+<span style="color: #c678dd;">}</span><span style="color: #fff0f5;">)</span>
+</pre>
+</div>
+<ul class="org-ul">
+<li><code>NativeScriptHttpClientModule</code>: HTTP Client module (wrapper around Angular's HTTP Client)</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-typescript"><span style="color: #51afef; font-style: italic;">import</span> <span style="color: #fff0f5;">{</span> NativeScriptHttpClientModule <span style="color: #fff0f5;">}</span> <span style="color: #51afef; font-style: italic;">from</span> <span style="color: #98be65;">'nativescript-angular/http-client'</span>;
+@NgModule<span style="color: #fff0f5;">(</span><span style="color: #c678dd;">{</span>
+    imports: <span style="color: #98be65;">[</span>
+        NativeScriptHttpClientModule, <span style="color: #5B6268;">// </span><span style="color: #5B6268;">RIGHT HERE</span>
+    <span style="color: #98be65;">]</span>,
+<span style="color: #c678dd;">}</span><span style="color: #fff0f5;">)</span>
+</pre>
+</div>
+<ul class="org-ul">
+<li><code>NativeScriptCommonModule</code>: The Common module that contains directives and widgets. Only needed in sub-modules.</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-typescript"><span style="color: #51afef; font-style: italic;">import</span> <span style="color: #fff0f5;">{</span> NativeScriptCommonModule <span style="color: #fff0f5;">}</span> <span style="color: #51afef; font-style: italic;">from</span> <span style="color: #98be65;">"nativescript-angular/common"</span>;
+@NgModule<span style="color: #fff0f5;">(</span><span style="color: #c678dd;">{</span>
+    imports: <span style="color: #98be65;">[</span>
+        NativeScriptHttpClientModule, <span style="color: #5B6268;">// </span><span style="color: #5B6268;">RIGHT HERE</span>
+    <span style="color: #98be65;">]</span>,
+<span style="color: #c678dd;">}</span><span style="color: #fff0f5;">)</span>
+</pre>
+</div>
+<ul class="org-ul">
+<li><code>NativeScriptRouterModule</code>: Routing module, used instead of the standard Angular routing module. Sample setup below:</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-typescript"><span style="color: #51afef; font-style: italic;">import</span> <span style="color: #fff0f5;">{</span> NgModule <span style="color: #fff0f5;">}</span> <span style="color: #51afef; font-style: italic;">from</span> <span style="color: #98be65;">"@angular/core"</span>;
+<span style="color: #51afef; font-style: italic;">import</span> <span style="color: #fff0f5;">{</span> Routes <span style="color: #fff0f5;">}</span> <span style="color: #51afef; font-style: italic;">from</span> <span style="color: #98be65;">"@angular/router"</span>;
+<span style="color: #51afef; font-style: italic;">import</span> <span style="color: #fff0f5;">{</span> NativeScriptRouterModule <span style="color: #fff0f5;">}</span> <span style="color: #51afef; font-style: italic;">from</span> <span style="color: #98be65;">"nativescript-angular/router"</span>;
+
+<span style="color: #51afef; font-style: italic;">const</span> <span style="color: #db5762;">routes</span>: Routes = <span style="color: #fff0f5;">[</span>
+    <span style="color: #c678dd;">{</span> path: <span style="color: #98be65;">""</span>, redirectTo: <span style="color: #98be65;">"/home"</span>, pathMatch: <span style="color: #98be65;">"full"</span> <span style="color: #c678dd;">}</span>,
+    <span style="color: #c678dd;">{</span> path: <span style="color: #98be65;">"home"</span>, loadChildren: <span style="color: #98be65;">"~/app/home/home.module#HomeModule"</span> <span style="color: #c678dd;">}</span>,
+    <span style="color: #c678dd;">{</span> path: <span style="color: #98be65;">"browse"</span>, loadChildren: <span style="color: #98be65;">"~/app/browse/browse.module#BrowseModule"</span> <span style="color: #c678dd;">}</span>
+<span style="color: #fff0f5;">]</span>;
+
+@NgModule<span style="color: #fff0f5;">(</span><span style="color: #c678dd;">{</span>
+    imports: <span style="color: #98be65;">[</span>NativeScriptRouterModule.forRoot<span style="color: #00bfff;">(</span>routes<span style="color: #00bfff;">)</span><span style="color: #98be65;">]</span>,
+    exports: <span style="color: #98be65;">[</span>NativeScriptRouterModule<span style="color: #98be65;">]</span>
+<span style="color: #c678dd;">}</span><span style="color: #fff0f5;">)</span>
+<span style="color: #51afef; font-style: italic;">export</span> <span style="color: #51afef; font-style: italic;">class</span> <span style="color: #ECBE7B;">AppRoutingModule</span> <span style="color: #fff0f5;">{</span> <span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+<ul class="org-ul">
+<li><code>NativeScriptAnimationsModule</code>: Animations module. Only add to <b>AppModule</b>. Use only if you need Angular Animations.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgae3401b" class="outline-2">
+<h2 id="orgae3401b"><span class="section-number-2">7</span> Core Modules</h2>
+<div class="outline-text-2" id="text-7">
+</div>
+<div id="outline-container-orgd8cfe96" class="outline-3">
+<h3 id="orgd8cfe96"><span class="section-number-3">7.1</span> <a href="https://docs.nativescript.org/angular/core-concepts/modules#core-modules">Full List Of Core Modules</a></h3>
+</div>
+<div id="outline-container-orgddbbb6e" class="outline-3">
+<h3 id="orgddbbb6e"><span class="section-number-3">7.2</span> <a href="https://docs.nativescript.org/ns-framework-modules/console">Console</a></h3>
+<div class="outline-text-3" id="text-7-2">
+<ul class="org-ul">
+<li>Standard console output</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-typescript">console.log<span style="color: #fff0f5;">(</span><span style="color: #98be65;">"NativeScript Playground!"</span><span style="color: #fff0f5;">)</span>;
+console.log<span style="color: #fff0f5;">(</span><span style="color: #c678dd;">{</span> objProp: <span style="color: #98be65;">"I am Object!"</span> <span style="color: #c678dd;">}</span><span style="color: #fff0f5;">)</span>;
+console.info<span style="color: #fff0f5;">(</span><span style="color: #98be65;">"NativeScript Rocks!"</span><span style="color: #fff0f5;">)</span>;
+console.warn<span style="color: #fff0f5;">(</span><span style="color: #98be65;">"Low memory"</span><span style="color: #fff0f5;">)</span>;
+console.error<span style="color: #fff0f5;">(</span><span style="color: #98be65;">"Uncaught Application Exception"</span><span style="color: #fff0f5;">)</span>;
+console.dir<span style="color: #fff0f5;">(</span>jsonObj<span style="color: #fff0f5;">)</span>;
+</pre>
+</div>
+<ul class="org-ul">
+<li>Timing execution</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-typescript"><span style="color: #5B6268;">// </span><span style="color: #5B6268;">Begins counting a time span for a given name (key).</span>
+console.time<span style="color: #fff0f5;">(</span><span style="color: #98be65;">"LoadTime"</span><span style="color: #fff0f5;">)</span>;
+<span style="color: #5B6268;">// </span><span style="color: #5B6268;">Ends a previously started time span through the time method.</span>
+console.timeEnd<span style="color: #fff0f5;">(</span><span style="color: #98be65;">"LoadTime"</span><span style="color: #fff0f5;">)</span>;
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgde7fe81" class="outline-3">
+<h3 id="orgde7fe81"><span class="section-number-3">7.3</span> <a href="https://docs.nativescript.org/ns-framework-modules/application">Application</a></h3>
+<div class="outline-text-3" id="text-7-3">
+<ul class="org-ul">
+<li>Platform check</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-typescript"><span style="color: #51afef; font-style: italic;">if</span> <span style="color: #fff0f5;">(</span>application.android<span style="color: #fff0f5;">)</span> <span style="color: #fff0f5;">{</span>
+    console.log<span style="color: #c678dd;">(</span><span style="color: #98be65;">"We are running on Android device!"</span><span style="color: #c678dd;">)</span>;
+<span style="color: #fff0f5;">}</span> <span style="color: #51afef; font-style: italic;">else</span> <span style="color: #51afef; font-style: italic;">if</span> <span style="color: #fff0f5;">(</span>application.ios<span style="color: #fff0f5;">)</span> <span style="color: #fff0f5;">{</span>
+    console.log<span style="color: #c678dd;">(</span><span style="color: #98be65;">"We are running on iOS device"</span><span style="color: #c678dd;">)</span>;
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+<ul class="org-ul">
+<li><p>
+Android
+</p>
+<ul class="org-ul">
+<li>Accessing the Application Module</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-typescript"><span style="color: #51afef; font-style: italic;">import</span> <span style="color: #fff0f5;">{</span> android <span style="color: #51afef; font-style: italic;">as</span> androidApp <span style="color: #fff0f5;">}</span> <span style="color: #51afef; font-style: italic;">from</span> <span style="color: #98be65;">"tns-core-modules/application"</span>;
+
+<span style="color: #51afef; font-style: italic;">let</span> <span style="color: #db5762;">isPaused</span> = androidApp.paused; <span style="color: #5B6268;">// </span><span style="color: #5B6268;">e.g. false</span>
+<span style="color: #51afef; font-style: italic;">let</span> <span style="color: #db5762;">packageName</span> = androidApp.packageName; <span style="color: #5B6268;">// </span><span style="color: #5B6268;">The package ID e.g. org.nativescript.nativescriptsdkexamplesng</span>
+<span style="color: #51afef; font-style: italic;">let</span> <span style="color: #db5762;">nativeApp</span> = androidApp.nativeApp; <span style="color: #5B6268;">// </span><span style="color: #5B6268;">The native APplication reference</span>
+<span style="color: #51afef; font-style: italic;">let</span> <span style="color: #db5762;">foregroundActivity</span> = androidApp.foregroundActivity; <span style="color: #5B6268;">// </span><span style="color: #5B6268;">The current Activity reference</span>
+<span style="color: #51afef; font-style: italic;">let</span> <span style="color: #db5762;">currentContext</span> = androidApp.currentContext; <span style="color: #5B6268;">// </span><span style="color: #5B6268;">The current Android context</span>
+<span style="color: #51afef; font-style: italic;">let</span> <span style="color: #db5762;">context</span> = androidApp.context; console.log<span style="color: #fff0f5;">(</span>context<span style="color: #fff0f5;">)</span>; <span style="color: #5B6268;">// </span><span style="color: #5B6268;">The current Android context</span>
+</pre>
+</div>
+<ul class="org-ul">
+<li>Registering events</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-typescript">launchListener = applicationModule.on<span style="color: #fff0f5;">(</span>applicationModule.launchEvent, <span style="color: #c678dd;">(</span>args<span style="color: #c678dd;">)</span> =&gt; <span style="color: #c678dd;">{</span>
+    <span style="color: #5B6268;">// </span><span style="color: #5B6268;">The root view for this Window on iOS or Activity for Android.</span>
+    <span style="color: #5B6268;">// </span><span style="color: #5B6268;">If not set a new Frame will be created as a root view in order to maintain backwards compatibility.</span>
+    console.log<span style="color: #98be65;">(</span><span style="color: #98be65;">"Root View: "</span>, args.root<span style="color: #98be65;">)</span>;
+    console.log<span style="color: #98be65;">(</span><span style="color: #98be65;">"The appication was launched!"</span><span style="color: #98be65;">)</span>;
+    vm.<span style="color: #51afef; font-style: italic;">set</span><span style="color: #98be65;">(</span><span style="color: #98be65;">"resumeEvent"</span>, <span style="color: #98be65;">"The appication was launched!"</span><span style="color: #98be65;">)</span>;
+<span style="color: #c678dd;">}</span><span style="color: #fff0f5;">)</span>;
+</pre>
+</div>
+<ul class="org-ul">
+<li>Removing registered events</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-typescript">applicationModule.off<span style="color: #fff0f5;">(</span>applicationModule.launchEvent, launchListener<span style="color: #fff0f5;">)</span>;
+</pre>
+</div></li>
+<li>iOS</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-typescript"><span style="color: #51afef; font-style: italic;">import</span> <span style="color: #fff0f5;">{</span> ios <span style="color: #51afef; font-style: italic;">as</span> iosApp <span style="color: #fff0f5;">}</span> <span style="color: #51afef; font-style: italic;">from</span> <span style="color: #98be65;">"tns-core-modules/application"</span>;
+
+<span style="color: #5B6268;">// </span><span style="color: #5B6268;">https://developer.apple.com/documentation/uikit/uiapplicationdelegate?language=objc</span>
+<span style="color: #51afef; font-style: italic;">let</span> <span style="color: #db5762;">delegate</span> = iosApp.delegate; <span style="color: #5B6268;">// </span><span style="color: #5B6268;">the iOS application delegate</span>
+
+<span style="color: #51afef; font-style: italic;">let</span> <span style="color: #db5762;">nativeApp</span> = iosApp.nativeApp; <span style="color: #5B6268;">// </span><span style="color: #5B6268;">The native iOS app</span>
+
+<span style="color: #5B6268;">// </span><span style="color: #5B6268;">https://developer.apple.com/documentation/uikit/uiwindow/1621581-rootviewcontroller?language=objc</span>
+<span style="color: #51afef; font-style: italic;">let</span> <span style="color: #db5762;">rootController</span> = iosApp.rootController; <span style="color: #5B6268;">// </span><span style="color: #5B6268;">the iOS rootViewController</span>
+
+<span style="color: #51afef; font-style: italic;">let</span> <span style="color: #db5762;">window</span> = iosApp.window; <span style="color: #5B6268;">// </span><span style="color: #5B6268;">UIWindow</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org73ebca5" class="outline-3">
+<h3 id="org73ebca5"><span class="section-number-3">7.4</span> <a href="https://docs.nativescript.org/ns-framework-modules/application-settings">Application Settings</a></h3>
+<div class="outline-text-3" id="text-7-4">
+<ul class="org-ul">
+<li>Usage</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-typescript"><span style="color: #51afef; font-style: italic;">import</span> * <span style="color: #51afef; font-style: italic;">as</span> appSettings <span style="color: #51afef; font-style: italic;">from</span> <span style="color: #98be65;">"tns-core-modules/application-settings"</span>;
+
+<span style="color: #5B6268;">// </span><span style="color: #5B6268;">booleans</span>
+<span style="color: #51afef; font-style: italic;">const</span> <span style="color: #db5762;">items</span> = <span style="color: #fff0f5;">[]</span>;
+appSettings.setBoolean<span style="color: #fff0f5;">(</span><span style="color: #98be65;">"isTurnedOn"</span>, <span style="color: #51afef; font-style: italic;">true</span><span style="color: #fff0f5;">)</span>;
+<span style="color: #5B6268;">// </span><span style="color: #5B6268;">false is default if 'isTurnedOn' is not set</span>
+<span style="color: #51afef; font-style: italic;">const</span> <span style="color: #db5762;">isTurnedOn</span> = appSettings.getBoolean<span style="color: #fff0f5;">(</span><span style="color: #98be65;">"isTurnedOn"</span>, <span style="color: #51afef; font-style: italic;">false</span><span style="color: #fff0f5;">)</span>;
+
+<span style="color: #5B6268;">// </span><span style="color: #5B6268;">strings</span>
+appSettings.setString<span style="color: #fff0f5;">(</span><span style="color: #98be65;">"username"</span>, <span style="color: #98be65;">"NickIliev"</span><span style="color: #fff0f5;">)</span>;
+<span style="color: #51afef; font-style: italic;">const</span> <span style="color: #db5762;">username</span> = appSettings.getString<span style="color: #fff0f5;">(</span><span style="color: #98be65;">"username"</span><span style="color: #fff0f5;">)</span>;
+
+<span style="color: #5B6268;">// </span><span style="color: #5B6268;">numbers</span>
+appSettings.setNumber<span style="color: #fff0f5;">(</span><span style="color: #98be65;">"locationX"</span>, 54.321<span style="color: #fff0f5;">)</span>;
+<span style="color: #51afef; font-style: italic;">const</span> <span style="color: #db5762;">locationX</span> = parseFloat<span style="color: #fff0f5;">(</span>appSettings.getNumber<span style="color: #c678dd;">(</span><span style="color: #98be65;">"locationX"</span><span style="color: #c678dd;">)</span>.toFixed<span style="color: #c678dd;">(</span>3<span style="color: #c678dd;">)</span><span style="color: #fff0f5;">)</span>;
+
+<span style="color: #5B6268;">// </span><span style="color: #5B6268;">key check</span>
+<span style="color: #5B6268;">// </span><span style="color: #5B6268;">will return false if there is no "noBoolKey"</span>
+<span style="color: #51afef; font-style: italic;">const</span> <span style="color: #db5762;">noBoolKey</span> = appSettings.hasKey<span style="color: #fff0f5;">(</span><span style="color: #98be65;">"noBoolKey"</span><span style="color: #fff0f5;">)</span>;
+
+<span style="color: #5B6268;">// </span><span style="color: #5B6268;">will remove the setting for a key</span>
+appSettings.remove<span style="color: #fff0f5;">(</span><span style="color: #98be65;">"keyToRemove"</span><span style="color: #fff0f5;">)</span>;
+
+<span style="color: #5B6268;">// </span><span style="color: #5B6268;">Removes all values.</span>
+appSettings.clear<span style="color: #fff0f5;">()</span>;
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org938e562" class="outline-3">
+<h3 id="org938e562"><span class="section-number-3">7.5</span> <a href="https://docs.nativescript.org/ns-framework-modules/timer">Timer</a></h3>
+<div class="outline-text-3" id="text-7-5">
+<ul class="org-ul">
+<li>Usage</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-typescript"><span style="color: #51afef; font-style: italic;">import</span> <span style="color: #fff0f5;">{</span> setInterval, setTimeout, clearInterval <span style="color: #fff0f5;">}</span> <span style="color: #51afef; font-style: italic;">from</span> <span style="color: #98be65;">"tns-core-modules/timer"</span>;
+
+<span style="color: #5B6268;">// </span><span style="color: #5B6268;">Usage is the same as standard JS</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org8f6e3e8" class="outline-3">
+<h3 id="org8f6e3e8"><span class="section-number-3">7.6</span> <a href="https://docs.nativescript.org/ns-framework-modules/connectivity">Connectivity</a></h3>
+<div class="outline-text-3" id="text-7-6">
+<ul class="org-ul">
+<li>Usage</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-typescript"><span style="color: #51afef; font-style: italic;">import</span> <span style="color: #fff0f5;">{</span> connectionType, getConnectionType, startMonitoring, stopMonitoring <span style="color: #fff0f5;">}</span><span style="color: #51afef; font-style: italic;">from</span> <span style="color: #98be65;">"tns-core-modules/connectivity"</span>;
+
+<span style="color: #5B6268;">// </span><span style="color: #5B6268;">result is ConnectionType enumeration (none, wifi or mobile)</span>
+<span style="color: #51afef; font-style: italic;">const</span> <span style="color: #db5762;">myConnectionType</span> = getConnectionType<span style="color: #fff0f5;">()</span>;
+
+<span style="color: #51afef; font-style: italic;">switch</span> <span style="color: #fff0f5;">(</span>myConnectionType<span style="color: #fff0f5;">)</span> <span style="color: #fff0f5;">{</span>
+    <span style="color: #51afef; font-style: italic;">case</span> connectionType.none:
+        <span style="color: #5B6268;">// </span><span style="color: #5B6268;">Denotes no Internet connection.</span>
+        console.log<span style="color: #c678dd;">(</span><span style="color: #98be65;">"No connection"</span><span style="color: #c678dd;">)</span>;
+        <span style="color: #51afef; font-style: italic;">break</span>;
+    <span style="color: #51afef; font-style: italic;">case</span> connectionType.wifi:
+        <span style="color: #5B6268;">// </span><span style="color: #5B6268;">Denotes a WiFi connection.</span>
+        console.log<span style="color: #c678dd;">(</span><span style="color: #98be65;">"WiFi connection"</span><span style="color: #c678dd;">)</span>;
+        <span style="color: #51afef; font-style: italic;">break</span>;
+    <span style="color: #51afef; font-style: italic;">case</span> connectionType.mobile:
+        <span style="color: #5B6268;">// </span><span style="color: #5B6268;">Denotes a mobile connection, i.e. cellular network or WAN.</span>
+        console.log<span style="color: #c678dd;">(</span><span style="color: #98be65;">"Mobile connection"</span><span style="color: #c678dd;">)</span>;
+        <span style="color: #51afef; font-style: italic;">break</span>;
+    <span style="color: #51afef; font-style: italic;">case</span> connectionType.ethernet:
+        <span style="color: #5B6268;">// </span><span style="color: #5B6268;">Denotes a ethernet connection.</span>
+        console.log<span style="color: #c678dd;">(</span><span style="color: #98be65;">"Ethernet connection"</span><span style="color: #c678dd;">)</span>;
+        <span style="color: #51afef; font-style: italic;">break</span>;
+    <span style="color: #5B6268;">// </span><span style="color: #5B6268;">Bluetooth functionality in master branch (to be released with 5.0.0)</span>
+    <span style="color: #5B6268;">// </span><span style="color: #5B6268;">case connectionType.bluetooth:</span>
+    <span style="color: #5B6268;">//     </span><span style="color: #5B6268;">// Denotes a ethernet connection.</span>
+    <span style="color: #5B6268;">//     </span><span style="color: #5B6268;">console.log("Bluetooth connection");</span>
+    <span style="color: #5B6268;">//    </span><span style="color: #5B6268;">//     break;</span>
+    <span style="color: #51afef; font-style: italic;">default</span>:
+        <span style="color: #51afef; font-style: italic;">break</span>;
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+<ul class="org-ul">
+<li>Monitoring</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-typescript">startMonitoring<span style="color: #fff0f5;">(</span><span style="color: #c678dd;">(</span>newConnectionType<span style="color: #c678dd;">)</span> =&gt; <span style="color: #c678dd;">{</span>
+    <span style="color: #51afef; font-style: italic;">switch</span> <span style="color: #98be65;">(</span>newConnectionType<span style="color: #98be65;">)</span> <span style="color: #98be65;">{</span>
+        <span style="color: #51afef; font-style: italic;">case</span> connectionType.none:
+            console.log<span style="color: #00bfff;">(</span><span style="color: #98be65;">"Connection type changed to none."</span><span style="color: #00bfff;">)</span>;
+            <span style="color: #51afef; font-style: italic;">break</span>;
+        <span style="color: #51afef; font-style: italic;">case</span> connectionType.wifi:
+            console.log<span style="color: #00bfff;">(</span><span style="color: #98be65;">"Connection type changed to WiFi."</span><span style="color: #00bfff;">)</span>;
+            <span style="color: #51afef; font-style: italic;">break</span>;
+        <span style="color: #51afef; font-style: italic;">case</span> connectionType.mobile:
+            console.log<span style="color: #00bfff;">(</span><span style="color: #98be65;">"Connection type changed to mobile."</span><span style="color: #00bfff;">)</span>;
+            <span style="color: #51afef; font-style: italic;">break</span>;
+        <span style="color: #51afef; font-style: italic;">case</span> connectionType.ethernet:
+            console.log<span style="color: #00bfff;">(</span><span style="color: #98be65;">"Connection type changed to ethernet."</span><span style="color: #00bfff;">)</span>;
+            <span style="color: #51afef; font-style: italic;">break</span>;
+        <span style="color: #5B6268;">// </span><span style="color: #5B6268;">case connectionType.bluetooth:</span>
+        <span style="color: #5B6268;">//     </span><span style="color: #5B6268;">// feature coming in NativeScript 5.0.0</span>
+        <span style="color: #5B6268;">//     </span><span style="color: #5B6268;">console.log("Connection type changed to bluetooth.");</span>
+        <span style="color: #5B6268;">//     </span><span style="color: #5B6268;">break;</span>
+        <span style="color: #51afef; font-style: italic;">default</span>:
+            <span style="color: #51afef; font-style: italic;">break</span>;
+    <span style="color: #98be65;">}</span>
+<span style="color: #c678dd;">}</span><span style="color: #fff0f5;">)</span>;
+
+<span style="color: #5B6268;">// </span><span style="color: #5B6268;">Explicitly stopping the monitoring</span>
+stopMonitoring<span style="color: #fff0f5;">()</span>;
+</pre>
+</div>
+<ul class="org-ul">
+<li>NOTE: Android needs specific permission to access network information</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-xml">&lt;<span style="color: #c678dd;">uses-permission</span> <span style="color: #c678dd;">android</span>:<span style="color: #db5762;">name</span>=<span style="color: #98be65;">"android.permission.ACCESS_NETWORK_STATE"</span>/&gt;
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orga9a6202" class="outline-2">
+<h2 id="orga9a6202"><span class="section-number-2">8</span> Device Functionality Modules</h2>
+<div class="outline-text-2" id="text-8">
+</div>
+<div id="outline-container-org3842955" class="outline-3">
+<h3 id="org3842955"><span class="section-number-3">8.1</span> <a href="https://docs.nativescript.org/ns-framework-modules/platform">Platform</a></h3>
+<div class="outline-text-3" id="text-8-1">
+<ul class="org-ul">
+<li>Get system info</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-typescript"><span style="color: #51afef; font-style: italic;">export</span> <span style="color: #51afef; font-style: italic;">function</span> <span style="color: #c678dd;">onNavigatingTo</span><span style="color: #fff0f5;">(</span><span style="color: #db5762;">args</span><span style="color: #fff0f5;">)</span> <span style="color: #fff0f5;">{</span>
+    <span style="color: #51afef; font-style: italic;">const</span> <span style="color: #db5762;">page</span> = &lt;Page&gt;args.<span style="color: #51afef; font-style: italic;">object</span>;
+    <span style="color: #51afef; font-style: italic;">const</span> <span style="color: #db5762;">vm</span> = <span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">Observable</span><span style="color: #c678dd;">()</span>;
+    vm.<span style="color: #51afef; font-style: italic;">set</span><span style="color: #c678dd;">(</span><span style="color: #98be65;">"deviceInformationmodel"</span>, device.model<span style="color: #c678dd;">)</span>;
+    vm.<span style="color: #51afef; font-style: italic;">set</span><span style="color: #c678dd;">(</span><span style="color: #98be65;">"deviceInformationdeviceType"</span>, device.deviceType<span style="color: #c678dd;">)</span>;
+    vm.<span style="color: #51afef; font-style: italic;">set</span><span style="color: #c678dd;">(</span><span style="color: #98be65;">"deviceInformationos"</span>, device.os<span style="color: #c678dd;">)</span>;
+    vm.<span style="color: #51afef; font-style: italic;">set</span><span style="color: #c678dd;">(</span><span style="color: #98be65;">"deviceInformationosVersion"</span>, device.osVersion<span style="color: #c678dd;">)</span>;
+    vm.<span style="color: #51afef; font-style: italic;">set</span><span style="color: #c678dd;">(</span><span style="color: #98be65;">"deviceInformationsdkVersion"</span>, device.sdkVersion<span style="color: #c678dd;">)</span>;
+    vm.<span style="color: #51afef; font-style: italic;">set</span><span style="color: #c678dd;">(</span><span style="color: #98be65;">"deviceInformationlanguage"</span>, device.language<span style="color: #c678dd;">)</span>;
+    vm.<span style="color: #51afef; font-style: italic;">set</span><span style="color: #c678dd;">(</span><span style="color: #98be65;">"deviceInformationmanufacturer"</span>, device.manufacturer<span style="color: #c678dd;">)</span>;
+    vm.<span style="color: #51afef; font-style: italic;">set</span><span style="color: #c678dd;">(</span><span style="color: #98be65;">"deviceInformationuuid"</span>, device.uuid<span style="color: #c678dd;">)</span>;
+    vm.<span style="color: #51afef; font-style: italic;">set</span><span style="color: #c678dd;">(</span><span style="color: #98be65;">"screenInformationheightDIPs"</span>, screen.mainScreen.heightDIPs<span style="color: #c678dd;">)</span>;
+    vm.<span style="color: #51afef; font-style: italic;">set</span><span style="color: #c678dd;">(</span><span style="color: #98be65;">"screenInformationheightPixels"</span>, screen.mainScreen.heightPixels<span style="color: #c678dd;">)</span>;
+    vm.<span style="color: #51afef; font-style: italic;">set</span><span style="color: #c678dd;">(</span><span style="color: #98be65;">"screenInformationscale"</span>, screen.mainScreen.scale<span style="color: #c678dd;">)</span>;
+    vm.<span style="color: #51afef; font-style: italic;">set</span><span style="color: #c678dd;">(</span><span style="color: #98be65;">"screenInformationwidthDIPs"</span>, screen.mainScreen.widthDIPs<span style="color: #c678dd;">)</span>;
+    vm.<span style="color: #51afef; font-style: italic;">set</span><span style="color: #c678dd;">(</span><span style="color: #98be65;">"screenInformationwidthPixels"</span>, screen.mainScreen.widthPixels<span style="color: #c678dd;">)</span>;
+
+    vm.<span style="color: #51afef; font-style: italic;">set</span><span style="color: #c678dd;">(</span><span style="color: #98be65;">"deviceInfoButton"</span>, <span style="color: #98be65;">"Show device info"</span><span style="color: #c678dd;">)</span>;
+    vm.<span style="color: #51afef; font-style: italic;">set</span><span style="color: #c678dd;">(</span><span style="color: #98be65;">"screenInfoButton"</span>, <span style="color: #98be65;">"Show screen info"</span><span style="color: #c678dd;">)</span>;
+    vm.<span style="color: #51afef; font-style: italic;">set</span><span style="color: #c678dd;">(</span><span style="color: #98be65;">"isItemVisible"</span>, <span style="color: #51afef; font-style: italic;">false</span><span style="color: #c678dd;">)</span>;
+    vm.<span style="color: #51afef; font-style: italic;">set</span><span style="color: #c678dd;">(</span><span style="color: #98be65;">"isItemVisibleScreenInfo"</span>, <span style="color: #51afef; font-style: italic;">false</span><span style="color: #c678dd;">)</span>;
+    page.bindingContext = vm;
+<span style="color: #fff0f5;">}</span>
+
+
+<span style="color: #51afef; font-style: italic;">export</span> <span style="color: #51afef; font-style: italic;">function</span> <span style="color: #c678dd;">checkPlatformType</span><span style="color: #fff0f5;">(</span><span style="color: #db5762;">args</span><span style="color: #fff0f5;">)</span> <span style="color: #fff0f5;">{</span>
+    <span style="color: #51afef; font-style: italic;">let</span> <span style="color: #db5762;">message</span> = <span style="color: #98be65;">""</span>;
+    <span style="color: #51afef; font-style: italic;">if</span> <span style="color: #c678dd;">(</span>isAndroid<span style="color: #c678dd;">)</span> <span style="color: #c678dd;">{</span>
+        message = <span style="color: #98be65;">"You are using Android device"</span>;
+    <span style="color: #c678dd;">}</span> <span style="color: #51afef; font-style: italic;">else</span> <span style="color: #51afef; font-style: italic;">if</span> <span style="color: #c678dd;">(</span>isIOS<span style="color: #c678dd;">)</span> <span style="color: #c678dd;">{</span>
+        message = <span style="color: #98be65;">"You are using IOS device"</span>;
+    <span style="color: #c678dd;">}</span>
+    dialogs.alert<span style="color: #c678dd;">(</span>message<span style="color: #c678dd;">)</span>
+        .then<span style="color: #c678dd;">(</span><span style="color: #98be65;">()</span> =&gt; <span style="color: #98be65;">{</span>
+            console.log<span style="color: #00bfff;">(</span><span style="color: #98be65;">"Dialog closed!"</span><span style="color: #00bfff;">)</span>;
+        <span style="color: #98be65;">}</span><span style="color: #c678dd;">)</span>;
+<span style="color: #fff0f5;">}</span>
+
+<span style="color: #51afef; font-style: italic;">export</span> <span style="color: #51afef; font-style: italic;">function</span> <span style="color: #c678dd;">deviceInfo</span><span style="color: #fff0f5;">(</span><span style="color: #db5762;">args</span><span style="color: #fff0f5;">)</span> <span style="color: #fff0f5;">{</span>
+    <span style="color: #51afef; font-style: italic;">const</span> <span style="color: #db5762;">page</span>: Page = &lt;Page&gt;args.<span style="color: #51afef; font-style: italic;">object</span>.page;
+    <span style="color: #51afef; font-style: italic;">const</span> <span style="color: #db5762;">vm</span> = page.bindingContext;
+    <span style="color: #51afef; font-style: italic;">const</span> <span style="color: #db5762;">isItemVisible</span> = vm.<span style="color: #51afef; font-style: italic;">get</span><span style="color: #c678dd;">(</span><span style="color: #98be65;">"isItemVisible"</span><span style="color: #c678dd;">)</span>;
+    <span style="color: #51afef; font-style: italic;">if</span> <span style="color: #c678dd;">(</span>isItemVisible<span style="color: #c678dd;">)</span> <span style="color: #c678dd;">{</span>
+        vm.<span style="color: #51afef; font-style: italic;">set</span><span style="color: #98be65;">(</span><span style="color: #98be65;">"deviceInfoButton"</span>, <span style="color: #98be65;">"Show device info"</span><span style="color: #98be65;">)</span>;
+    <span style="color: #c678dd;">}</span> <span style="color: #51afef; font-style: italic;">else</span> <span style="color: #c678dd;">{</span>
+        vm.<span style="color: #51afef; font-style: italic;">set</span><span style="color: #98be65;">(</span><span style="color: #98be65;">"deviceInfoButton"</span>, <span style="color: #98be65;">"Hide device info"</span><span style="color: #98be65;">)</span>;
+    <span style="color: #c678dd;">}</span>
+    vm.<span style="color: #51afef; font-style: italic;">set</span><span style="color: #c678dd;">(</span><span style="color: #98be65;">"isItemVisible"</span>, !isItemVisible<span style="color: #c678dd;">)</span>;
+<span style="color: #fff0f5;">}</span>
+
+<span style="color: #51afef; font-style: italic;">export</span> <span style="color: #51afef; font-style: italic;">function</span> <span style="color: #c678dd;">screenInfo</span><span style="color: #fff0f5;">(</span><span style="color: #db5762;">args</span><span style="color: #fff0f5;">)</span> <span style="color: #fff0f5;">{</span>
+    <span style="color: #51afef; font-style: italic;">const</span> <span style="color: #db5762;">page</span>: Page = &lt;Page&gt;args.<span style="color: #51afef; font-style: italic;">object</span>.page;
+    <span style="color: #51afef; font-style: italic;">const</span> <span style="color: #db5762;">vm</span> = page.bindingContext;
+    <span style="color: #51afef; font-style: italic;">const</span> <span style="color: #db5762;">isItemVisibleScreenInfo</span> = vm.<span style="color: #51afef; font-style: italic;">get</span><span style="color: #c678dd;">(</span><span style="color: #98be65;">"isItemVisibleScreenInfo"</span><span style="color: #c678dd;">)</span>;
+    <span style="color: #51afef; font-style: italic;">if</span> <span style="color: #c678dd;">(</span>isItemVisibleScreenInfo<span style="color: #c678dd;">)</span> <span style="color: #c678dd;">{</span>
+        vm.<span style="color: #51afef; font-style: italic;">set</span><span style="color: #98be65;">(</span><span style="color: #98be65;">"screenInfoButton"</span>, <span style="color: #98be65;">"Show screen info"</span><span style="color: #98be65;">)</span>;
+    <span style="color: #c678dd;">}</span> <span style="color: #51afef; font-style: italic;">else</span> <span style="color: #c678dd;">{</span>
+        vm.<span style="color: #51afef; font-style: italic;">set</span><span style="color: #98be65;">(</span><span style="color: #98be65;">"screenInfoButton"</span>, <span style="color: #98be65;">"Hide screen info"</span><span style="color: #98be65;">)</span>;
+    <span style="color: #c678dd;">}</span>
+    vm.<span style="color: #51afef; font-style: italic;">set</span><span style="color: #c678dd;">(</span><span style="color: #98be65;">"isItemVisibleScreenInfo"</span>, !isItemVisibleScreenInfo<span style="color: #c678dd;">)</span>;
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgab817f0" class="outline-3">
+<h3 id="orgab817f0"><span class="section-number-3">8.2</span> <a href="https://docs.nativescript.org/ns-framework-modules/file-system">File System</a></h3>
+<div class="outline-text-3" id="text-8-2">
+<ul class="org-ul">
+<li>Creation</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-typescript"><span style="color: #51afef; font-style: italic;">import</span> <span style="color: #fff0f5;">{</span> knownFolders, Folder, File <span style="color: #fff0f5;">}</span> <span style="color: #51afef; font-style: italic;">from</span> <span style="color: #98be65;">"tns-core-modules/file-system"</span>;
+
+<span style="color: #51afef; font-style: italic;">const</span> <span style="color: #db5762;">documents</span>: Folder = &lt;Folder&gt;knownFolders.documents<span style="color: #fff0f5;">()</span>;
+<span style="color: #51afef; font-style: italic;">const</span> <span style="color: #db5762;">folder</span>: Folder = &lt;Folder&gt;documents.getFolder<span style="color: #fff0f5;">(</span>vm.<span style="color: #51afef; font-style: italic;">get</span><span style="color: #c678dd;">(</span><span style="color: #98be65;">"folderName"</span><span style="color: #c678dd;">)</span> || <span style="color: #98be65;">"testFolder"</span><span style="color: #fff0f5;">)</span>;
+<span style="color: #51afef; font-style: italic;">const</span> <span style="color: #db5762;">file</span>: File = &lt;File&gt;folder.getFile<span style="color: #fff0f5;">(</span><span style="color: #98be65;">`${(vm.get("fileName") || "testFile")}`</span> + <span style="color: #98be65;">`.txt`</span><span style="color: #fff0f5;">)</span>;
+
+file.writeText<span style="color: #fff0f5;">(</span>vm.<span style="color: #51afef; font-style: italic;">get</span><span style="color: #c678dd;">(</span><span style="color: #98be65;">"fileTextContent"</span><span style="color: #c678dd;">)</span> || <span style="color: #98be65;">"some random content"</span><span style="color: #fff0f5;">)</span>
+    .then<span style="color: #fff0f5;">(</span><span style="color: #c678dd;">()</span> =&gt; <span style="color: #c678dd;">{</span>
+        file.readText<span style="color: #98be65;">()</span>
+            .then<span style="color: #98be65;">(</span><span style="color: #00bfff;">(</span>res<span style="color: #00bfff;">)</span> =&gt; <span style="color: #00bfff;">{</span>
+                vm.<span style="color: #51afef; font-style: italic;">set</span><span style="color: #a9a1e1;">(</span><span style="color: #98be65;">"successMessage"</span>, <span style="color: #98be65;">`Successfully saved in${file.path}`</span><span style="color: #a9a1e1;">)</span>;
+                vm.<span style="color: #51afef; font-style: italic;">set</span><span style="color: #a9a1e1;">(</span><span style="color: #98be65;">"writtenContent"</span>, res<span style="color: #a9a1e1;">)</span>;
+                vm.<span style="color: #51afef; font-style: italic;">set</span><span style="color: #a9a1e1;">(</span><span style="color: #98be65;">"isItemVisible"</span>, <span style="color: #51afef; font-style: italic;">true</span><span style="color: #a9a1e1;">)</span>;
+            <span style="color: #00bfff;">}</span><span style="color: #98be65;">)</span>;
+    <span style="color: #c678dd;">}</span><span style="color: #fff0f5;">)</span>.<span style="color: #51afef; font-style: italic;">catch</span><span style="color: #fff0f5;">(</span><span style="color: #c678dd;">(</span>err<span style="color: #c678dd;">)</span> =&gt; <span style="color: #c678dd;">{</span>
+        console.log<span style="color: #98be65;">(</span>err<span style="color: #98be65;">)</span>;
+    <span style="color: #c678dd;">}</span><span style="color: #fff0f5;">)</span>;
+</pre>
+</div>
+<ul class="org-ul">
+<li>Deletion</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-typescript">file.remove<span style="color: #fff0f5;">()</span>
+    .then<span style="color: #fff0f5;">(</span><span style="color: #c678dd;">(</span>res<span style="color: #c678dd;">)</span> =&gt; <span style="color: #c678dd;">{</span>
+        <span style="color: #5B6268;">// </span><span style="color: #5B6268;">Success removing the file.</span>
+        vm.<span style="color: #51afef; font-style: italic;">set</span><span style="color: #98be65;">(</span><span style="color: #98be65;">"resultMessage"</span>, <span style="color: #98be65;">"File successfully deleted!"</span><span style="color: #98be65;">)</span>;
+    <span style="color: #c678dd;">}</span><span style="color: #fff0f5;">)</span>.<span style="color: #51afef; font-style: italic;">catch</span><span style="color: #fff0f5;">(</span><span style="color: #c678dd;">(</span>err<span style="color: #c678dd;">)</span> =&gt; <span style="color: #c678dd;">{</span>
+        console.log<span style="color: #98be65;">(</span>err.stack<span style="color: #98be65;">)</span>;
+    <span style="color: #c678dd;">}</span><span style="color: #fff0f5;">)</span>;
+</pre>
+</div>
+<ul class="org-ul">
+<li>Reading</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-typescript">file.readText<span style="color: #fff0f5;">()</span>
+    .then<span style="color: #fff0f5;">(</span><span style="color: #c678dd;">(</span>res<span style="color: #c678dd;">)</span> =&gt; <span style="color: #c678dd;">{</span>
+        vm.<span style="color: #51afef; font-style: italic;">set</span><span style="color: #98be65;">(</span><span style="color: #98be65;">"writtenContent"</span>, res<span style="color: #98be65;">)</span>;
+    <span style="color: #c678dd;">}</span><span style="color: #fff0f5;">)</span>.<span style="color: #51afef; font-style: italic;">catch</span><span style="color: #fff0f5;">(</span><span style="color: #c678dd;">(</span>err<span style="color: #c678dd;">)</span> =&gt; <span style="color: #c678dd;">{</span>
+        console.log<span style="color: #98be65;">(</span>err.stack<span style="color: #98be65;">)</span>;
+    <span style="color: #c678dd;">}</span><span style="color: #fff0f5;">)</span>;
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgcc29690" class="outline-3">
+<h3 id="orgcc29690"><span class="section-number-3">8.3</span> <a href="https://docs.nativescript.org/ui/ns-ui-widgets/gestures">Gestures</a></h3>
+<div class="outline-text-3" id="text-8-3">
+<ul class="org-ul">
+<li>Tap on view</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-typescript">myView.on<span style="color: #fff0f5;">(</span><span style="color: #98be65;">"tap"</span>, <span style="color: #c678dd;">()</span> =&gt; <span style="color: #c678dd;">{</span>
+    console.log<span style="color: #98be65;">(</span><span style="color: #98be65;">"myView tapped!"</span><span style="color: #98be65;">)</span>;
+<span style="color: #c678dd;">}</span><span style="color: #fff0f5;">)</span>
+</pre>
+</div>
+<ul class="org-ul">
+<li>Tap on element</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-xml">&lt;<span style="color: #c678dd;">Label</span> <span style="color: #db5762;">text</span>=<span style="color: #98be65;">"Tap Me"</span> (tap)=<span style="color: #98be65;">"onTap()"</span>/&gt;
+</pre>
+</div>
+<div class="org-src-container">
+<pre class="src src-typescript"><span style="color: #51afef; font-style: italic;">export</span> <span style="color: #51afef; font-style: italic;">function</span> <span style="color: #c678dd;">onTap</span><span style="color: #fff0f5;">(</span><span style="color: #db5762;">args</span><span style="color: #fff0f5;">)</span> <span style="color: #fff0f5;">{</span>
+    console.log<span style="color: #c678dd;">(</span><span style="color: #98be65;">"Label tapped!"</span><span style="color: #c678dd;">)</span>;
+<span style="color: #fff0f5;">}</span>;
+</pre>
+</div>
+<ul class="org-ul">
+<li>Double Tap</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-xml">&lt;<span style="color: #c678dd;">Label</span> <span style="color: #db5762;">text</span>=<span style="color: #98be65;">"Tap Me"</span> (doubleTap)=<span style="color: #98be65;">"onDoubleTap()"</span>/&gt;
+</pre>
+</div>
+<div class="org-src-container">
+<pre class="src src-typescript"><span style="color: #51afef; font-style: italic;">export</span> <span style="color: #51afef; font-style: italic;">function</span> <span style="color: #c678dd;">onDoubleTap</span><span style="color: #fff0f5;">(</span><span style="color: #db5762;">args</span><span style="color: #fff0f5;">)</span> <span style="color: #fff0f5;">{</span>
+    console.log<span style="color: #c678dd;">(</span><span style="color: #98be65;">"Label tapped!"</span><span style="color: #c678dd;">)</span>;
+<span style="color: #fff0f5;">}</span>;
+</pre>
+</div>
+<ul class="org-ul">
+<li>Long press</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-xml">&lt;<span style="color: #c678dd;">Label</span> <span style="color: #db5762;">text</span>=<span style="color: #98be65;">"Long Press me!"</span> <span style="color: #db5762;">longPress</span>=<span style="color: #98be65;">"onLongPress()"</span>/&gt;
+</pre>
+</div>
+<ul class="org-ul">
+<li>Pan</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-xml">&lt;<span style="color: #c678dd;">Label</span> <span style="color: #db5762;">text</span>=<span style="color: #98be65;">"Pan me!"</span> <span style="color: #db5762;">pan</span>=<span style="color: #98be65;">"onPan()"</span>/&gt;
+</pre>
+</div>
+<div class="org-src-container">
+<pre class="src src-typescript"><span style="color: #51afef; font-style: italic;">import</span> <span style="color: #fff0f5;">{</span> PanGestureEventData <span style="color: #fff0f5;">}</span> <span style="color: #51afef; font-style: italic;">from</span> <span style="color: #98be65;">"tns-core-modules/ui/gestures"</span>;
+
+<span style="color: #51afef; font-style: italic;">export</span> <span style="color: #51afef; font-style: italic;">function</span> <span style="color: #c678dd;">onPan</span><span style="color: #fff0f5;">(</span><span style="color: #db5762;">args</span>: <span style="color: #db5762;">PanGestureEventData</span><span style="color: #fff0f5;">)</span> <span style="color: #fff0f5;">{</span>
+    <span style="color: #5B6268;">// </span><span style="color: #5B6268;">args is of type PanGestureEventData</span>
+    console.log<span style="color: #c678dd;">(</span><span style="color: #98be65;">`${args.eventName} event triggered for ${args.view}`</span><span style="color: #c678dd;">)</span>;
+    console.log<span style="color: #c678dd;">(</span><span style="color: #98be65;">`deltaX: ${args.deltaX}`</span><span style="color: #c678dd;">)</span>;
+    console.log<span style="color: #c678dd;">(</span><span style="color: #98be65;">`deltaY: ${args.deltaY}`</span><span style="color: #c678dd;">)</span>;
+    console.log<span style="color: #c678dd;">(</span><span style="color: #98be65;">`state: ${args.state}`</span><span style="color: #c678dd;">)</span>;
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+<ul class="org-ul">
+<li>Pinch</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-xml">&lt;<span style="color: #c678dd;">Label</span> <span style="color: #db5762;">text</span>=<span style="color: #98be65;">"Pinch me!"</span> <span style="color: #db5762;">pinch</span>=<span style="color: #98be65;">"onPinch()"</span> /&gt;
+</pre>
+</div>
+<div class="org-src-container">
+<pre class="src src-typescript"><span style="color: #51afef; font-style: italic;">import</span> <span style="color: #fff0f5;">{</span> PinchGestureEventData <span style="color: #fff0f5;">}</span> <span style="color: #51afef; font-style: italic;">from</span> <span style="color: #98be65;">"tns-core-modules/ui/gestures"</span>;
+
+<span style="color: #51afef; font-style: italic;">export</span> <span style="color: #51afef; font-style: italic;">function</span> <span style="color: #c678dd;">onPinch</span><span style="color: #fff0f5;">(</span><span style="color: #db5762;">args</span>: <span style="color: #db5762;">PinchGestureEventData</span><span style="color: #fff0f5;">)</span> <span style="color: #fff0f5;">{</span>
+    <span style="color: #5B6268;">// </span><span style="color: #5B6268;">args is of type PinchGestureEventData</span>
+    console.log<span style="color: #c678dd;">(</span><span style="color: #98be65;">`scale: ${args.scale}`</span><span style="color: #c678dd;">)</span>;
+    console.log<span style="color: #c678dd;">(</span><span style="color: #98be65;">`tate: ${args.state}`</span><span style="color: #c678dd;">)</span>;
+    console.log<span style="color: #c678dd;">(</span><span style="color: #98be65;">`getFocusX(): ${args.getFocusX()}`</span><span style="color: #c678dd;">)</span>;
+    console.log<span style="color: #c678dd;">(</span><span style="color: #98be65;">`getFocusY(): ${args.getFocusY()}`</span><span style="color: #c678dd;">)</span>;
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+<ul class="org-ul">
+<li>Rotation</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-xml">&lt;<span style="color: #c678dd;">Label</span> <span style="color: #db5762;">text</span>=<span style="color: #98be65;">"Rotate me!"</span> <span style="color: #db5762;">rotation</span>=<span style="color: #98be65;">"onRotation()"</span>/&gt;
+</pre>
+</div>
+<div class="org-src-container">
+<pre class="src src-typescript"><span style="color: #51afef; font-style: italic;">import</span> <span style="color: #fff0f5;">{</span> RotationGestureEventData <span style="color: #fff0f5;">}</span> <span style="color: #51afef; font-style: italic;">from</span> <span style="color: #98be65;">"tns-core-modules/ui/gestures"</span>;
+
+<span style="color: #51afef; font-style: italic;">export</span> <span style="color: #51afef; font-style: italic;">function</span> <span style="color: #c678dd;">onRotation</span><span style="color: #fff0f5;">(</span><span style="color: #db5762;">args</span>: <span style="color: #db5762;">RotationGestureEventData</span><span style="color: #fff0f5;">)</span> <span style="color: #fff0f5;">{</span>
+    <span style="color: #5B6268;">// </span><span style="color: #5B6268;">args is of type RotationGestureEventData</span>
+    console.log<span style="color: #c678dd;">(</span><span style="color: #98be65;">`${args.eventName} event triggered for ${args.view}`</span><span style="color: #c678dd;">)</span>;
+    console.log<span style="color: #c678dd;">(</span><span style="color: #98be65;">`rotation:  ${args.rotation}`</span><span style="color: #c678dd;">)</span>;
+    console.log<span style="color: #c678dd;">(</span><span style="color: #98be65;">`state:  ${args.state}`</span><span style="color: #c678dd;">)</span>;
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+<ul class="org-ul">
+<li>Swipe</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-xml">&lt;<span style="color: #c678dd;">Label</span> <span style="color: #db5762;">text</span>=<span style="color: #98be65;">"Swipe me!"</span> <span style="color: #db5762;">swipe</span>=<span style="color: #98be65;">"onSwipe()"</span>/&gt;
+</pre>
+</div>
+<div class="org-src-container">
+<pre class="src src-typescript"><span style="color: #51afef; font-style: italic;">import</span> <span style="color: #fff0f5;">{</span> SwipeDirection, SwipeGestureEventData <span style="color: #fff0f5;">}</span> <span style="color: #51afef; font-style: italic;">from</span> <span style="color: #98be65;">"tns-core-modules/ui/gestures"</span>;
+
+<span style="color: #51afef; font-style: italic;">export</span> <span style="color: #51afef; font-style: italic;">function</span> <span style="color: #c678dd;">onSwipe</span><span style="color: #fff0f5;">(</span><span style="color: #db5762;">args</span>: <span style="color: #db5762;">SwipeGestureEventData</span><span style="color: #fff0f5;">)</span> <span style="color: #fff0f5;">{</span>
+    alert<span style="color: #c678dd;">(</span><span style="color: #98be65;">`${args.eventName} event triggered for ${args.view}`</span><span style="color: #c678dd;">)</span>;
+    <span style="color: #51afef; font-style: italic;">let</span> <span style="color: #db5762;">direction</span>: SwipeDirection = args.direction;
+    console.log<span style="color: #c678dd;">(</span><span style="color: #98be65;">`direction ${direction}`</span><span style="color: #c678dd;">)</span>; <span style="color: #5B6268;">// </span><span style="color: #5B6268;">SwipeDirection enumeration: up, down, left, right</span>
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org5eea481" class="outline-2">
+<h2 id="org5eea481"><span class="section-number-2">9</span> User Interface Modules</h2>
+<div class="outline-text-2" id="text-9">
+</div>
+<div id="outline-container-org864d006" class="outline-3">
+<h3 id="org864d006"><span class="section-number-3">9.1</span> <a href="https://docs.nativescript.org/ui/ns-ui-widgets/frame">Frame</a></h3>
+<div class="outline-text-3" id="text-9-1">
+<ul class="org-ul">
+<li>Generally not needed when working with Angular</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org54fa1e4" class="outline-3">
+<h3 id="org54fa1e4"><span class="section-number-3">9.2</span> <a href="https://docs.nativescript.org/ui/ns-ui-widgets/page">Page</a></h3>
+<div class="outline-text-3" id="text-9-2">
+<ul class="org-ul">
+<li>Generally not needed when working with Angular, unless for binding the context</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org74b5cfd" class="outline-3">
+<h3 id="org74b5cfd"><span class="section-number-3">9.3</span> <a href="https://docs.nativescript.org/ns-framework-modules/color">Color</a></h3>
+<div class="outline-text-3" id="text-9-3">
+<ul class="org-ul">
+<li>Easily create colors</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-typescript"><span style="color: #5B6268;">// </span><span style="color: #5B6268;">Creates the red color</span>
+<span style="color: #51afef; font-style: italic;">const</span> <span style="color: #db5762;">color</span> = <span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">Color</span><span style="color: #fff0f5;">(</span><span style="color: #98be65;">"#FF0000"</span><span style="color: #fff0f5;">)</span>;
+
+<span style="color: #5B6268;">// </span><span style="color: #5B6268;">Creates the color #FF8800</span>
+<span style="color: #51afef; font-style: italic;">const</span> <span style="color: #db5762;">color</span> = <span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">Color</span><span style="color: #fff0f5;">(</span><span style="color: #98be65;">"#F80"</span><span style="color: #fff0f5;">)</span>;
+
+<span style="color: #5B6268;">// </span><span style="color: #5B6268;">Creates the color with 100 alpha, 255 red, 100 green, 100 blue</span>
+<span style="color: #51afef; font-style: italic;">const</span> <span style="color: #db5762;">color</span> = <span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">Color</span><span style="color: #fff0f5;">(</span>100, 255, 100, 100<span style="color: #fff0f5;">)</span>;
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org69f9243" class="outline-3">
+<h3 id="org69f9243"><span class="section-number-3">9.4</span> <a href="https://docs.nativescript.org/ns-framework-modules/xml-parser">XML Parsing</a></h3>
+</div>
+</div>
+<div id="outline-container-org9f67350" class="outline-2">
+<h2 id="org9f67350"><span class="section-number-2">10</span> Styling</h2>
+<div class="outline-text-2" id="text-10">
+<ul class="org-ul">
+<li>Measurement units
+<ul class="org-ul">
+<li><b>DIPs</b> (recommended): <code>font-size: 20</code></li>
+<li><b>pixels</b>: <code>font-size 20px</code></li>
+<li><b>percentages</b>: <code>height: 20%</code></li>
+</ul></li>
+<li><p>
+Allowed CSS properties
+</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">CSS Property</th>
+<th scope="col" class="org-left">JS Property</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">color</td>
+<td class="org-left">color</td>
+<td class="org-left">Sets a solid-color value to the matched view’s foreground.</td>
+</tr>
+
+<tr>
+<td class="org-left">background</td>
+<td class="org-left">background</td>
+<td class="org-left">Sets a solid-color value or a linear gradient to the matched view’s background.</td>
+</tr>
+
+<tr>
+<td class="org-left">background-color</td>
+<td class="org-left">backgroundColor</td>
+<td class="org-left">Sets a solid-color value to the matched view’s background.</td>
+</tr>
+
+<tr>
+<td class="org-left">placeholder-color</td>
+<td class="org-left">placeholderColor</td>
+<td class="org-left">Sets the placeholder (hint) font color to matched views.</td>
+</tr>
+
+<tr>
+<td class="org-left">background-image</td>
+<td class="org-left">backgroundImage</td>
+<td class="org-left">Sets a image url to the matched view’s background image.</td>
+</tr>
+
+<tr>
+<td class="org-left">background-repeat</td>
+<td class="org-left">backgroundRepeat</td>
+<td class="org-left">Sets if/how the background image should be repeated. Possible values: repeat, repeat-x, repeat-y, no-repeat</td>
+</tr>
+
+<tr>
+<td class="org-left">background-position</td>
+<td class="org-left">backgroundPosition</td>
+<td class="org-left">Sets the starting position of the background image.</td>
+</tr>
+
+<tr>
+<td class="org-left">background-size</td>
+<td class="org-left">backgroundSize</td>
+<td class="org-left">Sets the size of the background image. Possible values: "length length", "percent% percent%", "cover" or "contain".</td>
+</tr>
+
+<tr>
+<td class="org-left">border-color</td>
+<td class="org-left">borderColor</td>
+<td class="org-left">Sets border colors to the matched view’s.</td>
+</tr>
+
+<tr>
+<td class="org-left">border-top-color</td>
+<td class="org-left">borderTopColor</td>
+<td class="org-left">Sets a top border color to the matched view’s.</td>
+</tr>
+
+<tr>
+<td class="org-left">border-right-color</td>
+<td class="org-left">borderRightColor</td>
+<td class="org-left">Sets a right border color to the matched view’s.</td>
+</tr>
+
+<tr>
+<td class="org-left">border-bottom-color</td>
+<td class="org-left">borderBottomColor</td>
+<td class="org-left">Sets a bottom border color to the matched view’s.</td>
+</tr>
+
+<tr>
+<td class="org-left">border-left-color</td>
+<td class="org-left">borderLeftColor</td>
+<td class="org-left">Sets a left border color to the matched view’s.</td>
+</tr>
+
+<tr>
+<td class="org-left">border-width</td>
+<td class="org-left">borderWidth</td>
+<td class="org-left">Sets border widths to the matched view’s.</td>
+</tr>
+
+<tr>
+<td class="org-left">border-top-width</td>
+<td class="org-left">borderTopWidth</td>
+<td class="org-left">Sets a top border width to the matched view’s.</td>
+</tr>
+
+<tr>
+<td class="org-left">border-right-width</td>
+<td class="org-left">borderRightWidth</td>
+<td class="org-left">Sets a right border width to the matched view’s.</td>
+</tr>
+
+<tr>
+<td class="org-left">border-bottom-width</td>
+<td class="org-left">borderBottomWidth</td>
+<td class="org-left">Sets a bottom border width to the matched view’s.</td>
+</tr>
+
+<tr>
+<td class="org-left">border-left-width</td>
+<td class="org-left">borderLeftWidth</td>
+<td class="org-left">Sets a left border width to the matched view’s.</td>
+</tr>
+
+<tr>
+<td class="org-left">border-radius</td>
+<td class="org-left">borderRadius</td>
+<td class="org-left">Sets a border radius to the matched view’s.</td>
+</tr>
+
+<tr>
+<td class="org-left">font</td>
+<td class="org-left">font</td>
+<td class="org-left">Sets the font properties (this includes font-family, font-size, font-style and font-weight) of the matched view.</td>
+</tr>
+
+<tr>
+<td class="org-left">font-family</td>
+<td class="org-left">fontFamily</td>
+<td class="org-left">Sets the font family of the matched view.</td>
+</tr>
+
+<tr>
+<td class="org-left">font-size</td>
+<td class="org-left">fontSize</td>
+<td class="org-left">Sets the font size of the matched view (only supports device-independent units).</td>
+</tr>
+
+<tr>
+<td class="org-left">font-style</td>
+<td class="org-left">fontStyle</td>
+<td class="org-left">Sets the font style of the matched view. Possible values: italic, normal.</td>
+</tr>
+
+<tr>
+<td class="org-left">font-weight</td>
+<td class="org-left">fontWeight</td>
+<td class="org-left">Sets the font weight of the matched view</td>
+</tr>
+
+<tr>
+<td class="org-left">text-align</td>
+<td class="org-left">textAlignment</td>
+<td class="org-left">Sets text alignment in the matched view. Possible values: left , center, right.</td>
+</tr>
+
+<tr>
+<td class="org-left">text-decoration</td>
+<td class="org-left">textDecoration</td>
+<td class="org-left">Sets the text formatting. Possible values: none, line-through, underline.</td>
+</tr>
+
+<tr>
+<td class="org-left">text-transform</td>
+<td class="org-left">textTransform</td>
+<td class="org-left">Sets the text transform. Possible values: none, capitalize, uppercase, lowercase.</td>
+</tr>
+
+<tr>
+<td class="org-left">letter-spacing</td>
+<td class="org-left">letterSpacing</td>
+<td class="org-left">Sets the text letter spacing. (On Android API Level 21 and above.)</td>
+</tr>
+
+<tr>
+<td class="org-left">line-height</td>
+<td class="org-left">lineHeight</td>
+<td class="org-left">Sets the text line height</td>
+</tr>
+
+<tr>
+<td class="org-left">z-index</td>
+<td class="org-left">zIndex</td>
+<td class="org-left">Sets the z-index. (On Android API Level 21 and above.)</td>
+</tr>
+
+<tr>
+<td class="org-left">clip-path</td>
+<td class="org-left">clip-path</td>
+<td class="org-left">Sets the clip-path. Supported shapes are circle, ellipse, rect and polygon. You can define your own shape using clippy</td>
+</tr>
+
+<tr>
+<td class="org-left">vertical-align</td>
+<td class="org-left">verticalAlignment</td>
+<td class="org-left">Sets the vertical alignment of the current view within its parent. Possible values: top, center, bottom, stretch.</td>
+</tr>
+
+<tr>
+<td class="org-left">horizontal-align</td>
+<td class="org-left">horizontalAlignment</td>
+<td class="org-left">Sets the horizontal alignment of the current view within its parent. Possible values: left, center, right, stretch.</td>
+</tr>
+
+<tr>
+<td class="org-left">margin</td>
+<td class="org-left">margin</td>
+<td class="org-left">Sets the margin of the view within its parent.</td>
+</tr>
+
+<tr>
+<td class="org-left">margin-top</td>
+<td class="org-left">marginTop</td>
+<td class="org-left">Sets the top margin of the view within its parent.</td>
+</tr>
+
+<tr>
+<td class="org-left">margin-right</td>
+<td class="org-left">marginRight</td>
+<td class="org-left">Sets the right margin of the view within its parent.</td>
+</tr>
+
+<tr>
+<td class="org-left">margin-bottom</td>
+<td class="org-left">marginBottom</td>
+<td class="org-left">Sets the bottom margin of the view within its parent.</td>
+</tr>
+
+<tr>
+<td class="org-left">margin-left</td>
+<td class="org-left">marginLeft</td>
+<td class="org-left">Sets the left margin of the view within its parent.</td>
+</tr>
+
+<tr>
+<td class="org-left">width</td>
+<td class="org-left">width</td>
+<td class="org-left">Sets the view width.</td>
+</tr>
+
+<tr>
+<td class="org-left">height</td>
+<td class="org-left">height</td>
+<td class="org-left">Sets the view height.</td>
+</tr>
+
+<tr>
+<td class="org-left">min-width</td>
+<td class="org-left">minWidth</td>
+<td class="org-left">Sets the minimal view width.</td>
+</tr>
+
+<tr>
+<td class="org-left">min-height</td>
+<td class="org-left">minHeight</td>
+<td class="org-left">Sets the minimal view height.</td>
+</tr>
+
+<tr>
+<td class="org-left">padding</td>
+<td class="org-left">padding</td>
+<td class="org-left">Sets the distance between the boundaries of the layout container and its children.</td>
+</tr>
+
+<tr>
+<td class="org-left">padding-top</td>
+<td class="org-left">paddingTop</td>
+<td class="org-left">Sets the top padding of a layout container.</td>
+</tr>
+
+<tr>
+<td class="org-left">padding-right</td>
+<td class="org-left">paddingRight</td>
+<td class="org-left">Sets the right padding of a layout container.</td>
+</tr>
+
+<tr>
+<td class="org-left">padding-bottom</td>
+<td class="org-left">paddingBottom</td>
+<td class="org-left">Sets the bottom padding of a layout container.</td>
+</tr>
+
+<tr>
+<td class="org-left">padding-left</td>
+<td class="org-left">paddingLeft</td>
+<td class="org-left">Sets the left padding of a layout container.</td>
+</tr>
+
+<tr>
+<td class="org-left">visibility</td>
+<td class="org-left">visibility</td>
+<td class="org-left">Sets the view visibility. Possible values: visible, collapse (or collapsed).</td>
+</tr>
+
+<tr>
+<td class="org-left">opacity</td>
+<td class="org-left">opacity</td>
+<td class="org-left">Sets the view opacity. The value is in the [0, 1] range.</td>
+</tr>
+</tbody>
+</table></li>
+<li><p>
+Nativescript specific CSS properties
+</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">CSS Property</th>
+<th scope="col" class="org-left">JS Property</th>
+<th scope="col" class="org-left">Platform</th>
+<th scope="col" class="org-left">Compatibility</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">selected-tab-text-color</td>
+<td class="org-left">selectedTabTextColor</td>
+<td class="org-left">Both</td>
+<td class="org-left">TabView</td>
+<td class="org-left">Sets the color of the text, while selecting some of the tabs.</td>
+</tr>
+
+<tr>
+<td class="org-left">tab-background-color</td>
+<td class="org-left">tabBackgroundColor</td>
+<td class="org-left">Both</td>
+<td class="org-left">TabView</td>
+<td class="org-left">Sets the background color of the tabs.</td>
+</tr>
+
+<tr>
+<td class="org-left">tab-text-font-size</td>
+<td class="org-left">tabTextFontSize</td>
+<td class="org-left">Both</td>
+<td class="org-left">TabView</td>
+<td class="org-left">Sets the tab titles font size, without changing the font size of all contents of the tab.</td>
+</tr>
+
+<tr>
+<td class="org-left">text-transform</td>
+<td class="org-left">textTransform</td>
+<td class="org-left">Both</td>
+<td class="org-left">TabViewItem</td>
+<td class="org-left">Sets the text transform individually for every TabViewItem. Value options: capitalize, lowercase, none, and uppercase.</td>
+</tr>
+
+<tr>
+<td class="org-left">android-selected-tab-highlight-color</td>
+<td class="org-left">androidSelectedTabHighlightColor</td>
+<td class="org-left">Android</td>
+<td class="org-left">TabView</td>
+<td class="org-left">Sets the underline color of the tabs in Android.</td>
+</tr>
+</tbody>
+</table></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org9cf471a" class="outline-2">
+<h2 id="org9cf471a"><span class="section-number-2">11</span> Themes</h2>
+<div class="outline-text-2" id="text-11">
+<ul class="org-ul">
+<li><a href="https://docs.nativescript.org/ui/theme">Built-in themes</a></li>
+<li><a href="https://docs.nativescript.org/ui/theme#class-names">Class names for widgets</a></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orge8cb941" class="outline-2">
+<h2 id="orge8cb941"><span class="section-number-2">12</span> <a href="https://docs.nativescript.org/angular/core-concepts/utils">Utils</a></h2>
+<div class="outline-text-2" id="text-12">
+<ul class="org-ul">
+<li>Import</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-typescript"><span style="color: #51afef; font-style: italic;">import</span> * <span style="color: #51afef; font-style: italic;">as</span> utils <span style="color: #51afef; font-style: italic;">from</span> <span style="color: #98be65;">"tns-core-modules/utils/utils"</span>;
+</pre>
+</div>
+<ul class="org-ul">
+<li>Methods:
+<ul class="org-ul">
+<li><code>isFileOrResourcePath()</code></li>
+<li><code>isDataURI()</code></li>
+<li><code>openUrl()</code></li>
+<li><code>escapeRegexSymbols()</code></li>
+<li><code>convertString()</code></li>
+<li><code>getDisplayDensity()</code></li>
+<li><code>toDevicePixels()</code></li>
+<li><code>toDeviceIndependentPixels()</code></li>
+<li><code>round()</code></li>
+</ul></li>
+<li>Android only methods:
+<ul class="org-ul">
+<li><code>getApplication()</code></li>
+<li><code>getApplicationContext()</code></li>
+<li><code>getInputMethodManager()</code></li>
+<li><code>showSoftInput()</code></li>
+<li><code>dismissSoftInput()</code></li>
+<li><code>stringArrayToStringSet()</code></li>
+<li><code>stringSetToStringArray()</code></li>
+<li><code>getDrawableId()</code></li>
+<li><code>getStringId()</code></li>
+<li><code>getId()</code></li>
+<li><code>getPalleteColor()</code></li>
+</ul></li>
+<li>iOS only methods:
+<ul class="org-ul">
+<li><code>jsArrayToNSArray()</code></li>
+<li><code>nsArrayToJSArray()</code></li>
+<li><code>isLandscape()</code></li>
+<li><code>MajorVersion()</code></li>
+<li><code>openFile()</code></li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org3cc1c65" class="outline-2">
+<h2 id="org3cc1c65"><span class="section-number-2">13</span> <a href="https://docs.nativescript.org/angular/ui/layouts/layout-containers">Layouts</a></h2>
+<div class="outline-text-2" id="text-13">
+</div>
+<div id="outline-container-org16dc667" class="outline-3">
+<h3 id="org16dc667"><span class="section-number-3">13.1</span> Stack Layout</h3>
+</div>
+<div id="outline-container-orgf8aff79" class="outline-3">
+<h3 id="orgf8aff79"><span class="section-number-3">13.2</span> Grid Layout</h3>
+</div>
+<div id="outline-container-org3796bfa" class="outline-3">
+<h3 id="org3796bfa"><span class="section-number-3">13.3</span> Absolute Layout</h3>
+</div>
+<div id="outline-container-org949e0da" class="outline-3">
+<h3 id="org949e0da"><span class="section-number-3">13.4</span> Wrap Layout</h3>
+</div>
+<div id="outline-container-orgffca3d7" class="outline-3">
+<h3 id="orgffca3d7"><span class="section-number-3">13.5</span> Dock Layout</h3>
+</div>
+</div>
+<div id="outline-container-orgef20a6a" class="outline-2">
+<h2 id="orgef20a6a"><span class="section-number-2">14</span> Widgets</h2>
+<div class="outline-text-2" id="text-14">
+</div>
+<div id="outline-container-org85c95a0" class="outline-3">
+<h3 id="org85c95a0"><span class="section-number-3">14.1</span> ActionBar</h3>
+</div>
+<div id="outline-container-orgb9b54f7" class="outline-3">
+<h3 id="orgb9b54f7"><span class="section-number-3">14.2</span> ActivityIndicator</h3>
+</div>
+<div id="outline-container-orgbb1711e" class="outline-3">
+<h3 id="orgbb1711e"><span class="section-number-3">14.3</span> Animations</h3>
+</div>
+<div id="outline-container-org5142c4e" class="outline-3">
+<h3 id="org5142c4e"><span class="section-number-3">14.4</span> Button</h3>
+</div>
+<div id="outline-container-org143d310" class="outline-3">
+<h3 id="org143d310"><span class="section-number-3">14.5</span> DatePicker</h3>
+</div>
+<div id="outline-container-org8b4076c" class="outline-3">
+<h3 id="org8b4076c"><span class="section-number-3">14.6</span> Dialogs</h3>
+</div>
+<div id="outline-container-org9b7b357" class="outline-3">
+<h3 id="org9b7b357"><span class="section-number-3">14.7</span> FormattedString</h3>
+</div>
+<div id="outline-container-orgd620c17" class="outline-3">
+<h3 id="orgd620c17"><span class="section-number-3">14.8</span> Gestures</h3>
+</div>
+<div id="outline-container-org2d248ff" class="outline-3">
+<h3 id="org2d248ff"><span class="section-number-3">14.9</span> HtmlView</h3>
+</div>
+<div id="outline-container-orgf1c56f2" class="outline-3">
+<h3 id="orgf1c56f2"><span class="section-number-3">14.10</span> Image</h3>
+</div>
+<div id="outline-container-org1090af2" class="outline-3">
+<h3 id="org1090af2"><span class="section-number-3">14.11</span> Label</h3>
+</div>
+<div id="outline-container-org50f7623" class="outline-3">
+<h3 id="org50f7623"><span class="section-number-3">14.12</span> Layouts</h3>
+</div>
+<div id="outline-container-orge014e03" class="outline-3">
+<h3 id="orge014e03"><span class="section-number-3">14.13</span> ListPicker</h3>
+</div>
+<div id="outline-container-org1626336" class="outline-3">
+<h3 id="org1626336"><span class="section-number-3">14.14</span> ListView</h3>
+</div>
+<div id="outline-container-org1c8a30a" class="outline-3">
+<h3 id="org1c8a30a"><span class="section-number-3">14.15</span> Progress</h3>
+</div>
+<div id="outline-container-orgb60d806" class="outline-3">
+<h3 id="orgb60d806"><span class="section-number-3">14.16</span> ScrollView</h3>
+</div>
+<div id="outline-container-org5b2df3b" class="outline-3">
+<h3 id="org5b2df3b"><span class="section-number-3">14.17</span> SearchBar</h3>
+</div>
+<div id="outline-container-orgb173cb9" class="outline-3">
+<h3 id="orgb173cb9"><span class="section-number-3">14.18</span> SegmentedBar</h3>
+</div>
+<div id="outline-container-org84ae98f" class="outline-3">
+<h3 id="org84ae98f"><span class="section-number-3">14.19</span> Slider</h3>
+</div>
+<div id="outline-container-org90a1149" class="outline-3">
+<h3 id="org90a1149"><span class="section-number-3">14.20</span> Styling</h3>
+</div>
+<div id="outline-container-org606073e" class="outline-3">
+<h3 id="org606073e"><span class="section-number-3">14.21</span> Switch</h3>
+</div>
+<div id="outline-container-orge872ade" class="outline-3">
+<h3 id="orge872ade"><span class="section-number-3">14.22</span> TabView</h3>
+</div>
+<div id="outline-container-org0f5bc7d" class="outline-3">
+<h3 id="org0f5bc7d"><span class="section-number-3">14.23</span> TextField</h3>
+</div>
+<div id="outline-container-orgbe454c9" class="outline-3">
+<h3 id="orgbe454c9"><span class="section-number-3">14.24</span> TextView</h3>
+</div>
+<div id="outline-container-org32fbb66" class="outline-3">
+<h3 id="org32fbb66"><span class="section-number-3">14.25</span> TimePicker</h3>
+</div>
+<div id="outline-container-orgad900f3" class="outline-3">
+<h3 id="orgad900f3"><span class="section-number-3">14.26</span> WebView</h3>
+</div>
+<div id="outline-container-orgc0ec6eb" class="outline-3">
+<h3 id="orgc0ec6eb"><span class="section-number-3">14.27</span> NG Directives</h3>
+</div>
+<div id="outline-container-org41b1c71" class="outline-3">
+<h3 id="org41b1c71"><span class="section-number-3">14.28</span> Icon Fonts</h3>
+</div>
+</div>
+<div id="outline-container-org8270ccb" class="outline-2">
+<h2 id="org8270ccb"><span class="section-number-2">15</span> Navigation</h2>
+<div class="outline-text-2" id="text-15">
+</div>
+<div id="outline-container-org2f3f64b" class="outline-3">
+<h3 id="org2f3f64b"><span class="section-number-3">15.1</span> Introduction</h3>
+<div class="outline-text-3" id="text-15-1">
+<ul class="org-ul">
+<li>Navigation is much the same as the standard Angular. A <code>page-router-outlet</code> is used in Nativescript to output the individual pages instead of <code>router-outlet</code></li>
+<li>A <code>nsRouterLink</code> is used instead of <code>routerLink</code> for navigating between pages. Please note the additional <code>clearHistory</code> and <code>pageTransition</code> parameters</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-xml">&lt;<span style="color: #c678dd;">Button</span> <span style="color: #db5762;">text</span>=<span style="color: #98be65;">"Button"</span> [nsRouterLink]=<span style="color: #98be65;">"['/main']"</span> <span style="color: #db5762;">pageTransition</span>=<span style="color: #98be65;">"slide"</span> <span style="color: #db5762;">clearHistory</span>=<span style="color: #98be65;">"true"</span>&gt;&lt;/<span style="color: #c678dd;">Button</span>&gt;
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgddfb345" class="outline-3">
+<h3 id="orgddfb345"><span class="section-number-3">15.2</span> Configuration</h3>
+<div class="outline-text-3" id="text-15-2">
+<ul class="org-ul">
+<li>Is basically the same as it is in Angular apart from the Router module import</li>
+<li>Declare routes</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-typescript"><span style="color: #51afef; font-style: italic;">export</span> <span style="color: #51afef; font-style: italic;">const</span> <span style="color: #db5762;">routes</span> = <span style="color: #fff0f5;">[</span>
+    <span style="color: #c678dd;">{</span> path: <span style="color: #98be65;">"login"</span>, component: LoginComponent <span style="color: #c678dd;">}</span>,
+    <span style="color: #c678dd;">{</span> path: <span style="color: #98be65;">"groceries"</span>, component: GroceryListComponent <span style="color: #c678dd;">}</span>,
+    <span style="color: #c678dd;">{</span> path: <span style="color: #98be65;">"grocery/:id"</span>, component: GroceryComponent <span style="color: #c678dd;">}</span>
+<span style="color: #fff0f5;">]</span>;
+</pre>
+</div>
+<ul class="org-ul">
+<li>Use the <code>NativeScriptRouterModule</code> to import the routes</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-typescript"><span style="color: #51afef; font-style: italic;">import</span> <span style="color: #fff0f5;">{</span> NativeScriptRouterModule <span style="color: #fff0f5;">}</span> <span style="color: #51afef; font-style: italic;">from</span> <span style="color: #98be65;">"nativescript-angular/router"</span>;
+
+@NgModule<span style="color: #fff0f5;">(</span><span style="color: #c678dd;">{</span>
+    bootstrap: <span style="color: #98be65;">[</span>GroceriesApp<span style="color: #98be65;">]</span>,
+    imports: <span style="color: #98be65;">[</span>
+        NativeScriptRouterModule,
+        NativeScriptRouterModule.forRoot<span style="color: #00bfff;">(</span>routes<span style="color: #00bfff;">)</span>
+    <span style="color: #98be65;">]</span>
+<span style="color: #c678dd;">}</span><span style="color: #fff0f5;">)</span>
+<span style="color: #51afef; font-style: italic;">export</span> <span style="color: #51afef; font-style: italic;">class</span> <span style="color: #ECBE7B;">GroceriesAppModule</span> <span style="color: #fff0f5;">{</span> <span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgdb4bd23" class="outline-3">
+<h3 id="orgdb4bd23"><span class="section-number-3">15.3</span> <code>RouterExtensions</code></h3>
+<div class="outline-text-3" id="text-15-3">
+<ul class="org-ul">
+<li><code>RouterExtensions</code> class is used instead of the <code>Router</code> class for imperative navigation</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-typescript"><span style="color: #51afef; font-style: italic;">import</span> <span style="color: #fff0f5;">{</span> RouterExtensions <span style="color: #fff0f5;">}</span> <span style="color: #51afef; font-style: italic;">from</span> <span style="color: #98be65;">"nativescript-angular/router"</span>;
+
+@Component<span style="color: #fff0f5;">(</span><span style="color: #c678dd;">{</span>
+    <span style="color: #5B6268;">// </span><span style="color: #5B6268;">...</span>
+<span style="color: #c678dd;">}</span><span style="color: #fff0f5;">)</span>
+<span style="color: #51afef; font-style: italic;">export</span> <span style="color: #51afef; font-style: italic;">class</span> <span style="color: #ECBE7B;">MainComponent</span> <span style="color: #fff0f5;">{</span>
+
+    <span style="color: #51afef; font-style: italic;">constructor</span><span style="color: #c678dd;">(</span><span style="color: #51afef; font-style: italic;">private</span> routerExtensions: RouterExtensions<span style="color: #c678dd;">)</span> <span style="color: #c678dd;">{</span>
+    <span style="color: #c678dd;">}</span>
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+<ul class="org-ul">
+<li>Available <code>RouterExtensions</code> methods:
+<ul class="org-ul">
+<li><code>navigate()</code></li>
+<li><code>navigateByUrl()</code></li>
+<li><code>back()</code></li>
+<li><code>canGoBack()</code></li>
+<li><code>backToPreviousPage()</code></li>
+<li><code>canGoBackToPreviousPage()</code></li>
+</ul></li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-org3ce1bb6" class="outline-2">
+<h2 id="org3ce1bb6"><span class="section-number-2">16</span> <a href="https://docs.nativescript.org/angular/core-concepts/multithreading-model">Multithreading with workers</a></h2>
+</div>
+<div id="outline-container-org0705b28" class="outline-2">
+<h2 id="org0705b28"><span class="section-number-2">17</span> Delete Heading once notes are completed, leave exports behind</h2>
+<div class="outline-text-2" id="text-17">
+<script src="../../assets/jquery-3.3.1.min.js"></script>
+<script src="../../assets/notes.js"></script>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="date">Date: 2019-03-10 Sun 10:31</p>
+<p class="author">Author: Damian Chrzanowski</p>
+<p class="date">Created: 2019-03-10 Sun 20:01</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

@@ -1,0 +1,21 @@
+#+TITLE: Software Design Year 4 Notes
+#+DATE: <2019-09-09 Mon>
+#+AUTHOR: Damian Chrzanowski
+#+EMAIL: pjdamian.chrzanowski@gmail.com
+#+HTML_HEAD: <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="../assets/org.css"/>
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="../assets/org_index.css"/>
+#+HTML_HEAD: <link rel="icon" href="../assets/favicon.ico">
+
+[[file:../index.org][Home]]
+
+[[file:mgt-and-org-behaviour.org][Engineer in Society]]
+[[file:comp-graphics.org][Computer Graphics]]
+[[file:databases-4.org][Databases]]
+[[file:data-mining-and-ml.org][Data Mining and Machine Learning]]
+[[file:networks-4.org][Networks 4]]
+
+#+BEGIN_EXPORT html
+<script src="../assets/jquery-3.3.1.min.js"></script>
+<script src="../assets/notes.js"></script>
+#+END_EXPORT

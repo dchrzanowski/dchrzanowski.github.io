@@ -1,0 +1,112 @@
+#+TITLE: MaterializeCSS
+#+DATE: [2017-08-15 Tue 15:16]
+#+AUTHOR: Damian Chrzanowski
+#+EMAIL: pjdamian.chrzanowski@gmail.com
+#+OPTIONS: H:2 toc:2
+#+HTML_HEAD: <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="../../assets/org.css"/>
+#+HTML_HEAD: <link rel="icon" href="../../assets/favicon.ico">
+
+* PDFs
+  - [[file:elements.pdf][Elements]]
+  - [[file:icons.pdf][Icons]]
+* Colours
+
+** Background colour
+   *teal* and a light/dark accent eg. *lighten-2* to an element
+
+** Text colour
+   *teal-text* and a light/dark accent eg. *text-darken-2* to an element
+
+** Colours
+   *red*, *pink*, *purple*, *deep-purple*, *indigo*, *blue*, *light-blue*, *cyan*, *teal*, *green*, *light-green*, *lime*, *yellow*, *amber*, *orange*, *deep-orange*, *brown*, *grey*, *blue-gray*, and *black/white/transparent*
+
+** Accents
+   *lighten-1* to 4, *darken-1* to 4, *accent-1* to 4
+
+* Grid
+
+** Container
+   *container* class to a div to increase the element's padding
+
+** Row
+   *row* class to create a row
+
+** Columns
+   *col s6* class to a div to make it small and 6 column width span
+
+** Offset
+   *col s6 offset-s6* to offset on small devices by 6 columns
+
+** Push and pull
+   *push-s5* or *pull-s7* to push or pull by the desired column amount
+
+** Section and divider
+   *section* class to create extra padding, add a *divider* class to create 1px gray divider
+
+** Sizes
+   | < 600 | > 600 | > 992 | > 1200 |
+   | *s*   | *m*   | *l*   | *xl*   |
+
+* Helpers
+
+** Vertical align
+   *valign-wrapper* on a div to align content vertically
+
+** Text align
+   *left-align* *right-align* *center-align*
+
+** Floats
+   *left* and *right*
+
+** Hiding and showing content
+   - *hide* - Hidden for all Devices
+   - *hide-on-small-only* - Hidden for Mobile Only
+   - *hide-on-med-only* - Hidden for Tablet Only
+   - *hide-on-med-and-down* - Hidden for Tablet and Below
+   - *hide-on-med-and-up* - Hidden for Tablet and Above
+   - *hide-on-large-only* - Hidden for Desktop Only
+   - *show-on-small* - Show for Mobile Only
+   - *show-on-medium* - Show for Tablet Only
+   - *show-on-large* - Show for Desktop Only
+   - *show-on-medium-and-up* - Show for Tablet and Above
+   - *show-on-medium-and-down* - Show for Tablet and Below
+
+** Truncate
+   *truncate* show only a bit of the text
+
+** Hover
+   *hoverable* to create a shadow effect on hover
+
+** Browser Defaults
+   *browser-defaults* for default effects on *ul* *select* *input*
+
+* Media
+
+** Images
+   *responsive-img*, *circle* to add responsiveness and/or a circle effect
+
+** Videos
+   *video-container* to make a video embed responsive, *responsive-video* for a HTML5 vid responsiveness
+
+* Pulse
+  *pulse* to make buttons pulse periodically
+
+* Shadow
+  *z-depth-0* to *z-depth-5* for varying shadow depth effects, 0 - no shadow
+
+* Waves
+  - *waves-effect* for a wave effect
+  - *waves-light* for a white wave
+  - *waves-red* or any other colour for a coloured waves
+
+* Transitions
+  Make sure to add the base transition class *scale-transition*. Then add the class *scale-out* to scale the element down until it is hidden. To start something as hidden, add the class *scale-out* first, and then add the class  *scale-in* to scale the element up until it is shown.
+
+* Typography
+  Headings 1 to 6, *blockquote* tag and *flow-text* class for responsive text that scales size with the screen size
+
+  #+BEGIN_EXPORT html
+  <script src="../../assets/jquery-3.3.1.min.js"></script>
+  <script src="../../assets/notes.js"></script>
+  #+END_EXPORT

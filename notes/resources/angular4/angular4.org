@@ -1,0 +1,2091 @@
+#+TITLE: Angular
+#+DATE: [2017-05-26 Fri 14:02]
+#+AUTHOR: Damian Chrzanowski
+#+EMAIL: pjdamian.chrzanowski@gmail.com
+#+OPTIONS: H:2 toc:2
+#+HTML_HEAD: <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="../../assets/org.css"/>
+#+HTML_HEAD: <link rel="icon" href="../../assets/favicon.ico">
+
+[[file:../../index.org][Home Page]]
+
+* Installation
+  - Install node and npm
+  - Run the following
+  - Install angular:
+  #+BEGIN_SRC
+npm install -g @angular/cli
+  #+END_SRC
+  - might need this to fight off a bug:
+  #+BEGIN_SRC
+npm install -g --unsafe-perm @angular/cli
+  #+END_SRC
+
+  - Init project
+  #+BEGIN_SRC
+ng new projectName
+cd projectName
+  #+END_SRC
+
+** Updating ng cli
+   - Run the following:
+     #+BEGIN_SRC sh
+ npm uninstall -g angular-cli @angular/cli
+ npm cache clean
+ npm install -g @angular/cli
+     #+END_SRC
+
+* Serving
+  - Inside of the project's folder
+  #+BEGIN_SRC
+ng serve
+  #+END_SRC
+
+* Adding Augury
+  - Augury is an Angular debugger and anyliser
+  - Add via Google Chrome store
+
+* Adding bootstrap
+  - add bootstrap with ~npm i --save bootstrap~
+  - open up the ~.angular-cli.json~ file
+  - add to the styles array:
+  #+BEGIN_SRC typescript
+"../node_modules/bootstrap/dist/css/bootstrap.min.css"
+  #+END_SRC
+  - mind the ~..~ as the root is counted from the ~index.html~ file
+
+* Components
+  - each can have its own styling, code and logic
+  - components are *reusable*
+  - usually create a subfolder in the app directory for each component
+  - component is a class
+
+** Manual Component Insertion
+
+*** Adding the component file
+    - in here as an example we add a component called ~server~
+    - name the folder like the component (server) and the file like so: ~server.component.ts~
+    - add a html file and/or a css file ~server.component.html/css~
+    - example folder hierarchy
+      - app *->* server *->* server.component.ts
+    - name the class as ~ServerComponent~
+    - basic template:
+    #+BEGIN_SRC typescript
+ import { Component } from '@angular/core';
+
+ @Component({
+     selector: 'app-server',
+     templateUrl: './server.component.html',
+     styleUrls: ['./server.component.css']
+ })
+
+ export class ServerComponent {
+
+ }
+    #+END_SRC
+    - in the component we have:
+      - ~selector~: the html tag that will be used to inject the component into
+      - ~templateUrl~: the html that will be used to display the component
+      - ~styleUrls~: the css that will be used to style the component
+      - sdfisf
+
+*** Adding the component to the ~app.modules.ts~
+    - the newly made component needs to be added into the ~@NgModule~
+    - add the following to the ~declarations~ key:
+    #+BEGIN_SRC
+ declarations: [
+     AppComponent,
+     ServerComponent
+ ],
+    #+END_SRC
+    - also import the component just above the ~@NgModule~
+    #+BEGIN_SRC typescript
+ import { ServerComponent } from './server/server.component';
+    #+END_SRC
+
+** Using the cli to add components
+   - verbose and abbreviated versions
+   #+BEGIN_SRC
+ng generate component componentName
+ng g c componentName
+   #+END_SRC
+   - do not create test files
+   #+BEGIN_SRC
+ng g c componentName --spec false
+   #+END_SRC
+
+** Selectors in Components
+   - default component is the tag name
+   - using a component as an attribute of a tag
+   #+BEGIN_SRC typescript
+@Component({
+    selector: '[app-servers]',
+})
+   #+END_SRC
+   - using a component as a class
+   #+BEGIN_SRC typescript
+@Component({
+    selector: '.app-servers',
+})
+   #+END_SRC
+
+* Global Styles
+  - switch off local DOM (shadow DOM)
+  - add an ~encapsulation~ key value pair to the ~@Component~ decorator
+  #+BEGIN_SRC typescript
+encapsulation: ViewEncapsulation.None
+  #+END_SRC
+  - also import ~ViewEncapsulation~ from ~@angular/core~
+
+* Databinding
+
+** String interpolation
+   - output a variable or a method into html
+   #+BEGIN_SRC html
+{{ someVariableName }}
+{{ someMethodName() }}
+   #+END_SRC
+
+** Two way binding with ~[(ngModel)]~
+   - to enable ~ngModel~ make sure to import the forms module in the ~app.module.ts~ file, by adding ~import { FormsModule } from '@angular/forms';~
+   - also ~FormsModule~ must be in the ~imports~ array, in the ~app.module.ts~ file
+   - uses round brackets inside square brackets syntax
+   - set a ~userName~ variable in the relevant component
+   - creates a two-way link between the variable and the input
+   #+BEGIN_SRC html
+<input type="text" [(ngModel)]="userName">
+<p>{{userName}}</p>
+   #+END_SRC
+
+** Property binding with ~[property] = "data"~
+   - bind a html property to a variable
+   - skip the square brackets if only a string is passed, eg. ~<a fragment="loading">Link</a>~
+   - uses square brackets syntax
+   - in here the ~allowNewServer~ triggers the disabled attribute
+   #+BEGIN_SRC html
+<button [disabled]="!allowNewServer">Click Me</button>
+<p [style.opacity]="opacity">sample text</p>
+   #+END_SRC
+
+
+** Event Binding with ~(event) = "expression"~
+   - uses round brackets syntax
+   - bind an event to a method
+   - in here we execute ~onCreateServer()~ method on ~click~
+   #+BEGIN_SRC html
+<button class="btn btn-primary"
+    [disabled]="!allowNewServer"
+    (click)="onCreateServer()">Click Me</button>
+   #+END_SRC
+
+   - an example on listening to an input
+   - in here we pass the reserved keyword ~$event~ into the method
+   #+BEGIN_SRC html
+<input type="text" value="" (input)="onUpdateServerName($event)">
+   #+END_SRC
+   - in typescript we capture the event's value like this
+   #+BEGIN_SRC typescript
+onUpdateServerName(event: any) {
+    this.serverName = event.target.value;
+}
+   #+END_SRC
+
+* Directives
+
+** [[https://angular.io/api?type=directive][List of Directives]]
+
+** ~ngIf~ directive
+   - typical conditional statement
+   - place a ~*~ in from of the statement, it indicates that the directive add/removes elements in the DOM, ie. it is a structural directive
+   - when ~serverCreated~ evaluates to true the element gets created
+   #+BEGIN_SRC html
+<p *ngIf="serverCreated">Server was created, server name is {{serverName}}</p>
+   #+END_SRC
+
+** ~ngElse~
+   - use a ~ng-template~ with a ~#varName~ attribute to enhance the ~ngIf~
+   - the alternative is to simply use the reverse of ~someVar~ to ~!someVar~
+   #+BEGIN_SRC html
+<p *ngIf="serverCreated; else noServer">Server was created, server name is {{serverName}}</p>
+<ng-template #noServer>
+    <p>No server was created</p>
+</ng-template>
+   #+END_SRC
+
+** ~ngStyle~
+   - apply a style to the element
+   - allows the execution of valid JavaScript
+   - in here ~getColor()~ returns a color for the element
+   #+BEGIN_SRC html
+<p [ngStyle]="{'background-color': getColor()}">Hello World</p>
+   #+END_SRC
+
+** ~ngClass~
+   - apply a class to the element
+   - apply the ~online~ class when the expression ~serverStatus === 'online'~ is true
+   #+BEGIN_SRC html
+<p [ngClass]="{online: serverStatus === 'online'}">Hello World</p>
+   #+END_SRC
+
+** ~ngFor~
+   - loop through an array and repeat the element
+   - in here ~array~ is some arbitrary array
+   #+BEGIN_SRC html
+<p *ngFor="let each of array"></p>
+   #+END_SRC
+
+   - access the index of the iteration with the ~index~ keyword
+   #+BEGIN_SRC html
+<p *ngFor="let each of array; let i = index"></p>
+   #+END_SRC
+
+** ~ngSwitch~
+   - it is used like a traditional ~switch~ statement in most languages
+   #+BEGIN_SRC html
+<div [ngSwitch]="value">
+    <p *ngSwitch="5">Value is 5</p>
+    <p *ngSwitch="10">Value is 10</p>
+    <p *ngSwitch="100">Value is 100</p>
+    <p *ngSwitchDefault>Value is default</p>
+</div> <!--  ends here -->
+   #+END_SRC
+
+* Creating Directives
+
+** ~Attribute Directive~ - Looks like a normal attribute, affects the element to which it is attached to
+
+*** Generating new attribute directives
+    - Create a new directive with ~ng generate directive [name]~ or simply ~ng g d [name]~
+    - Example of a directive that gets inserted into html via the ~appMyDirective~ attribute and changes the element's background colour to green
+    #+BEGIN_SRC typescript
+ import { Directive, ElementRef, OnInit } from '@angular/core';
+
+ @Directive({
+     selector: '[appMyDirective]'  // usign a [appMyDirective] selector
+ })
+
+ export class MyDirectiveDirective implements OnInit {
+
+     constructor(private elementRef: ElementRef) {
+     }
+
+     ngOnInit() {
+         this.elementRef.nativeElement.style.backgroundColor = 'green';
+     }
+ }
+    #+END_SRC
+    - inserting the directive into html
+    #+BEGIN_SRC html
+ <h4 appMyDirective>Some Text Here</h4>
+    #+END_SRC
+    - example of a directive that uses the ~renderer2~ to modify the elements, it is the same principle but less error prone in some circumstances
+    #+BEGIN_SRC typescript
+ export class MyDirectiveDirective implements OnInit {
+
+     constructor(private elRef: ElementRef, private renderer: Renderer2) {
+     }
+
+     ngOnInit() {
+         this.renderer.setStyle(this.elRef.nativeElement, 'background-color', 'blue');
+     }
+ }
+    #+END_SRC
+
+*** Using the ~HostListener~ to react to any event
+    - in this case the directive reacts to ~mouseenter~ and ~mouseleave~ events to change the background colour of the element
+    #+BEGIN_SRC typescript
+ export class MyDirectiveDirective implements OnInit {
+     constructor(private elRef: ElementRef, private renderer: Renderer2) {
+     }
+
+     ngOnInit() {
+     }
+
+     @HostListener('mouseenter') mouseover(eventData: Event) {
+         this.renderer.setStyle(this.elRef.nativeElement, 'background-color', 'blue');
+     }
+
+     @HostListener('mouseleave') mouseleave(eventData: Event) {
+         this.renderer.setStyle(this.elRef.nativeElement, 'background-color', 'transparent');
+     }
+ }
+    #+END_SRC
+
+*** Using ~HostBinding~ to bind to properties
+    - this examples shows a much easier way to bind to element properties using ~HostBinding~
+    #+BEGIN_SRC typescript
+ export class MyDirectiveDirective  {
+     // bind style.backgroundColor to backgroundColor variable
+     @HostBinding('style.backgroundColor') backgroundColor: string = 'transparent';
+
+     constructor(private elRef: ElementRef, private renderer: Renderer2) {
+     }
+
+     @HostListener('mouseenter') mouseover(eventData: Event) {
+         this.backgroundColor = 'blue';
+     }
+
+     @HostListener('mouseleave') mouseleave(eventData: Event) {
+         this.backgroundColor = 'transparent';
+     }
+ }
+    #+END_SRC
+
+*** Binding to directive properties with ~Input~
+
+    - binding the properties
+    #+BEGIN_SRC typescript
+ import { Directive, Renderer2, OnInit, ElementRef, HostListener, HostBinding, Input } from '@angular/core';
+
+ @Directive({
+     selector: '[appMyDirective]'  // usign a [appMyDirective] selector
+ })
+
+ export class MyDirectiveDirective implements OnInit {
+     @Input() defaultColor: string = 'transparent';
+     @Input() highlightColor: string = 'blue';
+
+     // bind style.backgroundColor to backgroundColor variable
+     @HostBinding('style.backgroundColor') backgroundColor: string;
+
+     constructor(private elRef: ElementRef, private renderer: Renderer2) {
+     }
+
+     ngOnInit() {
+         this.backgroundColor = this.defaultColor;
+     }
+
+     @HostListener('mouseenter') mouseover(eventData: Event) {
+         this.backgroundColor = this.highlightColor;
+     }
+
+     @HostListener('mouseleave') mouseleave(eventData: Event) {
+         this.backgroundColor = this.defaultColor;
+     }
+
+ }
+    #+END_SRC
+    - usage in html
+    #+BEGIN_SRC html
+ <h4 appMyDirective
+     [defaultColor]="'yellow'"
+     [highlightColor]="'red'">Hello World</h4>
+    #+END_SRC
+    - it the case of passing in a string to the property, it is possible to omit the square brackets an single quotations like so:
+    #+BEGIN_SRC html
+ <h4 appMyDirective
+     defaultColor="yellow"
+     highlightColor="red">Hello World</h4>
+    #+END_SRC
+
+** ~Structural Directive~ - has a leading ~*~ and affects the whole area in the DOM
+   - example of the opposite of ~*ngIf~, we create ~appUnless~
+   #+BEGIN_SRC typescript
+import { Directive, Input, TemplateRef, ViewContainerRef } from '@angular/core';
+
+@Directive({
+    selector: '[appUnless]'
+})
+export class UnlessDirective {
+    @Input() set appUnless(condition: boolean) {  // method name here = appUnless, needs to be the same as the attribute name
+        if (!condition) {
+            this.vcRef.createEmbeddedView(this.templateRef);
+        } else {
+            this.vcRef.clear();
+        }
+    }
+    constructor(private templateRef: TemplateRef<any>, private vcRef: ViewContainerRef) { }
+}
+   #+END_SRC
+
+* Custom Property Binding
+  - allows to pass data in between components
+  - first bind the variable to a new html attribute, here the variable is ~element~
+  #+BEGIN_SRC html
+<app-component *ngFor="let eachElement of elements"
+               [element]="eachElement">
+</app-component>
+  #+END_SRC
+
+  - then receive that attribute as a variable in the ~app-component~ using a ~@Input()~ decorator
+  #+BEGIN_SRC typescript
+@Input() element: string;
+  #+END_SRC
+
+  - remember to import the ~Input~ from the angular core
+  #+BEGIN_SRC typescript
+import { Component, OnInit, Input } from '@angular/core';
+  #+END_SRC
+
+  - create an ~alias~ by inserting the property name into the decorator, the html attribute needs to have the same name
+  #+BEGIN_SRC typescript
+@Input('someElement') element: string;
+  #+END_SRC
+
+* Custom Events
+  - allows to listen to custom events
+  - in the html bind a function
+  - ~onServerAdded~ is the function that receives the event
+  #+BEGIN_SRC html
+<app-component (serverCreated)="onServerAdded($event)" (blueprintCreated)="onBlueprintAdded($event)"></app-component>
+  #+END_SRC
+
+  - now setup properties as events in the component
+  - example has two different types of emits, a string and an object
+  #+BEGIN_SRC typescript
+@Output() serverCreated = new EventEmitter<string>();
+@Output() blueprintCreated = new EventEmitter<{serverName: string, serverContent: string}>();
+  #+END_SRC
+
+  - just like with the ~@Input()~ you can create an alias by inserting a string as parameter
+  #+BEGIN_SRC typescript
+@Output('bpCreate') serverCreated = new EventEmitter<string>();
+  #+END_SRC
+
+  - then you would listen with the aliased name
+  #+BEGIN_SRC html
+<app-component (bpCreated)="onBlueprintAdded($event)"></app-component>
+  #+END_SRC
+
+  - emit the data by calling the emitter's methods
+  #+BEGIN_SRC typescript
+this.serverCreated.emit("Hello")
+this.blueprintCreated.emit({serverName: "hello", serverContent: "hello again"})
+  #+END_SRC
+
+  - remember to import the ~EventEmitter~ and the ~Output~ from the angular core
+  #+BEGIN_SRC typescript
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+  #+END_SRC
+
+* Custom References
+  - references hold a reference to the html element itself
+  - references can be added to any html element
+  - references have a scope of the local template *only*
+  #+BEGIN_SRC html
+<input #myInput type="text"></input>
+  #+END_SRC
+  - this custom reference can be then passed into a function as an argument (for example)
+  #+BEGIN_SRC html
+<button (click)="addServer(myInput)">Add</button>
+  #+END_SRC
+
+* Access to DOM via ~@ViewChild~ as a native Element Ref
+  - First use a custom reference on a html tag, eg. ~#myCustomRef~
+  - Use the ~@ViewChild~ decorator to bind a html element to a TypeScript variable
+  - Simply pass the custom reference as an argument to the decorator
+  #+BEGIN_SRC typescript
+@ViewChild('myCustomRef') someElementName: ElementRef;
+  #+END_SRC
+
+  - remember to import ~ViewChild~ from ~@angular/core~
+  - the type of a ~ViewChild~ is ElementRef, which also needs to be imported from ~@angular/core~ as ~ElementRef~
+  - to gain access to an ~ElementRef~ just like a normal html element, you'd need to reference it via ~nativeElement~ first
+  #+BEGIN_SRC typescript
+inputValue: string = someElementName.nativeElement.value;
+  #+END_SRC
+
+* Inserting DOM into a component element with ng-content
+  - normally a component element does not allow insertion of tags inside of it
+  - if we have a component called ~app-server~ then this is not allowed (the p tag will be ignored):
+  #+BEGIN_SRC html
+<app-server>
+    <p>Some text here</p>
+</app-server>
+  #+END_SRC
+  - however if we place the ~ng-component~ element inside of the ~app-server~ component then the element that inserts the ~app-server~ can choose what will be displayed inside of the ~app-server~ component
+
+* Lifecycle hooks
+  It is a good practice to add any of the used hooks to the ~imports~ and the class' ~implements~
+
+** ~ngOnChanges~
+   - executes whenever a bound property with ~@Input~ changes
+   - is the only hook that receives an argument of type ~SimpleChanges~
+   #+BEGIN_SRC typescript
+ngOnChanges(changes: SimpleChanges) {
+
+}
+   #+END_SRC
+   - remember to import ~SimpleChanges~ from the ~@angular/core~
+
+** ~ngOnInit~
+   - executes once the component is initialised
+
+** ~ngDoCheck~
+   - executes whenever something changes in the template (events, inputs, re-renders, etc.)
+
+** ~ngAfterContentInit~
+   - executes after the ~ng-content~ has been projected into the view
+
+** ~ngAfterContentChecked~
+   - executes every time the ~ng-content~ gets checked
+
+** ~ngAfterViewInit~
+   - executes after the component (and all of its children) have been initialised
+
+** ~ngAfterViewChecked~
+   - executes after the component (and all of its children) have been checked
+
+** ~ngOnDestroy~
+   - executes when the component is just about to be destroyed
+
+* Services
+  - create a file with the followin pattern ~name.service.ts~, or simply...
+  - use the cli ~ng generate service servicenamehere~
+
+** Example on a Status Change Logging System
+
+*** Setup the service
+    - create a service
+    - *NOTE* the ~@Injectable~ decorator is only necessary if the service will get another service injected to it
+    #+BEGIN_SRC typescript
+import { Injectable } from '@angular/core';
+
+@Injectable()
+export class PutaService {
+
+    constructor() { }
+
+    logStatusChange(status: string) {
+        console.log(status);
+    }
+}
+    #+END_SRC
+
+*** Setup the components that need the service
+    - in the components that require the service import the service with
+    #+BEGIN_SRC typescript
+ import { LoggingService } from 'logging.service';
+    #+END_SRC
+    - then add the service to the ~providers~ ~@Component~ decorator
+    - *WARNING* inserting the service through the ~proviers~ creates a seperate instance of the service, which might be unwelcome
+    #+BEGIN_SRC typescript
+ @Component({
+     selector: 'app-recipes',
+     templateUrl: './recipes.component.html',
+     styleUrls: ['./recipes.component.css'],
+     providers: [LoggingService]
+ })
+    #+END_SRC
+    - then call the constructor and instatiate the Logging Service with
+    #+BEGIN_SRC typescript
+ constructor(private loggingService: LoggingService) {}
+    #+END_SRC
+    - finally, use the services methods and/or variables. In here we call the ~logStatusChange~ method
+    #+BEGIN_SRC typescript
+ this.loggingService.logStatusChange("status changed");
+    #+END_SRC
+
+** Using a service to pass information (events) between components
+   - make sure that both the components that will use the service  have a common parent, so that the service can be shared via ~Hierarchical Injections~
+   - *NOTE* remember to import the emitter
+   - create an event emitter in the service
+   #+BEGIN_SRC typescript
+statusUpdated = new EventEmitter<string>();
+   #+END_SRC
+   - now in an emitting component you can simply emit with
+   #+BEGIN_SRC typescript
+this.someServiceName.statusUpdated.emit("Some signal");
+   #+END_SRC
+   - and in the receiving component ~subscribe~ to emitter listener in the constructor of the service (or elsewhere)
+   #+BEGIN_SRC typescript
+constructor(private someServiceName: SomeServiceName) {
+    this.someServiceName.statusUpdated.subscribe(
+        (status: string) => alert("incoming status" + status);
+    )
+}
+   #+END_SRC
+
+* Routing
+
+** Router setup
+   - add the necessary imports
+   - create the ~appRoutes~ array with the list of path
+   - add the RouterModule in the ~imports~ of the ~@NgModule~
+   - all above is to be created in ~app.module.ts~, this file is where routing is generally set up
+   #+BEGIN_SRC typescript
+import { Routes, RouterModule } from '@angular/router';
+const appRoutes: Routes = [
+    { path: '', component: HomeComponent },
+    { path: 'box', component: BoxComponent },
+    { path: 'users', component: UsersComponent },
+    { path: 'users/:id/:name', component: UserComponent }
+];
+@NgModule({
+    imports: [
+        RouterModule.forRoot(appRoutes)
+    ]
+});
+   #+END_SRC
+   - ~path~ is the path that will be displayed in the url
+   - ~component~ is the component that will be loaded upon arrival
+   - if path hashing is required use ~RouterModule.forRoot(appRoutes, {useHash: true})~ instead
+
+** Router setup with children
+   - instead of repeating routes it is also possible to add child routes
+   - note that instead of using repeated user routes we can nest the sub routes inside of the top-level route
+   - also an another ~<router-outlet></router-outlet>~ tag needs to be added in the parent component of the child component for the child route to work properly
+   #+BEGIN_SRC typescript
+const appRoutes: Routes = [
+    { path: 'users', component: UsersComponent, children: [
+        { path: ':id/:name', component: UserComponent }
+    ] },
+];
+   #+END_SRC
+
+** Router injection into html
+   - add the ~router-outlet~ component in the main html file, which is the ~app.component.html~
+   #+BEGIN_SRC html
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+            <router-outlet></router-outlet>
+        </div> <!-- col-xs-12 ends here -->
+    </div> <!-- row ends here -->
+</div>
+   #+END_SRC
+
+** Anchors for routing
+   - use a standard ~a~ tag with the ~routerLink~ attribute
+   #+BEGIN_SRC html
+<a routerLink="/">Home</a>
+<a routerLink="/users">Home</a>
+<a [routerLink]="['/users', 5, 'edit']">Home</a>
+<a [routerLink]="['/users', 5, 'edit']" [queryParams]="{allowEdit: '1'}">Home</a>
+<a [routerLink]="['/users', 5, 'edit']" [fragment]="'loading'">Home</a>
+   #+END_SRC
+   - the last three example that use property binding are useful because they can be dynamically changed and are more readable than string concatenation
+   - in the first ~routerLink~ example we basically go to url ~/users/5/edit~
+   - in the second ~routerLink~ example we also add query parameters as key-value pairs, making the url look like ~/users/5/edit?allowEdit=1~
+   - in the third ~routerLink~ example we add a ~#~ symbol and we follow it up with some value, thus making the url look like ~/users/5/edit#loading~
+
+** Adding a class to the active route
+   - add the ~routerLinkActive~ attribute to inject a css class to an element
+   #+BEGIN_SRC html
+<li routerLinkActive="active"
+    [routerLinkActiveOptions]="{exact: true}">
+    <a routerLink="/">Home</a>
+</li>
+<li routerLinkActive="active">
+    <a routerLink="/users">Home</a>
+</li>
+<li routerLinkActive="active">
+    <a [routerLink]="['/users']">Home</a>
+</li>
+   #+END_SRC
+   - adding a ~routerLinkActiveOptions~ attribute allows to set extra parameters
+   - in this case it is set to ~exact: true~ which allows for the home path ~/~ to be evaluated only when the path is ~/~ *ONLY*, and *NOT* any of its subpaths
+
+** Loading routes programmatically
+   - import the ~Router~
+   - instantiate the router through the constructor
+   - use the ~navigate~ method of the router object
+   - mind the fact the the ~navigate~ method's parameter is an array
+   #+BEGIN_SRC typescript
+import { Router } from '@angular/core';
+
+export class SomeClass {
+
+    constructor(private router: Router) {}
+
+    goToUsers() {
+        this.router.navigate(['/users']);
+    }
+}
+   #+END_SRC
+
+   - using relative paths
+   - import ~ActivatedRoute~
+   - instantiate the active route through the constructor
+   - and pass in second parameter to the ~navigate~ method as follows
+   #+BEGIN_SRC typescript
+import { Router, ActivatedRoute } from '@angular/core';
+
+export class SomeClass {
+
+    constructor(private router: Router, private route: ActivatedRoute) {}
+
+    goToUsers() {
+        this.router.navigate(['users', {relativeTo: this.route}]);
+    }
+}
+   #+END_SRC
+   - additional parameters inside of the navigate arguments, here we add ~queryParams~ and ~fragment~, just like in the html ~a~ tag attribute explained above
+   #+BEGIN_SRC typescript
+this.router.navigate(['users', {queryParams: {allowEdit: 1}}, fragment: 'loading']);
+   #+END_SRC
+
+** Retrieving parameters from the url via a snapshot
+   - this example assumes that ~{ path: 'users/:id/:name', component: UserComponent }~ is setup in the path
+   - this example will setup the ~user~ variable *ONLY* on load
+   #+BEGIN_SRC typescript
+import { Router, ActivatedRoute } from '@angular/core';
+export class SomeClass {
+    constructor(private router: Router, private route: ActivatedRoute) {}
+    ngOnInit() {
+        this.user = {
+            id: this.route.snapshot.params['id'],
+            name: this.route.snapshot.params['name']
+        }
+        // getting queryParams and fragments
+        queryParams: string = this.route.snapshot.queryParams;
+        fragment: string = this.route.snapshot.fragment;
+    }
+}
+   #+END_SRC
+
+** Retrieving parameters via observables
+   - in the ~ngOnInit~ subscribe to the ~params~ observable from the ~ActivatedRoute~ module
+   - you can also subscribe to receive query parameters and fragments
+   - remember to import ~Params~
+   #+BEGIN_SRC typescript
+import { Params } from '@angular/router';
+
+this.route.params.subscribe(
+    (params: Params) => {
+        this.user.id = params['id'];
+        this.user.name = params['name'];
+    }
+)
+// getting queryParams and fragments
+this.route.queryParams.subscribe(
+    (params: Params) => {
+        this.someVar = queryParams;
+    }
+)
+this.route.fragment.subscribe(
+    (params: Params) => {
+        this.someVar = fragment;
+    }
+)
+   #+END_SRC
+
+** Setting up redirection, like 404
+   - redirection to some arbitrary component
+   - in this case we setup a PageNotFoundComponent to handle the 404 pages
+   - then as the *LAST* path we use a double asterisk ~**~ to handle all possible paths
+   #+BEGIN_SRC typescript
+const appRoutes: Routes = [
+    { path: 'not-found', component: PageNotFoundComponent},
+    { path: '**', redirectTo: '/not-found'}
+];
+   #+END_SRC
+
+** Guards
+   - Consider putting guards in their respective modules
+   - Guards allow to run code before a route is being resolved or after a route is being left
+   - Create a new service eg. ~auth-guard.service.ts~
+   - Remember to add the services in the ~providers~ section in the module configuration
+   #+BEGIN_SRC typescript
+import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs/Observable';  // might not be needed if we want to just return a boolean
+
+import { AuthService } from './auth.service';  // fake authorisation service
+
+@Injectable()
+export class AuthGuard implements CanActivate {
+
+    constructor(private authService: AuthService, private router: Router) {}
+
+    canActivate(route: ActivatedRouteSnapshot,
+                state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {  // should always return an observable(if with timeout), a Promise or simply a boolean
+        return this.authService.isAuthenticated().then(  // check the promise from the fake auth service
+            (authenticated: boolean) => {
+                if (authenticated) {
+                    return true;
+                } else {
+                    this.router.navigate(['/']);  // navigate home if not authenticated
+                }
+            }
+        )
+    }
+}
+   #+END_SRC
+   - Create a ~canActivate~ key-value pair in the routes configuration and pass in the required guard service
+   #+BEGIN_SRC typescript
+{ path: 'box', canActivate: [AuthGuard], component: BoxComponent },
+   #+END_SRC
+   - Note that the ~canActivate~ key takes in an array
+
+** Guards for child paths
+   - it is the exact same thing as above, except for the ~CanActivateChild~ methods and interface implementations
+   - keep in mind that now in the router configuration the ~canActivate~ key needs to be placed in the nested routes or use ~canActivateChild~ in the parent which will can handle both cases
+   #+BEGIN_SRC typescript
+import { CanActivate, CanActivateChild, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
+
+import { AuthService } from './auth.service';  // fake authorisation service
+
+@Injectable()
+export class AuthGuard implements CanActivate, CanActivateChild {
+
+    constructor(private authService: AuthService, private router: Router) {}
+
+    canActivate(route: ActivatedRouteSnapshot,
+                state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
+        return this.authService.isAuthenticated().then(
+            (authenticated: boolean) => {
+                if (authenticated) {
+                    return true;
+                } else {
+                    this.router.navigate(['/']);
+                }
+            }
+        )
+    }
+
+    canActivateChild(route: ActivatedRouteSnapshot,
+                     state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
+        return this.canActivate();
+    }
+}
+   #+END_SRC
+* Observables
+  - Handles asynchronous tasks, observables are basically Promises.
+  - Refer to [[http://reactivex.io/rxjs/class/es6/Observable.js~Observable.html][rxjs Observables docs]] for more information
+
+** Handling
+   - Handle Data
+   - Handle Error
+   - Handle Completion
+   #+BEGIN_SRC typescript
+observable
+    .subscribe(
+        () => {
+            // on success
+        },
+        () => {
+            // on error
+        },
+        () => {
+            // on finish
+        }
+    )
+   #+END_SRC
+** Making a simple timer observable
+   - Remember the imports
+   - myNumbers observal in this case uses the interval method and will emit every 1000ms
+   #+BEGIN_SRC typescript
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/Rx';
+
+const myNumbers = Observable.interval(1000);
+
+myNumbers.subscribe(
+    (number: number) => {
+        console.log(number);
+    }
+)
+   #+END_SRC
+** Creating an observable from scratch
+   #+BEGIN_SRC typescript
+import { Observable } from 'rxjs/Observable';
+import { Observer } from 'rxjs/Observer';
+import 'rxjs/Rx';
+
+const myObservable = Observable.create((observer: Observer<string>) => {
+    setTimeout(() => {
+        observer.next('first package');  // pass any data, in this case a string
+    }, 2000);
+    setTimeout(() => {
+        observer.next('second package');
+    }, 4000);
+    setTimeout(() => {
+        observer.error('this does not work');
+    }, 5000);
+    setTimeout(() => {
+        observer.complete();
+    }, 8000);
+});
+
+myObservable
+    .subscribe(
+        (data: string) => { console.log(data); },
+        (error: string) => { console.log(error); },
+        () => { console.log("Completed"); }
+    )
+   #+END_SRC
+** Removing custom observables
+   - User made observables persists, clean them up with ~OnDestroy~, otherwise a memory leak occurs
+   #+BEGIN_SRC typescript
+import { OnInit, OnDestroy } from '@angular/core';
+export class obsModule implements OnInit, OnDestroy {
+    const myNumbers = Observable.interval;
+
+    myNumbers.subscribe(
+        (number: number) => {
+            console.log(number);
+        }
+    )
+
+    ngOnDestroy() {
+        this.myNumbers.unsubscribe();
+    }
+}
+   #+END_SRC
+** ~Subject~ observable
+   - Is especially useful in cross-module communication
+   - ~Subject~ can be used as an observable and an observer in one object
+   - One of the easiest ways is to create a service:
+   #+BEGIN_SRC typescript
+import { Subject } from 'rxjs/Subject';
+
+export class SubjectService {
+    subjectActivated = new Subject():
+}
+   #+END_SRC
+   - Then you can simply use ~next()~ and ~subscribe()~ to either push or retrieve data
+   - Also available are the ~error()~ and ~complete()~
+   - Dont forget to avoid creating a memory leak and ~unsubscribe~ from the observable when its not used anymore
+
+** Observable operators
+   - used to transform the incoming data, for example in ~interval~, one can simply use the ~map~ method to manipulate the data. There are a lot of different operators available.
+
+* Forms
+
+** Types
+   - *Template-driven*: Angular infers the Form Object from the DOM
+   - *Reactive*: Provides greater control, Form is created programmatically and synchronized with the DOM
+
+** Template driven approach
+
+*** Setup
+    - in the ~app.module.ts~ import ~FormsModule~, remember to add it to the ~@NgModule~ decorator
+    #+BEGIN_SRC typescript
+import { FormsModule } from '@angular/forms';
+
+@NgModule({
+    declarations: [
+        AppComponent
+    ],
+    imports: [
+        BrowserModule,
+        FormsModule,
+        HttpModule
+    ],
+    providers: [],
+    bootstrap: [AppComponent]
+})
+    #+END_SRC
+    - this import will automatically detect any ~form~ tags, however, controls still need to be declared in Angular
+    - add the ~ngModel~ attribute (directive) to any ~input~ tag to tell Angular that this tag is a control, also add the ~name~ attribute to make controls unique and thus identifiable
+    #+BEGIN_SRC html
+<input type="text" name="firstname" value="" ngModel>
+    #+END_SRC
+    - ~form~ tag should look as follows
+    #+BEGIN_SRC html
+<form (ngSubmit)="onSubmit(f)" #f="ngForm">
+    #+END_SRC
+    - receive the data in TS via the ~NgForm~
+    #+BEGIN_SRC typescript
+import { NgForm } from '@angular/forms';
+
+export class AppComponent {
+
+    onSubmit(form: NgForm) {
+        console.log(form);
+    }
+}
+    #+END_SRC
+    - the ~form~ variable in TS will have a ~value~ property with the form's values
+    - some other interesting properties are: dirty, disabled, enabled, errors, invalid, valid, untouched, touched
+
+*** Template driven setup without passing the form to the ~onSubmit~ for live viewing
+    - in the ~form~ tag, do not pass f to the onSubmit
+    #+BEGIN_SRC html
+ <form (ngSubmit)="onSubmit()" #f="ngForm">
+    #+END_SRC
+    - in TS capture the data via the ~@ViewChild~
+    #+BEGIN_SRC typescript
+ import { Component, ViewChild } from '@angular/forms';
+ import { NgForm } from '@angular/forms';
+
+ export class AppComponent {
+     @ViewChild('f') signupForm: NgFrom;
+
+     onSubmit() {
+         console.log(this.signupForm);
+     }
+ }
+    #+END_SRC
+    - this approach allows accesing the form data at any time
+    - this approach also allows to set the data with the ~setValue~ method
+    - ~setValue~ method accepts an object with key value pairs that correspond to the ~name~ attributes in the HTML
+    - the downside is that it needs to set *ALL* of the form controls
+    #+BEGIN_SRC typescript
+    suggestUserName() {
+        this.signupForm.setValue({
+            username: 'Suggested name'
+            ...other control...
+            ...other control...
+            ...other control...
+        })
+    }
+    #+END_SRC
+    - to individually set controls use the ~patchValue~ method
+    #+BEGIN_SRC typescript
+    suggestUserName() {
+        this.signupForm.form.patchValue({
+            username: 'Suggested name'
+        })
+    }
+    #+END_SRC
+
+*** Validation
+    - add ~required~ to any input that needs validation
+    - add a directive to any specific validations necessary such as: ~email~, ~pattern~, ~minLength~, ~maxLength~, ~null~, ~min~, ~max~
+    - take advantage of automatically added CSS classes to elements such as: ~ng-dirty~, ~ng-touched~, ~ng-valid~, ~ng-invalid~
+    - it is also possible to enable HTML5 validation with ~ngNativeValidate~ which is disabled by default
+
+*** Example of using the Form State
+    - variable ~f~ is the form via ~#f="ngForm"~
+    #+BEGIN_SRC html
+ <button class="btn btn-primary" type="submit" [disabled]="!f.valid">Submit</button>
+    #+END_SRC
+
+*** Styling invalid inputs
+    - the easiest way of achievieng this is by using a CSS entry
+    - this approach styles the ~input~ tag only when the box has been touched *AND* is invalid
+    #+BEGIN_SRC css
+ input.ng-invalid.ng-touched {
+     border: 1px solid red;
+ }
+    #+END_SRC
+
+*** Outputting error in validation
+    - add a reference with ~#email~
+    - the ~span~ element now will only show up when the input is invalid *AND* has been touched
+    #+BEGIN_SRC html
+ <input type="email" name="email" required email ngModel #email="ngModel">
+ <span class="help-block" *ngIf="!email.valid && email.touched">Please enter a valid email</span>
+    #+END_SRC
+
+*** Default values
+    - bind ~ngModel~ with property binding ~[ngModel]="variable"=~
+    #+BEGIN_SRC html
+ <input type="email" name="email" required email [ngModel]="defaultEmail">
+    #+END_SRC
+    - in TS create a variable to hold the info
+    #+BEGIN_SRC typescript
+ defaultEmail: string = "j.doe@gmail.com";
+    #+END_SRC
+
+*** Two way binding with input values
+    #+BEGIN_SRC html
+ <textarea name="questionAnswer" rows="3" [(ngModel)]="answer"></textarea>
+ <p> {{ answer }}</p>
+    #+END_SRC
+    - in TS
+    #+BEGIN_SRC typescript
+ answer = '';
+    #+END_SRC
+
+*** Grouping form controls
+    - wrap any desired controls in a ~div~ and add the ~ngModelGroup~ directive
+    - local ref reference with ~#~ is optional
+    #+BEGIN_SRC html
+ <div ngModelGroup="userData" #userData="ngModelGroup">
+ ...control...
+ ...control...
+ ...control...
+ </div>
+    #+END_SRC
+    - this approach adds nested object called ~userData~ to the ~values~ form property. Also adds nested validation etc.
+
+*** Radio buttons
+    - example on genders
+    - in TS
+    #+BEGIN_SRC typescript
+ genders = ['male', 'female'];
+    #+END_SRC
+    - in HTML
+    #+BEGIN_SRC html
+ <div class="radio" *ngFor="let gender of genders">
+     <label>
+         <input name="gender" type="radio" [value]="gender" ngModel>
+         {{ gender }}
+     </label>
+ </div>
+    #+END_SRC
+    - also can add ~required~ and/or default values with ~checked~ HTML property, etc.
+
+*** Resetting the form
+    - when using the form element and binding it with ~@ViewChild~ simply call the reset method on the form
+    #+BEGIN_SRC typescript
+ @ViewChild('f') signupForm: NgFrom;
+
+ resetForm() {
+     this.signupForm.reset();
+ }
+    #+END_SRC
+
+** Reactive driven approach
+
+*** Setup
+    - add reactive form module to ~app.module.ts~
+    #+BEGIN_SRC typescript
+import { ReactiveFormsModule } from '@angular/forms';
+
+@NgModule({
+    declarations: [
+        AppComponent
+    ],
+    imports: [
+        BrowserModule,
+        HttpModule,
+        ReactiveFormsModule
+    ],
+    providers: [],
+    bootstrap: [AppComponent]
+})
+    #+END_SRC
+    - basic TS setup
+    #+BEGIN_SRC typescript
+import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+
+@Component({
+    selector: 'app-root',
+    templateUrl: './app.component.html',
+    styleUrls: ['./app.component.css']
+})
+
+export class AppComponent implements OnInit {
+    genders = ['male', 'female'];
+    signupForm: FormGroup;
+
+    ngOnInit() {
+        this.signupForm = new FormGroup() ({
+            'username': new FormControl(null, Validators.required),
+            'email': new FormControl(null, [Validators.required, Validators.email]),
+            'gender': new FormControl('male')
+        })
+    }
+
+    onSubmit() {
+        console.log(this.signupForm);
+    }
+}
+    #+END_SRC
+    - html setup
+    #+BEGIN_SRC html
+<form [formGroup]="signupForm" (ngSubmit)="onSubmit()"=>
+    <input type="text" id="username" formControlName="username">
+    <span *ngIf="!signupForm.get('username').valid && signupForm.get('username').touched">Please enter a valid username</span>
+    <input type="email" id="username" formControlName="email">
+    <div class="radio" *ngFor="let gender of genders">
+        <label>
+            <input name="gender" type="radio" [value]="gender" formControlName="gender">
+            {{ gender }}
+        </label>
+    </div>
+</form>
+    #+END_SRC
+
+*** Arrays of controls
+    - Reactive approach has an option to create multiple controls from an array dynamically
+
+*** Error codes
+    - Individual fields can also respond to certain types of errors only during validation
+
+*** Asynchronous Validation
+
+*** Reacting to value changes
+
+** File upload
+   - Add the following to the html part of the component
+   #+BEGIN_SRC html
+   <input type="file" #fileUpload">
+   #+END_SRC
+   - Or the following to react to the file upload instantly
+   #+BEGIN_SRC html
+   <input type="file" #fileUpload" (change)="upload()">
+   #+END_SRC
+   - And retrieve the file in TS as follows
+   #+BEGIN_SRC typescript
+    @ViewChild('fileUpload') fileInput: ElementRef;
+
+    async upload() {
+
+        const files: FileList = this.fileInput.nativeElement.files;
+
+        if (files.length === 0) {
+            // do something
+        }
+
+        let formData = new FormData();
+        formData.append('file', files[0]);
+        formData.append('title', "Hello World");
+
+        // send the form to the service for posting
+        let result = await this.service.create(formData);
+    }
+   #+END_SRC
+
+* Pipes
+  - Transform the output in a template. Usually via string interpolation.
+  - create with ~ng c p~
+
+** [[https://angular.io/api?query=pipe][List of pipes]]
+
+** Simple examples
+
+*** Upercase pipe
+    #+BEGIN_SRC html
+ <span>{{ varName | uppercase }}</span>
+    #+END_SRC
+
+*** Date pipe
+    - Simplified date output
+    #+BEGIN_SRC html
+ <span>{{ varName | date }}</span>
+    #+END_SRC
+    - Configuring the date pipe
+    #+BEGIN_SRC html
+ <span>{{ varName | date:'fullDate' }}</span>
+    #+END_SRC
+    - [[https://angular.io/api/common/DatePipe][Date Pipe Docs]]
+
+*** JSON pipe
+    - useful for debugging objects
+    #+BEGIN_SRC html
+ <span>{{ varName | json }}</span>
+    #+END_SRC
+
+*** Chaining pipes
+    - convert the date, then uppercase it
+    #+BEGIN_SRC html
+ <span>{{ varName | date:'fullDate' | uppercase }}</span>
+    #+END_SRC
+
+** Custom pipes
+   - create a file in the app folder, something meaningful, like a shortener pipe ~shorten.pipe.ts~
+   - declare the pipe's name in the ~@Pipe~ decorator
+   - ~pure~ key in the decorator can be used when the pipe needs to be update when the data that is being piped changes (like an array of items). Usually you might want to avoid this as it is performance heavy and a better option is to reload the data manually.
+   #+BEGIN_SRC typescript
+import { Pipe, PipeTransform } from '@angular/core';
+
+@Pipe({
+    name: 'shorten',
+    // pure: false
+})
+export class ShortenPipe implements PipeTransform {
+
+    transfrom(value: any) {  // plus any other arguments
+        return value.substr(0, 10);  // return the value only up to 10 characters
+    }
+}
+   #+END_SRC
+   - add it in the declarations in ~app.modules.ts~ and import it
+   #+BEGIN_SRC typescript
+import { ShortenPipe } from './shorten.pip';
+@NgModule({
+    declarations: [
+        AppComponent,
+        ShortenPipe
+    ],
+    imports: [
+        BrowserModule
+    ],
+    providers: [],
+    bootstrap: [AppComponent]
+})
+   #+END_SRC
+   - now use in the template by the pipe's name ~shorten~
+   #+BEGIN_SRC html
+ <span>{{ varName | shorten }}</span>
+   #+END_SRC
+   - passing multiple parameter to a pipe
+   #+BEGIN_SRC typescript
+export class ShortenPipe implements PipeTransform {
+
+    transfrom(value: any, from: number, to: number) {
+        return value.substr(from, to);
+    }
+}
+   #+END_SRC
+   - then in the template
+   #+BEGIN_SRC html
+ <span>{{ varName | shorten:2:3 }}</span>
+   #+END_SRC
+
+** Asynchronous pipe
+   - simple example of implementing a fake async and printing the data on the screen
+   - in TS create a simple promise
+   #+BEGIN_SRC typescript
+appStatus = new Promise((resolve, reject) => {
+    setTimeout(() => {
+        resolve('stable');
+    }, 2000);  // simulate a 2s http delay
+})
+   #+END_SRC
+   - then the template will auto update with the ~async~ pipe, which normally it would *not*, for performance reasons
+   #+BEGIN_SRC html
+ <span>{{ appStatus | async }}</span>
+   #+END_SRC
+
+* Http requests
+  - Make sure to import ~HttpModule~ and add it to the ~imports~ in ~@NgModule~ in ~app.module.ts~
+  - Alternatively import ~HttpClientModule~ from ~@angular/common/http~, which is a newer version with interceptors
+    - HttpClient can use generics to extract the data, eg. ~this.httpClient.get<Recipe[]>(address)~, now we do not need to use a ~Response~ object, since the data is already extracted
+    - We can pass a *second* parameter to ~get~, an object, and say ~{observe:'response', responseType: 'text'}~, which will now not extract the data and will simply retrieve the entire response as a ~HttpResponse~, changing to ~observe:'body'~ simply gives back the body as text. Other responses are ~blob~ for files and ~json~ (default), refer to the docs for others.
+    - The ~put~ and ~post~ methods are the same, and can have a configuration object passed as their *third* parameter. One of an interesting options is the ~{observe:'event'}~ which allows to look up the different stages of posting/putting
+    - The headers can be set by the configuration object with ~{headers: new HttpHeaders().set('xxxx', 'xxxx')}~
+    - The parameters can be set by the configuration object with ~{params: new HttpParams().set('xxx', 'xxx')}~
+    - One nice parameter in the configuration object is ~{reportProgress: true}~ to see a report of the request progress
+
+** Sending data
+   - Create a new service
+   #+BEGIN_SRC typescript
+import { Injectable } from '@angular/core';
+import { Http } from '@angular/http';
+
+@Injectable()
+export class ServerService {
+
+    constructor(private http: Http) {}
+
+    storeServers(servers: any[]) {
+        return this.http.post('https://udemy-firebase-test.firebaseio.com/data.json', servers);  // data.json is firebase specific
+    }
+}
+   #+END_SRC
+   - then in your app's component you need to inject the service
+   #+BEGIN_SRC typescript
+import { ServerService } from './server.service';
+
+export class AppComponent {
+
+    servers = [{...server data...}, {...server data...}, {...server data...}]
+    constructor(private serverService: ServerService) {}
+
+    onSave() {
+        this.serverService.storeServers(this.servers).subscribe(  // request needs to be subscribed to
+            (response) => {
+                console.log(response);
+            },
+            (error) => {
+                console.log(error);
+            }
+        )
+    }
+}
+   #+END_SRC
+
+** Custom headers
+   #+BEGIN_SRC typescript
+import { Injectable } from '@angular/core';
+import { Headers, Http } from '@angular/http';
+
+@Injectable()
+export class ServerService {
+
+    constructor(private http: Http) {}
+
+    storeServers(servers: any[]) {
+        const headers = new Headers({'Content-Type': 'application/json'});  // not needed here as it is the default one anyway
+        return this.http.post('https://udemy-firebase-test.firebaseio.com/data.json', servers, {headers: headers});  // data.json is firebase specific
+    }
+}
+   #+END_SRC
+
+** Receiving data
+   - in the service
+   #+BEGIN_SRC typescript
+import { Injectable } from '@angular/core';
+import { Headers, Http } from '@angular/http';
+
+@Injectable()
+export class ServerService {
+
+    constructor(private http: Http) {}
+
+    getServers() {
+        return this.http.get('https://udemy-firebase-test.firebaseio.com/data.json');
+    }
+}
+   #+END_SRC
+   - in the component
+   #+BEGIN_SRC typescript
+
+onGet() {
+    this.serverService.getServers().subscribe(
+        (response) => {
+            const data = response.json();  // convert to json with the json method
+            console.log(data);
+        },
+        (error) => {
+            console.log(error);
+        }
+    )
+}
+   #+END_SRC
+
+** Wrapping the data transformation in the service component and error handling
+   - Need additional imports in the service
+   #+BEGIN_SRC typescript
+import { Headers, Http, Response } from '@angular/http';
+import 'rxjs/Rx';
+import { Observable } from 'rxjs/Observable';  // only needed to catch errors
+   #+END_SRC
+   - now we can transform the data using the ~map()~ method
+   #+BEGIN_SRC typescript
+getServers() {
+    return this.http.get('https://udemy-firebase-test.firebaseio.com/data.json').map(
+        (response: Response) => {
+            const data = response.json();
+            return data;   // we are still returning an observable but the data is already transformed
+        }
+    )
+    .catch(
+        (error: Response) => {
+            return Observable.throw(error);
+            // or
+            return Observable.throw('Something went wrong');
+            // or
+            return Observable.throw('Data retrieval error');
+        }
+    )
+}
+   #+END_SRC
+
+** Using the async pipe
+   If the data only needs to be placed on the template, then there is no need for an observable ~subscribe~, the data will be unpacked automatically if the ~async~ pipe is used.
+* Using firebase authentication
+  - In Firebase post appends data, put overwrites data
+  - Enable email base authentication in Firebase
+  - Install the Firebase SDK with ~npm i --save firebase~
+  - Initialise Firebase in a top level component with ~ngOnInit~
+  #+BEGIN_SRC typescript
+import { Component, OnInit } from '@angular/core';
+import * as firebase from 'firebase';
+
+@Component({
+    selector: 'app-root',
+    templateUrl: './app.component.html',
+    styleUrls: ['./app.component.css']
+})
+export class AppComponent implements OnInit{
+
+    ngOnInit() {
+        firebase.initializeApp({
+            apiKey: "AIzaSyBspNNWUfdX9zpXwshFr7jJillHNeom1PY",
+            authDomain: "udemy-firebase-test.firebaseapp.com"
+        })
+    }
+}
+  #+END_SRC
+
+** Signing up, Signing in, token retrieval
+   - create an authService
+   #+BEGIN_SRC typescript
+import * as firebase from 'firebase';
+export class AuthService {
+    token: string;
+
+    signupUser(email: string, password: string) {
+        firebase.auth().createUserWithEmailAndPassword(email, password)
+            .then(
+                (response) => {
+                    console.log("Account creation success!!");
+                }
+            ).catch(
+                (error) => {
+                    console.log(error);
+                }
+            );
+    }
+
+    signinUser(email: string, password: string) {
+        firebase.auth().signInWithEmailAndPassword(email, password)
+            .then(
+                (response) => {
+                    console.log("Logged in");
+                    console.log(response);
+                    firebase.auth().currentUser.getToken()
+                        .then(
+                            (token: string) => {
+                                this.token = token;
+                            }
+                        )
+                }
+            ).catch(
+                (error) => {
+                    console.log("Error while logging in");
+                    console.log(error);
+                }
+            );
+    }
+
+    getToken() {
+        firebase.auth().currentUser.getToken()
+            .then(
+                (token: string) => {
+                    this.token = token;
+                }
+            );
+        return this.token;  // or inside of the promise to wait for the token
+    }
+
+    isAuthenticated() {
+        return this.token != null;
+    }
+
+    logout() {
+        firebase.auth().signOut();
+        this.token = null;
+    }
+}
+   #+END_SRC
+
+** Sending a token to Firebase with requests
+   #+BEGIN_SRC typescript
+import { Http, Response } from '@angular/http';
+
+export class SomeClass {
+
+    constructor(private http: Http) {}
+
+
+    getData() {
+        const token = this.authService.getToken();
+
+        this.http.get('https://udemy-firebase-test.firebaseio.com/data.json?auth' + token).map(
+            (response: Response) => {
+                const someData = response.json();
+                return recipes;   // returns an observable
+            }
+        )
+    }
+}
+   #+END_SRC
+
+* Feature Modules
+
+** ~@NgModule~ decorator options
+
+*** ~declarations~
+    This module uses:
+    - components
+    - directives
+    - pipes
+
+*** ~imports~
+    Which other modules does this module use? Get access to everything a module exports.
+
+*** ~providers~
+    Which services can be used in this module?
+
+*** ~bootstrap~
+    Which is the root component?
+
+** Building a module
+   - Create a separate file such as ~module-name.module.ts~
+   - Import ~NgModule~ from ~@angular/core~
+   - In the ~@NgModule~ decorator add ~CommonModule~ to the imports array. This allows the usage of common directives like ~NgIf~ or ~NgClass~ etc.
+   - add any directive/components/pipes to the ~declarations~ array
+   - Each module that includes abstracted routing, needs to have its own routing implemented. Child routes use the ~RouterModule.forChild(routesArray)~, and not the ~forRoot~ method
+   - *However*, if the routing is the be left as is, then just use TS imports to let the router know where the components are.
+   - Import the newly made module in ~app.module.ts~ and add it to the ~@NgModule~ imports array
+   - Example that abstracts all the Recipe components  together:
+   #+BEGIN_SRC typescript
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+
+import { RecipesComponent } from './recipes.component';
+import { RecipeStartComponent } from './recipe-start/recipe-start.component';
+import { RecipeListComponent } from './recipe-list/recipe-list.component';
+import { RecipeEditComponent } from './recipe-edit/recipe-edit.component';
+import { RecipeDetailComponent } from './recipe-detail/recipe-detail.component';
+import { RecipeItemComponent } from './recipe-list/recipe-item/recipe-item.component';
+
+import { RecipesRoutingModule } from './recipes-routing.module';
+
+@NgModule({
+    declarations: [
+        RecipesComponent,
+        RecipeStartComponent,
+        RecipeListComponent,
+        RecipeEditComponent,
+        RecipeDetailComponent,
+        RecipeItemComponent
+    ],
+    imports: [
+        CommonModule,
+        RecipesRoutingModule
+    ]
+})
+export class RecipesModule {
+}
+   #+END_SRC
+
+* Shared modules
+  - To be able to use modules in multiple external modules, we need to make a shared module. To create a shared module simply add a new file eg. ~module-name.module.ts~. Then you need to add an ~exports~ array with the component/directive/pipe to the ~@NgModule~ decorator.
+  - *Never provide services in shared modules*
+  #+BEGIN_SRC typescript
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { DropdownDirective } from './dropdown.directive';
+@NgModule({
+    declarations: [
+        DropdownDirective
+    ],
+    imports: [
+        CommonModule,
+        DropdownDirective
+    ]
+})
+export class SharedModule {}
+  #+END_SRC
+
+* Lazy loading modules using routes
+  - Implemented via routing
+  - In the root route config add the desired path, but do not load a ~component~, instead use the ~loadChildren~ key :
+  #+BEGIN_SRC typescript
+{ path: 'recipes', loadChildren: './recipes/recipes.module#RecipesModule' },
+  #+END_SRC
+  - Note that the value of ~loadChildren~ is a string with the path to the module followed by a ~#~ and the name of the module, in this case ~RecipesModule~
+  - Keep in mind that any child routes in the feature module will start with ~''~
+  - If a guard is to be applied to a lazy load, then use ~canLoad~ interface, instead of ~canActivate~
+  - Using a service in the ~providers~ array in an ~@NgModule~ of a lazily loaded module *will* create a seperate instance of that service, which might not be desired. Otherwise just put the service in the parent module, most likely in the root module.
+  - Diagram of lazy loading and service provided in the parent:
+  [[file:images/lazyloading_parentinjection.png]]
+  - Diagram of lazy loading and service provided in both the parent and the lazily loaded child, causing a seperate instance of the service:
+  [[file:images/lazyloading_childinjection.png]]
+
+* Preloading lazy loading
+  - In the root configuration, or wherever you have lazy loading add a ~preloadingStrategy~ key to the RouterModule
+  #+BEGIN_SRC typescript
+RouterModule.forRoot(appRoutes, {preloadingStrategy: PreloadAllModules})
+  #+END_SRC
+
+* Core modules
+  - Used to make the ~app.module.ts~ more lean, and generally more tidy
+  - Usually you would put in this module all root level:
+    - components
+    - routing
+    - services
+    - directives (maybe)
+  #+BEGIN_SRC typescript
+import { NgModule } from '@angular/core';
+
+import { anyHeader/RootComponents/Directives } from 'path';
+import { yourMainAppRoutingModule } from 'path';
+import { sharedModulesIfAny } from 'path';
+
+@NgModule({
+    declarations: [
+        anyComponents/directives/pipes
+    ],
+    imports: [
+        sharedModulesIfAny
+        yourMainAppRoutingModule
+    ],
+    exports: [
+        yourMainAppRoutingModule,
+        headerComponent  // if used in the app component template
+    ]
+})
+export class CoreModule {
+}
+  #+END_SRC
+  - Now in the ~app.module.ts~ add the ~CoreModule~ to the imports array in ~@NgModule~
+
+* Ahead-of-Time Compilation
+  - run ~ng build --prod --aot~
+  - run ~ng build --aot~
+  - Make sure to verify if all templates work properly as mistakes might occur
+
+* Deployment
+
+** Setting the right path
+   - If the app is being launch in a nested path, not in the root then the ~base~ tag needs to be set in the ~head~ of the ~index.html~
+   #+BEGIN_SRC html
+<base href"/some-path/">
+   #+END_SRC
+   - You can also use the CLI if you only need it for the build
+   #+BEGIN_SRC sh
+ng build --prod --aot --base-href /some-path/
+   #+END_SRC
+
+* Animations
+
+** Setup
+   - Install the animations package
+   #+BEGIN_SRC sh
+npm install --save @angular/animations
+   #+END_SRC
+   - Add ~BrowserAnimationsModule~ to imports in the ~@NgModule~, which is imported from ~@angular/platform-browser/animations~
+   - Import necessary modules (~trigger~, ~state~, ~style~) in the components from ~@angular/animations~
+
+** Component setup
+   - Remember about the imports for ~trigger~, ~state~, ~style~...etc..
+   - Setup a trigger in the ~animations~ array, in this case ~@divState~, this trigger is then added to the html element like so (with a bound variable ~state~):
+   #+BEGIN_SRC html
+<div [@divState]="state">
+</div>
+   #+END_SRC
+   - the TS component looks like this, with some examples
+   #+BEGIN_SRC typescript
+@Component({
+    selector: 'app-root',
+    templateUrl: './app.component.html',
+    styleUrls: ['./app.component.css'],
+    animations: [
+        trigger('divState', [
+            state('normal', style({
+                'background-color': 'red',
+                transform: 'translateX(0)'
+            })),
+            state('highlighted', style({
+                'background-color': blue,
+                transform: 'translateX(100px)'
+            }))
+        ]),
+        transition('normal => highlighted', animate(300)),
+        transition('normal <=> highlighted', animate(300))  // means back and forth
+        transition('normal <=> *', animate(300))  // use a wild card to transition to any
+        transition('normal <=> *', animate(300, style({  // use "during" a transition style
+            borderRadius: '50px'
+        })))
+        transition('normal <=> *', animate(300, [  // complex animation with a "during" array
+            style({
+                backgroundColor: orange
+            }),
+            animation(1000, style({
+                borderRadius: '50px'
+            })),
+            animate(500)
+        ]))
+    ]
+})
+export class AppComponent implements {
+    state = 'normal';
+
+    onAnimate() {
+        this.state == 'normal' ? this.state = 'highlighted' : this.state = 'normal';
+    }
+}
+   #+END_SRC
+
+** Example of animating an element in and out of the DOM
+   #+BEGIN_SRC typescript
+animations: [
+    trigger('list1', [
+        state('in', style({  // 'in' is just a dummy, since it comes from void to any
+            opacity: 1,
+            transform: 'translateX(0)'
+        }))
+    ]),
+    transition('void => *', [   // transition in
+        style({
+            opacity: 0,
+            transform: 'tranlateX(-100px)'
+        }),
+        animate(300)
+    ]),
+    transition('* => void', [  // transition out
+        animate(300, style({
+            transform: 'translateX(100px)',
+            opacity: 0
+        }))
+    ])
+]
+
+   #+END_SRC
+   - The html would have:
+   #+BEGIN_SRC html
+<div [@list1]>
+</div>
+   #+END_SRC
+
+** More control over the entire animation
+   - Use keyframes to fine tune the transition, the ~offset~ indicates the steps' start point
+   #+BEGIN_SRC typescript
+transition('void => *', [
+    animate(1000, keyframes([
+        style({
+            transform: 'translateX(-100px)',
+            opacity: 0,
+            offset: 0
+        }),
+        style({
+            transform: 'translateX(-50px)',
+            opacity: 0.5,
+            offset: 0.3
+        }),
+        style({
+            transform: 'translateX(-20px)',
+            opacity: 1,
+            offset: 0.8
+        }),
+        style({
+            transform: 'translateX(0px)',
+            opacity: 1,
+            offset: 1
+        }),
+    ]))
+])
+   #+END_SRC
+
+** Grouping
+   - Just add a ~group~ method to the transitions array and add your animates there
+
+** Animation callbacks
+   - ~$event~ passing is optional
+   #+BEGIN_SRC html
+<div (@divState.start)="animationStarted()" (@divState.done)="animationEnded($event)">
+</div>
+   #+END_SRC
+
+** Animating routes and hiding the footer
+   - Create a ~const~ animation for the router (preferably)
+   #+BEGIN_SRC typescript
+     import { trigger, animate, transition, style, query, group } from '@angular/animations';
+
+     export const routerTransition = trigger('routerTransition', [
+         transition('* <=> *', [
+             query(':enter, :leave',
+                 style({ position: 'fixed', width: '100%' }),
+                 { optional: true }),
+
+             group([
+
+                 query(':enter', [
+                     style({ transform: 'translateX(100%)', opacity: 0 }),
+                     animate(
+                         '.2s ease-in-out',
+                         style({ transform: 'translateX(0%)', opacity: 1 })
+                     )], { optional: true }),
+
+                 query(':leave', [
+                     style({ transform: 'translateX(0%)', opacity: 1 }),
+                     animate(
+                         '.2s ease-in-out',
+                         style({ transform: 'translateX(-100%)', opacity: 0 })
+                     )], { optional: true })
+             ])
+         ])
+     ])
+   #+END_SRC
+   - Create a ~const~ animation for the footer
+   #+BEGIN_SRC typescript
+     import { trigger, animate, transition, style } from '@angular/animations';
+
+     export const fadeInAnimation = trigger(
+         'fadeInAnimation', [
+             transition(':enter', [
+                 style({ opacity: 0 }),
+                 animate('.3s', style({ opacity: 1 }))
+             ]),
+         ]
+     )
+   #+END_SRC
+   - The ~app.component.html~ should look like this then
+   #+BEGIN_SRC html
+     <app-header></app-header>
+
+     <div class="separator"></div>
+
+     <main [@routerTransition]="getState(o)"
+           (@routerTransition.start)="footerVisible = false"
+           (@routerTransition.done)="footerVisible = true">
+         <router-outlet #o="outlet"></router-outlet>
+     </main>
+
+     <div class="separator"></div>
+
+     <div [@fadeInAnimation] *ngIf="footerVisible">
+         <app-footer></app-footer>
+     </div> <!--  ends here -->
+   #+END_SRC
+   - The ~app.component.ts~ should have the animations added to the ~animations~ array and a ~getState~ method in the body and have the ~footerVisible~ variable
+   #+BEGIN_SRC typescript
+     @Component({
+         selector: 'app-root',
+         templateUrl: './app.component.html',
+         styleUrls: ['./app.component.css'],
+         animations: [
+             routerTransition,
+             fadeInAnimation
+         ],
+     })
+     export class AppComponent implements OnInit {
+         footerVisible = true;
+         getState(outlet) {
+             return outlet.activatedRouteData.state;
+         }
+     }
+   #+END_SRC
+
+** Example fade-in-out with ~*ngIf~
+   #+BEGIN_SRC typescript
+     import { trigger, state, animate, transition, style } from '@angular/animations';
+
+     export const fadeInOutAnimation = trigger(
+         'fadeInOutAnimation', [
+             transition(':enter', [
+                 style({ opacity: 0 }),
+                 animate('.2s', style({ opacity: 1 }))
+             ]),
+             transition(':leave', [
+                 style({ opacity: 1 }),
+                 animate('.2s', style({ opacity: 0 }))
+             ])
+         ]
+     )
+
+   #+END_SRC
+* NgRx
+  - Diagram of the Angular Redux state control
+  [[file:images/ng_rx.png]]
+  - Install NgRx
+  #+BEGIN_SRC sh
+npm install --save @ngrx/store
+  #+END_SRC
+
+** Adding actions
+   - ~shopping-list.actions.ts~
+   #+BEGIN_SRC typescript
+     import { Action } from '@ngrx/store';
+
+     import { Ingredient } from '../../shared/ingredient.model';
+
+     export const ADD_INGREDIENT = 'ADD_INGREDIENT';
+     export const ADD_INGREDIENTS = 'ADD_INGREDIENTS';
+     export const UPDATE_INGREDIENTS = 'UPDATE_INGREDIENTS';
+     export const DELETE_INGREDIENTS = 'DELETE_INGREDIENTS';
+
+     export class AddIngredient implements Action {
+         readonly type = ADD_INGREDIENT;
+
+         constructor(public payload: Ingredient) { }
+     }
+
+     export class AddIngredients implements Action {
+         readonly type = ADD_INGREDIENTS;
+
+         constructor(public payload: Ingredient[]) { }
+     }
+
+     export class UpdateIngredients implements Action {
+         readonly type = UPDATE_INGREDIENTS;
+
+         constructor(public payload: { idx: number, ingredient: Ingredient }) { }
+     }
+
+     export class DeleteIngredients implements Action {
+         readonly type = DELETE_INGREDIENTS;
+
+         constructor(public payload: number) { }
+     }
+     export type ShoppingListActions = AddIngredient | AddIngredients | UpdateIngredients | DeleteIngredients;
+   #+END_SRC
+
+** Adding reducers
+   - ~shopping-list.reducer.ts~
+   #+BEGIN_SRC typescript
+     import * as ShoppingListActions from './shoppin-list.actions';
+
+     import { Ingredient } from '../../shared/ingredient.model';
+
+     const initialState = {
+         ingredients: [
+             new Ingredient('Apple', 5),
+             new Ingredient('Tomatoes', 10)
+         ]
+     };
+
+     export function shoppingListReducer(state = initialState, action: ShoppingListActions.ShoppingListActions) {
+         switch (action.type) {
+             case ShoppingListActions.ADD_INGREDIENT:
+                 return {
+                     ...state,
+                     ingredients: [...state.ingredients, action.payload]
+                 }
+             case ShoppingListActions.ADD_INGREDIENTS:
+                 return {
+                     ...state,
+                     ingredients: [...state.ingredients, ...action.payload]  // add a whole array with a spread operator
+                 }
+             case ShoppingListActions.UPDATE_INGREDIENTS:
+                 const ingredient = state.ingredients[action.payload.index];
+                 const updatedIngredient = {
+                     ...ingredient,
+                     ...action.payload.ingredient
+                 };
+                 const ingredients = [...state.ingredients];
+                 return {
+                     ...state,
+                     ingredients: ingredients
+                 };
+             case ShoppingListActions.DELETE_INGREDIENT:
+                 const oldIngredients = [...state.ingredients];
+                 oldIngredients.splice(action.payload, 1);
+                 return {
+                     ...state,
+                     ingredients: oldIngredients
+                 }
+             default:
+                 return state;
+         }
+     }
+   #+END_SRC
+
+** Registration of NgRx
+   - add the following in ~app.module.ts~
+   #+BEGIN_SRC typescript
+     import { StoreModule } from '@ngrx/store';
+
+     @NgModule({
+
+         imports: [
+             StoreModule.forRoot({shoppingList: shoppingListReducer})  // key is part of the application, value is the name of the reducer
+         ]
+     });
+   #+END_SRC
+
+** Retrieving data
+   - in your component instantiate the ~Store~
+   - as described in the ~app.module.ts~ retrieve the model from the ~shoppingList~ key, and get the ~ingredients~ key, which has the ~Ingredient~ array
+   #+BEGIN_SRC typescript
+     import { Store } from '@ngrx/store';
+
+     export class className {
+         shoppingListState: Observable<{ingredients: Ingredient[]};
+
+         constructor(private store: Store<{shoppingList: {ingredients: Ingredient[]}}>) {
+
+         }
+
+         ngOnInit() {
+             this.shoppingListState = this.store.select('shoppingList');
+         }
+     }
+   #+END_SRC
+   - shoppingListState is now an observable and can be directly retrieved with the ~async~ pipe
+   #+BEGIN_SRC html
+     <li *ngFor="let ingredient of (shoppingListState | async).ingredients">
+         {{ ingredient.name }} {{ ingredient.amount }}
+     </li>
+   #+END_SRC
+
+** Adding data
+   - Setup the dependency injection as with retrieving data
+   #+BEGIN_SRC typescript
+
+     addIngredient(ingredient: Ingredient) {
+        this.store.dispatch(new ShoppingListActions.AddIngredient(ingredient));
+     }
+   #+END_SRC
+
+
+* Angular Universal (Angular on the backend)
+  - [[https://github.com/angular/angular-cli/wiki/stories-universal-rendering][Angular Universal Node.JS setup]]
+
+  #+BEGIN_EXPORT html
+  <script src="../../assets/jquery-3.3.1.min.js"></script>
+  <script src="../../assets/notes.js"></script>
+  #+END_EXPORT

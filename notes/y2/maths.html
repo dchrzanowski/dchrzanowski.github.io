@@ -1,0 +1,3035 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2018-12-13 Thu 20:28 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Maths assignment</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="Damian Chrzanowski" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="../assets/org.css"/>
+<link rel="icon" href="../assets/favicon.ico">
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2018 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Maths assignment</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orgb2e8f12">1. Bipartite graphs and trees</a>
+<ul>
+<li><a href="#org92ab277">1.1. Question 1</a></li>
+<li><a href="#orgdf25356">1.2. Question 2</a></li>
+<li><a href="#org8146432">1.3. Question 3</a></li>
+<li><a href="#org81a3a65">1.4. Question 4</a></li>
+<li><a href="#orgdf62523">1.5. Question 5</a></li>
+</ul>
+</li>
+<li><a href="#orgd89be55">2. Finite State Machines</a>
+<ul>
+<li><a href="#org32401ca">2.1. Question 1</a></li>
+<li><a href="#org457ddd1">2.2. Question 2</a></li>
+</ul>
+</li>
+<li><a href="#orgda359f8">3. Eulerian Graphs/Digraphs</a>
+<ul>
+<li><a href="#org348a376">3.1. (a)</a></li>
+<li><a href="#org48d2240">3.2. (b)</a></li>
+</ul>
+</li>
+<li><a href="#org72d8bb2">4. Path Algorithms</a>
+<ul>
+<li><a href="#orge54edd5">4.1. (a)</a></li>
+<li><a href="#org42301b4">4.2. (b)</a></li>
+</ul>
+</li>
+<li><a href="#orgeffae4a">5. Petri Nets</a>
+<ul>
+<li><a href="#orgfa8c5b9">5.1. Places and Transitions</a></li>
+<li><a href="#org958b1b0">5.2. Start i = 1</a></li>
+<li><a href="#org7390a2b">5.3. Start i = 2</a></li>
+<li><a href="#org9872ac6">5.4. Start i = 3</a></li>
+<li><a href="#org0b9f676">5.5. Start i = 4</a></li>
+</ul>
+</li>
+<li><a href="#orgb473a8d">6. Bayesian Statistics</a></li>
+</ul>
+</div>
+</div>
+<p>
+<a href="index.html">Home Page</a>
+</p>
+
+<div id="outline-container-orgb2e8f12" class="outline-2">
+<h2 id="orgb2e8f12"><span class="section-number-2">1</span> Bipartite graphs and trees</h2>
+<div class="outline-text-2" id="text-1">
+</div>
+<div id="outline-container-org92ab277" class="outline-3">
+<h3 id="org92ab277"><span class="section-number-3">1.1</span> Question 1</h3>
+<div class="outline-text-3" id="text-1-1">
+<p class="verse">
+DEFINITION:<br />
+Bipirtite Graph:<br />
+Bipirtite graph is on in which all vertices of set A are connected to set B.<br />
+Tree Graph:<br />
+Simple, connected graph that has no cycles.<br />
+</p>
+<p class="verse">
+A graph with at least two vertices is a tree if and only if there is a unique path that joins<br />
+every pair of distinct vertices in <b>G</b>.  And therefore the CONNECTED attribute of the tree is the<br />
+path of the graph <b>G</b>, and the ACYCLIC condition is met by uniqueness of the path.<br />
+</p>
+<p class="verse">
+To prove that a graph is a tree, pick any vertex <b>v</b> of the tree graph <b>G</b> and make it the ROOT<br />
+of the tree. Now let <b>u</b> to be any vertex of the ree graph <b>G</b>.  If <b>G</b> is a tree then there<br />
+exists a unique path <b>P</b> between <b>v</b> and <b>u</b>. Now let <b>Ve</b> to be the set of of all vertices for<br />
+which the length <b>P</b> is even, and let <b>Vo</b> to be the set of all vertices<br />
+for which the length <b>P</b> is odd.<br />
+<br />
+Example Graph:<br />
+</p>
+<p>
+<img src="images/Question 1/screenshot_2018-04-04_12-38-24.png" alt="screenshot_2018-04-04_12-38-24.png" />
+mark v0 as A, v1 as B&#x2026;.so on
+</p>
+<p class="verse">
+The two sets <b>Ve</b> and <b>Vo</b> represent the Bipirtite attribute of the graph. Now pick any vertex<br />
+from the set <b>Vo</b> and any vertex from <b>Ve</b> if there exists a unique path between the two vertices<br />
+then the graph is a tree. If there exists more than one path (a loop or a cycle) between the any<br />
+vertex in <b>Vo</b> and any vertex in <b>Ve</b> then the graph is not a tree.<br />
+</p>
+</div>
+</div>
+<div id="outline-container-orgdf25356" class="outline-3">
+<h3 id="orgdf25356"><span class="section-number-3">1.2</span> Question 2</h3>
+<div class="outline-text-3" id="text-1-2">
+<p class="verse">
+&#xa0;&#xa0;&#xa0;From the definition of a tree: Simple, connected graph with no cycles. This definition implies<br />
+&#xa0;&#xa0;&#xa0;that any two adjecant vertices <b>u</b> and <b>v</b> in the graph <b>G</b> are connected by exactly one edge<br />
+&#xa0;&#xa0;&#xa0;<b>e</b>, if any two adjecant vertices are connected by more than one edge then the grap <b>G</b> is not a<br />
+&#xa0;&#xa0;&#xa0;tree.<br />
+<br />
+&#xa0;&#xa0;&#xa0;The simplest way of proving that a tree with <b>n</b> vertices has <b>n-1</b> edges is to traverse through<br />
+&#xa0;&#xa0;&#xa0;the tree starting at its root. Base case: If the tree has 1 vertex, then there are no edges thus there is<br />
+&#xa0;&#xa0;&#xa0;a proof, that a tree with <b>n</b> vertices (where n = 1), has <b>n-1</b> edges (here edges are 0). Therefore<br />
+This is the trivial case.<br />
+<br />
+&#xa0;&#xa0;&#xa0;For a more complex tree we use the Induction Hypothesis:<br />
+&#xa0;&#xa0;&#xa0;Let the amount of vertices equal to <b>n, where n &gt; 1</b>, make an assumption that <b>n-1</b> is the edge count in a tree <b>G</b><br />
+&#xa0;&#xa0;&#xa0;and is true for all trees.<br />
+<br />
+&#xa0;&#xa0;&#xa0;Now let <b>v</b> be any leaf in a tree. (A leaf is any vertex <b>v</b> with a degree of one).<br />
+&#xa0;&#xa0;&#xa0;Let <b>e</b> be a unique edge that connects <b>v</b> and an adjecant vertex <b>w</b>.<br />
+<br />
+&#xa0;&#xa0;&#xa0;Now remove the edge <b>e</b> and the vertex <b>v</b>. Now the newly created graph <b>T</b> consists of only the vertex <b>v</b><br />
+&#xa0;&#xa0;&#xa0;and is still a tree (it is connected and has no cycles, since <b>G</b> was connected and had no cycles).<br />
+&#xa0;&#xa0;&#xa0;<img src="images/Bipartite graphs and trees/screenshot_2018-04-04_13-41-52.png" alt="screenshot_2018-04-04_13-41-52.png" /><br />
+<br />
+&#xa0;&#xa0;&#xa0;Now let <b>n1</b> be the count of vertices in <b>G</b> and <b>n2</b> be the count of vertices in <b>T</b>. Thus <b>n1 + n2 = n</b>.<br />
+&#xa0;&#xa0;&#xa0;By the induction hypothesis the edges in <b>G</b> and <b>T</b> are <b>n1</b> and <b>n2</b> respectively.<br />
+&#xa0;&#xa0;&#xa0;Now the number of edges in G = n1 - 1 + n2 - 1 + 1 ( +1 since we removed one) = n1 + n2 - 1 = n - 1<br />
+</p>
+</div>
+</div>
+<div id="outline-container-org8146432" class="outline-3">
+<h3 id="org8146432"><span class="section-number-3">1.3</span> Question 3</h3>
+<div class="outline-text-3" id="text-1-3">
+<p class="verse">
+Handshaking Lemma says that: The sum of all the vertex-degrees in any graph G is equal to twice the number of edges.<br />
+<br />
+Tree with a vertex count n, where n &gt;= 2<br />
+<br />
+From Question 2 we know that every tree has a n-1 edges, and via the handshaking lemma the total<br />
+number of edge degrees in a graph is therefore 2(n-1).<br />
+<br />
+And thus if in a tree with n&gt;=2 vertices there exists only one, or less vertices of degree one,<br />
+then the sum of all degress of all the vertices would have to be 2(n -1) + 1 (or 2(n - 1) + 2 for<br />
+0 vertices), to comply with the question at hand, and that is not possible since the tree must<br />
+follow to the handshaking lemma and be equal to 2(n-1).<br />
+</p>
+</div>
+</div>
+<div id="outline-container-org81a3a65" class="outline-3">
+<h3 id="org81a3a65"><span class="section-number-3">1.4</span> Question 4</h3>
+<div class="outline-text-3" id="text-1-4">
+</div>
+<div id="outline-container-orgd7f4d3e" class="outline-4">
+<h4 id="orgd7f4d3e">(a)</h4>
+<div class="outline-text-4" id="text-orgd7f4d3e">
+<p class="verse">
+C5 going into C5', back into C5<br />
+</p>
+
+<div class="figure">
+<p><img src="images/Bipartite graphs and trees/screenshot_2018-04-04_14-42-13.png" alt="screenshot_2018-04-04_14-42-13.png" />
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orgec52fed" class="outline-4">
+<h4 id="orgec52fed">(b)</h4>
+<div class="outline-text-4" id="text-orgec52fed">
+<p class="verse">
+If some graph <b>G</b> with n vertices is self-complementary then it contains half of the<br />
+edges that are possible in a complete graph <b>K</b> with n vertices.<br />
+<br />
+The other half of the edges can be displayed in the complement of the graph <b>G'</b>.<br />
+<br />
+Therefore <b>G</b> and <b>G'</b> must have the same number of edges, due to isomorphism.<br />
+<b>G</b> ∪ <b>G'</b> = <b>Kn</b><br />
+Therefore number of edges in a complete graph = n(n-1) / 2, handshaking lemma<br />
+And thus number of edges in <b>G</b> or <b>G'</b> = n(n-1) / 4<br />
+as a consequence n = 4k or n-1 = 4k =&gt; n = 4k + 1<br />
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orgdf62523" class="outline-3">
+<h3 id="orgdf62523"><span class="section-number-3">1.5</span> Question 5</h3>
+<div class="outline-text-3" id="text-1-5">
+<p>
+Use both the version from online and the class
+</p>
+</div>
+<div id="outline-container-org1a20a31" class="outline-4">
+<h4 id="org1a20a31">Expression of the number of edges in L(G) from the graph (G) in term of vertex degrees</h4>
+<div class="outline-text-4" id="text-org1a20a31">
+
+<div class="figure">
+<p><img src="images/Bipartite graphs and trees/screenshot_2018-04-04_16-29-53.png" alt="screenshot_2018-04-04_16-29-53.png" />
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orgcf201e9" class="outline-4">
+<h4 id="orgcf201e9">(a)</h4>
+<div class="outline-text-4" id="text-orgcf201e9">
+<p class="verse">
+Cycling graph is a graph in which a cycle is formed and each vertex has a degree of 2.<br />
+This characteristic makes the smallest cycle graph at c3.<br />
+<br />
+<br />
+If <b>G</b> is a cycle graph then <b>L(G)</b> is isomorphic to <b>G</b>, since each vertex and edge<br />
+will be swapped.<br />
+Show example drawing with c3.<br />
+<br />
+Using the expression for the number of edges we can conclude that <b>L(G)</b> has the<br />
+same amount of edges as <b>G</b>. To sum it up: L(G) has the same amount of vertices, edges<br />
+, total amount of vertex degress and thus each vertex has the vertex degree of 2.<br />
+All of which contribute to the statement that a <b>L(Cn)</b> is isomorphic to <b>Cn</b> since<br />
+the number of edges joining corresponding pairs of vertices in <b>G</b> and <b>L(G)</b> is equal<br />
+</p>
+</div>
+</div>
+<div id="outline-container-org2746f6c" class="outline-4">
+<h4 id="org2746f6c">(b)</h4>
+<div class="outline-text-4" id="text-org2746f6c">
+<p>
+Draw out a K5 and its L(K5). then calculate out and show that the expressions are true.
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orgd89be55" class="outline-2">
+<h2 id="orgd89be55"><span class="section-number-2">2</span> Finite State Machines</h2>
+<div class="outline-text-2" id="text-2">
+</div>
+<div id="outline-container-org32401ca" class="outline-3">
+<h3 id="org32401ca"><span class="section-number-3">2.1</span> Question 1</h3>
+<div class="outline-text-3" id="text-2-1">
+<p class="verse">
+B B C C<br />
+B B C C (A)&#x2026;<br />
+<br />
+(A)&#x2026; B B C C<br />
+(A)&#x2026; B B C C (A)&#x2026;<br />
+<br />
+(BC)&#x2026; B C C<br />
+(BC)&#x2026; B C C (A)&#x2026;<br />
+<br />
+(A)&#x2026; (BC)&#x2026; B C C<br />
+(A)&#x2026; (BC)&#x2026; B C C (A)&#x2026;<br />
+<br />
+<br />
+B (BCA)&#x2026; C<br />
+B (BCA)&#x2026; C (A)&#x2026;<br />
+<br />
+(A)&#x2026; B (BCA)&#x2026; C<br />
+(A)&#x2026; B (BCA)&#x2026; C (A)&#x2026;<br />
+<br />
+(BC)&#x2026; (BCA)&#x2026; C<br />
+(BC)&#x2026; (BCA)&#x2026; C (A)&#x2026;<br />
+<br />
+(A)&#x2026; (BC)&#x2026; (BCA)&#x2026; C<br />
+(A)&#x2026; (BC)&#x2026; (BCA)&#x2026; C (A)&#x2026;<br />
+</p>
+</div>
+</div>
+
+<div id="outline-container-org457ddd1" class="outline-3">
+<h3 id="org457ddd1"><span class="section-number-3">2.2</span> Question 2</h3>
+<div class="outline-text-3" id="text-2-2">
+<p class="verse">
+B C C B<br />
+B C C A<br />
+<br />
+B B C B<br />
+B B C A<br />
+<br />
+B C B C B<br />
+B C B C A<br />
+<br />
+B B B C B<br />
+B B B C A<br />
+<br />
+(B C B A)&#x2026; C B<br />
+(B C B A)&#x2026; C A<br />
+<br />
+(B B B A)&#x2026; C B<br />
+(B B B A)&#x2026; C A<br />
+<br />
+(B C B A B B B A)&#x2026; C B<br />
+(B B B A B C B A)&#x2026; C A<br />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgda359f8" class="outline-2">
+<h2 id="orgda359f8"><span class="section-number-2">3</span> Eulerian Graphs/Digraphs</h2>
+<div class="outline-text-2" id="text-3">
+</div>
+<div id="outline-container-org348a376" class="outline-3">
+<h3 id="org348a376"><span class="section-number-3">3.1</span> (a)</h3>
+<div class="outline-text-3" id="text-3-1">
+<p class="verse">
+01 12 23 34<br />
+40 02 24 41<br />
+13 30<br />
+<br />
+01 12 22 23 33<br />
+34 44 40 02 24<br />
+41 11 13 30 00<br />
+</p>
+</div>
+</div>
+
+<div id="outline-container-org48d2240" class="outline-3">
+<h3 id="org48d2240"><span class="section-number-3">3.2</span> (b)</h3>
+<div class="outline-text-3" id="text-3-2">
+<p>
+ABCDEF -&gt; BCDEF -&gt; 0 1
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-right" />
+
+<col  class="org-left" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-left" />
+
+<col  class="org-right" />
+
+<col  class="org-left" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-right">BCDEF</th>
+<th scope="col" class="org-left">&#xa0;</th>
+<th scope="col" class="org-right">val</th>
+<th scope="col" class="org-right">order</th>
+<th scope="col" class="org-left">!!!!!!!!!!!!!!!!!!!!!!!!!!!!!</th>
+<th scope="col" class="org-right">BCDEF</th>
+<th scope="col" class="org-left">&#xa0;</th>
+<th scope="col" class="org-right">val</th>
+<th scope="col" class="org-right">order</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-right">00000</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-right">00000</td>
+<td class="org-right">1</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-right">10000</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-right">00000</td>
+<td class="org-right">64</td>
+</tr>
+
+<tr>
+<td class="org-right">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-right">00001</td>
+<td class="org-right">2</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-right">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-right">00001</td>
+<td class="org-right">48</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-right">00001</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-right">00010</td>
+<td class="org-right">49</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-right">10001</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-right">00010</td>
+<td class="org-right">57</td>
+</tr>
+
+<tr>
+<td class="org-right">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-right">00011</td>
+<td class="org-right">3</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-right">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-right">00011</td>
+<td class="org-right">28</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-right">00010</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-right">00100</td>
+<td class="org-right">58</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-right">10010</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-right">00100</td>
+<td class="org-right">61</td>
+</tr>
+
+<tr>
+<td class="org-right">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-right">00101</td>
+<td class="org-right">50</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-right">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-right">00101</td>
+<td class="org-right">42</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-right">00011</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-right">00110</td>
+<td class="org-right">29</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-right">10011</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-right">00110</td>
+<td class="org-right">38</td>
+</tr>
+
+<tr>
+<td class="org-right">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-right">00111</td>
+<td class="org-right">4</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-right">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-right">00111</td>
+<td class="org-right">17</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-right">00100</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-right">01000</td>
+<td class="org-right">62</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-right">10100</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-right">01000</td>
+<td class="org-right">55</td>
+</tr>
+
+<tr>
+<td class="org-right">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-right">01001</td>
+<td class="org-right">59</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-right">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-right">01001</td>
+<td class="org-right">36</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-right">00101</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-right">01010</td>
+<td class="org-right">51</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-right">10101</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-right">01010</td>
+<td class="org-right">53</td>
+</tr>
+
+<tr>
+<td class="org-right">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-right">01011</td>
+<td class="org-right">43</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-right">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-right">01011</td>
+<td class="org-right">22</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-right">00110</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-right">01100</td>
+<td class="org-right">39</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-right">10110</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-right">01100</td>
+<td class="org-right">45</td>
+</tr>
+
+<tr>
+<td class="org-right">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-right">01101</td>
+<td class="org-right">30</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-right">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-right">01101</td>
+<td class="org-right">33</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-right">00111</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-right">01110</td>
+<td class="org-right">18</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-right">10111</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-right">01110</td>
+<td class="org-right">24</td>
+</tr>
+
+<tr>
+<td class="org-right">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-right">01111</td>
+<td class="org-right">5</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-right">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-right">01111</td>
+<td class="org-right">12</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-right">01000</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-right">10000</td>
+<td class="org-right">63</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-right">11000</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-right">10000</td>
+<td class="org-right">47</td>
+</tr>
+
+<tr>
+<td class="org-right">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-right">10001</td>
+<td class="org-right">56</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-right">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-right">10001</td>
+<td class="org-right">27</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-right">01001</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-right">10010</td>
+<td class="org-right">60</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-right">11001</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-right">10010</td>
+<td class="org-right">41</td>
+</tr>
+
+<tr>
+<td class="org-right">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-right">10011</td>
+<td class="org-right">37</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-right">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-right">10011</td>
+<td class="org-right">16</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-right">01010</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-right">10100</td>
+<td class="org-right">54</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-right">11010</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-right">10100</td>
+<td class="org-right">35</td>
+</tr>
+
+<tr>
+<td class="org-right">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-right">10101</td>
+<td class="org-right">52</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-right">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-right">10101</td>
+<td class="org-right">21</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-right">01011</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-right">10110</td>
+<td class="org-right">44</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-right">11011</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-right">10110</td>
+<td class="org-right">32</td>
+</tr>
+
+<tr>
+<td class="org-right">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-right">10111</td>
+<td class="org-right">23</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-right">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-right">10111</td>
+<td class="org-right">11</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-right">01100</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-right">11000</td>
+<td class="org-right">46</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-right">11100</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-right">11000</td>
+<td class="org-right">26</td>
+</tr>
+
+<tr>
+<td class="org-right">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-right">11001</td>
+<td class="org-right">40</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-right">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-right">11001</td>
+<td class="org-right">15</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-right">01101</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-right">11010</td>
+<td class="org-right">34</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-right">11101</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-right">11010</td>
+<td class="org-right">20</td>
+</tr>
+
+<tr>
+<td class="org-right">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-right">11011</td>
+<td class="org-right">31</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-right">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-right">11011</td>
+<td class="org-right">10</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-right">01110</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-right">11100</td>
+<td class="org-right">25</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-right">11110</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-right">11100</td>
+<td class="org-right">14</td>
+</tr>
+
+<tr>
+<td class="org-right">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-right">11101</td>
+<td class="org-right">19</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-right">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-right">11101</td>
+<td class="org-right">9</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-right">01111</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-right">11110</td>
+<td class="org-right">13</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-right">11111</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-right">11110</td>
+<td class="org-right">8</td>
+</tr>
+
+<tr>
+<td class="org-right">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-right">11111</td>
+<td class="org-right">6</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-right">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-right">11111</td>
+<td class="org-right">7</td>
+</tr>
+</tbody>
+</table>
+
+
+<ul class="org-ul">
+<li>Sequence: 00000 ! 0 1 1 1 1 1 1 0 1 1 1 1 0 0 1 1 1 0 1 0 1 1 1 0 0 0 1 1 0 1 1 0 1 0 0 1 1 0 0 1 0 1 1 0 0 0 0 1 0 1 0 1 0 0 0 1 0 0 1 0 0 0 0 0</li>
+</ul>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-right">ABCDEF</th>
+<th scope="col" class="org-right">dec</th>
+<th scope="col" class="org-right">ABCDEF</th>
+<th scope="col" class="org-right">dec</th>
+<th scope="col" class="org-right">ABCDEF</th>
+<th scope="col" class="org-right">dec</th>
+<th scope="col" class="org-right">ABCDEF</th>
+<th scope="col" class="org-right">dec</th>
+<th scope="col" class="org-right">ABCDEF</th>
+<th scope="col" class="org-right">dec</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-right">011111</td>
+<td class="org-right">31</td>
+<td class="org-right">110101</td>
+<td class="org-right">53</td>
+<td class="org-right">101001</td>
+<td class="org-right">41</td>
+<td class="org-right">001010</td>
+<td class="org-right">10</td>
+<td class="org-right">000001</td>
+<td class="org-right">1</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-right">111111</td>
+<td class="org-right">63</td>
+<td class="org-right">101011</td>
+<td class="org-right">43</td>
+<td class="org-right">010011</td>
+<td class="org-right">19</td>
+<td class="org-right">010101</td>
+<td class="org-right">21</td>
+<td class="org-right">000011</td>
+<td class="org-right">3</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-right">111110</td>
+<td class="org-right">62</td>
+<td class="org-right">010111</td>
+<td class="org-right">23</td>
+<td class="org-right">100110</td>
+<td class="org-right">38</td>
+<td class="org-right">101010</td>
+<td class="org-right">42</td>
+<td class="org-right">000111</td>
+<td class="org-right">7</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-right">111101</td>
+<td class="org-right">61</td>
+<td class="org-right">101110</td>
+<td class="org-right">46</td>
+<td class="org-right">001100</td>
+<td class="org-right">12</td>
+<td class="org-right">010100</td>
+<td class="org-right">20</td>
+<td class="org-right">001111</td>
+<td class="org-right">15</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-right">111011</td>
+<td class="org-right">59</td>
+<td class="org-right">011100</td>
+<td class="org-right">28</td>
+<td class="org-right">011001</td>
+<td class="org-right">25</td>
+<td class="org-right">101000</td>
+<td class="org-right">40</td>
+<td class="org-right">&#xa0;</td>
+<td class="org-right">&#xa0;</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-right">110111</td>
+<td class="org-right">55</td>
+<td class="org-right">111000</td>
+<td class="org-right">56</td>
+<td class="org-right">110010</td>
+<td class="org-right">50</td>
+<td class="org-right">010001</td>
+<td class="org-right">17</td>
+<td class="org-right">&#xa0;</td>
+<td class="org-right">&#xa0;</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-right">101111</td>
+<td class="org-right">47</td>
+<td class="org-right">110001</td>
+<td class="org-right">49</td>
+<td class="org-right">100101</td>
+<td class="org-right">37</td>
+<td class="org-right">100010</td>
+<td class="org-right">34</td>
+<td class="org-right">&#xa0;</td>
+<td class="org-right">&#xa0;</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-right">011110</td>
+<td class="org-right">30</td>
+<td class="org-right">100011</td>
+<td class="org-right">35</td>
+<td class="org-right">001011</td>
+<td class="org-right">11</td>
+<td class="org-right">000100</td>
+<td class="org-right">4</td>
+<td class="org-right">&#xa0;</td>
+<td class="org-right">&#xa0;</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-right">111100</td>
+<td class="org-right">60</td>
+<td class="org-right">000110</td>
+<td class="org-right">6</td>
+<td class="org-right">010110</td>
+<td class="org-right">22</td>
+<td class="org-right">001001</td>
+<td class="org-right">9</td>
+<td class="org-right">&#xa0;</td>
+<td class="org-right">&#xa0;</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-right">111001</td>
+<td class="org-right">57</td>
+<td class="org-right">001101</td>
+<td class="org-right">13</td>
+<td class="org-right">101100</td>
+<td class="org-right">44</td>
+<td class="org-right">010010</td>
+<td class="org-right">18</td>
+<td class="org-right">&#xa0;</td>
+<td class="org-right">&#xa0;</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-right">110011</td>
+<td class="org-right">51</td>
+<td class="org-right">011011</td>
+<td class="org-right">27</td>
+<td class="org-right">011000</td>
+<td class="org-right">24</td>
+<td class="org-right">100100</td>
+<td class="org-right">36</td>
+<td class="org-right">&#xa0;</td>
+<td class="org-right">&#xa0;</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-right">100111</td>
+<td class="org-right">39</td>
+<td class="org-right">110110</td>
+<td class="org-right">54</td>
+<td class="org-right">110000</td>
+<td class="org-right">48</td>
+<td class="org-right">001000</td>
+<td class="org-right">8</td>
+<td class="org-right">&#xa0;</td>
+<td class="org-right">&#xa0;</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-right">001110</td>
+<td class="org-right">14</td>
+<td class="org-right">101101</td>
+<td class="org-right">45</td>
+<td class="org-right">100001</td>
+<td class="org-right">33</td>
+<td class="org-right">010000</td>
+<td class="org-right">16</td>
+<td class="org-right">&#xa0;</td>
+<td class="org-right">&#xa0;</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-right">011101</td>
+<td class="org-right">29</td>
+<td class="org-right">011010</td>
+<td class="org-right">26</td>
+<td class="org-right">000010</td>
+<td class="org-right">2</td>
+<td class="org-right">100000</td>
+<td class="org-right">32</td>
+<td class="org-right">&#xa0;</td>
+<td class="org-right">&#xa0;</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-right">111010</td>
+<td class="org-right">58</td>
+<td class="org-right">110100</td>
+<td class="org-right">52</td>
+<td class="org-right">000101</td>
+<td class="org-right">5</td>
+<td class="org-right">000000</td>
+<td class="org-right">0</td>
+<td class="org-right">&#xa0;</td>
+<td class="org-right">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org72d8bb2" class="outline-2">
+<h2 id="org72d8bb2"><span class="section-number-2">4</span> Path Algorithms</h2>
+<div class="outline-text-2" id="text-4">
+</div>
+<div id="outline-container-orge54edd5" class="outline-3">
+<h3 id="orge54edd5"><span class="section-number-3">4.1</span> (a)</h3>
+<div class="outline-text-3" id="text-4-1">
+</div>
+<div id="outline-container-org171cc8a" class="outline-4">
+<h4 id="org171cc8a">Shortest path</h4>
+<div class="outline-text-4" id="text-org171cc8a">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Vertices</th>
+<th scope="col" class="org-left">S</th>
+<th scope="col" class="org-left">a</th>
+<th scope="col" class="org-left">b</th>
+<th scope="col" class="org-left">c</th>
+<th scope="col" class="org-left">d</th>
+<th scope="col" class="org-left">e</th>
+<th scope="col" class="org-left">f</th>
+<th scope="col" class="org-left">g</th>
+<th scope="col" class="org-left">h</th>
+<th scope="col" class="org-left">i</th>
+<th scope="col" class="org-left">j</th>
+<th scope="col" class="org-left">k</th>
+<th scope="col" class="org-left">T</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">S</td>
+<td class="org-left"><b>0</b></td>
+<td class="org-left">5</td>
+<td class="org-left">5</td>
+<td class="org-left">3</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">c</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">5</td>
+<td class="org-left">5</td>
+<td class="org-left"><b>3</b></td>
+<td class="org-left">11</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">7</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">a,b</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left"><b>5</b></td>
+<td class="org-left"><b>5</b></td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">9</td>
+<td class="org-left">12</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">7</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">g</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">9</td>
+<td class="org-left">12</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left"><b>7</b></td>
+<td class="org-left">11</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">d</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left"><b>9</b></td>
+<td class="org-left">12</td>
+<td class="org-left">15</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">11</td>
+<td class="org-left">16</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">h</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">12</td>
+<td class="org-left">15</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left"><b>11</b></td>
+<td class="org-left">16</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">17</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">e</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left"><b>12</b></td>
+<td class="org-left">15</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">16</td>
+<td class="org-left">16</td>
+<td class="org-left">17</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">f</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left"><b>15</b></td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">16</td>
+<td class="org-left">16</td>
+<td class="org-left">17</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">i,j</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left"><b>16</b></td>
+<td class="org-left"><b>16</b></td>
+<td class="org-left">17</td>
+<td class="org-left">23</td>
+</tr>
+
+<tr>
+<td class="org-left">k</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left"><b>17</b></td>
+<td class="org-left">23</td>
+</tr>
+
+<tr>
+<td class="org-left">T</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left"><b>23</b></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-org7c66a03" class="outline-4">
+<h4 id="org7c66a03">Shortest Path proof</h4>
+<div class="outline-text-4" id="text-org7c66a03">
+<p class="verse">
+------------------------------------------------------------------------&#x2013;&#x2014;<br />
+Potential (T) - w(i, T) = 23 - 7 = 16 = Potential (i) → Add i,T<br />
+Potential (T) - w(j, T) = 23 - 8 = 15 ≠ Potential (j) → Ignore i,T<br />
+Potential (T) - w(k, T) = 23 - 9 = 14 ≠ Potential (k) → Ignore i,T<br />
+------------------------------------------------------------------------&#x2013;&#x2014;<br />
+Potential (i) - w(h, i) = 16 - 6 = 10 ≠ Potential (h) → Ignore h, i<br />
+Potential (i) - w(d, i) = 16 - 7 = 9 = Potential (d) → Add d, i<br />
+------------------------------------------------------------------------&#x2013;&#x2014;<br />
+Potential (d) - w(b, d) = 9 - 4 = 5 = Potential (b) → Add b, d<br />
+Potential (d) - w(c, d) = 9 - 8 = 1 ≠ Potential (c) → Ignore c, d<br />
+------------------------------------------------------------------------&#x2013;&#x2014;<br />
+Potential (b) - w(S, b) = 5 - 5 = 0 = Potential (S) → Add S, b<br />
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgfaae01a" class="outline-4">
+<h4 id="orgfaae01a">Longest path</h4>
+<div class="outline-text-4" id="text-orgfaae01a">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Vertices</th>
+<th scope="col" class="org-left">S</th>
+<th scope="col" class="org-left">a</th>
+<th scope="col" class="org-left">b</th>
+<th scope="col" class="org-left">c</th>
+<th scope="col" class="org-left">d</th>
+<th scope="col" class="org-left">e</th>
+<th scope="col" class="org-left">f</th>
+<th scope="col" class="org-left">g</th>
+<th scope="col" class="org-left">h</th>
+<th scope="col" class="org-left">i</th>
+<th scope="col" class="org-left">j</th>
+<th scope="col" class="org-left">k</th>
+<th scope="col" class="org-left">T</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">S</td>
+<td class="org-left"><b>0</b></td>
+<td class="org-left"><b>5</b></td>
+<td class="org-left"><b>5</b></td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">S a b</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left"><b>8</b></td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">S a b c</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left"><b>16</b></td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left"><b>12</b></td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">S a b c d g</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left"><b>20</b></td>
+<td class="org-left"><b>22</b></td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">S a b c d g e f</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left"><b>27</b></td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left"><b>24</b></td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">S a b c d g e f h j</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left"><b>33</b></td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left"><b>33</b></td>
+<td class="org-left">32</td>
+</tr>
+
+<tr>
+<td class="org-left">S a b c d g e f h j i k</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left"><b>42</b></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-org0923aba" class="outline-4">
+<h4 id="org0923aba">Longest Path proof</h4>
+<div class="outline-text-4" id="text-org0923aba">
+<p class="verse">
+------------------------------------------------------------------------&#x2013;&#x2014;<br />
+Potential (T) - w(j, T) = 42 - 8 = 34 ≠ Potential (j) → Ignore j, T<br />
+Potential (T) - w(i, T) = 42 - 7 = 35 ≠ Potential (i) → Ignore i, T<br />
+Potential (T) - w(k, T) = 42 - 9 = 33 = Potential (k) → Add k, T<br />
+------------------------------------------------------------------------&#x2013;&#x2014;<br />
+Potential (k) - w(h, k) = 33 - 6 = 27 = Potential (h) → Add h, k<br />
+------------------------------------------------------------------------&#x2013;&#x2014;<br />
+Potential (h) - w(f, h) = 27 - 5 = 22 = Potential (f) → Add f, h<br />
+Potential (h) - w(g, h) = 27 - 4 = 23 ≠ Potential (h) → Ignore g, h<br />
+------------------------------------------------------------------------&#x2013;&#x2014;<br />
+Potential (f) - w(d, f) = 22 - 6 = 16 = Potential (d) → Add d, f<br />
+------------------------------------------------------------------------&#x2013;&#x2014;<br />
+Potential (d) - w(b, d) = 16 - 4 = 12 ≠ Potential (b) → Ignore b, d<br />
+Potential (d) - w(c, d) = 16 - 8 = 8 = Potential (c) → Add c, d<br />
+------------------------------------------------------------------------&#x2013;&#x2014;<br />
+Potential (c) - w(S, c) = 8 - 3 = 5 ≠ Potential (S) → Ignore S, c<br />
+Potential (c) - w(b, c) = 8 - 3 = 5 = Potential (b) → Add b, c<br />
+------------------------------------------------------------------------&#x2013;&#x2014;<br />
+Potential (b) - w(S, b) = 5 - 5 = 0 = Potential (S) → Add S, b<br />
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgaaf006e" class="outline-4">
+<h4 id="orgaaf006e">Scheduling</h4>
+<div class="outline-text-4" id="text-orgaaf006e">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Arcs</th>
+<th scope="col" class="org-right">Sa</th>
+<th scope="col" class="org-right">Sb</th>
+<th scope="col" class="org-right">Sc</th>
+<th scope="col" class="org-right">ae</th>
+<th scope="col" class="org-right">bd</th>
+<th scope="col" class="org-right">bc</th>
+<th scope="col" class="org-right">cd</th>
+<th scope="col" class="org-right">cg</th>
+<th scope="col" class="org-right">de</th>
+<th scope="col" class="org-right">df</th>
+<th scope="col" class="org-right">di</th>
+<th scope="col" class="org-right">ej</th>
+<th scope="col" class="org-right">fh</th>
+<th scope="col" class="org-right">gh</th>
+<th scope="col" class="org-right">hi</th>
+<th scope="col" class="org-right">hk</th>
+<th scope="col" class="org-right">iT</th>
+<th scope="col" class="org-right">jT</th>
+<th scope="col" class="org-right">kT</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Earliest</td>
+<td class="org-right">0</td>
+<td class="org-right">0</td>
+<td class="org-right">0</td>
+<td class="org-right">5</td>
+<td class="org-right">5</td>
+<td class="org-right">5</td>
+<td class="org-right">8</td>
+<td class="org-right">8</td>
+<td class="org-right">16</td>
+<td class="org-right">16</td>
+<td class="org-right">16</td>
+<td class="org-right">20</td>
+<td class="org-right">22</td>
+<td class="org-right">12</td>
+<td class="org-right">27</td>
+<td class="org-right">27</td>
+<td class="org-right">33</td>
+<td class="org-right">24</td>
+<td class="org-right">33</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">Latest</td>
+<td class="org-right">18</td>
+<td class="org-right">0</td>
+<td class="org-right">5</td>
+<td class="org-right">23</td>
+<td class="org-right">12</td>
+<td class="org-right">5</td>
+<td class="org-right">8</td>
+<td class="org-right">19</td>
+<td class="org-right">26</td>
+<td class="org-right">16</td>
+<td class="org-right">28</td>
+<td class="org-right">30</td>
+<td class="org-right">22</td>
+<td class="org-right">23</td>
+<td class="org-right">29</td>
+<td class="org-right">27</td>
+<td class="org-right">35</td>
+<td class="org-right">34</td>
+<td class="org-right">33</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">Float</td>
+<td class="org-right">18</td>
+<td class="org-right">0</td>
+<td class="org-right">5</td>
+<td class="org-right">18</td>
+<td class="org-right">7</td>
+<td class="org-right">0</td>
+<td class="org-right">0</td>
+<td class="org-right">11</td>
+<td class="org-right">10</td>
+<td class="org-right">0</td>
+<td class="org-right">12</td>
+<td class="org-right">10</td>
+<td class="org-right">0</td>
+<td class="org-right">11</td>
+<td class="org-right">2</td>
+<td class="org-right">0</td>
+<td class="org-right">2</td>
+<td class="org-right">10</td>
+<td class="org-right">0</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org42301b4" class="outline-3">
+<h3 id="org42301b4"><span class="section-number-3">4.2</span> (b)</h3>
+<div class="outline-text-3" id="text-4-2">
+</div>
+<div id="outline-container-org293089c" class="outline-4">
+<h4 id="org293089c">Shortest Path</h4>
+<div class="outline-text-4" id="text-org293089c">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Vertices</th>
+<th scope="col" class="org-left">S</th>
+<th scope="col" class="org-left">a</th>
+<th scope="col" class="org-left">b</th>
+<th scope="col" class="org-left">c</th>
+<th scope="col" class="org-left">d</th>
+<th scope="col" class="org-left">e</th>
+<th scope="col" class="org-left">f</th>
+<th scope="col" class="org-left">g</th>
+<th scope="col" class="org-left">h</th>
+<th scope="col" class="org-left">i</th>
+<th scope="col" class="org-left">T</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">S</td>
+<td class="org-left"><code>0</code></td>
+<td class="org-left">3</td>
+<td class="org-left">6</td>
+<td class="org-left">5</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">a</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left"><code>3</code></td>
+<td class="org-left">6</td>
+<td class="org-left">5</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">5</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">c, f</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">6</td>
+<td class="org-left"><code>5</code></td>
+<td class="org-left">12</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left"><code>5</code></td>
+<td class="org-left">9</td>
+<td class="org-left">9</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">b</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left"><code>6</code></td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">12</td>
+<td class="org-left">9</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">9</td>
+<td class="org-left">9</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">e, h, g</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">12</td>
+<td class="org-left"><code>9</code></td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left"><code>9</code></td>
+<td class="org-left"><code>9</code></td>
+<td class="org-left">14</td>
+<td class="org-left">18</td>
+</tr>
+
+<tr>
+<td class="org-left">d</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left"><code>12</code></td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">14</td>
+<td class="org-left">18</td>
+</tr>
+
+<tr>
+<td class="org-left">i</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left"><code>14</code></td>
+<td class="org-left">18</td>
+</tr>
+
+<tr>
+<td class="org-left">T</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left"><code>18</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-orge22c476" class="outline-4">
+<h4 id="orge22c476">Shortest path proof</h4>
+<div class="outline-text-4" id="text-orge22c476">
+<p class="verse">
+------------------------------------------------------------------------&#x2013;&#x2014;<br />
+Potential (T) - w(h, T) = 18 - 12 = 6 ≠ Potential (h) → Ignore h, T<br />
+Potential (T) - w(g, T) = 18 - 9 = 9 = Potential (g) → Add g, T<br />
+Potential (T) - w(i, T) = 18 - 6 = 12 ≠ Potential (i) → Ignore i, T<br />
+------------------------------------------------------------------------&#x2013;&#x2014;<br />
+Potential (g) - w(f, g) = 9 - 4 = 5 = Potential (f) → Add f, g<br />
+Potential (g) - w(e, g) = 9 - 3 = 6 ≠ Potential (e) → Ignore e, g<br />
+Potential (g) - w(d, g) = 9 - 6 = 3 ≠ Potential (d) → Ignore d, g<br />
+------------------------------------------------------------------------&#x2013;&#x2014;<br />
+Potential (f) - w(a, f) = 5 - 2 = 3 = Potential (a) → Add a, f<br />
+Potential (f) - w(b, f) = 5 - 5 = 0 ≠ Potential (b) → Ignore b, f<br />
+Potential (f) - w(e, f) = 5 - 6 = -1 ≠ Potential (e) → Ignore e, f<br />
+------------------------------------------------------------------------&#x2013;&#x2014;<br />
+Potential (a) - w(S, a) = 3 - 3 = 0 = Potential (S) → Add S, a<br />
+</p>
+</div>
+</div>
+
+<div id="outline-container-org5772c98" class="outline-4">
+<h4 id="org5772c98">Longest Path</h4>
+<div class="outline-text-4" id="text-org5772c98">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Vertices</th>
+<th scope="col" class="org-left">S</th>
+<th scope="col" class="org-left">a</th>
+<th scope="col" class="org-left">b</th>
+<th scope="col" class="org-left">c</th>
+<th scope="col" class="org-left">d</th>
+<th scope="col" class="org-left">e</th>
+<th scope="col" class="org-left">f</th>
+<th scope="col" class="org-left">g</th>
+<th scope="col" class="org-left">h</th>
+<th scope="col" class="org-left">i</th>
+<th scope="col" class="org-left">T</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">S</td>
+<td class="org-left"><code>0</code></td>
+<td class="org-left"><code>3</code></td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left"><code>5</code></td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">S a c</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left"><code>9</code></td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">S a c b</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left"><code>12</code></td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">S a c b e</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left"><code>17</code></td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left"><code>18</code></td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">S a c b e d f</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left"><code>23</code></td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">S a c b e d f g</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left"><code>29</code></td>
+<td class="org-left"><code>28</code></td>
+<td class="org-left"><code>32</code></td>
+</tr>
+
+<tr>
+<td class="org-left">S a c b e d f g h i</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left"><code>41</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-org171994d" class="outline-4">
+<h4 id="org171994d">Longest Path proof</h4>
+<div class="outline-text-4" id="text-org171994d">
+<p class="verse">
+------------------------------------------------------------------------&#x2013;&#x2014;<br />
+Potential (T) - w(h, T) = 41 - 12 = 29 = Potential (h) → Add h, T<br />
+Potential (T) - w(g, T) = 41 - 9 = 32 ≠ Potential (g) → Ignore g, T<br />
+Potential (T) - w(i, T) = 41 - 6 = 35 ≠ Potential (i) → Ignore i, T<br />
+------------------------------------------------------------------------&#x2013;&#x2014;<br />
+Potential (h) - w(f, h) = 29 - 4 = 25 ≠ Potential (f) → Ignore f, h<br />
+Potential (h) - w(g, h) = 29 - 6 = 23 = Potential (g) → Add g, h<br />
+------------------------------------------------------------------------&#x2013;&#x2014;<br />
+Potential (g) - w(f, g) = 23 - 4 = 19 ≠ Potential (f) → Ignore f, g<br />
+Potential (g) - w(e, g) = 23 - 3 = 20 ≠ Potential (e) → Ignore e, g<br />
+Potential (g) - w(d, g) = 23 - 6 = 17 = Potential (d) → Add d, g<br />
+------------------------------------------------------------------------&#x2013;&#x2014;<br />
+Potential (d) - w(e, d) = 17 - 5 = 12 = Potential (e) → Add e, d<br />
+Potential (d) - w(b, d) = 17 - 7 = 10 ≠ Potential (b) → Ignore b, d<br />
+Potential (d) - w(c, d) = 17 - 7 = 10 ≠ Potential (c) → Ignore c, d<br />
+------------------------------------------------------------------------&#x2013;&#x2014;<br />
+Potential (e) - w(b, e) = 12 - 3 = 9 = Potential (b) → Add b, e<br />
+------------------------------------------------------------------------&#x2013;&#x2014;<br />
+Potential (b) - w(a, b) = 9 - 5 = 4 ≠ Potential (a) → Ignore a, b<br />
+Potential (b) - w(S, b) = 9 - 6 = 3 ≠ Potential (S) → Ignore S, b<br />
+Potential (b) - w(c, b) = 9 - 4 = 5 = Potential (c) → Add c, b<br />
+------------------------------------------------------------------------&#x2013;&#x2014;<br />
+Potential (c) - w(S, c) = 5 - 5 = 0 = Potential (S) → Add S, c<br />
+</p>
+</div>
+</div>
+
+<div id="outline-container-org861f0f1" class="outline-4">
+<h4 id="org861f0f1">Scheduling</h4>
+<div class="outline-text-4" id="text-org861f0f1">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Arcs</th>
+<th scope="col" class="org-right">Sa</th>
+<th scope="col" class="org-right">Sb</th>
+<th scope="col" class="org-right">Sc</th>
+<th scope="col" class="org-right">af</th>
+<th scope="col" class="org-right">ab</th>
+<th scope="col" class="org-right">bf</th>
+<th scope="col" class="org-right">be</th>
+<th scope="col" class="org-right">bd</th>
+<th scope="col" class="org-right">cb</th>
+<th scope="col" class="org-right">cd</th>
+<th scope="col" class="org-right">dg</th>
+<th scope="col" class="org-right">di</th>
+<th scope="col" class="org-right">ef</th>
+<th scope="col" class="org-right">eg</th>
+<th scope="col" class="org-right">ed</th>
+<th scope="col" class="org-right">fh</th>
+<th scope="col" class="org-right">fg</th>
+<th scope="col" class="org-right">gh</th>
+<th scope="col" class="org-right">gT</th>
+<th scope="col" class="org-right">gi</th>
+<th scope="col" class="org-right">hT</th>
+<th scope="col" class="org-right">iT</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Earliest</td>
+<td class="org-right">0</td>
+<td class="org-right">0</td>
+<td class="org-right">0</td>
+<td class="org-right">4</td>
+<td class="org-right">4</td>
+<td class="org-right">9</td>
+<td class="org-right">9</td>
+<td class="org-right">9</td>
+<td class="org-right">5</td>
+<td class="org-right">5</td>
+<td class="org-right">17</td>
+<td class="org-right">17</td>
+<td class="org-right">12</td>
+<td class="org-right">12</td>
+<td class="org-right">12</td>
+<td class="org-right">18</td>
+<td class="org-right">18</td>
+<td class="org-right">23</td>
+<td class="org-right">23</td>
+<td class="org-right">23</td>
+<td class="org-right">29</td>
+<td class="org-right">28</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">Latest</td>
+<td class="org-right">8</td>
+<td class="org-right">3</td>
+<td class="org-right">0</td>
+<td class="org-right">11</td>
+<td class="org-right">4</td>
+<td class="org-right">20</td>
+<td class="org-right">9</td>
+<td class="org-right">10</td>
+<td class="org-right">5</td>
+<td class="org-right">10</td>
+<td class="org-right">17</td>
+<td class="org-right">27</td>
+<td class="org-right">19</td>
+<td class="org-right">20</td>
+<td class="org-right">12</td>
+<td class="org-right">25</td>
+<td class="org-right">19</td>
+<td class="org-right">23</td>
+<td class="org-right">32</td>
+<td class="org-right">30</td>
+<td class="org-right">29</td>
+<td class="org-right">35</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">Float</td>
+<td class="org-right">8</td>
+<td class="org-right">3</td>
+<td class="org-right">0</td>
+<td class="org-right">7</td>
+<td class="org-right">0</td>
+<td class="org-right">11</td>
+<td class="org-right">0</td>
+<td class="org-right">1</td>
+<td class="org-right">0</td>
+<td class="org-right">5</td>
+<td class="org-right">0</td>
+<td class="org-right">10</td>
+<td class="org-right">7</td>
+<td class="org-right">8</td>
+<td class="org-right">0</td>
+<td class="org-right">7</td>
+<td class="org-right">1</td>
+<td class="org-right">0</td>
+<td class="org-right">9</td>
+<td class="org-right">7</td>
+<td class="org-right">0</td>
+<td class="org-right">7</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgeffae4a" class="outline-2">
+<h2 id="orgeffae4a"><span class="section-number-2">5</span> Petri Nets</h2>
+<div class="outline-text-2" id="text-5">
+</div>
+<div id="outline-container-orgfa8c5b9" class="outline-3">
+<h3 id="orgfa8c5b9"><span class="section-number-3">5.1</span> Places and Transitions</h3>
+<div class="outline-text-3" id="text-5-1">
+<p>
+P = {P1, P2, P3, P4}   T = {T1, T2, T3}
+</p>
+
+<p>
+P1* = {T2}       P2* = {T1}
+P3* = {T3}       P4* = {T1}
+</p>
+
+<p>
+t1* = {P1, P2}   t2* = {P2}
+t3* = {P4}
+</p>
+</div>
+</div>
+
+<div id="outline-container-org958b1b0" class="outline-3">
+<h3 id="org958b1b0"><span class="section-number-3">5.2</span> Start i = 1</h3>
+<div class="outline-text-3" id="text-5-2">
+<p>
+C = {}
+i = 1
+Pi-1 = P0 = {}
+Pi = P1
+</p>
+</div>
+
+<div id="outline-container-org6d9b52b" class="outline-4">
+<h4 id="org6d9b52b">1</h4>
+<div class="outline-text-4" id="text-org6d9b52b">
+<p>
+γ = {P1}    k[1] = 0
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgfbf13a0" class="outline-4">
+<h4 id="orgfbf13a0">2</h4>
+<div class="outline-text-4" id="text-orgfbf13a0">
+<p>
+k[1] = 1    w = Γ (P1 k[1]) = t2
+t2 ⊄ γ ∪ Pi-1 =&gt; γ = γ ∪ {t2} = {P1, t2}  k[2]=0
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgcd210f8" class="outline-4">
+<h4 id="orgcd210f8">3</h4>
+<div class="outline-text-4" id="text-orgcd210f8">
+<p>
+k[2] = 1    w = Γ (t2 k[2]) = P2
+P2 ⊄ γ ∪ Pi-1 =&gt; γ = γ ∪ {P2} = {P1, t2, P2}  k[3]=0
+</p>
+</div>
+</div>
+
+<div id="outline-container-org8a06102" class="outline-4">
+<h4 id="org8a06102">4</h4>
+<div class="outline-text-4" id="text-org8a06102">
+<p>
+k[3] = 1    w = Γ (P2 k[3]) = t1
+t1 ⊄ γ ∪ Pi-1 =&gt; γ = γ ∪ {t1} = {P1, t2, P2, t1}  k[4]=0
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgeca90c6" class="outline-4">
+<h4 id="orgeca90c6">5</h4>
+<div class="outline-text-4" id="text-orgeca90c6">
+<p>
+k[4] = 1    w = Γ (t1 k[4]) = P1 = Pi
+</p>
+
+<p>
+γ = γ ∪ {w}
+C = C ∪ {γ}
+C = {{P1, t2, P2, t1, P1}}
+</p>
+
+<p>
+proceed to next child
+k[4] = 2 = |t1*|
+</p>
+</div>
+</div>
+
+<div id="outline-container-org3ab4a0a" class="outline-4">
+<h4 id="org3ab4a0a">6</h4>
+<div class="outline-text-4" id="text-org3ab4a0a">
+<p>
+k[4] = 2    w = Γ (t1 k[4]) = P3
+P3 ⊄ γ ∪ Pi-1 =&gt; γ = γ ∪ {P3} = {P1, t2, P2, t1, P3}  k[5]=0
+</p>
+</div>
+</div>
+
+<div id="outline-container-orga7e1ea3" class="outline-4">
+<h4 id="orga7e1ea3">7</h4>
+<div class="outline-text-4" id="text-orga7e1ea3">
+<p>
+k[5] = 1    w = Γ (P3 k[5]) = t3
+t3 ⊄ γ ∪ Pi-1 =&gt; γ = γ ∪ {t3} = {P1, t2, P2, t1, P3, t3}  k[6]=0
+</p>
+</div>
+</div>
+
+<div id="outline-container-org68ab1ad" class="outline-4">
+<h4 id="org68ab1ad">8</h4>
+<div class="outline-text-4" id="text-org68ab1ad">
+<p>
+k[6] = 1    w = Γ (t3 k[6]) = P4
+P4 ⊄ γ ∪ Pi-1 =&gt; γ = γ ∪ {P4} = {P1, t2, P2, t1, P3, t3, P4}  k[7]=0
+</p>
+</div>
+</div>
+
+<div id="outline-container-org4d9d97b" class="outline-4">
+<h4 id="org4d9d97b">9</h4>
+<div class="outline-text-4" id="text-org4d9d97b">
+<p>
+k[7] = 1    w = Γ (P4 k[7]) = t1 is in gamma
+rule 3, proceed to next child of k[7], k[7] = 2
+</p>
+</div>
+</div>
+
+<div id="outline-container-org932f89e" class="outline-4">
+<h4 id="org932f89e">10</h4>
+<div class="outline-text-4" id="text-org932f89e">
+<p>
+k[7] = 2 &gt; |P4*| =&gt; Remove P4
+γ = {P1, t2, P2, t1, P3, t3}
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgbe8803f" class="outline-4">
+<h4 id="orgbe8803f">11</h4>
+<div class="outline-text-4" id="text-orgbe8803f">
+<p>
+k[6] = 2 &gt; |t3*| =&gt; Remove t3
+γ = {P1, t2, P2, t1, P3}
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgaedb2ac" class="outline-4">
+<h4 id="orgaedb2ac">12</h4>
+<div class="outline-text-4" id="text-orgaedb2ac">
+<p>
+k[5] = 2 &gt; |t3*| =&gt; Remove t3
+γ = {P1, t2, P2, t1}
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgfef6d55" class="outline-4">
+<h4 id="orgfef6d55">13</h4>
+<div class="outline-text-4" id="text-orgfef6d55">
+<p>
+k[4] = 3 &gt; |t1*| =&gt; Remove t1
+γ = {P1, t2, P2}
+</p>
+</div>
+</div>
+
+<div id="outline-container-org365b61d" class="outline-4">
+<h4 id="org365b61d">14</h4>
+<div class="outline-text-4" id="text-org365b61d">
+<p>
+k[3] = 2 &gt; |P2*| =&gt; Remove P2
+γ = {P1, t2}
+</p>
+</div>
+</div>
+
+<div id="outline-container-org7fd3013" class="outline-4">
+<h4 id="org7fd3013">15</h4>
+<div class="outline-text-4" id="text-org7fd3013">
+<p>
+k[2] = 2 &gt; |t2*| =&gt; Remove t2
+γ = {P1}
+</p>
+</div>
+</div>
+
+<div id="outline-container-orga9f87d0" class="outline-4">
+<h4 id="orga9f87d0">16</h4>
+<div class="outline-text-4" id="text-orga9f87d0">
+<p>
+k[1] = 2 &gt; |P1*| =&gt; Remove P1
+γ = {}
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org7390a2b" class="outline-3">
+<h3 id="org7390a2b"><span class="section-number-3">5.3</span> Start i = 2</h3>
+<div class="outline-text-3" id="text-5-3">
+<p>
+C = {{P1, t2, P2, t1}}
+i = 2
+Pi-1 = {P1}
+Pi = P2
+</p>
+</div>
+
+<div id="outline-container-org8246a77" class="outline-4">
+<h4 id="org8246a77">1</h4>
+<div class="outline-text-4" id="text-org8246a77">
+<p>
+γ = {P2}     k[1] = 0
+</p>
+</div>
+</div>
+
+<div id="outline-container-org8a74337" class="outline-4">
+<h4 id="org8a74337">2</h4>
+<div class="outline-text-4" id="text-org8a74337">
+<p>
+k[1] = 1    w = Γ (P2 k[1]) = t1
+t1 ⊄ γ ∪ Pi-1 =&gt; γ = γ ∪ {t1} = {P2, t1}  k[2]=0
+</p>
+</div>
+</div>
+
+<div id="outline-container-org48d72d6" class="outline-4">
+<h4 id="org48d72d6">3</h4>
+<div class="outline-text-4" id="text-org48d72d6">
+<p>
+k[2] = 1    w = Γ (t1 k[2]) = P1
+w ⊂ Pi-1, move to next child
+</p>
+
+<p>
+k[2] = 2    w = Γ (t1 k[2]) = P3
+P3 ⊄ γ ∪ Pi-1 =&gt; γ = γ ∪ {P3} = {P2, t1, P3}  k[3]=0
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgfb29239" class="outline-4">
+<h4 id="orgfb29239">4</h4>
+<div class="outline-text-4" id="text-orgfb29239">
+<p>
+k[3] = 1    w = Γ (P3 k[3]) = t3
+t3 ⊄ γ ∪ Pi-1 =&gt; γ = γ ∪ {t3} = {P2, t1, P3, t3}  k[4]=0
+</p>
+</div>
+</div>
+
+<div id="outline-container-org683a2f8" class="outline-4">
+<h4 id="org683a2f8">5</h4>
+<div class="outline-text-4" id="text-org683a2f8">
+<p>
+k[4] = 1    w = Γ (t3 k[4]) = P4
+P4 ⊄ γ ∪ Pi-1 =&gt; γ = γ ∪ {P4} = {P2, t1, P3, t3, P4}  k[5]=0
+</p>
+</div>
+</div>
+
+<div id="outline-container-org8e19511" class="outline-4">
+<h4 id="org8e19511">6</h4>
+<div class="outline-text-4" id="text-org8e19511">
+<p>
+k[5] = 1    w = Γ (P4 k[5]) = t1 is in gamma
+rule 3, proceed to next child of k[5], k[5] = 2
+</p>
+</div>
+</div>
+
+<div id="outline-container-org15a6145" class="outline-4">
+<h4 id="org15a6145">7</h4>
+<div class="outline-text-4" id="text-org15a6145">
+<p>
+k[5] = 2 &gt; |P4*| =&gt; Remove P4
+γ = {P2, t1, P3, t3}
+</p>
+</div>
+</div>
+
+<div id="outline-container-org376c3c4" class="outline-4">
+<h4 id="org376c3c4">8</h4>
+<div class="outline-text-4" id="text-org376c3c4">
+<p>
+k[4] = 2 &gt; |t3*| =&gt; Remove t3
+γ = {P2, t1, P3}
+</p>
+</div>
+</div>
+
+<div id="outline-container-org2617a34" class="outline-4">
+<h4 id="org2617a34">9</h4>
+<div class="outline-text-4" id="text-org2617a34">
+<p>
+k[3] = 2 &gt; |P3*| =&gt; Remove P3
+γ = {P2, t1}
+</p>
+</div>
+</div>
+
+<div id="outline-container-org02ce934" class="outline-4">
+<h4 id="org02ce934">10</h4>
+<div class="outline-text-4" id="text-org02ce934">
+<p>
+k[2] = 3 &gt; |t1*| =&gt; Remove t1
+γ = {P2}
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgc0011a2" class="outline-4">
+<h4 id="orgc0011a2">11</h4>
+<div class="outline-text-4" id="text-orgc0011a2">
+<p>
+k[1] = 2 &gt; |P2*| =&gt; Remove P2
+γ = {}
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org9872ac6" class="outline-3">
+<h3 id="org9872ac6"><span class="section-number-3">5.4</span> Start i = 3</h3>
+<div class="outline-text-3" id="text-5-4">
+<p>
+C = {{P1, t2, P2, t1}}
+i = 3
+Pi-1 = {P1, P2}
+Pi = P3
+</p>
+</div>
+
+<div id="outline-container-orgd3b8e07" class="outline-4">
+<h4 id="orgd3b8e07">1</h4>
+<div class="outline-text-4" id="text-orgd3b8e07">
+<p>
+γ = {P3}    k[1] = 0
+</p>
+</div>
+</div>
+
+<div id="outline-container-org2608f52" class="outline-4">
+<h4 id="org2608f52">2</h4>
+<div class="outline-text-4" id="text-org2608f52">
+<p>
+k[1] = 1    w = Γ (P3 k[1]) = t3
+t3 ⊄ γ ∪ Pi-1 =&gt; γ = γ ∪ {t3} = {P3, t3}  k[2]=0
+</p>
+</div>
+</div>
+
+<div id="outline-container-org9185f29" class="outline-4">
+<h4 id="org9185f29">3</h4>
+<div class="outline-text-4" id="text-org9185f29">
+<p>
+k[2] = 1    w = Γ (t3 k[2]) = P4
+P4 ⊄ γ ∪ Pi-1 =&gt; γ = γ ∪ {P4} = {P3, t3, P4}  k[3]=0
+</p>
+</div>
+</div>
+
+<div id="outline-container-org8b2800e" class="outline-4">
+<h4 id="org8b2800e">4</h4>
+<div class="outline-text-4" id="text-org8b2800e">
+<p>
+k[3] = 1    w = Γ (P4 k[3]) = t1
+t1 ⊄ γ ∪ Pi-1 =&gt; γ = γ ∪ {t1} = {P3, t3, P4, t1}  k[4]=0
+</p>
+</div>
+</div>
+
+<div id="outline-container-org9e3efe9" class="outline-4">
+<h4 id="org9e3efe9">5</h4>
+<div class="outline-text-4" id="text-org9e3efe9">
+<p>
+k[4] = 1    w = Γ (t1 k[4]) = P1
+w ⊂ Pi-1, proceed to next child of k[4], k[4] = 2
+</p>
+</div>
+</div>
+
+<div id="outline-container-org0c70c99" class="outline-4">
+<h4 id="org0c70c99">6</h4>
+<div class="outline-text-4" id="text-org0c70c99">
+<p>
+k[4] = 2    w = Γ (t1 k[4]) = P3 = Pi
+</p>
+
+<p>
+γ = γ ∪ {w}
+C = C ∪ {γ}
+C = {{P1, t2, P2, t1, P1}, {P3, t3, P4, t1, P3}}
+</p>
+
+<p>
+proceed to next child
+k[4] = 3 &gt; |t1*| =&gt; Remove t1
+γ = {P3, t3, P4}
+</p>
+</div>
+</div>
+
+<div id="outline-container-org13bb625" class="outline-4">
+<h4 id="org13bb625">7</h4>
+<div class="outline-text-4" id="text-org13bb625">
+<p>
+k[3] = 2 &gt; |P4*| =&gt; Remove P2
+γ = {P3, t3}
+</p>
+</div>
+</div>
+
+<div id="outline-container-org36bb578" class="outline-4">
+<h4 id="org36bb578">8</h4>
+<div class="outline-text-4" id="text-org36bb578">
+<p>
+k[2] = 2 &gt; |t3*| =&gt; Remove t3
+γ = {P3}
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgfdc333a" class="outline-4">
+<h4 id="orgfdc333a">9</h4>
+<div class="outline-text-4" id="text-orgfdc333a">
+<p>
+k[1] = 2 &gt; |P3*| =&gt; Remove P3
+γ = {}
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org0b9f676" class="outline-3">
+<h3 id="org0b9f676"><span class="section-number-3">5.5</span> Start i = 4</h3>
+<div class="outline-text-3" id="text-5-5">
+<p>
+C = {{P1, t2, P2, t1, P1}, {P3, t3, P4, t1, P3}}
+i = 3
+Pi-1 = {P1, P2, P3}
+Pi = P4
+</p>
+</div>
+
+<div id="outline-container-orgc4b4080" class="outline-4">
+<h4 id="orgc4b4080">1</h4>
+<div class="outline-text-4" id="text-orgc4b4080">
+<p>
+γ = {P4}    k[1] = 0
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgc0beaed" class="outline-4">
+<h4 id="orgc0beaed">2</h4>
+<div class="outline-text-4" id="text-orgc0beaed">
+<p>
+k[1] = 1    w = Γ (P4 k[1]) = t1
+t1 ⊄ γ ∪ Pi-1 =&gt; γ = γ ∪ {t1} = {P4, t1}  k[2]=0
+</p>
+</div>
+</div>
+
+<div id="outline-container-orged77d70" class="outline-4">
+<h4 id="orged77d70">3</h4>
+<div class="outline-text-4" id="text-orged77d70">
+<p>
+k[2] = 1    w = Γ (t1 k[2]) = P1
+P1 ⊂ Pi-1, proceed to next child of k[2], k[2] = 2
+</p>
+</div>
+</div>
+
+<div id="outline-container-org661e2ad" class="outline-4">
+<h4 id="org661e2ad">4</h4>
+<div class="outline-text-4" id="text-org661e2ad">
+<p>
+k[2] = 2    w = Γ (t1 k[2]) = P3
+P3 ⊂ Pi-1, proceed to next child of k[2], k[2] = 3
+</p>
+
+<p>
+k[2] = 3 &gt; |t1*| =&gt; Remove t1
+γ = {P3}
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgb1ea3f8" class="outline-4">
+<h4 id="orgb1ea3f8">5</h4>
+<div class="outline-text-4" id="text-orgb1ea3f8">
+<p>
+k[1] = 2 &gt; |P3*| =&gt; Remove P3
+γ = {}
+</p>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgb473a8d" class="outline-2">
+<h2 id="orgb473a8d"><span class="section-number-2">6</span> Bayesian Statistics</h2>
+<div class="outline-text-2" id="text-6">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-right">N</th>
+<th scope="col" class="org-right">Yn</th>
+<th scope="col" class="org-right">δ</th>
+<th scope="col" class="org-right">γ</th>
+<th scope="col" class="org-right">Eb{R}</th>
+<th scope="col" class="org-right">Var{r}</th>
+<th scope="col" class="org-right">σ{r}</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-right">240</td>
+<td class="org-right">51</td>
+<td class="org-right">52</td>
+<td class="org-right">190</td>
+<td class="org-right">0.21487603</td>
+<td class="org-right">6.9425648e-4</td>
+<td class="org-right">0.026348747</td>
+</tr>
+
+<tr>
+<td class="org-right">240</td>
+<td class="org-right">44</td>
+<td class="org-right">45</td>
+<td class="org-right">197</td>
+<td class="org-right">0.18595041</td>
+<td class="org-right">6.2293357e-4</td>
+<td class="org-right">0.024958637</td>
+</tr>
+
+<tr>
+<td class="org-right">240</td>
+<td class="org-right">47</td>
+<td class="org-right">48</td>
+<td class="org-right">194</td>
+<td class="org-right">0.19834711</td>
+<td class="org-right">6.5434375e-4</td>
+<td class="org-right">0.025580144</td>
+</tr>
+
+<tr>
+<td class="org-right">240</td>
+<td class="org-right">45</td>
+<td class="org-right">46</td>
+<td class="org-right">196</td>
+<td class="org-right">0.19008264</td>
+<td class="org-right">6.3354417e-4</td>
+<td class="org-right">0.025170303</td>
+</tr>
+
+<tr>
+<td class="org-right">240</td>
+<td class="org-right">28</td>
+<td class="org-right">29</td>
+<td class="org-right">213</td>
+<td class="org-right">0.11983471</td>
+<td class="org-right">4.3405083e-4</td>
+<td class="org-right">0.020833887</td>
+</tr>
+
+<tr>
+<td class="org-right">240</td>
+<td class="org-right">25</td>
+<td class="org-right">26</td>
+<td class="org-right">216</td>
+<td class="org-right">0.10743802</td>
+<td class="org-right">3.9463000e-4</td>
+<td class="org-right">0.019865296</td>
+</tr>
+</tbody>
+</table>
+
+<script src="../assets/jquery-3.3.1.min.js"></script>
+<script src="../assets/notes.js"></script>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="date">Date: 2018-04-04 Wed 11:54</p>
+<p class="author">Author: Damian Chrzanowski</p>
+<p class="date">Created: 2018-12-13 Thu 20:28</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

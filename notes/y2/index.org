@@ -1,0 +1,27 @@
+#+TITLE: Software Design Year 2 Notes
+#+DATE: <2016-11-12 Sat>
+#+AUTHOR: Damian Chrzanowski
+#+EMAIL: pjdamian.chrzanowski@gmail.com
+#+HTML_HEAD: <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="../assets/org.css"/>
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="../assets/org_index.css"/>
+#+HTML_HEAD: <link rel="icon" href="../assets/favicon.ico">
+
+[[file:../index.org][Home]]
+
+[[file:agile-methodologies.org][Agile Methodologies]]
+
+[[file:databases.org][Databases]]
+
+[[file:maths.org][Maths]]
+
+[[file:mobile-apps.org][Mobile Apps]]
+
+[[file:networks.org][Networks]]
+
+[[file:web-dev.org][Web Development]]
+
+#+BEGIN_EXPORT html
+<script src="../assets/jquery-3.3.1.min.js"></script>
+<script src="../assets/notes.js"></script>
+#+END_EXPORT

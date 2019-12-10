@@ -1,0 +1,672 @@
+#+TITLE: Maths assignment
+#+DATE: [2018-04-04 Wed 11:54]
+#+AUTHOR: Damian Chrzanowski
+#+EMAIL: pjdamian.chrzanowski@gmail.com
+#+OPTIONS: TOC:2 num:2
+#+HTML_HEAD: <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="../assets/org.css"/>
+#+HTML_HEAD: <link rel="icon" href="../assets/favicon.ico">
+
+[[file:index.org][Home Page]]
+
+* Bipartite graphs and trees
+** Question 1
+   #+BEGIN_VERSE
+   DEFINITION:
+   Bipirtite Graph:
+   Bipirtite graph is on in which all vertices of set A are connected to set B.
+   Tree Graph:
+   Simple, connected graph that has no cycles.
+   #+END_VERSE
+   #+BEGIN_VERSE
+   A graph with at least two vertices is a tree if and only if there is a unique path that joins
+   every pair of distinct vertices in *G*.  And therefore the CONNECTED attribute of the tree is the
+   path of the graph *G*, and the ACYCLIC condition is met by uniqueness of the path.
+   #+END_VERSE
+   #+BEGIN_VERSE
+   To prove that a graph is a tree, pick any vertex *v* of the tree graph *G* and make it the ROOT
+   of the tree. Now let *u* to be any vertex of the ree graph *G*.  If *G* is a tree then there
+   exists a unique path *P* between *v* and *u*. Now let *Ve* to be the set of of all vertices for
+   which the length *P* is even, and let *Vo* to be the set of all vertices
+   for which the length *P* is odd.
+
+   Example Graph:
+   #+END_VERSE
+   [[file:images/Question 1/screenshot_2018-04-04_12-38-24.png]]
+   mark v0 as A, v1 as B....so on
+   #+BEGIN_VERSE
+   The two sets *Ve* and *Vo* represent the Bipirtite attribute of the graph. Now pick any vertex
+   from the set *Vo* and any vertex from *Ve* if there exists a unique path between the two vertices
+   then the graph is a tree. If there exists more than one path (a loop or a cycle) between the any
+   vertex in *Vo* and any vertex in *Ve* then the graph is not a tree.
+   #+END_VERSE
+** Question 2
+   #+BEGIN_VERSE
+   From the definition of a tree: Simple, connected graph with no cycles. This definition implies
+   that any two adjecant vertices *u* and *v* in the graph *G* are connected by exactly one edge
+   *e*, if any two adjecant vertices are connected by more than one edge then the grap *G* is not a
+   tree.
+
+   The simplest way of proving that a tree with *n* vertices has *n-1* edges is to traverse through
+   the tree starting at its root. Base case: If the tree has 1 vertex, then there are no edges thus there is
+   a proof, that a tree with *n* vertices (where n = 1), has *n-1* edges (here edges are 0). Therefore
+This is the trivial case.
+
+   For a more complex tree we use the Induction Hypothesis:
+   Let the amount of vertices equal to *n, where n > 1*, make an assumption that *n-1* is the edge count in a tree *G*
+   and is true for all trees.
+
+   Now let *v* be any leaf in a tree. (A leaf is any vertex *v* with a degree of one).
+   Let *e* be a unique edge that connects *v* and an adjecant vertex *w*.
+
+   Now remove the edge *e* and the vertex *v*. Now the newly created graph *T* consists of only the vertex *v*
+   and is still a tree (it is connected and has no cycles, since *G* was connected and had no cycles).
+   [[file:images/Bipartite graphs and trees/screenshot_2018-04-04_13-41-52.png]]
+
+   Now let *n1* be the count of vertices in *G* and *n2* be the count of vertices in *T*. Thus *n1 + n2 = n*.
+   By the induction hypothesis the edges in *G* and *T* are *n1* and *n2* respectively.
+   Now the number of edges in G = n1 - 1 + n2 - 1 + 1 ( +1 since we removed one) = n1 + n2 - 1 = n - 1
+   #+END_VERSE
+** Question 3
+   #+BEGIN_VERSE
+   Handshaking Lemma says that: The sum of all the vertex-degrees in any graph G is equal to twice the number of edges.
+
+   Tree with a vertex count n, where n >= 2
+
+   From Question 2 we know that every tree has a n-1 edges, and via the handshaking lemma the total
+   number of edge degrees in a graph is therefore 2(n-1).
+
+   And thus if in a tree with n>=2 vertices there exists only one, or less vertices of degree one,
+   then the sum of all degress of all the vertices would have to be 2(n -1) + 1 (or 2(n - 1) + 2 for
+   0 vertices), to comply with the question at hand, and that is not possible since the tree must
+   follow to the handshaking lemma and be equal to 2(n-1).
+   #+END_VERSE
+** Question 4
+*** (a)
+    #+BEGIN_VERSE
+   C5 going into C5', back into C5
+    #+END_VERSE
+    [[file:images/Bipartite graphs and trees/screenshot_2018-04-04_14-42-13.png]]
+*** (b)
+    #+BEGIN_VERSE
+    If some graph *G* with n vertices is self-complementary then it contains half of the
+    edges that are possible in a complete graph *K* with n vertices.
+
+    The other half of the edges can be displayed in the complement of the graph *G'*.
+
+    Therefore *G* and *G'* must have the same number of edges, due to isomorphism.
+    *G* ∪ *G'* = *Kn*
+    Therefore number of edges in a complete graph = n(n-1) / 2, handshaking lemma
+    And thus number of edges in *G* or *G'* = n(n-1) / 4
+    as a consequence n = 4k or n-1 = 4k => n = 4k + 1
+    #+END_VERSE
+** Question 5
+   Use both the version from online and the class
+*** Expression of the number of edges in L(G) from the graph (G) in term of vertex degrees
+    [[file:images/Bipartite graphs and trees/screenshot_2018-04-04_16-29-53.png]]
+*** (a)
+    #+BEGIN_VERSE
+    Cycling graph is a graph in which a cycle is formed and each vertex has a degree of 2.
+    This characteristic makes the smallest cycle graph at c3.
+
+
+    If *G* is a cycle graph then *L(G)* is isomorphic to *G*, since each vertex and edge
+    will be swapped.
+    Show example drawing with c3.
+
+    Using the expression for the number of edges we can conclude that *L(G)* has the
+    same amount of edges as *G*. To sum it up: L(G) has the same amount of vertices, edges
+    , total amount of vertex degress and thus each vertex has the vertex degree of 2.
+    All of which contribute to the statement that a *L(Cn)* is isomorphic to *Cn* since
+    the number of edges joining corresponding pairs of vertices in *G* and *L(G)* is equal
+    #+END_VERSE
+*** (b)
+    Draw out a K5 and its L(K5). then calculate out and show that the expressions are true.
+* Finite State Machines
+** Question 1
+   #+BEGIN_VERSE
+   B B C C
+   B B C C (A)...
+
+   (A)... B B C C
+   (A)... B B C C (A)...
+
+   (BC)... B C C
+   (BC)... B C C (A)...
+
+   (A)... (BC)... B C C
+   (A)... (BC)... B C C (A)...
+
+
+   B (BCA)... C
+   B (BCA)... C (A)...
+
+   (A)... B (BCA)... C
+   (A)... B (BCA)... C (A)...
+
+   (BC)... (BCA)... C
+   (BC)... (BCA)... C (A)...
+
+   (A)... (BC)... (BCA)... C
+   (A)... (BC)... (BCA)... C (A)...
+   #+END_VERSE
+
+** Question 2
+   #+BEGIN_VERSE
+   B C C B
+   B C C A
+
+   B B C B
+   B B C A
+
+   B C B C B
+   B C B C A
+
+   B B B C B
+   B B B C A
+
+   (B C B A)... C B
+   (B C B A)... C A
+
+   (B B B A)... C B
+   (B B B A)... C A
+
+   (B C B A B B B A)... C B
+   (B B B A B C B A)... C A
+   #+END_VERSE
+
+* Eulerian Graphs/Digraphs
+
+** (a)
+   #+BEGIN_VERSE
+   01 12 23 34
+   40 02 24 41
+   13 30
+
+   01 12 22 23 33
+   34 44 40 02 24
+   41 11 13 30 00
+   #+END_VERSE
+
+** (b)
+   ABCDEF -> BCDEF -> 0 1
+
+   | BCDEF |   |   val | order | !!!!!!!!!!!!!!!!!!!!!!!!!!!!! | BCDEF |   |   val | order |
+   |-------+---+-------+-------+-------------------------------+-------+---+-------+-------|
+   | 00000 |   | 00000 |     1 |                               | 10000 |   | 00000 |    64 |
+   |       |   | 00001 |     2 |                               |       |   | 00001 |    48 |
+   |-------+---+-------+-------+-------------------------------+-------+---+-------+-------|
+   | 00001 |   | 00010 |    49 |                               | 10001 |   | 00010 |    57 |
+   |       |   | 00011 |     3 |                               |       |   | 00011 |    28 |
+   |-------+---+-------+-------+-------------------------------+-------+---+-------+-------|
+   | 00010 |   | 00100 |    58 |                               | 10010 |   | 00100 |    61 |
+   |       |   | 00101 |    50 |                               |       |   | 00101 |    42 |
+   |-------+---+-------+-------+-------------------------------+-------+---+-------+-------|
+   | 00011 |   | 00110 |    29 |                               | 10011 |   | 00110 |    38 |
+   |       |   | 00111 |     4 |                               |       |   | 00111 |    17 |
+   |-------+---+-------+-------+-------------------------------+-------+---+-------+-------|
+   | 00100 |   | 01000 |    62 |                               | 10100 |   | 01000 |    55 |
+   |       |   | 01001 |    59 |                               |       |   | 01001 |    36 |
+   |-------+---+-------+-------+-------------------------------+-------+---+-------+-------|
+   | 00101 |   | 01010 |    51 |                               | 10101 |   | 01010 |    53 |
+   |       |   | 01011 |    43 |                               |       |   | 01011 |    22 |
+   |-------+---+-------+-------+-------------------------------+-------+---+-------+-------|
+   | 00110 |   | 01100 |    39 |                               | 10110 |   | 01100 |    45 |
+   |       |   | 01101 |    30 |                               |       |   | 01101 |    33 |
+   |-------+---+-------+-------+-------------------------------+-------+---+-------+-------|
+   | 00111 |   | 01110 |    18 |                               | 10111 |   | 01110 |    24 |
+   |       |   | 01111 |     5 |                               |       |   | 01111 |    12 |
+   |-------+---+-------+-------+-------------------------------+-------+---+-------+-------|
+   | 01000 |   | 10000 |    63 |                               | 11000 |   | 10000 |    47 |
+   |       |   | 10001 |    56 |                               |       |   | 10001 |    27 |
+   |-------+---+-------+-------+-------------------------------+-------+---+-------+-------|
+   | 01001 |   | 10010 |    60 |                               | 11001 |   | 10010 |    41 |
+   |       |   | 10011 |    37 |                               |       |   | 10011 |    16 |
+   |-------+---+-------+-------+-------------------------------+-------+---+-------+-------|
+   | 01010 |   | 10100 |    54 |                               | 11010 |   | 10100 |    35 |
+   |       |   | 10101 |    52 |                               |       |   | 10101 |    21 |
+   |-------+---+-------+-------+-------------------------------+-------+---+-------+-------|
+   | 01011 |   | 10110 |    44 |                               | 11011 |   | 10110 |    32 |
+   |       |   | 10111 |    23 |                               |       |   | 10111 |    11 |
+   |-------+---+-------+-------+-------------------------------+-------+---+-------+-------|
+   | 01100 |   | 11000 |    46 |                               | 11100 |   | 11000 |    26 |
+   |       |   | 11001 |    40 |                               |       |   | 11001 |    15 |
+   |-------+---+-------+-------+-------------------------------+-------+---+-------+-------|
+   | 01101 |   | 11010 |    34 |                               | 11101 |   | 11010 |    20 |
+   |       |   | 11011 |    31 |                               |       |   | 11011 |    10 |
+   |-------+---+-------+-------+-------------------------------+-------+---+-------+-------|
+   | 01110 |   | 11100 |    25 |                               | 11110 |   | 11100 |    14 |
+   |       |   | 11101 |    19 |                               |       |   | 11101 |     9 |
+   |-------+---+-------+-------+-------------------------------+-------+---+-------+-------|
+   | 01111 |   | 11110 |    13 |                               | 11111 |   | 11110 |     8 |
+   |       |   | 11111 |     6 |                               |       |   | 11111 |     7 |
+
+
+   - Sequence: 00000 ! 0 1 1 1 1 1 1 0 1 1 1 1 0 0 1 1 1 0 1 0 1 1 1 0 0 0 1 1 0 1 1 0 1 0 0 1 1 0 0 1 0 1 1 0 0 0 0 1 0 1 0 1 0 0 0 1 0 0 1 0 0 0 0 0
+
+   | ABCDEF | dec | ABCDEF | dec | ABCDEF | dec | ABCDEF | dec | ABCDEF | dec |
+   |--------+-----+--------+-----+--------+-----+--------+-----+--------+-----|
+   | 011111 |  31 | 110101 |  53 | 101001 |  41 | 001010 |  10 | 000001 |   1 |
+   |--------+-----+--------+-----+--------+-----+--------+-----+--------+-----|
+   | 111111 |  63 | 101011 |  43 | 010011 |  19 | 010101 |  21 | 000011 |   3 |
+   |--------+-----+--------+-----+--------+-----+--------+-----+--------+-----|
+   | 111110 |  62 | 010111 |  23 | 100110 |  38 | 101010 |  42 | 000111 |   7 |
+   |--------+-----+--------+-----+--------+-----+--------+-----+--------+-----|
+   | 111101 |  61 | 101110 |  46 | 001100 |  12 | 010100 |  20 | 001111 |  15 |
+   |--------+-----+--------+-----+--------+-----+--------+-----+--------+-----|
+   | 111011 |  59 | 011100 |  28 | 011001 |  25 | 101000 |  40 |        |     |
+   |--------+-----+--------+-----+--------+-----+--------+-----+--------+-----|
+   | 110111 |  55 | 111000 |  56 | 110010 |  50 | 010001 |  17 |        |     |
+   |--------+-----+--------+-----+--------+-----+--------+-----+--------+-----|
+   | 101111 |  47 | 110001 |  49 | 100101 |  37 | 100010 |  34 |        |     |
+   |--------+-----+--------+-----+--------+-----+--------+-----+--------+-----|
+   | 011110 |  30 | 100011 |  35 | 001011 |  11 | 000100 |   4 |        |     |
+   |--------+-----+--------+-----+--------+-----+--------+-----+--------+-----|
+   | 111100 |  60 | 000110 |   6 | 010110 |  22 | 001001 |   9 |        |     |
+   |--------+-----+--------+-----+--------+-----+--------+-----+--------+-----|
+   | 111001 |  57 | 001101 |  13 | 101100 |  44 | 010010 |  18 |        |     |
+   |--------+-----+--------+-----+--------+-----+--------+-----+--------+-----|
+   | 110011 |  51 | 011011 |  27 | 011000 |  24 | 100100 |  36 |        |     |
+   |--------+-----+--------+-----+--------+-----+--------+-----+--------+-----|
+   | 100111 |  39 | 110110 |  54 | 110000 |  48 | 001000 |   8 |        |     |
+   |--------+-----+--------+-----+--------+-----+--------+-----+--------+-----|
+   | 001110 |  14 | 101101 |  45 | 100001 |  33 | 010000 |  16 |        |     |
+   |--------+-----+--------+-----+--------+-----+--------+-----+--------+-----|
+   | 011101 |  29 | 011010 |  26 | 000010 |   2 | 100000 |  32 |        |     |
+   |--------+-----+--------+-----+--------+-----+--------+-----+--------+-----|
+   | 111010 |  58 | 110100 |  52 | 000101 |   5 | 000000 |   0 |        |     |
+
+* Path Algorithms
+
+** (a)
+
+*** Shortest path
+
+    | Vertices | S   |   a |   b | c   |   d |    e |    f |   g |    h |    i |    j |    k |    T |
+    |----------+-----+-----+-----+-----+-----+------+------+-----+------+------+------+------+------|
+    | S        | *0* |   5 |   5 | 3   |     |      |      |     |      |      |      |      |      |
+    | c        |     |   5 |   5 | *3* |  11 |      |      |   7 |      |      |      |      |      |
+    | a,b      |     | *5* | *5* |     |   9 |   12 |      |   7 |      |      |      |      |      |
+    | g        |     |     |     |     |   9 |   12 |      | *7* |   11 |      |      |      |      |
+    | d        |     |     |     |     | *9* |   12 |   15 |     |   11 |   16 |      |      |      |
+    | h        |     |     |     |     |     |   12 |   15 |     | *11* |   16 |      |   17 |      |
+    | e        |     |     |     |     |     | *12* |   15 |     |      |   16 |   16 |   17 |      |
+    | f        |     |     |     |     |     |      | *15* |     |      |   16 |   16 |   17 |      |
+    | i,j      |     |     |     |     |     |      |      |     |      | *16* | *16* |   17 |   23 |
+    | k        |     |     |     |     |     |      |      |     |      |      |      | *17* |   23 |
+    | T        |     |     |     |     |     |      |      |     |      |      |      |      | *23* |
+
+*** Shortest Path proof
+    #+BEGIN_VERSE
+    -----------------------------------------------------------------------------
+    Potential (T) - w(i, T) = 23 - 7 = 16 = Potential (i) → Add i,T
+    Potential (T) - w(j, T) = 23 - 8 = 15 ≠ Potential (j) → Ignore i,T
+    Potential (T) - w(k, T) = 23 - 9 = 14 ≠ Potential (k) → Ignore i,T
+    -----------------------------------------------------------------------------
+    Potential (i) - w(h, i) = 16 - 6 = 10 ≠ Potential (h) → Ignore h, i
+    Potential (i) - w(d, i) = 16 - 7 = 9 = Potential (d) → Add d, i
+    -----------------------------------------------------------------------------
+    Potential (d) - w(b, d) = 9 - 4 = 5 = Potential (b) → Add b, d
+    Potential (d) - w(c, d) = 9 - 8 = 1 ≠ Potential (c) → Ignore c, d
+    -----------------------------------------------------------------------------
+    Potential (b) - w(S, b) = 5 - 5 = 0 = Potential (S) → Add S, b
+    #+END_VERSE
+
+*** Longest path
+
+    | Vertices                | S   | a   | b   | c   | d    | e    | f    | g    | h    | i    | j    | k    | T    |
+    |-------------------------+-----+-----+-----+-----+------+------+------+------+------+------+------+------+------|
+    | S                       | *0* | *5* | *5* |     |      |      |      |      |      |      |      |      |      |
+    | S a b                   |     |     |     | *8* |      |      |      |      |      |      |      |      |      |
+    | S a b c                 |     |     |     |     | *16* |      |      | *12* |      |      |      |      |      |
+    | S a b c d g             |     |     |     |     |      | *20* | *22* |      |      |      |      |      |      |
+    | S a b c d g e f         |     |     |     |     |      |      |      |      | *27* |      | *24* |      |      |
+    | S a b c d g e f h j     |     |     |     |     |      |      |      |      |      | *33* |      | *33* | 32   |
+    | S a b c d g e f h j i k |     |     |     |     |      |      |      |      |      |      |      |      | *42* |
+
+*** Longest Path proof
+    #+BEGIN_VERSE
+    -----------------------------------------------------------------------------
+    Potential (T) - w(j, T) = 42 - 8 = 34 ≠ Potential (j) → Ignore j, T
+    Potential (T) - w(i, T) = 42 - 7 = 35 ≠ Potential (i) → Ignore i, T
+    Potential (T) - w(k, T) = 42 - 9 = 33 = Potential (k) → Add k, T
+    -----------------------------------------------------------------------------
+    Potential (k) - w(h, k) = 33 - 6 = 27 = Potential (h) → Add h, k
+    -----------------------------------------------------------------------------
+    Potential (h) - w(f, h) = 27 - 5 = 22 = Potential (f) → Add f, h
+    Potential (h) - w(g, h) = 27 - 4 = 23 ≠ Potential (h) → Ignore g, h
+    -----------------------------------------------------------------------------
+    Potential (f) - w(d, f) = 22 - 6 = 16 = Potential (d) → Add d, f
+    -----------------------------------------------------------------------------
+    Potential (d) - w(b, d) = 16 - 4 = 12 ≠ Potential (b) → Ignore b, d
+    Potential (d) - w(c, d) = 16 - 8 = 8 = Potential (c) → Add c, d
+    -----------------------------------------------------------------------------
+    Potential (c) - w(S, c) = 8 - 3 = 5 ≠ Potential (S) → Ignore S, c
+    Potential (c) - w(b, c) = 8 - 3 = 5 = Potential (b) → Add b, c
+    -----------------------------------------------------------------------------
+    Potential (b) - w(S, b) = 5 - 5 = 0 = Potential (S) → Add S, b
+    #+END_VERSE
+
+*** Scheduling
+
+    | Arcs     | Sa | Sb | Sc | ae | bd | bc | cd | cg | de | df | di | ej | fh | gh | hi | hk | iT | jT | kT |
+    |----------+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----|
+    | Earliest |  0 |  0 |  0 |  5 |  5 |  5 |  8 |  8 | 16 | 16 | 16 | 20 | 22 | 12 | 27 | 27 | 33 | 24 | 33 |
+    |----------+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----|
+    | Latest   | 18 |  0 |  5 | 23 | 12 |  5 |  8 | 19 | 26 | 16 | 28 | 30 | 22 | 23 | 29 | 27 | 35 | 34 | 33 |
+    |----------+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----|
+    | Float    | 18 |  0 |  5 | 18 |  7 |  0 |  0 | 11 | 10 |  0 | 12 | 10 |  0 | 11 |  2 |  0 |  2 | 10 |  0 |
+
+** (b)
+
+*** Shortest Path
+
+    | Vertices | S   | a   |   b |   c |    d | e   | f   |   g |   h |    i |    T |
+    |----------+-----+-----+-----+-----+------+-----+-----+-----+-----+------+------|
+    | S        | =0= | 3   |   6 |   5 |      |     |     |     |     |      |      |
+    | a        |     | =3= |   6 |   5 |      |     | 5   |     |     |      |      |
+    | c, f     |     |     |   6 | =5= |   12 |     | =5= |   9 |   9 |      |      |
+    | b        |     |     | =6= |     |   12 | 9   |     |   9 |   9 |      |      |
+    | e, h, g  |     |     |     |     |   12 | =9= |     | =9= | =9= |   14 |   18 |
+    | d        |     |     |     |     | =12= |     |     |     |     |   14 |   18 |
+    | i        |     |     |     |     |      |     |     |     |     | =14= |   18 |
+    | T        |     |     |     |     |      |     |     |     |     |      | =18= |
+
+*** Shortest path proof
+    #+BEGIN_VERSE
+    -----------------------------------------------------------------------------
+    Potential (T) - w(h, T) = 18 - 12 = 6 ≠ Potential (h) → Ignore h, T
+    Potential (T) - w(g, T) = 18 - 9 = 9 = Potential (g) → Add g, T
+    Potential (T) - w(i, T) = 18 - 6 = 12 ≠ Potential (i) → Ignore i, T
+    -----------------------------------------------------------------------------
+    Potential (g) - w(f, g) = 9 - 4 = 5 = Potential (f) → Add f, g
+    Potential (g) - w(e, g) = 9 - 3 = 6 ≠ Potential (e) → Ignore e, g
+    Potential (g) - w(d, g) = 9 - 6 = 3 ≠ Potential (d) → Ignore d, g
+    -----------------------------------------------------------------------------
+    Potential (f) - w(a, f) = 5 - 2 = 3 = Potential (a) → Add a, f
+    Potential (f) - w(b, f) = 5 - 5 = 0 ≠ Potential (b) → Ignore b, f
+    Potential (f) - w(e, f) = 5 - 6 = -1 ≠ Potential (e) → Ignore e, f
+    -----------------------------------------------------------------------------
+    Potential (a) - w(S, a) = 3 - 3 = 0 = Potential (S) → Add S, a
+    #+END_VERSE
+
+*** Longest Path
+
+    | Vertices            | S   | a   | b   | c   | d    | e    | f    | g    | h    | i    | T    |
+    |---------------------+-----+-----+-----+-----+------+------+------+------+------+------+------|
+    | S                   | =0= | =3= |     | =5= |      |      |      |      |      |      |      |
+    | S a c               |     |     | =9= |     |      |      |      |      |      |      |      |
+    | S a c b             |     |     |     |     |      | =12= |      |      |      |      |      |
+    | S a c b e           |     |     |     |     | =17= |      | =18= |      |      |      |      |
+    | S a c b e d f       |     |     |     |     |      |      |      | =23= |      |      |      |
+    | S a c b e d f g     |     |     |     |     |      |      |      |      | =29= | =28= | =32= |
+    | S a c b e d f g h i |     |     |     |     |      |      |      |      |      |      | =41= |
+
+*** Longest Path proof
+    #+BEGIN_VERSE
+    -----------------------------------------------------------------------------
+    Potential (T) - w(h, T) = 41 - 12 = 29 = Potential (h) → Add h, T
+    Potential (T) - w(g, T) = 41 - 9 = 32 ≠ Potential (g) → Ignore g, T
+    Potential (T) - w(i, T) = 41 - 6 = 35 ≠ Potential (i) → Ignore i, T
+    -----------------------------------------------------------------------------
+    Potential (h) - w(f, h) = 29 - 4 = 25 ≠ Potential (f) → Ignore f, h
+    Potential (h) - w(g, h) = 29 - 6 = 23 = Potential (g) → Add g, h
+    -----------------------------------------------------------------------------
+    Potential (g) - w(f, g) = 23 - 4 = 19 ≠ Potential (f) → Ignore f, g
+    Potential (g) - w(e, g) = 23 - 3 = 20 ≠ Potential (e) → Ignore e, g
+    Potential (g) - w(d, g) = 23 - 6 = 17 = Potential (d) → Add d, g
+    -----------------------------------------------------------------------------
+    Potential (d) - w(e, d) = 17 - 5 = 12 = Potential (e) → Add e, d
+    Potential (d) - w(b, d) = 17 - 7 = 10 ≠ Potential (b) → Ignore b, d
+    Potential (d) - w(c, d) = 17 - 7 = 10 ≠ Potential (c) → Ignore c, d
+    -----------------------------------------------------------------------------
+    Potential (e) - w(b, e) = 12 - 3 = 9 = Potential (b) → Add b, e
+    -----------------------------------------------------------------------------
+    Potential (b) - w(a, b) = 9 - 5 = 4 ≠ Potential (a) → Ignore a, b
+    Potential (b) - w(S, b) = 9 - 6 = 3 ≠ Potential (S) → Ignore S, b
+    Potential (b) - w(c, b) = 9 - 4 = 5 = Potential (c) → Add c, b
+    -----------------------------------------------------------------------------
+    Potential (c) - w(S, c) = 5 - 5 = 0 = Potential (S) → Add S, c
+    #+END_VERSE
+
+*** Scheduling
+    | Arcs     | Sa | Sb | Sc | af | ab | bf | be | bd | cb | cd | dg | di | ef | eg | ed | fh | fg | gh | gT | gi | hT | iT |
+    |----------+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----|
+    | Earliest |  0 |  0 |  0 |  4 |  4 |  9 |  9 |  9 |  5 |  5 | 17 | 17 | 12 | 12 | 12 | 18 | 18 | 23 | 23 | 23 | 29 | 28 |
+    |----------+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----|
+    | Latest   |  8 |  3 |  0 | 11 |  4 | 20 |  9 | 10 |  5 | 10 | 17 | 27 | 19 | 20 | 12 | 25 | 19 | 23 | 32 | 30 | 29 | 35 |
+    |----------+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----|
+    | Float    |  8 |  3 |  0 |  7 |  0 | 11 |  0 |  1 |  0 |  5 |  0 | 10 |  7 |  8 |  0 |  7 |  1 |  0 |  9 |  7 |  0 |  7 |
+
+* Petri Nets
+
+** Places and Transitions
+   P = {P1, P2, P3, P4}   T = {T1, T2, T3}
+
+   P1* = {T2}       P2* = {T1}
+   P3* = {T3}       P4* = {T1}
+
+   t1* = {P1, P2}   t2* = {P2}
+   t3* = {P4}
+
+** Start i = 1
+   C = {}
+   i = 1
+   Pi-1 = P0 = {}
+   Pi = P1
+
+*** 1
+    γ = {P1}    k[1] = 0
+
+*** 2
+    k[1] = 1    w = Γ (P1 k[1]) = t2
+    t2 ⊄ γ ∪ Pi-1 => γ = γ ∪ {t2} = {P1, t2}  k[2]=0
+
+*** 3
+    k[2] = 1    w = Γ (t2 k[2]) = P2
+    P2 ⊄ γ ∪ Pi-1 => γ = γ ∪ {P2} = {P1, t2, P2}  k[3]=0
+
+*** 4
+    k[3] = 1    w = Γ (P2 k[3]) = t1
+    t1 ⊄ γ ∪ Pi-1 => γ = γ ∪ {t1} = {P1, t2, P2, t1}  k[4]=0
+
+*** 5
+    k[4] = 1    w = Γ (t1 k[4]) = P1 = Pi
+
+    γ = γ ∪ {w}
+    C = C ∪ {γ}
+    C = {{P1, t2, P2, t1, P1}}
+
+    proceed to next child
+    k[4] = 2 = |t1*|
+
+*** 6
+    k[4] = 2    w = Γ (t1 k[4]) = P3
+    P3 ⊄ γ ∪ Pi-1 => γ = γ ∪ {P3} = {P1, t2, P2, t1, P3}  k[5]=0
+
+*** 7
+    k[5] = 1    w = Γ (P3 k[5]) = t3
+    t3 ⊄ γ ∪ Pi-1 => γ = γ ∪ {t3} = {P1, t2, P2, t1, P3, t3}  k[6]=0
+
+*** 8
+    k[6] = 1    w = Γ (t3 k[6]) = P4
+    P4 ⊄ γ ∪ Pi-1 => γ = γ ∪ {P4} = {P1, t2, P2, t1, P3, t3, P4}  k[7]=0
+
+*** 9
+    k[7] = 1    w = Γ (P4 k[7]) = t1 is in gamma
+    rule 3, proceed to next child of k[7], k[7] = 2
+
+*** 10
+    k[7] = 2 > |P4*| => Remove P4
+    γ = {P1, t2, P2, t1, P3, t3}
+
+*** 11
+    k[6] = 2 > |t3*| => Remove t3
+    γ = {P1, t2, P2, t1, P3}
+
+*** 12
+    k[5] = 2 > |t3*| => Remove t3
+    γ = {P1, t2, P2, t1}
+
+*** 13
+    k[4] = 3 > |t1*| => Remove t1
+    γ = {P1, t2, P2}
+
+*** 14
+    k[3] = 2 > |P2*| => Remove P2
+    γ = {P1, t2}
+
+*** 15
+    k[2] = 2 > |t2*| => Remove t2
+    γ = {P1}
+
+*** 16
+    k[1] = 2 > |P1*| => Remove P1
+    γ = {}
+
+** Start i = 2
+   C = {{P1, t2, P2, t1}}
+   i = 2
+   Pi-1 = {P1}
+   Pi = P2
+
+*** 1
+    γ = {P2}     k[1] = 0
+
+*** 2
+    k[1] = 1    w = Γ (P2 k[1]) = t1
+    t1 ⊄ γ ∪ Pi-1 => γ = γ ∪ {t1} = {P2, t1}  k[2]=0
+
+*** 3
+    k[2] = 1    w = Γ (t1 k[2]) = P1
+    w ⊂ Pi-1, move to next child
+
+    k[2] = 2    w = Γ (t1 k[2]) = P3
+    P3 ⊄ γ ∪ Pi-1 => γ = γ ∪ {P3} = {P2, t1, P3}  k[3]=0
+
+*** 4
+    k[3] = 1    w = Γ (P3 k[3]) = t3
+    t3 ⊄ γ ∪ Pi-1 => γ = γ ∪ {t3} = {P2, t1, P3, t3}  k[4]=0
+
+*** 5
+    k[4] = 1    w = Γ (t3 k[4]) = P4
+    P4 ⊄ γ ∪ Pi-1 => γ = γ ∪ {P4} = {P2, t1, P3, t3, P4}  k[5]=0
+
+*** 6
+    k[5] = 1    w = Γ (P4 k[5]) = t1 is in gamma
+    rule 3, proceed to next child of k[5], k[5] = 2
+
+*** 7
+    k[5] = 2 > |P4*| => Remove P4
+    γ = {P2, t1, P3, t3}
+
+*** 8
+    k[4] = 2 > |t3*| => Remove t3
+    γ = {P2, t1, P3}
+
+*** 9
+    k[3] = 2 > |P3*| => Remove P3
+    γ = {P2, t1}
+
+*** 10
+    k[2] = 3 > |t1*| => Remove t1
+    γ = {P2}
+
+*** 11
+    k[1] = 2 > |P2*| => Remove P2
+    γ = {}
+
+** Start i = 3
+   C = {{P1, t2, P2, t1}}
+   i = 3
+   Pi-1 = {P1, P2}
+   Pi = P3
+
+*** 1
+    γ = {P3}    k[1] = 0
+
+*** 2
+    k[1] = 1    w = Γ (P3 k[1]) = t3
+    t3 ⊄ γ ∪ Pi-1 => γ = γ ∪ {t3} = {P3, t3}  k[2]=0
+
+*** 3
+    k[2] = 1    w = Γ (t3 k[2]) = P4
+    P4 ⊄ γ ∪ Pi-1 => γ = γ ∪ {P4} = {P3, t3, P4}  k[3]=0
+
+*** 4
+    k[3] = 1    w = Γ (P4 k[3]) = t1
+    t1 ⊄ γ ∪ Pi-1 => γ = γ ∪ {t1} = {P3, t3, P4, t1}  k[4]=0
+
+*** 5
+    k[4] = 1    w = Γ (t1 k[4]) = P1
+    w ⊂ Pi-1, proceed to next child of k[4], k[4] = 2
+
+*** 6
+    k[4] = 2    w = Γ (t1 k[4]) = P3 = Pi
+
+    γ = γ ∪ {w}
+    C = C ∪ {γ}
+    C = {{P1, t2, P2, t1, P1}, {P3, t3, P4, t1, P3}}
+
+    proceed to next child
+    k[4] = 3 > |t1*| => Remove t1
+    γ = {P3, t3, P4}
+
+*** 7
+    k[3] = 2 > |P4*| => Remove P2
+    γ = {P3, t3}
+
+*** 8
+    k[2] = 2 > |t3*| => Remove t3
+    γ = {P3}
+
+*** 9
+    k[1] = 2 > |P3*| => Remove P3
+    γ = {}
+
+** Start i = 4
+
+   C = {{P1, t2, P2, t1, P1}, {P3, t3, P4, t1, P3}}
+   i = 3
+   Pi-1 = {P1, P2, P3}
+   Pi = P4
+
+*** 1
+    γ = {P4}    k[1] = 0
+
+*** 2
+    k[1] = 1    w = Γ (P4 k[1]) = t1
+    t1 ⊄ γ ∪ Pi-1 => γ = γ ∪ {t1} = {P4, t1}  k[2]=0
+
+*** 3
+    k[2] = 1    w = Γ (t1 k[2]) = P1
+    P1 ⊂ Pi-1, proceed to next child of k[2], k[2] = 2
+
+*** 4
+    k[2] = 2    w = Γ (t1 k[2]) = P3
+    P3 ⊂ Pi-1, proceed to next child of k[2], k[2] = 3
+
+    k[2] = 3 > |t1*| => Remove t1
+    γ = {P3}
+
+*** 5
+    k[1] = 2 > |P3*| => Remove P3
+    γ = {}
+
+* Bayesian Statistics
+  #+CONSTANTS: alpha=1 beta=1
+
+  |   N | Yn |  δ |   γ |      Eb{R} |       Var{r} |        σ{r} |
+  |-----+----+----+-----+------------+--------------+-------------|
+  | 240 | 51 | 52 | 190 | 0.21487603 | 6.9425648e-4 | 0.026348747 |
+  | 240 | 44 | 45 | 197 | 0.18595041 | 6.2293357e-4 | 0.024958637 |
+  | 240 | 47 | 48 | 194 | 0.19834711 | 6.5434375e-4 | 0.025580144 |
+  | 240 | 45 | 46 | 196 | 0.19008264 | 6.3354417e-4 | 0.025170303 |
+  | 240 | 28 | 29 | 213 | 0.11983471 | 4.3405083e-4 | 0.020833887 |
+  | 240 | 25 | 26 | 216 | 0.10743802 | 3.9463000e-4 | 0.019865296 |
+  #+TBLFM: $3=$alpha+$2::$4=$1-$2+$beta::$5=$3/($3+$4)::$6=($3*$4)/((($3+$4)^2)*($3+$4+1))::$7=sqrt($6)
+
+  #+BEGIN_EXPORT html
+  <script src="../assets/jquery-3.3.1.min.js"></script>
+  <script src="../assets/notes.js"></script>
+  #+END_EXPORT

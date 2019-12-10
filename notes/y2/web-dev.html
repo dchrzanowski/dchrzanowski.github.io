@@ -1,0 +1,1698 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2018-05-07 Mon 17:09 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Web Development</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="Damian Chrzanowski" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="org.css"/>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2018 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Web Development</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org49a8dea">1. XML</a>
+<ul>
+<li><a href="#orgce9f09d">1.1. Definition</a></li>
+<li><a href="#org71b6f7d">1.2. Markup types</a></li>
+<li><a href="#org5f4f667">1.3. Well formed XML</a></li>
+</ul>
+</li>
+<li><a href="#org96fd359">2. DTD (Document Type Definitions)</a>
+<ul>
+<li><a href="#org05d37d1">2.1. Definition</a></li>
+<li><a href="#orga5d90a5">2.2. Declaring elements</a></li>
+<li><a href="#orgb2ae4af">2.3. Declaring entities</a></li>
+<li><a href="#orge7eeefb">2.4. Declaring attributes</a></li>
+<li><a href="#org61b0515">2.5. Example</a></li>
+</ul>
+</li>
+<li><a href="#orgdf72ac5">3. XSL</a>
+<ul>
+<li><a href="#org0894ff9">3.1. Definition</a></li>
+<li><a href="#orgc400535">3.2. Example</a></li>
+<li><a href="#orgedec5b9">3.3. Another XSL example</a></li>
+</ul>
+</li>
+<li><a href="#org386a891">4. XML Schema Namespaces</a>
+<ul>
+<li><a href="#org5fb478c">4.1. Definition</a></li>
+<li><a href="#org4db3385">4.2. Namespace example</a></li>
+<li><a href="#org5084312">4.3. The XMLSchema Namespace</a></li>
+<li><a href="#org0df1338">4.4. XSD's <code>xsd:schema</code> attribute declarations</a></li>
+<li><a href="#orge39ef70">4.5. Instance document's XSD schema referencing</a></li>
+<li><a href="#org6d1653c">4.6. No namespace definition</a></li>
+<li><a href="#org8ed0567">4.7. Multiple schema locations</a></li>
+<li><a href="#org227684c">4.8. Schema from multiple schemas</a></li>
+<li><a href="#org48bdaf8">4.9. Lax vs Strict validation</a></li>
+</ul>
+</li>
+<li><a href="#orgd1ea339">5. Global vs Local types definitions</a></li>
+<li><a href="#org3d022ca">6. XSD Example</a></li>
+<li><a href="#org8f64b0d">7. XSD attribute declaration</a></li>
+<li><a href="#org79a1f7e">8. XSD Example with complex types, simple types and attribute definitions</a></li>
+<li><a href="#org15a039f">9. XML B2B Example</a></li>
+<li><a href="#org4a14ebe">10. REST</a>
+<ul>
+<li><a href="#org4aa2512">10.1. Definition</a></li>
+<li><a href="#org36a5a2b">10.2. Resources</a></li>
+<li><a href="#org7c54c1c">10.3. Resource State vs Application State</a></li>
+<li><a href="#org56aad4d">10.4. Example REST Methods</a></li>
+<li><a href="#org66dd63c">10.5. REST principles</a></li>
+</ul>
+</li>
+<li><a href="#orge601aa5">11. Conditional GET</a></li>
+<li><a href="#orgaa80551">12. JSON</a>
+<ul>
+<li><a href="#orgd45eeb4">12.1. JSON is</a></li>
+<li><a href="#orgdc705e2">12.2. JSON is not</a></li>
+<li><a href="#org88fa2c7">12.3. Why use JSON</a></li>
+</ul>
+</li>
+<li><a href="#org5464624">13. XML vs JSON</a></li>
+<li><a href="#orgec1bc86">14. XML Parsing</a>
+<ul>
+<li><a href="#org636b6e4">14.1. Different parsers</a></li>
+<li><a href="#org1e43090">14.2. DOM parser</a></li>
+<li><a href="#org18e353d">14.3. DOM inserting data</a></li>
+<li><a href="#org2c5dbd9">14.4. SAX</a></li>
+<li><a href="#orgd07b5aa">14.5. StAX</a></li>
+</ul>
+</li>
+<li><a href="#orgc6632a9">15. Delete heading at the end, leave html export</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org49a8dea" class="outline-2">
+<h2 id="org49a8dea"><span class="section-number-2">1</span> XML</h2>
+<div class="outline-text-2" id="text-1">
+</div>
+<div id="outline-container-orgce9f09d" class="outline-3">
+<h3 id="orgce9f09d"><span class="section-number-3">1.1</span> Definition</h3>
+<div class="outline-text-3" id="text-1-1">
+<ul class="org-ul">
+<li>XML E <b>x</b> tensible <b>M</b> arkup <b>L</b> anguage</li>
+<li>XML is a stripped down version of SGML (Standard Generalised Markup Language)</li>
+<li>Is a <b>Meta</b> language
+<ul class="org-ul">
+<li>Meta language is a language that enables you to create other languages</li>
+</ul></li>
+<li>XML describes information, as opposed to HTML which displays information</li>
+<li>In XML you create your own elements/tags and attributes</li>
+<li>Provides a separation of Content and Format</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org71b6f7d" class="outline-3">
+<h3 id="org71b6f7d"><span class="section-number-3">1.2</span> Markup types</h3>
+<div class="outline-text-3" id="text-1-2">
+<ul class="org-ul">
+<li>Elements
+<ul class="org-ul">
+<li>One or more of theses</li>
+<li>Start tag and an end tag, and everything in between</li>
+<li>Elements can be empty</li>
+<li>Elements can be self-closing</li>
+<li>Are case sensitive</li>
+</ul></li>
+<li>Entity references
+<ul class="org-ul">
+<li>Used to save on repetitive typing, example: <code>&amp;lt;</code>, <code>&amp;euro;</code></li>
+</ul></li>
+<li>Comments
+<ul class="org-ul">
+<li>Begin with <code>&lt;!--</code> and end with <code>--&gt;</code></li>
+</ul></li>
+<li>Processing instructions
+<ul class="org-ul">
+<li>Are an escape hatch to provide information to the parser/application</li>
+<li>E.g. <code>&lt;? xml version="1.0"?&gt;</code></li>
+</ul></li>
+<li>CDATA sections
+<ul class="org-ul">
+<li>Are sections in which the parser ignores the markup characters</li>
+<li><p>
+E.g.
+</p>
+<div class="org-src-container">
+<pre class="src src-xml">&lt;![CDATA[
+*p = <span style="color: #a9a1e1;">&amp;</span><span style="color: #a9a1e1;">q</span><span style="color: #a9a1e1;">;</span>
+b = (i &lt;= 3);
+]]&gt;
+</pre>
+</div></li>
+</ul></li>
+<li>Document type declarations</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org5f4f667" class="outline-3">
+<h3 id="org5f4f667"><span class="section-number-3">1.3</span> Well formed XML</h3>
+<div class="outline-text-3" id="text-1-3">
+<ul class="org-ul">
+<li>Apart from being syntactically correct it also needs to have:</li>
+<li>One top elements</li>
+<li>All open tags have a corresponding close tag</li>
+<li>All tags are correctly nested</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org96fd359" class="outline-2">
+<h2 id="org96fd359"><span class="section-number-2">2</span> DTD (Document Type Definitions)</h2>
+<div class="outline-text-2" id="text-2">
+</div>
+<div id="outline-container-org05d37d1" class="outline-3">
+<h3 id="org05d37d1"><span class="section-number-3">2.1</span> Definition</h3>
+<div class="outline-text-3" id="text-2-1">
+<ul class="org-ul">
+<li>Provides a schema for what constitutes a valid XML document.</li>
+<li>A well formed XML document that conforms to its associated DTD is said to be valid.</li>
+<li>If the DTD is declared within the XML document it needs to be wrapped in a DOCTYPE as follow <code>&lt;!DOCTYPE root-element [element-declarations]&gt;</code></li>
+<li>If the DTD is declared in a separate file it needs to be wrapped in a DOCTYPE as follows <code>&lt;!DOCTYPE root-element SYSTEM "filename"&gt;</code></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orga5d90a5" class="outline-3">
+<h3 id="orga5d90a5"><span class="section-number-3">2.2</span> Declaring elements</h3>
+<div class="outline-text-3" id="text-2-2">
+<ul class="org-ul">
+<li><code>DOCTYPE</code> <code>name</code> declares the top level element</li>
+<li><code>ELEMENT</code> <code>name</code> <code>type</code> declares the each sub-element</li>
+<li><code>*</code> means 0 or more</li>
+<li><code>+</code> means 1 or more</li>
+<li><code>?</code> means 0 or 1</li>
+<li><code>,</code> sequence, as in <code>(to,from,heading,body)</code></li>
+<li><code>(news|film|sport)</code> means -&gt; news or film or sport</li>
+<li><code>#PCDATA</code> means a character sequence, basically string content</li>
+<li><p>
+<code>&lt;!ELEMENT para (#PCDATA | emph)*&gt;</code> is a special declaration that allows a mixture of text and child elements in any order
+</p>
+<div class="org-src-container">
+<pre class="src src-xml">&lt;?<span style="color: #51afef; font-style: italic;">xml</span> <span style="color: #db5762;">version</span>=<span style="color: #98be65;">"</span><span style="color: #98be65;">1.0</span><span style="color: #98be65;">"</span> <span style="color: #db5762;">standalone</span>=<span style="color: #98be65;">"</span><span style="color: #98be65;">yes</span><span style="color: #98be65;">"</span>?&gt;
+&lt;!<span style="color: #51afef; font-style: italic;">DOCTYPE</span> note [
+&lt;!<span style="color: #51afef; font-style: italic;">ELEMENT</span> note (to,from,heading,body)&gt;
+&lt;!<span style="color: #51afef; font-style: italic;">ELEMENT</span> to (<span style="color: #c678dd;">#</span><span style="color: #51afef; font-style: italic;">PCDATA</span>)&gt;
+&lt;!<span style="color: #51afef; font-style: italic;">ELEMENT</span> from (<span style="color: #c678dd;">#</span><span style="color: #51afef; font-style: italic;">PCDATA</span>)&gt;
+&lt;!<span style="color: #51afef; font-style: italic;">ELEMENT</span> heading (<span style="color: #c678dd;">#</span><span style="color: #51afef; font-style: italic;">PCDATA</span>)&gt;
+&lt;!<span style="color: #51afef; font-style: italic;">ELEMENT</span> body (<span style="color: #c678dd;">#</span><span style="color: #51afef; font-style: italic;">PCDATA</span>)&gt;
+]&gt;
+
+&lt;<span style="color: #c678dd;">note</span>&gt;
+  &lt;<span style="color: #c678dd;">to</span>&gt;Damian&lt;/<span style="color: #c678dd;">to</span>&gt;
+  &lt;<span style="color: #c678dd;">from</span>&gt;Matthew&lt;/<span style="color: #c678dd;">from</span>&gt;
+  &lt;<span style="color: #c678dd;">heading</span>&gt;Hello&lt;/<span style="color: #c678dd;">heading</span>&gt;
+  &lt;<span style="color: #c678dd;">body</span>&gt;Hello World&lt;/<span style="color: #c678dd;">body</span>&gt;
+&lt;/<span style="color: #c678dd;">note</span>&gt;
+</pre>
+</div></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgb2ae4af" class="outline-3">
+<h3 id="orgb2ae4af"><span class="section-number-3">2.3</span> Declaring entities</h3>
+<div class="outline-text-3" id="text-2-3">
+<ul class="org-ul">
+<li><p>
+<code>ENTITY</code> <code>which</code> <code>"content"</code>
+</p>
+<div class="org-src-container">
+<pre class="src src-xml">&lt;!<span style="color: #51afef; font-style: italic;">DOCTYPE</span> note [
+&lt;!<span style="color: #51afef; font-style: italic;">ENTITY</span> nbsp <span style="color: #83898d;">"</span><span style="color: #83898d;">&amp;#xA0;</span><span style="color: #83898d;">"</span>&gt;
+&lt;!<span style="color: #51afef; font-style: italic;">ENTITY</span> writer <span style="color: #83898d;">"</span><span style="color: #83898d;">Writer: Donald Duck.</span><span style="color: #83898d;">"</span>&gt;
+&lt;!<span style="color: #51afef; font-style: italic;">ENTITY</span> copyright <span style="color: #83898d;">"</span><span style="color: #83898d;">Copyright: W3Schools.</span><span style="color: #83898d;">"</span>&gt;
+]&gt;
+</pre>
+</div></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orge7eeefb" class="outline-3">
+<h3 id="orge7eeefb"><span class="section-number-3">2.4</span> Declaring attributes</h3>
+<div class="outline-text-3" id="text-2-4">
+<ul class="org-ul">
+<li>Syntax: <code>&lt;!ATTLIST element-name attr-name attr-type default-value&gt;</code></li>
+<li><code>CDATA</code> is a string type value</li>
+<li><code>&lt;!ATTLIST payment type CDATA "cheque"&gt;</code>, is the declaration for <code>&lt;payment type="cheque"&gt;</code></li>
+<li><code>&lt;!ATTLIST phone type (Pre-pay | Bill-pay) #REQUIRED&gt;</code>,  Enumeration and required</li>
+<li><code>&lt;!ATTLIST phone freeCallCredit (10 | 20 | 30) "10"&gt;</code>, Enumeration and default value added</li>
+<li>The default value can have the following:
+<ul class="org-ul">
+<li>The value itself</li>
+<li><code>#REQUIRED</code>, the attribute must be included, eg <code>&lt;!ATTLIST phone type (Pre-pay | Bill-pay) #REQUIRED&gt;</code></li>
+<li><code>#IMPLIED</code>, the attribute does not have to be included</li>
+<li><code>#FIXED</code>, the attribute value is fixed, eg <code>&lt;!ATTLIST phone currency CDATA #FIXED "Euro"&gt;</code></li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org61b0515" class="outline-3">
+<h3 id="org61b0515"><span class="section-number-3">2.5</span> Example</h3>
+<div class="outline-text-3" id="text-2-5">
+<ul class="org-ul">
+<li>One or more phone elements in phones</li>
+<li>The sold element can appear once or not at all (0 or 1 times)</li>
+<li>The mandatory type attribute has an enumeration of Pre-pay and Bill-pay</li>
+<li>The freeCallCredit attribute has an enumeration of 10 or 20 or 30 with a default of 10</li>
+<li>The currency attribute can only ever be Euro (i.e. it is fixed)</li>
+<li>The mandatory name attribute has an enumeration of Meteor, O2 and Vodafone</li>
+<li>The mandatory profit attribute has an enumeration of yes and no</li>
+<li>The mandatory location attribute is text</li>
+<li><p>
+The standalone attribute in the XML when set to <b>no</b> implies an external DTD file
+</p>
+<div class="org-src-container">
+<pre class="src src-xml">&lt;?<span style="color: #51afef; font-style: italic;">xml</span> <span style="color: #db5762;">version</span>=<span style="color: #98be65;">"</span><span style="color: #98be65;">1.0</span><span style="color: #98be65;">"</span> <span style="color: #db5762;">standalone</span>=<span style="color: #98be65;">"</span><span style="color: #98be65;">no</span><span style="color: #98be65;">"</span>?&gt;
+&lt;!<span style="color: #51afef; font-style: italic;">DOCTYPE</span> phones <span style="color: #51afef; font-style: italic;">SYSTEM</span> <span style="color: #83898d;">"</span><span style="color: #83898d;">phones.dtd</span><span style="color: #83898d;">"</span>&gt;
+&lt;<span style="color: #c678dd;">phones</span>&gt;
+  &lt;<span style="color: #c678dd;">phone</span> <span style="color: #db5762;">type</span>=<span style="color: #98be65;">"</span><span style="color: #98be65;">Pre-pay</span><span style="color: #98be65;">"</span> <span style="color: #db5762;">freeCallCredit</span>=<span style="color: #98be65;">"</span><span style="color: #98be65;">20</span><span style="color: #98be65;">"</span> <span style="color: #db5762;">currency</span>=<span style="color: #98be65;">"</span><span style="color: #98be65;">Euro</span><span style="color: #98be65;">"</span>&gt;
+    &lt;<span style="color: #c678dd;">number</span>&gt;085-123456&lt;/<span style="color: #c678dd;">number</span>&gt;
+    &lt;<span style="color: #c678dd;">provider</span> <span style="color: #db5762;">name</span>=<span style="color: #98be65;">"</span><span style="color: #98be65;">Meteor</span><span style="color: #98be65;">"</span> /&gt;
+    &lt;<span style="color: #c678dd;">sold</span> <span style="color: #db5762;">profit</span> = <span style="color: #98be65;">"</span><span style="color: #98be65;">yes</span><span style="color: #98be65;">"</span>/&gt;
+    &lt;<span style="color: #c678dd;">maker</span> <span style="color: #db5762;">location</span>=<span style="color: #98be65;">"</span><span style="color: #98be65;">Sweden</span><span style="color: #98be65;">"</span>&gt;Nokia&lt;/<span style="color: #c678dd;">maker</span>&gt;
+  &lt;/<span style="color: #c678dd;">phone</span>&gt;
+  &lt;<span style="color: #c678dd;">phone</span> <span style="color: #db5762;">type</span>=<span style="color: #98be65;">"</span><span style="color: #98be65;">Bill-pay</span><span style="color: #98be65;">"</span>&gt;
+    &lt;<span style="color: #c678dd;">number</span>&gt;086-654321&lt;/<span style="color: #c678dd;">number</span>&gt;
+    &lt;<span style="color: #c678dd;">provider</span> <span style="color: #db5762;">name</span>=<span style="color: #98be65;">"</span><span style="color: #98be65;">O2</span><span style="color: #98be65;">"</span> /&gt;
+    &lt;<span style="color: #c678dd;">maker</span> <span style="color: #db5762;">location</span>=<span style="color: #98be65;">"</span><span style="color: #98be65;">USA</span><span style="color: #98be65;">"</span>&gt;Apple&lt;/<span style="color: #c678dd;">maker</span>&gt;
+  &lt;/<span style="color: #c678dd;">phone</span>&gt;
+&lt;/<span style="color: #c678dd;">phones</span>&gt;
+</pre>
+</div>
+<div class="org-src-container">
+<pre class="src src-sgml">&lt;<span style="color: #51afef; font-style: italic;">!ELEMENT</span> phones (phone+)&gt;
+&lt;<span style="color: #51afef; font-style: italic;">!ELEMENT</span> phone (number, provider, sold?, maker)&gt;
+&lt;<span style="color: #51afef; font-style: italic;">!ELEMENT</span> number (#PCDATA)&gt;
+&lt;<span style="color: #51afef; font-style: italic;">!ELEMENT</span> provider (#PCDATA)&gt;
+&lt;<span style="color: #51afef; font-style: italic;">!ELEMENT</span> sold (#PCDATA)&gt;
+&lt;<span style="color: #51afef; font-style: italic;">!ELEMENT</span> maker (#PCDATA)&gt;
+
+&lt;<span style="color: #51afef; font-style: italic;">!ATTLIST</span> phone type (Pre-pay | Bill-pay) #REQUIRED&gt;
+&lt;<span style="color: #51afef; font-style: italic;">!ATTLIST</span> phone freeCallCredit (10 | 20 | 30) <span style="color: #98be65;">"10"</span>&gt;
+&lt;<span style="color: #51afef; font-style: italic;">!ATTLIST</span> phone currency CDATA #FIXED <span style="color: #98be65;">"Euro"</span>&gt;
+
+&lt;<span style="color: #51afef; font-style: italic;">!ATTLIST</span> provider name (Meteor | O2 | Vodafone) #REQUIRED&gt;
+&lt;<span style="color: #51afef; font-style: italic;">!ATTLIST</span> sold profit (yes | no) #REQUIRED&gt;
+&lt;<span style="color: #51afef; font-style: italic;">!ATTLIST</span> maker location CDATA #REQUIRED&gt;
+</pre>
+</div></li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgdf72ac5" class="outline-2">
+<h2 id="orgdf72ac5"><span class="section-number-2">3</span> XSL</h2>
+<div class="outline-text-2" id="text-3">
+</div>
+<div id="outline-container-org0894ff9" class="outline-3">
+<h3 id="org0894ff9"><span class="section-number-3">3.1</span> Definition</h3>
+<div class="outline-text-3" id="text-3-1">
+<ul class="org-ul">
+<li>Consists of the <b>transformation</b> langauge and the <b>formatting</b> language</li>
+<li><img src="images/WebDev_xsl.png" alt="WebDev_xsl.png" /></li>
+<li>The transformation language is used to transform an XML document into another type of document. E.g. transforming XML into HTML</li>
+</ul>
+</div>
+</div>
+
+
+<div id="outline-container-orgc400535" class="outline-3">
+<h3 id="orgc400535"><span class="section-number-3">3.2</span> Example</h3>
+<div class="outline-text-3" id="text-3-2">
+<ul class="org-ul">
+<li><p>
+DTD for the sample input
+</p>
+<div class="org-src-container">
+<pre class="src src-xml">&lt;!<span style="color: #51afef; font-style: italic;">ELEMENT</span> people (person)*&gt;
+&lt;!<span style="color: #51afef; font-style: italic;">ELEMENT</span> person (name,age,sex,address)&gt;
+&lt;!<span style="color: #51afef; font-style: italic;">ELEMENT</span> name (<span style="color: #c678dd;">#</span><span style="color: #51afef; font-style: italic;">PCDATA</span>)&gt;
+&lt;!<span style="color: #51afef; font-style: italic;">ELEMENT</span> age (<span style="color: #c678dd;">#</span><span style="color: #51afef; font-style: italic;">PCDATA</span>)&gt;
+&lt;!<span style="color: #51afef; font-style: italic;">ELEMENT</span> sex (<span style="color: #c678dd;">#</span><span style="color: #51afef; font-style: italic;">PCDATA</span>)&gt;
+&lt;!<span style="color: #51afef; font-style: italic;">ELEMENT</span> address (<span style="color: #c678dd;">#</span><span style="color: #51afef; font-style: italic;">PCDATA</span>)&gt;
+</pre>
+</div>
+<ul class="org-ul">
+<li><p>
+Sample xml input
+</p>
+<div class="org-src-container">
+<pre class="src src-xml">&lt;?<span style="color: #51afef; font-style: italic;">xml</span> <span style="color: #db5762;">version</span>=<span style="color: #98be65;">"</span><span style="color: #98be65;">1.0</span><span style="color: #98be65;">"</span> <span style="color: #db5762;">standalone</span>=<span style="color: #98be65;">"</span><span style="color: #98be65;">no</span><span style="color: #98be65;">"</span>?&gt;
+&lt;?<span style="color: #51afef; font-style: italic;">xml-stylesheet</span> <span style="color: #83898d;">type="text/xsl" href="people.xsl"</span>?&gt;
+&lt;!<span style="color: #51afef; font-style: italic;">DOCTYPE</span> people <span style="color: #51afef; font-style: italic;">SYSTEM</span> <span style="color: #83898d;">"</span><span style="color: #83898d;">people.dtd</span><span style="color: #83898d;">"</span>&gt;
+&lt;<span style="color: #c678dd;">people</span>&gt;
+  &lt;<span style="color: #c678dd;">person</span>&gt;
+    &lt;<span style="color: #c678dd;">name</span>&gt;John&lt;/<span style="color: #c678dd;">name</span>&gt;
+    &lt;<span style="color: #c678dd;">age</span>&gt;2&lt;/<span style="color: #c678dd;">age</span>&gt;
+    &lt;<span style="color: #c678dd;">sex</span>&gt;male&lt;/<span style="color: #c678dd;">sex</span>&gt;
+    &lt;<span style="color: #c678dd;">address</span>&gt;athlone&lt;/<span style="color: #c678dd;">address</span>&gt;
+  &lt;/<span style="color: #c678dd;">person</span>&gt;
+  &lt;<span style="color: #c678dd;">person</span>&gt;
+    &lt;<span style="color: #c678dd;">name</span>&gt;Paul&lt;/<span style="color: #c678dd;">name</span>&gt;
+    &lt;<span style="color: #c678dd;">age</span>&gt;15&lt;/<span style="color: #c678dd;">age</span>&gt;
+    &lt;<span style="color: #c678dd;">sex</span>&gt;male&lt;/<span style="color: #c678dd;">sex</span>&gt;
+    &lt;<span style="color: #c678dd;">address</span>&gt;kerry&lt;/<span style="color: #c678dd;">address</span>&gt;
+  &lt;/<span style="color: #c678dd;">person</span>&gt;
+&lt;/<span style="color: #c678dd;">people</span>&gt;
+</pre>
+</div></li>
+<li><p>
+Sample xsl input
+</p>
+<div class="org-src-container">
+<pre class="src src-xml">&lt;?<span style="color: #51afef; font-style: italic;">xml</span> <span style="color: #db5762;">version</span>=<span style="color: #98be65;">"</span><span style="color: #98be65;">1.0</span><span style="color: #98be65;">"</span>?&gt;
+&lt;<span style="color: #c678dd;">xsl</span>:<span style="color: #c678dd;">stylesheet</span> <span style="color: #db5762;">version</span>=<span style="color: #98be65;">"</span><span style="color: #98be65;">1.0</span><span style="color: #98be65;">"</span> <span style="color: #c678dd;">xmlns</span>:<span style="color: #db5762;">xsl</span>=<span style="color: #98be65;">"</span><span style="color: #98be65;">http://www.w3.org/1999/XSL/Transform</span><span style="color: #98be65;">"</span>&gt;
+  &lt;<span style="color: #c678dd;">xsl</span>:<span style="color: #c678dd;">template</span> <span style="color: #db5762;">match</span>=<span style="color: #98be65;">"</span><span style="color: #98be65;">/</span><span style="color: #98be65;">"</span>&gt;
+    &lt;<span style="color: #c678dd;">html</span>&gt;
+      &lt;<span style="color: #c678dd;">head</span>&gt;&lt;<span style="color: #c678dd;">title</span>&gt;People&lt;/<span style="color: #c678dd;">title</span>&gt;&lt;/<span style="color: #c678dd;">head</span>&gt;
+      &lt;<span style="color: #c678dd;">body</span>&gt;
+        &lt;<span style="color: #c678dd;">xsl</span>:<span style="color: #c678dd;">apply-templates</span>/&gt;
+      &lt;/<span style="color: #c678dd;">body</span>&gt;
+    &lt;/<span style="color: #c678dd;">html</span>&gt;
+  &lt;/<span style="color: #c678dd;">xsl</span>:<span style="color: #c678dd;">template</span>&gt;
+  &lt;<span style="color: #c678dd;">xsl</span>:<span style="color: #c678dd;">template</span> <span style="color: #db5762;">match</span>=<span style="color: #98be65;">"</span><span style="color: #98be65;">people</span><span style="color: #98be65;">"</span>&gt;
+    &lt;<span style="color: #c678dd;">H1</span>&gt; People &lt;/<span style="color: #c678dd;">H1</span>&gt;
+    &lt;<span style="color: #c678dd;">UL</span>&gt;
+      &lt;<span style="color: #c678dd;">xsl</span>:<span style="color: #c678dd;">for-each</span> <span style="color: #db5762;">select</span>=<span style="color: #98be65;">"</span><span style="color: #98be65;">person</span><span style="color: #98be65;">"</span>&gt;
+        Name : &lt;<span style="color: #c678dd;">xsl</span>:<span style="color: #c678dd;">value-of</span> <span style="color: #db5762;">select</span>=<span style="color: #98be65;">"</span><span style="color: #98be65;">name</span><span style="color: #98be65;">"</span>/&gt;&lt;<span style="color: #c678dd;">br</span> /&gt;
+        Age  : &lt;<span style="color: #c678dd;">xsl</span>:<span style="color: #c678dd;">value-of</span> <span style="color: #db5762;">select</span>=<span style="color: #98be65;">"</span><span style="color: #98be65;">age</span><span style="color: #98be65;">"</span>/&gt;&lt;<span style="color: #c678dd;">br</span> /&gt;
+        Sex  : &lt;<span style="color: #c678dd;">xsl</span>:<span style="color: #c678dd;">value-of</span> <span style="color: #db5762;">select</span>=<span style="color: #98be65;">"</span><span style="color: #98be65;">sex</span><span style="color: #98be65;">"</span>/&gt;&lt;<span style="color: #c678dd;">br</span> /&gt;
+        Address : &lt;<span style="color: #c678dd;">xsl</span>:<span style="color: #c678dd;">value-of</span> <span style="color: #db5762;">select</span>=<span style="color: #98be65;">"</span><span style="color: #98be65;">address</span><span style="color: #98be65;">"</span>/&gt;&lt;<span style="color: #c678dd;">br</span> /&gt;
+        &lt;<span style="color: #c678dd;">HR</span> /&gt;
+      &lt;/<span style="color: #c678dd;">xsl</span>:<span style="color: #c678dd;">for-each</span>&gt;
+    &lt;/<span style="color: #c678dd;">UL</span>&gt;
+  &lt;/<span style="color: #c678dd;">xsl</span>:<span style="color: #c678dd;">template</span>&gt;
+&lt;/<span style="color: #c678dd;">xsl</span>:<span style="color: #c678dd;">stylesheet</span>&gt;
+</pre>
+</div></li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgedec5b9" class="outline-3">
+<h3 id="orgedec5b9"><span class="section-number-3">3.3</span> Another XSL example</h3>
+<div class="outline-text-3" id="text-3-3">
+<div class="org-src-container">
+<pre class="src src-xml">&lt;?<span style="color: #51afef; font-style: italic;">xml</span> <span style="color: #db5762;">version</span>=<span style="color: #98be65;">"</span><span style="color: #98be65;">1.0</span><span style="color: #98be65;">"</span> <span style="color: #db5762;">standalone</span>=<span style="color: #98be65;">"</span><span style="color: #98be65;">no</span><span style="color: #98be65;">"</span>?&gt;
+&lt;?<span style="color: #51afef; font-style: italic;">xml-stylesheet</span> <span style="color: #83898d;">type="text/xsl" href="cars.xsl"</span>?&gt;
+&lt;!<span style="color: #51afef; font-style: italic;">DOCTYPE</span> cars <span style="color: #51afef; font-style: italic;">SYSTEM</span> <span style="color: #83898d;">"</span><span style="color: #83898d;">cars.dtd</span><span style="color: #83898d;">"</span>&gt;
+&lt;<span style="color: #c678dd;">cars</span>&gt;
+  &lt;<span style="color: #c678dd;">car</span>&gt;
+    &lt;<span style="color: #c678dd;">make</span> <span style="color: #db5762;">model</span>=<span style="color: #98be65;">"</span><span style="color: #98be65;">3 Series</span><span style="color: #98be65;">"</span> <span style="color: #db5762;">type</span>=<span style="color: #98be65;">"</span><span style="color: #98be65;">Convertible</span><span style="color: #98be65;">"</span>&gt;bmw&lt;/<span style="color: #c678dd;">make</span>&gt;
+    &lt;<span style="color: #c678dd;">engine</span> <span style="color: #db5762;">numCylinders</span>=<span style="color: #98be65;">"</span><span style="color: #98be65;">6</span><span style="color: #98be65;">"</span>&gt;3.0D&lt;/<span style="color: #c678dd;">engine</span>&gt;
+    &lt;<span style="color: #c678dd;">regNo</span>&gt;06W123&lt;/<span style="color: #c678dd;">regNo</span>&gt;
+    &lt;<span style="color: #c678dd;">owner</span>&gt;
+      &lt;<span style="color: #c678dd;">name</span> <span style="color: #db5762;">title</span>=<span style="color: #98be65;">"</span><span style="color: #98be65;">Mr.</span><span style="color: #98be65;">"</span> <span style="color: #db5762;">age</span>=<span style="color: #98be65;">"</span><span style="color: #98be65;">23</span><span style="color: #98be65;">"</span>&gt;Joe Bloggs&lt;/<span style="color: #c678dd;">name</span>&gt;
+      &lt;<span style="color: #c678dd;">address</span>&gt;
+        &lt;<span style="color: #c678dd;">town</span>&gt;Athlone&lt;/<span style="color: #c678dd;">town</span>&gt;
+        &lt;<span style="color: #c678dd;">county</span>&gt;Westmeath&lt;/<span style="color: #c678dd;">county</span>&gt;
+      &lt;/<span style="color: #c678dd;">address</span>&gt;
+    &lt;/<span style="color: #c678dd;">owner</span>&gt;
+  &lt;/<span style="color: #c678dd;">car</span>&gt;
+  &lt;<span style="color: #c678dd;">car</span>&gt;
+    &lt;<span style="color: #c678dd;">make</span> <span style="color: #db5762;">model</span>=<span style="color: #98be65;">"</span><span style="color: #98be65;">Focus</span><span style="color: #98be65;">"</span> <span style="color: #db5762;">type</span>=<span style="color: #98be65;">"</span><span style="color: #98be65;">Saloon</span><span style="color: #98be65;">"</span>&gt;Ford&lt;/<span style="color: #c678dd;">make</span>&gt;
+    &lt;<span style="color: #c678dd;">engine</span>&gt;2.0D&lt;/<span style="color: #c678dd;">engine</span>&gt;
+    &lt;<span style="color: #c678dd;">regNo</span>&gt;07G776&lt;/<span style="color: #c678dd;">regNo</span>&gt;
+    &lt;<span style="color: #c678dd;">owner</span>&gt;
+      &lt;<span style="color: #c678dd;">name</span> <span style="color: #db5762;">title</span>=<span style="color: #98be65;">"</span><span style="color: #98be65;">Ms.</span><span style="color: #98be65;">"</span> <span style="color: #db5762;">age</span>=<span style="color: #98be65;">"</span><span style="color: #98be65;">28</span><span style="color: #98be65;">"</span>&gt;Paula Bloggs&lt;/<span style="color: #c678dd;">name</span>&gt;
+      &lt;<span style="color: #c678dd;">address</span>&gt;
+        &lt;<span style="color: #c678dd;">town</span>&gt;Ballinasloe&lt;/<span style="color: #c678dd;">town</span>&gt;
+        &lt;<span style="color: #c678dd;">county</span>&gt;Galway&lt;/<span style="color: #c678dd;">county</span>&gt;
+      &lt;/<span style="color: #c678dd;">address</span>&gt;
+    &lt;/<span style="color: #c678dd;">owner</span>&gt;
+  &lt;/<span style="color: #c678dd;">car</span>&gt;
+&lt;/<span style="color: #c678dd;">cars</span>&gt;
+</pre>
+</div>
+<div class="org-src-container">
+<pre class="src src-xml">&lt;?<span style="color: #51afef; font-style: italic;">xml</span> <span style="color: #db5762;">version</span>=<span style="color: #98be65;">"</span><span style="color: #98be65;">1.0</span><span style="color: #98be65;">"</span>?&gt;
+&lt;<span style="color: #c678dd;">xsl</span>:<span style="color: #c678dd;">stylesheet</span> <span style="color: #db5762;">version</span>=<span style="color: #98be65;">"</span><span style="color: #98be65;">1.0</span><span style="color: #98be65;">"</span> <span style="color: #c678dd;">xmlns</span>:<span style="color: #db5762;">xsl</span>=<span style="color: #98be65;">"</span><span style="color: #98be65;">http://www.w3.org/1999/XSL/Transform</span><span style="color: #98be65;">"</span>&gt;
+  &lt;<span style="color: #c678dd;">xsl</span>:<span style="color: #c678dd;">template</span> <span style="color: #db5762;">match</span>=<span style="color: #98be65;">"</span><span style="color: #98be65;">/</span><span style="color: #98be65;">"</span>&gt;
+    &lt;<span style="color: #c678dd;">html</span>&gt;
+      &lt;<span style="color: #c678dd;">head</span>&gt;&lt;<span style="color: #c678dd;">title</span>&gt;Cars&lt;/<span style="color: #c678dd;">title</span>&gt;&lt;/<span style="color: #c678dd;">head</span>&gt;
+      &lt;<span style="color: #c678dd;">body</span>&gt;
+        &lt;<span style="color: #c678dd;">xsl</span>:<span style="color: #c678dd;">apply-templates</span>/&gt;
+      &lt;/<span style="color: #c678dd;">body</span>&gt;
+    &lt;/<span style="color: #c678dd;">html</span>&gt;
+  &lt;/<span style="color: #c678dd;">xsl</span>:<span style="color: #c678dd;">template</span>&gt;
+  &lt;<span style="color: #c678dd;">xsl</span>:<span style="color: #c678dd;">template</span> <span style="color: #db5762;">match</span>=<span style="color: #98be65;">"</span><span style="color: #98be65;">cars</span><span style="color: #98be65;">"</span>&gt;
+    &lt;<span style="color: #c678dd;">table</span>&gt;
+      &lt;<span style="color: #c678dd;">tr</span>&gt;
+        &lt;<span style="color: #c678dd;">th</span>&gt;Make&lt;/<span style="color: #c678dd;">th</span>&gt;
+        &lt;<span style="color: #c678dd;">th</span>&gt;Model&lt;/<span style="color: #c678dd;">th</span>&gt;
+        &lt;<span style="color: #c678dd;">th</span>&gt;Type&lt;/<span style="color: #c678dd;">th</span>&gt;
+        &lt;<span style="color: #c678dd;">th</span>&gt;Engine Size&lt;/<span style="color: #c678dd;">th</span>&gt;
+        &lt;<span style="color: #c678dd;">th</span>&gt;Reg&lt;/<span style="color: #c678dd;">th</span>&gt;
+        &lt;<span style="color: #c678dd;">th</span>&gt;Owner&lt;/<span style="color: #c678dd;">th</span>&gt;
+        &lt;<span style="color: #c678dd;">th</span>&gt;Town&lt;/<span style="color: #c678dd;">th</span>&gt;
+        &lt;<span style="color: #c678dd;">th</span>&gt;County&lt;/<span style="color: #c678dd;">th</span>&gt;
+      &lt;/<span style="color: #c678dd;">tr</span>&gt;
+      &lt;<span style="color: #c678dd;">xsl</span>:<span style="color: #c678dd;">for-each</span> <span style="color: #db5762;">select</span>=<span style="color: #98be65;">"</span><span style="color: #98be65;">car</span><span style="color: #98be65;">"</span>&gt;
+        &lt;<span style="color: #c678dd;">tr</span>&gt;
+          &lt;<span style="color: #c678dd;">td</span>&gt;&lt;<span style="color: #c678dd;">xsl</span>:<span style="color: #c678dd;">value-of</span> <span style="color: #db5762;">select</span>=<span style="color: #98be65;">"</span><span style="color: #98be65;">make</span><span style="color: #98be65;">"</span>/&gt;&lt;/<span style="color: #c678dd;">td</span>&gt;
+          &lt;<span style="color: #c678dd;">td</span>&gt;&lt;<span style="color: #c678dd;">xsl</span>:<span style="color: #c678dd;">value-of</span> <span style="color: #db5762;">select</span>=<span style="color: #98be65;">"</span><span style="color: #98be65;">make/@model</span><span style="color: #98be65;">"</span>/&gt;&lt;/<span style="color: #c678dd;">td</span>&gt;
+          &lt;<span style="color: #c678dd;">td</span>&gt;&lt;<span style="color: #c678dd;">xsl</span>:<span style="color: #c678dd;">value-of</span> <span style="color: #db5762;">select</span>=<span style="color: #98be65;">"</span><span style="color: #98be65;">make/@type</span><span style="color: #98be65;">"</span>/&gt;&lt;/<span style="color: #c678dd;">td</span>&gt;
+          &lt;<span style="color: #c678dd;">td</span>&gt;&lt;<span style="color: #c678dd;">xsl</span>:<span style="color: #c678dd;">value-of</span> <span style="color: #db5762;">select</span>=<span style="color: #98be65;">"</span><span style="color: #98be65;">engine</span><span style="color: #98be65;">"</span>/&gt;&lt;/<span style="color: #c678dd;">td</span>&gt;
+          &lt;<span style="color: #c678dd;">td</span>&gt;&lt;<span style="color: #c678dd;">xsl</span>:<span style="color: #c678dd;">value-of</span> <span style="color: #db5762;">select</span>=<span style="color: #98be65;">"</span><span style="color: #98be65;">regNo</span><span style="color: #98be65;">"</span>/&gt;&lt;/<span style="color: #c678dd;">td</span>&gt;
+          &lt;<span style="color: #c678dd;">td</span>&gt;&lt;<span style="color: #c678dd;">xsl</span>:<span style="color: #c678dd;">value-of</span> <span style="color: #db5762;">select</span>=<span style="color: #98be65;">"</span><span style="color: #98be65;">owner/name</span><span style="color: #98be65;">"</span>/&gt;&lt;/<span style="color: #c678dd;">td</span>&gt;
+          &lt;<span style="color: #c678dd;">td</span>&gt;&lt;<span style="color: #c678dd;">xsl</span>:<span style="color: #c678dd;">value-of</span> <span style="color: #db5762;">select</span>=<span style="color: #98be65;">"</span><span style="color: #98be65;">owner/address/town</span><span style="color: #98be65;">"</span>/&gt;&lt;/<span style="color: #c678dd;">td</span>&gt;
+          &lt;<span style="color: #c678dd;">td</span>&gt;&lt;<span style="color: #c678dd;">xsl</span>:<span style="color: #c678dd;">value-of</span> <span style="color: #db5762;">select</span>=<span style="color: #98be65;">"</span><span style="color: #98be65;">owner/address/county</span><span style="color: #98be65;">"</span>/&gt;&lt;/<span style="color: #c678dd;">td</span>&gt;
+        &lt;/<span style="color: #c678dd;">tr</span>&gt;
+      &lt;/<span style="color: #c678dd;">xsl</span>:<span style="color: #c678dd;">for-each</span>&gt;
+    &lt;/<span style="color: #c678dd;">table</span>&gt;
+  &lt;/<span style="color: #c678dd;">xsl</span>:<span style="color: #c678dd;">template</span>&gt;
+&lt;/<span style="color: #c678dd;">xsl</span>:<span style="color: #c678dd;">stylesheet</span>&gt;
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org386a891" class="outline-2">
+<h2 id="org386a891"><span class="section-number-2">4</span> XML Schema Namespaces</h2>
+<div class="outline-text-2" id="text-4">
+</div>
+<div id="outline-container-org5fb478c" class="outline-3">
+<h3 id="org5fb478c"><span class="section-number-3">4.1</span> Definition</h3>
+<div class="outline-text-3" id="text-4-1">
+<ul class="org-ul">
+<li>An XML vocabulary for expressing your data's business rules or constraints</li>
+<li>Similar to DTD but gives more control</li>
+<li>XML Schema creates the XML vocabulary</li>
+<li>It specifies the contents of each element and the restrictions in the content</li>
+<li>XML Schema specifies XML vocabulary for a specified <b>Namespace</b></li>
+<li>XML Schema provides two important aspects:
+<ul class="org-ul">
+<li>The structure of instance documents</li>
+<li>The datatype of each element/attribute</li>
+</ul></li>
+<li>Advantages over DTD
+<ul class="org-ul">
+<li>Same syntax as XML</li>
+<li>44+ datatypes as opposed to 10 in DTD</li>
+<li>Create own datatypes</li>
+<li>Object oriented'ish</li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org4db3385" class="outline-3">
+<h3 id="org4db3385"><span class="section-number-3">4.2</span> Namespace example</h3>
+<div class="outline-text-3" id="text-4-2">
+
+<div class="figure">
+<p><img src="images/XML Schema Namespaces/screenshot_2018-05-07_11-33-18.png" alt="screenshot_2018-05-07_11-33-18.png" />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org5084312" class="outline-3">
+<h3 id="org5084312"><span class="section-number-3">4.3</span> The XMLSchema Namespace</h3>
+<div class="outline-text-3" id="text-4-3">
+
+<div class="figure">
+<p><img src="images/XML Schema Namespaces/screenshot_2018-05-07_11-39-51.png" alt="screenshot_2018-05-07_11-39-51.png" />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org0df1338" class="outline-3">
+<h3 id="org0df1338"><span class="section-number-3">4.4</span> XSD's <code>xsd:schema</code> attribute declarations</h3>
+<div class="outline-text-3" id="text-4-4">
+<ul class="org-ul">
+<li><code>xmlns:xsd</code> is the source xsd schema, usually <code>http://www.w3.org/2001/XMLSchema</code></li>
+<li><code>targetNamespace</code> indicates that the elements defined in this schema are to go into this specified namespace</li>
+<li><code>xmlns</code> the default namespace</li>
+<li><code>elementFormDefault</code> directive for any instance document using this schema: any elements used by the instance document, which were declared in this schema must be namespace qualified, i.e. must be included in the namespace</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orge39ef70" class="outline-3">
+<h3 id="orge39ef70"><span class="section-number-3">4.5</span> Instance document's XSD schema referencing</h3>
+<div class="outline-text-3" id="text-4-5">
+<ul class="org-ul">
+<li><code>xmlns</code> is the default namespace used in this document</li>
+<li><code>xmlns:xsi</code> defines the syntax for the <code>xsi:schemaLocation</code> attribute</li>
+<li><code>xsi:schemaLocation</code> is to location of the schema that defines the namespace</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org6d1653c" class="outline-3">
+<h3 id="org6d1653c"><span class="section-number-3">4.6</span> No namespace definition</h3>
+<div class="outline-text-3" id="text-4-6">
+<ul class="org-ul">
+<li>Skip the <code>targetNamespace</code> attribute in the XSD schema declaration, and thus also the default namespace</li>
+<li>As a consequence:
+<ul class="org-ul">
+<li>Do not namespace qualify the instance document</li>
+<li>Instance document should use <code>noNamespaceSchemaLocation</code> instead of <code>schemaLocation</code> attribute, e.g. <code>xsi:noNamespaceSchemaLocation="BookStore.xsd"</code></li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org8ed0567" class="outline-3">
+<h3 id="org8ed0567"><span class="section-number-3">4.7</span> Multiple schema locations</h3>
+<div class="outline-text-3" id="text-4-7">
+<ul class="org-ul">
+<li>An instance document can be validated against multiple schemas</li>
+<li>The <code>xsi:schemaLocation</code> could look like this: <code>xsd:schemaLocation="http://www.boog.org Book.xsd http://www.employee.org Employee.xsd"</code></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org227684c" class="outline-3">
+<h3 id="org227684c"><span class="section-number-3">4.8</span> Schema from multiple schemas</h3>
+<div class="outline-text-3" id="text-4-8">
+
+<div class="figure">
+<p><img src="images/XML Schema Namespaces/screenshot_2018-05-07_12-02-24.png" alt="screenshot_2018-05-07_12-02-24.png" />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org48bdaf8" class="outline-3">
+<h3 id="org48bdaf8"><span class="section-number-3">4.9</span> Lax vs Strict validation</h3>
+<div class="outline-text-3" id="text-4-9">
+<ul class="org-ul">
+<li>Lax validation is when the validator skips the elements for which there is no schema provided</li>
+<li>Strict validation is when the validator requires a schema for every element</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgd1ea339" class="outline-2">
+<h2 id="orgd1ea339"><span class="section-number-2">5</span> Global vs Local types definitions</h2>
+<div class="outline-text-2" id="text-5">
+<ul class="org-ul">
+<li>Only global types can be referenced (reused)</li>
+<li>Local elements are "invisible" to the rest of the schema</li>
+</ul>
+
+<div class="figure">
+<p><img src="images/Global vs Local types definitions/screenshot_2018-05-07_12-43-16.png" alt="screenshot_2018-05-07_12-43-16.png" />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org3d022ca" class="outline-2">
+<h2 id="org3d022ca"><span class="section-number-2">6</span> XSD Example</h2>
+<div class="outline-text-2" id="text-6">
+<div class="org-src-container">
+<pre class="src src-xml">&lt;?<span style="color: #51afef; font-style: italic;">xml</span> <span style="color: #db5762;">version</span>=<span style="color: #98be65;">"</span><span style="color: #98be65;">1.0</span><span style="color: #98be65;">"</span> <span style="color: #db5762;">encoding</span>=<span style="color: #98be65;">"</span><span style="color: #98be65;">iso-8859-1</span><span style="color: #98be65;">"</span>?&gt;
+&lt;<span style="color: #c678dd;">cars</span> <span style="color: #c678dd;">xmlns</span>=<span style="color: #98be65;">"</span><span style="color: #98be65;">http://www.cars.com</span><span style="color: #98be65;">"</span>
+      <span style="color: #c678dd;">xmlns</span>:<span style="color: #db5762;">xsi</span>=<span style="color: #98be65;">"</span><span style="color: #98be65;">http://www.w3.org/2001/XMLSchema-instance</span><span style="color: #98be65;">"</span>
+      <span style="color: #c678dd;">xsi</span>:<span style="color: #db5762;">schemaLocation</span>=<span style="color: #98be65;">"</span><span style="color: #98be65;">http://www.cars.com cars.xsd</span><span style="color: #98be65;">"</span>&gt;
+  <span style="color: #5B6268;">&lt;!--</span><span style="color: #5B6268;"> instance document </span><span style="color: #5B6268;">--&gt;</span>
+  &lt;<span style="color: #c678dd;">car</span>&gt;
+    &lt;<span style="color: #c678dd;">make</span>&gt;
+      &lt;<span style="color: #c678dd;">company</span>&gt;BMW&lt;/<span style="color: #c678dd;">company</span>&gt;
+      &lt;<span style="color: #c678dd;">model</span>&gt;3 Series&lt;/<span style="color: #c678dd;">model</span>&gt;
+      &lt;<span style="color: #c678dd;">type</span>&gt;Convertible&lt;/<span style="color: #c678dd;">type</span>&gt;
+    &lt;/<span style="color: #c678dd;">make</span>&gt;
+    &lt;<span style="color: #c678dd;">engine</span>&gt;
+      &lt;<span style="color: #c678dd;">size</span>&gt;3.0D&lt;/<span style="color: #c678dd;">size</span>&gt;
+      &lt;<span style="color: #c678dd;">numCylinders</span>&gt;6&lt;/<span style="color: #c678dd;">numCylinders</span>&gt;
+    &lt;/<span style="color: #c678dd;">engine</span>&gt;
+    &lt;<span style="color: #c678dd;">regNo</span>&gt;06W123&lt;/<span style="color: #c678dd;">regNo</span>&gt;
+    &lt;<span style="color: #c678dd;">owner</span>&gt;
+      &lt;<span style="color: #c678dd;">name</span>&gt;Joe Bloggs&lt;/<span style="color: #c678dd;">name</span>&gt;
+      &lt;<span style="color: #c678dd;">age</span>&gt;23&lt;/<span style="color: #c678dd;">age</span>&gt;
+      &lt;<span style="color: #c678dd;">address</span>&gt;Athlone, Co. Westmeath&lt;/<span style="color: #c678dd;">address</span>&gt;
+    &lt;/<span style="color: #c678dd;">owner</span>&gt;
+  &lt;/<span style="color: #c678dd;">car</span>&gt;
+&lt;/<span style="color: #c678dd;">cars</span>&gt;
+</pre>
+</div>
+<ul class="org-ul">
+<li><p>
+Example xsd schema
+</p>
+<div class="org-src-container">
+<pre class="src src-xml">&lt;?<span style="color: #51afef; font-style: italic;">xml</span> <span style="color: #db5762;">version</span>=<span style="color: #98be65;">"</span><span style="color: #98be65;">1.0</span><span style="color: #98be65;">"</span>?&gt;
+&lt;<span style="color: #c678dd;">xsd</span>:<span style="color: #c678dd;">schema</span> <span style="color: #c678dd;">xmlns</span>:<span style="color: #db5762;">xsd</span>=<span style="color: #98be65;">"</span><span style="color: #98be65;">http://www.w3.org/2001/XMLSchema</span><span style="color: #98be65;">"</span>
+            <span style="color: #db5762;">targetNamespace</span>=<span style="color: #98be65;">"</span><span style="color: #98be65;">http://www.cars.com</span><span style="color: #98be65;">"</span>
+            <span style="color: #c678dd;">xmlns</span>=<span style="color: #98be65;">"</span><span style="color: #98be65;">http://www.cars.com</span><span style="color: #98be65;">"</span>
+            <span style="color: #db5762;">elementFormDefault</span>=<span style="color: #98be65;">"</span><span style="color: #98be65;">qualified</span><span style="color: #98be65;">"</span>&gt;
+
+  &lt;<span style="color: #c678dd;">xsd</span>:<span style="color: #c678dd;">element</span> <span style="color: #db5762;">name</span>=<span style="color: #98be65;">"</span><span style="color: #98be65;">cars</span><span style="color: #98be65;">"</span>&gt;
+    &lt;<span style="color: #c678dd;">xsd</span>:<span style="color: #c678dd;">complexType</span>&gt;
+      &lt;<span style="color: #c678dd;">xsd</span>:<span style="color: #c678dd;">sequence</span>&gt;
+        &lt;<span style="color: #c678dd;">xsd</span>:<span style="color: #c678dd;">element</span> <span style="color: #db5762;">ref</span>=<span style="color: #98be65;">"</span><span style="color: #98be65;">car</span><span style="color: #98be65;">"</span>/&gt;
+      &lt;/<span style="color: #c678dd;">xsd</span>:<span style="color: #c678dd;">sequence</span>&gt;
+    &lt;/<span style="color: #c678dd;">xsd</span>:<span style="color: #c678dd;">complexType</span>&gt;
+  &lt;/<span style="color: #c678dd;">xsd</span>:<span style="color: #c678dd;">element</span>&gt;
+
+  &lt;<span style="color: #c678dd;">xsd</span>:<span style="color: #c678dd;">element</span> <span style="color: #db5762;">name</span>=<span style="color: #98be65;">"</span><span style="color: #98be65;">car</span><span style="color: #98be65;">"</span>&gt;
+    &lt;<span style="color: #c678dd;">xsd</span>:<span style="color: #c678dd;">complexType</span>&gt;
+      &lt;<span style="color: #c678dd;">xsd</span>:<span style="color: #c678dd;">sequence</span>&gt;
+        &lt;<span style="color: #c678dd;">xsd</span>:<span style="color: #c678dd;">element</span> <span style="color: #db5762;">ref</span>=<span style="color: #98be65;">"</span><span style="color: #98be65;">make</span><span style="color: #98be65;">"</span>/&gt;
+        &lt;<span style="color: #c678dd;">xsd</span>:<span style="color: #c678dd;">element</span> <span style="color: #db5762;">ref</span>=<span style="color: #98be65;">"</span><span style="color: #98be65;">engine</span><span style="color: #98be65;">"</span>/&gt;
+        &lt;<span style="color: #c678dd;">xsd</span>:<span style="color: #c678dd;">element</span> <span style="color: #db5762;">ref</span>=<span style="color: #98be65;">"</span><span style="color: #98be65;">regNo</span><span style="color: #98be65;">"</span>/&gt;
+        &lt;<span style="color: #c678dd;">xsd</span>:<span style="color: #c678dd;">element</span> <span style="color: #db5762;">ref</span>=<span style="color: #98be65;">"</span><span style="color: #98be65;">owner</span><span style="color: #98be65;">"</span>/&gt;
+      &lt;/<span style="color: #c678dd;">xsd</span>:<span style="color: #c678dd;">sequence</span>&gt;
+    &lt;/<span style="color: #c678dd;">xsd</span>:<span style="color: #c678dd;">complexType</span>&gt;
+  &lt;/<span style="color: #c678dd;">xsd</span>:<span style="color: #c678dd;">element</span>&gt;
+
+  &lt;<span style="color: #c678dd;">xsd</span>:<span style="color: #c678dd;">element</span> <span style="color: #db5762;">name</span>=<span style="color: #98be65;">"</span><span style="color: #98be65;">make</span><span style="color: #98be65;">"</span>&gt;
+    &lt;<span style="color: #c678dd;">xsd</span>:<span style="color: #c678dd;">complexType</span>&gt;
+      &lt;<span style="color: #c678dd;">xsd</span>:<span style="color: #c678dd;">sequence</span>&gt;
+        &lt;<span style="color: #c678dd;">xsd</span>:<span style="color: #c678dd;">element</span> <span style="color: #db5762;">ref</span>=<span style="color: #98be65;">"</span><span style="color: #98be65;">company</span><span style="color: #98be65;">"</span>/&gt;
+        &lt;<span style="color: #c678dd;">xsd</span>:<span style="color: #c678dd;">element</span> <span style="color: #db5762;">ref</span>=<span style="color: #98be65;">"</span><span style="color: #98be65;">model</span><span style="color: #98be65;">"</span>/&gt;
+        &lt;<span style="color: #c678dd;">xsd</span>:<span style="color: #c678dd;">element</span> <span style="color: #db5762;">ref</span>=<span style="color: #98be65;">"</span><span style="color: #98be65;">type</span><span style="color: #98be65;">"</span>/&gt;
+      &lt;/<span style="color: #c678dd;">xsd</span>:<span style="color: #c678dd;">sequence</span>&gt;
+    &lt;/<span style="color: #c678dd;">xsd</span>:<span style="color: #c678dd;">complexType</span>&gt;
+  &lt;/<span style="color: #c678dd;">xsd</span>:<span style="color: #c678dd;">element</span>&gt;
+
+  &lt;<span style="color: #c678dd;">xsd</span>:<span style="color: #c678dd;">element</span> <span style="color: #db5762;">name</span>=<span style="color: #98be65;">"</span><span style="color: #98be65;">engine</span><span style="color: #98be65;">"</span>&gt;
+    &lt;<span style="color: #c678dd;">xsd</span>:<span style="color: #c678dd;">complexType</span>&gt;
+      &lt;<span style="color: #c678dd;">xsd</span>:<span style="color: #c678dd;">sequence</span>&gt;
+        &lt;<span style="color: #c678dd;">xsd</span>:<span style="color: #c678dd;">element</span> <span style="color: #db5762;">ref</span>=<span style="color: #98be65;">"</span><span style="color: #98be65;">size</span><span style="color: #98be65;">"</span>/&gt;
+        &lt;<span style="color: #c678dd;">xsd</span>:<span style="color: #c678dd;">element</span> <span style="color: #db5762;">ref</span>=<span style="color: #98be65;">"</span><span style="color: #98be65;">numCylinders</span><span style="color: #98be65;">"</span>/&gt;
+      &lt;/<span style="color: #c678dd;">xsd</span>:<span style="color: #c678dd;">sequence</span>&gt;
+    &lt;/<span style="color: #c678dd;">xsd</span>:<span style="color: #c678dd;">complexType</span>&gt;
+  &lt;/<span style="color: #c678dd;">xsd</span>:<span style="color: #c678dd;">element</span>&gt;
+
+  &lt;<span style="color: #c678dd;">xsd</span>:<span style="color: #c678dd;">element</span> <span style="color: #db5762;">name</span>=<span style="color: #98be65;">"</span><span style="color: #98be65;">owner</span><span style="color: #98be65;">"</span>&gt;
+    &lt;<span style="color: #c678dd;">xsd</span>:<span style="color: #c678dd;">complexType</span>&gt;
+      &lt;<span style="color: #c678dd;">xsd</span>:<span style="color: #c678dd;">sequence</span>&gt;
+        &lt;<span style="color: #c678dd;">xsd</span>:<span style="color: #c678dd;">element</span> <span style="color: #db5762;">ref</span>=<span style="color: #98be65;">"</span><span style="color: #98be65;">name</span><span style="color: #98be65;">"</span>/&gt;
+        &lt;<span style="color: #c678dd;">xsd</span>:<span style="color: #c678dd;">element</span> <span style="color: #db5762;">ref</span>=<span style="color: #98be65;">"</span><span style="color: #98be65;">age</span><span style="color: #98be65;">"</span>/&gt;
+        &lt;<span style="color: #c678dd;">xsd</span>:<span style="color: #c678dd;">element</span> <span style="color: #db5762;">ref</span>=<span style="color: #98be65;">"</span><span style="color: #98be65;">address</span><span style="color: #98be65;">"</span>/&gt;
+      &lt;/<span style="color: #c678dd;">xsd</span>:<span style="color: #c678dd;">sequence</span>&gt;
+    &lt;/<span style="color: #c678dd;">xsd</span>:<span style="color: #c678dd;">complexType</span>&gt;
+  &lt;/<span style="color: #c678dd;">xsd</span>:<span style="color: #c678dd;">element</span>&gt;
+
+  &lt;<span style="color: #c678dd;">xsd</span>:<span style="color: #c678dd;">element</span> <span style="color: #db5762;">name</span>=<span style="color: #98be65;">"</span><span style="color: #98be65;">regNo</span><span style="color: #98be65;">"</span> <span style="color: #db5762;">type</span>=<span style="color: #98be65;">"</span><span style="color: #98be65;">xsd:string</span><span style="color: #98be65;">"</span>/&gt;
+  &lt;<span style="color: #c678dd;">xsd</span>:<span style="color: #c678dd;">element</span> <span style="color: #db5762;">name</span>=<span style="color: #98be65;">"</span><span style="color: #98be65;">company</span><span style="color: #98be65;">"</span> <span style="color: #db5762;">type</span>=<span style="color: #98be65;">"</span><span style="color: #98be65;">xsd:string</span><span style="color: #98be65;">"</span>/&gt;
+  &lt;<span style="color: #c678dd;">xsd</span>:<span style="color: #c678dd;">element</span> <span style="color: #db5762;">name</span>=<span style="color: #98be65;">"</span><span style="color: #98be65;">model</span><span style="color: #98be65;">"</span> <span style="color: #db5762;">type</span>=<span style="color: #98be65;">"</span><span style="color: #98be65;">xsd:string</span><span style="color: #98be65;">"</span>/&gt;
+  &lt;<span style="color: #c678dd;">xsd</span>:<span style="color: #c678dd;">element</span> <span style="color: #db5762;">name</span>=<span style="color: #98be65;">"</span><span style="color: #98be65;">type</span><span style="color: #98be65;">"</span> <span style="color: #db5762;">type</span>=<span style="color: #98be65;">"</span><span style="color: #98be65;">xsd:string</span><span style="color: #98be65;">"</span>/&gt;
+  &lt;<span style="color: #c678dd;">xsd</span>:<span style="color: #c678dd;">element</span> <span style="color: #db5762;">name</span>=<span style="color: #98be65;">"</span><span style="color: #98be65;">size</span><span style="color: #98be65;">"</span> <span style="color: #db5762;">type</span>=<span style="color: #98be65;">"</span><span style="color: #98be65;">xsd:string</span><span style="color: #98be65;">"</span>/&gt;
+  &lt;<span style="color: #c678dd;">xsd</span>:<span style="color: #c678dd;">element</span> <span style="color: #db5762;">name</span>=<span style="color: #98be65;">"</span><span style="color: #98be65;">numCylinders</span><span style="color: #98be65;">"</span> <span style="color: #db5762;">type</span>=<span style="color: #98be65;">"</span><span style="color: #98be65;">xsd:string</span><span style="color: #98be65;">"</span>/&gt;
+  &lt;<span style="color: #c678dd;">xsd</span>:<span style="color: #c678dd;">element</span> <span style="color: #db5762;">name</span>=<span style="color: #98be65;">"</span><span style="color: #98be65;">name</span><span style="color: #98be65;">"</span> <span style="color: #db5762;">type</span>=<span style="color: #98be65;">"</span><span style="color: #98be65;">xsd:string</span><span style="color: #98be65;">"</span>/&gt;
+  &lt;<span style="color: #c678dd;">xsd</span>:<span style="color: #c678dd;">element</span> <span style="color: #db5762;">name</span>=<span style="color: #98be65;">"</span><span style="color: #98be65;">age</span><span style="color: #98be65;">"</span> <span style="color: #db5762;">type</span>=<span style="color: #98be65;">"</span><span style="color: #98be65;">xsd:string</span><span style="color: #98be65;">"</span>/&gt;
+  &lt;<span style="color: #c678dd;">xsd</span>:<span style="color: #c678dd;">element</span> <span style="color: #db5762;">name</span>=<span style="color: #98be65;">"</span><span style="color: #98be65;">address</span><span style="color: #98be65;">"</span> <span style="color: #db5762;">type</span>=<span style="color: #98be65;">"</span><span style="color: #98be65;">xsd:string</span><span style="color: #98be65;">"</span>/&gt;
+
+&lt;/<span style="color: #c678dd;">xsd</span>:<span style="color: #c678dd;">schema</span>&gt;
+</pre>
+</div></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org8f64b0d" class="outline-2">
+<h2 id="org8f64b0d"><span class="section-number-2">7</span> XSD attribute declaration</h2>
+<div class="outline-text-2" id="text-7">
+<ul class="org-ul">
+<li><code>&lt;xsd:attribute name="name" type="simple-type" use="how-its-used" default/fixed="value" /&gt;</code></li>
+<li><code>use</code> can be: required, optional, &#x2026;</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org79a1f7e" class="outline-2">
+<h2 id="org79a1f7e"><span class="section-number-2">8</span> XSD Example with complex types, simple types and attribute definitions</h2>
+<div class="outline-text-2" id="text-8">
+<ul class="org-ul">
+<li>XML</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-xml">&lt;?<span style="color: #51afef; font-style: italic;">xml</span> <span style="color: #db5762;">version</span>=<span style="color: #98be65;">"</span><span style="color: #98be65;">1.0</span><span style="color: #98be65;">"</span>?&gt;
+&lt;<span style="color: #c678dd;">student</span> <span style="color: #c678dd;">xmlns</span>=<span style="color: #98be65;">"</span><span style="color: #98be65;">http://www.student.com</span><span style="color: #98be65;">"</span>
+         <span style="color: #c678dd;">xmlns</span>:<span style="color: #db5762;">xsi</span>=<span style="color: #98be65;">"</span><span style="color: #98be65;">http://www.w3.org/2001/XMLSchema-instance</span><span style="color: #98be65;">"</span>
+         <span style="color: #c678dd;">xsi</span>:<span style="color: #db5762;">schemaLocation</span>=<span style="color: #98be65;">"</span><span style="color: #98be65;">http://www.student.com student.xsd</span><span style="color: #98be65;">"</span> &gt;
+
+  &lt;<span style="color: #c678dd;">personal</span>&gt;
+    &lt;<span style="color: #c678dd;">name</span>&gt;Joe Bloggs&lt;/<span style="color: #c678dd;">name</span>&gt;
+    &lt;<span style="color: #c678dd;">dob</span>&gt;2000-01-22&lt;/<span style="color: #c678dd;">dob</span>&gt;
+    &lt;<span style="color: #c678dd;">time</span>&gt;10:12:03&lt;/<span style="color: #c678dd;">time</span>&gt;
+    &lt;<span style="color: #c678dd;">sex</span>&gt;Male&lt;/<span style="color: #c678dd;">sex</span>&gt;
+    &lt;<span style="color: #c678dd;">weight</span>&gt;8.7&lt;/<span style="color: #c678dd;">weight</span>&gt;
+    &lt;<span style="color: #c678dd;">phoneNo</span>&gt;087-1234567&lt;/<span style="color: #c678dd;">phoneNo</span>&gt;
+  &lt;/<span style="color: #c678dd;">personal</span>&gt;
+
+  &lt;<span style="color: #c678dd;">college</span> <span style="color: #db5762;">name</span>=<span style="color: #98be65;">"</span><span style="color: #98be65;">AIT</span><span style="color: #98be65;">"</span> <span style="color: #db5762;">studentID</span>=<span style="color: #98be65;">"</span><span style="color: #98be65;">A00123457</span><span style="color: #98be65;">"</span>&gt;
+    &lt;<span style="color: #c678dd;">course</span> <span style="color: #db5762;">name</span>=<span style="color: #98be65;">"</span><span style="color: #98be65;">MSc in S/W Eng</span><span style="color: #98be65;">"</span>&gt;
+      &lt;<span style="color: #c678dd;">semmester</span>&gt;1&lt;/<span style="color: #c678dd;">semmester</span>&gt;
+      &lt;<span style="color: #c678dd;">classSize</span>&gt;7&lt;/<span style="color: #c678dd;">classSize</span>&gt;
+      &lt;<span style="color: #c678dd;">favouriteSubject</span>&gt;SOA&lt;/<span style="color: #c678dd;">favouriteSubject</span>&gt;
+    &lt;/<span style="color: #c678dd;">course</span>&gt;
+  &lt;/<span style="color: #c678dd;">college</span>&gt;
+
+&lt;/<span style="color: #c678dd;">student</span>&gt;
+</pre>
+</div>
+<ul class="org-ul">
+<li>XSD</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-xml">&lt;?<span style="color: #51afef; font-style: italic;">xml</span> <span style="color: #db5762;">version</span>=<span style="color: #98be65;">"</span><span style="color: #98be65;">1.0</span><span style="color: #98be65;">"</span>?&gt;
+&lt;<span style="color: #c678dd;">xsd</span>:<span style="color: #c678dd;">schema</span> <span style="color: #c678dd;">xmlns</span>:<span style="color: #db5762;">xsd</span>=<span style="color: #98be65;">"</span><span style="color: #98be65;">http://www.w3.org/2001/XMLSchema</span><span style="color: #98be65;">"</span>
+            <span style="color: #db5762;">targetNamespace</span>=<span style="color: #98be65;">"</span><span style="color: #98be65;">http://www.student.com</span><span style="color: #98be65;">"</span>
+            <span style="color: #c678dd;">xmlns</span>=<span style="color: #98be65;">"</span><span style="color: #98be65;">http://www.student.com</span><span style="color: #98be65;">"</span>
+            <span style="color: #db5762;">elementFormDefault</span>=<span style="color: #98be65;">"</span><span style="color: #98be65;">qualified</span><span style="color: #98be65;">"</span>&gt;
+
+  &lt;<span style="color: #c678dd;">xsd</span>:<span style="color: #c678dd;">simpleType</span> <span style="color: #db5762;">name</span>=<span style="color: #98be65;">"</span><span style="color: #98be65;">nameType</span><span style="color: #98be65;">"</span>&gt;
+    &lt;<span style="color: #c678dd;">xsd</span>:<span style="color: #c678dd;">restriction</span> <span style="color: #db5762;">base</span>=<span style="color: #98be65;">"</span><span style="color: #98be65;">xsd:string</span><span style="color: #98be65;">"</span>&gt;
+      &lt;<span style="color: #c678dd;">xsd</span>:<span style="color: #c678dd;">pattern</span> <span style="color: #db5762;">value</span>=<span style="color: #98be65;">"</span><span style="color: #98be65;">\p{Lu}(\p{Ll})+\s\p{Lu}(\p{Ll})+</span><span style="color: #98be65;">"</span>/&gt;
+    &lt;/<span style="color: #c678dd;">xsd</span>:<span style="color: #c678dd;">restriction</span>&gt;
+  &lt;/<span style="color: #c678dd;">xsd</span>:<span style="color: #c678dd;">simpleType</span>&gt;
+
+  &lt;<span style="color: #c678dd;">xsd</span>:<span style="color: #c678dd;">simpleType</span> <span style="color: #db5762;">name</span>=<span style="color: #98be65;">"</span><span style="color: #98be65;">sexType</span><span style="color: #98be65;">"</span>&gt;
+    &lt;<span style="color: #c678dd;">xsd</span>:<span style="color: #c678dd;">restriction</span> <span style="color: #db5762;">base</span>=<span style="color: #98be65;">"</span><span style="color: #98be65;">xsd:string</span><span style="color: #98be65;">"</span>&gt;
+      &lt;<span style="color: #c678dd;">xsd</span>:<span style="color: #c678dd;">pattern</span> <span style="color: #db5762;">value</span>=<span style="color: #98be65;">"</span><span style="color: #98be65;">(Male|Female)</span><span style="color: #98be65;">"</span>/&gt;
+    &lt;/<span style="color: #c678dd;">xsd</span>:<span style="color: #c678dd;">restriction</span>&gt;
+  &lt;/<span style="color: #c678dd;">xsd</span>:<span style="color: #c678dd;">simpleType</span>&gt;
+
+  &lt;<span style="color: #c678dd;">xsd</span>:<span style="color: #c678dd;">simpleType</span> <span style="color: #db5762;">name</span>=<span style="color: #98be65;">"</span><span style="color: #98be65;">phoneType</span><span style="color: #98be65;">"</span>&gt;
+    &lt;<span style="color: #c678dd;">xsd</span>:<span style="color: #c678dd;">restriction</span> <span style="color: #db5762;">base</span>=<span style="color: #98be65;">"</span><span style="color: #98be65;">xsd:string</span><span style="color: #98be65;">"</span>&gt;
+      &lt;<span style="color: #c678dd;">xsd</span>:<span style="color: #c678dd;">pattern</span> <span style="color: #db5762;">value</span>=<span style="color: #98be65;">"</span><span style="color: #98be65;">[\d]{3}-[\d]{7}</span><span style="color: #98be65;">"</span>/&gt;
+    &lt;/<span style="color: #c678dd;">xsd</span>:<span style="color: #c678dd;">restriction</span>&gt;
+  &lt;/<span style="color: #c678dd;">xsd</span>:<span style="color: #c678dd;">simpleType</span>&gt;
+
+  &lt;<span style="color: #c678dd;">xsd</span>:<span style="color: #c678dd;">simpleType</span> <span style="color: #db5762;">name</span>=<span style="color: #98be65;">"</span><span style="color: #98be65;">collegeNameType</span><span style="color: #98be65;">"</span>&gt;
+    &lt;<span style="color: #c678dd;">xsd</span>:<span style="color: #c678dd;">restriction</span> <span style="color: #db5762;">base</span>=<span style="color: #98be65;">"</span><span style="color: #98be65;">xsd:string</span><span style="color: #98be65;">"</span>&gt;
+      &lt;<span style="color: #c678dd;">xsd</span>:<span style="color: #c678dd;">enumeration</span> <span style="color: #db5762;">value</span>=<span style="color: #98be65;">"</span><span style="color: #98be65;">AIT</span><span style="color: #98be65;">"</span>/&gt;
+      &lt;<span style="color: #c678dd;">xsd</span>:<span style="color: #c678dd;">enumeration</span> <span style="color: #db5762;">value</span>=<span style="color: #98be65;">"</span><span style="color: #98be65;">DIT</span><span style="color: #98be65;">"</span>/&gt;
+      &lt;<span style="color: #c678dd;">xsd</span>:<span style="color: #c678dd;">enumeration</span> <span style="color: #db5762;">value</span>=<span style="color: #98be65;">"</span><span style="color: #98be65;">NUIG</span><span style="color: #98be65;">"</span>/&gt;
+      &lt;<span style="color: #c678dd;">xsd</span>:<span style="color: #c678dd;">enumeration</span> <span style="color: #db5762;">value</span>=<span style="color: #98be65;">"</span><span style="color: #98be65;">GMIT</span><span style="color: #98be65;">"</span>/&gt;
+    &lt;/<span style="color: #c678dd;">xsd</span>:<span style="color: #c678dd;">restriction</span>&gt;
+  &lt;/<span style="color: #c678dd;">xsd</span>:<span style="color: #c678dd;">simpleType</span>&gt;
+
+  &lt;<span style="color: #c678dd;">xsd</span>:<span style="color: #c678dd;">simpleType</span> <span style="color: #db5762;">name</span>=<span style="color: #98be65;">"</span><span style="color: #98be65;">studentIDType</span><span style="color: #98be65;">"</span>&gt;
+    &lt;<span style="color: #c678dd;">xsd</span>:<span style="color: #c678dd;">restriction</span> <span style="color: #db5762;">base</span>=<span style="color: #98be65;">"</span><span style="color: #98be65;">xsd:string</span><span style="color: #98be65;">"</span>&gt;
+      &lt;<span style="color: #c678dd;">xsd</span>:<span style="color: #c678dd;">pattern</span> <span style="color: #db5762;">value</span>=<span style="color: #98be65;">"</span><span style="color: #98be65;">A0[\d]{7}</span><span style="color: #98be65;">"</span>/&gt;
+    &lt;/<span style="color: #c678dd;">xsd</span>:<span style="color: #c678dd;">restriction</span>&gt;
+  &lt;/<span style="color: #c678dd;">xsd</span>:<span style="color: #c678dd;">simpleType</span>&gt;
+
+  &lt;<span style="color: #c678dd;">xsd</span>:<span style="color: #c678dd;">simpleType</span> <span style="color: #db5762;">name</span>=<span style="color: #98be65;">"</span><span style="color: #98be65;">semmesterType</span><span style="color: #98be65;">"</span>&gt;
+    &lt;<span style="color: #c678dd;">xsd</span>:<span style="color: #c678dd;">restriction</span> <span style="color: #db5762;">base</span>=<span style="color: #98be65;">"</span><span style="color: #98be65;">xsd:integer</span><span style="color: #98be65;">"</span>&gt;
+      &lt;<span style="color: #c678dd;">xsd</span>:<span style="color: #c678dd;">minInclusive</span> <span style="color: #db5762;">value</span>=<span style="color: #98be65;">"</span><span style="color: #98be65;">1</span><span style="color: #98be65;">"</span>/&gt;
+      &lt;<span style="color: #c678dd;">xsd</span>:<span style="color: #c678dd;">maxInclusive</span> <span style="color: #db5762;">value</span>=<span style="color: #98be65;">"</span><span style="color: #98be65;">2</span><span style="color: #98be65;">"</span>/&gt;
+    &lt;/<span style="color: #c678dd;">xsd</span>:<span style="color: #c678dd;">restriction</span>&gt;
+  &lt;/<span style="color: #c678dd;">xsd</span>:<span style="color: #c678dd;">simpleType</span>&gt;
+
+  &lt;<span style="color: #c678dd;">xsd</span>:<span style="color: #c678dd;">simpleType</span> <span style="color: #db5762;">name</span>=<span style="color: #98be65;">"</span><span style="color: #98be65;">classSizeType</span><span style="color: #98be65;">"</span>&gt;
+    &lt;<span style="color: #c678dd;">xsd</span>:<span style="color: #c678dd;">restriction</span> <span style="color: #db5762;">base</span>=<span style="color: #98be65;">"</span><span style="color: #98be65;">xsd:integer</span><span style="color: #98be65;">"</span>&gt;
+      &lt;<span style="color: #c678dd;">xsd</span>:<span style="color: #c678dd;">minInclusive</span> <span style="color: #db5762;">value</span>=<span style="color: #98be65;">"</span><span style="color: #98be65;">2</span><span style="color: #98be65;">"</span>/&gt;
+      &lt;<span style="color: #c678dd;">xsd</span>:<span style="color: #c678dd;">maxInclusive</span> <span style="color: #db5762;">value</span>=<span style="color: #98be65;">"</span><span style="color: #98be65;">30</span><span style="color: #98be65;">"</span>/&gt;
+    &lt;/<span style="color: #c678dd;">xsd</span>:<span style="color: #c678dd;">restriction</span>&gt;
+  &lt;/<span style="color: #c678dd;">xsd</span>:<span style="color: #c678dd;">simpleType</span>&gt;
+
+  &lt;<span style="color: #c678dd;">xsd</span>:<span style="color: #c678dd;">simpleType</span> <span style="color: #db5762;">name</span>=<span style="color: #98be65;">"</span><span style="color: #98be65;">favSubType</span><span style="color: #98be65;">"</span>&gt;
+    &lt;<span style="color: #c678dd;">xsd</span>:<span style="color: #c678dd;">restriction</span> <span style="color: #db5762;">base</span>=<span style="color: #98be65;">"</span><span style="color: #98be65;">xsd:string</span><span style="color: #98be65;">"</span>&gt;
+      &lt;<span style="color: #c678dd;">xsd</span>:<span style="color: #c678dd;">enumeration</span> <span style="color: #db5762;">value</span>=<span style="color: #98be65;">"</span><span style="color: #98be65;">SOA</span><span style="color: #98be65;">"</span>/&gt;
+      &lt;<span style="color: #c678dd;">xsd</span>:<span style="color: #c678dd;">enumeration</span> <span style="color: #db5762;">value</span>=<span style="color: #98be65;">"</span><span style="color: #98be65;">Data Science</span><span style="color: #98be65;">"</span>/&gt;
+      &lt;<span style="color: #c678dd;">xsd</span>:<span style="color: #c678dd;">enumeration</span> <span style="color: #db5762;">value</span>=<span style="color: #98be65;">"</span><span style="color: #98be65;">Agile Build and Delivery</span><span style="color: #98be65;">"</span>/&gt;
+      &lt;<span style="color: #c678dd;">xsd</span>:<span style="color: #c678dd;">enumeration</span> <span style="color: #db5762;">value</span>=<span style="color: #98be65;">"</span><span style="color: #98be65;">Computer Networks/Telecoms</span><span style="color: #98be65;">"</span>/&gt;
+      &lt;<span style="color: #c678dd;">xsd</span>:<span style="color: #c678dd;">enumeration</span> <span style="color: #db5762;">value</span>=<span style="color: #98be65;">"</span><span style="color: #98be65;">Software Design</span><span style="color: #98be65;">"</span>/&gt;
+    &lt;/<span style="color: #c678dd;">xsd</span>:<span style="color: #c678dd;">restriction</span>&gt;
+  &lt;/<span style="color: #c678dd;">xsd</span>:<span style="color: #c678dd;">simpleType</span>&gt;
+
+  &lt;<span style="color: #c678dd;">xsd</span>:<span style="color: #c678dd;">element</span> <span style="color: #db5762;">name</span>=<span style="color: #98be65;">"</span><span style="color: #98be65;">student</span><span style="color: #98be65;">"</span>&gt;
+    &lt;<span style="color: #c678dd;">xsd</span>:<span style="color: #c678dd;">complexType</span>&gt;
+      &lt;<span style="color: #c678dd;">xsd</span>:<span style="color: #c678dd;">sequence</span>&gt;
+
+        &lt;<span style="color: #c678dd;">xsd</span>:<span style="color: #c678dd;">element</span> <span style="color: #db5762;">name</span>=<span style="color: #98be65;">"</span><span style="color: #98be65;">personal</span><span style="color: #98be65;">"</span>&gt;
+          &lt;<span style="color: #c678dd;">xsd</span>:<span style="color: #c678dd;">complexType</span>&gt;
+            &lt;<span style="color: #c678dd;">xsd</span>:<span style="color: #c678dd;">sequence</span>&gt;
+
+              &lt;<span style="color: #c678dd;">xsd</span>:<span style="color: #c678dd;">element</span> <span style="color: #db5762;">name</span>=<span style="color: #98be65;">"</span><span style="color: #98be65;">name</span><span style="color: #98be65;">"</span> <span style="color: #db5762;">type</span>=<span style="color: #98be65;">"</span><span style="color: #98be65;">nameType</span><span style="color: #98be65;">"</span>/&gt;
+              &lt;<span style="color: #c678dd;">xsd</span>:<span style="color: #c678dd;">element</span> <span style="color: #db5762;">name</span>=<span style="color: #98be65;">"</span><span style="color: #98be65;">dob</span><span style="color: #98be65;">"</span> <span style="color: #db5762;">type</span>=<span style="color: #98be65;">"</span><span style="color: #98be65;">xsd:date</span><span style="color: #98be65;">"</span>/&gt;
+              &lt;<span style="color: #c678dd;">xsd</span>:<span style="color: #c678dd;">element</span> <span style="color: #db5762;">name</span>=<span style="color: #98be65;">"</span><span style="color: #98be65;">time</span><span style="color: #98be65;">"</span> <span style="color: #db5762;">type</span>=<span style="color: #98be65;">"</span><span style="color: #98be65;">xsd:time</span><span style="color: #98be65;">"</span>/&gt;
+              &lt;<span style="color: #c678dd;">xsd</span>:<span style="color: #c678dd;">element</span> <span style="color: #db5762;">name</span>=<span style="color: #98be65;">"</span><span style="color: #98be65;">sex</span><span style="color: #98be65;">"</span> <span style="color: #db5762;">type</span>=<span style="color: #98be65;">"</span><span style="color: #98be65;">sexType</span><span style="color: #98be65;">"</span>/&gt;
+              &lt;<span style="color: #c678dd;">xsd</span>:<span style="color: #c678dd;">element</span> <span style="color: #db5762;">name</span>=<span style="color: #98be65;">"</span><span style="color: #98be65;">weight</span><span style="color: #98be65;">"</span> <span style="color: #db5762;">type</span>=<span style="color: #98be65;">"</span><span style="color: #98be65;">xsd:double</span><span style="color: #98be65;">"</span>/&gt;
+              &lt;<span style="color: #c678dd;">xsd</span>:<span style="color: #c678dd;">element</span> <span style="color: #db5762;">name</span>=<span style="color: #98be65;">"</span><span style="color: #98be65;">phoneNo</span><span style="color: #98be65;">"</span> <span style="color: #db5762;">type</span>=<span style="color: #98be65;">"</span><span style="color: #98be65;">phoneType</span><span style="color: #98be65;">"</span>/&gt;
+
+            &lt;/<span style="color: #c678dd;">xsd</span>:<span style="color: #c678dd;">sequence</span>&gt;
+          &lt;/<span style="color: #c678dd;">xsd</span>:<span style="color: #c678dd;">complexType</span>&gt;
+        &lt;/<span style="color: #c678dd;">xsd</span>:<span style="color: #c678dd;">element</span>&gt;
+
+        &lt;<span style="color: #c678dd;">xsd</span>:<span style="color: #c678dd;">element</span> <span style="color: #db5762;">name</span>=<span style="color: #98be65;">"</span><span style="color: #98be65;">college</span><span style="color: #98be65;">"</span>&gt;
+          &lt;<span style="color: #c678dd;">xsd</span>:<span style="color: #c678dd;">complexType</span>&gt;
+            &lt;<span style="color: #c678dd;">xsd</span>:<span style="color: #c678dd;">sequence</span>&gt;
+
+              &lt;<span style="color: #c678dd;">xsd</span>:<span style="color: #c678dd;">element</span> <span style="color: #db5762;">name</span>=<span style="color: #98be65;">"</span><span style="color: #98be65;">course</span><span style="color: #98be65;">"</span>&gt;
+                &lt;<span style="color: #c678dd;">xsd</span>:<span style="color: #c678dd;">complexType</span>&gt;
+                  &lt;<span style="color: #c678dd;">xsd</span>:<span style="color: #c678dd;">sequence</span>&gt;
+
+                    &lt;<span style="color: #c678dd;">xsd</span>:<span style="color: #c678dd;">element</span> <span style="color: #db5762;">name</span>=<span style="color: #98be65;">"</span><span style="color: #98be65;">semmester</span><span style="color: #98be65;">"</span> <span style="color: #db5762;">type</span>=<span style="color: #98be65;">"</span><span style="color: #98be65;">semmesterType</span><span style="color: #98be65;">"</span>/&gt;
+                    &lt;<span style="color: #c678dd;">xsd</span>:<span style="color: #c678dd;">element</span> <span style="color: #db5762;">name</span>=<span style="color: #98be65;">"</span><span style="color: #98be65;">classSize</span><span style="color: #98be65;">"</span> <span style="color: #db5762;">type</span>=<span style="color: #98be65;">"</span><span style="color: #98be65;">classSizeType</span><span style="color: #98be65;">"</span>/&gt;
+                    &lt;<span style="color: #c678dd;">xsd</span>:<span style="color: #c678dd;">element</span> <span style="color: #db5762;">name</span>=<span style="color: #98be65;">"</span><span style="color: #98be65;">favouriteSubject</span><span style="color: #98be65;">"</span> <span style="color: #db5762;">type</span>=<span style="color: #98be65;">"</span><span style="color: #98be65;">favSubType</span><span style="color: #98be65;">"</span>/&gt;
+
+                  &lt;/<span style="color: #c678dd;">xsd</span>:<span style="color: #c678dd;">sequence</span>&gt;
+                  &lt;<span style="color: #c678dd;">xsd</span>:<span style="color: #c678dd;">attribute</span> <span style="color: #db5762;">name</span>=<span style="color: #98be65;">"</span><span style="color: #98be65;">name</span><span style="color: #98be65;">"</span> <span style="color: #db5762;">type</span>=<span style="color: #98be65;">"</span><span style="color: #98be65;">xsd:string</span><span style="color: #98be65;">"</span>/&gt;
+                &lt;/<span style="color: #c678dd;">xsd</span>:<span style="color: #c678dd;">complexType</span>&gt;
+              &lt;/<span style="color: #c678dd;">xsd</span>:<span style="color: #c678dd;">element</span>&gt;
+
+            &lt;/<span style="color: #c678dd;">xsd</span>:<span style="color: #c678dd;">sequence</span>&gt;
+            &lt;<span style="color: #c678dd;">xsd</span>:<span style="color: #c678dd;">attribute</span> <span style="color: #db5762;">name</span>=<span style="color: #98be65;">"</span><span style="color: #98be65;">name</span><span style="color: #98be65;">"</span> <span style="color: #db5762;">type</span>=<span style="color: #98be65;">"</span><span style="color: #98be65;">collegeNameType</span><span style="color: #98be65;">"</span>/&gt;
+            &lt;<span style="color: #c678dd;">xsd</span>:<span style="color: #c678dd;">attribute</span> <span style="color: #db5762;">name</span>=<span style="color: #98be65;">"</span><span style="color: #98be65;">studentID</span><span style="color: #98be65;">"</span> <span style="color: #db5762;">type</span>=<span style="color: #98be65;">"</span><span style="color: #98be65;">studentIDType</span><span style="color: #98be65;">"</span>/&gt;
+          &lt;/<span style="color: #c678dd;">xsd</span>:<span style="color: #c678dd;">complexType</span>&gt;
+        &lt;/<span style="color: #c678dd;">xsd</span>:<span style="color: #c678dd;">element</span>&gt;
+
+      &lt;/<span style="color: #c678dd;">xsd</span>:<span style="color: #c678dd;">sequence</span>&gt;
+    &lt;/<span style="color: #c678dd;">xsd</span>:<span style="color: #c678dd;">complexType</span>&gt;
+  &lt;/<span style="color: #c678dd;">xsd</span>:<span style="color: #c678dd;">element</span>&gt;
+&lt;/<span style="color: #c678dd;">xsd</span>:<span style="color: #c678dd;">schema</span>&gt;
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org15a039f" class="outline-2">
+<h2 id="org15a039f"><span class="section-number-2">9</span> XML B2B Example</h2>
+<div class="outline-text-2" id="text-9">
+
+<div class="figure">
+<p><img src="images/XML B2B Example/screenshot_2018-05-07_12-33-18.png" alt="screenshot_2018-05-07_12-33-18.png" />
+</p>
+</div>
+<ul class="org-ul">
+<li>XML Schema provides:
+<ul class="org-ul">
+<li>Data Model - The data model clearly specifies how the XML document is organised</li>
+<li>Contract - Organisations agree of the document/data structure and thus create a contract between themselves</li>
+<li>Rich source of metadata - contains lots of data about the data in the XML instance documents</li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org4a14ebe" class="outline-2">
+<h2 id="org4a14ebe"><span class="section-number-2">10</span> REST</h2>
+<div class="outline-text-2" id="text-10">
+</div>
+<div id="outline-container-org4aa2512" class="outline-3">
+<h3 id="org4aa2512"><span class="section-number-3">10.1</span> Definition</h3>
+<div class="outline-text-3" id="text-10-1">
+<ul class="org-ul">
+<li><b>RE</b> presentational <b>S</b> tate <b>T</b> ransfer</li>
+<li>Architectural style, not a protocol</li>
+<li>Aims to stick close to the original aims of HTTP</li>
+<li>HTTP is itself a REST architecture</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org36a5a2b" class="outline-3">
+<h3 id="org36a5a2b"><span class="section-number-3">10.2</span> Resources</h3>
+<div class="outline-text-3" id="text-10-2">
+<ul class="org-ul">
+<li>In REST, one accesses <b>resources</b></li>
+<li>Resources are abstract, e.g. one might want to access the "home page" resource and a "representation" of the resource is returned i.e. html code</li>
+<li>Resources can be anything that can be referenced by itself
+<ul class="org-ul">
+<li>List of customers</li>
+<li>A customer</li>
+<li>List of orders</li>
+<li>Etc.</li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org7c54c1c" class="outline-3">
+<h3 id="org7c54c1c"><span class="section-number-3">10.3</span> Resource State vs Application State</h3>
+<div class="outline-text-3" id="text-10-3">
+<ul class="org-ul">
+<li><b>Resource State</b>: is the state that is common to all the clients and resides on the server. Usually it is the data that gets pulled from the database</li>
+<li><b>Application State</b>: is client-specific and is submitted in the client request. Requesting a specific document from the server places the client in a specific state.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org56aad4d" class="outline-3">
+<h3 id="org56aad4d"><span class="section-number-3">10.4</span> Example REST Methods</h3>
+<div class="outline-text-3" id="text-10-4">
+<ul class="org-ul">
+<li><b>GET</b> - retrieve/receive/display data</li>
+<li><b>POST</b> - create/submit data</li>
+<li><b>PUT</b> - update data</li>
+<li><b>DELETE</b> - delete data</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org66dd63c" class="outline-3">
+<h3 id="org66dd63c"><span class="section-number-3">10.5</span> REST principles</h3>
+<div class="outline-text-3" id="text-10-5">
+</div>
+<div id="outline-container-orga2e43b3" class="outline-4">
+<h4 id="orga2e43b3">Identifiable Resources</h4>
+<div class="outline-text-4" id="text-orga2e43b3">
+<ul class="org-ul">
+<li>Every resource has an ID. Customer, order, etc.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org9d4e727" class="outline-4">
+<h4 id="org9d4e727">Hypermedia as the Engine of Application State (HATEOAS)</h4>
+<div class="outline-text-4" id="text-org9d4e727">
+<ul class="org-ul">
+<li>User can take actions based on the resources he/she receives</li>
+<li>An example is a list of links that a user might receive in a document</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org082519e" class="outline-4">
+<h4 id="org082519e">Uniform Interface</h4>
+<div class="outline-text-4" id="text-org082519e">
+<ul class="org-ul">
+<li>Every resource supports the same interface</li>
+<li>In HTTP this refers to GET, PUT, POST, DELETE, HEAD, OPTIONS</li>
+<li>Idempotence: an operation yields the same result no matter how many times it is executed. The GET, PUT and DELETE methods are one of the examples.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org8d4bcc4" class="outline-4">
+<h4 id="org8d4bcc4">Resources Representation</h4>
+<div class="outline-text-4" id="text-org8d4bcc4">
+<ul class="org-ul">
+<li>Service can return various representations of the same data: HTML, XHTML, XML, JSON, plain-text, etc.</li>
+<li>Using HTTP content-negotiation the client can specify the format of the required content</li>
+<li>Server uses the <b>Content-type</b> header to indicate the format of the resource</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgc980bc5" class="outline-4">
+<h4 id="orgc980bc5">Stateless Communication</h4>
+<div class="outline-text-4" id="text-orgc980bc5">
+<ul class="org-ul">
+<li>Every request happens in complete isolation</li>
+<li>The request contains all the information necessary to fulfill the request</li>
+<li>Server never relies on information from previous requests</li>
+<li>The application state is not stored on the server</li>
+<li>HTTP is stateless</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orge601aa5" class="outline-2">
+<h2 id="orge601aa5"><span class="section-number-2">11</span> Conditional GET</h2>
+<div class="outline-text-2" id="text-11">
+<ul class="org-ul">
+<li>Adds intelligence to the HTTP GET</li>
+<li>Server checks the server version against the client's version</li>
+<li>If the resource is the same the server does not return a value</li>
+<li>Headers are used to inform the timestamp or hash values associated with the resources</li>
+<li>May return HTTP 304 instead of 200 to identify that nothing has changed</li>
+<li>Two approaches in the header exist to send a Conditional GET:
+<ul class="org-ul">
+<li>Last-modified - If-Modified-Since/If-Unmodified-Since</li>
+<li>ETag - If-Match/If-None-Match</li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgaa80551" class="outline-2">
+<h2 id="orgaa80551"><span class="section-number-2">12</span> JSON</h2>
+<div class="outline-text-2" id="text-12">
+</div>
+<div id="outline-container-orgd45eeb4" class="outline-3">
+<h3 id="orgd45eeb4"><span class="section-number-3">12.1</span> JSON is</h3>
+<div class="outline-text-3" id="text-12-1">
+<ul class="org-ul">
+<li>Lightweight data-interchange format</li>
+<li>JSON is valid JavaScript</li>
+<li>JSON is language independent</li>
+<li>Is a collection of key value pairs, and/or ordered list of values</li>
+<li>Easy to understand, manipulate and generate</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgdc705e2" class="outline-3">
+<h3 id="orgdc705e2"><span class="section-number-3">12.2</span> JSON is not</h3>
+<div class="outline-text-3" id="text-12-2">
+<ul class="org-ul">
+<li>Overly Complex</li>
+<li>A markup language</li>
+<li>A programming language</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org88fa2c7" class="outline-3">
+<h3 id="org88fa2c7"><span class="section-number-3">12.3</span> Why use JSON</h3>
+<div class="outline-text-3" id="text-12-3">
+<ul class="org-ul">
+<li>Simple syntax</li>
+<li>Easy to create and manipulate</li>
+<li>Can be natively parsed by JS</li>
+<li>Supported by all major programming languages</li>
+<li>Supported by all major backend technologies</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-org5464624" class="outline-2">
+<h2 id="org5464624"><span class="section-number-2">13</span> XML vs JSON</h2>
+<div class="outline-text-2" id="text-13">
+<ul class="org-ul">
+<li>Both are "self describing", aka human readable</li>
+<li>Both are hierarchical, aka values with values</li>
+<li>Both can be parsed and used by all major programming languages</li>
+<li>Both can be fetched by XMLHttpRequest (AJAX)</li>
+<li>XML needs a special parser, JSON can be executed by JS</li>
+<li>JSON can use arrays</li>
+<li>JSON does not use tags</li>
+<li>JSON is shorter</li>
+<li>JSON is easier to read</li>
+<li>JSON is quicker to read and write</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgec1bc86" class="outline-2">
+<h2 id="orgec1bc86"><span class="section-number-2">14</span> XML Parsing</h2>
+<div class="outline-text-2" id="text-14">
+</div>
+<div id="outline-container-org636b6e4" class="outline-3">
+<h3 id="org636b6e4"><span class="section-number-3">14.1</span> Different parsers</h3>
+<div class="outline-text-3" id="text-14-1">
+<ul class="org-ul">
+<li>DOM parser, loads the whole document into memory</li>
+<li>SAX parser, is event driven, works on triggers, does not load the whole code into memory</li>
+<li>StAX parser, similar to SAX but more efficient</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org1e43090" class="outline-3">
+<h3 id="org1e43090"><span class="section-number-3">14.2</span> DOM parser</h3>
+<div class="outline-text-3" id="text-14-2">
+<ul class="org-ul">
+<li>Easy to navigate the whole code</li>
+<li>Easy to append, delete, modify nodes. Nodes exist in the memory</li>
+<li>Disadvantage is that it is memory expensive with big documents</li>
+<li>Usually used for files smaller than 10MB</li>
+<li>Example of a DOM parser that grabs string settings from an xml file and puts those settings in hash maps</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #51afef; font-style: italic;">import</span> <span style="color: #a9a1e1;">java</span>.<span style="color: #a9a1e1;">io</span>.<span style="color: #ECBE7B;">File</span>;
+<span style="color: #51afef; font-style: italic;">import</span> <span style="color: #a9a1e1;">java</span>.<span style="color: #a9a1e1;">util</span>.<span style="color: #ECBE7B;">HashMap</span>;
+
+<span style="color: #51afef; font-style: italic;">import</span> <span style="color: #a9a1e1;">javax</span>.<span style="color: #a9a1e1;">xml</span>.<span style="color: #a9a1e1;">parsers</span>.<span style="color: #ECBE7B;">DocumentBuilderFactory</span>;
+<span style="color: #51afef; font-style: italic;">import</span> <span style="color: #a9a1e1;">javax</span>.<span style="color: #a9a1e1;">xml</span>.<span style="color: #a9a1e1;">parsers</span>.<span style="color: #ECBE7B;">DocumentBuilder</span>;
+<span style="color: #51afef; font-style: italic;">import</span> <span style="color: #a9a1e1;">org</span>.<span style="color: #a9a1e1;">w3c</span>.<span style="color: #a9a1e1;">dom</span>.<span style="color: #ECBE7B;">Document</span>;
+<span style="color: #51afef; font-style: italic;">import</span> <span style="color: #a9a1e1;">org</span>.<span style="color: #a9a1e1;">w3c</span>.<span style="color: #a9a1e1;">dom</span>.<span style="color: #ECBE7B;">NodeList</span>;
+<span style="color: #51afef; font-style: italic;">import</span> <span style="color: #a9a1e1;">org</span>.<span style="color: #a9a1e1;">w3c</span>.<span style="color: #a9a1e1;">dom</span>.<span style="color: #ECBE7B;">Node</span>;
+<span style="color: #51afef; font-style: italic;">import</span> <span style="color: #a9a1e1;">org</span>.<span style="color: #a9a1e1;">w3c</span>.<span style="color: #a9a1e1;">dom</span>.<span style="color: #ECBE7B;">Element</span>;
+
+<span style="color: #51afef; font-style: italic;">public</span> <span style="color: #51afef; font-style: italic;">class</span> <span style="color: #ECBE7B;">Settings</span> <span style="color: #fff0f5;">{</span>
+
+    <span style="color: #ECBE7B;">HashMap</span><span style="color: #c678dd;">&lt;</span><span style="color: #ECBE7B;">String</span>, <span style="color: #ECBE7B;">String</span><span style="color: #c678dd;">&gt;</span> <span style="color: #db5762;">hmString</span> = <span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">HashMap</span><span style="color: #c678dd;">&lt;&gt;()</span>;
+    <span style="color: #ECBE7B;">HashMap</span><span style="color: #c678dd;">&lt;</span><span style="color: #ECBE7B;">String</span>, <span style="color: #ECBE7B;">Integer</span><span style="color: #c678dd;">&gt;</span> <span style="color: #db5762;">hmInteger</span> = <span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">HashMap</span><span style="color: #c678dd;">&lt;&gt;()</span>;
+    <span style="color: #ECBE7B;">HashMap</span><span style="color: #c678dd;">&lt;</span><span style="color: #ECBE7B;">String</span>, <span style="color: #ECBE7B;">String</span><span style="color: #98be65;">[]</span><span style="color: #c678dd;">&gt;</span> <span style="color: #db5762;">hmStringArray</span> = <span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">HashMap</span><span style="color: #c678dd;">&lt;&gt;()</span>;
+
+    <span style="color: #ECBE7B;">NodeList</span> <span style="color: #db5762;">xmlNodeList</span>;
+    <span style="color: #ECBE7B;">Document</span> <span style="color: #db5762;">doc</span>;
+
+    <span style="color: #ECBE7B;">String</span> <span style="color: #db5762;">fileName</span>;
+
+    <span style="color: #51afef; font-style: italic;">public</span> <span style="color: #c678dd;">Settings</span><span style="color: #c678dd;">(</span><span style="color: #ECBE7B;">String</span> <span style="color: #db5762;">fileName</span><span style="color: #c678dd;">)</span> <span style="color: #c678dd;">{</span>
+        <span style="color: #51afef; font-style: italic;">this</span>.fileName = fileName;
+        loadFile<span style="color: #98be65;">()</span>;
+        parseData<span style="color: #98be65;">(</span><span style="color: #98be65;">"string"</span><span style="color: #98be65;">)</span>;
+        parseData<span style="color: #98be65;">(</span><span style="color: #98be65;">"integer"</span><span style="color: #98be65;">)</span>;
+        parseData<span style="color: #98be65;">(</span><span style="color: #98be65;">"stringArray"</span><span style="color: #98be65;">)</span>;
+    <span style="color: #c678dd;">}</span>
+
+    <span style="color: #51afef; font-style: italic;">public</span> <span style="color: #ECBE7B;">String</span> <span style="color: #c678dd;">getString</span><span style="color: #c678dd;">(</span><span style="color: #ECBE7B;">String</span> <span style="color: #db5762;">key</span><span style="color: #c678dd;">)</span> <span style="color: #c678dd;">{</span>
+        <span style="color: #51afef; font-style: italic;">return</span> hmString.get<span style="color: #98be65;">(</span>key<span style="color: #98be65;">)</span>;
+    <span style="color: #c678dd;">}</span>
+
+    <span style="color: #51afef; font-style: italic;">public</span> <span style="color: #ECBE7B;">int</span> <span style="color: #c678dd;">getInt</span><span style="color: #c678dd;">(</span><span style="color: #ECBE7B;">String</span> <span style="color: #db5762;">key</span><span style="color: #c678dd;">)</span> <span style="color: #c678dd;">{</span>
+        <span style="color: #51afef; font-style: italic;">return</span> hmInteger.get<span style="color: #98be65;">(</span>key<span style="color: #98be65;">)</span>;
+    <span style="color: #c678dd;">}</span>
+
+    <span style="color: #51afef; font-style: italic;">public</span> <span style="color: #ECBE7B;">String</span> <span style="color: #c678dd;">[]</span> <span style="color: #c678dd;">getStringArray</span><span style="color: #c678dd;">(</span><span style="color: #ECBE7B;">String</span> <span style="color: #db5762;">key</span><span style="color: #c678dd;">)</span> <span style="color: #c678dd;">{</span>
+        <span style="color: #51afef; font-style: italic;">return</span> hmStringArray.get<span style="color: #98be65;">(</span>key<span style="color: #98be65;">)</span>;
+    <span style="color: #c678dd;">}</span>
+
+    <span style="color: #51afef; font-style: italic;">private</span> <span style="color: #ECBE7B;">void</span> <span style="color: #c678dd;">loadFile</span><span style="color: #c678dd;">()</span> <span style="color: #c678dd;">{</span>
+
+        <span style="color: #51afef; font-style: italic;">try</span> <span style="color: #98be65;">{</span>
+            <span style="color: #ECBE7B;">File</span> <span style="color: #db5762;">inputFile</span> = <span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">File</span><span style="color: #00bfff;">(</span><span style="color: #51afef; font-style: italic;">this</span>.fileName<span style="color: #00bfff;">)</span>;
+            <span style="color: #ECBE7B;">DocumentBuilderFactory</span> <span style="color: #db5762;">dbFactory</span> = DocumentBuilderFactory.newInstance<span style="color: #00bfff;">()</span>;
+            <span style="color: #ECBE7B;">DocumentBuilder</span> <span style="color: #db5762;">dBuilder</span> = dbFactory.newDocumentBuilder<span style="color: #00bfff;">()</span>;
+
+            <span style="color: #51afef; font-style: italic;">this</span>.doc = dBuilder.parse<span style="color: #00bfff;">(</span>inputFile<span style="color: #00bfff;">)</span>;
+
+            <span style="color: #51afef; font-style: italic;">this</span>.doc.getDocumentElement<span style="color: #00bfff;">()</span>.normalize<span style="color: #00bfff;">()</span>;
+
+        <span style="color: #98be65;">}</span> <span style="color: #51afef; font-style: italic;">catch</span> <span style="color: #98be65;">(</span><span style="color: #ECBE7B;">Exception</span> <span style="color: #db5762;">e</span><span style="color: #98be65;">)</span> <span style="color: #98be65;">{</span>
+
+            System.out.println<span style="color: #00bfff;">(</span><span style="color: #98be65;">"Settings file "</span> + <span style="color: #51afef; font-style: italic;">this</span>.fileName + <span style="color: #98be65;">", loading error!!!"</span><span style="color: #00bfff;">)</span>;
+            System.out.println<span style="color: #00bfff;">(</span>e.getMessage<span style="color: #a9a1e1;">()</span><span style="color: #00bfff;">)</span>;
+        <span style="color: #98be65;">}</span>
+    <span style="color: #c678dd;">}</span>
+
+    <span style="color: #51afef; font-style: italic;">private</span> <span style="color: #ECBE7B;">void</span> <span style="color: #c678dd;">parseData</span><span style="color: #c678dd;">(</span><span style="color: #ECBE7B;">String</span> <span style="color: #db5762;">tagName</span><span style="color: #c678dd;">)</span> <span style="color: #c678dd;">{</span>
+
+        <span style="color: #51afef; font-style: italic;">this</span>.xmlNodeList = doc.getElementsByTagName<span style="color: #98be65;">(</span>tagName<span style="color: #98be65;">)</span>;
+
+        <span style="color: #51afef; font-style: italic;">for</span> <span style="color: #98be65;">(</span><span style="color: #ECBE7B;">int</span> <span style="color: #db5762;">i</span> = 0; i &lt; xmlNodeList.<span style="color: #ECBE7B;">getLength</span><span style="color: #00bfff;">()</span>; i++<span style="color: #98be65;">)</span> <span style="color: #98be65;">{</span>
+
+            <span style="color: #ECBE7B;">Node</span> <span style="color: #db5762;">node</span> = xmlNodeList.item<span style="color: #00bfff;">(</span>i<span style="color: #00bfff;">)</span>;
+
+            <span style="color: #51afef; font-style: italic;">if</span> <span style="color: #00bfff;">(</span>node.getNodeType<span style="color: #a9a1e1;">()</span> == <span style="color: #a9a1e1;">Node</span>.ELEMENT_NODE<span style="color: #00bfff;">)</span> <span style="color: #00bfff;">{</span>
+                <span style="color: #ECBE7B;">Element</span> <span style="color: #db5762;">element</span> = <span style="color: #a9a1e1;">(</span><span style="color: #ECBE7B;">Element</span><span style="color: #a9a1e1;">)</span> node;
+
+                <span style="color: #ECBE7B;">String</span> <span style="color: #db5762;">name</span> = element.getAttribute<span style="color: #a9a1e1;">(</span><span style="color: #98be65;">"name"</span><span style="color: #a9a1e1;">)</span>;
+                <span style="color: #ECBE7B;">String</span> <span style="color: #db5762;">content</span> = element.getTextContent<span style="color: #a9a1e1;">()</span>;
+
+                <span style="color: #51afef; font-style: italic;">if</span> <span style="color: #a9a1e1;">(</span>tagName.equals<span style="color: #32cd32;">(</span><span style="color: #98be65;">"string"</span><span style="color: #32cd32;">)</span><span style="color: #a9a1e1;">)</span> <span style="color: #a9a1e1;">{</span>
+                    hmString.put<span style="color: #32cd32;">(</span>name, content<span style="color: #32cd32;">)</span>;
+
+                <span style="color: #a9a1e1;">}</span> <span style="color: #51afef; font-style: italic;">else</span> <span style="color: #51afef; font-style: italic;">if</span> <span style="color: #a9a1e1;">(</span>tagName.equals<span style="color: #32cd32;">(</span><span style="color: #98be65;">"integer"</span><span style="color: #32cd32;">)</span><span style="color: #a9a1e1;">)</span> <span style="color: #a9a1e1;">{</span>
+                    hmInteger.put<span style="color: #32cd32;">(</span>name, <span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">Integer</span><span style="color: #4db5bd;">(</span>content<span style="color: #4db5bd;">)</span><span style="color: #32cd32;">)</span>;
+
+                <span style="color: #a9a1e1;">}</span> <span style="color: #51afef; font-style: italic;">else</span> <span style="color: #51afef; font-style: italic;">if</span> <span style="color: #a9a1e1;">(</span>tagName.equals<span style="color: #32cd32;">(</span><span style="color: #98be65;">"stringArray"</span><span style="color: #32cd32;">)</span><span style="color: #a9a1e1;">)</span> <span style="color: #a9a1e1;">{</span>
+                    hmStringArray.put<span style="color: #32cd32;">(</span>name, content.split<span style="color: #4db5bd;">(</span><span style="color: #98be65;">","</span><span style="color: #4db5bd;">)</span><span style="color: #32cd32;">)</span>;
+                <span style="color: #a9a1e1;">}</span>
+            <span style="color: #00bfff;">}</span>
+        <span style="color: #98be65;">}</span>
+    <span style="color: #c678dd;">}</span>
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org18e353d" class="outline-3">
+<h3 id="org18e353d"><span class="section-number-3">14.3</span> DOM inserting data</h3>
+<div class="outline-text-3" id="text-14-3">
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #51afef; font-style: italic;">import</span> <span style="color: #a9a1e1;">java</span>.<span style="color: #a9a1e1;">io</span>.<span style="color: #ECBE7B;">File</span>;
+<span style="color: #51afef; font-style: italic;">import</span> <span style="color: #a9a1e1;">java</span>.<span style="color: #a9a1e1;">util</span>.<span style="color: #ECBE7B;">HashMap</span>;
+
+<span style="color: #51afef; font-style: italic;">import</span> <span style="color: #a9a1e1;">javax</span>.<span style="color: #a9a1e1;">xml</span>.<span style="color: #a9a1e1;">parsers</span>.<span style="color: #ECBE7B;">DocumentBuilderFactory</span>;
+<span style="color: #51afef; font-style: italic;">import</span> <span style="color: #a9a1e1;">javax</span>.<span style="color: #a9a1e1;">xml</span>.<span style="color: #a9a1e1;">parsers</span>.<span style="color: #ECBE7B;">DocumentBuilder</span>;
+<span style="color: #51afef; font-style: italic;">import</span> <span style="color: #a9a1e1;">org</span>.<span style="color: #a9a1e1;">w3c</span>.<span style="color: #a9a1e1;">dom</span>.<span style="color: #ECBE7B;">Document</span>;
+<span style="color: #51afef; font-style: italic;">import</span> <span style="color: #a9a1e1;">org</span>.<span style="color: #a9a1e1;">w3c</span>.<span style="color: #a9a1e1;">dom</span>.<span style="color: #ECBE7B;">NodeList</span>;
+<span style="color: #51afef; font-style: italic;">import</span> <span style="color: #a9a1e1;">org</span>.<span style="color: #a9a1e1;">w3c</span>.<span style="color: #a9a1e1;">dom</span>.<span style="color: #ECBE7B;">Node</span>;
+<span style="color: #51afef; font-style: italic;">import</span> <span style="color: #a9a1e1;">org</span>.<span style="color: #a9a1e1;">w3c</span>.<span style="color: #a9a1e1;">dom</span>.<span style="color: #ECBE7B;">Element</span>;
+
+<span style="color: #51afef; font-style: italic;">public</span> <span style="color: #51afef; font-style: italic;">class</span> <span style="color: #ECBE7B;">Settings</span> <span style="color: #fff0f5;">{</span>
+
+    <span style="color: #ECBE7B;">HashMap</span><span style="color: #c678dd;">&lt;</span><span style="color: #ECBE7B;">String</span>, <span style="color: #ECBE7B;">String</span><span style="color: #c678dd;">&gt;</span> <span style="color: #db5762;">hmString</span> = <span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">HashMap</span><span style="color: #c678dd;">&lt;&gt;()</span>;
+    <span style="color: #ECBE7B;">HashMap</span><span style="color: #c678dd;">&lt;</span><span style="color: #ECBE7B;">String</span>, <span style="color: #ECBE7B;">Integer</span><span style="color: #c678dd;">&gt;</span> <span style="color: #db5762;">hmInteger</span> = <span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">HashMap</span><span style="color: #c678dd;">&lt;&gt;()</span>;
+    <span style="color: #ECBE7B;">HashMap</span><span style="color: #c678dd;">&lt;</span><span style="color: #ECBE7B;">String</span>, <span style="color: #ECBE7B;">String</span><span style="color: #98be65;">[]</span><span style="color: #c678dd;">&gt;</span> <span style="color: #db5762;">hmStringArray</span> = <span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">HashMap</span><span style="color: #c678dd;">&lt;&gt;()</span>;
+
+    <span style="color: #ECBE7B;">NodeList</span> <span style="color: #db5762;">xmlNodeList</span>;
+    <span style="color: #ECBE7B;">Document</span> <span style="color: #db5762;">doc</span>;
+
+    <span style="color: #ECBE7B;">String</span> <span style="color: #db5762;">fileName</span>;
+
+    <span style="color: #51afef; font-style: italic;">public</span> <span style="color: #c678dd;">Settings</span><span style="color: #c678dd;">(</span><span style="color: #ECBE7B;">String</span> <span style="color: #db5762;">fileName</span><span style="color: #c678dd;">)</span> <span style="color: #c678dd;">{</span>
+        <span style="color: #51afef; font-style: italic;">this</span>.fileName = fileName;
+        loadFile<span style="color: #98be65;">()</span>;
+        parseData<span style="color: #98be65;">(</span><span style="color: #98be65;">"string"</span><span style="color: #98be65;">)</span>;
+        parseData<span style="color: #98be65;">(</span><span style="color: #98be65;">"integer"</span><span style="color: #98be65;">)</span>;
+        parseData<span style="color: #98be65;">(</span><span style="color: #98be65;">"stringArray"</span><span style="color: #98be65;">)</span>;
+    <span style="color: #c678dd;">}</span>
+
+    <span style="color: #51afef; font-style: italic;">public</span> <span style="color: #ECBE7B;">String</span> <span style="color: #c678dd;">getString</span><span style="color: #c678dd;">(</span><span style="color: #ECBE7B;">String</span> <span style="color: #db5762;">key</span><span style="color: #c678dd;">)</span> <span style="color: #c678dd;">{</span>
+        <span style="color: #51afef; font-style: italic;">return</span> hmString.get<span style="color: #98be65;">(</span>key<span style="color: #98be65;">)</span>;
+    <span style="color: #c678dd;">}</span>
+
+    <span style="color: #51afef; font-style: italic;">public</span> <span style="color: #ECBE7B;">int</span> <span style="color: #c678dd;">getInt</span><span style="color: #c678dd;">(</span><span style="color: #ECBE7B;">String</span> <span style="color: #db5762;">key</span><span style="color: #c678dd;">)</span> <span style="color: #c678dd;">{</span>
+        <span style="color: #51afef; font-style: italic;">return</span> hmInteger.get<span style="color: #98be65;">(</span>key<span style="color: #98be65;">)</span>;
+    <span style="color: #c678dd;">}</span>
+
+    <span style="color: #51afef; font-style: italic;">public</span> <span style="color: #ECBE7B;">String</span> <span style="color: #c678dd;">[]</span> <span style="color: #c678dd;">getStringArray</span><span style="color: #c678dd;">(</span><span style="color: #ECBE7B;">String</span> <span style="color: #db5762;">key</span><span style="color: #c678dd;">)</span> <span style="color: #c678dd;">{</span>
+        <span style="color: #51afef; font-style: italic;">return</span> hmStringArray.get<span style="color: #98be65;">(</span>key<span style="color: #98be65;">)</span>;
+    <span style="color: #c678dd;">}</span>
+
+    <span style="color: #51afef; font-style: italic;">private</span> <span style="color: #ECBE7B;">void</span> <span style="color: #c678dd;">loadFile</span><span style="color: #c678dd;">()</span> <span style="color: #c678dd;">{</span>
+
+        <span style="color: #51afef; font-style: italic;">try</span> <span style="color: #98be65;">{</span>
+            <span style="color: #ECBE7B;">File</span> <span style="color: #db5762;">inputFile</span> = <span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">File</span><span style="color: #00bfff;">(</span><span style="color: #51afef; font-style: italic;">this</span>.fileName<span style="color: #00bfff;">)</span>;
+            <span style="color: #ECBE7B;">DocumentBuilderFactory</span> <span style="color: #db5762;">dbFactory</span> = DocumentBuilderFactory.newInstance<span style="color: #00bfff;">()</span>;
+            <span style="color: #ECBE7B;">DocumentBuilder</span> <span style="color: #db5762;">dBuilder</span> = dbFactory.newDocumentBuilder<span style="color: #00bfff;">()</span>;
+
+            <span style="color: #51afef; font-style: italic;">this</span>.doc = dBuilder.parse<span style="color: #00bfff;">(</span>inputFile<span style="color: #00bfff;">)</span>;
+
+            <span style="color: #51afef; font-style: italic;">this</span>.doc.getDocumentElement<span style="color: #00bfff;">()</span>.normalize<span style="color: #00bfff;">()</span>;
+
+        <span style="color: #98be65;">}</span> <span style="color: #51afef; font-style: italic;">catch</span> <span style="color: #98be65;">(</span><span style="color: #ECBE7B;">Exception</span> <span style="color: #db5762;">e</span><span style="color: #98be65;">)</span> <span style="color: #98be65;">{</span>
+
+            System.out.println<span style="color: #00bfff;">(</span><span style="color: #98be65;">"Settings file "</span> + <span style="color: #51afef; font-style: italic;">this</span>.fileName + <span style="color: #98be65;">", loading error!!!"</span><span style="color: #00bfff;">)</span>;
+            System.out.println<span style="color: #00bfff;">(</span>e.getMessage<span style="color: #a9a1e1;">()</span><span style="color: #00bfff;">)</span>;
+        <span style="color: #98be65;">}</span>
+    <span style="color: #c678dd;">}</span>
+
+    <span style="color: #51afef; font-style: italic;">private</span> <span style="color: #ECBE7B;">void</span> <span style="color: #c678dd;">parseData</span><span style="color: #c678dd;">(</span><span style="color: #ECBE7B;">String</span> <span style="color: #db5762;">tagName</span><span style="color: #c678dd;">)</span> <span style="color: #c678dd;">{</span>
+
+        <span style="color: #51afef; font-style: italic;">this</span>.xmlNodeList = doc.getElementsByTagName<span style="color: #98be65;">(</span>tagName<span style="color: #98be65;">)</span>;
+
+        <span style="color: #51afef; font-style: italic;">for</span> <span style="color: #98be65;">(</span><span style="color: #ECBE7B;">int</span> <span style="color: #db5762;">i</span> = 0; i &lt; xmlNodeList.<span style="color: #ECBE7B;">getLength</span><span style="color: #00bfff;">()</span>; i++<span style="color: #98be65;">)</span> <span style="color: #98be65;">{</span>
+
+            <span style="color: #ECBE7B;">Node</span> <span style="color: #db5762;">node</span> = xmlNodeList.item<span style="color: #00bfff;">(</span>i<span style="color: #00bfff;">)</span>;
+
+            <span style="color: #51afef; font-style: italic;">if</span> <span style="color: #00bfff;">(</span>node.getNodeType<span style="color: #a9a1e1;">()</span> == <span style="color: #a9a1e1;">Node</span>.ELEMENT_NODE<span style="color: #00bfff;">)</span> <span style="color: #00bfff;">{</span>
+                <span style="color: #ECBE7B;">Element</span> <span style="color: #db5762;">element</span> = <span style="color: #a9a1e1;">(</span><span style="color: #ECBE7B;">Element</span><span style="color: #a9a1e1;">)</span> node;
+
+                <span style="color: #ECBE7B;">String</span> <span style="color: #db5762;">name</span> = element.getAttribute<span style="color: #a9a1e1;">(</span><span style="color: #98be65;">"name"</span><span style="color: #a9a1e1;">)</span>;
+                <span style="color: #ECBE7B;">String</span> <span style="color: #db5762;">content</span> = element.getTextContent<span style="color: #a9a1e1;">()</span>;
+
+                <span style="color: #51afef; font-style: italic;">if</span> <span style="color: #a9a1e1;">(</span>tagName.equals<span style="color: #32cd32;">(</span><span style="color: #98be65;">"string"</span><span style="color: #32cd32;">)</span><span style="color: #a9a1e1;">)</span> <span style="color: #a9a1e1;">{</span>
+                    hmString.put<span style="color: #32cd32;">(</span>name, content<span style="color: #32cd32;">)</span>;
+
+                <span style="color: #a9a1e1;">}</span> <span style="color: #51afef; font-style: italic;">else</span> <span style="color: #51afef; font-style: italic;">if</span> <span style="color: #a9a1e1;">(</span>tagName.equals<span style="color: #32cd32;">(</span><span style="color: #98be65;">"integer"</span><span style="color: #32cd32;">)</span><span style="color: #a9a1e1;">)</span> <span style="color: #a9a1e1;">{</span>
+                    hmInteger.put<span style="color: #32cd32;">(</span>name, <span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">Integer</span><span style="color: #4db5bd;">(</span>content<span style="color: #4db5bd;">)</span><span style="color: #32cd32;">)</span>;
+
+                <span style="color: #a9a1e1;">}</span> <span style="color: #51afef; font-style: italic;">else</span> <span style="color: #51afef; font-style: italic;">if</span> <span style="color: #a9a1e1;">(</span>tagName.equals<span style="color: #32cd32;">(</span><span style="color: #98be65;">"stringArray"</span><span style="color: #32cd32;">)</span><span style="color: #a9a1e1;">)</span> <span style="color: #a9a1e1;">{</span>
+                    hmStringArray.put<span style="color: #32cd32;">(</span>name, content.split<span style="color: #4db5bd;">(</span><span style="color: #98be65;">","</span><span style="color: #4db5bd;">)</span><span style="color: #32cd32;">)</span>;
+                <span style="color: #a9a1e1;">}</span>
+            <span style="color: #00bfff;">}</span>
+        <span style="color: #98be65;">}</span>
+    <span style="color: #c678dd;">}</span>
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org2c5dbd9" class="outline-3">
+<h3 id="org2c5dbd9"><span class="section-number-3">14.4</span> SAX</h3>
+<div class="outline-text-3" id="text-14-4">
+<ul class="org-ul">
+<li>Memory efficient</li>
+<li>Read only</li>
+<li>Usually used for files larger than 10MB</li>
+<li>Example of a basic SAX Parser</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #51afef; font-style: italic;">import</span> <span style="color: #a9a1e1;">org</span>.<span style="color: #a9a1e1;">xml</span>.<span style="color: #a9a1e1;">sax</span>.<span style="color: #ECBE7B;">SAXException</span>;
+
+<span style="color: #51afef; font-style: italic;">import</span> <span style="color: #a9a1e1;">javax</span>.<span style="color: #a9a1e1;">xml</span>.<span style="color: #a9a1e1;">parsers</span>.<span style="color: #ECBE7B;">ParserConfigurationException</span>;
+<span style="color: #51afef; font-style: italic;">import</span> <span style="color: #a9a1e1;">javax</span>.<span style="color: #a9a1e1;">xml</span>.<span style="color: #a9a1e1;">parsers</span>.<span style="color: #ECBE7B;">SAXParser</span>;
+<span style="color: #51afef; font-style: italic;">import</span> <span style="color: #a9a1e1;">javax</span>.<span style="color: #a9a1e1;">xml</span>.<span style="color: #a9a1e1;">parsers</span>.<span style="color: #ECBE7B;">SAXParserFactory</span>;
+<span style="color: #51afef; font-style: italic;">import</span> <span style="color: #a9a1e1;">java</span>.<span style="color: #a9a1e1;">io</span>.<span style="color: #ECBE7B;">File</span>;
+<span style="color: #51afef; font-style: italic;">import</span> <span style="color: #a9a1e1;">java</span>.<span style="color: #a9a1e1;">io</span>.<span style="color: #ECBE7B;">IOException</span>;
+
+<span style="color: #51afef; font-style: italic;">public</span> <span style="color: #51afef; font-style: italic;">class</span> <span style="color: #ECBE7B;">SaxParserExample</span> <span style="color: #fff0f5;">{</span>
+    <span style="color: #51afef; font-style: italic;">public</span> <span style="color: #51afef; font-style: italic;">static</span>  <span style="color: #ECBE7B;">void</span> <span style="color: #c678dd;">main</span> <span style="color: #c678dd;">(</span><span style="color: #ECBE7B;">String</span> <span style="color: #98be65;">[]</span> <span style="color: #db5762;">args</span><span style="color: #c678dd;">)</span> <span style="color: #51afef; font-style: italic;">throws</span> <span style="color: #ECBE7B;">ParserConfigurationException</span>, <span style="color: #ECBE7B;">SAXException</span>, <span style="color: #ECBE7B;">IOException</span> <span style="color: #c678dd;">{</span>
+        <span style="color: #ECBE7B;">File</span> <span style="color: #db5762;">inputFile</span> = <span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">File</span><span style="color: #98be65;">(</span><span style="color: #98be65;">"./AppSettings.xml"</span><span style="color: #98be65;">)</span>;
+        <span style="color: #ECBE7B;">SAXParserFactory</span> <span style="color: #db5762;">saxParserFactory</span> = SAXParserFactory.newInstance<span style="color: #98be65;">()</span>;
+        <span style="color: #ECBE7B;">SAXParser</span> <span style="color: #db5762;">saxParser</span> = saxParserFactory.newSAXParser<span style="color: #98be65;">()</span>;
+
+        <span style="color: #ECBE7B;">SaxParserEventHandler</span> <span style="color: #db5762;">saxParserEventHandler</span> = <span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">SaxParserEventHandler</span><span style="color: #98be65;">()</span>;
+        saxParser.parse<span style="color: #98be65;">(</span>inputFile, saxParserEventHandler<span style="color: #98be65;">)</span>;
+    <span style="color: #c678dd;">}</span>
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+<ul class="org-ul">
+<li>And the event handler, the elements in the xml are called: string, integer and stringArray, hence the relevant boolean flags</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #51afef; font-style: italic;">import</span> <span style="color: #a9a1e1;">org</span>.<span style="color: #a9a1e1;">xml</span>.<span style="color: #a9a1e1;">sax</span>.<span style="color: #ECBE7B;">Attributes</span>;
+<span style="color: #51afef; font-style: italic;">import</span> <span style="color: #a9a1e1;">org</span>.<span style="color: #a9a1e1;">xml</span>.<span style="color: #a9a1e1;">sax</span>.<span style="color: #ECBE7B;">SAXException</span>;
+<span style="color: #51afef; font-style: italic;">import</span> <span style="color: #a9a1e1;">org</span>.<span style="color: #a9a1e1;">xml</span>.<span style="color: #a9a1e1;">sax</span>.<span style="color: #a9a1e1;">helpers</span>.<span style="color: #ECBE7B;">DefaultHandler</span>;
+
+<span style="color: #51afef; font-style: italic;">public</span> <span style="color: #51afef; font-style: italic;">class</span> <span style="color: #ECBE7B;">SaxParserEventHandler</span> <span style="color: #51afef; font-style: italic;">extends</span> <span style="color: #ECBE7B;">DefaultHandler</span> <span style="color: #fff0f5;">{</span>
+
+    <span style="color: #ECBE7B;">boolean</span> <span style="color: #db5762;">inString</span> = <span style="color: #a9a1e1;">false</span>;
+    <span style="color: #ECBE7B;">boolean</span> <span style="color: #db5762;">inInteger</span> = <span style="color: #a9a1e1;">false</span>;
+    <span style="color: #ECBE7B;">boolean</span> <span style="color: #db5762;">inStringArray</span> = <span style="color: #a9a1e1;">false</span>;
+
+    <span style="color: #a9a1e1;">@Override</span>
+    <span style="color: #51afef; font-style: italic;">public</span> <span style="color: #ECBE7B;">void</span> <span style="color: #c678dd;">startElement</span><span style="color: #c678dd;">(</span><span style="color: #ECBE7B;">String</span> <span style="color: #db5762;">uri</span>, <span style="color: #ECBE7B;">String</span> <span style="color: #db5762;">localName</span>, <span style="color: #ECBE7B;">String</span> <span style="color: #db5762;">qName</span>, <span style="color: #ECBE7B;">Attributes</span> <span style="color: #db5762;">attributes</span><span style="color: #c678dd;">)</span> <span style="color: #51afef; font-style: italic;">throws</span> <span style="color: #ECBE7B;">SAXException</span> <span style="color: #c678dd;">{</span>
+        System.out.println<span style="color: #98be65;">(</span><span style="color: #98be65;">"Start element = "</span> + qName<span style="color: #98be65;">)</span>;
+        <span style="color: #51afef; font-style: italic;">if</span> <span style="color: #98be65;">(</span>qName.equalsIgnoreCase<span style="color: #00bfff;">(</span><span style="color: #98be65;">"string"</span><span style="color: #00bfff;">)</span><span style="color: #98be65;">)</span> <span style="color: #98be65;">{</span>
+            System.out.println<span style="color: #00bfff;">(</span><span style="color: #98be65;">"String attribute name = "</span> + getNameAttrib<span style="color: #a9a1e1;">(</span>attributes<span style="color: #a9a1e1;">)</span><span style="color: #00bfff;">)</span>;
+            inString = <span style="color: #a9a1e1;">true</span>;
+        <span style="color: #98be65;">}</span> <span style="color: #51afef; font-style: italic;">else</span> <span style="color: #51afef; font-style: italic;">if</span> <span style="color: #98be65;">(</span>qName.equalsIgnoreCase<span style="color: #00bfff;">(</span><span style="color: #98be65;">"integer"</span><span style="color: #00bfff;">)</span><span style="color: #98be65;">)</span> <span style="color: #98be65;">{</span>
+            System.out.println<span style="color: #00bfff;">(</span><span style="color: #98be65;">"Integer attribute name = "</span> + getNameAttrib<span style="color: #a9a1e1;">(</span>attributes<span style="color: #a9a1e1;">)</span><span style="color: #00bfff;">)</span>;
+            inInteger = <span style="color: #a9a1e1;">true</span>;
+        <span style="color: #98be65;">}</span> <span style="color: #51afef; font-style: italic;">else</span> <span style="color: #51afef; font-style: italic;">if</span> <span style="color: #98be65;">(</span>qName.equalsIgnoreCase<span style="color: #00bfff;">(</span><span style="color: #98be65;">"stringArray"</span><span style="color: #00bfff;">)</span><span style="color: #98be65;">)</span> <span style="color: #98be65;">{</span>
+            System.out.println<span style="color: #00bfff;">(</span><span style="color: #98be65;">"StringArray attribute name = "</span> + getNameAttrib<span style="color: #a9a1e1;">(</span>attributes<span style="color: #a9a1e1;">)</span><span style="color: #00bfff;">)</span>;
+            inStringArray = <span style="color: #a9a1e1;">true</span>;
+        <span style="color: #98be65;">}</span>
+    <span style="color: #c678dd;">}</span>
+
+    <span style="color: #51afef; font-style: italic;">public</span> <span style="color: #ECBE7B;">void</span> <span style="color: #c678dd;">characters</span><span style="color: #c678dd;">(</span><span style="color: #ECBE7B;">char</span> <span style="color: #98be65;">[]</span> <span style="color: #db5762;">ch</span>, <span style="color: #ECBE7B;">int</span> <span style="color: #db5762;">start</span>, <span style="color: #ECBE7B;">int</span> <span style="color: #db5762;">end</span><span style="color: #c678dd;">)</span> <span style="color: #c678dd;">{</span>
+        <span style="color: #51afef; font-style: italic;">if</span> <span style="color: #98be65;">(</span>inString<span style="color: #98be65;">)</span> <span style="color: #98be65;">{</span>
+            System.out.println<span style="color: #00bfff;">(</span><span style="color: #98be65;">"Content of string : "</span> + <span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">String</span><span style="color: #a9a1e1;">(</span>ch, start, end<span style="color: #a9a1e1;">)</span><span style="color: #00bfff;">)</span>;
+            inString = <span style="color: #a9a1e1;">false</span>;
+        <span style="color: #98be65;">}</span> <span style="color: #51afef; font-style: italic;">else</span> <span style="color: #51afef; font-style: italic;">if</span> <span style="color: #98be65;">(</span>inInteger<span style="color: #98be65;">)</span> <span style="color: #98be65;">{</span>
+            System.out.println<span style="color: #00bfff;">(</span><span style="color: #98be65;">"Content of integer : "</span> + <span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">String</span><span style="color: #a9a1e1;">(</span>ch, start, end<span style="color: #a9a1e1;">)</span><span style="color: #00bfff;">)</span>;
+            inInteger = <span style="color: #a9a1e1;">false</span>;
+        <span style="color: #98be65;">}</span> <span style="color: #51afef; font-style: italic;">else</span>  <span style="color: #51afef; font-style: italic;">if</span> <span style="color: #98be65;">(</span>inStringArray<span style="color: #98be65;">)</span> <span style="color: #98be65;">{</span>
+            System.out.println<span style="color: #00bfff;">(</span><span style="color: #98be65;">"Content of string array : "</span> + <span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">String</span><span style="color: #a9a1e1;">(</span>ch, start, end<span style="color: #a9a1e1;">)</span><span style="color: #00bfff;">)</span>;
+            inStringArray = <span style="color: #a9a1e1;">false</span>;
+        <span style="color: #98be65;">}</span>
+    <span style="color: #c678dd;">}</span>
+
+    <span style="color: #a9a1e1;">@Override</span>
+    <span style="color: #51afef; font-style: italic;">public</span> <span style="color: #ECBE7B;">void</span> <span style="color: #c678dd;">endElement</span><span style="color: #c678dd;">(</span><span style="color: #ECBE7B;">String</span> <span style="color: #db5762;">uri</span>, <span style="color: #ECBE7B;">String</span> <span style="color: #db5762;">localName</span>, <span style="color: #ECBE7B;">String</span> <span style="color: #db5762;">qName</span><span style="color: #c678dd;">)</span> <span style="color: #51afef; font-style: italic;">throws</span> <span style="color: #ECBE7B;">SAXException</span> <span style="color: #c678dd;">{</span>
+        System.out.println<span style="color: #98be65;">(</span><span style="color: #98be65;">"End element = "</span> + qName<span style="color: #98be65;">)</span>;
+    <span style="color: #c678dd;">}</span>
+
+    <span style="color: #51afef; font-style: italic;">private</span> <span style="color: #ECBE7B;">String</span> <span style="color: #c678dd;">getNameAttrib</span><span style="color: #c678dd;">(</span><span style="color: #ECBE7B;">Attributes</span> <span style="color: #db5762;">attributes</span><span style="color: #c678dd;">)</span> <span style="color: #c678dd;">{</span>
+        <span style="color: #51afef; font-style: italic;">return</span> attributes.getValue<span style="color: #98be65;">(</span><span style="color: #98be65;">"name"</span><span style="color: #98be65;">)</span>;
+    <span style="color: #c678dd;">}</span>
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgd07b5aa" class="outline-3">
+<h3 id="orgd07b5aa"><span class="section-number-3">14.5</span> StAX</h3>
+<div class="outline-text-3" id="text-14-5">
+<ul class="org-ul">
+<li>Memory efficient</li>
+<li>Read and write</li>
+<li>Example of a StAX Parser (as in the example above this also is based around xml elements called: string, integer, stringArray)</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #51afef; font-style: italic;">import</span> <span style="color: #a9a1e1;">javax</span>.<span style="color: #a9a1e1;">xml</span>.<span style="color: #a9a1e1;">namespace</span>.<span style="color: #ECBE7B;">QName</span>;
+<span style="color: #51afef; font-style: italic;">import</span> <span style="color: #a9a1e1;">javax</span>.<span style="color: #a9a1e1;">xml</span>.<span style="color: #a9a1e1;">stream</span>.*;
+<span style="color: #51afef; font-style: italic;">import</span> <span style="color: #a9a1e1;">javax</span>.<span style="color: #a9a1e1;">xml</span>.<span style="color: #a9a1e1;">stream</span>.<span style="color: #a9a1e1;">events</span>.*;
+<span style="color: #51afef; font-style: italic;">import</span> <span style="color: #a9a1e1;">java</span>.<span style="color: #a9a1e1;">io</span>.<span style="color: #ECBE7B;">File</span>;
+<span style="color: #51afef; font-style: italic;">import</span> <span style="color: #a9a1e1;">java</span>.<span style="color: #a9a1e1;">io</span>.<span style="color: #ECBE7B;">FileInputStream</span>;
+<span style="color: #51afef; font-style: italic;">import</span> <span style="color: #a9a1e1;">java</span>.<span style="color: #a9a1e1;">io</span>.<span style="color: #ECBE7B;">FileNotFoundException</span>;
+<span style="color: #51afef; font-style: italic;">import</span> <span style="color: #a9a1e1;">java</span>.<span style="color: #a9a1e1;">util</span>.<span style="color: #ECBE7B;">Iterator</span>;
+
+<span style="color: #51afef; font-style: italic;">public</span> <span style="color: #51afef; font-style: italic;">class</span> <span style="color: #ECBE7B;">StaxParserExample</span> <span style="color: #fff0f5;">{</span>
+
+    <span style="color: #51afef; font-style: italic;">static</span> <span style="color: #ECBE7B;">boolean</span> <span style="color: #db5762;">inString</span> = <span style="color: #a9a1e1;">false</span>;
+    <span style="color: #51afef; font-style: italic;">static</span> <span style="color: #ECBE7B;">boolean</span> <span style="color: #db5762;">inInteger</span> = <span style="color: #a9a1e1;">false</span>;
+    <span style="color: #51afef; font-style: italic;">static</span> <span style="color: #ECBE7B;">boolean</span> <span style="color: #db5762;">inStringArray</span> = <span style="color: #a9a1e1;">false</span>;
+
+    <span style="color: #51afef; font-style: italic;">public</span> <span style="color: #51afef; font-style: italic;">static</span> <span style="color: #ECBE7B;">void</span> <span style="color: #c678dd;">main</span><span style="color: #c678dd;">(</span><span style="color: #ECBE7B;">String</span><span style="color: #98be65;">[]</span> <span style="color: #db5762;">args</span><span style="color: #c678dd;">)</span> <span style="color: #51afef; font-style: italic;">throws</span> <span style="color: #ECBE7B;">FileNotFoundException</span>, <span style="color: #ECBE7B;">XMLStreamException</span> <span style="color: #c678dd;">{</span>
+        <span style="color: #ECBE7B;">String</span> <span style="color: #db5762;">qName</span> = <span style="color: #98be65;">""</span>;
+        <span style="color: #ECBE7B;">File</span> <span style="color: #db5762;">inputFile</span> = <span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">File</span><span style="color: #98be65;">(</span><span style="color: #98be65;">"./AppSettings.xml"</span><span style="color: #98be65;">)</span>;
+
+        <span style="color: #ECBE7B;">XMLInputFactory</span> <span style="color: #db5762;">xmlInputFactory</span> = XMLInputFactory.newInstance<span style="color: #98be65;">()</span>;
+        <span style="color: #ECBE7B;">XMLEventReader</span> <span style="color: #db5762;">xmlEventReader</span> = xmlInputFactory.createXMLEventReader<span style="color: #98be65;">(</span><span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">FileInputStream</span><span style="color: #00bfff;">(</span>inputFile<span style="color: #00bfff;">)</span><span style="color: #98be65;">)</span>;
+
+        <span style="color: #51afef; font-style: italic;">while</span> <span style="color: #98be65;">(</span>xmlEventReader.hasNext<span style="color: #00bfff;">()</span><span style="color: #98be65;">)</span> <span style="color: #98be65;">{</span>
+            <span style="color: #ECBE7B;">XMLEvent</span> <span style="color: #db5762;">xmlEvent</span> = xmlEventReader.nextEvent<span style="color: #00bfff;">()</span>;
+
+            <span style="color: #51afef; font-style: italic;">switch</span> <span style="color: #00bfff;">(</span>xmlEvent.getEventType<span style="color: #a9a1e1;">()</span><span style="color: #00bfff;">)</span> <span style="color: #00bfff;">{</span>
+                <span style="color: #51afef; font-style: italic;">case</span> <span style="color: #a9a1e1;">XMLStreamConstants</span>.START_ELEMENT:
+                    <span style="color: #ECBE7B;">StartElement</span> <span style="color: #db5762;">startElement</span> = xmlEvent.asStartElement<span style="color: #a9a1e1;">()</span>;
+                    qName = startElement.getName<span style="color: #a9a1e1;">()</span>.getLocalPart<span style="color: #a9a1e1;">()</span>;
+                    System.out.println<span style="color: #a9a1e1;">(</span><span style="color: #98be65;">"Element name = "</span> + qName<span style="color: #a9a1e1;">)</span>;
+
+                    <span style="color: #ECBE7B;">Attribute</span> <span style="color: #db5762;">attribute</span> = startElement.getAttributeByName<span style="color: #a9a1e1;">(</span><span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">QName</span><span style="color: #32cd32;">(</span><span style="color: #98be65;">"name"</span><span style="color: #32cd32;">)</span><span style="color: #a9a1e1;">)</span>;
+                    <span style="color: #51afef; font-style: italic;">if</span> <span style="color: #a9a1e1;">(</span>attribute != <span style="color: #a9a1e1;">null</span><span style="color: #a9a1e1;">)</span> <span style="color: #a9a1e1;">{</span>
+                        System.out.println<span style="color: #32cd32;">(</span><span style="color: #98be65;">"Value of name = "</span> + attribute.getValue<span style="color: #4db5bd;">()</span><span style="color: #32cd32;">)</span>;
+                    <span style="color: #a9a1e1;">}</span>
+
+                    <span style="color: #51afef; font-style: italic;">if</span> <span style="color: #a9a1e1;">(</span>qName.equalsIgnoreCase<span style="color: #32cd32;">(</span><span style="color: #98be65;">"string"</span><span style="color: #32cd32;">)</span><span style="color: #a9a1e1;">)</span> <span style="color: #a9a1e1;">{</span>
+                        inString = <span style="color: #a9a1e1;">true</span>;
+                    <span style="color: #a9a1e1;">}</span> <span style="color: #51afef; font-style: italic;">else</span> <span style="color: #51afef; font-style: italic;">if</span> <span style="color: #a9a1e1;">(</span>qName.equalsIgnoreCase<span style="color: #32cd32;">(</span><span style="color: #98be65;">"integer"</span><span style="color: #32cd32;">)</span><span style="color: #a9a1e1;">)</span> <span style="color: #a9a1e1;">{</span>
+                        inInteger = <span style="color: #a9a1e1;">true</span>;
+                    <span style="color: #a9a1e1;">}</span> <span style="color: #51afef; font-style: italic;">else</span> <span style="color: #51afef; font-style: italic;">if</span> <span style="color: #a9a1e1;">(</span>qName.equalsIgnoreCase<span style="color: #32cd32;">(</span><span style="color: #98be65;">"stringArray"</span><span style="color: #32cd32;">)</span><span style="color: #a9a1e1;">)</span> <span style="color: #a9a1e1;">{</span>
+                        inStringArray = <span style="color: #a9a1e1;">true</span>;
+                    <span style="color: #a9a1e1;">}</span>
+                    <span style="color: #51afef; font-style: italic;">break</span>;
+                <span style="color: #51afef; font-style: italic;">case</span> <span style="color: #a9a1e1;">XMLStreamConstants</span>.END_ELEMENT:
+                    <span style="color: #ECBE7B;">EndElement</span> <span style="color: #db5762;">endElement</span> = xmlEvent.asEndElement<span style="color: #a9a1e1;">()</span>;
+                    qName = endElement.getName<span style="color: #a9a1e1;">()</span>.getLocalPart<span style="color: #a9a1e1;">()</span>;
+                    System.out.println<span style="color: #a9a1e1;">(</span><span style="color: #98be65;">"End element name = "</span> + qName<span style="color: #a9a1e1;">)</span>;
+                    <span style="color: #51afef; font-style: italic;">break</span>;
+                <span style="color: #51afef; font-style: italic;">case</span> <span style="color: #a9a1e1;">XMLStreamConstants</span>.CHARACTERS:
+                    <span style="color: #ECBE7B;">Characters</span> <span style="color: #db5762;">characters</span> = xmlEvent.asCharacters<span style="color: #a9a1e1;">()</span>;
+                    <span style="color: #51afef; font-style: italic;">if</span> <span style="color: #a9a1e1;">(</span>inString<span style="color: #a9a1e1;">)</span> <span style="color: #a9a1e1;">{</span>
+                        System.out.println<span style="color: #32cd32;">(</span><span style="color: #98be65;">"String data : "</span> + characters.getData<span style="color: #4db5bd;">()</span><span style="color: #32cd32;">)</span>;
+                        inString = <span style="color: #a9a1e1;">false</span>;
+                    <span style="color: #a9a1e1;">}</span> <span style="color: #51afef; font-style: italic;">else</span> <span style="color: #51afef; font-style: italic;">if</span> <span style="color: #a9a1e1;">(</span>inInteger<span style="color: #a9a1e1;">)</span> <span style="color: #a9a1e1;">{</span>
+                        System.out.println<span style="color: #32cd32;">(</span><span style="color: #98be65;">"Integer data : "</span> + characters.getData<span style="color: #4db5bd;">()</span><span style="color: #32cd32;">)</span>;
+                        inInteger = <span style="color: #a9a1e1;">false</span>;
+                    <span style="color: #a9a1e1;">}</span> <span style="color: #51afef; font-style: italic;">else</span> <span style="color: #51afef; font-style: italic;">if</span> <span style="color: #a9a1e1;">(</span>inStringArray<span style="color: #a9a1e1;">)</span> <span style="color: #a9a1e1;">{</span>
+                        System.out.println<span style="color: #32cd32;">(</span><span style="color: #98be65;">"String array data : "</span> + characters.getData<span style="color: #4db5bd;">()</span><span style="color: #32cd32;">)</span>;
+                        inStringArray = <span style="color: #a9a1e1;">false</span>;
+                    <span style="color: #a9a1e1;">}</span>
+            <span style="color: #00bfff;">}</span>
+        <span style="color: #98be65;">}</span>
+    <span style="color: #c678dd;">}</span>
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgc6632a9" class="outline-2">
+<h2 id="orgc6632a9"><span class="section-number-2">15</span> Delete heading at the end, leave html export</h2>
+<div class="outline-text-2" id="text-15">
+<button id="invert">Invert</button>
+<img src="images/arrow-up.png" alt="arrow-up" id="scroll-button" onclick="scroll(0, 0)">
+<script src="notes.js"></script>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="date">Date: 2017-09-15 Fri 12:43</p>
+<p class="author">Author: Damian Chrzanowski</p>
+<p class="date">Created: 2018-05-07 Mon 17:09</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

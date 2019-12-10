@@ -1,0 +1,1095 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2018-12-13 Thu 20:22 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Web Development 3</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="Damian Chrzanowski" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="../assets/org.css"/>
+<link rel="icon" href="../assets/favicon.ico">
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2018 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Web Development 3</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orgb455f0f">1. Rich Internet Applications (RIAs)</a>
+<ul>
+<li><a href="#orgeef050b">1.1. History of the Internet</a></li>
+<li><a href="#orgf49c884">1.2. Architecture of a Web Application</a></li>
+<li><a href="#org935a21a">1.3. Architecture of the Internet</a></li>
+<li><a href="#org97c0e8f">1.4. Processing a Static Web Page</a></li>
+<li><a href="#org979935a">1.5. Processing a Dynamic Page</a></li>
+<li><a href="#org956fc8d">1.6. Request/Response Example</a></li>
+<li><a href="#orgdd67970">1.7. What is Web 2.0?</a></li>
+<li><a href="#org33e460e">1.8. Client/Server Roles</a></li>
+</ul>
+</li>
+<li><a href="#org8c85d28">2. PHP</a>
+<ul>
+<li><a href="#org0fc0738">2.1. Data Types</a></li>
+<li><a href="#org6dfe42c">2.2. Common Methods</a></li>
+<li><a href="#org5efde09">2.3. Processing Form Data</a></li>
+<li><a href="#orgf5556e0">2.4. Connecting to MySQL</a></li>
+<li><a href="#org5cc349e">2.5. Arrays</a></li>
+<li><a href="#org5347dc4">2.6. Slim</a></li>
+</ul>
+</li>
+<li><a href="#orgc9ffbfa">3. Rest</a></li>
+<li><a href="#org6df125c">4. Web Services</a></li>
+<li><a href="#org17c378a">5. DOM</a>
+<ul>
+<li><a href="#orgb62fb5d">5.1. DOM Tree Example</a></li>
+<li><a href="#org4281d61">5.2. Common Properties Of The Node Interface</a></li>
+<li><a href="#orgb51e0f2">5.3. nodeType</a></li>
+<li><a href="#orgc3b093d">5.4. Handy Methods</a></li>
+<li><a href="#org34ce1f4">5.5. DOM Creation Methods</a></li>
+<li><a href="#org0ad83a3">5.6. HTMLElement interface</a></li>
+</ul>
+</li>
+<li><a href="#orgd3b5893">6. AJAX</a>
+<ul>
+<li><a href="#org8349c3b">6.1. Using XMLHttpRequest</a></li>
+</ul>
+</li>
+<li><a href="#org0e96d7c">7. JavaScript</a>
+<ul>
+<li><a href="#orgd841dcd">7.1. Execution</a></li>
+</ul>
+</li>
+<li><a href="#org85a266b">8. jQuery</a>
+<ul>
+<li><a href="#org8f96d81">8.1. Selectors</a></li>
+<li><a href="#org1a297ad">8.2. AJAX</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<p>
+<a href="index.html">Home Page</a>
+</p>
+
+<div id="outline-container-orgb455f0f" class="outline-2">
+<h2 id="orgb455f0f"><span class="section-number-2">1</span> Rich Internet Applications (RIAs)</h2>
+<div class="outline-text-2" id="text-1">
+<ul class="org-ul">
+<li><b>Rich Internet Applications</b> (RIAs) are being developed using technologies (such as Ajax) that have the look and feel of desktop software.</li>
+<li>Typically run on the web browser and do not require additional software</li>
+<li>Transfer the processing necessary for the UI to the client</li>
+<li>General benefits:
+<ul class="org-ul">
+<li>Richer</li>
+<li>Responsive</li>
+<li>Client/Server balance</li>
+<li>Asynchronous Communication</li>
+<li>Network Efficiency</li>
+</ul></li>
+<li>Term <b>RIA</b> was introduced by Macromedia</li>
+<li>Is now widely used</li>
+<li><b>AJAX</b> (Asynchronous JavaScript and XML): Allows partial page updates – meaning updates of individual pieces of a web page without having to reload the entire page. Technologies include (XHTML, CSS, JavaScript, the DOM, XML, and XMLHttpRequest object).
+<ul class="org-ul">
+<li>XMLHttpRequest</li>
+<li>Fetch API (Promises)</li>
+<li>XML/JSON</li>
+<li>Serve Side</li>
+<li>Valid Markup</li>
+<li>CSS</li>
+<li>DOM Scripting</li>
+</ul></li>
+</ul>
+</div>
+
+<div id="outline-container-orgeef050b" class="outline-3">
+<h3 id="orgeef050b"><span class="section-number-3">1.1</span> History of the Internet</h3>
+<div class="outline-text-3" id="text-1-1">
+<ul class="org-ul">
+<li>Late 1960’s , ARPA (Advanced Research Projects Agency) of the U.S Department of Defense implemented a network of computer systems (ARPANET) of about a dozen ARPA funded universities and research institutions.</li>
+<li>ARPA developed the TCP and IP protocols and the ARPANET evolved into today’s Internet</li>
+<li>In 1989, Tim Berners-Lee of CERN ( the European Organization for nuclear Research) began to develop a technology for sharing information via hyperlinked text documents. This was called HTML. He also wrote the Hypertext Transfer Protocol (HTTP).</li>
+<li>Web use exploded with the availability in 1993 of the Mosaic browser. The team that developed Mosaic, went on to found Netscape.</li>
+<li>In October 1994, Tim Berners-Lee founded an organization – called the World Wide Web consortium (W3C)</li>
+<li>Web technologies standardised by the W3C are called Recommendations. Recommendations include:
+<ul class="org-ul">
+<li>XHTML</li>
+<li>CSS</li>
+<li>HTML</li>
+<li>XML</li>
+<li>HTML5</li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgf49c884" class="outline-3">
+<h3 id="orgf49c884"><span class="section-number-3">1.2</span> Architecture of a Web Application</h3>
+<div class="outline-text-3" id="text-1-2">
+
+<div class="figure">
+<p><img src="images/Rich%20Internet%20Applications%20(RIAs)/screenshot_2018-12-09_13-41-48.png" alt="screenshot_2018-12-09_13-41-48.png" />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org935a21a" class="outline-3">
+<h3 id="org935a21a"><span class="section-number-3">1.3</span> Architecture of the Internet</h3>
+<div class="outline-text-3" id="text-1-3">
+
+<div class="figure">
+<p><img src="images/Rich%20Internet%20Applications%20(RIAs)/screenshot_2018-12-09_13-42-24.png" alt="screenshot_2018-12-09_13-42-24.png" />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org97c0e8f" class="outline-3">
+<h3 id="org97c0e8f"><span class="section-number-3">1.4</span> Processing a Static Web Page</h3>
+<div class="outline-text-3" id="text-1-4">
+
+<div class="figure">
+<p><img src="images/Rich%20Internet%20Applications%20(RIAs)/screenshot_2018-12-09_13-43-01.png" alt="screenshot_2018-12-09_13-43-01.png" />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org979935a" class="outline-3">
+<h3 id="org979935a"><span class="section-number-3">1.5</span> Processing a Dynamic Page</h3>
+<div class="outline-text-3" id="text-1-5">
+
+<div class="figure">
+<p><img src="images/Rich%20Internet%20Applications%20(RIAs)/screenshot_2018-12-09_13-48-59.png" alt="screenshot_2018-12-09_13-48-59.png" />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org956fc8d" class="outline-3">
+<h3 id="org956fc8d"><span class="section-number-3">1.6</span> Request/Response Example</h3>
+<div class="outline-text-3" id="text-1-6">
+</div>
+<div id="outline-container-org51d3c41" class="outline-4">
+<h4 id="org51d3c41">Request</h4>
+<div class="outline-text-4" id="text-org51d3c41">
+<ul class="org-ul">
+<li>Request line</li>
+<li>Headers</li>
+<li>Empty line</li>
+<li>Optional body</li>
+<li>Methods:
+<ul class="org-ul">
+<li>HEAD (safe)</li>
+<li>GET (safe)</li>
+<li>POST</li>
+<li>PUT</li>
+<li>DELETE</li>
+<li>TRACE (safe)</li>
+<li>OPTIONS (safe)</li>
+<li>CONNECT</li>
+</ul></li>
+<li>Example GET</li>
+</ul>
+<p class="verse">
+<code>GET / HTTP/1.1</code><br />
+<code>Host: www.example.com</code><br />
+</p>
+</div>
+</div>
+
+<div id="outline-container-org5e65b25" class="outline-4">
+<h4 id="org5e65b25">Response</h4>
+<div class="outline-text-4" id="text-org5e65b25">
+<p class="verse">
+<code>HTTP/1.1 200 OK</code><br />
+<code>Content-Type: text/html</code><br />
+<code>Content-Length: 136</code><br />
+<code>Server: Apache/2.2.3</code><br />
+<br />
+<code>&lt;html&gt;</code><br />
+<code>.</code><br />
+<code>.</code><br />
+<code>.</code><br />
+<code>&lt;/html&gt;</code><br />
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgd0ae485" class="outline-4">
+<h4 id="orgd0ae485">Status Codes</h4>
+<div class="outline-text-4" id="text-orgd0ae485">
+<ul class="org-ul">
+<li><b>Success</b>: 2xx</li>
+<li><b>Redirection</b>: 3xx</li>
+<li><b>Client-Side Error</b>: 4xx</li>
+<li><b>Server-Side Error</b>: 5xx</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org11c7875" class="outline-4">
+<h4 id="org11c7875">Session Options</h4>
+<div class="outline-text-4" id="text-org11c7875">
+<ul class="org-ul">
+<li>Cookies</li>
+<li>Sessions</li>
+<li>Hidden variables</li>
+<li>URL encoded params</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgdd67970" class="outline-3">
+<h3 id="orgdd67970"><span class="section-number-3">1.7</span> What is Web 2.0?</h3>
+<div class="outline-text-3" id="text-1-7">
+<ul class="org-ul">
+<li><b>Web1.0</b> was mainly focused on static <b>content</b> based websites with advertisement</li>
+<li>The term Web 2.0 was coined by Dale Dougherty of O’ Reilly Media in 2003 to describe this trend</li>
+<li>Companies use the web as a <b>platform</b> to create community based sites (social networks, blog, wikis, etc.)</li>
+<li>Is characterized by <b>participation</b></li>
+<li>Some websites are built nearly entirely on <b>user-generated content</b></li>
+<li>Web services allow to incorporate functionality in own applications, e.g. Amazon Web Services</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org33e460e" class="outline-3">
+<h3 id="org33e460e"><span class="section-number-3">1.8</span> Client/Server Roles</h3>
+<div class="outline-text-3" id="text-1-8">
+</div>
+<div id="outline-container-org1a1a3da" class="outline-4">
+<h4 id="org1a1a3da">Web 1.0</h4>
+<div class="outline-text-4" id="text-org1a1a3da">
+<ul class="org-ul">
+<li>Information stored as static pages on the server</li>
+<li>Client requests pages from the server and displays them</li>
+<li>User Interaction based on hyperlinks</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org08af917" class="outline-4">
+<h4 id="org08af917">Web 2.0</h4>
+<div class="outline-text-4" id="text-org08af917">
+<ul class="org-ul">
+<li>Data and Business logic on server</li>
+<li>Dynamic pages created on server in response to client requests. All processing on server.</li>
+<li>Data merged into page templates and sent to client for display</li>
+<li>User Interaction based on hyperlinks and form input</li>
+<li>Application sent from server to client as web page with embedded code</li>
+<li>Application running on client provides user with interactive interface</li>
+<li>Data and business logic on server</li>
+<li>Data sent by server in response to client requests</li>
+<li>Client uses data to update interface. Processing now on client side and on server.</li>
+<li>User interaction based on hyperlinks, form input, GUI controls</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org8c85d28" class="outline-2">
+<h2 id="org8c85d28"><span class="section-number-2">2</span> PHP</h2>
+<div class="outline-text-2" id="text-2">
+</div>
+<div id="outline-container-org0fc0738" class="outline-3">
+<h3 id="org0fc0738"><span class="section-number-3">2.1</span> Data Types</h3>
+<div class="outline-text-3" id="text-2-1">
+<ul class="org-ul">
+<li>Integer</li>
+<li>Double</li>
+<li>Boolean</li>
+<li>String
+<ul class="org-ul">
+<li>Can be <code>null</code></li>
+</ul></li>
+<li>Array</li>
+<li>Object</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org6dfe42c" class="outline-3">
+<h3 id="org6dfe42c"><span class="section-number-3">2.2</span> Common Methods</h3>
+<div class="outline-text-3" id="text-2-2">
+<ul class="org-ul">
+<li><code>number_format($number, $decimals)</code> : format a number</li>
+<li><code>isset($var)</code> : true if the <code>$var</code> has been set</li>
+<li><code>empty($var)</code> : true if <code>$var</code> is empty</li>
+<li><code>is_numeric($var)</code> : true if the <code>$var</code> is numeric</li>
+<li><code>include($path)</code> : Insert and run the specified file. Continues operation in case of a failure.</li>
+<li><code>include_once($path)</code> : Same as <code>include</code> but makes sure the file is only included once</li>
+<li><code>require($path)</code> : Same as <code>include</code> but causes a critical error and the execution stops</li>
+<li><code>require_once($path)</code> : Same as the <code>include_once</code>, but with critical error</li>
+<li><code>exit([$status])</code> : Exits the PHP script. If <code>$status</code> is not supplied, the brackets are optional. If <code>$status</code> is supplied, then the function sends the status to the browser before exiting.</li>
+<li><code>die([$status])</code> : Same as <code>exit</code></li>
+<li><code>define('MAX_QTY', 100)</code> : Defines a constant <code>MAX_QTY</code> with a value of 100</li>
+<li><code>date($format)</code> : Get the current date, e.g. <code>date('Y-m-d')</code> =&gt; 2010-06-12</li>
+<li><code>array()</code> : Create an array</li>
+<li><code>count($array_name)</code> : Count the elements in the array</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org5efde09" class="outline-3">
+<h3 id="org5efde09"><span class="section-number-3">2.3</span> Processing Form Data</h3>
+<div class="outline-text-3" id="text-2-3">
+<ul class="org-ul">
+<li>With a form that has two inputs: <code>first_name</code> and <code>last_name</code></li>
+</ul>
+</div>
+
+<div id="outline-container-org4c11345" class="outline-4">
+<h4 id="org4c11345">With GET</h4>
+<div class="outline-text-4" id="text-org4c11345">
+<ul class="org-ul">
+<li>The URL generated would be: <code>http://localhost/display.php?first_name=Joe&amp;last_name=Bloggs</code></li>
+<li>Generally used to retrieve data</li>
+<li>Retrieve it in PHP with</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-php"><span style="color: #bbc2cf; background-color: #131519;">$</span><span style="color: #db5762;">first_name</span> = <span style="color: #bbc2cf; background-color: #131519;">$</span><span style="color: #db5762;">_GET</span><span style="color: #fff0f5;">[</span><span style="color: #98be65;">'first_name'</span><span style="color: #fff0f5;">]</span>;
+<span style="color: #bbc2cf; background-color: #131519;">$</span><span style="color: #db5762;">last_name</span> = <span style="color: #bbc2cf; background-color: #131519;">$</span><span style="color: #db5762;">_GET</span><span style="color: #fff0f5;">[</span><span style="color: #98be65;">'last_name'</span><span style="color: #fff0f5;">]</span>;
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgd82828f" class="outline-4">
+<h4 id="orgd82828f">With POST</h4>
+<div class="outline-text-4" id="text-orgd82828f">
+<ul class="org-ul">
+<li>Generally used to create or to modify data</li>
+<li>Also is more secure than GET (does not display the data in the URL)</li>
+<li>Retrieve it in PHP with</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-php"><span style="color: #bbc2cf; background-color: #131519;">$</span><span style="color: #db5762;">first_name</span> = <span style="color: #bbc2cf; background-color: #131519;">$</span><span style="color: #db5762;">_POST</span><span style="color: #fff0f5;">[</span><span style="color: #98be65;">'first_name'</span><span style="color: #fff0f5;">]</span>;
+<span style="color: #bbc2cf; background-color: #131519;">$</span><span style="color: #db5762;">last_name</span> = <span style="color: #bbc2cf; background-color: #131519;">$</span><span style="color: #db5762;">_POST</span><span style="color: #fff0f5;">[</span><span style="color: #98be65;">'last_name'</span><span style="color: #fff0f5;">]</span>;
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org79693bd" class="outline-4">
+<h4 id="org79693bd">Accessing Form Data</h4>
+<div class="outline-text-4" id="text-org79693bd">
+<ul class="org-ul">
+<li>Use <code>isset($_POST['checkbox'])</code> to check checkboxes and radio buttons</li>
+<li>Can use <code>&lt;input type="checkbox" name="top[]" value="pep"&gt;</code> to put all checkboxes into a <code>top</code> array. So now <code>$toppings = $_POST['top']</code> contains a numbered array</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgf5556e0" class="outline-3">
+<h3 id="orgf5556e0"><span class="section-number-3">2.4</span> Connecting to MySQL</h3>
+<div class="outline-text-3" id="text-2-4">
+<ul class="org-ul">
+<li>Create the connection</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-php"><span style="color: #bbc2cf; background-color: #131519;">$</span><span style="color: #db5762;">dsn</span> = <span style="color: #98be65;">'mysql:host=localhost;dbname=my_db'</span>;
+<span style="color: #bbc2cf; background-color: #131519;">$</span><span style="color: #db5762;">username</span> = <span style="color: #98be65;">'username'</span>;
+<span style="color: #bbc2cf; background-color: #131519;">$</span><span style="color: #db5762;">password</span> = <span style="color: #98be65;">'password'</span>;
+<span style="color: #51afef; font-style: italic;">try</span> <span style="color: #fff0f5;">{</span>
+    <span style="color: #bbc2cf; background-color: #131519;">$</span><span style="color: #db5762;">db</span> = <span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">PDO</span><span style="color: #c678dd;">(</span><span style="color: #bbc2cf; background-color: #131519;">$</span><span style="color: #db5762;">dsn</span>, <span style="color: #bbc2cf; background-color: #131519;">$</span><span style="color: #db5762;">username</span>, <span style="color: #bbc2cf; background-color: #131519;">$</span><span style="color: #db5762;">password</span><span style="color: #c678dd;">)</span>;
+<span style="color: #fff0f5;">}</span> <span style="color: #51afef; font-style: italic;">catch</span> <span style="color: #fff0f5;">(</span><span style="color: #ECBE7B;">PDOException</span> <span style="color: #bbc2cf; background-color: #131519;">$</span><span style="color: #db5762;">e</span><span style="color: #fff0f5;">)</span> <span style="color: #fff0f5;">{</span>
+    <span style="color: #bbc2cf; background-color: #131519;">$</span><span style="color: #db5762;">e_msg</span> = <span style="color: #bbc2cf; background-color: #131519;">$</span><span style="color: #db5762;">e</span><span style="color: #bbc2cf; background-color: #131519;">-&gt;</span><span style="color: #bbc2cf; background-color: #131519;">getMessage</span><span style="color: #c678dd;">()</span>;
+    <span style="color: #51afef; font-style: italic;">echo</span> <span style="color: #98be65;">"Error </span><span style="color: #db5762;">$e_msg</span><span style="color: #98be65;">"</span>;
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+<ul class="org-ul">
+<li>Sample query</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-php"><span style="color: #bbc2cf; background-color: #131519;">$</span><span style="color: #db5762;">query</span> = <span style="color: #98be65;">'SELECT * FROM Users WHERE id = 1'</span>;
+<span style="color: #bbc2cf; background-color: #131519;">$</span><span style="color: #db5762;">users</span> = <span style="color: #bbc2cf; background-color: #131519;">$</span><span style="color: #db5762;">db</span><span style="color: #bbc2cf; background-color: #131519;">-&gt;</span><span style="color: #bbc2cf; background-color: #131519;">query</span><span style="color: #fff0f5;">(</span><span style="color: #bbc2cf; background-color: #131519;">$</span><span style="color: #db5762;">query</span><span style="color: #fff0f5;">)</span>;
+<span style="color: #bbc2cf; background-color: #131519;">$</span><span style="color: #db5762;">user</span> = <span style="color: #bbc2cf; background-color: #131519;">$</span><span style="color: #db5762;">users</span><span style="color: #bbc2cf; background-color: #131519;">-&gt;</span><span style="color: #bbc2cf; background-color: #131519;">fetch</span><span style="color: #fff0f5;">(</span><span style="color: #a9a1e1;">PDO</span><span style="color: #bbc2cf; background-color: #131519;">::</span><span style="color: #a9a1e1;">FETCH_ASSOC</span><span style="color: #fff0f5;">)</span>;
+<span style="color: #bbc2cf; background-color: #131519;">$</span><span style="color: #db5762;">user</span> = <span style="color: #bbc2cf; background-color: #131519;">$</span><span style="color: #db5762;">users</span><span style="color: #bbc2cf; background-color: #131519;">-&gt;</span><span style="color: #bbc2cf; background-color: #131519;">fetchAll</span><span style="color: #fff0f5;">(</span><span style="color: #a9a1e1;">PDO</span><span style="color: #bbc2cf; background-color: #131519;">::</span><span style="color: #a9a1e1;">FETCH_ASSOC</span><span style="color: #fff0f5;">)</span>; <span style="color: #5B6268;">// </span><span style="color: #5B6268;">to get all rows</span>
+<span style="color: #bbc2cf; background-color: #131519;">$</span><span style="color: #db5762;">name</span> = <span style="color: #bbc2cf; background-color: #131519;">$</span><span style="color: #db5762;">user</span><span style="color: #fff0f5;">[</span><span style="color: #98be65;">'first_name'</span><span style="color: #fff0f5;">]</span>;
+</pre>
+</div>
+<ul class="org-ul">
+<li>For modifying use <code>$db-&gt;exec($query)</code></li>
+<li>For grabbing the last id</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-php"><span style="color: #bbc2cf; background-color: #131519;">$</span><span style="color: #db5762;">users</span> = <span style="color: #bbc2cf; background-color: #131519;">$</span><span style="color: #db5762;">db</span><span style="color: #bbc2cf; background-color: #131519;">-&gt;</span><span style="color: #bbc2cf; background-color: #131519;">exec</span><span style="color: #fff0f5;">(</span><span style="color: #bbc2cf; background-color: #131519;">$</span><span style="color: #db5762;">query</span><span style="color: #fff0f5;">)</span>;
+<span style="color: #bbc2cf; background-color: #131519;">$</span><span style="color: #db5762;">user</span><span style="color: #bbc2cf; background-color: #131519;">-&gt;</span><span style="color: #db5762;">id</span> = <span style="color: #bbc2cf; background-color: #131519;">$</span><span style="color: #db5762;">db</span><span style="color: #bbc2cf; background-color: #131519;">-&gt;</span><span style="color: #bbc2cf; background-color: #131519;">lastInsertId</span><span style="color: #fff0f5;">()</span>;
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org5cc349e" class="outline-3">
+<h3 id="org5cc349e"><span class="section-number-3">2.5</span> Arrays</h3>
+<div class="outline-text-3" id="text-2-5">
+<ul class="org-ul">
+<li><code>key()</code> : Get the key from the internal array pointer</li>
+<li><code>current()</code> : Get the value from the internal array pointer</li>
+<li><code>end(), reset(), next(), prev()</code> : Move the internal pointer</li>
+<li><code>array_values()</code> : Returns an array containing all the values of the array</li>
+<li><code>range(min, max)</code> : Create an array from <code>min</code> to <code>max</code></li>
+<li><code>array_fill(from_idx, to_idx, fill_with)</code> : Fill the array</li>
+<li><code>array_pad(array, size, value)</code> : Input <code>array</code>, the <code>size</code> to display, what <code>value</code> to add beyond original <code>array</code></li>
+<li><code>array_merge(array1, array2)</code> : Return the two merged arrays</li>
+<li><code>implode(string, array)</code> : Like <code>Array.join()</code> in most other languages</li>
+<li><code>array_slice(array, from)</code> : Slice the array from index <code>from</code> (inclusive)</li>
+<li><code>array_sum(array)</code> : Add all values together</li>
+<li><code>in_array(value, array)</code> : Check if <code>value</code> in <code>array</code></li>
+<li><code>array_key_exists(key, array)</code> : Check if <code>key</code> in <code>array</code></li>
+<li><code>array_count_values(array)</code> : Gives back an associative array of values that are counted multiple times</li>
+<li><code>sort(array)</code></li>
+<li><code>sort(array, SORT_NUMERIC)</code></li>
+<li><code>rsort(array)</code> : Reverse sort</li>
+<li><code>rsort(array, SORT_NUMERIC)</code></li>
+<li><code>asort(array)</code> : Associative array sorts by value, revers is <code>arsort</code></li>
+<li><code>ksort(array)</code> : Associative array sorts by key, reverse is <code>krsort</code></li>
+<li>JS like functions:
+<ul class="org-ul">
+<li><code>array_push($array, $value)</code> : Add at the end</li>
+<li><code>array_pop($array)</code> : Take from the end and return</li>
+<li><code>array_unshift($array, $value)</code> : Add at the beginning</li>
+<li><code>array_shift($array)</code> : Take from the beginning and return</li>
+</ul></li>
+<li>Standard for loop</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-php"><span style="color: #51afef; font-style: italic;">for</span> <span style="color: #fff0f5;">(</span><span style="color: #bbc2cf; background-color: #131519;">$</span><span style="color: #db5762;">i</span> = 0; <span style="color: #bbc2cf; background-color: #131519;">$</span><span style="color: #db5762;">i</span> &lt; count<span style="color: #c678dd;">(</span><span style="color: #bbc2cf; background-color: #131519;">$</span><span style="color: #db5762;">rates</span><span style="color: #c678dd;">)</span>; <span style="color: #bbc2cf; background-color: #131519;">$</span><span style="color: #db5762;">i</span>++<span style="color: #fff0f5;">)</span> <span style="color: #fff0f5;">{</span>
+    <span style="color: #51afef; font-style: italic;">echo</span> <span style="color: #bbc2cf; background-color: #131519;">$</span><span style="color: #db5762;">rates</span><span style="color: #c678dd;">[</span><span style="color: #bbc2cf; background-color: #131519;">$</span><span style="color: #db5762;">i</span><span style="color: #c678dd;">]</span>;
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+<ul class="org-ul">
+<li>For each loop</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-php"><span style="color: #51afef; font-style: italic;">foreach</span> <span style="color: #fff0f5;">(</span><span style="color: #bbc2cf; background-color: #131519;">$</span><span style="color: #db5762;">rates</span> <span style="color: #51afef; font-style: italic;">as</span> <span style="color: #bbc2cf; background-color: #131519;">$</span><span style="color: #db5762;">rate</span><span style="color: #fff0f5;">)</span> <span style="color: #fff0f5;">{</span>
+    <span style="color: #51afef; font-style: italic;">echo</span> <span style="color: #bbc2cf; background-color: #131519;">$</span><span style="color: #db5762;">rate</span>;
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+<ul class="org-ul">
+<li>String indexes</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-php"><span style="color: #bbc2cf; background-color: #131519;">$</span><span style="color: #db5762;">rates</span><span style="color: #fff0f5;">[</span><span style="color: #98be65;">'One'</span><span style="color: #fff0f5;">]</span> = 5.95;
+<span style="color: #bbc2cf; background-color: #131519;">$</span><span style="color: #db5762;">rates</span><span style="color: #fff0f5;">[</span><span style="color: #98be65;">'Two'</span><span style="color: #fff0f5;">]</span> = 5;
+<span style="color: #bbc2cf; background-color: #131519;">$</span><span style="color: #db5762;">rates</span><span style="color: #fff0f5;">[</span><span style="color: #98be65;">'Three'</span><span style="color: #fff0f5;">]</span> = 6.95;
+
+<span style="color: #51afef; font-style: italic;">foreach</span> <span style="color: #fff0f5;">(</span><span style="color: #bbc2cf; background-color: #131519;">$</span><span style="color: #db5762;">rates</span> <span style="color: #51afef; font-style: italic;">as</span> <span style="color: #bbc2cf; background-color: #131519;">$</span><span style="color: #db5762;">key</span>=&gt;<span style="color: #bbc2cf; background-color: #131519;">$</span><span style="color: #db5762;">value</span><span style="color: #fff0f5;">)</span> <span style="color: #fff0f5;">{</span>
+    <span style="color: #51afef; font-style: italic;">echo</span> <span style="color: #bbc2cf; background-color: #131519;">$</span><span style="color: #db5762;">key</span> . <span style="color: #98be65;">'='</span> . <span style="color: #bbc2cf; background-color: #131519;">$</span><span style="color: #db5762;">value</span>;
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+<ul class="org-ul">
+<li>Add a value to the end of an array</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-php"><span style="color: #bbc2cf; background-color: #131519;">$</span><span style="color: #db5762;">letters</span> = <span style="color: #51afef; font-style: italic;">array</span><span style="color: #fff0f5;">(</span><span style="color: #98be65;">'a'</span>, <span style="color: #98be65;">'b'</span><span style="color: #fff0f5;">)</span>;
+<span style="color: #bbc2cf; background-color: #131519;">$</span><span style="color: #db5762;">letters</span><span style="color: #fff0f5;">[]</span> = <span style="color: #98be65;">'c'</span>;
+</pre>
+</div>
+<ul class="org-ul">
+<li>Remove value</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-php"><span style="color: #bbc2cf; background-color: #131519;">$</span><span style="color: #db5762;">letters</span> = <span style="color: #51afef; font-style: italic;">array</span><span style="color: #fff0f5;">(</span><span style="color: #98be65;">'a'</span>, <span style="color: #98be65;">'b'</span><span style="color: #fff0f5;">)</span>;
+<span style="color: #51afef; font-style: italic;">unset</span><span style="color: #fff0f5;">(</span><span style="color: #bbc2cf; background-color: #131519;">$</span><span style="color: #db5762;">letters</span><span style="color: #c678dd;">[</span>1<span style="color: #c678dd;">]</span><span style="color: #fff0f5;">)</span>; <span style="color: #5B6268;">// </span><span style="color: #5B6268;">idx 1 is not NULL</span>
+<span style="color: #51afef; font-style: italic;">unset</span><span style="color: #fff0f5;">(</span><span style="color: #bbc2cf; background-color: #131519;">$</span><span style="color: #db5762;">letters</span><span style="color: #fff0f5;">)</span>; <span style="color: #5B6268;">// </span><span style="color: #5B6268;">the whole array is now NULL</span>
+<span style="color: #bbc2cf; background-color: #131519;">$</span><span style="color: #db5762;">letters</span> = array_values<span style="color: #fff0f5;">(</span><span style="color: #bbc2cf; background-color: #131519;">$</span><span style="color: #db5762;">letters</span><span style="color: #fff0f5;">)</span>; <span style="color: #5B6268;">// </span><span style="color: #5B6268;">reindex (removes NULL values)</span>
+</pre>
+</div>
+<ul class="org-ul">
+<li>Make an associative array</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-php"><span style="color: #bbc2cf; background-color: #131519;">$</span><span style="color: #db5762;">tax_rates</span> = <span style="color: #51afef; font-style: italic;">array</span><span style="color: #fff0f5;">(</span><span style="color: #98be65;">'NC'</span> =&gt; 7.75, <span style="color: #98be65;">'CA'</span> =&gt; 8.0<span style="color: #fff0f5;">)</span>;
+<span style="color: #5B6268;">// </span><span style="color: #5B6268;">or</span>
+<span style="color: #bbc2cf; background-color: #131519;">$</span><span style="color: #db5762;">tax_rates</span> = <span style="color: #51afef; font-style: italic;">array</span><span style="color: #fff0f5;">()</span>;
+<span style="color: #bbc2cf; background-color: #131519;">$</span><span style="color: #db5762;">tax_rates</span><span style="color: #fff0f5;">[</span><span style="color: #98be65;">'NC'</span><span style="color: #fff0f5;">]</span> = 7.75;
+<span style="color: #bbc2cf; background-color: #131519;">$</span><span style="color: #db5762;">tax_rates</span><span style="color: #fff0f5;">[</span><span style="color: #98be65;">'CA'</span><span style="color: #fff0f5;">]</span> = 8.0;
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org5347dc4" class="outline-3">
+<h3 id="org5347dc4"><span class="section-number-3">2.6</span> Slim</h3>
+<div class="outline-text-3" id="text-2-6">
+<ul class="org-ul">
+<li>Set a route path</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-php"><span style="color: #bbc2cf; background-color: #131519;">$</span><span style="color: #db5762;">app</span><span style="color: #bbc2cf; background-color: #131519;">-&gt;</span><span style="color: #bbc2cf; background-color: #131519;">get</span><span style="color: #fff0f5;">(</span><span style="color: #98be65;">'/users/:id'</span>, <span style="color: #98be65;">'getUser'</span><span style="color: #fff0f5;">)</span>;
+<span style="color: #bbc2cf; background-color: #131519;">$</span><span style="color: #db5762;">app</span><span style="color: #bbc2cf; background-color: #131519;">-&gt;</span><span style="color: #bbc2cf; background-color: #131519;">post</span><span style="color: #fff0f5;">(</span><span style="color: #98be65;">'/users'</span>, <span style="color: #98be65;">'createUser'</span><span style="color: #fff0f5;">)</span>;
+<span style="color: #bbc2cf; background-color: #131519;">$</span><span style="color: #db5762;">app</span><span style="color: #bbc2cf; background-color: #131519;">-&gt;</span><span style="color: #bbc2cf; background-color: #131519;">put</span><span style="color: #fff0f5;">(</span><span style="color: #98be65;">'/users/:id'</span>, <span style="color: #98be65;">'updateUser'</span><span style="color: #fff0f5;">)</span>;
+<span style="color: #bbc2cf; background-color: #131519;">$</span><span style="color: #db5762;">app</span><span style="color: #bbc2cf; background-color: #131519;">-&gt;</span><span style="color: #bbc2cf; background-color: #131519;">delete</span><span style="color: #fff0f5;">(</span><span style="color: #98be65;">'/users/:id'</span>, <span style="color: #98be65;">'deleteUser'</span><span style="color: #fff0f5;">)</span>;
+</pre>
+</div>
+<ul class="org-ul">
+<li>Get request body</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-php"><span style="color: #51afef; font-style: italic;">global</span> <span style="color: #bbc2cf; background-color: #131519;">$</span><span style="color: #db5762;">app</span>;
+
+<span style="color: #bbc2cf; background-color: #131519;">$</span><span style="color: #db5762;">request</span> = <span style="color: #bbc2cf; background-color: #131519;">$</span><span style="color: #db5762;">app</span><span style="color: #bbc2cf; background-color: #131519;">-&gt;</span><span style="color: #bbc2cf; background-color: #131519;">request</span><span style="color: #fff0f5;">()</span>;
+<span style="color: #bbc2cf; background-color: #131519;">$</span><span style="color: #db5762;">user</span> = json_decode<span style="color: #fff0f5;">(</span><span style="color: #bbc2cf; background-color: #131519;">$</span><span style="color: #db5762;">request</span><span style="color: #bbc2cf; background-color: #131519;">-&gt;</span><span style="color: #bbc2cf; background-color: #131519;">getBody</span><span style="color: #c678dd;">()</span><span style="color: #fff0f5;">)</span>;
+
+<span style="color: #bbc2cf; background-color: #131519;">$</span><span style="color: #db5762;">name</span> = <span style="color: #bbc2cf; background-color: #131519;">$</span><span style="color: #db5762;">user</span><span style="color: #bbc2cf; background-color: #131519;">-&gt;</span><span style="color: #db5762;">name</span>;
+<span style="color: #bbc2cf; background-color: #131519;">$</span><span style="color: #db5762;">address</span> = <span style="color: #bbc2cf; background-color: #131519;">$</span><span style="color: #db5762;">user</span><span style="color: #bbc2cf; background-color: #131519;">-&gt;</span><span style="color: #db5762;">address</span>;
+</pre>
+</div>
+<ul class="org-ul">
+<li>Response as JSON</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-php"><span style="color: #51afef; font-style: italic;">global</span> <span style="color: #bbc2cf; background-color: #131519;">$</span><span style="color: #db5762;">db</span>;
+
+<span style="color: #bbc2cf; background-color: #131519;">$</span><span style="color: #db5762;">users</span> = <span style="color: #bbc2cf; background-color: #131519;">$</span><span style="color: #db5762;">db</span><span style="color: #bbc2cf; background-color: #131519;">-&gt;</span><span style="color: #bbc2cf; background-color: #131519;">query</span><span style="color: #fff0f5;">(</span><span style="color: #bbc2cf; background-color: #131519;">$</span><span style="color: #db5762;">query</span><span style="color: #fff0f5;">)</span>;
+<span style="color: #bbc2cf; background-color: #131519;">$</span><span style="color: #db5762;">users</span> = <span style="color: #bbc2cf; background-color: #131519;">$</span><span style="color: #db5762;">users</span><span style="color: #bbc2cf; background-color: #131519;">-&gt;</span><span style="color: #bbc2cf; background-color: #131519;">fetchAll</span><span style="color: #fff0f5;">(</span><span style="color: #a9a1e1;">PDO</span><span style="color: #bbc2cf; background-color: #131519;">::</span><span style="color: #a9a1e1;">FETCH_ASSOC</span><span style="color: #fff0f5;">)</span>;
+
+header<span style="color: #fff0f5;">(</span><span style="color: #98be65;">"Content-Type: application/json"</span>, <span style="color: #a9a1e1;">true</span><span style="color: #fff0f5;">)</span>;
+<span style="color: #51afef; font-style: italic;">echo</span> <span style="color: #98be65;">'{"users": '</span> . json_encode<span style="color: #fff0f5;">(</span><span style="color: #bbc2cf; background-color: #131519;">$</span><span style="color: #db5762;">users</span><span style="color: #fff0f5;">)</span> . <span style="color: #98be65;">'}'</span>;
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orgc9ffbfa" class="outline-2">
+<h2 id="orgc9ffbfa"><span class="section-number-2">3</span> Rest</h2>
+<div class="outline-text-2" id="text-3">
+<ul class="org-ul">
+<li>Use HTTP Methods and Response Codes</li>
+<li>Be Stateless and Cache-able</li>
+<li>Use Addressable Resources</li>
+<li>Support the transfer of Representations</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org6df125c" class="outline-2">
+<h2 id="org6df125c"><span class="section-number-2">4</span> Web Services</h2>
+<div class="outline-text-2" id="text-4">
+<ul class="org-ul">
+<li>Are software systems that are often designed to support machine-to-machine interaction over a network</li>
+<li>Web Services are often, simply just APIs</li>
+<li>Use XML or JSON</li>
+<li>Style is: RPC, SOAP or REST</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org17c378a" class="outline-2">
+<h2 id="org17c378a"><span class="section-number-2">5</span> DOM</h2>
+<div class="outline-text-2" id="text-5">
+</div>
+<div id="outline-container-orgb62fb5d" class="outline-3">
+<h3 id="orgb62fb5d"><span class="section-number-3">5.1</span> DOM Tree Example</h3>
+<div class="outline-text-3" id="text-5-1">
+<ul class="org-ul">
+<li>Node Types</li>
+</ul>
+
+<div class="figure">
+<p><img src="images/DOM/screenshot_2018-12-12_19-27-09.png" alt="screenshot_2018-12-12_19-27-09.png" />
+</p>
+</div>
+<ul class="org-ul">
+<li>Simple Diagram</li>
+</ul>
+
+<div class="figure">
+<p><img src="images/DOM/screenshot_2018-12-12_19-00-14.png" alt="screenshot_2018-12-12_19-00-14.png" />
+</p>
+</div>
+<ul class="org-ul">
+<li>With Attributes</li>
+</ul>
+
+<div class="figure">
+<p><img src="images/DOM/screenshot_2018-12-12_19-26-20.png" alt="screenshot_2018-12-12_19-26-20.png" />
+</p>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-org4281d61" class="outline-3">
+<h3 id="org4281d61"><span class="section-number-3">5.2</span> Common Properties Of The Node Interface</h3>
+<div class="outline-text-3" id="text-5-2">
+<ul class="org-ul">
+<li>nodeType</li>
+<li>nodeName</li>
+<li>nodeValue</li>
+<li>attributes</li>
+<li>parentNode</li>
+<li>childNodes</li>
+<li>firstChild</li>
+<li>lastChild</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgb51e0f2" class="outline-3">
+<h3 id="orgb51e0f2"><span class="section-number-3">5.3</span> nodeType</h3>
+<div class="outline-text-3" id="text-5-3">
+<ul class="org-ul">
+<li>1: Element</li>
+<li>2: Attr</li>
+<li>3: Text</li>
+<li>8: Comment</li>
+<li>9: Document</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgc3b093d" class="outline-3">
+<h3 id="orgc3b093d"><span class="section-number-3">5.4</span> Handy Methods</h3>
+<div class="outline-text-3" id="text-5-4">
+<ul class="org-ul">
+<li><code>hasChildNodes()</code></li>
+<li><code>hasAttributes()</code></li>
+<li><code>hasAttribute()</code></li>
+<li><code>getAttribute()</code></li>
+<li><code>setAttribute()</code></li>
+<li><code>removeAttribute()</code></li>
+<li><code>getElementsByTagName()</code></li>
+<li><code>getElementsByName()</code></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org34ce1f4" class="outline-3">
+<h3 id="org34ce1f4"><span class="section-number-3">5.5</span> DOM Creation Methods</h3>
+<div class="outline-text-3" id="text-5-5">
+<ul class="org-ul">
+<li><code>createElement()</code></li>
+<li><code>createTextNode()</code></li>
+<li><code>appendChild()</code></li>
+<li><code>removeChild()</code></li>
+<li><code>setAttribute()</code></li>
+<li><code>insertBefore()</code></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org0ad83a3" class="outline-3">
+<h3 id="org0ad83a3"><span class="section-number-3">5.6</span> HTMLElement interface</h3>
+<div class="outline-text-3" id="text-5-6">
+</div>
+<div id="outline-container-org5f3aee5" class="outline-4">
+<h4 id="org5f3aee5">Built-im attribute references</h4>
+<div class="outline-text-4" id="text-org5f3aee5">
+<ul class="org-ul">
+<li><code>id</code></li>
+<li><code>title</code></li>
+<li><code>href</code> (only on an anchor)</li>
+<li><code>src</code> (only on an image)</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org844a565" class="outline-4">
+<h4 id="org844a565">Default actions</h4>
+<div class="outline-text-4" id="text-org844a565">
+<ul class="org-ul">
+<li><code>a</code> : Load page in the <code>href</code> attribute</li>
+<li><code>input</code> : Submit the form if the <code>type</code> attr is set to <code>submit</code></li>
+<li><code>input</code> : Reset the form if the <code>type</code> attr is set to <code>reset</code></li>
+<li><code>button</code> : Submit the form if the <code>type</code> attr is set to <code>submit</code></li>
+<li><code>button</code> : Reset the form if the <code>type</code> attr is set to <code>reset</code></li>
+<li><code>return false;</code> cancels the default action</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgd3b5893" class="outline-2">
+<h2 id="orgd3b5893"><span class="section-number-2">6</span> AJAX</h2>
+<div class="outline-text-2" id="text-6">
+<ul class="org-ul">
+<li><b>AJAX</b> (Asynchronous JavaScript and XML): Allows partial page updates – meaning updates of individual pieces of a web page without having to reload the entire page. Technologies include (XHTML, CSS, JavaScript, the DOM, XML, and XMLHttpRequest object).</li>
+<li>Components:
+<ul class="org-ul">
+<li>XMLHttpRequest</li>
+<li>Fetch API (Promises)</li>
+<li>XML/JSON</li>
+<li>Serve Side</li>
+<li>Valid Markup</li>
+<li>CSS</li>
+<li>DOM Scripting</li>
+</ul></li>
+</ul>
+</div>
+
+<div id="outline-container-org8349c3b" class="outline-3">
+<h3 id="org8349c3b"><span class="section-number-3">6.1</span> Using XMLHttpRequest</h3>
+<div class="outline-text-3" id="text-6-1">
+<ul class="org-ul">
+<li><code>readyState</code> values
+<ul class="org-ul">
+<li>0 uninitialized</li>
+<li>1 loading</li>
+<li>2 loaded</li>
+<li>3 interactive</li>
+<li>4 complete</li>
+</ul></li>
+<li>Create the object</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-js"><span style="color: #51afef; font-style: italic;">var</span> <span style="color: #db5762;">request</span> = <span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">XMLHttpRequest</span><span style="color: #fff0f5;">()</span>;
+</pre>
+</div>
+<ul class="org-ul">
+<li>Attach a listener to the state change</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-js">request.onreadystatechange = <span style="color: #51afef; font-style: italic;">function</span><span style="color: #fff0f5;">()</span> <span style="color: #fff0f5;">{</span>
+    <span style="color: #5B6268;">// </span><span style="color: #5B6268;">do something</span>
+<span style="color: #fff0f5;">}</span>;
+</pre>
+</div>
+<ul class="org-ul">
+<li>Send data</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-js"><span style="color: #5B6268;">// </span><span style="color: #5B6268;">for get</span>
+request.open<span style="color: #fff0f5;">(</span><span style="color: #98be65;">"GET"</span>, <span style="color: #98be65;">"url"</span>, <span style="color: #a9a1e1;">true</span><span style="color: #fff0f5;">)</span>;  <span style="color: #5B6268;">// </span><span style="color: #5B6268;">the boolean true indicates "exute in async"</span>
+request.send<span style="color: #fff0f5;">(</span><span style="color: #a9a1e1;">null</span><span style="color: #fff0f5;">)</span>;
+<span style="color: #5B6268;">// </span><span style="color: #5B6268;">for post</span>
+request.open<span style="color: #fff0f5;">(</span><span style="color: #98be65;">"POST"</span>, <span style="color: #98be65;">"url"</span>, <span style="color: #a9a1e1;">true</span><span style="color: #fff0f5;">)</span>;  <span style="color: #5B6268;">// </span><span style="color: #5B6268;">the boolean true indicates "exute in async"</span>
+request.setRequestHeader<span style="color: #fff0f5;">(</span><span style="color: #98be65;">"Content-type"</span>, <span style="color: #98be65;">"application/x-www-form-urlencoded"</span><span style="color: #fff0f5;">)</span>;
+request.send<span style="color: #fff0f5;">(</span><span style="color: #98be65;">"name=joe+bloggs&amp;message=Hello+Everybody"</span><span style="color: #fff0f5;">)</span>;
+</pre>
+</div>
+<ul class="org-ul">
+<li>Get data back (check for state 4)</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-js">request.onreadystatechange = <span style="color: #51afef; font-style: italic;">function</span><span style="color: #fff0f5;">()</span> <span style="color: #fff0f5;">{</span>
+    <span style="color: #51afef; font-style: italic;">if</span> <span style="color: #c678dd;">(</span>request.readyState == 4<span style="color: #c678dd;">)</span> <span style="color: #c678dd;">{</span>
+        <span style="color: #5B6268;">// </span><span style="color: #5B6268;">request.responseText for HTML and JSON</span>
+        <span style="color: #5B6268;">// </span><span style="color: #5B6268;">request.responseXML for XML</span>
+    <span style="color: #c678dd;">}</span>
+<span style="color: #fff0f5;">}</span>;
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org0e96d7c" class="outline-2">
+<h2 id="org0e96d7c"><span class="section-number-2">7</span> JavaScript</h2>
+<div class="outline-text-2" id="text-7">
+</div>
+<div id="outline-container-orgd841dcd" class="outline-3">
+<h3 id="orgd841dcd"><span class="section-number-3">7.1</span> Execution</h3>
+<div class="outline-text-3" id="text-7-1">
+<ul class="org-ul">
+<li><b>First pass</b>:
+<ul class="org-ul">
+<li>Declares and initializes function arguments</li>
+<li>Declares the local variables, including anonymous functions assigned to a local variable, but doesn't initialize them</li>
+<li>Declares and initializes functions</li>
+</ul></li>
+<li><b>Second pass</b>:
+<ul class="org-ul">
+<li>Execute code</li>
+</ul></li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org85a266b" class="outline-2">
+<h2 id="org85a266b"><span class="section-number-2">8</span> jQuery</h2>
+<div class="outline-text-2" id="text-8">
+<ul class="org-ul">
+<li>Usually the starting point is:</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-js">$<span style="color: #fff0f5;">(</span>document<span style="color: #fff0f5;">)</span>.ready<span style="color: #fff0f5;">(</span><span style="color: #51afef; font-style: italic;">function</span><span style="color: #c678dd;">()</span> <span style="color: #c678dd;">{</span>
+    <span style="color: #5B6268;">// </span><span style="color: #5B6268;">do something here</span>
+<span style="color: #c678dd;">}</span><span style="color: #fff0f5;">)</span>;
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org8f96d81" class="outline-3">
+<h3 id="org8f96d81"><span class="section-number-3">8.1</span> Selectors</h3>
+<div class="outline-text-3" id="text-8-1">
+<ul class="org-ul">
+<li>All <code>p</code> descendants of <code>#faqs</code>, <code>$("#faqs p")</code></li>
+<li>Direct children : <code>$("#faqs &gt; p")</code></li>
+<li>Adjacent siblings: <code>$("#faqs + p")</code></li>
+<li>General siblings: <code>$("#faqs ~ p")</code></li>
+<li>Multiple selectors with a comma : <code>$("#faqs , p")</code></li>
+<li>CSS pseudo like classes:
+<ul class="org-ul">
+<li><code>$("#faqs li:first")</code></li>
+<li><code>$("#faqs li:last")</code></li>
+<li><code>$("#faqs li:odd")</code></li>
+<li><code>$("#faqs li:even")</code></li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org1a297ad" class="outline-3">
+<h3 id="org1a297ad"><span class="section-number-3">8.2</span> AJAX</h3>
+<div class="outline-text-3" id="text-8-2">
+<div class="org-src-container">
+<pre class="src src-js">$.ajax<span style="color: #fff0f5;">(</span><span style="color: #c678dd;">{</span>
+    type: <span style="color: #98be65;">'GET'</span>,
+    url: <span style="color: #98be65;">"url"</span>,
+    dataType: <span style="color: #98be65;">"json"</span>,
+    <span style="color: #c678dd;">success</span>: <span style="color: #51afef; font-style: italic;">function</span><span style="color: #98be65;">(</span><span style="color: #db5762;">data</span><span style="color: #98be65;">)</span> <span style="color: #98be65;">{</span>
+        <span style="color: #5B6268;">// </span><span style="color: #5B6268;">do something with "data"</span>
+    <span style="color: #98be65;">}</span>
+<span style="color: #c678dd;">}</span><span style="color: #fff0f5;">)</span>;
+</pre>
+</div>
+
+<script src="../assets/jquery-3.3.1.min.js"></script>
+<script src="../assets/notes.js"></script>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="date">Date: 2017-09-15 Fri 12:43</p>
+<p class="author">Author: Damian Chrzanowski</p>
+<p class="date">Created: 2018-12-13 Thu 20:22</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>
