@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-12-11 Wed 17:45 -->
+<!-- 2019-12-11 Wed 21:24 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Databases 4</title>
@@ -237,68 +237,69 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgaa66434">1. Grade Distribution</a></li>
-<li><a href="#org985f1d5">2. DDL (Data Definition Language)</a></li>
-<li><a href="#orgc2ad1aa">3. DML (Data Manipulation Language)</a></li>
-<li><a href="#orgf02d3de">4. Select Query Examples</a></li>
-<li><a href="#org7a07c31">5. Views</a></li>
-<li><a href="#orgc3a05e5">6. Transactions</a>
+<li><a href="#orgd2d0f9d">1. Grade Distribution</a></li>
+<li><a href="#org9840bc1">2. DDL (Data Definition Language)</a></li>
+<li><a href="#org458914b">3. DML (Data Manipulation Language)</a></li>
+<li><a href="#orgf81d65b">4. Select Query Examples</a></li>
+<li><a href="#org63bad04">5. Views</a></li>
+<li><a href="#org420d6e3">6. Transactions</a>
 <ul>
-<li><a href="#org4c83786">6.1. Definitions</a></li>
-<li><a href="#org75e7b63">6.2. Concept</a></li>
-<li><a href="#orgd19cbd9">6.3. ACID Principles</a></li>
-<li><a href="#orgf65409c">6.4. States</a></li>
-<li><a href="#orgec6fefb">6.5. States Diagram</a></li>
-<li><a href="#orgf87965c">6.6. Concurrency Problems</a></li>
+<li><a href="#org95f94a5">6.1. Definitions</a></li>
+<li><a href="#orga56fd32">6.2. Concept</a></li>
+<li><a href="#org8223fad">6.3. ACID Principles</a></li>
+<li><a href="#org0fdf217">6.4. States</a></li>
+<li><a href="#org4089171">6.5. States Diagram</a></li>
+<li><a href="#org0a8cd19">6.6. Concurrency Problems</a></li>
+<li><a href="#org7a0ddfd">6.7. Transaction Isolation Levels</a></li>
 </ul>
 </li>
-<li><a href="#org42b4fe9">7. Stored Programs</a>
+<li><a href="#orgab31cc3">7. Stored Programs</a>
 <ul>
-<li><a href="#orgb3bd8e2">7.1. Stored Procedure</a></li>
-<li><a href="#orgdcd3782">7.2. Stored Functions</a></li>
-<li><a href="#org3478da0">7.3. Triggers</a></li>
-<li><a href="#org57ec9ab">7.4. Events</a></li>
+<li><a href="#orgc4ff747">7.1. Stored Procedure</a></li>
+<li><a href="#orga9aa921">7.2. Stored Functions</a></li>
+<li><a href="#org168a86b">7.3. Triggers</a></li>
+<li><a href="#orgaa1e262">7.4. Events</a></li>
 </ul>
 </li>
-<li><a href="#orgb5ce885">8. Normalisation</a>
+<li><a href="#org0327ca9">8. Normalisation</a>
 <ul>
-<li><a href="#org9a1a9e3">8.1. 1NF</a></li>
-<li><a href="#orga02decc">8.2. 2NF</a></li>
-<li><a href="#orgbf636be">8.3. 3NF</a></li>
+<li><a href="#org5f3ac81">8.1. 1NF</a></li>
+<li><a href="#org0ed1536">8.2. 2NF</a></li>
+<li><a href="#orgd81bec1">8.3. 3NF</a></li>
 </ul>
 </li>
-<li><a href="#org01308e5">9. ORM</a>
+<li><a href="#org38858cd">9. ORM</a>
 <ul>
-<li><a href="#orgc2046f9">9.1. Overview</a></li>
+<li><a href="#org14c3465">9.1. Overview</a></li>
 </ul>
 </li>
-<li><a href="#orga68da93">10. MongoDB</a>
+<li><a href="#orgb31e23a">10. MongoDB</a>
 <ul>
-<li><a href="#org2a6b20a">10.1. Overview</a></li>
-<li><a href="#orga035281">10.2. Design</a></li>
-<li><a href="#orgbbd86b4">10.3. Validation</a></li>
+<li><a href="#orge99b58f">10.1. Overview</a></li>
+<li><a href="#org4da59c5">10.2. Design</a></li>
+<li><a href="#org706553f">10.3. Validation</a></li>
 </ul>
 </li>
-<li><a href="#org7cfc484">11. Hadoop</a>
+<li><a href="#org3c4fc39">11. Hadoop</a>
 <ul>
-<li><a href="#orgb9f6841">11.1. Definitions</a></li>
-<li><a href="#org18f8d95">11.2. Overview</a></li>
-<li><a href="#org723a707">11.3. Architecture</a></li>
-<li><a href="#org6676f61">11.4. Map Reduce Architecture (Distributed Data Analytics)</a></li>
-<li><a href="#org5ecc337">11.5. Hadoop Data Distribution</a></li>
-<li><a href="#org9d4777f">11.6. Hadoop Software Library</a></li>
-<li><a href="#orgae696cc">11.7. Dealing with Failure</a></li>
+<li><a href="#orga1cbfac">11.1. Definitions</a></li>
+<li><a href="#org55c9b4a">11.2. Overview</a></li>
+<li><a href="#org6e49b20">11.3. Architecture</a></li>
+<li><a href="#org7028613">11.4. Map Reduce Architecture (Distributed Data Analytics)</a></li>
+<li><a href="#orgf91c29f">11.5. Hadoop Data Distribution</a></li>
+<li><a href="#org96c7a7b">11.6. Hadoop Software Library</a></li>
+<li><a href="#org230a1f2">11.7. Dealing with Failure</a></li>
 </ul>
 </li>
-<li><a href="#org59be5f0">12. Delete at the end</a></li>
+<li><a href="#orgd8417f7">12. Delete at the end</a></li>
 </ul>
 </div>
 </div>
 <p>
 <a href="index.html">Home Page</a>
 </p>
-<div id="outline-container-orgaa66434" class="outline-2">
-<h2 id="orgaa66434"><span class="section-number-2">1</span> Grade Distribution</h2>
+<div id="outline-container-orgd2d0f9d" class="outline-2">
+<h2 id="orgd2d0f9d"><span class="section-number-2">1</span> Grade Distribution</h2>
 <div class="outline-text-2" id="text-1">
 <ul class="org-ul">
 <li>50 CA</li>
@@ -309,8 +310,8 @@ for the JavaScript code in this tag.
 </ul>
 </div>
 </div>
-<div id="outline-container-org985f1d5" class="outline-2">
-<h2 id="org985f1d5"><span class="section-number-2">2</span> DDL (Data Definition Language)</h2>
+<div id="outline-container-org9840bc1" class="outline-2">
+<h2 id="org9840bc1"><span class="section-number-2">2</span> DDL (Data Definition Language)</h2>
 <div class="outline-text-2" id="text-2">
 <ul class="org-ul">
 <li>Create</li>
@@ -319,8 +320,8 @@ for the JavaScript code in this tag.
 </ul>
 </div>
 </div>
-<div id="outline-container-orgc2ad1aa" class="outline-2">
-<h2 id="orgc2ad1aa"><span class="section-number-2">3</span> DML (Data Manipulation Language)</h2>
+<div id="outline-container-org458914b" class="outline-2">
+<h2 id="org458914b"><span class="section-number-2">3</span> DML (Data Manipulation Language)</h2>
 <div class="outline-text-2" id="text-3">
 <ul class="org-ul">
 <li>Select</li>
@@ -330,8 +331,8 @@ for the JavaScript code in this tag.
 </ul>
 </div>
 </div>
-<div id="outline-container-orgf02d3de" class="outline-2">
-<h2 id="orgf02d3de"><span class="section-number-2">4</span> Select Query Examples</h2>
+<div id="outline-container-orgf81d65b" class="outline-2">
+<h2 id="orgf81d65b"><span class="section-number-2">4</span> Select Query Examples</h2>
 <div class="outline-text-2" id="text-4">
 <ul class="org-ul">
 <li>Get all that are not in their 40s</li>
@@ -381,8 +382,8 @@ for the JavaScript code in this tag.
 </div>
 </div>
 </div>
-<div id="outline-container-org7a07c31" class="outline-2">
-<h2 id="org7a07c31"><span class="section-number-2">5</span> Views</h2>
+<div id="outline-container-org63bad04" class="outline-2">
+<h2 id="org63bad04"><span class="section-number-2">5</span> Views</h2>
 <div class="outline-text-2" id="text-5">
 <ul class="org-ul">
 <li>Creates a copy of a specific query</li>
@@ -423,12 +424,12 @@ for the JavaScript code in this tag.
 </div>
 </div>
 </div>
-<div id="outline-container-orgc3a05e5" class="outline-2">
-<h2 id="orgc3a05e5"><span class="section-number-2">6</span> Transactions</h2>
+<div id="outline-container-org420d6e3" class="outline-2">
+<h2 id="org420d6e3"><span class="section-number-2">6</span> Transactions</h2>
 <div class="outline-text-2" id="text-6">
 </div>
-<div id="outline-container-org4c83786" class="outline-3">
-<h3 id="org4c83786"><span class="section-number-3">6.1</span> Definitions</h3>
+<div id="outline-container-org95f94a5" class="outline-3">
+<h3 id="org95f94a5"><span class="section-number-3">6.1</span> Definitions</h3>
 <div class="outline-text-3" id="text-6-1">
 <ul class="org-ul">
 <li><b>Concurrent Control</b>: Ensure integrity when the db is accessed simultaneously by more than one user.</li>
@@ -437,8 +438,8 @@ for the JavaScript code in this tag.
 </ul>
 </div>
 </div>
-<div id="outline-container-org75e7b63" class="outline-3">
-<h3 id="org75e7b63"><span class="section-number-3">6.2</span> Concept</h3>
+<div id="outline-container-orga56fd32" class="outline-3">
+<h3 id="orga56fd32"><span class="section-number-3">6.2</span> Concept</h3>
 <div class="outline-text-3" id="text-6-2">
 <ul class="org-ul">
 <li>Start a transaction with the db in a consistent state</li>
@@ -446,8 +447,8 @@ for the JavaScript code in this tag.
 </ul>
 </div>
 </div>
-<div id="outline-container-orgd19cbd9" class="outline-3">
-<h3 id="orgd19cbd9"><span class="section-number-3">6.3</span> ACID Principles</h3>
+<div id="outline-container-org8223fad" class="outline-3">
+<h3 id="org8223fad"><span class="section-number-3">6.3</span> ACID Principles</h3>
 <div class="outline-text-3" id="text-6-3">
 <ul class="org-ul">
 <li><b>Atomicity</b>: Either all is done or NONE of it</li>
@@ -457,8 +458,8 @@ for the JavaScript code in this tag.
 </ul>
 </div>
 </div>
-<div id="outline-container-orgf65409c" class="outline-3">
-<h3 id="orgf65409c"><span class="section-number-3">6.4</span> States</h3>
+<div id="outline-container-org0fdf217" class="outline-3">
+<h3 id="org0fdf217"><span class="section-number-3">6.4</span> States</h3>
 <div class="outline-text-3" id="text-6-4">
 <ol class="org-ol">
 <li><b>Active</b>: From the start until failure or commited</li>
@@ -469,8 +470,8 @@ for the JavaScript code in this tag.
 </ol>
 </div>
 </div>
-<div id="outline-container-orgec6fefb" class="outline-3">
-<h3 id="orgec6fefb"><span class="section-number-3">6.5</span> States Diagram</h3>
+<div id="outline-container-org4089171" class="outline-3">
+<h3 id="org4089171"><span class="section-number-3">6.5</span> States Diagram</h3>
 <div class="outline-text-3" id="text-6-5">
 
 <div class="figure">
@@ -479,8 +480,8 @@ for the JavaScript code in this tag.
 </div>
 </div>
 </div>
-<div id="outline-container-orgf87965c" class="outline-3">
-<h3 id="orgf87965c"><span class="section-number-3">6.6</span> Concurrency Problems</h3>
+<div id="outline-container-org0a8cd19" class="outline-3">
+<h3 id="org0a8cd19"><span class="section-number-3">6.6</span> Concurrency Problems</h3>
 <div class="outline-text-3" id="text-6-6">
 <ol class="org-ol">
 <li><b>Lost Updates</b>: Two concurrent users update the same row</li>
@@ -490,13 +491,36 @@ for the JavaScript code in this tag.
 </ol>
 </div>
 </div>
+<div id="outline-container-org7a0ddfd" class="outline-3">
+<h3 id="org7a0ddfd"><span class="section-number-3">6.7</span> Transaction Isolation Levels</h3>
+<div class="outline-text-3" id="text-6-7">
+<ul class="org-ul">
+<li>Serializable
+<ul class="org-ul">
+<li>Severely restricts concurrency but ensures that no problems are possible.</li>
+</ul></li>
+<li>Read uncommitted
+<ul class="org-ul">
+<li>Allows all four problems by not setting any locks.</li>
+</ul></li>
+<li>Read committed
+<ul class="org-ul">
+<li>Allows only data that has been committed to be seen by transactions.</li>
+</ul></li>
+<li>Repeatable read
+<ul class="org-ul">
+<li>Rows read by a transaction will be read consistently within that transaction.</li>
+</ul></li>
+</ul>
 </div>
-<div id="outline-container-org42b4fe9" class="outline-2">
-<h2 id="org42b4fe9"><span class="section-number-2">7</span> Stored Programs</h2>
+</div>
+</div>
+<div id="outline-container-orgab31cc3" class="outline-2">
+<h2 id="orgab31cc3"><span class="section-number-2">7</span> Stored Programs</h2>
 <div class="outline-text-2" id="text-7">
 </div>
-<div id="outline-container-orgb3bd8e2" class="outline-3">
-<h3 id="orgb3bd8e2"><span class="section-number-3">7.1</span> Stored Procedure</h3>
+<div id="outline-container-orgc4ff747" class="outline-3">
+<h3 id="orgc4ff747"><span class="section-number-3">7.1</span> Stored Procedure</h3>
 <div class="outline-text-3" id="text-7-1">
 <ul class="org-ul">
 <li>Simple stored procedure that starts a transaction and attempts to update the invoices table</li>
@@ -576,8 +600,8 @@ IF sql_error = <span style="color: #51afef; font-style: italic;">FALSE</span> <s
 </div>
 </div>
 </div>
-<div id="outline-container-orgdcd3782" class="outline-3">
-<h3 id="orgdcd3782"><span class="section-number-3">7.2</span> Stored Functions</h3>
+<div id="outline-container-orga9aa921" class="outline-3">
+<h3 id="orga9aa921"><span class="section-number-3">7.2</span> Stored Functions</h3>
 <div class="outline-text-3" id="text-7-2">
 <ul class="org-ul">
 <li>Functions are much alike procedure, however they: can return <b>only</b> a single value, <b>cannot</b> perform INSERT, UPDATE, DELETE</li>
@@ -620,8 +644,8 @@ IF sql_error = <span style="color: #51afef; font-style: italic;">FALSE</span> <s
 </div>
 </div>
 </div>
-<div id="outline-container-org3478da0" class="outline-3">
-<h3 id="org3478da0"><span class="section-number-3">7.3</span> Triggers</h3>
+<div id="outline-container-org168a86b" class="outline-3">
+<h3 id="org168a86b"><span class="section-number-3">7.3</span> Triggers</h3>
 <div class="outline-text-3" id="text-7-3">
 <ul class="org-ul">
 <li>Triggers are like hooks, they get fired before or after a: DELETE, UPDATE, INSERT</li>
@@ -660,8 +684,8 @@ IF sql_error = <span style="color: #51afef; font-style: italic;">FALSE</span> <s
 </div>
 </div>
 </div>
-<div id="outline-container-org57ec9ab" class="outline-3">
-<h3 id="org57ec9ab"><span class="section-number-3">7.4</span> Events</h3>
+<div id="outline-container-orgaa1e262" class="outline-3">
+<h3 id="orgaa1e262"><span class="section-number-3">7.4</span> Events</h3>
 <div class="outline-text-3" id="text-7-4">
 <ul class="org-ul">
 <li>It fires at scheduled events</li>
@@ -702,12 +726,12 @@ DO <span style="color: #51afef; font-style: italic;">BEGIN</span>
 </div>
 </div>
 </div>
-<div id="outline-container-orgb5ce885" class="outline-2">
-<h2 id="orgb5ce885"><span class="section-number-2">8</span> Normalisation</h2>
+<div id="outline-container-org0327ca9" class="outline-2">
+<h2 id="org0327ca9"><span class="section-number-2">8</span> Normalisation</h2>
 <div class="outline-text-2" id="text-8">
 </div>
-<div id="outline-container-org9a1a9e3" class="outline-3">
-<h3 id="org9a1a9e3"><span class="section-number-3">8.1</span> 1NF</h3>
+<div id="outline-container-org5f3ac81" class="outline-3">
+<h3 id="org5f3ac81"><span class="section-number-3">8.1</span> 1NF</h3>
 <div class="outline-text-3" id="text-8-1">
 <ul class="org-ul">
 <li>Contains no repeating columns, also each column must not repeat values (e.g. comma separation)</li>
@@ -723,8 +747,8 @@ DO <span style="color: #51afef; font-style: italic;">BEGIN</span>
 </ul>
 </div>
 </div>
-<div id="outline-container-orga02decc" class="outline-3">
-<h3 id="orga02decc"><span class="section-number-3">8.2</span> 2NF</h3>
+<div id="outline-container-org0ed1536" class="outline-3">
+<h3 id="org0ed1536"><span class="section-number-3">8.2</span> 2NF</h3>
 <div class="outline-text-3" id="text-8-2">
 <ul class="org-ul">
 <li>Every column in a table must be <i>functionally dependent</i> on the <b>whole</b> primary key of the table</li>
@@ -739,8 +763,8 @@ DO <span style="color: #51afef; font-style: italic;">BEGIN</span>
 </div>
 </div>
 </div>
-<div id="outline-container-orgbf636be" class="outline-3">
-<h3 id="orgbf636be"><span class="section-number-3">8.3</span> 3NF</h3>
+<div id="outline-container-orgd81bec1" class="outline-3">
+<h3 id="orgd81bec1"><span class="section-number-3">8.3</span> 3NF</h3>
 <div class="outline-text-3" id="text-8-3">
 <ul class="org-ul">
 <li>An entity is in the third normal form if it contains no transitive dependencies.</li>
@@ -756,12 +780,12 @@ DO <span style="color: #51afef; font-style: italic;">BEGIN</span>
 </div>
 </div>
 </div>
-<div id="outline-container-org01308e5" class="outline-2">
-<h2 id="org01308e5"><span class="section-number-2">9</span> ORM</h2>
+<div id="outline-container-org38858cd" class="outline-2">
+<h2 id="org38858cd"><span class="section-number-2">9</span> ORM</h2>
 <div class="outline-text-2" id="text-9">
 </div>
-<div id="outline-container-orgc2046f9" class="outline-3">
-<h3 id="orgc2046f9"><span class="section-number-3">9.1</span> Overview</h3>
+<div id="outline-container-org14c3465" class="outline-3">
+<h3 id="org14c3465"><span class="section-number-3">9.1</span> Overview</h3>
 <div class="outline-text-3" id="text-9-1">
 <ul class="org-ul">
 <li>Main problems GSIAD:
@@ -776,12 +800,12 @@ DO <span style="color: #51afef; font-style: italic;">BEGIN</span>
 </div>
 </div>
 </div>
-<div id="outline-container-orga68da93" class="outline-2">
-<h2 id="orga68da93"><span class="section-number-2">10</span> MongoDB</h2>
+<div id="outline-container-orgb31e23a" class="outline-2">
+<h2 id="orgb31e23a"><span class="section-number-2">10</span> MongoDB</h2>
 <div class="outline-text-2" id="text-10">
 </div>
-<div id="outline-container-org2a6b20a" class="outline-3">
-<h3 id="org2a6b20a"><span class="section-number-3">10.1</span> Overview</h3>
+<div id="outline-container-orge99b58f" class="outline-3">
+<h3 id="orge99b58f"><span class="section-number-3">10.1</span> Overview</h3>
 <div class="outline-text-3" id="text-10-1">
 <ul class="org-ul">
 <li>Document oriented, schema free, open source, high-performance</li>
@@ -836,22 +860,22 @@ DO <span style="color: #51afef; font-style: italic;">BEGIN</span>
 </ul>
 </div>
 </div>
-<div id="outline-container-orga035281" class="outline-3">
-<h3 id="orga035281"><span class="section-number-3">10.2</span> Design</h3>
+<div id="outline-container-org4da59c5" class="outline-3">
+<h3 id="org4da59c5"><span class="section-number-3">10.2</span> Design</h3>
 <div class="outline-text-3" id="text-10-2">
 </div>
-<div id="outline-container-org4b4d646" class="outline-4">
-<h4 id="org4b4d646">Relations</h4>
-<div class="outline-text-4" id="text-org4b4d646">
+<div id="outline-container-org4e1caf5" class="outline-4">
+<h4 id="org4e1caf5">Relations</h4>
+<div class="outline-text-4" id="text-org4e1caf5">
 <ul class="org-ul">
 <li>Embed: store data in a single document</li>
 <li>Reference: keep a reference as a pointer to another data</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgb395dad" class="outline-4">
-<h4 id="orgb395dad">Why embed over reference</h4>
-<div class="outline-text-4" id="text-orgb395dad">
+<div id="outline-container-org5a5db27" class="outline-4">
+<h4 id="org5a5db27">Why embed over reference</h4>
+<div class="outline-text-4" id="text-org5a5db27">
 <ul class="org-ul">
 <li>Requirements state that data from 2 or more entities are frequently queried together</li>
 <li>The child is a dependent entity</li>
@@ -863,19 +887,19 @@ DO <span style="color: #51afef; font-style: italic;">BEGIN</span>
 </div>
 </div>
 
-<div id="outline-container-orgbbd86b4" class="outline-3">
-<h3 id="orgbbd86b4"><span class="section-number-3">10.3</span> Validation</h3>
+<div id="outline-container-org706553f" class="outline-3">
+<h3 id="org706553f"><span class="section-number-3">10.3</span> Validation</h3>
 </div>
 </div>
-<div id="outline-container-org7cfc484" class="outline-2">
-<h2 id="org7cfc484"><span class="section-number-2">11</span> Hadoop</h2>
+<div id="outline-container-org3c4fc39" class="outline-2">
+<h2 id="org3c4fc39"><span class="section-number-2">11</span> Hadoop</h2>
 <div class="outline-text-2" id="text-11">
 </div>
-<div id="outline-container-orgb9f6841" class="outline-3">
-<h3 id="orgb9f6841"><span class="section-number-3">11.1</span> Definitions</h3>
+<div id="outline-container-orga1cbfac" class="outline-3">
+<h3 id="orga1cbfac"><span class="section-number-3">11.1</span> Definitions</h3>
 </div>
-<div id="outline-container-org18f8d95" class="outline-3">
-<h3 id="org18f8d95"><span class="section-number-3">11.2</span> Overview</h3>
+<div id="outline-container-org55c9b4a" class="outline-3">
+<h3 id="org55c9b4a"><span class="section-number-3">11.2</span> Overview</h3>
 <div class="outline-text-3" id="text-11-2">
 <ul class="org-ul">
 <li>Large scale distributed batch processing architecture. While it can operate on a single machine, it really shines when its distributed across many machines</li>
@@ -884,8 +908,8 @@ DO <span style="color: #51afef; font-style: italic;">BEGIN</span>
 </ul>
 </div>
 </div>
-<div id="outline-container-org723a707" class="outline-3">
-<h3 id="org723a707"><span class="section-number-3">11.3</span> Architecture</h3>
+<div id="outline-container-org6e49b20" class="outline-3">
+<h3 id="org6e49b20"><span class="section-number-3">11.3</span> Architecture</h3>
 <div class="outline-text-3" id="text-11-3">
 
 <div class="figure">
@@ -894,8 +918,8 @@ DO <span style="color: #51afef; font-style: italic;">BEGIN</span>
 </div>
 </div>
 </div>
-<div id="outline-container-org6676f61" class="outline-3">
-<h3 id="org6676f61"><span class="section-number-3">11.4</span> Map Reduce Architecture (Distributed Data Analytics)</h3>
+<div id="outline-container-org7028613" class="outline-3">
+<h3 id="org7028613"><span class="section-number-3">11.4</span> Map Reduce Architecture (Distributed Data Analytics)</h3>
 <div class="outline-text-3" id="text-11-4">
 <ul class="org-ul">
 <li>MapReduce is a programming model for processing and generating large data sets in parallel on a distributed system</li>
@@ -911,8 +935,8 @@ DO <span style="color: #51afef; font-style: italic;">BEGIN</span>
 </div>
 </div>
 </div>
-<div id="outline-container-org5ecc337" class="outline-3">
-<h3 id="org5ecc337"><span class="section-number-3">11.5</span> Hadoop Data Distribution</h3>
+<div id="outline-container-orgf91c29f" class="outline-3">
+<h3 id="orgf91c29f"><span class="section-number-3">11.5</span> Hadoop Data Distribution</h3>
 <div class="outline-text-3" id="text-11-5">
 <ul class="org-ul">
 <li>Processes running process data on that node. A mapper will not process data on another node.</li>
@@ -921,8 +945,8 @@ DO <span style="color: #51afef; font-style: italic;">BEGIN</span>
 </ul>
 </div>
 </div>
-<div id="outline-container-org9d4777f" class="outline-3">
-<h3 id="org9d4777f"><span class="section-number-3">11.6</span> Hadoop Software Library</h3>
+<div id="outline-container-org96c7a7b" class="outline-3">
+<h3 id="org96c7a7b"><span class="section-number-3">11.6</span> Hadoop Software Library</h3>
 <div class="outline-text-3" id="text-11-6">
 <ul class="org-ul">
 <li>In one <b>Hadoop Cell</b> there's at least 3 servers containing:
@@ -933,49 +957,49 @@ DO <span style="color: #51afef; font-style: italic;">BEGIN</span>
 </ul></li>
 </ul>
 </div>
-<div id="outline-container-orgfdc52bd" class="outline-4">
-<h4 id="orgfdc52bd">NameNode</h4>
-<div class="outline-text-4" id="text-orgfdc52bd">
+<div id="outline-container-orgb386f24" class="outline-4">
+<h4 id="orgb386f24">NameNode</h4>
+<div class="outline-text-4" id="text-orgb386f24">
 <ul class="org-ul">
 <li>Master of HDFS, single point of failure. Keeps track of how the files are broken down and directs DataNodes</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org5bec2d0" class="outline-4">
-<h4 id="org5bec2d0">Secondary NameNode</h4>
-<div class="outline-text-4" id="text-org5bec2d0">
+<div id="outline-container-orgfb223a1" class="outline-4">
+<h4 id="orgfb223a1">Secondary NameNode</h4>
+<div class="outline-text-4" id="text-orgfb223a1">
 <ul class="org-ul">
 <li>Take snapshots of NameNode</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgcc43e9b" class="outline-4">
-<h4 id="orgcc43e9b">JobTracker</h4>
-<div class="outline-text-4" id="text-orgcc43e9b">
+<div id="outline-container-orgc44391f" class="outline-4">
+<h4 id="orgc44391f">JobTracker</h4>
+<div class="outline-text-4" id="text-orgc44391f">
 <ul class="org-ul">
 <li>Liason between your application and Hadoop. Determines the execution plan by determining which files to process, which nodes to assign to which tasks and monitors the tasks.</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org51a1f79" class="outline-4">
-<h4 id="org51a1f79">DataNode</h4>
-<div class="outline-text-4" id="text-org51a1f79">
+<div id="outline-container-org3a68120" class="outline-4">
+<h4 id="org3a68120">DataNode</h4>
+<div class="outline-text-4" id="text-org3a68120">
 <ul class="org-ul">
 <li>Reads and Writes to HDFS</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org955a7bf" class="outline-4">
-<h4 id="org955a7bf">TaskTrackers</h4>
-<div class="outline-text-4" id="text-org955a7bf">
+<div id="outline-container-org9612cce" class="outline-4">
+<h4 id="org9612cce">TaskTrackers</h4>
+<div class="outline-text-4" id="text-org9612cce">
 <ul class="org-ul">
 <li>Runs the individual tasks</li>
 </ul>
 </div>
 </div>
 </div>
-<div id="outline-container-orgae696cc" class="outline-3">
-<h3 id="orgae696cc"><span class="section-number-3">11.7</span> Dealing with Failure</h3>
+<div id="outline-container-org230a1f2" class="outline-3">
+<h3 id="org230a1f2"><span class="section-number-3">11.7</span> Dealing with Failure</h3>
 <div class="outline-text-3" id="text-11-7">
 <ul class="org-ul">
 <li>A single master constantly pings each mapper</li>
@@ -987,8 +1011,8 @@ DO <span style="color: #51afef; font-style: italic;">BEGIN</span>
 </div>
 </div>
 </div>
-<div id="outline-container-org59be5f0" class="outline-2">
-<h2 id="org59be5f0"><span class="section-number-2">12</span> Delete at the end</h2>
+<div id="outline-container-orgd8417f7" class="outline-2">
+<h2 id="orgd8417f7"><span class="section-number-2">12</span> Delete at the end</h2>
 <div class="outline-text-2" id="text-12">
 <script src="../assets/jquery-3.3.1.min.js"></script>
 <script src="../assets/notes.js"></script>
@@ -998,7 +1022,7 @@ DO <span style="color: #51afef; font-style: italic;">BEGIN</span>
 <div id="postamble" class="status">
 <p class="date">Date: 2019-09-09 Mon 11:54</p>
 <p class="author">Author: Damian Chrzanowski</p>
-<p class="date">Created: 2019-12-11 Wed 17:45</p>
+<p class="date">Created: 2019-12-11 Wed 21:24</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

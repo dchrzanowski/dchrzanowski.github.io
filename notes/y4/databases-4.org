@@ -103,6 +103,15 @@
    2. *Dirty Reads*: Reading data that has not been yet commited
    3. *Nonrepeatable Reads*: Two SAME selects get different data because a commit happened in between
    4. *Phantom Reads*: Performing an update or delete on a set, while another is performing an insert or delete
+** Transaction Isolation Levels
+   - Serializable
+     - Severely restricts concurrency but ensures that no problems are possible.
+   - Read uncommitted
+     - Allows all four problems by not setting any locks.
+   - Read committed
+     - Allows only data that has been committed to be seen by transactions.
+   - Repeatable read
+     - Rows read by a transaction will be read consistently within that transaction.
 * Stored Programs
 ** Stored Procedure
    - Simple stored procedure that starts a transaction and attempts to update the invoices table
