@@ -77,6 +77,32 @@
     as 'Full Name', contactNo
     from doctors;
   #+end_src
+* Transactions
+** Definitions
+   - *Concurrent Control*: Ensure integrity when the db is accessed simultaneously by more than one user.
+   - *Consistent*: There are no contradictions between items stored in the db
+   - *Transaction*: Combine a series of SQL statements into a single unit of work
+** Concept
+   - Start a transaction with the db in a consistent state
+   - End the transaction with the db in a consistent state
+** ACID Principles
+   - *Atomicity*: Either all is done or NONE of it
+   - *Consistency*: Start and finish in a consistent state
+   - *Isolation*: Even when executed concurrently the final result is the same
+   - *Durability*: The effects must persist, even if the db crashes
+** States
+   1. *Active*: From the start until failure or commited
+   2. *Partially Commited*: Last statement completed but changes not yet made permanent
+   3. *Commited*: Changes now made permanent.
+   4. *Failed*: An error occurred, changes rolled back, must *abort*
+   5. *Aborted*: All effects have been removed from db
+** States Diagram
+   [[file:images/Transactions/2019-12-11_15-04-10_screenshot.png]]
+** Concurrency Problems
+   1. *Lost Updates*: Two concurrent users update the same row
+   2. *Dirty Reads*: Reading data that has not been yet commited
+   3. *Nonrepeatable Reads*: Two SAME selects get different data because a commit happened in between
+   4. *Phantom Reads*: Performing an update or delete on a set, while another is performing an insert or delete
 * Stored Programs
 ** Stored Procedure
    - Simple stored procedure that starts a transaction and attempts to update the invoices table
@@ -258,13 +284,81 @@
    [[file:images/Normalisation/2019-12-04_21-26-02_screenshot.png]]
 * ORM
 ** Overview
-  - Main problems:
-    - *Granurality*: Problems with fine-grained classes embedded in fine-grained classes. In SQL there are only rows and columns
-    - *Subtypes*: Inheritance and polymorphism are natural OOP paradigms, SQL has no such concept
-    - *Identity*: Java compares object by reference (memory location), SQL does not have such comparisons
-    - *Association*: Java uses associations by references, SQL uses foreign keys. Java can be many-to-many, tables are always one-to-one or one-to-many, many-to-many can only be done by introducing a new table
-    - *Data navigation*: Java uses getters to retrieve data from one object to another, SQL uses joins
-** TODO JPA
+   - Main problems GSIAD:
+     - *Granurality*: Problems with fine-grained classes embedded in coarse-grained classes. In SQL there are only rows and columns
+     - *Subtypes*: Inheritance and polymorphism are natural OOP paradigms, SQL has no such concept
+     - *Identity*: Java compares object by reference (memory location), SQL does not have such comparisons
+     - *Association*: Java uses associations by references, SQL uses foreign keys. Java can be many-to-many, tables are always one-to-one or one-to-many, many-to-many can only be done by introducing a new table
+     - *Data navigation*: Java uses getters to retrieve data from one object to another, SQL uses joins
+* MongoDB
+** Overview
+   - Document oriented, schema free, open source, high-performance
+   - Comparison with Relational
+
+   | Relational | Mongo      |
+   |------------+------------|
+   | Database   | Database   |
+   | Table      | Collection |
+   | Row        | Document   |
+   | Column     | Field      |
+
+   - Prefers horizontal scaling
+   - Has automatic sharding
+     - Increases throughput and capacity horizontally
+     - Reduces the amount of data stored on a single server
+   - Replications: store copies of the data across different servers
+** Design
+*** Relations
+    - Embed: store data in a single document
+    - Reference: keep a reference as a pointer to another data
+*** Why embed over reference
+    - Requirements state that data from 2 or more entities are frequently queried together
+    - The child is a dependent entity
+    - A one-to-one relationship between two entities
+    - Similar volatility
+    - If the entity embedded is not a key entity
+
+** Validation
+* Hadoop
+** Definitions
+** Overview
+   - Large scale distributed batch processing architecture. While it can operate on a single machine, it really shines when its distributed across many machines
+   - Designed to efficiently distribute workload
+   - Designed to handle terabytes to petabytes of data
+** Architecture
+   [[file:images/Hadoop/2019-12-11_17-01-33_screenshot.png]]
+** Map Reduce Architecture (Distributed Data Analytics)
+   - MapReduce is a programming model for processing and generating large data sets in parallel on a distributed system
+   - The programmer creates the map and reduce functions. Code distribution, data distribution, parallel processing, worker scheduling, etc. are all handled by Hadoop
+   - *Map*: sorts data
+   - *Reduces*: summarizes data
+   - Example: Map extracts the data that you want and passes it then to multiple reducers for computing
+   [[file:images/Hadoop/2019-12-11_17-01-59_screenshot.png]]
+** Hadoop Data Distribution
+   - Processes running process data on that node. A mapper will not process data on another node.
+   - Hadoop schedules processes in proximity to the location
+   - Files are scattered across servers, in whole or in pieces (depending on size), therefore each mapper operates on a chunk of data only
+** Hadoop Software Library
+   - In one *Hadoop Cell* there's at least 3 servers containing:
+     - One contains: NameNode & JobTracker daemons
+     - Second contains: Secondary NameNode
+     - Third contains: DataNode & TaskTracker
+*** NameNode
+    - Master of HDFS, single point of failure. Keeps track of how the files are broken down and directs DataNodes
+*** Secondary NameNode
+    - Take snapshots of NameNode
+*** JobTracker
+    - Liason between your application and Hadoop. Determines the execution plan by determining which files to process, which nodes to assign to which tasks and monitors the tasks.
+*** DataNode
+    - Reads and Writes to HDFS
+*** TaskTrackers
+    - Runs the individual tasks
+** Dealing with Failure
+   - A single master constantly pings each mapper
+   - Tells what kind of jobs to run
+   - If the ping fails, the master assumes that the mapper is dead
+   - Passes the job to a different mapper
+   - If one machine is very slow in computing, the master may decide to kill off that task and pass it off to a different mapper
 * Delete at the end
   #+BEGIN_EXPORT html
   <script src="../assets/jquery-3.3.1.min.js"></script>

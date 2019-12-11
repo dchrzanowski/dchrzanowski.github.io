@@ -1,0 +1,1005 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2019-12-11 Wed 17:45 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Databases 4</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="Damian Chrzanowski" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="../assets/org.css"/>
+<link rel="icon" href="../assets/favicon.ico">
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2019 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Databases 4</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orgaa66434">1. Grade Distribution</a></li>
+<li><a href="#org985f1d5">2. DDL (Data Definition Language)</a></li>
+<li><a href="#orgc2ad1aa">3. DML (Data Manipulation Language)</a></li>
+<li><a href="#orgf02d3de">4. Select Query Examples</a></li>
+<li><a href="#org7a07c31">5. Views</a></li>
+<li><a href="#orgc3a05e5">6. Transactions</a>
+<ul>
+<li><a href="#org4c83786">6.1. Definitions</a></li>
+<li><a href="#org75e7b63">6.2. Concept</a></li>
+<li><a href="#orgd19cbd9">6.3. ACID Principles</a></li>
+<li><a href="#orgf65409c">6.4. States</a></li>
+<li><a href="#orgec6fefb">6.5. States Diagram</a></li>
+<li><a href="#orgf87965c">6.6. Concurrency Problems</a></li>
+</ul>
+</li>
+<li><a href="#org42b4fe9">7. Stored Programs</a>
+<ul>
+<li><a href="#orgb3bd8e2">7.1. Stored Procedure</a></li>
+<li><a href="#orgdcd3782">7.2. Stored Functions</a></li>
+<li><a href="#org3478da0">7.3. Triggers</a></li>
+<li><a href="#org57ec9ab">7.4. Events</a></li>
+</ul>
+</li>
+<li><a href="#orgb5ce885">8. Normalisation</a>
+<ul>
+<li><a href="#org9a1a9e3">8.1. 1NF</a></li>
+<li><a href="#orga02decc">8.2. 2NF</a></li>
+<li><a href="#orgbf636be">8.3. 3NF</a></li>
+</ul>
+</li>
+<li><a href="#org01308e5">9. ORM</a>
+<ul>
+<li><a href="#orgc2046f9">9.1. Overview</a></li>
+</ul>
+</li>
+<li><a href="#orga68da93">10. MongoDB</a>
+<ul>
+<li><a href="#org2a6b20a">10.1. Overview</a></li>
+<li><a href="#orga035281">10.2. Design</a></li>
+<li><a href="#orgbbd86b4">10.3. Validation</a></li>
+</ul>
+</li>
+<li><a href="#org7cfc484">11. Hadoop</a>
+<ul>
+<li><a href="#orgb9f6841">11.1. Definitions</a></li>
+<li><a href="#org18f8d95">11.2. Overview</a></li>
+<li><a href="#org723a707">11.3. Architecture</a></li>
+<li><a href="#org6676f61">11.4. Map Reduce Architecture (Distributed Data Analytics)</a></li>
+<li><a href="#org5ecc337">11.5. Hadoop Data Distribution</a></li>
+<li><a href="#org9d4777f">11.6. Hadoop Software Library</a></li>
+<li><a href="#orgae696cc">11.7. Dealing with Failure</a></li>
+</ul>
+</li>
+<li><a href="#org59be5f0">12. Delete at the end</a></li>
+</ul>
+</div>
+</div>
+<p>
+<a href="index.html">Home Page</a>
+</p>
+<div id="outline-container-orgaa66434" class="outline-2">
+<h2 id="orgaa66434"><span class="section-number-2">1</span> Grade Distribution</h2>
+<div class="outline-text-2" id="text-1">
+<ul class="org-ul">
+<li>50 CA</li>
+<li>50 Exam
+<ul class="org-ul">
+<li>Four benefits of SQL views</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org985f1d5" class="outline-2">
+<h2 id="org985f1d5"><span class="section-number-2">2</span> DDL (Data Definition Language)</h2>
+<div class="outline-text-2" id="text-2">
+<ul class="org-ul">
+<li>Create</li>
+<li>Drop</li>
+<li>Alter</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgc2ad1aa" class="outline-2">
+<h2 id="orgc2ad1aa"><span class="section-number-2">3</span> DML (Data Manipulation Language)</h2>
+<div class="outline-text-2" id="text-3">
+<ul class="org-ul">
+<li>Select</li>
+<li>Insert</li>
+<li>Update</li>
+<li>Delete</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgf02d3de" class="outline-2">
+<h2 id="orgf02d3de"><span class="section-number-2">4</span> Select Query Examples</h2>
+<div class="outline-text-2" id="text-4">
+<ul class="org-ul">
+<li>Get all that are not in their 40s</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #51afef; font-style: italic;">select</span> * <span style="color: #51afef; font-style: italic;">from</span> details <span style="color: #51afef; font-style: italic;">where</span> age <span style="color: #51afef; font-style: italic;">not</span> <span style="color: #51afef; font-style: italic;">between</span> <span style="color: #da8548; font-weight: bold;">40</span> <span style="color: #51afef; font-style: italic;">and</span> <span style="color: #da8548; font-weight: bold;">50</span>;
+<span style="color: #5B6268;">-- OR</span>
+<span style="color: #51afef; font-style: italic;">select</span> * <span style="color: #51afef; font-style: italic;">from</span> details <span style="color: #51afef; font-style: italic;">where</span> age <span style="color: #51afef; font-style: italic;">not</span> <span style="color: #51afef; font-style: italic;">like</span> <span style="color: #98be65;">'4%'</span>;
+<span style="color: #5B6268;">-- OR</span>
+<span style="color: #51afef; font-style: italic;">select</span> * <span style="color: #51afef; font-style: italic;">from</span> details <span style="color: #51afef; font-style: italic;">where</span> age &lt; <span style="color: #da8548; font-weight: bold;">40</span> <span style="color: #51afef; font-style: italic;">OR</span> age &gt; <span style="color: #da8548; font-weight: bold;">49</span>;
+</pre>
+</div>
+<ul class="org-ul">
+<li>Get all with a name longer than 4 letters</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #51afef; font-style: italic;">select</span> * <span style="color: #51afef; font-style: italic;">from</span> details <span style="color: #51afef; font-style: italic;">where</span> <span style="color: #51afef; font-style: italic;">length</span><span style="color: #fff0f5;">(</span>firstName<span style="color: #fff0f5;">)</span> &gt; <span style="color: #da8548; font-weight: bold;">4</span>;
+</pre>
+</div>
+<ul class="org-ul">
+<li>Get sum of all female wages</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #51afef; font-style: italic;">select</span> *, <span style="color: #c678dd;">sum</span><span style="color: #fff0f5;">(</span>rate * hours<span style="color: #fff0f5;">)</span> <span style="color: #51afef; font-style: italic;">as</span> <span style="color: #98be65;">'Wage'</span> <span style="color: #51afef; font-style: italic;">from</span> details <span style="color: #51afef; font-style: italic;">where</span> gender = <span style="color: #98be65;">'F'</span>;
+</pre>
+</div>
+<ul class="org-ul">
+<li>Average age in each department</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #51afef; font-style: italic;">select</span> department,<span style="color: #c678dd;">avg</span><span style="color: #fff0f5;">(</span>age<span style="color: #fff0f5;">)</span> <span style="color: #51afef; font-style: italic;">as</span> <span style="color: #98be65;">'AVG Age'</span> <span style="color: #51afef; font-style: italic;">from</span> details <span style="color: #51afef; font-style: italic;">group</span> <span style="color: #51afef; font-style: italic;">by</span> department;
+</pre>
+</div>
+<ul class="org-ul">
+<li>Count number of females and males per department</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #51afef; font-style: italic;">select</span> department,gender,<span style="color: #c678dd;">count</span><span style="color: #fff0f5;">(</span>*<span style="color: #fff0f5;">)</span> <span style="color: #51afef; font-style: italic;">as</span> <span style="color: #98be65;">'Count'</span> <span style="color: #51afef; font-style: italic;">from</span> details <span style="color: #51afef; font-style: italic;">group</span> <span style="color: #51afef; font-style: italic;">by</span> gender, department;
+</pre>
+</div>
+<ul class="org-ul">
+<li>Youngest person (or use limit with order by)</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #51afef; font-style: italic;">select</span> * <span style="color: #51afef; font-style: italic;">from</span> details <span style="color: #51afef; font-style: italic;">where</span> age = <span style="color: #fff0f5;">(</span><span style="color: #51afef; font-style: italic;">select</span> <span style="color: #c678dd;">min</span><span style="color: #c678dd;">(</span>age<span style="color: #c678dd;">)</span> <span style="color: #51afef; font-style: italic;">from</span> details<span style="color: #fff0f5;">)</span>;
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org7a07c31" class="outline-2">
+<h2 id="org7a07c31"><span class="section-number-2">5</span> Views</h2>
+<div class="outline-text-2" id="text-5">
+<ul class="org-ul">
+<li>Creates a copy of a specific query</li>
+<li>Provides 4 mandatory aspects:
+<ul class="org-ul">
+<li><b>Design independence</b>: Limit what is seen and thus provide an abstraction to the viewer</li>
+<li><b>Data security</b>: Restrict access to what is actually visible from a table</li>
+<li><b>Simplified queries</b>: Hide complexity</li>
+<li><b>Updatability</b>: Can be used to update, insert and delete data as well</li>
+</ul></li>
+<li>To create an updateable view:
+<ul class="org-ul">
+<li>No <code>DISTINCT</code></li>
+<li>No aggregation functions</li>
+<li>No <code>GROUP BY</code> or <code>HAVING</code></li>
+<li>No <code>UNION</code></li>
+</ul></li>
+</ul>
+
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #51afef; font-style: italic;">CREATE</span> <span style="color: #51afef; font-style: italic;">VIEW</span> <span style="color: #c678dd;">names_department</span> <span style="color: #51afef; font-style: italic;">AS</span>
+<span style="color: #51afef; font-style: italic;">SELECT</span> firstNames, lastName
+<span style="color: #51afef; font-style: italic;">FROM</span> details;
+
+<span style="color: #5B6268;">-- then read the names_department view as follows</span>
+<span style="color: #51afef; font-style: italic;">select</span> * form names_department;
+</pre>
+</div>
+<ul class="org-ul">
+<li>Create a view of a concatenated name and a phone number</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #51afef; font-style: italic;">create</span> <span style="color: #51afef; font-style: italic;">view</span> <span style="color: #c678dd;">DocsPhone</span> <span style="color: #51afef; font-style: italic;">as</span>
+<span style="color: #51afef; font-style: italic;">select</span> concat<span style="color: #fff0f5;">(</span>firstName, " ", lastName<span style="color: #fff0f5;">)</span>
+<span style="color: #51afef; font-style: italic;">as</span> <span style="color: #98be65;">'Full Name'</span>, contactNo
+<span style="color: #51afef; font-style: italic;">from</span> doctors;
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgc3a05e5" class="outline-2">
+<h2 id="orgc3a05e5"><span class="section-number-2">6</span> Transactions</h2>
+<div class="outline-text-2" id="text-6">
+</div>
+<div id="outline-container-org4c83786" class="outline-3">
+<h3 id="org4c83786"><span class="section-number-3">6.1</span> Definitions</h3>
+<div class="outline-text-3" id="text-6-1">
+<ul class="org-ul">
+<li><b>Concurrent Control</b>: Ensure integrity when the db is accessed simultaneously by more than one user.</li>
+<li><b>Consistent</b>: There are no contradictions between items stored in the db</li>
+<li><b>Transaction</b>: Combine a series of SQL statements into a single unit of work</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org75e7b63" class="outline-3">
+<h3 id="org75e7b63"><span class="section-number-3">6.2</span> Concept</h3>
+<div class="outline-text-3" id="text-6-2">
+<ul class="org-ul">
+<li>Start a transaction with the db in a consistent state</li>
+<li>End the transaction with the db in a consistent state</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgd19cbd9" class="outline-3">
+<h3 id="orgd19cbd9"><span class="section-number-3">6.3</span> ACID Principles</h3>
+<div class="outline-text-3" id="text-6-3">
+<ul class="org-ul">
+<li><b>Atomicity</b>: Either all is done or NONE of it</li>
+<li><b>Consistency</b>: Start and finish in a consistent state</li>
+<li><b>Isolation</b>: Even when executed concurrently the final result is the same</li>
+<li><b>Durability</b>: The effects must persist, even if the db crashes</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgf65409c" class="outline-3">
+<h3 id="orgf65409c"><span class="section-number-3">6.4</span> States</h3>
+<div class="outline-text-3" id="text-6-4">
+<ol class="org-ol">
+<li><b>Active</b>: From the start until failure or commited</li>
+<li><b>Partially Commited</b>: Last statement completed but changes not yet made permanent</li>
+<li><b>Commited</b>: Changes now made permanent.</li>
+<li><b>Failed</b>: An error occurred, changes rolled back, must <b>abort</b></li>
+<li><b>Aborted</b>: All effects have been removed from db</li>
+</ol>
+</div>
+</div>
+<div id="outline-container-orgec6fefb" class="outline-3">
+<h3 id="orgec6fefb"><span class="section-number-3">6.5</span> States Diagram</h3>
+<div class="outline-text-3" id="text-6-5">
+
+<div class="figure">
+<p><img src="images/Transactions/2019-12-11_15-04-10_screenshot.png" alt="2019-12-11_15-04-10_screenshot.png" />
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orgf87965c" class="outline-3">
+<h3 id="orgf87965c"><span class="section-number-3">6.6</span> Concurrency Problems</h3>
+<div class="outline-text-3" id="text-6-6">
+<ol class="org-ol">
+<li><b>Lost Updates</b>: Two concurrent users update the same row</li>
+<li><b>Dirty Reads</b>: Reading data that has not been yet commited</li>
+<li><b>Nonrepeatable Reads</b>: Two SAME selects get different data because a commit happened in between</li>
+<li><b>Phantom Reads</b>: Performing an update or delete on a set, while another is performing an insert or delete</li>
+</ol>
+</div>
+</div>
+</div>
+<div id="outline-container-org42b4fe9" class="outline-2">
+<h2 id="org42b4fe9"><span class="section-number-2">7</span> Stored Programs</h2>
+<div class="outline-text-2" id="text-7">
+</div>
+<div id="outline-container-orgb3bd8e2" class="outline-3">
+<h3 id="orgb3bd8e2"><span class="section-number-3">7.1</span> Stored Procedure</h3>
+<div class="outline-text-3" id="text-7-1">
+<ul class="org-ul">
+<li>Simple stored procedure that starts a transaction and attempts to update the invoices table</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #5B6268;">-- changes the standard delimiter (semicolon) to a double forward slash</span>
+DELIMITER //
+
+<span style="color: #51afef; font-style: italic;">CREATE</span> <span style="color: #51afef; font-style: italic;">PROCEDURE</span> <span style="color: #c678dd;">update_surname</span>
+<span style="color: #fff0f5;">(</span>
+    invoice_id_param <span style="color: #ECBE7B;">INT</span>,
+    credit_total_param <span style="color: #ECBE7B;">DECIMAL</span><span style="color: #c678dd;">(</span><span style="color: #da8548; font-weight: bold;">9</span>,<span style="color: #da8548; font-weight: bold;">2</span><span style="color: #c678dd;">)</span>
+<span style="color: #fff0f5;">)</span>
+<span style="color: #51afef; font-style: italic;">BEGIN</span>
+    <span style="color: #51afef; font-style: italic;">DECLARE</span> sql_error TINYINT <span style="color: #51afef; font-style: italic;">DEFAULT</span> <span style="color: #51afef; font-style: italic;">FALSE</span>;
+
+    <span style="color: #51afef; font-style: italic;">DECLARE</span> <span style="color: #51afef; font-style: italic;">CONTINUE</span> HANDLER <span style="color: #51afef; font-style: italic;">FOR</span> <span style="color: #51afef; font-style: italic;">SQLEXCEPTION</span>
+            <span style="color: #51afef; font-style: italic;">SET</span> sql_error = <span style="color: #51afef; font-style: italic;">TRUE</span>;
+
+    <span style="color: #51afef; font-style: italic;">START</span> <span style="color: #51afef; font-style: italic;">TRANSACTION</span>;
+
+    <span style="color: #51afef; font-style: italic;">UPDATE</span> invoices
+    <span style="color: #51afef; font-style: italic;">SET</span> credi_total = credit_total_param
+    <span style="color: #51afef; font-style: italic;">WHERE</span> invoice_id = invoice_id_param;
+
+    IF sql_error = <span style="color: #51afef; font-style: italic;">FALSE</span> <span style="color: #51afef; font-style: italic;">THEN</span>
+        <span style="color: #51afef; font-style: italic;">SELECT</span> "Commited";
+        <span style="color: #51afef; font-style: italic;">COMMIT</span>;
+    <span style="color: #51afef; font-style: italic;">ELSE</span>
+        <span style="color: #51afef; font-style: italic;">SELECT</span> "<span style="color: #51afef; font-style: italic;">Rollback</span>";
+        <span style="color: #51afef; font-style: italic;">ROLLBACK</span>;
+    <span style="color: #51afef; font-style: italic;">END</span> IF;
+<span style="color: #51afef; font-style: italic;">END</span> //
+</pre>
+</div>
+<ul class="org-ul">
+<li>Use the procedure as follows</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #51afef; font-style: italic;">CALL</span> name_of_procedure<span style="color: #fff0f5;">(</span><span style="color: #da8548; font-weight: bold;">56</span>, <span style="color: #da8548; font-weight: bold;">300</span><span style="color: #fff0f5;">)</span>;
+</pre>
+</div>
+<ul class="org-ul">
+<li>Input and output in Stored Procedure: outputs the amount of updates as the return value</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-sql">DELIMITER //
+
+<span style="color: #51afef; font-style: italic;">CREATE</span> <span style="color: #51afef; font-style: italic;">PROCEDURE</span> <span style="color: #c678dd;">update_surname</span>
+<span style="color: #fff0f5;">(</span>
+    <span style="color: #51afef; font-style: italic;">IN</span> invoice_id_param <span style="color: #ECBE7B;">INT</span>,
+    <span style="color: #51afef; font-style: italic;">IN</span> credit_total_param <span style="color: #ECBE7B;">DECIMAL</span><span style="color: #c678dd;">(</span><span style="color: #da8548; font-weight: bold;">9</span>,<span style="color: #da8548; font-weight: bold;">2</span><span style="color: #c678dd;">)</span>,
+    <span style="color: #51afef; font-style: italic;">OUT</span> update_count <span style="color: #ECBE7B;">int</span>
+<span style="color: #fff0f5;">)</span>
+<span style="color: #51afef; font-style: italic;">BEGIN</span>
+<span style="color: #51afef; font-style: italic;">DECLARE</span> sql_error TINYINT <span style="color: #51afef; font-style: italic;">DEFAULT</span> <span style="color: #51afef; font-style: italic;">FALSE</span>;
+
+<span style="color: #51afef; font-style: italic;">DECLARE</span> <span style="color: #51afef; font-style: italic;">CONTINUE</span> HANDLER <span style="color: #51afef; font-style: italic;">FOR</span> <span style="color: #51afef; font-style: italic;">SQLEXCEPTION</span>
+<span style="color: #51afef; font-style: italic;">SET</span> sql_error = <span style="color: #51afef; font-style: italic;">TRUE</span>;
+
+<span style="color: #51afef; font-style: italic;">START</span> <span style="color: #51afef; font-style: italic;">TRANSACTION</span>;
+
+<span style="color: #51afef; font-style: italic;">UPDATE</span> invoices
+<span style="color: #51afef; font-style: italic;">SET</span> credi_total = credit_total_param
+<span style="color: #51afef; font-style: italic;">WHERE</span> invoice_id = invoice_id_param;
+
+IF sql_error = <span style="color: #51afef; font-style: italic;">FALSE</span> <span style="color: #51afef; font-style: italic;">THEN</span>
+    <span style="color: #51afef; font-style: italic;">SET</span> update_count = <span style="color: #da8548; font-weight: bold;">1</span>;
+    <span style="color: #51afef; font-style: italic;">COMMIT</span>;
+<span style="color: #51afef; font-style: italic;">ELSE</span>
+    <span style="color: #51afef; font-style: italic;">SET</span> update_count = <span style="color: #da8548; font-weight: bold;">0</span>;
+    <span style="color: #51afef; font-style: italic;">ROLLBACK</span>;
+<span style="color: #51afef; font-style: italic;">END</span> IF;
+
+<span style="color: #51afef; font-style: italic;">END</span> //
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgdcd3782" class="outline-3">
+<h3 id="orgdcd3782"><span class="section-number-3">7.2</span> Stored Functions</h3>
+<div class="outline-text-3" id="text-7-2">
+<ul class="org-ul">
+<li>Functions are much alike procedure, however they: can return <b>only</b> a single value, <b>cannot</b> perform INSERT, UPDATE, DELETE</li>
+<li>Example of a function that calculates salary</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-sql">DELIMITER //
+
+<span style="color: #51afef; font-style: italic;">CREATE</span> <span style="color: #51afef; font-style: italic;">Function</span> <span style="color: #c678dd;">calculate_salary</span>
+<span style="color: #fff0f5;">(</span>
+    id_param <span style="color: #ECBE7B;">INT</span>
+<span style="color: #fff0f5;">)</span>
+
+<span style="color: #51afef; font-style: italic;">RETURNS</span> <span style="color: #ECBE7B;">DECIMAL</span><span style="color: #fff0f5;">(</span><span style="color: #da8548; font-weight: bold;">9</span>, <span style="color: #da8548; font-weight: bold;">2</span><span style="color: #fff0f5;">)</span>
+
+<span style="color: #51afef; font-style: italic;">BEGIN</span>
+    <span style="color: #51afef; font-style: italic;">DECLARE</span> salary_var <span style="color: #ECBE7B;">DECIMAL</span><span style="color: #fff0f5;">(</span><span style="color: #da8548; font-weight: bold;">9</span>,<span style="color: #da8548; font-weight: bold;">2</span><span style="color: #fff0f5;">)</span>;
+        <span style="color: #51afef; font-style: italic;">select</span> <span style="color: #c678dd;">sum</span><span style="color: #fff0f5;">(</span>rate*hours<span style="color: #fff0f5;">)</span>
+        <span style="color: #51afef; font-style: italic;">into</span> salary_var
+        <span style="color: #51afef; font-style: italic;">from</span> details
+        <span style="color: #51afef; font-style: italic;">where</span> id = id_param;
+    <span style="color: #51afef; font-style: italic;">RETURN</span> salary_var;
+<span style="color: #51afef; font-style: italic;">END</span>//
+
+</pre>
+</div>
+<ul class="org-ul">
+<li>Use as like a normal function</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #51afef; font-style: italic;">SELECT</span> calculate_salary<span style="color: #fff0f5;">(</span><span style="color: #da8548; font-weight: bold;">3</span><span style="color: #fff0f5;">)</span>;
+</pre>
+</div>
+<ul class="org-ul">
+<li>Dropping functions</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #51afef; font-style: italic;">DROP</span> <span style="color: #51afef; font-style: italic;">Function</span> <span style="color: #c678dd;">IF</span> <span style="color: #51afef; font-style: italic;">EXISTS</span> calculate_salary;
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org3478da0" class="outline-3">
+<h3 id="org3478da0"><span class="section-number-3">7.3</span> Triggers</h3>
+<div class="outline-text-3" id="text-7-3">
+<ul class="org-ul">
+<li>Triggers are like hooks, they get fired before or after a: DELETE, UPDATE, INSERT</li>
+<li>Triggers can obscure what the server actually does, so be careful with them</li>
+<li>Using a lot of triggers can be slow</li>
+<li>DB maintenance can become difficult if there is a lot of triggers that do "invisible" work</li>
+<li>You  must specify a <code>FOR EACH ROW</code> clause. This clause creates a row-level trigger that fires once for each row that's modified.</li>
+<li>MySQL only supports row-level triggers</li>
+<li><code>SHOW TRIGGERS</code> to show all triggers, or <code>SHOW TRIGGERS IN db_name</code> to show triggers for a particular database</li>
+<li>Example of a <code>BEFORE</code> trigger:</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-sql">DELIMITER //
+<span style="color: #51afef; font-style: italic;">CREATE</span> <span style="color: #51afef; font-style: italic;">TRIGGER</span> <span style="color: #c678dd;">details_before_update</span>
+    <span style="color: #51afef; font-style: italic;">BEFORE</span> <span style="color: #51afef; font-style: italic;">UPDATE</span> <span style="color: #51afef; font-style: italic;">ON</span> details
+    <span style="color: #51afef; font-style: italic;">FOR</span> <span style="color: #51afef; font-style: italic;">EACH</span> <span style="color: #ECBE7B;">ROW</span>
+    <span style="color: #51afef; font-style: italic;">BEGIN</span>
+        <span style="color: #51afef; font-style: italic;">SET</span> <span style="color: #51afef; font-style: italic;">NEW</span>.department = <span style="color: #c678dd;">UPPER</span><span style="color: #fff0f5;">(</span><span style="color: #51afef; font-style: italic;">NEW</span>.department<span style="color: #fff0f5;">)</span>;
+    <span style="color: #51afef; font-style: italic;">END</span>//
+</pre>
+</div>
+<ul class="org-ul">
+<li>Example of AFTER INSERT</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-sql">DELIMITER //
+<span style="color: #51afef; font-style: italic;">DROP</span> <span style="color: #51afef; font-style: italic;">TRIGGER</span> <span style="color: #c678dd;">IF</span> <span style="color: #51afef; font-style: italic;">EXISTS</span> orders_after_insert;
+<span style="color: #51afef; font-style: italic;">CREATE</span>  <span style="color: #51afef; font-style: italic;">TRIGGER</span> <span style="color: #c678dd;">orders_after_insert</span>
+    <span style="color: #51afef; font-style: italic;">AFTER</span> <span style="color: #51afef; font-style: italic;">INSERT</span> <span style="color: #51afef; font-style: italic;">on</span> orders
+    <span style="color: #51afef; font-style: italic;">FOR</span> <span style="color: #51afef; font-style: italic;">EACH</span> <span style="color: #ECBE7B;">ROW</span>
+<span style="color: #51afef; font-style: italic;">BEGIN</span>
+    <span style="color: #51afef; font-style: italic;">INSERT</span> <span style="color: #51afef; font-style: italic;">INTO</span> orders_audit <span style="color: #51afef; font-style: italic;">VALUES</span>
+    <span style="color: #fff0f5;">(</span><span style="color: #51afef; font-style: italic;">NEW</span>.order_id, <span style="color: #51afef; font-style: italic;">NEW</span>.customer_id, "INSERTED", NOW<span style="color: #c678dd;">()</span><span style="color: #fff0f5;">)</span>;
+<span style="color: #51afef; font-style: italic;">END</span>//
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org57ec9ab" class="outline-3">
+<h3 id="org57ec9ab"><span class="section-number-3">7.4</span> Events</h3>
+<div class="outline-text-3" id="text-7-4">
+<ul class="org-ul">
+<li>It fires at scheduled events</li>
+<li>Usually disabled by default, check with <code>show variables where Variable_name = "event_scheduler";</code></li>
+<li>Set with <code>SET GLOBAL event_scheduler = ON;</code></li>
+<li>Show events with <code>SHOW EVENTS;</code></li>
+<li>Show in certain DB <code>SHOW EVENTS db_name;</code></li>
+<li>Enable/Disable event with <code>ALTER EVENT event_name DISABLE/ENABLE</code></li>
+<li>Example of a one-time event (here its minutes, normally it would be hours or days, weeks, months):</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #51afef; font-style: italic;">DROP</span> EVENT IF <span style="color: #51afef; font-style: italic;">EXISTS</span> one_time_delete_audit_rows;
+
+DELIMITER //
+
+<span style="color: #51afef; font-style: italic;">CREATE</span> EVENT one_time_delete_audit_rows
+<span style="color: #51afef; font-style: italic;">ON</span> SCHEDULE <span style="color: #51afef; font-style: italic;">AT</span> NOW<span style="color: #fff0f5;">()</span> + <span style="color: #ECBE7B;">INTERVAL</span> <span style="color: #da8548; font-weight: bold;">10</span> <span style="color: #51afef; font-style: italic;">MINUTE</span>
+DO <span style="color: #51afef; font-style: italic;">BEGIN</span>
+   <span style="color: #51afef; font-style: italic;">DELETE</span> <span style="color: #51afef; font-style: italic;">FROM</span> orders_audit <span style="color: #51afef; font-style: italic;">WHERE</span> action_date &lt; NOW<span style="color: #fff0f5;">()</span> - <span style="color: #ECBE7B;">INTERVAL</span> <span style="color: #da8548; font-weight: bold;">10</span> <span style="color: #51afef; font-style: italic;">MINUTE</span>;
+<span style="color: #51afef; font-style: italic;">END</span> //
+</pre>
+</div>
+<ul class="org-ul">
+<li>Example of a recurring event:</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #51afef; font-style: italic;">DROP</span> EVENT IF <span style="color: #51afef; font-style: italic;">EXISTS</span> monthly_delete_audit_rows;
+
+DELIMITER //
+<span style="color: #51afef; font-style: italic;">CREATE</span> EVENT monthly_delete_audit_rows
+<span style="color: #51afef; font-style: italic;">ON</span> SCHEDULE <span style="color: #51afef; font-style: italic;">EVERY</span> <span style="color: #da8548; font-weight: bold;">1</span> <span style="color: #51afef; font-style: italic;">MONTH</span>
+STARTS <span style="color: #98be65;">'2019-01-01'</span>
+DO <span style="color: #51afef; font-style: italic;">BEGIN</span>
+   <span style="color: #51afef; font-style: italic;">DELETE</span> <span style="color: #51afef; font-style: italic;">FROM</span> orders_audit <span style="color: #51afef; font-style: italic;">WHERE</span> action_date &lt; NOW<span style="color: #fff0f5;">()</span> - <span style="color: #ECBE7B;">INTERVAL</span> <span style="color: #da8548; font-weight: bold;">1</span> <span style="color: #51afef; font-style: italic;">MONTH</span>;
+<span style="color: #51afef; font-style: italic;">END</span> //
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orgb5ce885" class="outline-2">
+<h2 id="orgb5ce885"><span class="section-number-2">8</span> Normalisation</h2>
+<div class="outline-text-2" id="text-8">
+</div>
+<div id="outline-container-org9a1a9e3" class="outline-3">
+<h3 id="org9a1a9e3"><span class="section-number-3">8.1</span> 1NF</h3>
+<div class="outline-text-3" id="text-8-1">
+<ul class="org-ul">
+<li>Contains no repeating columns, also each column must not repeat values (e.g. comma separation)</li>
+<li>Example of not a 1NF:</li>
+</ul>
+
+<div class="figure">
+<p><img src="images/Normalisation/2019-12-04_21-18-46_screenshot.png" alt="2019-12-04_21-18-46_screenshot.png" />
+</p>
+</div>
+<ul class="org-ul">
+<li>To convert to 1NF remove repeating groups</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orga02decc" class="outline-3">
+<h3 id="orga02decc"><span class="section-number-3">8.2</span> 2NF</h3>
+<div class="outline-text-3" id="text-8-2">
+<ul class="org-ul">
+<li>Every column in a table must be <i>functionally dependent</i> on the <b>whole</b> primary key of the table</li>
+<li>Functional dependency indicates that a link exists between the values in two different columns</li>
+<li>To convert from 1NF to 2NF remove columns that are not dependent on the primary key</li>
+<li>Example of converting from 1NF to 2NF (remove attributes that are not dependent on WHOLE primary key):</li>
+</ul>
+
+<div class="figure">
+<p><img src="images/Normalisation/2019-12-04_21-22-14_screenshot.png" alt="2019-12-04_21-22-14_screenshot.png" />
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orgbf636be" class="outline-3">
+<h3 id="orgbf636be"><span class="section-number-3">8.3</span> 3NF</h3>
+<div class="outline-text-3" id="text-8-3">
+<ul class="org-ul">
+<li>An entity is in the third normal form if it contains no transitive dependencies.</li>
+<li>A transitive dependency is one which is dependant on a non-key attribute</li>
+<li>To convert to third normal form, remove attributes that depend on non primary key attributes</li>
+<li>Example of converting from 2NF to 3NF (remove transitive dependencies):</li>
+</ul>
+
+<div class="figure">
+<p><img src="images/Normalisation/2019-12-04_21-26-02_screenshot.png" alt="2019-12-04_21-26-02_screenshot.png" />
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org01308e5" class="outline-2">
+<h2 id="org01308e5"><span class="section-number-2">9</span> ORM</h2>
+<div class="outline-text-2" id="text-9">
+</div>
+<div id="outline-container-orgc2046f9" class="outline-3">
+<h3 id="orgc2046f9"><span class="section-number-3">9.1</span> Overview</h3>
+<div class="outline-text-3" id="text-9-1">
+<ul class="org-ul">
+<li>Main problems GSIAD:
+<ul class="org-ul">
+<li><b>Granurality</b>: Problems with fine-grained classes embedded in coarse-grained classes. In SQL there are only rows and columns</li>
+<li><b>Subtypes</b>: Inheritance and polymorphism are natural OOP paradigms, SQL has no such concept</li>
+<li><b>Identity</b>: Java compares object by reference (memory location), SQL does not have such comparisons</li>
+<li><b>Association</b>: Java uses associations by references, SQL uses foreign keys. Java can be many-to-many, tables are always one-to-one or one-to-many, many-to-many can only be done by introducing a new table</li>
+<li><b>Data navigation</b>: Java uses getters to retrieve data from one object to another, SQL uses joins</li>
+</ul></li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-orga68da93" class="outline-2">
+<h2 id="orga68da93"><span class="section-number-2">10</span> MongoDB</h2>
+<div class="outline-text-2" id="text-10">
+</div>
+<div id="outline-container-org2a6b20a" class="outline-3">
+<h3 id="org2a6b20a"><span class="section-number-3">10.1</span> Overview</h3>
+<div class="outline-text-3" id="text-10-1">
+<ul class="org-ul">
+<li>Document oriented, schema free, open source, high-performance</li>
+<li>Comparison with Relational</li>
+</ul>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Relational</th>
+<th scope="col" class="org-left">Mongo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Database</td>
+<td class="org-left">Database</td>
+</tr>
+
+<tr>
+<td class="org-left">Table</td>
+<td class="org-left">Collection</td>
+</tr>
+
+<tr>
+<td class="org-left">Row</td>
+<td class="org-left">Document</td>
+</tr>
+
+<tr>
+<td class="org-left">Column</td>
+<td class="org-left">Field</td>
+</tr>
+</tbody>
+</table>
+
+<ul class="org-ul">
+<li>Prefers horizontal scaling</li>
+<li>Has automatic sharding
+<ul class="org-ul">
+<li>Increases throughput and capacity horizontally</li>
+<li>Reduces the amount of data stored on a single server</li>
+</ul></li>
+<li>Replications: store copies of the data across different servers</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orga035281" class="outline-3">
+<h3 id="orga035281"><span class="section-number-3">10.2</span> Design</h3>
+<div class="outline-text-3" id="text-10-2">
+</div>
+<div id="outline-container-org4b4d646" class="outline-4">
+<h4 id="org4b4d646">Relations</h4>
+<div class="outline-text-4" id="text-org4b4d646">
+<ul class="org-ul">
+<li>Embed: store data in a single document</li>
+<li>Reference: keep a reference as a pointer to another data</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgb395dad" class="outline-4">
+<h4 id="orgb395dad">Why embed over reference</h4>
+<div class="outline-text-4" id="text-orgb395dad">
+<ul class="org-ul">
+<li>Requirements state that data from 2 or more entities are frequently queried together</li>
+<li>The child is a dependent entity</li>
+<li>A one-to-one relationship between two entities</li>
+<li>Similar volatility</li>
+<li>If the entity embedded is not a key entity</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgbbd86b4" class="outline-3">
+<h3 id="orgbbd86b4"><span class="section-number-3">10.3</span> Validation</h3>
+</div>
+</div>
+<div id="outline-container-org7cfc484" class="outline-2">
+<h2 id="org7cfc484"><span class="section-number-2">11</span> Hadoop</h2>
+<div class="outline-text-2" id="text-11">
+</div>
+<div id="outline-container-orgb9f6841" class="outline-3">
+<h3 id="orgb9f6841"><span class="section-number-3">11.1</span> Definitions</h3>
+</div>
+<div id="outline-container-org18f8d95" class="outline-3">
+<h3 id="org18f8d95"><span class="section-number-3">11.2</span> Overview</h3>
+<div class="outline-text-3" id="text-11-2">
+<ul class="org-ul">
+<li>Large scale distributed batch processing architecture. While it can operate on a single machine, it really shines when its distributed across many machines</li>
+<li>Designed to efficiently distribute workload</li>
+<li>Designed to handle terabytes to petabytes of data</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org723a707" class="outline-3">
+<h3 id="org723a707"><span class="section-number-3">11.3</span> Architecture</h3>
+<div class="outline-text-3" id="text-11-3">
+
+<div class="figure">
+<p><img src="images/Hadoop/2019-12-11_17-01-33_screenshot.png" alt="2019-12-11_17-01-33_screenshot.png" />
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org6676f61" class="outline-3">
+<h3 id="org6676f61"><span class="section-number-3">11.4</span> Map Reduce Architecture (Distributed Data Analytics)</h3>
+<div class="outline-text-3" id="text-11-4">
+<ul class="org-ul">
+<li>MapReduce is a programming model for processing and generating large data sets in parallel on a distributed system</li>
+<li>The programmer creates the map and reduce functions. Code distribution, data distribution, parallel processing, worker scheduling, etc. are all handled by Hadoop</li>
+<li><b>Map</b>: sorts data</li>
+<li><b>Reduces</b>: summarizes data</li>
+<li>Example: Map extracts the data that you want and passes it then to multiple reducers for computing</li>
+</ul>
+
+<div class="figure">
+<p><img src="images/Hadoop/2019-12-11_17-01-59_screenshot.png" alt="2019-12-11_17-01-59_screenshot.png" />
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org5ecc337" class="outline-3">
+<h3 id="org5ecc337"><span class="section-number-3">11.5</span> Hadoop Data Distribution</h3>
+<div class="outline-text-3" id="text-11-5">
+<ul class="org-ul">
+<li>Processes running process data on that node. A mapper will not process data on another node.</li>
+<li>Hadoop schedules processes in proximity to the location</li>
+<li>Files are scattered across servers, in whole or in pieces (depending on size), therefore each mapper operates on a chunk of data only</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org9d4777f" class="outline-3">
+<h3 id="org9d4777f"><span class="section-number-3">11.6</span> Hadoop Software Library</h3>
+<div class="outline-text-3" id="text-11-6">
+<ul class="org-ul">
+<li>In one <b>Hadoop Cell</b> there's at least 3 servers containing:
+<ul class="org-ul">
+<li>One contains: NameNode &amp; JobTracker daemons</li>
+<li>Second contains: Secondary NameNode</li>
+<li>Third contains: DataNode &amp; TaskTracker</li>
+</ul></li>
+</ul>
+</div>
+<div id="outline-container-orgfdc52bd" class="outline-4">
+<h4 id="orgfdc52bd">NameNode</h4>
+<div class="outline-text-4" id="text-orgfdc52bd">
+<ul class="org-ul">
+<li>Master of HDFS, single point of failure. Keeps track of how the files are broken down and directs DataNodes</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org5bec2d0" class="outline-4">
+<h4 id="org5bec2d0">Secondary NameNode</h4>
+<div class="outline-text-4" id="text-org5bec2d0">
+<ul class="org-ul">
+<li>Take snapshots of NameNode</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgcc43e9b" class="outline-4">
+<h4 id="orgcc43e9b">JobTracker</h4>
+<div class="outline-text-4" id="text-orgcc43e9b">
+<ul class="org-ul">
+<li>Liason between your application and Hadoop. Determines the execution plan by determining which files to process, which nodes to assign to which tasks and monitors the tasks.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org51a1f79" class="outline-4">
+<h4 id="org51a1f79">DataNode</h4>
+<div class="outline-text-4" id="text-org51a1f79">
+<ul class="org-ul">
+<li>Reads and Writes to HDFS</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org955a7bf" class="outline-4">
+<h4 id="org955a7bf">TaskTrackers</h4>
+<div class="outline-text-4" id="text-org955a7bf">
+<ul class="org-ul">
+<li>Runs the individual tasks</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-orgae696cc" class="outline-3">
+<h3 id="orgae696cc"><span class="section-number-3">11.7</span> Dealing with Failure</h3>
+<div class="outline-text-3" id="text-11-7">
+<ul class="org-ul">
+<li>A single master constantly pings each mapper</li>
+<li>Tells what kind of jobs to run</li>
+<li>If the ping fails, the master assumes that the mapper is dead</li>
+<li>Passes the job to a different mapper</li>
+<li>If one machine is very slow in computing, the master may decide to kill off that task and pass it off to a different mapper</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-org59be5f0" class="outline-2">
+<h2 id="org59be5f0"><span class="section-number-2">12</span> Delete at the end</h2>
+<div class="outline-text-2" id="text-12">
+<script src="../assets/jquery-3.3.1.min.js"></script>
+<script src="../assets/notes.js"></script>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="date">Date: 2019-09-09 Mon 11:54</p>
+<p class="author">Author: Damian Chrzanowski</p>
+<p class="date">Created: 2019-12-11 Wed 17:45</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>
