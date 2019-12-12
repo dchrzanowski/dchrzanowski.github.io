@@ -1,0 +1,1391 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2019-12-12 Thu 20:01 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Management And Organizational Behaviour</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="Damian Chrzanowski" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="../assets/org.css"/>
+<link rel="icon" href="../assets/favicon.ico">
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2019 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Management And Organizational Behaviour</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org37a104d">1. Definitions</a></li>
+<li><a href="#org3d58930">2. Introduction to Teams</a>
+<ul>
+<li><a href="#org08aab7f">2.1. What's important</a></li>
+<li><a href="#org8899936">2.2. Teamwork</a></li>
+<li><a href="#orgd60e219">2.3. Critical Aspects of People Management</a></li>
+<li><a href="#org9cbb8b0">2.4. Team Selection</a></li>
+<li><a href="#org1c75cd0">2.5. Motivation</a></li>
+<li><a href="#org0db235c">2.6. Personality Types (Sommerville)</a></li>
+<li><a href="#org5463dec">2.7. Motivation Balance</a></li>
+<li><a href="#org2388e49">2.8. Group Work</a></li>
+<li><a href="#orgabc90d9">2.9. Informal Groups</a></li>
+</ul>
+</li>
+<li><a href="#orgae7d947">3. Time Planning</a>
+<ul>
+<li><a href="#org0fb8998">3.1. Benefits of planning</a></li>
+<li><a href="#org8ad399d">3.2. Work Breakdown Structure (WBS)</a></li>
+<li><a href="#org3ca5a46">3.3. Time Planning</a></li>
+<li><a href="#orgd829156">3.4. Gantt Charts</a></li>
+<li><a href="#org417e5cf">3.5. Tasks, Milestones and Deliverables</a></li>
+</ul>
+</li>
+<li><a href="#orgff0d2ba">4. High Performance Teams</a>
+<ul>
+<li><a href="#org90d43fa">4.1. Form-Storm-Norm-Perform Model</a></li>
+<li><a href="#orgdbb76f2">4.2. Big Five Model (OCEAN Model)</a></li>
+<li><a href="#orgfcadeb2">4.3. Belbin Team Roles</a></li>
+</ul>
+</li>
+<li><a href="#org57fc5ef">5. Management</a>
+<ul>
+<li><a href="#org44f447e">5.1. Management is considered art and science</a></li>
+<li><a href="#org41b7e96">5.2. Why is there good and bad?</a></li>
+<li><a href="#org5c9ede2">5.3. Motivating</a></li>
+<li><a href="#org1206900">5.4. Three common characteristics</a></li>
+<li><a href="#orga9487c2">5.5. Performance</a></li>
+</ul>
+</li>
+<li><a href="#org243de31">6. Teams</a>
+<ul>
+<li><a href="#orga044fdc">6.1. People are the most important aspect of any project</a></li>
+<li><a href="#orgcbc363d">6.2. Teamwork/Group Work</a></li>
+<li><a href="#orgba85e43">6.3. People Over Process</a></li>
+<li><a href="#orge87e3f3">6.4. Selecting a Team</a></li>
+<li><a href="#org5985356">6.5. Hiring a Juggler</a></li>
+<li><a href="#org59ef163">6.6. Staff selection</a></li>
+<li><a href="#org4be3f6d">6.7. Human Needs</a></li>
+<li><a href="#org77d982a">6.8. Personality Types</a></li>
+<li><a href="#orgd88cdce">6.9. Motivation balance</a></li>
+</ul>
+</li>
+<li><a href="#org57cfa9e">7. Management Mintzberg's Interpretation</a>
+<ul>
+<li><a href="#orgfd22734">7.1. Previous vague terms</a></li>
+<li><a href="#orgf29291c">7.2. Motto</a></li>
+<li><a href="#org032faff">7.3. Interpersonal Roles</a></li>
+<li><a href="#orgae08293">7.4. Informational Roles</a></li>
+<li><a href="#orge0decbb">7.5. Decisional Roles</a></li>
+</ul>
+</li>
+<li><a href="#org503883d">8. Motivation</a>
+<ul>
+<li><a href="#orgfb25d76">8.1. Mainly defined as:</a></li>
+<li><a href="#org6e51c4b">8.2. Outcomes and Inputs</a></li>
+<li><a href="#orgc03eaac">8.3. Motivation Equation</a></li>
+<li><a href="#org69e839d">8.4. Frederick W.Taylor's Theory</a></li>
+<li><a href="#org7200836">8.5. Victor Vroom's Theory: Expectancy Theory</a></li>
+</ul>
+</li>
+<li><a href="#orgd92bd65">9. Needs</a>
+<ul>
+<li><a href="#org9c3fafd">9.1. <span class="todo TODO">TODO</span> Maslow</a></li>
+<li><a href="#orgc71a73c">9.2. McClelland's Needs Theory</a></li>
+</ul>
+</li>
+<li><a href="#orga60b2c8">10. On The Exam</a>
+<ul>
+<li><a href="#org49cf2a3">10.1. Lecture 1</a></li>
+<li><a href="#org2c8e165">10.2. Lecture 3</a></li>
+<li><a href="#org5986bcf">10.3. Lecture 4 (High Performance Teams)</a></li>
+</ul>
+</li>
+<li><a href="#orgf8dd930">11. Delete at the end</a></li>
+</ul>
+</div>
+</div>
+<p>
+<a href="index.html">Home Page</a>
+</p>
+<div id="outline-container-org37a104d" class="outline-2">
+<h2 id="org37a104d"><span class="section-number-2">1</span> Definitions</h2>
+<div class="outline-text-2" id="text-1">
+<ul class="org-ul">
+<li><b>Organization</b>: Is a systematic arrangement of people brought together to accomplish some specific purpose</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org3d58930" class="outline-2">
+<h2 id="org3d58930"><span class="section-number-2">2</span> Introduction to Teams</h2>
+<div class="outline-text-2" id="text-2">
+</div>
+<div id="outline-container-org08aab7f" class="outline-3">
+<h3 id="org08aab7f"><span class="section-number-3">2.1</span> What's important</h3>
+<div class="outline-text-3" id="text-2-1">
+<ul class="org-ul">
+<li>People. People drive projects.</li>
+<li>Project managers are people</li>
+<li>Poor management leads to failure</li>
+<li>Teamwork is key</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org8899936" class="outline-3">
+<h3 id="org8899936"><span class="section-number-3">2.2</span> Teamwork</h3>
+<div class="outline-text-3" id="text-2-2">
+<ul class="org-ul">
+<li>Outperform individuals</li>
+<li>Can utilize individual's talents better</li>
+<li>Effective tool for motivation
+<ul class="org-ul">
+<li>Involve</li>
+<li>Learn</li>
+<li>Social aspect</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgd60e219" class="outline-3">
+<h3 id="orgd60e219"><span class="section-number-3">2.3</span> Critical Aspects of People Management</h3>
+<div class="outline-text-3" id="text-2-3">
+<ul class="org-ul">
+<li><b>Consistency</b>: no favourites, no discrimination</li>
+<li><b>Respect</b>: respect differences</li>
+<li><b>Inclusion</b>: Involve people and their views</li>
+<li><b>Honesty</b>: Be honest what is well and what is not</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org9cbb8b0" class="outline-3">
+<h3 id="org9cbb8b0"><span class="section-number-3">2.4</span> Team Selection</h3>
+<div class="outline-text-3" id="text-2-4">
+</div>
+<div id="outline-container-org7783ae3" class="outline-4">
+<h4 id="org7783ae3">Information Gathering</h4>
+<div class="outline-text-4" id="text-org7783ae3">
+<ul class="org-ul">
+<li>Provided by candidates</li>
+<li>Gained during an interview</li>
+<li>Recommendations and comments from others</li>
+<li>Sample a hiree's previous work</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgcad72e4" class="outline-4">
+<h4 id="orgcad72e4">Factors</h4>
+<div class="outline-text-4" id="text-orgcad72e4">
+<ul class="org-ul">
+<li><b>Application Domain Experience</b></li>
+<li><b>Platform experience</b></li>
+<li><b>Programming language experience</b></li>
+<li><b>Problem solving ability</b></li>
+<li><b>Education background</b></li>
+<li><b>Communication ability</b></li>
+<li><b>Adaptability</b></li>
+<li><b>Attitude</b></li>
+<li><b>Personality</b></li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-org1c75cd0" class="outline-3">
+<h3 id="org1c75cd0"><span class="section-number-3">2.5</span> Motivation</h3>
+<div class="outline-text-3" id="text-2-5">
+<ul class="org-ul">
+<li>A manager should motivate people that work on a project</li>
+<li>Motivation is complex, but it is based on:
+<ul class="org-ul">
+<li><b>Basic needs</b>: food, sleep, etc.</li>
+<li><b>Personal needs</b>: respect, self-esteem, etc.</li>
+<li><b>Social needs</b>: be accepted, be tolerated, etc.</li>
+</ul></li>
+</ul>
+</div>
+<div id="outline-container-org8bcaf84" class="outline-4">
+<h4 id="org8bcaf84">Maslow's needs (in order of importance)</h4>
+<div class="outline-text-4" id="text-org8bcaf84">
+<ol class="org-ol">
+<li>Physiological needs</li>
+<li>Safety needs</li>
+<li>Social needs</li>
+<li>Esteem needs</li>
+</ol>
+</div>
+</div>
+</div>
+<div id="outline-container-org0db235c" class="outline-3">
+<h3 id="org0db235c"><span class="section-number-3">2.6</span> Personality Types (Sommerville)</h3>
+<div class="outline-text-3" id="text-2-6">
+<ul class="org-ul">
+<li>Needs hierarchy is an over-simplification of motivation</li>
+<li>Should also take into consideration personality types:
+<ul class="org-ul">
+<li><b>Task-oriented</b>: work itself is the motivator</li>
+<li><b>Self-oriented</b>: work is a means to an end, e.g. get rich</li>
+<li><b>Interaction-oriented</b>: presence and action with co-workers</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org5463dec" class="outline-3">
+<h3 id="org5463dec"><span class="section-number-3">2.7</span> Motivation Balance</h3>
+<div class="outline-text-3" id="text-2-7">
+<ul class="org-ul">
+<li>Individuals change and so can their motivation</li>
+<li>Personal circumstances and external events can be a contributor</li>
+<li>The group in which you work is perhaps one of the biggest motivators</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org2388e49" class="outline-3">
+<h3 id="org2388e49"><span class="section-number-3">2.8</span> Group Work</h3>
+<div class="outline-text-3" id="text-2-8">
+<ul class="org-ul">
+<li>Usually Software Engineering is a group activity</li>
+<li>Group interaction is key</li>
+<li>Flexibility in group composition is limited</li>
+</ul>
+</div>
+<div id="outline-container-orga7d33d0" class="outline-4">
+<h4 id="orga7d33d0">Factors</h4>
+<div class="outline-text-4" id="text-orga7d33d0">
+<ul class="org-ul">
+<li><b>Group Composition</b>: should contain members with different motivations.
+<ul class="org-ul">
+<li>Task-oriented: everyone wants to do their own thing</li>
+<li>Self-oriented: everyone want to be the boss</li>
+<li>Interaction-oriented: too much chatting, not enough work</li>
+</ul></li>
+<li><b>Group Cohesiveness</b>: group is more important that individuals
+<ul class="org-ul">
+<li>Group quality standards can be developed</li>
+<li>Work closely together improves lack of ignorance</li>
+<li>Learn from each other</li>
+<li>Improve by social events, team-building activities, etc.</li>
+</ul></li>
+<li><b>Group Communications</b>: essential aspect, also improves cohesion. Important factors:
+<ul class="org-ul">
+<li>Group size</li>
+<li>Group structure</li>
+<li>Group composition</li>
+<li>The physical work environment</li>
+</ul></li>
+<li><b>Group Organization</b>: Small companies may have self organizing groups, large companies may have hierarchical structure</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-orgabc90d9" class="outline-3">
+<h3 id="orgabc90d9"><span class="section-number-3">2.9</span> Informal Groups</h3>
+<div class="outline-text-3" id="text-2-9">
+<ul class="org-ul">
+<li>Act as whole, come to consensus on decisions affecting the system</li>
+<li>Leader serves as an external interface, does not allocate work</li>
+<li>Work is distributed by the group itself</li>
+<li>This kind of group works when everyone is experienced</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-orgae7d947" class="outline-2">
+<h2 id="orgae7d947"><span class="section-number-2">3</span> Time Planning</h2>
+<div class="outline-text-2" id="text-3">
+</div>
+<div id="outline-container-org0fb8998" class="outline-3">
+<h3 id="org0fb8998"><span class="section-number-3">3.1</span> Benefits of planning</h3>
+<div class="outline-text-3" id="text-3-1">
+</div>
+<div id="outline-container-orga88ac73" class="outline-4">
+<h4 id="orga88ac73">Analysis of the project</h4>
+<div class="outline-text-4" id="text-orga88ac73">
+<ul class="org-ul">
+<li>Reveal opportunities for improvement</li>
+<li>Reveal possible problem preventions</li>
+<li>Set out a basis on how the project will proceed</li>
+<li>The benefits are realised when they are communicated</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-org8ad399d" class="outline-3">
+<h3 id="org8ad399d"><span class="section-number-3">3.2</span> Work Breakdown Structure (WBS)</h3>
+<div class="outline-text-3" id="text-3-2">
+<ul class="org-ul">
+<li>Breakdown large activities into smaller (manageable) units
+<ul class="org-ul">
+<li>Gives people responsibility for small tasks</li>
+<li>Better financial control of smaller units</li>
+<li>Provides a list of work packages</li>
+<li><p>
+Example 1 of WBS:
+</p>
+
+
+<div class="figure">
+<p><img src="images/Time_Planning/2019-12-12_15-26-55_screenshot.png" alt="2019-12-12_15-26-55_screenshot.png" />
+</p>
+</div></li>
+
+<li><p>
+Example 2 of WBS:
+</p>
+
+
+<div class="figure">
+<p><img src="images/Time_Planning/2019-12-12_15-27-33_screenshot.png" alt="2019-12-12_15-27-33_screenshot.png" />
+</p>
+</div></li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org3ca5a46" class="outline-3">
+<h3 id="org3ca5a46"><span class="section-number-3">3.3</span> Time Planning</h3>
+<div class="outline-text-3" id="text-3-3">
+<ul class="org-ul">
+<li>Key aspect of project management</li>
+<li>Assist the manager and the team to complete the project in a timely manner</li>
+</ul>
+</div>
+<div id="outline-container-orgc260ae2" class="outline-4">
+<h4 id="orgc260ae2">Constructing a plan</h4>
+<div class="outline-text-4" id="text-orgc260ae2">
+<ul class="org-ul">
+<li>How long will it take to complete the project?
+<ul class="org-ul">
+<li>How precise?</li>
+<li>How long did it take the last time?</li>
+<li>What could cause delays?</li>
+<li>What things could get in the ways?</li>
+</ul></li>
+<li><p>
+Estimates are guesses
+</p>
+<ul class="org-ul">
+<li>Do not treat these in a scientific way</li>
+<li>Estimation continues on throughout the lifecycle of a project</li>
+<li>The closer to completion, the more accurate the estimate</li>
+<li>Examples of estimates:</li>
+</ul>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Name</th>
+<th scope="col" class="org-left">Nature</th>
+<th scope="col" class="org-left">Role</th>
+<th scope="col" class="org-left">Accuracy</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Rough / finger-in-the-air / ballpark</td>
+<td class="org-left">Much uncertainty as to what is involved</td>
+<td class="org-left">Early check on feasibility</td>
+<td class="org-left">Very low</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">As-buts</td>
+<td class="org-left">As above, but with some quantitative data</td>
+<td class="org-left">Can be used for proposals</td>
+<td class="org-left">Moderate</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">Detailed estimates</td>
+<td class="org-left">Some initial work is done to determine what problems will occur</td>
+<td class="org-left">Proposals</td>
+<td class="org-left">Moderate</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">&#x2026; to finish</td>
+<td class="org-left">Much of the work is done, additional funding is needed</td>
+<td class="org-left">Additional fund request</td>
+<td class="org-left">High</td>
+</tr>
+</tbody>
+</table></li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-orgd829156" class="outline-3">
+<h3 id="orgd829156"><span class="section-number-3">3.4</span> Gantt Charts</h3>
+<div class="outline-text-3" id="text-3-4">
+<ul class="org-ul">
+<li>Illustrates relationships between activities and time</li>
+<li>Horizontal bar is time</li>
+<li>Blocks are activities</li>
+<li><p>
+Example Data Input:
+</p>
+
+
+<div class="figure">
+<p><img src="images/Time_Planning/2019-12-12_15-43-37_screenshot.png" alt="2019-12-12_15-43-37_screenshot.png" />
+</p>
+</div></li>
+<li><p>
+Example Chart (Logical links are indicated by arrows):
+</p>
+
+
+<div class="figure">
+<p><img src="images/Time_Planning/2019-12-12_15-44-11_screenshot.png" alt="2019-12-12_15-44-11_screenshot.png" />
+</p>
+</div></li>
+<li><b>Positives</b>:
+<ul class="org-ul">
+<li>Communicates the plan</li>
+<li>Easy to make</li>
+<li>Readily understood</li>
+<li>Widely used</li>
+<li>Graphical interface for most project planning software</li>
+</ul></li>
+<li><b>Limitations</b>:
+<ul class="org-ul">
+<li>Difficult to update manually</li>
+<li>Does not equate time to cost</li>
+<li>Does not help in optimizing resource allocation</li>
+<li>Perceived as 'Reality' where in fact it is only an estimation</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org417e5cf" class="outline-3">
+<h3 id="org417e5cf"><span class="section-number-3">3.5</span> Tasks, Milestones and Deliverables</h3>
+<div class="outline-text-3" id="text-3-5">
+</div>
+<div id="outline-container-org883f53d" class="outline-4">
+<h4 id="org883f53d">Definitions</h4>
+<div class="outline-text-4" id="text-org883f53d">
+<ul class="org-ul">
+<li><b>Task</b>: an activity that contributes towards a <b>deliverable</b></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org9c2183b" class="outline-4">
+<h4 id="org9c2183b">Milestone</h4>
+<div class="outline-text-4" id="text-org9c2183b">
+<ul class="org-ul">
+<li>Synchronization point. Milestones mark moments when the project moves from one phase to another</li>
+<li>Is achieved when a key task is completed</li>
+<li>Are set along the critical path</li>
+<li>Why set milestones?
+<ul class="org-ul">
+<li><b>Scheduling</b>: Setting milestones can help to keep a project on schedule. Reaching milestones gives a change to re-evaluate the plan and identify problems.</li>
+<li><b>Celebrating Success</b>: Give yourself a pat on the back, good work, celebrate a little.</li>
+<li><b>Project Evaluation</b>: Re-evaluate what is going well, what problems are encountered, are tasks realistic, time estimation issues?</li>
+</ul></li>
+<li>Downside of milestones:
+<ul class="org-ul">
+<li>Over-complication on small projects: Small projects may become too difficult when broken down too much. Keep it simple.</li>
+<li>Non-critical task slippage: take into consideration ALL tasks upon milestone reviews. Some important tasks might slip through.</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org8a864aa" class="outline-4">
+<h4 id="org8a864aa">Critical Path</h4>
+<div class="outline-text-4" id="text-org8a864aa">
+<ul class="org-ul">
+<li>Longest sequences of activities that must be completed on time for the project to be delivered on time</li>
+<li><b>Critical path</b> is the longest path to complete the project.</li>
+<li>To complete a project on time strictly monitor <b>tasks</b> and the <b>critical path</b></li>
+<li>How to:
+<ul class="org-ul">
+<li>All tasks are assigned a duration of time</li>
+<li>Connection between tasks are drawn, aka dependencies</li>
+<li>Calculate the critical path by following the tasks dependent path (connected)</li>
+<li>Add the durations of the tasks to get the critical path's time</li>
+<li><p>
+Example (tasks are the blocks, critical path in red, 22/09 is a milestone):
+</p>
+
+
+<div class="figure">
+<p><img src="images/Time_Planning/2019-12-12_15-56-53_screenshot.png" alt="2019-12-12_15-56-53_screenshot.png" />
+</p>
+</div></li>
+</ul></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orgff0d2ba" class="outline-2">
+<h2 id="orgff0d2ba"><span class="section-number-2">4</span> High Performance Teams</h2>
+<div class="outline-text-2" id="text-4">
+</div>
+<div id="outline-container-org90d43fa" class="outline-3">
+<h3 id="org90d43fa"><span class="section-number-3">4.1</span> Form-Storm-Norm-Perform Model</h3>
+<div class="outline-text-3" id="text-4-1">
+</div>
+<div id="outline-container-orge851d89" class="outline-4">
+<h4 id="orge851d89">Assumptions</h4>
+<div class="outline-text-4" id="text-orge851d89">
+<ul class="org-ul">
+<li>Every group goes through some or all parts of the model</li>
+<li>The more people know each other and the more they work together the less time is spent through the first 3 stages</li>
+<li>Each stage is critical, if a team does not go through the first three stages then it may <b>NEVER</b> become a high performance team</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgfa4ca8f" class="outline-4">
+<h4 id="orgfa4ca8f">Stages Overview</h4>
+<div class="outline-text-4" id="text-orgfa4ca8f">
+<ul class="org-ul">
+<li>Some team members go through stages at different times</li>
+<li>Teambuilding, ground rules, task understanding and members commitment is key to stage one</li>
+<li>Stages may happen in a random order or play out simultaneously</li>
+<li>It is important to know how to deal with <b>Storming</b>. How to handle conflict, e.g.: dialogue and mutual decision-making are the strongest methods.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgafefa3a" class="outline-4">
+<h4 id="orgafefa3a">Stage Breakdown</h4>
+<div class="outline-text-4" id="text-orgafefa3a">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Stage</th>
+<th scope="col" class="org-left">Description</th>
+<th scope="col" class="org-left">Team Behaviour</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Forming</td>
+<td class="org-left">Group is still a set of individuals</td>
+<td class="org-left">- Polite</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">- Impersonal</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">- Guarded</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">- Muted</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">- Watchful</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">Storming</td>
+<td class="org-left">Conflicts, infighting over initial definitions, leadership and norms</td>
+<td class="org-left">- Confrontation</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">- Opting out</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">- Difficulties</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">- People leaving</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">- Demotivation</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">- Feeling stuck</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">Norming</td>
+<td class="org-left">Group establishes norms, rules of behaviour and practices</td>
+<td class="org-left">- Getting organised</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">- Systems and procedures</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">- Giving feedback</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">- Confronting issues</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">Performing</td>
+<td class="org-left">Group becomes mature and capable</td>
+<td class="org-left">- Closeness</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">- Resourceful</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">- Flexible</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">- Open</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">- Supportive</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">- Tolerant</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">- Sharing</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">- Effective</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgdbb76f2" class="outline-3">
+<h3 id="orgdbb76f2"><span class="section-number-3">4.2</span> Big Five Model (OCEAN Model)</h3>
+<div class="outline-text-3" id="text-4-2">
+<ul class="org-ul">
+<li>Describes the five fundamental personality traits
+<ul class="org-ul">
+<li><b>Openness to experience</b>: Conforming - Creative</li>
+<li><b>Conscientiousness</b>: Detail-conscious - Unstructured</li>
+<li><b>Extraversion / Introversion</b>: Same</li>
+<li><b>Agreeableness</b>: Tough-minded - Agreeable</li>
+<li><b>Neuroticism</b>: Confidence - Sensitive</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgfcadeb2" class="outline-3">
+<h3 id="orgfcadeb2"><span class="section-number-3">4.3</span> Belbin Team Roles</h3>
+<div class="outline-text-3" id="text-4-3">
+</div>
+<div id="outline-container-org8d0a81b" class="outline-4">
+<h4 id="org8d0a81b">Definition</h4>
+<div class="outline-text-4" id="text-org8d0a81b">
+<ul class="org-ul">
+<li>Used to identify people's behavioral strengths and weaknesses in the workplace. Use this information for:
+<ul class="org-ul">
+<li>Build productive relationships</li>
+<li>Select and develop high performing teams</li>
+<li>Raise self-awareness and personal effectiveness</li>
+<li>Build trust and understanding</li>
+<li>Aid recruitment process</li>
+</ul></li>
+<li>The point is not to put people into identifiable boxes, but to understand one-self and other by using Belbin's framework</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgb8c0582" class="outline-4">
+<h4 id="orgb8c0582">The 9 qualities of a perfect individual</h4>
+<div class="outline-text-4" id="text-orgb8c0582">
+<ul class="org-ul">
+<li>Out-going</li>
+<li>Organized</li>
+<li>Motivating</li>
+<li>Creative</li>
+<li>Hard-driving</li>
+<li>Objective</li>
+<li>Diplomatic</li>
+<li>Meticulous</li>
+<li>Knowledgeable</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org4ede8f3" class="outline-4">
+<h4 id="org4ede8f3">Why teams fail?</h4>
+<div class="outline-text-4" id="text-org4ede8f3">
+<ul class="org-ul">
+<li>Often it has to do with how people feel emotionally about themselves and others</li>
+<li>People find it difficult to deal with emotions and behavioral issues</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org22a2d3d" class="outline-4">
+<h4 id="org22a2d3d">Belbin's method, three questionnaires</h4>
+<div class="outline-text-4" id="text-org22a2d3d">
+<ul class="org-ul">
+<li><b>The self-perception form</b>: determines preferred roles, and roles that should be avoided</li>
+<li><b>The observer's form</b>: performed by at least 4 observers, goes beyond the subjective nature of self-perception</li>
+<li><b>The job observation form</b>: identifies main personal characteristics required to fulfill a target role</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org5f8017c" class="outline-4">
+<h4 id="org5f8017c">Team Role Expert System, 9 Team Roles</h4>
+<div class="outline-text-4" id="text-org5f8017c">
+<ul class="org-ul">
+<li>Each Team role has:
+<ul class="org-ul">
+<li>Strengths</li>
+<li>Allowable weaknesses</li>
+<li>Non-allowable weaknesses</li>
+</ul></li>
+<li><b>Plant</b>:
+<ul class="org-ul">
+<li>Creative, Solves difficult problems</li>
+<li>Loses touch with everyday realities</li>
+</ul></li>
+<li><b>Resource Investigator</b>:
+<ul class="org-ul">
+<li>Enterprising, Quick to explore opportunities</li>
+<li>Weak in follow through</li>
+</ul></li>
+<li><b>Co-ordinator</b>:
+<ul class="org-ul">
+<li>Makes good use of group activities</li>
+<li>Manipulative</li>
+</ul></li>
+<li><b>Shaper</b>:
+<ul class="org-ul">
+<li>Driving and challenging</li>
+<li>Provocative, Aggressive</li>
+</ul></li>
+<li><b>Monitor Evaluator</b>:
+<ul class="org-ul">
+<li>Discerning and Objective</li>
+<li>Uninspiring, Slow-moving</li>
+</ul></li>
+<li><b>Teamworker</b>:
+<ul class="org-ul">
+<li>Co-operative, Averts friction</li>
+<li>Indecisive</li>
+</ul></li>
+<li><b>Implementer</b>:
+<ul class="org-ul">
+<li>Disciplined, Efficient, Practical</li>
+<li>Slow to see new possibilities</li>
+</ul></li>
+<li><b>Completer-Finisher</b>:
+<ul class="org-ul">
+<li>Painstaking, Conscientious</li>
+<li>Anxious, Reluctant to delegate</li>
+</ul></li>
+<li><b>Specialist</b>:
+<ul class="org-ul">
+<li>Single-minded, Professionally dedicated</li>
+<li>Limited in interest</li>
+</ul></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org57fc5ef" class="outline-2">
+<h2 id="org57fc5ef"><span class="section-number-2">5</span> Management</h2>
+<div class="outline-text-2" id="text-5">
+</div>
+<div id="outline-container-org44f447e" class="outline-3">
+<h3 id="org44f447e"><span class="section-number-3">5.1</span> Management is considered art and science</h3>
+<div class="outline-text-3" id="text-5-1">
+<ul class="org-ul">
+<li>Some people are natural at it, some will always struggle</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org41b7e96" class="outline-3">
+<h3 id="org41b7e96"><span class="section-number-3">5.2</span> Why is there good and bad?</h3>
+<div class="outline-text-3" id="text-5-2">
+<ul class="org-ul">
+<li>Mostly because we are human</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org5c9ede2" class="outline-3">
+<h3 id="org5c9ede2"><span class="section-number-3">5.3</span> Motivating</h3>
+<div class="outline-text-3" id="text-5-3">
+<ul class="org-ul">
+<li>Pat on the back</li>
+<li>Talking</li>
+<li>Money (but not to everyone)</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org1206900" class="outline-3">
+<h3 id="org1206900"><span class="section-number-3">5.4</span> Three common characteristics</h3>
+<div class="outline-text-3" id="text-5-4">
+<ul class="org-ul">
+<li><b>Goal</b>:</li>
+<li><b>People</b>:</li>
+<li><b>Structure</b>:</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orga9487c2" class="outline-3">
+<h3 id="orga9487c2"><span class="section-number-3">5.5</span> Performance</h3>
+<div class="outline-text-3" id="text-5-5">
+<ul class="org-ul">
+<li><b>Efficiency</b>: Is essentially doing the thing right</li>
+<li><b>Effectiveness</b>: Is essentially doing the thing the right way</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-org243de31" class="outline-2">
+<h2 id="org243de31"><span class="section-number-2">6</span> Teams</h2>
+<div class="outline-text-2" id="text-6">
+</div>
+<div id="outline-container-orga044fdc" class="outline-3">
+<h3 id="orga044fdc"><span class="section-number-3">6.1</span> People are the most important aspect of any project</h3>
+</div>
+<div id="outline-container-orgcbc363d" class="outline-3">
+<h3 id="orgcbc363d"><span class="section-number-3">6.2</span> Teamwork/Group Work</h3>
+<div class="outline-text-3" id="text-6-2">
+<ul class="org-ul">
+<li>Composition</li>
+<li>Interaction</li>
+<li>Cohesion</li>
+<li>Group Loyalties</li>
+<li>Communication
+<ul class="org-ul">
+<li>Size</li>
+<li>Structure</li>
+<li>Composition</li>
+<li>Physical work environment</li>
+</ul></li>
+<li>Organisation</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgba85e43" class="outline-3">
+<h3 id="orgba85e43"><span class="section-number-3">6.3</span> People Over Process</h3>
+<div class="outline-text-3" id="text-6-3">
+<ul class="org-ul">
+<li>Consistency</li>
+<li>Respect</li>
+<li>Inclusion</li>
+<li>Honesty</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orge87e3f3" class="outline-3">
+<h3 id="orge87e3f3"><span class="section-number-3">6.4</span> Selecting a Team</h3>
+</div>
+<div id="outline-container-org5985356" class="outline-3">
+<h3 id="org5985356"><span class="section-number-3">6.5</span> Hiring a Juggler</h3>
+</div>
+<div id="outline-container-org59ef163" class="outline-3">
+<h3 id="org59ef163"><span class="section-number-3">6.6</span> Staff selection</h3>
+<div class="outline-text-3" id="text-6-6">
+<ul class="org-ul">
+<li>Domain experience</li>
+<li>Platform experience</li>
+<li>Programming language experience</li>
+<li>Problem solving ability</li>
+<li>Education</li>
+<li>Communication</li>
+<li>Adaptability</li>
+<li>Attitude</li>
+<li>Personality</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org4be3f6d" class="outline-3">
+<h3 id="org4be3f6d"><span class="section-number-3">6.7</span> Human Needs</h3>
+<div class="outline-text-3" id="text-6-7">
+<ul class="org-ul">
+<li>Esteem needs</li>
+<li>Social needs</li>
+<li>Safety needs</li>
+<li>Psychological needs</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org77d982a" class="outline-3">
+<h3 id="org77d982a"><span class="section-number-3">6.8</span> Personality Types</h3>
+<div class="outline-text-3" id="text-6-8">
+<ul class="org-ul">
+<li>Task-oriented</li>
+<li>Self-oriented</li>
+<li>Interaction-oriented</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgd88cdce" class="outline-3">
+<h3 id="orgd88cdce"><span class="section-number-3">6.9</span> Motivation balance</h3>
+</div>
+</div>
+<div id="outline-container-org57cfa9e" class="outline-2">
+<h2 id="org57cfa9e"><span class="section-number-2">7</span> Management Mintzberg's Interpretation</h2>
+<div class="outline-text-2" id="text-7">
+</div>
+<div id="outline-container-orgfd22734" class="outline-3">
+<h3 id="orgfd22734"><span class="section-number-3">7.1</span> Previous vague terms</h3>
+<div class="outline-text-3" id="text-7-1">
+<ul class="org-ul">
+<li>Planning</li>
+<li>Organizing</li>
+<li>Leading</li>
+<li>Controlling</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgf29291c" class="outline-3">
+<h3 id="orgf29291c"><span class="section-number-3">7.2</span> Motto</h3>
+<div class="outline-text-3" id="text-7-2">
+<ul class="org-ul">
+<li>Mintzberg says that management is an art (a ‘human skill’) and it is therefore imperative for managers to learn continuously about their own situations.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org032faff" class="outline-3">
+<h3 id="org032faff"><span class="section-number-3">7.3</span> Interpersonal Roles</h3>
+<div class="outline-text-3" id="text-7-3">
+<ul class="org-ul">
+<li>Figurehead</li>
+<li>Leader</li>
+<li>Liason</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgae08293" class="outline-3">
+<h3 id="orgae08293"><span class="section-number-3">7.4</span> Informational Roles</h3>
+<div class="outline-text-3" id="text-7-4">
+<ul class="org-ul">
+<li>Monitor</li>
+<li>Disseminator</li>
+<li>Spokesperson</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orge0decbb" class="outline-3">
+<h3 id="orge0decbb"><span class="section-number-3">7.5</span> Decisional Roles</h3>
+<div class="outline-text-3" id="text-7-5">
+<ul class="org-ul">
+<li>Entrepreneur</li>
+<li>Disturbance Handler</li>
+<li>Resource Allocator</li>
+<li>Negotiator</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-org503883d" class="outline-2">
+<h2 id="org503883d"><span class="section-number-2">8</span> Motivation</h2>
+<div class="outline-text-2" id="text-8">
+</div>
+<div id="outline-container-orgfb25d76" class="outline-3">
+<h3 id="orgfb25d76"><span class="section-number-3">8.1</span> Mainly defined as:</h3>
+<div class="outline-text-3" id="text-8-1">
+<ol class="org-ol">
+<li>Direction of behaviour in an organization</li>
+<li>The effort or how hard people work</li>
+<li>The persistence displayed in meeting</li>
+</ol>
+</div>
+</div>
+<div id="outline-container-org6e51c4b" class="outline-3">
+<h3 id="org6e51c4b"><span class="section-number-3">8.2</span> Outcomes and Inputs</h3>
+<div class="outline-text-3" id="text-8-2">
+<ul class="org-ul">
+<li><b>Outcomes</b>: Anything a person gets from a job. Examples include pay, autonomy, accomplishment</li>
+<li><b>Inputs</b>: Anything a person contributes to the job. Examples include skills, knowledge, work behaviour</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgc03eaac" class="outline-3">
+<h3 id="orgc03eaac"><span class="section-number-3">8.3</span> Motivation Equation</h3>
+<div class="outline-text-3" id="text-8-3">
+</div>
+<div id="outline-container-org51fb63f" class="outline-4">
+<h4 id="org51fb63f">Inputs from Organizational members</h4>
+<div class="outline-text-4" id="text-org51fb63f">
+<ul class="org-ul">
+<li>Time</li>
+<li>Effort</li>
+<li>Education</li>
+<li>Experience</li>
+<li>Skills</li>
+<li>Knowledge</li>
+<li>Work Behaviour</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgac6662b" class="outline-4">
+<h4 id="orgac6662b">Performance</h4>
+<div class="outline-text-4" id="text-orgac6662b">
+<ul class="org-ul">
+<li>Contribute to organization efficiency</li>
+<li>Effectiveness</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgdbba768" class="outline-4">
+<h4 id="orgdbba768">Outcomes received by members</h4>
+<div class="outline-text-4" id="text-orgdbba768">
+<ul class="org-ul">
+<li>Pay</li>
+<li>Job security</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-org69e839d" class="outline-3">
+<h3 id="org69e839d"><span class="section-number-3">8.4</span> Frederick W.Taylor's Theory</h3>
+</div>
+<div id="outline-container-org7200836" class="outline-3">
+<h3 id="org7200836"><span class="section-number-3">8.5</span> Victor Vroom's Theory: Expectancy Theory</h3>
+<div class="outline-text-3" id="text-8-5">
+<ul class="org-ul">
+<li><b>Effort</b>: Uses Expectancy moderator.</li>
+<li><b>Performance</b>: Uses Instrumentality moderator.</li>
+<li><b>Outcomes</b>: Uses Valence moderator.</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-orgd92bd65" class="outline-2">
+<h2 id="orgd92bd65"><span class="section-number-2">9</span> Needs</h2>
+<div class="outline-text-2" id="text-9">
+</div>
+<div id="outline-container-org9c3fafd" class="outline-3">
+<h3 id="org9c3fafd"><span class="section-number-3">9.1</span> <span class="todo TODO">TODO</span> Maslow</h3>
+</div>
+<div id="outline-container-orgc71a73c" class="outline-3">
+<h3 id="orgc71a73c"><span class="section-number-3">9.2</span> McClelland's Needs Theory</h3>
+<div class="outline-text-3" id="text-9-2">
+</div>
+<div id="outline-container-orga6d8ac3" class="outline-4">
+<h4 id="orga6d8ac3">Approach</h4>
+<div class="outline-text-4" id="text-orga6d8ac3">
+<ul class="org-ul">
+<li>First identify a person's needs on your team</li>
+<li>Structure your approach</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orga60b2c8" class="outline-2">
+<h2 id="orga60b2c8"><span class="section-number-2">10</span> On The Exam</h2>
+<div class="outline-text-2" id="text-10">
+</div>
+<div id="outline-container-org49cf2a3" class="outline-3">
+<h3 id="org49cf2a3"><span class="section-number-3">10.1</span> Lecture 1</h3>
+</div>
+<div id="outline-container-org2c8e165" class="outline-3">
+<h3 id="org2c8e165"><span class="section-number-3">10.2</span> Lecture 3</h3>
+</div>
+<div id="outline-container-org5986bcf" class="outline-3">
+<h3 id="org5986bcf"><span class="section-number-3">10.3</span> Lecture 4 (High Performance Teams)</h3>
+</div>
+</div>
+<div id="outline-container-orgf8dd930" class="outline-2">
+<h2 id="orgf8dd930"><span class="section-number-2">11</span> Delete at the end</h2>
+<div class="outline-text-2" id="text-11">
+<script src="../assets/jquery-3.3.1.min.js"></script>
+<script src="../assets/notes.js"></script>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="date">Date: 2019-09-09 Mon 11:54</p>
+<p class="author">Author: Damian Chrzanowski</p>
+<p class="date">Created: 2019-12-12 Thu 20:01</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>
