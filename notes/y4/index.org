@@ -9,7 +9,7 @@
 
 [[file:../index.org][Home]]
 
-[[file:mgt-and-org-behaviour.org][Engineer in Society]]
+[[file:mgt-and-org-behaviour.org][Mgt & Org Behaviour]]
 
 [[file:comp-graphics.org][Computer Graphics]]
 
