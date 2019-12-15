@@ -54,6 +54,7 @@
     2. Safety needs
     3. Social needs
     4. Esteem needs
+    5. Self-actuation needs
 ** Personality Types (Sommerville)
    - Needs hierarchy is an over-simplification of motivation
    - Should also take into consideration personality types:

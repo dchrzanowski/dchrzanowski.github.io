@@ -1,0 +1,773 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2019-12-15 Sun 10:55 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Computer Graphics</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="Damian Chrzanowski" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="../assets/org.css"/>
+<link rel="icon" href="../assets/favicon.ico">
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2019 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Computer Graphics</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org6336742">1. Exam Question</a></li>
+<li><a href="#org838a68b">2. Compression</a>
+<ul>
+<li><a href="#orga14eca8">2.1. Definition</a></li>
+<li><a href="#org4544b50">2.2. Types</a></li>
+<li><a href="#org38e1bbf">2.3. LZW</a></li>
+</ul>
+</li>
+<li><a href="#org00c6f32">3. Data Visualisation</a>
+<ul>
+<li><a href="#org5227408">3.1. What is Visualisation?</a></li>
+<li><a href="#org427dd4f">3.2. Data Visualisation vs Computer Graphics</a></li>
+<li><a href="#orgfc8f16c">3.3. Information Visualisation vs Scientific Data Visualisation</a></li>
+<li><a href="#org6f86b7f">3.4. Visualisation Process</a></li>
+<li><a href="#org687236c">3.5. Computer Graphics Pipeline</a></li>
+<li><a href="#org3222f61">3.6. Visualisation Pipeline</a></li>
+<li><a href="#org76f0a16">3.7. Knowledge Discovery Pipeline</a></li>
+<li><a href="#org3080c73">3.8. Perception</a></li>
+<li><a href="#orgc8ed238">3.9. Preattentive Processing</a></li>
+<li><a href="#orgdad408c">3.10. Postattentive Vision</a></li>
+<li><a href="#org6fa7d78">3.11. Change Blindness</a></li>
+</ul>
+</li>
+<li><a href="#org3dc4276">4. Exercise</a></li>
+<li><a href="#org1fbbb12">5. Assignment</a>
+<ul>
+<li><a href="#org262452a">5.1. Part 1 breakdown</a></li>
+<li><a href="#orgdedd12d">5.2. Part 2 breakown</a></li>
+<li><a href="#orgf2daefe">5.3. Part 3 breakdown</a></li>
+</ul>
+</li>
+<li><a href="#org68da3ed">6. Delete at the end</a></li>
+</ul>
+</div>
+</div>
+<p>
+<a href="index.html">Home Page</a>
+</p>
+<div id="outline-container-org6336742" class="outline-2">
+<h2 id="org6336742"><span class="section-number-2">1</span> Exam Question</h2>
+<div class="outline-text-2" id="text-1">
+<ul class="org-ul">
+<li>LZW</li>
+<li>Haar Decomposition</li>
+<li>Essay style question:
+<ul class="org-ul">
+<li>Discovery Pipeline</li>
+<li>Case study question on the thesis</li>
+<li>Data Visualisation (no visualization process). Will ask visualisation pipeline, knowledge pipeline</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org838a68b" class="outline-2">
+<h2 id="org838a68b"><span class="section-number-2">2</span> Compression</h2>
+<div class="outline-text-2" id="text-2">
+</div>
+<div id="outline-container-orga14eca8" class="outline-3">
+<h3 id="orga14eca8"><span class="section-number-3">2.1</span> Definition</h3>
+<div class="outline-text-3" id="text-2-1">
+<p class="verse">
+Compression is the reduction in logical size of data to facilitate the transfer of data on a network.<br />
+</p>
+</div>
+</div>
+<div id="outline-container-org4544b50" class="outline-3">
+<h3 id="org4544b50"><span class="section-number-3">2.2</span> Types</h3>
+<div class="outline-text-3" id="text-2-2">
+</div>
+<div id="outline-container-orgb2cb43b" class="outline-4">
+<h4 id="orgb2cb43b">Lossy</h4>
+<div class="outline-text-4" id="text-orgb2cb43b">
+<ul class="org-ul">
+<li>Information is lost during the compression process</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org0ed741a" class="outline-4">
+<h4 id="org0ed741a">Lossless</h4>
+<div class="outline-text-4" id="text-org0ed741a">
+<ul class="org-ul">
+<li>Information is maintained, 100%</li>
+<li>Examples of compression types: LZW, LZ77</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-org38e1bbf" class="outline-3">
+<h3 id="org38e1bbf"><span class="section-number-3">2.3</span> LZW</h3>
+<div class="outline-text-3" id="text-2-3">
+<p class="verse">
+Takes every letter and substitutes it as a number, all of the mappings are stored in a dictionary. Then every letter is found through the dictionary, if it is not there it is then added. With every letter found in the dictionary we take the next letter from the source and we add it to the dictionary.<br />
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org00c6f32" class="outline-2">
+<h2 id="org00c6f32"><span class="section-number-2">3</span> Data Visualisation</h2>
+<div class="outline-text-2" id="text-3">
+</div>
+<div id="outline-container-org5227408" class="outline-3">
+<h3 id="org5227408"><span class="section-number-3">3.1</span> What is Visualisation?</h3>
+<div class="outline-text-3" id="text-3-1">
+<ul class="org-ul">
+<li>Commonly known as "communicating data by graphical means or representations"</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org427dd4f" class="outline-3">
+<h3 id="org427dd4f"><span class="section-number-3">3.2</span> Data Visualisation vs Computer Graphics</h3>
+<div class="outline-text-3" id="text-3-2">
+<ul class="org-ul">
+<li>Data Visualisation uses graphics, but graphics do not need data visualisation</li>
+<li>Visualisation are concerned with more than just graphics, they are linked with the input data.</li>
+<li>Visualisation can portray things such as population data, spatial data, physical measures etc.</li>
+<li>Visualisation can be thought of as: apply graphics to displaying data mappings to graphical primitives</li>
+<li>Computer graphics on the other hand are just a means of displaying computer data (bits) in a graphical format, and that includes pictures, which do not necessarily convey scientific, statistical, psychological, database like data.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgfc8f16c" class="outline-3">
+<h3 id="orgfc8f16c"><span class="section-number-3">3.3</span> Information Visualisation vs Scientific Data Visualisation</h3>
+<div class="outline-text-3" id="text-3-3">
+<ul class="org-ul">
+<li>Scientific Data can be in other forms than just graphs, e.g. 3D DNA structure model. Much more heavy on the CPU and RAM</li>
+<li>Information tends to be visualised in graphs, heavier on I/O than CPU and RAM.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org6f86b7f" class="outline-3">
+<h3 id="org6f86b7f"><span class="section-number-3">3.4</span> Visualisation Process</h3>
+<div class="outline-text-3" id="text-3-4">
+<ul class="org-ul">
+<li>Usually starts with analysing the type of data and what we want to show to the viewer</li>
+<li>Data comes from a variety of sources and can be really simple and vastly complex</li>
+<li>The observer may want:
+<ul class="org-ul">
+<li>Extract behavioural data from the visualisation</li>
+<li>Or simply explore the visualisation</li>
+</ul></li>
+<li>Examples of interesting data:
+<ul class="org-ul">
+<li><b>Anomalies</b>: does not conform with what is expected</li>
+<li><b>Clusters</b>: data that showcases that there is a relationship with similar shared data</li>
+<li><b>Trends</b>: data that is changing but can be characterized and further used for predictions</li>
+</ul></li>
+<li><p>
+To visualise data we need to create mappings that take the initial data and convert it to a form that can be displayed to the user, example:
+</p>
+
+
+<div class="figure">
+<p><img src="images/Data_Visualisation/2019-12-14_18-18-17_screenshot.png" alt="2019-12-14_18-18-17_screenshot.png" />
+</p>
+</div></li>
+<li>Provide a UI to enter and/or manipulate input data</li>
+<li>Once data is visualised provide controls to change the data dynamically</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org687236c" class="outline-3">
+<h3 id="org687236c"><span class="section-number-3">3.5</span> Computer Graphics Pipeline</h3>
+<div class="outline-text-3" id="text-3-5">
+<ul class="org-ul">
+<li><b>Modeling</b>: Typically a 3D model is created in a world coordinate system</li>
+<li><b>Viewing</b>: Virtual camera is created at some location in the world coordinate system.</li>
+<li><b>Clipping</b>: Removing objects not in the view of the camera's viewport</li>
+<li><b>Hidden surface removal</b>: Removing surfaces that are facing away from the camera's view, or are obstructed by other objects</li>
+<li><b>Projection</b>: Projecting the 3D objects onto a Euclidean 2D plane by means of perspective transformation</li>
+<li><b>Rendering</b>: Putting pixel colours based of objects' materials. Also light source plays a role in here. Rendering may be applied at any stage during the pipeline, however, it is costly at thus it is usually done last.</li>
+<li><p>
+Example on 3D data:
+</p>
+
+
+<div class="figure">
+<p><img src="images/Data_Visualisation/2019-12-14_19-52-54_screenshot.png" alt="2019-12-14_19-52-54_screenshot.png" />
+</p>
+</div></li>
+<li>Alternative to the above is ray-tracing which uses an algorithm that traced the light from the camera to the objects and calculates reflections, etc.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org3222f61" class="outline-3">
+<h3 id="org3222f61"><span class="section-number-3">3.6</span> Visualisation Pipeline</h3>
+<div class="outline-text-3" id="text-3-6">
+<ul class="org-ul">
+<li><b>Data modeling</b>: Structuring the data to be visualised, must be easily formed so that it can be visualised rapidly</li>
+<li><b>Data selection</b>: Can be manual or automated, but it involves a similar mechanic to <b>Clipping</b> in which certain data can be omitted in a particular view</li>
+<li><b>Data to Visual Mappings</b>: Mapping data values to graphical objects, e.g. some data will determine the colour, next will determine the size, etc.</li>
+<li><b>Scene Parameter Setting (View Transformation)</b>: User specifies data independent attributes such as colour map selection, sound mapping, light specification (usually in 3d)</li>
+<li><b>Rendering or Generating the Visualisation</b>: Rendering of the visualisation objects varies according to the mapping being used. Usually draw lines, polygons, etc.</li>
+<li><p>
+Example pipeline:
+</p>
+
+
+<div class="figure">
+<p><img src="images/Data_Visualisation/2019-12-14_19-51-33_screenshot.png" alt="2019-12-14_19-51-33_screenshot.png" />
+</p>
+</div></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org76f0a16" class="outline-3">
+<h3 id="org76f0a16"><span class="section-number-3">3.7</span> Knowledge Discovery Pipeline</h3>
+<div class="outline-text-3" id="text-3-7">
+<ul class="org-ul">
+<li>Also known as Data Mining, starts with data and seeks to process it with the aim of creating a model, rather than some sort of graphics.</li>
+<li>It is very much alike <b>Statistical analysis Procedure</b></li>
+<li><b>Data</b>: More focus on the graphics, the assumption is that the data is already correctly displayed</li>
+<li><b>Data Integration, cleaning, warehousing and selection</b>: Identifying the datasets that will be analysed. May involve user interaction. Also may involve filtering, sampling, transforming and aggregating and any other technique that may assist in the next step.</li>
+<li><b>Data-mining</b>: Principle of Knowledge Discovery Pipeline. Analysis of the data via algorithm/machine learning techniques to produce a model</li>
+<li><b>Pattern Evaluation</b>: Testing/evaluating the model produced from the previous step. Is it sufficiently robust, stable, precise and accurate?</li>
+<li><b>Rendering of Visualisation</b>: Not crucial so to speak, but it implies that in the end the user will visualise the results in one way or another, e.g. via graphics or a visualisation pipeline.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org3080c73" class="outline-3">
+<h3 id="org3080c73"><span class="section-number-3">3.8</span> Perception</h3>
+</div>
+<div id="outline-container-orgc8ed238" class="outline-3">
+<h3 id="orgc8ed238"><span class="section-number-3">3.9</span> Preattentive Processing</h3>
+</div>
+<div id="outline-container-orgdad408c" class="outline-3">
+<h3 id="orgdad408c"><span class="section-number-3">3.10</span> Postattentive Vision</h3>
+</div>
+<div id="outline-container-org6fa7d78" class="outline-3">
+<h3 id="org6fa7d78"><span class="section-number-3">3.11</span> Change Blindness</h3>
+</div>
+</div>
+
+<div id="outline-container-org3dc4276" class="outline-2">
+<h2 id="org3dc4276"><span class="section-number-2">4</span> Exercise</h2>
+<div class="outline-text-2" id="text-4">
+<ul class="org-ul">
+<li>Original dictionary: A=1 B=2 C=3 D=4 E=5</li>
+</ul>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-right" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-right">Step</th>
+<th scope="col" class="org-left">P</th>
+<th scope="col" class="org-left">N</th>
+<th scope="col" class="org-left">&#xa0;</th>
+<th scope="col" class="org-left">Dict</th>
+<th scope="col" class="org-left">Out</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-right">1</td>
+<td class="org-left">A</td>
+<td class="org-left">A</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">AA (6)</td>
+<td class="org-left">(1)</td>
+</tr>
+
+<tr>
+<td class="org-right">2</td>
+<td class="org-left">AA</td>
+<td class="org-left">B</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">AAB (7)</td>
+<td class="org-left">(6)</td>
+</tr>
+
+<tr>
+<td class="org-right">3</td>
+<td class="org-left">B</td>
+<td class="org-left">B</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">BB (8)</td>
+<td class="org-left">(2)</td>
+</tr>
+
+<tr>
+<td class="org-right">4</td>
+<td class="org-left">B</td>
+<td class="org-left">A</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">BA (9)</td>
+<td class="org-left">(2)</td>
+</tr>
+
+<tr>
+<td class="org-right">5</td>
+<td class="org-left">AA</td>
+<td class="org-left">A</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">AAA (10)</td>
+<td class="org-left">(6)</td>
+</tr>
+
+<tr>
+<td class="org-right">6</td>
+<td class="org-left">AAA</td>
+<td class="org-left">B</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">AAAB (11)</td>
+<td class="org-left">(10)</td>
+</tr>
+
+<tr>
+<td class="org-right">7</td>
+<td class="org-left">B</td>
+<td class="org-left">C</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">BC (12)</td>
+<td class="org-left">(2)</td>
+</tr>
+
+<tr>
+<td class="org-right">8</td>
+<td class="org-left">C</td>
+<td class="org-left">C</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">CC (13)</td>
+<td class="org-left">(3)</td>
+</tr>
+
+<tr>
+<td class="org-right">9</td>
+<td class="org-left">C</td>
+<td class="org-left">B</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">CB (14)</td>
+<td class="org-left">(3)</td>
+</tr>
+
+<tr>
+<td class="org-right">10</td>
+<td class="org-left">BA</td>
+<td class="org-left">A</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">BAA (15)</td>
+<td class="org-left">(9)</td>
+</tr>
+
+<tr>
+<td class="org-right">11</td>
+<td class="org-left">AAB</td>
+<td class="org-left">C</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">AABC (16)</td>
+<td class="org-left">(7)</td>
+</tr>
+
+<tr>
+<td class="org-right">12</td>
+<td class="org-left">C</td>
+<td class="org-left">D</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">CD (17)</td>
+<td class="org-left">(3)</td>
+</tr>
+
+<tr>
+<td class="org-right">13</td>
+<td class="org-left">D</td>
+<td class="org-left">D</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">DD (18)</td>
+<td class="org-left">(4)</td>
+</tr>
+
+<tr>
+<td class="org-right">14</td>
+<td class="org-left">DD</td>
+<td class="org-left">B</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">DDB (19)</td>
+<td class="org-left">(18)</td>
+</tr>
+
+<tr>
+<td class="org-right">15</td>
+<td class="org-left">BA</td>
+<td class="org-left">B</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">BAB (20)</td>
+<td class="org-left">(9)</td>
+</tr>
+
+<tr>
+<td class="org-right">16</td>
+<td class="org-left">BC</td>
+<td class="org-left">D</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">BCD (21)</td>
+<td class="org-left">(12)</td>
+</tr>
+
+<tr>
+<td class="org-right">17</td>
+<td class="org-left">D</td>
+<td class="org-left">E</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">DE (22)</td>
+<td class="org-left">(4)</td>
+</tr>
+
+<tr>
+<td class="org-right">18</td>
+<td class="org-left">E</td>
+<td class="org-left">E</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">EE (23)</td>
+<td class="org-left">(5)</td>
+</tr>
+
+<tr>
+<td class="org-right">19</td>
+<td class="org-left">E</td>
+<td class="org-left">D</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">ED (24)</td>
+<td class="org-left">(5)</td>
+</tr>
+
+<tr>
+<td class="org-right">20</td>
+<td class="org-left">D</td>
+<td class="org-left">C</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">DC (25)</td>
+<td class="org-left">(4)</td>
+</tr>
+
+<tr>
+<td class="org-right">21</td>
+<td class="org-left">CB</td>
+<td class="org-left">B</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">CBB (26)</td>
+<td class="org-left">(14)</td>
+</tr>
+
+<tr>
+<td class="org-right">22</td>
+<td class="org-left">B</td>
+<td class="org-left">D</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">BD (27)</td>
+<td class="org-left">(2)</td>
+</tr>
+
+<tr>
+<td class="org-right">23</td>
+<td class="org-left">DE</td>
+<td class="org-left">B</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">DEB (28)</td>
+<td class="org-left">(22)</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="outline-container-org1fbbb12" class="outline-2">
+<h2 id="org1fbbb12"><span class="section-number-2">5</span> Assignment</h2>
+<div class="outline-text-2" id="text-5">
+</div>
+<div id="outline-container-org262452a" class="outline-3">
+<h3 id="org262452a"><span class="section-number-3">5.1</span> Part 1 breakdown</h3>
+<div class="outline-text-3" id="text-5-1">
+</div>
+<div id="outline-container-org268e608" class="outline-4">
+<h4 id="org268e608">Gather a critical mass of tweets and create a static website out of the provided data to visualize it.</h4>
+<div class="outline-text-4" id="text-org268e608">
+<ul class="org-ul">
+<li>use TweePy for tweets scraping</li>
+<li>use vaderSentiment to get the sentiment of the tweet</li>
+<li>use d3.js to visualize the data</li>
+<li>Remember to gather information out of tweets such as:
+<ul class="org-ul">
+<li>Age</li>
+<li>Location</li>
+<li>Any additional demographic information that can be possibly extracted</li>
+</ul></li>
+<li>Once the data is displayed on the graph, it needs to be then "manipulatable", so that if a user clicks a type of sentiment (say positive) then the data is "crunched" and only positive is shown but with different demographics, perhaps show a breakdown of age, etc</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-orgdedd12d" class="outline-3">
+<h3 id="orgdedd12d"><span class="section-number-3">5.2</span> Part 2 breakown</h3>
+<div class="outline-text-3" id="text-5-2">
+</div>
+<div id="outline-container-org1df1f70" class="outline-4">
+<h4 id="org1df1f70">Extend the above to drill down into the tweets on a chosen topic, visualise the current consensus on the topic by weighting the most recent tweets higher. Tweets should appear live on the given topic</h4>
+</div>
+</div>
+<div id="outline-container-orgf2daefe" class="outline-3">
+<h3 id="orgf2daefe"><span class="section-number-3">5.3</span> Part 3 breakdown</h3>
+<div class="outline-text-3" id="text-5-3">
+</div>
+<div id="outline-container-org3361844" class="outline-4">
+<h4 id="org3361844">Allow the user to choose a two live topics to compare within the same domain ie trump and Norris, no prior knowledge of the topic should be supplied. A breakdown of demographics age, location etc should be provided for drill downs</h4>
+</div>
+</div>
+</div>
+<div id="outline-container-org68da3ed" class="outline-2">
+<h2 id="org68da3ed"><span class="section-number-2">6</span> Delete at the end</h2>
+<div class="outline-text-2" id="text-6">
+<script src="../assets/jquery-3.3.1.min.js"></script>
+<script src="../assets/notes.js"></script>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="date">Date: 2019-09-09 Mon 11:54</p>
+<p class="author">Author: Damian Chrzanowski</p>
+<p class="date">Created: 2019-12-15 Sun 10:55</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>
