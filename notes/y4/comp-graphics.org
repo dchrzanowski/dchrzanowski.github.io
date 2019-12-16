@@ -84,7 +84,12 @@
    - *Data-mining*: Principle of Knowledge Discovery Pipeline. Analysis of the data via algorithm/machine learning techniques to produce a model
    - *Pattern Evaluation*: Testing/evaluating the model produced from the previous step. Is it sufficiently robust, stable, precise and accurate?
    - *Rendering of Visualisation*: Not crucial so to speak, but it implies that in the end the user will visualise the results in one way or another, e.g. via graphics or a visualisation pipeline.
+   - Example pipeline:
+
+     [[file:images/Data_Visualisation/2019-12-16_10-53-56_screenshot.png]]
 ** Perception
+   - Make sure to use proper scaling of data, do not attempt to fool the viewer
+   - Do not use visual trickery that would interfere with the visualisation
 ** Preattentive Processing
 ** Postattentive Vision
 ** Change Blindness
