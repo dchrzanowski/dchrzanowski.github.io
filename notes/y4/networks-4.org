@@ -36,9 +36,9 @@
 * Packet delay
   - There are four sources of packet delay: nodal processing, queuing delay, transmission delay, propagation delay
 
-  [[file:images/Packet_delay/screenshot_2019-11-04_23-07-20.png]]
+    [[file:images/Packet_delay/screenshot_2019-11-04_23-07-20.png]]
 
-  [[file:images/Packet_delay/screenshot_2019-11-04_23-08-30.png]]
+    [[file:images/Packet_delay/screenshot_2019-11-04_23-08-30.png]]
 * QoS Metrics
   - Throughput
   - Data loss
@@ -49,7 +49,8 @@
   - *Network*: routing of datagrams from source to destination; IP, routing protocols
   - *Link*: data transfer between neighbouring network elements: Ethernet, 802.11 (WiFi), PPP
   - *Physical*: bits "on the wire"
-  [[file:images/Layering/screenshot_2019-11-04_23-34-07.png]]
+
+    [[file:images/Layering/screenshot_2019-11-04_23-34-07.png]]
 * Application Layer
 ** Application architectures
 *** Client-server
@@ -169,6 +170,7 @@
     - Traffic volume
     - Distance issues
     - Maintenance
+
       [[file:images/DNS/screenshot_2019-11-05_15-36-07.png]]
 *** Root name servers
     - Are contacted when local servers cannot resolve a hostname
@@ -267,8 +269,10 @@
        - timeouts
        - duplicate ACKs
    - TCP provides a reliable channel of communication for the application layer
+
    [[file:images/Transport_Layer/screenshot_2019-11-05_21-26-50.png]]
    - rdt 3.0 in action
+
    [[file:images/Transport_Layer/screenshot_2019-11-05_21-28-04.png]]
    - rdt stop-and-wait operation
 
@@ -283,10 +287,12 @@
      - Sender can have up to N unacked packets in pipeline
      - Receiver only send *cumulative ACK*
      - Sender has a timer for the oldest unacked packet
+
        [[file:images/Transport_Layer/screenshot_2019-11-05_21-53-51.png]]
    - Selective Repeat:
      - Same as above, except receiver sends an ack for each of the received packets
      - Sender maintains a timer for each of the packets
+
        [[file:images/Transport_Layer/screenshot_2019-11-05_21-54-12.png]]
 ** TCP Overview
    - Point-to-point: one sender, one receiver
@@ -316,9 +322,10 @@
       - If ack acknowledges a previously unacked segments
         - Update what is known to be ACKed
         - Start timer if there are still unacked segments
-    [[file:images/Transport_Layer/screenshot_2019-11-05_22-20-42.png]]
 
-    [[file:images/Transport_Layer/screenshot_2019-11-05_22-21-10.png]]
+          [[file:images/Transport_Layer/screenshot_2019-11-05_22-20-42.png]]
+
+          [[file:images/Transport_Layer/screenshot_2019-11-05_22-21-10.png]]
 ** Flow Control
    - Receiver controls the sender, so that sender won't overflow the receiver buffer
    - Receiver advertises free buffer space in the ~rwnd~ value
