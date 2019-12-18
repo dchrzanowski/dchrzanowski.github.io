@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-12-17 Tue 21:37 -->
+<!-- 2019-12-18 Wed 17:50 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Networks 4</title>
@@ -237,75 +237,82 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org9fe14ec">1. Possible exam questions</a></li>
-<li><a href="#org65e3a91">2. Grade breakdown</a></li>
-<li><a href="#org3b4ab31">3. Definitions</a></li>
-<li><a href="#orgc683a59">4. Network Edge</a></li>
-<li><a href="#orgd098150">5. Network Structure</a></li>
-<li><a href="#orgdbfb491">6. Packet delay</a></li>
-<li><a href="#org14202b9">7. QoS Metrics</a></li>
-<li><a href="#org91e1f49">8. Layering</a></li>
-<li><a href="#org0834b26">9. Application Layer</a>
+<li><a href="#org26c535c">1. Possible exam questions</a></li>
+<li><a href="#org91658bd">2. Grade breakdown</a></li>
+<li><a href="#orgb8c7fc2">3. Definitions</a></li>
+<li><a href="#org74f1f14">4. Network Edge</a></li>
+<li><a href="#org1d61d51">5. Network Structure</a></li>
+<li><a href="#orga6479ab">6. Packet delay</a></li>
+<li><a href="#orgc6e7c56">7. QoS Metrics</a></li>
+<li><a href="#org9e78759">8. Layering</a></li>
+<li><a href="#org582baa9">9. Application Layer</a>
 <ul>
-<li><a href="#orgb430135">9.1. Application architectures</a></li>
-<li><a href="#org16c5ed6">9.2. Process</a></li>
-<li><a href="#org5f34403">9.3. Sockets</a></li>
-<li><a href="#org9ab9571">9.4. Addressing processes</a></li>
-<li><a href="#org0defe77">9.5. Application layer protocol defines</a></li>
-<li><a href="#org45dfc11">9.6. What transport service does an app need?</a></li>
-<li><a href="#orgb5d3194">9.7. HTTP</a></li>
-<li><a href="#orga0681fa">9.8. HTTP connections</a></li>
-<li><a href="#org6acd71d">9.9. Non-persistent order</a></li>
-<li><a href="#orgd270df7">9.10. Non-persistent vs persistent HTTP</a></li>
-<li><a href="#org61b458b">9.11. Sample HTTP response codes</a></li>
-<li><a href="#orge741075">9.12. Proxy Servers (Web Caches)</a></li>
-<li><a href="#org3a837ef">9.13. Electronic Mail</a></li>
-<li><a href="#org11b6a74">9.14. DNS</a></li>
-<li><a href="#org0198a41">9.15. P2P</a></li>
-<li><a href="#org03e9de7">9.16. Socket Programming</a></li>
+<li><a href="#org47891f7">9.1. Application architectures</a></li>
+<li><a href="#org45c9a0f">9.2. Process</a></li>
+<li><a href="#org941fd06">9.3. Sockets</a></li>
+<li><a href="#orgb79f88d">9.4. Addressing processes</a></li>
+<li><a href="#orgbac2a1b">9.5. Application layer protocol defines</a></li>
+<li><a href="#org656969a">9.6. What transport service does an app need?</a></li>
+<li><a href="#org3d295a9">9.7. HTTP</a></li>
+<li><a href="#org054df01">9.8. HTTP connections</a></li>
+<li><a href="#orgbc77430">9.9. Non-persistent order</a></li>
+<li><a href="#org7dfd45b">9.10. Non-persistent vs persistent HTTP</a></li>
+<li><a href="#org06c08f0">9.11. Sample HTTP response codes</a></li>
+<li><a href="#org7b78885">9.12. Proxy Servers (Web Caches)</a></li>
+<li><a href="#org26edf77">9.13. Electronic Mail</a></li>
+<li><a href="#org9a0a3bb">9.14. DNS</a></li>
+<li><a href="#orgb4eaca8">9.15. P2P</a></li>
+<li><a href="#org4d819a7">9.16. Socket Programming</a></li>
 </ul>
 </li>
-<li><a href="#org2d9a4bd">10. Transport Layer</a>
+<li><a href="#org87c4c9c">10. Transport Layer</a>
 <ul>
-<li><a href="#org0f84974">10.1. Transport layer provides</a></li>
-<li><a href="#orgc38df2e">10.2. Transport protocols run on end systems</a></li>
-<li><a href="#orgd5a1c2e">10.3. Transport vs network layer</a></li>
-<li><a href="#org8e3ca19">10.4. Transport Layer protocols</a></li>
-<li><a href="#org81872a0">10.5. TCP vs UDP</a></li>
-<li><a href="#orge9c036d">10.6. Multiplexing and Demultiplexing</a></li>
-<li><a href="#orgd85b4d4">10.7. Principles of Reliable Data Transfer (rdt)</a></li>
-<li><a href="#orgc500187">10.8. Pipelined protocols overview</a></li>
-<li><a href="#org14da281">10.9. TCP Overview</a></li>
-<li><a href="#org0021108">10.10. Flow Control</a></li>
-<li><a href="#orge236448">10.11. Congestion Control</a></li>
-<li><a href="#org1fdc21d">10.12. TCP Fairness</a></li>
+<li><a href="#orge9ad3c7">10.1. Transport layer provides</a></li>
+<li><a href="#org189e76b">10.2. Transport protocols run on end systems</a></li>
+<li><a href="#org4bcea1a">10.3. Transport vs network layer</a></li>
+<li><a href="#org6dc2eb7">10.4. Transport Layer protocols</a></li>
+<li><a href="#org17b3076">10.5. TCP vs UDP</a></li>
+<li><a href="#org7c79dea">10.6. Multiplexing and Demultiplexing</a></li>
+<li><a href="#org1fae784">10.7. Principles of Reliable Data Transfer (rdt)</a></li>
+<li><a href="#org1c59f48">10.8. Pipelined protocols overview</a></li>
+<li><a href="#org7ce8ef5">10.9. TCP Overview</a></li>
+<li><a href="#org0c40983">10.10. Flow Control</a></li>
+<li><a href="#org9f67772">10.11. Congestion Control</a></li>
+<li><a href="#orgfbcd4bd">10.12. TCP Fairness</a></li>
 </ul>
 </li>
-<li><a href="#org7bc7db2">11. Network Layer (not on midterm exam)</a>
+<li><a href="#orgf1ca41c">11. Network Layer (not on midterm exam)</a>
 <ul>
-<li><a href="#orge63f506">11.1. Key Functions</a></li>
-<li><a href="#org70d00fa">11.2. Planes</a></li>
-<li><a href="#org98be261">11.3. Switching Fabric</a></li>
-<li><a href="#orgee3a182">11.4. Internet Protocol (IP)</a></li>
+<li><a href="#org022e752">11.1. Key Functions</a></li>
+<li><a href="#orgd2f7a6b">11.2. Planes</a></li>
+<li><a href="#orgf1579dd">11.3. Switching Fabric</a></li>
+<li><a href="#org4966a46">11.4. Internet Protocol (IP)</a></li>
 </ul>
 </li>
-<li><a href="#org43bff93">12. Exam papers sample questions</a>
+<li><a href="#orga8f2d35">12. Mobile Networks</a>
 <ul>
-<li><a href="#orgbef8234">12.1. Questions</a></li>
-<li><a href="#org089b0b6">12.2. Queuing is NOT on the paper</a></li>
-<li><a href="#org7fd7663">12.3. 2017 Q3 (b), IP address here is different</a></li>
-<li><a href="#org654a7a0">12.4. Answers to question</a></li>
+<li><a href="#org10d6016">12.1. Definitions</a></li>
+<li><a href="#orgfc7ee16">12.2. Area, channels and concurrent calls handling</a></li>
+<li><a href="#org766e0c2">12.3. Mobility</a></li>
 </ul>
 </li>
-<li><a href="#org64c82eb">13. Delete at the end</a></li>
+<li><a href="#orgf8c45ee">13. Exam papers sample questions</a>
+<ul>
+<li><a href="#org5ea65fd">13.1. Questions</a></li>
+<li><a href="#org116c959">13.2. Queuing is NOT on the paper</a></li>
+<li><a href="#org05fc675">13.3. 2017 Q3 (b), IP address here is different</a></li>
+<li><a href="#orge0515b3">13.4. Answers to question</a></li>
+</ul>
+</li>
+<li><a href="#org1ab1ebe">14. Delete at the end</a></li>
 </ul>
 </div>
 </div>
 <p>
 <a href="index.html">Home Page</a>
 </p>
-<div id="outline-container-org9fe14ec" class="outline-2">
-<h2 id="org9fe14ec"><span class="section-number-2">1</span> Possible exam questions</h2>
+<div id="outline-container-org26c535c" class="outline-2">
+<h2 id="org26c535c"><span class="section-number-2">1</span> Possible exam questions</h2>
 <div class="outline-text-2" id="text-1">
 <ul class="org-ul">
 <li>Security and history, not on the exam</li>
@@ -318,8 +325,8 @@ for the JavaScript code in this tag.
 </ul>
 </div>
 </div>
-<div id="outline-container-org65e3a91" class="outline-2">
-<h2 id="org65e3a91"><span class="section-number-2">2</span> Grade breakdown</h2>
+<div id="outline-container-org91658bd" class="outline-2">
+<h2 id="org91658bd"><span class="section-number-2">2</span> Grade breakdown</h2>
 <div class="outline-text-2" id="text-2">
 <ul class="org-ul">
 <li>CA 30%, 20% lab and 10% assessment (1 hour in-class, usually after Halloween)</li>
@@ -327,8 +334,8 @@ for the JavaScript code in this tag.
 </ul>
 </div>
 </div>
-<div id="outline-container-org3b4ab31" class="outline-2">
-<h2 id="org3b4ab31"><span class="section-number-2">3</span> Definitions</h2>
+<div id="outline-container-orgb8c7fc2" class="outline-2">
+<h2 id="orgb8c7fc2"><span class="section-number-2">3</span> Definitions</h2>
 <div class="outline-text-2" id="text-3">
 <ul class="org-ul">
 <li><b>RFC</b>: Request for comments</li>
@@ -337,8 +344,8 @@ for the JavaScript code in this tag.
 </ul>
 </div>
 </div>
-<div id="outline-container-orgc683a59" class="outline-2">
-<h2 id="orgc683a59"><span class="section-number-2">4</span> Network Edge</h2>
+<div id="outline-container-org74f1f14" class="outline-2">
+<h2 id="org74f1f14"><span class="section-number-2">4</span> Network Edge</h2>
 <div class="outline-text-2" id="text-4">
 <ul class="org-ul">
 <li><b>Hosts</b>: clients and servers. Servers often in data centers</li>
@@ -356,8 +363,8 @@ for the JavaScript code in this tag.
 </ul>
 </div>
 </div>
-<div id="outline-container-orgd098150" class="outline-2">
-<h2 id="orgd098150"><span class="section-number-2">5</span> Network Structure</h2>
+<div id="outline-container-org1d61d51" class="outline-2">
+<h2 id="org1d61d51"><span class="section-number-2">5</span> Network Structure</h2>
 <div class="outline-text-2" id="text-5">
 
 <div class="figure">
@@ -366,8 +373,8 @@ for the JavaScript code in this tag.
 </div>
 </div>
 </div>
-<div id="outline-container-orgdbfb491" class="outline-2">
-<h2 id="orgdbfb491"><span class="section-number-2">6</span> Packet delay</h2>
+<div id="outline-container-orga6479ab" class="outline-2">
+<h2 id="orga6479ab"><span class="section-number-2">6</span> Packet delay</h2>
 <div class="outline-text-2" id="text-6">
 <ul class="org-ul">
 <li><p>
@@ -388,8 +395,8 @@ There are four sources of packet delay: nodal processing, queuing delay, transmi
 </ul>
 </div>
 </div>
-<div id="outline-container-org14202b9" class="outline-2">
-<h2 id="org14202b9"><span class="section-number-2">7</span> QoS Metrics</h2>
+<div id="outline-container-orgc6e7c56" class="outline-2">
+<h2 id="orgc6e7c56"><span class="section-number-2">7</span> QoS Metrics</h2>
 <div class="outline-text-2" id="text-7">
 <ul class="org-ul">
 <li>Throughput</li>
@@ -398,8 +405,8 @@ There are four sources of packet delay: nodal processing, queuing delay, transmi
 </ul>
 </div>
 </div>
-<div id="outline-container-org91e1f49" class="outline-2">
-<h2 id="org91e1f49"><span class="section-number-2">8</span> Layering</h2>
+<div id="outline-container-org9e78759" class="outline-2">
+<h2 id="org9e78759"><span class="section-number-2">8</span> Layering</h2>
 <div class="outline-text-2" id="text-8">
 <ul class="org-ul">
 <li><b>Application</b>: supporting network applications; FTP, SMTP, HTTP</li>
@@ -418,26 +425,26 @@ There are four sources of packet delay: nodal processing, queuing delay, transmi
 </ul>
 </div>
 </div>
-<div id="outline-container-org0834b26" class="outline-2">
-<h2 id="org0834b26"><span class="section-number-2">9</span> Application Layer</h2>
+<div id="outline-container-org582baa9" class="outline-2">
+<h2 id="org582baa9"><span class="section-number-2">9</span> Application Layer</h2>
 <div class="outline-text-2" id="text-9">
 </div>
-<div id="outline-container-orgb430135" class="outline-3">
-<h3 id="orgb430135"><span class="section-number-3">9.1</span> Application architectures</h3>
+<div id="outline-container-org47891f7" class="outline-3">
+<h3 id="org47891f7"><span class="section-number-3">9.1</span> Application architectures</h3>
 <div class="outline-text-3" id="text-9-1">
 </div>
-<div id="outline-container-orgeda4c80" class="outline-4">
-<h4 id="orgeda4c80">Client-server</h4>
-<div class="outline-text-4" id="text-orgeda4c80">
+<div id="outline-container-org4ac383e" class="outline-4">
+<h4 id="org4ac383e">Client-server</h4>
+<div class="outline-text-4" id="text-org4ac383e">
 <ul class="org-ul">
 <li><b>Server</b>: always-on host, permanent IP address, data centers for scaling</li>
 <li><b>Clients</b>: communicate with server, may be intermittently connected, may have dynamic IP address, clients do not communicate directly with each other</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgbc695e8" class="outline-4">
-<h4 id="orgbc695e8">Peer-to-peer</h4>
-<div class="outline-text-4" id="text-orgbc695e8">
+<div id="outline-container-org59709c7" class="outline-4">
+<h4 id="org59709c7">Peer-to-peer</h4>
+<div class="outline-text-4" id="text-org59709c7">
 <ul class="org-ul">
 <li>No "always-on" server</li>
 <li>Arbitrary systems directly communicate</li>
@@ -446,8 +453,8 @@ There are four sources of packet delay: nodal processing, queuing delay, transmi
 </div>
 </div>
 </div>
-<div id="outline-container-org16c5ed6" class="outline-3">
-<h3 id="org16c5ed6"><span class="section-number-3">9.2</span> Process</h3>
+<div id="outline-container-org45c9a0f" class="outline-3">
+<h3 id="org45c9a0f"><span class="section-number-3">9.2</span> Process</h3>
 <div class="outline-text-3" id="text-9-2">
 <ul class="org-ul">
 <li>A program running within a host</li>
@@ -457,8 +464,8 @@ There are four sources of packet delay: nodal processing, queuing delay, transmi
 </ul>
 </div>
 </div>
-<div id="outline-container-org5f34403" class="outline-3">
-<h3 id="org5f34403"><span class="section-number-3">9.3</span> Sockets</h3>
+<div id="outline-container-org941fd06" class="outline-3">
+<h3 id="org941fd06"><span class="section-number-3">9.3</span> Sockets</h3>
 <div class="outline-text-3" id="text-9-3">
 <ul class="org-ul">
 <li>Processes use sockets to send messages in/out</li>
@@ -466,8 +473,8 @@ There are four sources of packet delay: nodal processing, queuing delay, transmi
 </ul>
 </div>
 </div>
-<div id="outline-container-org9ab9571" class="outline-3">
-<h3 id="org9ab9571"><span class="section-number-3">9.4</span> Addressing processes</h3>
+<div id="outline-container-orgb79f88d" class="outline-3">
+<h3 id="orgb79f88d"><span class="section-number-3">9.4</span> Addressing processes</h3>
 <div class="outline-text-3" id="text-9-4">
 <ul class="org-ul">
 <li>To receive a message, process must have an <b>identifier</b>. The <b>identifier</b> contains both the IP and the port number</li>
@@ -475,8 +482,8 @@ There are four sources of packet delay: nodal processing, queuing delay, transmi
 </ul>
 </div>
 </div>
-<div id="outline-container-org0defe77" class="outline-3">
-<h3 id="org0defe77"><span class="section-number-3">9.5</span> Application layer protocol defines</h3>
+<div id="outline-container-orgbac2a1b" class="outline-3">
+<h3 id="orgbac2a1b"><span class="section-number-3">9.5</span> Application layer protocol defines</h3>
 <div class="outline-text-3" id="text-9-5">
 <ul class="org-ul">
 <li>Types of messages exchanged: request, response</li>
@@ -488,8 +495,8 @@ There are four sources of packet delay: nodal processing, queuing delay, transmi
 </ul>
 </div>
 </div>
-<div id="outline-container-org45dfc11" class="outline-3">
-<h3 id="org45dfc11"><span class="section-number-3">9.6</span> What transport service does an app need?</h3>
+<div id="outline-container-org656969a" class="outline-3">
+<h3 id="org656969a"><span class="section-number-3">9.6</span> What transport service does an app need?</h3>
 <div class="outline-text-3" id="text-9-6">
 <ul class="org-ul">
 <li>Data Integrity: some apps need 100% data reliability, e.g. file transfer. Some can tolerate a loss, e.g. audio</li>
@@ -499,8 +506,8 @@ There are four sources of packet delay: nodal processing, queuing delay, transmi
 </ul>
 </div>
 </div>
-<div id="outline-container-orgb5d3194" class="outline-3">
-<h3 id="orgb5d3194"><span class="section-number-3">9.7</span> HTTP</h3>
+<div id="outline-container-org3d295a9" class="outline-3">
+<h3 id="org3d295a9"><span class="section-number-3">9.7</span> HTTP</h3>
 <div class="outline-text-3" id="text-9-7">
 <ul class="org-ul">
 <li>Client-server model: Client is the requester and the server provides a response</li>
@@ -516,8 +523,8 @@ There are four sources of packet delay: nodal processing, queuing delay, transmi
 </ul>
 </div>
 </div>
-<div id="outline-container-orga0681fa" class="outline-3">
-<h3 id="orga0681fa"><span class="section-number-3">9.8</span> HTTP connections</h3>
+<div id="outline-container-org054df01" class="outline-3">
+<h3 id="org054df01"><span class="section-number-3">9.8</span> HTTP connections</h3>
 <div class="outline-text-3" id="text-9-8">
 <ul class="org-ul">
 <li><b>Non-persistent</b>: at most one object sent over TCP, downloading multiple objects requires multiple connections</li>
@@ -525,8 +532,8 @@ There are four sources of packet delay: nodal processing, queuing delay, transmi
 </ul>
 </div>
 </div>
-<div id="outline-container-org6acd71d" class="outline-3">
-<h3 id="org6acd71d"><span class="section-number-3">9.9</span> Non-persistent order</h3>
+<div id="outline-container-orgbc77430" class="outline-3">
+<h3 id="orgbc77430"><span class="section-number-3">9.9</span> Non-persistent order</h3>
 <div class="outline-text-3" id="text-9-9">
 <ol class="org-ol">
 <li>HTTP Client initiates TCP connection to HTTP server (process) at www.foo.bar on port 80</li>
@@ -539,13 +546,13 @@ There are four sources of packet delay: nodal processing, queuing delay, transmi
 </ol>
 </div>
 </div>
-<div id="outline-container-orgd270df7" class="outline-3">
-<h3 id="orgd270df7"><span class="section-number-3">9.10</span> Non-persistent vs persistent HTTP</h3>
+<div id="outline-container-org7dfd45b" class="outline-3">
+<h3 id="org7dfd45b"><span class="section-number-3">9.10</span> Non-persistent vs persistent HTTP</h3>
 <div class="outline-text-3" id="text-9-10">
 </div>
-<div id="outline-container-org65a60d6" class="outline-4">
-<h4 id="org65a60d6">Non-persistent</h4>
-<div class="outline-text-4" id="text-org65a60d6">
+<div id="outline-container-org7bfba48" class="outline-4">
+<h4 id="org7bfba48">Non-persistent</h4>
+<div class="outline-text-4" id="text-org7bfba48">
 <ul class="org-ul">
 <li>requires 2 RTTs per object</li>
 <li>OS overhead for each TCP connection</li>
@@ -553,9 +560,9 @@ There are four sources of packet delay: nodal processing, queuing delay, transmi
 </ul>
 </div>
 </div>
-<div id="outline-container-org0a603ea" class="outline-4">
-<h4 id="org0a603ea">Persistent</h4>
-<div class="outline-text-4" id="text-org0a603ea">
+<div id="outline-container-org4995907" class="outline-4">
+<h4 id="org4995907">Persistent</h4>
+<div class="outline-text-4" id="text-org4995907">
 <ul class="org-ul">
 <li>Server leaves connection open after sending response</li>
 <li>Subsequent HTTP massages between same client/server sent over open connection</li>
@@ -565,8 +572,8 @@ There are four sources of packet delay: nodal processing, queuing delay, transmi
 </div>
 </div>
 </div>
-<div id="outline-container-org61b458b" class="outline-3">
-<h3 id="org61b458b"><span class="section-number-3">9.11</span> Sample HTTP response codes</h3>
+<div id="outline-container-org06c08f0" class="outline-3">
+<h3 id="org06c08f0"><span class="section-number-3">9.11</span> Sample HTTP response codes</h3>
 <div class="outline-text-3" id="text-9-11">
 <ul class="org-ul">
 <li>200 OK</li>
@@ -577,8 +584,8 @@ There are four sources of packet delay: nodal processing, queuing delay, transmi
 </ul>
 </div>
 </div>
-<div id="outline-container-orge741075" class="outline-3">
-<h3 id="orge741075"><span class="section-number-3">9.12</span> Proxy Servers (Web Caches)</h3>
+<div id="outline-container-org7b78885" class="outline-3">
+<h3 id="org7b78885"><span class="section-number-3">9.12</span> Proxy Servers (Web Caches)</h3>
 <div class="outline-text-3" id="text-9-12">
 <ul class="org-ul">
 <li>Provides a cached version of a website at a closer range, i.e. proximity</li>
@@ -587,13 +594,13 @@ There are four sources of packet delay: nodal processing, queuing delay, transmi
 </ul>
 </div>
 </div>
-<div id="outline-container-org3a837ef" class="outline-3">
-<h3 id="org3a837ef"><span class="section-number-3">9.13</span> Electronic Mail</h3>
+<div id="outline-container-org26edf77" class="outline-3">
+<h3 id="org26edf77"><span class="section-number-3">9.13</span> Electronic Mail</h3>
 <div class="outline-text-3" id="text-9-13">
 </div>
-<div id="outline-container-orgead9b75" class="outline-4">
-<h4 id="orgead9b75">Three major components</h4>
-<div class="outline-text-4" id="text-orgead9b75">
+<div id="outline-container-org5d72c21" class="outline-4">
+<h4 id="org5d72c21">Three major components</h4>
+<div class="outline-text-4" id="text-org5d72c21">
 <ul class="org-ul">
 <li>User agents: mail reader</li>
 <li>Mail servers:
@@ -611,9 +618,9 @@ There are four sources of packet delay: nodal processing, queuing delay, transmi
 </ul>
 </div>
 </div>
-<div id="outline-container-org8e7c1ab" class="outline-4">
-<h4 id="org8e7c1ab">Mail sending process</h4>
-<div class="outline-text-4" id="text-org8e7c1ab">
+<div id="outline-container-org4d23476" class="outline-4">
+<h4 id="org4d23476">Mail sending process</h4>
+<div class="outline-text-4" id="text-org4d23476">
 <ul class="org-ul">
 <li>Alice uses UA to compose mail to x@foo.bar</li>
 <li>Alice's UA places the message on her mailserver</li>
@@ -624,32 +631,32 @@ There are four sources of packet delay: nodal processing, queuing delay, transmi
 </ul>
 </div>
 </div>
-<div id="outline-container-org7baef52" class="outline-4">
-<h4 id="org7baef52">Mail access protocols</h4>
-<div class="outline-text-4" id="text-org7baef52">
+<div id="outline-container-orgf804a29" class="outline-4">
+<h4 id="orgf804a29">Mail access protocols</h4>
+<div class="outline-text-4" id="text-orgf804a29">
 </div>
 <ul class="org-ul">
-<li><a id="org483c321"></a>POP3, Post Office Protocol<br />
-<div class="outline-text-5" id="text-org483c321">
+<li><a id="org7919762"></a>POP3, Post Office Protocol<br />
+<div class="outline-text-5" id="text-org7919762">
 <ul class="org-ul">
 <li>Authorization</li>
 <li>Download</li>
 </ul>
 </div>
 </li>
-<li><a id="org1e8b936"></a>IMAP, Internet Mail Access Protocol<br />
-<div class="outline-text-5" id="text-org1e8b936">
+<li><a id="orge20ee8f"></a>IMAP, Internet Mail Access Protocol<br />
+<div class="outline-text-5" id="text-orge20ee8f">
 <ul class="org-ul">
 <li>More features, i.e. manipulation of messages on the server</li>
 </ul>
 </div>
 </li>
-<li><a id="orgf47a5f0"></a>HTTP<br /></li>
+<li><a id="org71f766a"></a>HTTP<br /></li>
 </ul>
 </div>
-<div id="outline-container-orgf150d86" class="outline-4">
-<h4 id="orgf150d86">POP3</h4>
-<div class="outline-text-4" id="text-orgf150d86">
+<div id="outline-container-orga743177" class="outline-4">
+<h4 id="orga743177">POP3</h4>
+<div class="outline-text-4" id="text-orga743177">
 <ul class="org-ul">
 <li>Authorization Phase
 <ul class="org-ul">
@@ -669,13 +676,13 @@ There are four sources of packet delay: nodal processing, queuing delay, transmi
 </div>
 </div>
 </div>
-<div id="outline-container-org11b6a74" class="outline-3">
-<h3 id="org11b6a74"><span class="section-number-3">9.14</span> DNS</h3>
+<div id="outline-container-org9a0a3bb" class="outline-3">
+<h3 id="org9a0a3bb"><span class="section-number-3">9.14</span> DNS</h3>
 <div class="outline-text-3" id="text-9-14">
 </div>
-<div id="outline-container-org61e374f" class="outline-4">
-<h4 id="org61e374f">Domain Name System</h4>
-<div class="outline-text-4" id="text-org61e374f">
+<div id="outline-container-org570daa0" class="outline-4">
+<h4 id="org570daa0">Domain Name System</h4>
+<div class="outline-text-4" id="text-org570daa0">
 <ul class="org-ul">
 <li>Distributed Database</li>
 <li>Application-layer protocol: hosts, name servers communicate to resolve names</li>
@@ -686,9 +693,9 @@ There are four sources of packet delay: nodal processing, queuing delay, transmi
 </ul>
 </div>
 </div>
-<div id="outline-container-org170cdbe" class="outline-4">
-<h4 id="org170cdbe">Why not centralized DNS</h4>
-<div class="outline-text-4" id="text-org170cdbe">
+<div id="outline-container-org1c3a139" class="outline-4">
+<h4 id="org1c3a139">Why not centralized DNS</h4>
+<div class="outline-text-4" id="text-org1c3a139">
 <ul class="org-ul">
 <li>Single point of failure</li>
 <li>Traffic volume</li>
@@ -705,44 +712,44 @@ Maintenance
 </ul>
 </div>
 </div>
-<div id="outline-container-org30d5780" class="outline-4">
-<h4 id="org30d5780">Root name servers</h4>
-<div class="outline-text-4" id="text-org30d5780">
+<div id="outline-container-org452fc66" class="outline-4">
+<h4 id="org452fc66">Root name servers</h4>
+<div class="outline-text-4" id="text-org452fc66">
 <ul class="org-ul">
 <li>Are contacted when local servers cannot resolve a hostname</li>
 <li>Root name server contacts the authoritative name server if name mapping is not known</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org24b5809" class="outline-4">
-<h4 id="org24b5809">Authoritative servers</h4>
-<div class="outline-text-4" id="text-org24b5809">
+<div id="outline-container-orgfd3c570" class="outline-4">
+<h4 id="orgfd3c570">Authoritative servers</h4>
+<div class="outline-text-4" id="text-orgfd3c570">
 <ul class="org-ul">
 <li>Hold top-level domains: com, edu, org, etc. also all national domains</li>
 <li>Some organizations may have their own authoritative servers</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org2f04f56" class="outline-4">
-<h4 id="org2f04f56">Local DNS</h4>
-<div class="outline-text-4" id="text-org2f04f56">
+<div id="outline-container-orged26521" class="outline-4">
+<h4 id="orged26521">Local DNS</h4>
+<div class="outline-text-4" id="text-orged26521">
 <ul class="org-ul">
 <li>Every ISP has one</li>
 <li>When a host makes a DNS query, the local DNS server is the first one contacted</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org31df2da" class="outline-4">
-<h4 id="org31df2da">Example</h4>
-<div class="outline-text-4" id="text-org31df2da">
+<div id="outline-container-org3ce3273" class="outline-4">
+<h4 id="org3ce3273">Example</h4>
+<div class="outline-text-4" id="text-org3ce3273">
 <ul class="org-ul">
 <li>When a server does not know the IP then it returns the address to the server that may have it, i.e. "I don't know this name, but ask this server"</li>
 </ul>
 </div>
 </div>
 </div>
-<div id="outline-container-org0198a41" class="outline-3">
-<h3 id="org0198a41"><span class="section-number-3">9.15</span> P2P</h3>
+<div id="outline-container-orgb4eaca8" class="outline-3">
+<h3 id="orgb4eaca8"><span class="section-number-3">9.15</span> P2P</h3>
 <div class="outline-text-3" id="text-9-15">
 <ul class="org-ul">
 <li>No always on servers</li>
@@ -751,8 +758,8 @@ Maintenance
 </ul>
 </div>
 </div>
-<div id="outline-container-org03e9de7" class="outline-3">
-<h3 id="org03e9de7"><span class="section-number-3">9.16</span> Socket Programming</h3>
+<div id="outline-container-org4d819a7" class="outline-3">
+<h3 id="org4d819a7"><span class="section-number-3">9.16</span> Socket Programming</h3>
 <div class="outline-text-3" id="text-9-16">
 <ul class="org-ul">
 <li><b>Goal</b>: learn how to build client/server applications that communicate using sockets</li>
@@ -770,12 +777,12 @@ Maintenance
 </div>
 </div>
 </div>
-<div id="outline-container-org2d9a4bd" class="outline-2">
-<h2 id="org2d9a4bd"><span class="section-number-2">10</span> Transport Layer</h2>
+<div id="outline-container-org87c4c9c" class="outline-2">
+<h2 id="org87c4c9c"><span class="section-number-2">10</span> Transport Layer</h2>
 <div class="outline-text-2" id="text-10">
 </div>
-<div id="outline-container-org0f84974" class="outline-3">
-<h3 id="org0f84974"><span class="section-number-3">10.1</span> Transport layer provides</h3>
+<div id="outline-container-orge9ad3c7" class="outline-3">
+<h3 id="orge9ad3c7"><span class="section-number-3">10.1</span> Transport layer provides</h3>
 <div class="outline-text-3" id="text-10-1">
 <ul class="org-ul">
 <li>Process-to-process data delivery</li>
@@ -785,8 +792,8 @@ Maintenance
 </ul>
 </div>
 </div>
-<div id="outline-container-orgc38df2e" class="outline-3">
-<h3 id="orgc38df2e"><span class="section-number-3">10.2</span> Transport protocols run on end systems</h3>
+<div id="outline-container-org189e76b" class="outline-3">
+<h3 id="org189e76b"><span class="section-number-3">10.2</span> Transport protocols run on end systems</h3>
 <div class="outline-text-3" id="text-10-2">
 <ul class="org-ul">
 <li>Sending side breaks app messages into segments, passes to network layer</li>
@@ -794,8 +801,8 @@ Maintenance
 </ul>
 </div>
 </div>
-<div id="outline-container-orgd5a1c2e" class="outline-3">
-<h3 id="orgd5a1c2e"><span class="section-number-3">10.3</span> Transport vs network layer</h3>
+<div id="outline-container-org4bcea1a" class="outline-3">
+<h3 id="org4bcea1a"><span class="section-number-3">10.3</span> Transport vs network layer</h3>
 <div class="outline-text-3" id="text-10-3">
 <ul class="org-ul">
 <li>Network layer: logical communication between hosts</li>
@@ -803,22 +810,22 @@ Maintenance
 </ul>
 </div>
 </div>
-<div id="outline-container-org8e3ca19" class="outline-3">
-<h3 id="org8e3ca19"><span class="section-number-3">10.4</span> Transport Layer protocols</h3>
+<div id="outline-container-org6dc2eb7" class="outline-3">
+<h3 id="org6dc2eb7"><span class="section-number-3">10.4</span> Transport Layer protocols</h3>
 <div class="outline-text-3" id="text-10-4">
 </div>
-<div id="outline-container-org6edf3cb" class="outline-4">
-<h4 id="org6edf3cb">Services not available</h4>
-<div class="outline-text-4" id="text-org6edf3cb">
+<div id="outline-container-orgc6b0cea" class="outline-4">
+<h4 id="orgc6b0cea">Services not available</h4>
+<div class="outline-text-4" id="text-orgc6b0cea">
 <ul class="org-ul">
 <li>Delay guarantees</li>
 <li>Bandwidth guarantees</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org910b998" class="outline-4">
-<h4 id="org910b998">TCP</h4>
-<div class="outline-text-4" id="text-org910b998">
+<div id="outline-container-org5b69d60" class="outline-4">
+<h4 id="org5b69d60">TCP</h4>
+<div class="outline-text-4" id="text-org5b69d60">
 <ul class="org-ul">
 <li>Reliable, in-order delivery</li>
 <li>Congestion control</li>
@@ -829,9 +836,9 @@ Maintenance
 </ul>
 </div>
 </div>
-<div id="outline-container-org4237ce5" class="outline-4">
-<h4 id="org4237ce5">UDP</h4>
-<div class="outline-text-4" id="text-org4237ce5">
+<div id="outline-container-org326db75" class="outline-4">
+<h4 id="org326db75">UDP</h4>
+<div class="outline-text-4" id="text-org326db75">
 <ul class="org-ul">
 <li>Unreliable, unordered delivery</li>
 <li>No-frills extension of "best-effort" IP</li>
@@ -839,9 +846,9 @@ Maintenance
 </ul>
 </div>
 </div>
-<div id="outline-container-org9a3bde7" class="outline-4">
-<h4 id="org9a3bde7">SCTP</h4>
-<div class="outline-text-4" id="text-org9a3bde7">
+<div id="outline-container-org1ddaef2" class="outline-4">
+<h4 id="org1ddaef2">SCTP</h4>
+<div class="outline-text-4" id="text-org1ddaef2">
 <ul class="org-ul">
 <li>Connection oriented</li>
 <li>Reliable data transfer</li>
@@ -857,13 +864,13 @@ Maintenance
 </div>
 </div>
 </div>
-<div id="outline-container-org81872a0" class="outline-3">
-<h3 id="org81872a0"><span class="section-number-3">10.5</span> TCP vs UDP</h3>
+<div id="outline-container-org17b3076" class="outline-3">
+<h3 id="org17b3076"><span class="section-number-3">10.5</span> TCP vs UDP</h3>
 <div class="outline-text-3" id="text-10-5">
 </div>
-<div id="outline-container-orgce8aa54" class="outline-4">
-<h4 id="orgce8aa54">TCP</h4>
-<div class="outline-text-4" id="text-orgce8aa54">
+<div id="outline-container-orgfcc1b1a" class="outline-4">
+<h4 id="orgfcc1b1a">TCP</h4>
+<div class="outline-text-4" id="text-orgfcc1b1a">
 <ul class="org-ul">
 <li>Reliable</li>
 <li>Flow control</li>
@@ -873,9 +880,9 @@ Maintenance
 </ul>
 </div>
 </div>
-<div id="outline-container-orgc4f14fd" class="outline-4">
-<h4 id="orgc4f14fd">UDP</h4>
-<div class="outline-text-4" id="text-orgc4f14fd">
+<div id="outline-container-org46a3717" class="outline-4">
+<h4 id="org46a3717">UDP</h4>
+<div class="outline-text-4" id="text-org46a3717">
 <ul class="org-ul">
 <li>Unreliable data transfer</li>
 <li>Dos not provide: reliability, flow control, congestion control, timing, throughput guarantee, security, connection setup</li>
@@ -883,17 +890,17 @@ Maintenance
 </div>
 </div>
 </div>
-<div id="outline-container-orge9c036d" class="outline-3">
-<h3 id="orge9c036d"><span class="section-number-3">10.6</span> Multiplexing and Demultiplexing</h3>
+<div id="outline-container-org7c79dea" class="outline-3">
+<h3 id="org7c79dea"><span class="section-number-3">10.6</span> Multiplexing and Demultiplexing</h3>
 <div class="outline-text-3" id="text-10-6">
 <ul class="org-ul">
 <li>Multiplexing happens on the sending side: handle data from multiple sockets, add transport header (later used for demultiplexing)</li>
 <li>Demultiplexing happens on the receiving side: use header info to deliver received segments to correct socket</li>
 </ul>
 </div>
-<div id="outline-container-org2434cc2" class="outline-4">
-<h4 id="org2434cc2">Demultiplexing</h4>
-<div class="outline-text-4" id="text-org2434cc2">
+<div id="outline-container-org8bd483c" class="outline-4">
+<h4 id="org8bd483c">Demultiplexing</h4>
+<div class="outline-text-4" id="text-org8bd483c">
 <ul class="org-ul">
 <li>Host receives an IP datagram</li>
 <li>Each datagram has source IP address and destination IP address</li>
@@ -903,9 +910,9 @@ Maintenance
 </ul>
 </div>
 </div>
-<div id="outline-container-org027a7bd" class="outline-4">
-<h4 id="org027a7bd">Connectionless demux</h4>
-<div class="outline-text-4" id="text-org027a7bd">
+<div id="outline-container-org3babae5" class="outline-4">
+<h4 id="org3babae5">Connectionless demux</h4>
+<div class="outline-text-4" id="text-org3babae5">
 <ul class="org-ul">
 <li>When a host sends a datagram into a UDP socket, it must specify destination IP and PORT, source is not needed!</li>
 <li>When host receives UDP segment checks destination port</li>
@@ -913,9 +920,9 @@ Maintenance
 </ul>
 </div>
 </div>
-<div id="outline-container-orgdea7fbb" class="outline-4">
-<h4 id="orgdea7fbb">Connection-oriented demux</h4>
-<div class="outline-text-4" id="text-orgdea7fbb">
+<div id="outline-container-orgfe2e525" class="outline-4">
+<h4 id="orgfe2e525">Connection-oriented demux</h4>
+<div class="outline-text-4" id="text-orgfe2e525">
 <ul class="org-ul">
 <li>TCP socket identified by 4 tuple: source IP, source PORT, destination IP, destination PORT</li>
 <li>Receiver uses all four values to direct the segment to an appropriate socket</li>
@@ -925,8 +932,8 @@ Maintenance
 </div>
 </div>
 </div>
-<div id="outline-container-orgd85b4d4" class="outline-3">
-<h3 id="orgd85b4d4"><span class="section-number-3">10.7</span> Principles of Reliable Data Transfer (rdt)</h3>
+<div id="outline-container-org1fae784" class="outline-3">
+<h3 id="org1fae784"><span class="section-number-3">10.7</span> Principles of Reliable Data Transfer (rdt)</h3>
 <div class="outline-text-3" id="text-10-7">
 <ul class="org-ul">
 <li>rdt is built on top of IP's unreliable service
@@ -980,8 +987,8 @@ Maintenance
 </div>
 </div>
 
-<div id="outline-container-orgc500187" class="outline-3">
-<h3 id="orgc500187"><span class="section-number-3">10.8</span> Pipelined protocols overview</h3>
+<div id="outline-container-org1c59f48" class="outline-3">
+<h3 id="org1c59f48"><span class="section-number-3">10.8</span> Pipelined protocols overview</h3>
 <div class="outline-text-3" id="text-10-8">
 <ul class="org-ul">
 <li>Go-back-N:
@@ -1014,8 +1021,8 @@ Sender maintains a timer for each of the packets
 </ul>
 </div>
 </div>
-<div id="outline-container-org14da281" class="outline-3">
-<h3 id="org14da281"><span class="section-number-3">10.9</span> TCP Overview</h3>
+<div id="outline-container-org7ce8ef5" class="outline-3">
+<h3 id="org7ce8ef5"><span class="section-number-3">10.9</span> TCP Overview</h3>
 <div class="outline-text-3" id="text-10-9">
 <ul class="org-ul">
 <li>Point-to-point: one sender, one receiver</li>
@@ -1026,9 +1033,9 @@ Sender maintains a timer for each of the packets
 <li>Flow controlled: sender will not overwhelm receiver</li>
 </ul>
 </div>
-<div id="outline-container-org3ee3564" class="outline-4">
-<h4 id="org3ee3564">Segment Structure</h4>
-<div class="outline-text-4" id="text-org3ee3564">
+<div id="outline-container-orgcad82b7" class="outline-4">
+<h4 id="orgcad82b7">Segment Structure</h4>
+<div class="outline-text-4" id="text-orgcad82b7">
 
 <div class="figure">
 <p><img src="images/Transport_Layer/screenshot_2019-11-05_22-08-46.png" alt="screenshot_2019-11-05_22-08-46.png" />
@@ -1036,9 +1043,9 @@ Sender maintains a timer for each of the packets
 </div>
 </div>
 </div>
-<div id="outline-container-org15ae5cc" class="outline-4">
-<h4 id="org15ae5cc">Sequencing</h4>
-<div class="outline-text-4" id="text-org15ae5cc">
+<div id="outline-container-orgc0a2ed3" class="outline-4">
+<h4 id="orgc0a2ed3">Sequencing</h4>
+<div class="outline-text-4" id="text-orgc0a2ed3">
 <ul class="org-ul">
 <li>Sequence Numbers: Byte stream "number" of first byte in segment's data</li>
 <li>Acknowledgements: sequence number of next byte expected from other side, cumulative ACK</li>
@@ -1046,18 +1053,18 @@ Sender maintains a timer for each of the packets
 </ul>
 </div>
 </div>
-<div id="outline-container-org9f125e8" class="outline-4">
-<h4 id="org9f125e8">RTT and Timeout</h4>
-<div class="outline-text-4" id="text-org9f125e8">
+<div id="outline-container-org2d2d0e0" class="outline-4">
+<h4 id="org2d2d0e0">RTT and Timeout</h4>
+<div class="outline-text-4" id="text-org2d2d0e0">
 <ul class="org-ul">
 <li>SampleRTT: measured time from segment transmission until ACK received</li>
 <li>Timeout: longer than RTT, too short and premature timeouts occur, too long and the reaction to segments loss will be too large</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org5901a4f" class="outline-4">
-<h4 id="org5901a4f">Sender events</h4>
-<div class="outline-text-4" id="text-org5901a4f">
+<div id="outline-container-orgbb677da" class="outline-4">
+<h4 id="orgbb677da">Sender events</h4>
+<div class="outline-text-4" id="text-orgbb677da">
 <ul class="org-ul">
 <li><code>data rcvd from app</code>:
 <ul class="org-ul">
@@ -1096,8 +1103,8 @@ Start timer if there are still unacked segments
 </div>
 </div>
 </div>
-<div id="outline-container-org0021108" class="outline-3">
-<h3 id="org0021108"><span class="section-number-3">10.10</span> Flow Control</h3>
+<div id="outline-container-org0c40983" class="outline-3">
+<h3 id="org0c40983"><span class="section-number-3">10.10</span> Flow Control</h3>
 <div class="outline-text-3" id="text-10-10">
 <ul class="org-ul">
 <li>Receiver controls the sender, so that sender won't overflow the receiver buffer</li>
@@ -1105,17 +1112,17 @@ Start timer if there are still unacked segments
 </ul>
 </div>
 </div>
-<div id="outline-container-orge236448" class="outline-3">
-<h3 id="orge236448"><span class="section-number-3">10.11</span> Congestion Control</h3>
+<div id="outline-container-org9f67772" class="outline-3">
+<h3 id="org9f67772"><span class="section-number-3">10.11</span> Congestion Control</h3>
 <div class="outline-text-3" id="text-10-11">
 <ul class="org-ul">
 <li>"Too many sources sending too much data too fast for network to handle"</li>
 <li>Poor congestion control can cause: lost packets and long delays</li>
 </ul>
 </div>
-<div id="outline-container-orga7c8d3f" class="outline-4">
-<h4 id="orga7c8d3f">TCP Additive Increase Multiplicative Decrease (AIMD)</h4>
-<div class="outline-text-4" id="text-orga7c8d3f">
+<div id="outline-container-orga269491" class="outline-4">
+<h4 id="orga269491">TCP Additive Increase Multiplicative Decrease (AIMD)</h4>
+<div class="outline-text-4" id="text-orga269491">
 <ul class="org-ul">
 <li>Sender increases transmission rate (window size), probing for usable bandwidth, until loss occurs</li>
 <li>Increases <code>cwnd</code> (congestion window) by 1 MSS (max segment size) every RTT until a loss occurs, then it cuts <code>cwnd</code> by half and starts over again</li>
@@ -1123,9 +1130,9 @@ Start timer if there are still unacked segments
 </ul>
 </div>
 </div>
-<div id="outline-container-orgec0de8a" class="outline-4">
-<h4 id="orgec0de8a">TCP Slow Start</h4>
-<div class="outline-text-4" id="text-orgec0de8a">
+<div id="outline-container-org5820c0a" class="outline-4">
+<h4 id="org5820c0a">TCP Slow Start</h4>
+<div class="outline-text-4" id="text-org5820c0a">
 <ul class="org-ul">
 <li>Start with <code>cwnd</code> set to 1 MSS</li>
 <li>Increase the window size exponentially, until a loss occurs (indicated by 3 duplicate ACKs)</li>
@@ -1134,8 +1141,8 @@ Start timer if there are still unacked segments
 </div>
 </div>
 </div>
-<div id="outline-container-org1fdc21d" class="outline-3">
-<h3 id="org1fdc21d"><span class="section-number-3">10.12</span> TCP Fairness</h3>
+<div id="outline-container-orgfbcd4bd" class="outline-3">
+<h3 id="orgfbcd4bd"><span class="section-number-3">10.12</span> TCP Fairness</h3>
 <div class="outline-text-3" id="text-10-12">
 <ul class="org-ul">
 <li>The goal is to provide the same amount of bandwidth to multiple sessions sharing the same bottleneck (i.e. router)</li>
@@ -1145,15 +1152,15 @@ Start timer if there are still unacked segments
 </div>
 </div>
 </div>
-<div id="outline-container-org7bc7db2" class="outline-2">
-<h2 id="org7bc7db2"><span class="section-number-2">11</span> Network Layer (not on midterm exam)</h2>
+<div id="outline-container-orgf1ca41c" class="outline-2">
+<h2 id="orgf1ca41c"><span class="section-number-2">11</span> Network Layer (not on midterm exam)</h2>
 <div class="outline-text-2" id="text-11">
 <ul class="org-ul">
 <li>Protocol: IP (Internet Protocol)</li>
 </ul>
 </div>
-<div id="outline-container-orge63f506" class="outline-3">
-<h3 id="orge63f506"><span class="section-number-3">11.1</span> Key Functions</h3>
+<div id="outline-container-org022e752" class="outline-3">
+<h3 id="org022e752"><span class="section-number-3">11.1</span> Key Functions</h3>
 <div class="outline-text-3" id="text-11-1">
 <ul class="org-ul">
 <li>Forwarding: move packets from router's input to appropriate router output</li>
@@ -1161,8 +1168,8 @@ Start timer if there are still unacked segments
 </ul>
 </div>
 </div>
-<div id="outline-container-org70d00fa" class="outline-3">
-<h3 id="org70d00fa"><span class="section-number-3">11.2</span> Planes</h3>
+<div id="outline-container-orgd2f7a6b" class="outline-3">
+<h3 id="orgd2f7a6b"><span class="section-number-3">11.2</span> Planes</h3>
 <div class="outline-text-3" id="text-11-2">
 <ul class="org-ul">
 <li>Data Plane: determines how datagram arriving on router input port is forwarded to router output port</li>
@@ -1170,21 +1177,21 @@ Start timer if there are still unacked segments
 </ul>
 </div>
 </div>
-<div id="outline-container-org98be261" class="outline-3">
-<h3 id="org98be261"><span class="section-number-3">11.3</span> Switching Fabric</h3>
+<div id="outline-container-orgf1579dd" class="outline-3">
+<h3 id="orgf1579dd"><span class="section-number-3">11.3</span> Switching Fabric</h3>
 <div class="outline-text-3" id="text-11-3">
 <ul class="org-ul">
 <li>Transfers packets from the input to the output, usually this NEEDS to happen at line speed, otherwise queuing might occur</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgee3a182" class="outline-3">
-<h3 id="orgee3a182"><span class="section-number-3">11.4</span> Internet Protocol (IP)</h3>
+<div id="outline-container-org4966a46" class="outline-3">
+<h3 id="org4966a46"><span class="section-number-3">11.4</span> Internet Protocol (IP)</h3>
 <div class="outline-text-3" id="text-11-4">
 </div>
-<div id="outline-container-org51ee999" class="outline-4">
-<h4 id="org51ee999">Characteristics</h4>
-<div class="outline-text-4" id="text-org51ee999">
+<div id="outline-container-org2077742" class="outline-4">
+<h4 id="org2077742">Characteristics</h4>
+<div class="outline-text-4" id="text-org2077742">
 <ul class="org-ul">
 <li>Packet-based network protocol</li>
 <li>Provides
@@ -1204,13 +1211,80 @@ Start timer if there are still unacked segments
 </div>
 </div>
 </div>
-<div id="outline-container-org43bff93" class="outline-2">
-<h2 id="org43bff93"><span class="section-number-2">12</span> Exam papers sample questions</h2>
+<div id="outline-container-orga8f2d35" class="outline-2">
+<h2 id="orga8f2d35"><span class="section-number-2">12</span> Mobile Networks</h2>
 <div class="outline-text-2" id="text-12">
 </div>
-<div id="outline-container-orgbef8234" class="outline-3">
-<h3 id="orgbef8234"><span class="section-number-3">12.1</span> Questions</h3>
+<div id="outline-container-org10d6016" class="outline-3">
+<h3 id="org10d6016"><span class="section-number-3">12.1</span> Definitions</h3>
 <div class="outline-text-3" id="text-12-1">
+<ul class="org-ul">
+<li><b>MSC</b>: Mobile Switching Center. Connects cells to wide area network, manages call setup, handles mobility</li>
+<li><b>Cell</b>: Covers a regional area, has:
+<ul class="org-ul">
+<li><b>BS</b>: Base station</li>
+<li><b>Mobile Users</b>: Attached to <b>BS</b></li>
+<li><b>Air-interface</b>: Link layer between <b>BS</b> and <b>Mobile Users</b></li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgfc7ee16" class="outline-3">
+<h3 id="orgfc7ee16"><span class="section-number-3">12.2</span> Area, channels and concurrent calls handling</h3>
+<div class="outline-text-3" id="text-12-2">
+<ul class="org-ul">
+<li>Area of hex = 1.5√3 R<sup>2</sup></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org766e0c2" class="outline-3">
+<h3 id="org766e0c2"><span class="section-number-3">12.3</span> Mobility</h3>
+<div class="outline-text-3" id="text-12-3">
+<ul class="org-ul">
+<li><b>Home network</b>: permanent "home" of mobile</li>
+<li><b>Permanent address</b>: can always be used to reach mobile</li>
+<li><b>Home agent</b>: entity that performs mobility functions on behalf of mobile</li>
+<li><b>Visited network</b>: network in which the mobile currently resides</li>
+<li><b>Care-of-address</b>: address in visited network</li>
+<li><b>Foreign agent</b>: entity in visited network the performs mobility functions of behalf of mobile</li>
+<li><b>Correspondent</b>: entity that wants to connect to user</li>
+</ul>
+</div>
+<div id="outline-container-orgccb2b12" class="outline-4">
+<h4 id="orgccb2b12">Indirect routing (inefficient)</h4>
+<div class="outline-text-4" id="text-orgccb2b12">
+<ul class="org-ul">
+<li>Use home agent to find out the location of where the we are on the visited network</li>
+<li>Further route the packets via home network</li>
+<li>Scenario of moving:
+<ul class="org-ul">
+<li>Register with a foreign agent</li>
+<li>Foreign agent registers with home agent</li>
+<li>Home agent updates care-of-address</li>
+<li>Packets forwarded to mobile with new care-of-address (<b>triangle routing problem</b>, always needs to go through home agent)</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgcfb60c9" class="outline-4">
+<h4 id="orgcfb60c9">Direct routing</h4>
+<div class="outline-text-4" id="text-orgcfb60c9">
+<ul class="org-ul">
+<li>In here the correspondent first learns the care-of-address from the home agent and forwards packets directly to that address</li>
+<li>If the foreign agent (FA) changes the previous fa arranges to have the data forwarded (it came late, before home agent knew about the change)</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgf8c45ee" class="outline-2">
+<h2 id="orgf8c45ee"><span class="section-number-2">13</span> Exam papers sample questions</h2>
+<div class="outline-text-2" id="text-13">
+</div>
+<div id="outline-container-org5ea65fd" class="outline-3">
+<h3 id="org5ea65fd"><span class="section-number-3">13.1</span> Questions</h3>
+<div class="outline-text-3" id="text-13-1">
 <ul class="org-ul">
 <li>Telecoms (3G/LTE)</li>
 <li>Network layer</li>
@@ -1219,12 +1293,12 @@ Start timer if there are still unacked segments
 </ul>
 </div>
 </div>
-<div id="outline-container-org089b0b6" class="outline-3">
-<h3 id="org089b0b6"><span class="section-number-3">12.2</span> Queuing is NOT on the paper</h3>
+<div id="outline-container-org116c959" class="outline-3">
+<h3 id="org116c959"><span class="section-number-3">13.2</span> Queuing is NOT on the paper</h3>
 </div>
-<div id="outline-container-org7fd7663" class="outline-3">
-<h3 id="org7fd7663"><span class="section-number-3">12.3</span> 2017 Q3 (b), IP address here is different</h3>
-<div class="outline-text-3" id="text-12-3">
+<div id="outline-container-org05fc675" class="outline-3">
+<h3 id="org05fc675"><span class="section-number-3">13.3</span> 2017 Q3 (b), IP address here is different</h3>
+<div class="outline-text-3" id="text-13-3">
 <p class="verse">
 Network address: 192.228.17.0<br />
 192 is class C address =&gt; meaning that the first 3 octets are the <b>network</b>, and the last octet is the <b>host</b><br />
@@ -1256,117 +1330,227 @@ subnet (5): 192.228.17.(101|00001) to 192.228.17.(101|11110)<br />
 </p>
 </div>
 </div>
-<div id="outline-container-org654a7a0" class="outline-3">
-<h3 id="org654a7a0"><span class="section-number-3">12.4</span> Answers to question</h3>
-<div class="outline-text-3" id="text-12-4">
+<div id="outline-container-orge0515b3" class="outline-3">
+<h3 id="orge0515b3"><span class="section-number-3">13.4</span> Answers to question</h3>
+<div class="outline-text-3" id="text-13-4">
 </div>
-<div id="outline-container-org96f75fb" class="outline-4">
-<h4 id="org96f75fb">8, IPv4 vs IPv6</h4>
-<div class="outline-text-4" id="text-org96f75fb">
+<div id="outline-container-orgeabe380" class="outline-4">
+<h4 id="orgeabe380">1</h4>
+<div class="outline-text-4" id="text-orgeabe380">
+<ul class="org-ul">
+<li>Propagation delay: length of the wire, speed of light, <b>constant</b></li>
+<li>Transmission delay: speed of the link, packet length (L) / link bandwidth (R). Example 5 000k bits / 1 000k bit/s = 5 s, <b>constant</b></li>
+<li>Processing delay: processing of the node itself, <b>constant</b></li>
+<li>Queuing delay: varies depending on the congestion, <b>variable</b></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgd524ee2" class="outline-4">
+<h4 id="orgd524ee2">2</h4>
+<div class="outline-text-4" id="text-orgd524ee2">
+<ul class="org-ul">
+<li>It’s a point to point multi service in which data is transmitted from a single source entity to multiple recipents. Brings improved performance thanks to higher and more flexible LTE bit rates, single frequency network operations.</li>
+<li>Are a significant element in todays services as in “Where am I” but combined with determining points of interest, ie restaurants, shopping or finding a route.</li>
+<li>Single layer beamforming uses a directional beam to increase the throughput between the UE and eNode B. As the name suggests, dual layer beamforming uses two transport blocks of spatial multiplexing with beam forming. This results in higher throughput over a large distance between the UE and eNode B.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org24e04b1" class="outline-4">
+<h4 id="org24e04b1">3 is ok, simple calc</h4>
+</div>
+<div id="outline-container-org051f4cb" class="outline-4">
+<h4 id="org051f4cb">4</h4>
+<div class="outline-text-4" id="text-org051f4cb">
+<ul class="org-ul">
+<li>HLR is like edge router in a home network. Say you are with Three, then your Home Location Register is Three</li>
+<li>VLR is like and edge router in a foreign network. Visited Location Register is the visited network</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgc0b83f1" class="outline-4">
+<h4 id="orgc0b83f1">5</h4>
+<div class="outline-text-4" id="text-orgc0b83f1">
+<ul class="org-ul">
+<li>Yes they can, they can use the same IP because the foreign agent can work in the exact same way as a NAT and have inner mappings to the connected UEs</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org9b15880" class="outline-4">
+<h4 id="org9b15880">6</h4>
+<div class="outline-text-4" id="text-org9b15880">
+<ul class="org-ul">
+<li>Each layer passes on information with its own distinct protocol and therefore each layer needs to "pack" data in its own way, so that upon arrival it can be unpacked. This is why de-encapsulation and encapsulation exist</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgf11fd8b" class="outline-4">
+<h4 id="orgf11fd8b">7</h4>
+<div class="outline-text-4" id="text-orgf11fd8b">
+<p class="verse">
+196.208.10.0<br />
+Class C so first 3 octets are the mask<br />
+We need six subnets so that is 3 bits (2<sup>3</sup> = 8, two spare)<br />
+<br />
+I)<br />
+So the subnet mask is: 11111111.11111111.11111111.11100000 = 255.255.255.224<br />
+<br />
+II + III)<br />
+<br />
+subnet 0<br />
+196.208.10.(000|00001) to 196.208.10.(000|11110)<br />
+196.208.10.1 to 196.208.10.30<br />
+<br />
+subnet 1<br />
+196.208.10.(001|00001) to 196.208.10.(001|11110)<br />
+196.208.10.33 to 196.208.10.62<br />
+<br />
+subnet 2<br />
+196.208.10.(010|00001) to 196.208.10.(010|11110)<br />
+196.208.10.65 to 196.208.10.94<br />
+<br />
+subnet 3<br />
+196.208.10.(011|00001) to 196.208.10.(011|11110)<br />
+196.208.10.97 to 196.208.10.126<br />
+<br />
+subnet 4<br />
+196.208.10.(100|00001) to 196.208.10.(100|11110)<br />
+196.208.10.129 to 196.208.10.158<br />
+<br />
+subnet 5<br />
+196.208.10.(101|00001) to 196.208.10.(101|11110)<br />
+196.208.10.161 to 196.208.10.190<br />
+</p>
+</div>
+</div>
+<div id="outline-container-org4d6196b" class="outline-4">
+<h4 id="org4d6196b">8, IPv4 vs IPv6</h4>
+<div class="outline-text-4" id="text-org4d6196b">
 <ul class="org-ul">
 <li>No fragmentation</li>
 <li>Increased security</li>
-<li>Labeling</li>
+<li>Header encryption (QoS)</li>
+<li>Labeling fields (not implemented as of yet, but may prove useful in the future) (QoS)</li>
 <li>32 bits vs 128 bits length</li>
 <li>No fixed header length</li>
 <li>There will be flag day, one day to convert from v4 to v6</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgad17e9b" class="outline-4">
-<h4 id="orgad17e9b">9, done before</h4>
+<div id="outline-container-org1485cb2" class="outline-4">
+<h4 id="org1485cb2">9, done before</h4>
+<div class="outline-text-4" id="text-org1485cb2">
+<ul class="org-ul">
+<li>Discovery</li>
+<li>Offer</li>
+<li>Request</li>
+<li>ACK</li>
+</ul>
 </div>
-<div id="outline-container-org698a9a0" class="outline-4">
-<h4 id="org698a9a0">10</h4>
-<div class="outline-text-4" id="text-org698a9a0">
+</div>
+<div id="outline-container-org6cb6ff3" class="outline-4">
+<h4 id="org6cb6ff3">10</h4>
+<div class="outline-text-4" id="text-org6cb6ff3">
 <ul class="org-ul">
 <li>Variations in delay, aka fluctuations</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org1ff3983" class="outline-4">
-<h4 id="org1ff3983">11</h4>
-<div class="outline-text-4" id="text-org1ff3983">
+<div id="outline-container-org4046dc1" class="outline-4">
+<h4 id="org4046dc1">11</h4>
+<div class="outline-text-4" id="text-org4046dc1">
 <ul class="org-ul">
 <li>Buffer</li>
 <li>Delay the playout time and use a buffer to minimise jitter</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgc39af2c" class="outline-4">
-<h4 id="orgc39af2c">12</h4>
-<div class="outline-text-4" id="text-orgc39af2c">
+<div id="outline-container-org579e3b3" class="outline-4">
+<h4 id="org579e3b3">12</h4>
+<div class="outline-text-4" id="text-org579e3b3">
 <ul class="org-ul">
 <li>6</li>
-<li>HELLO</li>
-<li>MAIL</li>
-<li>RCPT</li>
-<li>DATA</li>
-<li>BODY</li>
+<li>HELLO - sign on</li>
+<li>MAIL - from who</li>
+<li>RCPT - to who</li>
+<li>DATA - inform that data will be coming next</li>
+<li>body - the actual body of the message</li>
 <li>QUIT</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org1821bde" class="outline-4">
-<h4 id="org1821bde">13</h4>
-<div class="outline-text-4" id="text-org1821bde">
+<div id="outline-container-orgd8f3918" class="outline-4">
+<h4 id="orgd8f3918">13</h4>
+<div class="outline-text-4" id="text-orgd8f3918">
 <ul class="org-ul">
 <li>CIDR (class inter-domain routing)</li>
 <li>It is used if the standard classes don't fit the use case, either too small or too big</li>
 <li>Then we use CIDR to create subnets as we see fit</li>
+<li>Saves IP addresses</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org72a6401" class="outline-4">
-<h4 id="org72a6401">14</h4>
-<div class="outline-text-4" id="text-org72a6401">
+<div id="outline-container-org7a8052b" class="outline-4">
+<h4 id="org7a8052b">14</h4>
+<div class="outline-text-4" id="text-org7a8052b">
 <ul class="org-ul">
 <li>Reliability and expand</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgfc29f16" class="outline-4">
-<h4 id="orgfc29f16">15, done before</h4>
+<div id="outline-container-org1682af0" class="outline-4">
+<h4 id="org1682af0">15, done before</h4>
 </div>
-<div id="outline-container-orga535d9d" class="outline-4">
-<h4 id="orga535d9d">16, done before</h4>
-<div class="outline-text-4" id="text-orga535d9d">
+<div id="outline-container-org67fb436" class="outline-4">
+<h4 id="org67fb436">16, done before</h4>
+<div class="outline-text-4" id="text-org67fb436">
 <ul class="org-ul">
 <li>there is a controversial part about it in which the router peeks at the port number and is no supposed to</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org87590e0" class="outline-4">
-<h4 id="org87590e0">17</h4>
-<div class="outline-text-4" id="text-org87590e0">
+<div id="outline-container-org135d5b1" class="outline-4">
+<h4 id="org135d5b1">17</h4>
+<div class="outline-text-4" id="text-org135d5b1">
 <ul class="org-ul">
 <li>double check the answer here</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org02a5a79" class="outline-4">
-<h4 id="org02a5a79">18</h4>
+<div id="outline-container-org1bfbd16" class="outline-4">
+<h4 id="org1bfbd16">18</h4>
+<div class="outline-text-4" id="text-org1bfbd16">
+<ol class="org-ol">
+<li>A user types in www.google.ie in his browser and thus requests a TCP connection with the server via a HTTP GET request.</li>
+<li>TCP connection is established with the server usually over port 80, or 443 for SSL (DNS is skipped in this explanation)</li>
+<li>The server responds with an index.html file and transmits it back over TCP using the application layer’s HTTP message.</li>
+<li>The client receives the index.html file, finds out that it needs more objects (images,fonts, js files etc.)</li>
+<li>The client makes more GET requests for the needed objects</li>
+<li>Server responds with the remaining objects</li>
+<li>The client’s webbrowser can then render the full page</li>
+<li>Client closes the TCP connection with the server (or the server does it after a timeout)</li>
+</ol>
 </div>
-<div id="outline-container-org77a7e3c" class="outline-4">
-<h4 id="org77a7e3c">19</h4>
-<div class="outline-text-4" id="text-org77a7e3c">
+</div>
+<div id="outline-container-orgd254700" class="outline-4">
+<h4 id="orgd254700">19</h4>
+<div class="outline-text-4" id="text-orgd254700">
 <ul class="org-ul">
 <li>RTP uses timestamping for its own stream</li>
 <li>NTP is used to synchronize with the global time (wall clock)</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org4c26fb3" class="outline-4">
-<h4 id="org4c26fb3">20</h4>
-<div class="outline-text-4" id="text-org4c26fb3">
+<div id="outline-container-org595bf97" class="outline-4">
+<h4 id="org595bf97">20</h4>
+<div class="outline-text-4" id="text-org595bf97">
 <ul class="org-ul">
 <li>You can differentiate it by SSRC (different source IPs)</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org001dbdf" class="outline-4">
-<h4 id="org001dbdf">21</h4>
-<div class="outline-text-4" id="text-org001dbdf">
+<div id="outline-container-orgdc8977b" class="outline-4">
+<h4 id="orgdc8977b">21</h4>
+<div class="outline-text-4" id="text-orgdc8977b">
 <ul class="org-ul">
 <li>It uses TCP and expand</li>
 <li>Flow control, etc.</li>
@@ -1375,34 +1559,58 @@ subnet (5): 192.228.17.(101|00001) to 192.228.17.(101|11110)<br />
 </ul>
 </div>
 </div>
-<div id="outline-container-org8f51c68" class="outline-4">
-<h4 id="org8f51c68">22</h4>
-<div class="outline-text-4" id="text-org8f51c68">
+<div id="outline-container-org0e567af" class="outline-4">
+<h4 id="org0e567af">22</h4>
+<div class="outline-text-4" id="text-org0e567af">
 <ul class="org-ul">
 <li>Only in TCP</li>
 <li>TCP probes the network, listens for packetloss</li>
+<li>"Too many sources sending too much data too fast for network to handle"</li>
+<li>Poor congestion control can cause: lost packets and long delays</li>
 </ul>
 </div>
-</div>
-<div id="outline-container-orge346b34" class="outline-4">
-<h4 id="orge346b34">23</h4>
-<div class="outline-text-4" id="text-orge346b34">
 <ul class="org-ul">
-<li>Mux, Demux, easy</li>
+<li><a id="orge5469ab"></a>TCP Additive Increase Multiplicative Decrease (AIMD)<br />
+<div class="outline-text-5" id="text-orge5469ab">
+<ul class="org-ul">
+<li>Sender increases transmission rate (window size), probing for usable bandwidth, until loss occurs</li>
+<li>Increases <code>cwnd</code> (congestion window) by 1 MSS (max segment size) every RTT until a loss occurs, then it cuts <code>cwnd</code> by half and starts over again</li>
+<li>Saw tooth like behaviour</li>
 </ul>
 </div>
+</li>
+<li><a id="org8e070a0"></a>TCP Slow Start<br />
+<div class="outline-text-5" id="text-org8e070a0">
+<ul class="org-ul">
+<li>Start with <code>cwnd</code> set to 1 MSS</li>
+<li>Increase the window size exponentially, until a loss occurs (indicated by 3 duplicate ACKs)</li>
+<li>Then proceed with linear increase</li>
+</ul>
 </div>
-<div id="outline-container-org559b02e" class="outline-4">
-<h4 id="org559b02e">24</h4>
-<div class="outline-text-4" id="text-org559b02e">
+</li>
+</ul>
+</div>
+<div id="outline-container-orgd88770a" class="outline-4">
+<h4 id="orgd88770a">23</h4>
+<div class="outline-text-4" id="text-orgd88770a">
+<p class="verse">
+Multiplexing (mux) is a process that occurs within the transport layer after the Application Layer passes a message down to the transport layer. The application (process) uses a socket (with a port number) to transmit a message. Both the transmitting and receiving processes have an IP address and a port number. The transport layer adds headers that contain the source port number, source IP address, destination port number and destination IP address; the four values are known as the 4-tuple. The 4-tuple is used to uniquely identify each of the packets that get transmitted between hosts. This kind of technique is crucial for the application layer to correctly identify to which application the packets need to go to and from which they came from.<br />
+<br />
+De-multiplexing (demux) is a reverse process of multiplexing. During demux the transport layer “unpacks” the 4-tuple and passes the message to the correct socket and thus to the right application.<br />
+</p>
+</div>
+</div>
+<div id="outline-container-orgc09a384" class="outline-4">
+<h4 id="orgc09a384">24</h4>
+<div class="outline-text-4" id="text-orgc09a384">
 <ul class="org-ul">
 <li>Multihoming, multistreaming</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org1aa70ac" class="outline-4">
-<h4 id="org1aa70ac">25</h4>
-<div class="outline-text-4" id="text-org1aa70ac">
+<div id="outline-container-orgb884585" class="outline-4">
+<h4 id="orgb884585">25</h4>
+<div class="outline-text-4" id="text-orgb884585">
 <ul class="org-ul">
 <li>Easy, in the notes</li>
 </ul>
@@ -1411,9 +1619,9 @@ subnet (5): 192.228.17.(101|00001) to 192.228.17.(101|11110)<br />
 </div>
 </div>
 
-<div id="outline-container-org64c82eb" class="outline-2">
-<h2 id="org64c82eb"><span class="section-number-2">13</span> Delete at the end</h2>
-<div class="outline-text-2" id="text-13">
+<div id="outline-container-org1ab1ebe" class="outline-2">
+<h2 id="org1ab1ebe"><span class="section-number-2">14</span> Delete at the end</h2>
+<div class="outline-text-2" id="text-14">
 <script src="../assets/jquery-3.3.1.min.js"></script>
 <script src="../assets/notes.js"></script>
 </div>
@@ -1422,7 +1630,7 @@ subnet (5): 192.228.17.(101|00001) to 192.228.17.(101|11110)<br />
 <div id="postamble" class="status">
 <p class="date">Date: 2019-09-09 Mon 11:54</p>
 <p class="author">Author: Damian Chrzanowski</p>
-<p class="date">Created: 2019-12-17 Tue 21:37</p>
+<p class="date">Created: 2019-12-18 Wed 17:50</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

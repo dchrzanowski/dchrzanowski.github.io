@@ -363,6 +363,35 @@
       - Best-effort service
     - Runs over any type of underlying transport
       - Ethernet
+* Mobile Networks
+** Definitions
+   - *MSC*: Mobile Switching Center. Connects cells to wide area network, manages call setup, handles mobility
+   - *Cell*: Covers a regional area, has:
+     - *BS*: Base station
+     - *Mobile Users*: Attached to *BS*
+     - *Air-interface*: Link layer between *BS* and *Mobile Users*
+** Area, channels and concurrent calls handling
+   - Area of hex = 1.5√3 R^2
+** Mobility
+   - *Home network*: permanent "home" of mobile
+   - *Permanent address*: can always be used to reach mobile
+   - *Home agent*: entity that performs mobility functions on behalf of mobile
+   - *Visited network*: network in which the mobile currently resides
+   - *Care-of-address*: address in visited network
+   - *Foreign agent*: entity in visited network the performs mobility functions of behalf of mobile
+   - *Correspondent*: entity that wants to connect to user
+*** Indirect routing (inefficient)
+    - Use home agent to find out the location of where the we are on the visited network
+    - Further route the packets via home network
+    - Scenario of moving:
+      - Register with a foreign agent
+      - Foreign agent registers with home agent
+      - Home agent updates care-of-address
+      - Packets forwarded to mobile with new care-of-address (*triangle routing problem*, always needs to go through home agent)
+*** Direct routing
+    - In here the correspondent first learns the care-of-address from the home agent and forwards packets directly to that address
+    - If the foreign agent (FA) changes the previous fa arranges to have the data forwarded (it came late, before home agent knew about the change)
+
 * Exam papers sample questions
 ** Questions
    - Telecoms (3G/LTE)
@@ -401,14 +430,71 @@
                192.228.17.161 to 192.228.17.190
    #+end_verse
 ** Answers to question
+*** 1
+    - Propagation delay: length of the wire, speed of light, *constant*
+    - Transmission delay: speed of the link, packet length (L) / link bandwidth (R). Example 5 000k bits / 1 000k bit/s = 5 s, *constant*
+    - Processing delay: processing of the node itself, *constant*
+    - Queuing delay: varies depending on the congestion, *variable*
+*** 2
+    - It’s a point to point multi service in which data is transmitted from a single source entity to multiple recipents. Brings improved performance thanks to higher and more flexible LTE bit rates, single frequency network operations.
+    - Are a significant element in todays services as in “Where am I” but combined with determining points of interest, ie restaurants, shopping or finding a route.
+    - Single layer beamforming uses a directional beam to increase the throughput between the UE and eNode B. As the name suggests, dual layer beamforming uses two transport blocks of spatial multiplexing with beam forming. This results in higher throughput over a large distance between the UE and eNode B.
+*** 3 is ok, simple calc
+*** 4
+    - HLR is like edge router in a home network. Say you are with Three, then your Home Location Register is Three
+    - VLR is like and edge router in a foreign network. Visited Location Register is the visited network
+*** 5
+    - Yes they can, they can use the same IP because the foreign agent can work in the exact same way as a NAT and have inner mappings to the connected UEs
+*** 6
+    - Each layer passes on information with its own distinct protocol and therefore each layer needs to "pack" data in its own way, so that upon arrival it can be unpacked. This is why de-encapsulation and encapsulation exist
+*** 7
+    #+BEGIN_VERSE
+    196.208.10.0
+    Class C so first 3 octets are the mask
+    We need six subnets so that is 3 bits (2^3 = 8, two spare)
+
+    I)
+    So the subnet mask is: 11111111.11111111.11111111.11100000 = 255.255.255.224
+
+    II + III)
+
+    subnet 0
+    196.208.10.(000|00001) to 196.208.10.(000|11110)
+    196.208.10.1 to 196.208.10.30
+
+    subnet 1
+    196.208.10.(001|00001) to 196.208.10.(001|11110)
+    196.208.10.33 to 196.208.10.62
+
+    subnet 2
+    196.208.10.(010|00001) to 196.208.10.(010|11110)
+    196.208.10.65 to 196.208.10.94
+
+    subnet 3
+    196.208.10.(011|00001) to 196.208.10.(011|11110)
+    196.208.10.97 to 196.208.10.126
+
+    subnet 4
+    196.208.10.(100|00001) to 196.208.10.(100|11110)
+    196.208.10.129 to 196.208.10.158
+
+    subnet 5
+    196.208.10.(101|00001) to 196.208.10.(101|11110)
+    196.208.10.161 to 196.208.10.190
+    #+END_VERSE
 *** 8, IPv4 vs IPv6
     - No fragmentation
     - Increased security
-    - Labeling
+    - Header encryption (QoS)
+    - Labeling fields (not implemented as of yet, but may prove useful in the future) (QoS)
     - 32 bits vs 128 bits length
     - No fixed header length
     - There will be flag day, one day to convert from v4 to v6
 *** 9, done before
+    - Discovery
+    - Offer
+    - Request
+    - ACK
 *** 10
     - Variations in delay, aka fluctuations
 *** 11
@@ -416,16 +502,17 @@
     - Delay the playout time and use a buffer to minimise jitter
 *** 12
     - 6
-    - HELLO
-    - MAIL
-    - RCPT
-    - DATA
-    - BODY
+    - HELLO - sign on
+    - MAIL - from who
+    - RCPT - to who
+    - DATA - inform that data will be coming next
+    - body - the actual body of the message
     - QUIT
 *** 13
     - CIDR (class inter-domain routing)
     - It is used if the standard classes don't fit the use case, either too small or too big
     - Then we use CIDR to create subnets as we see fit
+    - Saves IP addresses
 *** 14
     - Reliability and expand
 *** 15, done before
@@ -434,6 +521,14 @@
 *** 17
     - double check the answer here
 *** 18
+    1. A user types in www.google.ie in his browser and thus requests a TCP connection with the server via a HTTP GET request.
+    2. TCP connection is established with the server usually over port 80, or 443 for SSL (DNS is skipped in this explanation)
+    3. The server responds with an index.html file and transmits it back over TCP using the application layer’s HTTP message.
+    4. The client receives the index.html file, finds out that it needs more objects (images,fonts, js files etc.)
+    5. The client makes more GET requests for the needed objects
+    6. Server responds with the remaining objects
+    7. The client’s webbrowser can then render the full page
+    8. Client closes the TCP connection with the server (or the server does it after a timeout)
 *** 19
     - RTP uses timestamping for its own stream
     - NTP is used to synchronize with the global time (wall clock)
@@ -447,8 +542,22 @@
 *** 22
     - Only in TCP
     - TCP probes the network, listens for packetloss
+    - "Too many sources sending too much data too fast for network to handle"
+    - Poor congestion control can cause: lost packets and long delays
+**** TCP Additive Increase Multiplicative Decrease (AIMD)
+     - Sender increases transmission rate (window size), probing for usable bandwidth, until loss occurs
+     - Increases ~cwnd~ (congestion window) by 1 MSS (max segment size) every RTT until a loss occurs, then it cuts ~cwnd~ by half and starts over again
+     - Saw tooth like behaviour
+**** TCP Slow Start
+     - Start with ~cwnd~ set to 1 MSS
+     - Increase the window size exponentially, until a loss occurs (indicated by 3 duplicate ACKs)
+     - Then proceed with linear increase
 *** 23
-    - Mux, Demux, easy
+    #+BEGIN_VERSE
+    Multiplexing (mux) is a process that occurs within the transport layer after the Application Layer passes a message down to the transport layer. The application (process) uses a socket (with a port number) to transmit a message. Both the transmitting and receiving processes have an IP address and a port number. The transport layer adds headers that contain the source port number, source IP address, destination port number and destination IP address; the four values are known as the 4-tuple. The 4-tuple is used to uniquely identify each of the packets that get transmitted between hosts. This kind of technique is crucial for the application layer to correctly identify to which application the packets need to go to and from which they came from.
+
+    De-multiplexing (demux) is a reverse process of multiplexing. During demux the transport layer “unpacks” the 4-tuple and passes the message to the correct socket and thus to the right application.
+    #+END_VERSE
 *** 24
     - Multihoming, multistreaming
 *** 25
