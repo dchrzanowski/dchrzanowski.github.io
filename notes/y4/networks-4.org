@@ -530,8 +530,8 @@
     7. The client’s webbrowser can then render the full page
     8. Client closes the TCP connection with the server (or the server does it after a timeout)
 *** 19
-    - RTP uses timestamping for its own stream
-    - NTP is used to synchronize with the global time (wall clock)
+    - RTP uses timestamping for its own stream, absolute value of the stream
+    - Users use RTCP that utilizes NTP timestamping to synchronize with the global time (wall clock)
 *** 20
     - You can differentiate it by SSRC (different source IPs)
 *** 21
