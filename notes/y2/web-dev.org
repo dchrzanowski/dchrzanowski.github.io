@@ -37,7 +37,7 @@
    - CDATA sections
      - Are sections in which the parser ignores the markup characters
      - E.g.
-       #+BEGIN_SRC xml
+       #+BEGIN_SRC sgml
        <![CDATA[
        *p = &q;
        b = (i <= 3);
@@ -69,7 +69,7 @@
    - ~(news|film|sport)~ means -> news or film or sport
    - ~#PCDATA~ means a character sequence, basically string content
    - ~<!ELEMENT para (#PCDATA | emph)*>~ is a special declaration that allows a mixture of text and child elements in any order
-     #+BEGIN_SRC xml
+     #+BEGIN_SRC sgml
 <?xml version="1.0" standalone="yes"?>
 <!DOCTYPE note [
 <!ELEMENT note (to,from,heading,body)>
@@ -89,7 +89,7 @@
 
 ** Declaring entities
    - ~ENTITY~ ~which~ ~"content"~
-     #+BEGIN_SRC xml
+     #+BEGIN_SRC sgml
 <!DOCTYPE note [
 <!ENTITY nbsp "&#xA0;">
 <!ENTITY writer "Writer: Donald Duck.">
@@ -117,7 +117,7 @@
    - The mandatory profit attribute has an enumeration of yes and no
    - The mandatory location attribute is text
    - The standalone attribute in the XML when set to *no* implies an external DTD file
-     #+BEGIN_SRC xml
+     #+BEGIN_SRC sgml
    <?xml version="1.0" standalone="no"?>
    <!DOCTYPE phones SYSTEM "phones.dtd">
    <phones>
@@ -161,7 +161,7 @@
 
 ** Example
    - DTD for the sample input
-     #+BEGIN_SRC xml
+     #+BEGIN_SRC sgml
  <!ELEMENT people (person)*>
  <!ELEMENT person (name,age,sex,address)>
  <!ELEMENT name (#PCDATA)>
@@ -170,7 +170,7 @@
  <!ELEMENT address (#PCDATA)>
      #+END_SRC
      - Sample xml input
-       #+BEGIN_SRC xml
+       #+BEGIN_SRC sgml
      <?xml version="1.0" standalone="no"?>
      <?xml-stylesheet type="text/xsl" href="people.xsl"?>
      <!DOCTYPE people SYSTEM "people.dtd">
@@ -190,7 +190,7 @@
      </people>
        #+END_SRC
      - Sample xsl input
-       #+BEGIN_SRC xml
+       #+BEGIN_SRC sgml
      <?xml version="1.0"?>
      <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
        <xsl:template match="/">
@@ -216,7 +216,7 @@
      </xsl:stylesheet>
        #+END_SRC
 ** Another XSL example
-   #+BEGIN_SRC xml
+   #+BEGIN_SRC sgml
 <?xml version="1.0" standalone="no"?>
 <?xml-stylesheet type="text/xsl" href="cars.xsl"?>
 <!DOCTYPE cars SYSTEM "cars.dtd">
@@ -247,7 +247,7 @@
   </car>
 </cars>
    #+END_SRC
-   #+BEGIN_SRC xml
+   #+BEGIN_SRC sgml
 <?xml version="1.0"?>
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
   <xsl:template match="/">
@@ -344,7 +344,7 @@
   [[file:images/Global vs Local types definitions/screenshot_2018-05-07_12-43-16.png]]
 
 * XSD Example
-  #+BEGIN_SRC xml
+  #+BEGIN_SRC sgml
 <?xml version="1.0" encoding="iso-8859-1"?>
 <cars xmlns="http://www.cars.com"
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -370,7 +370,7 @@
 </cars>
   #+END_SRC
   - Example xsd schema
-    #+BEGIN_SRC xml
+    #+BEGIN_SRC sgml
 <?xml version="1.0"?>
 <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
             targetNamespace="http://www.cars.com"
@@ -444,7 +444,7 @@
 
 * XSD Example with complex types, simple types and attribute definitions
   - XML
-  #+BEGIN_SRC xml
+  #+BEGIN_SRC sgml
 <?xml version="1.0"?>
 <student xmlns="http://www.student.com"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -470,7 +470,7 @@
 </student>
   #+END_SRC
   - XSD
-  #+BEGIN_SRC xml
+  #+BEGIN_SRC sgml
 <?xml version="1.0"?>
 <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
             targetNamespace="http://www.student.com"
