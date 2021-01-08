@@ -30,6 +30,7 @@
 
 [[file:resources/websockets/websockets.org][WebSockets]]
 
+[[file:resources/designNcss/designNcss.org][Design & CSS]]
 
 #+BEGIN_EXPORT html
 <script src="assets/jquery-3.3.1.min.js"></script>

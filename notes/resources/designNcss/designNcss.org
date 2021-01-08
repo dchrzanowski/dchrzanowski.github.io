@@ -1,0 +1,376 @@
+#+TITLE: Design & CSS
+#+DATE: [2020-07-15 Wed 15:01]
+#+AUTHOR: Damian Chrzanowski
+#+EMAIL: pjdamian.chrzanowski@gmail.com
+#+OPTIONS: H:2 toc:2
+#+HTML_HEAD: <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="../../assets/org.css"/>
+#+HTML_HEAD: <link rel="icon" href="../../assets/favicon.ico">
+
+[[file:../../index.org][Home Page]]
+
+* Good design has
+** Musts:
+*** Color
+    - Don't overuse
+    - Use only a few and be consistent
+*** Contrast
+*** White space
+*** Scale
+*** Visual Hierarchy
+*** Typography
+*** Proximity
+** No visual clutter
+** Theme + Color Splash
+** Pick graphics
+** Feedback
+   - One feedback is no feedback!
+* Basics of design
+** Emotion
+   - Timeless
+   - Not bound to languages, translates across to anyone
+** Communicate visually
+** Plan
+   - Name of the Project
+   - Purpose: what are we trying to communicate?
+   - Audience: who are we communicating to?
+** Mood board
+   - Collage of inspirations
+   - Potential inspirations:
+     - Art
+     - Nature
+     - Web pages
+     - Pinterest
+     - Anything that clicks or is associated
+** Practice proximity; Layouts
+   - Make different versions of it, especially if indecisive
+   - Take elements that go together and group them
+   - *Embrace negative space*, utilize empty space to create focus areas
+** Alignment
+   - Do not float things around
+   - *Anchor* things to each other, like text + image or text + graphic
+   - Keep consistent
+   - Use grids
+** Fonts
+*** General
+    - Does this complement the purpose of the design?
+    - What's the message of the design? Match a font to it.
+    - Make cheat sheets of fonts to go back to that match a specific design
+    - Font types:
+      - *Serif*: with little feet
+      - *Sans*: No feet, looks clean
+      - *Display*: Headlines, use in moderation
+*** Opposites attract
+    - Mix Sans & Serif, Bold & Light to create contrasts
+    - Make sure the fonts have the same "message"
+    - Preferably use the same font family
+    - Try:
+      - Expressive vs Neutral
+      - Tall vs Short
+      - Serif vs Sans
+** Make it Pop!
+   - Grab attention via focal points
+   - Need contrast
+     - Dark vs Light
+     - Big vs Small
+     - Bold vs Fine
+   - *Remember*: When everything stands out, nothing stands out!
+** Colors
+*** General
+    - Understand meaning behind color
+    - Pick a hero color for the design
+      - Find complementary colors to match the hero color
+    - *Color wheel*:
+      - Analogous: next to each other
+      - Complementary: opposite (i.e. contrast)
+      - Split complementary: is a narrow triangle
+      - Triadic: is a triangle
+*** Some meaning behind colors
+    - Red + Orange: Attract attention + engage in activity
+    - Blue + Green: Calming, quiet spaces, trust
+    - Warm colors: Energize
+    - Cool colors: Calm
+    - Yellow: Warning
+    - Red: Excitement + hunger
+    - Blue: Safety + security
+*** Tints & Shades
+    - Broaden your pallet with tints and shades
+    - Do not worry about creating subtle tints and shades from the theme colors
+** Photos
+   - Can communicate and idea in an instant
+   - Right photo can transform the design
+   - Avoid cheesy cliche:
+     - Relevant but unique
+   - Scale to a focal point:
+     - Additionally crop to remove distractions
+   - Add contrast to your text and look for negative space
+** Branding
+*** General
+    - More than a logo
+    - A promise to customers
+*** Purpose needs clear description
+    - Long thinking
+    - Impact you want to have on the world
+    - Why does the brand exist?
+      - Example: Tesla wants to transition cars towards green energy
+    - Values: distinct and actionable
+*** Tribe
+    - Who are you talking to?
+    - What do they need?
+    - What is the paypoint?
+    - "Find your niche and you'll find your tribe"
+*** Narrow down focus
+    - Do not try to please everyone
+    - Demographics
+    - What are their desires
+    - What makes them tick?
+    - *Really* get to know your customer
+*** Personality
+    - People are attracted to people alike, same goes for brand attraction
+    - Its free!!!
+    - Scale:
+      - Playful ⇆ Serious
+      - Youthful ⇆ Mature
+      - Mass ⇆ Elite
+    - Explore brand archetypes by [[https://medium.com/ebaqdesign/brand-archetypes-the-ultimate-guide-with-48-examples-44b39eb41c8f][Carl Jung]]
+      #+begin_verse
+      [[file:images/Basics_of_design/2020-08-13_13-44-08_screenshot.png]]
+      #+end_verse
+*** Name
+    - Meaningful, future proof, available
+    - Get a group involved to brain storm
+    - Make sure that the brand name does not have weird translations (native or foreign)
+    - Name buckets:
+      - Descriptive: describe what you do, e.g. "Whole Foods"
+      - Emotive: feeling or experience, e.g. "Amazon"
+      - Inventive: weird and wonderful, e.g. "Google"
+*** Logo
+    - One of the most important things in a brand
+    - Keep it simple, stupid! (KISS)
+    - Clarity
+    - Simplicity
+    - Symbol + Word Mark: one or the other, or both!
+*** Font
+    - Who are you?
+    - How you articulate that?
+    - Typography needs to match the era and business goals
+*** Tone
+    - Find a person that mimics your brand and learn off them
+    - Mind your tone
+    - "Not what you say, its how you say it!"
+*** General toolkit
+    - Colors/Theme
+    - Typography
+    - Logo
+    - Imagery style, graphics style
+*** Evolve
+    - Evolve with your people!
+    - Evolve to stay relevant!
+    - Evolve with technology!
+* CSS Grid
+** Setup
+   - HTML setup
+   #+begin_src html
+     <div class="parent">
+         <div class="child1">
+           Box 1
+         </div>
+         <div class="child2">
+           Box 2
+         </div>
+         <div class="child3">
+           Box 3
+         </div>
+     </div>
+   #+end_src
+   - Parent css
+   #+begin_src css
+     .parent {
+         display: grid;
+         grid-template-columns: 33% 33% 33%;
+     }
+   #+end_src
+   - Keep in mind that you can fractions as css units, e.g.: ~grid-template-columns: 1fr 2fr 1fr~ will give 25% 50% 25%
+   - You can also add rows if needed: ~grid-template-rows~
+** Placing boxes in specific grid places
+   - Same applies for columns and rows
+*** Method 1
+    #+begin_src css
+      .child1 {
+          grid-column-start: 1; /* Starts at 1, not 0 */
+          grid-column-end: 3;
+      }
+    #+end_src
+*** Method 2 (shorthand)
+    #+begin_src css
+      .child1 {
+          grid-column: 1/3;
+          grid-row: 1/2;
+      }
+    #+end_src
+*** Method 3 (full layout description)
+    - This needs to placed in the parent
+    - Now the boxes will be placed as per ~grid-template-areas~. Please note that a ~.~ leaves an empty space.
+    #+begin_src css
+      .parent {
+          height: 100vh;
+          display: grid;
+          grid-template-columns: 33% 33% 33%;
+          grid-template-columns: repeat(3, 33%); /* Alternative */
+          grid-template-columns: repeat(auto-fill, 300px); /* Alternative, let css grid figure out how many columns it can fit */
+          grid-template-columns: repeat(auto-fit, 300px); /* Alternative, let css grid figure out how many columns it can fit but remove empty ones */
+          grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Alternative, provide automatic responsive design */
+          grid-template-rows: 1fr 1fr;
+          grid-template-areas:
+              "box1 box2 box2"
+              "box3 box3 .";
+      }
+
+      .box1 {
+          grid-area: box1;
+      }
+
+      .box2 {
+          grid-area: box2;
+      }
+
+      .box3 {
+          grid-area: box3;
+      }
+    #+end_src
+** Justifying
+   - Use ~justify-items~ to place the children in the grid as desired
+   #+begin_src css
+     .parent {
+         justify-items: start;
+         justify-items: end;
+         justify-items: stretch;
+
+         /* Will place child in the center of the grid fraction */
+         justify-items: center;
+         align-items: center;
+     }
+   #+end_src
+   - Use ~align-self~ to place specific children in the grid as desired vertically
+   #+begin_src css
+     .box1 {
+         align-self: center;
+     }
+   #+end_src
+** Place a Flexbox on the children to further get what is desired from the individual boxes.
+* CSS Flexbox
+  - By default flex places things horizontally
+** Setup
+   - HTML setup
+   #+begin_src html
+     <div class="parent">
+         <div class="child1">
+           Box 1
+         </div>
+         <div class="child2">
+           Box 2
+         </div>
+         <div class="child3">
+           Box 3
+         </div>
+     </div>
+   #+end_src
+   - Parent css
+   #+begin_src css
+     /* RESET */
+     * {
+         box-sizing: border-box;
+         margin: 0;
+         padding: 0;
+     }
+
+     .parent {
+         display: flex;
+         /* CHOOSE AN AXIS */
+         flex-direction: column;
+         /* flex-direction: row; */
+     }
+   #+end_src
+** Justifying content
+   #+begin_src css
+     .parent {
+         /* CHOOSE justify-content type */
+         justify-content: center;
+     }
+   #+end_src
+** Aligning items
+   #+begin_src css
+     .parent {
+         /* CHOOSE one  */
+         /* align-items: flex-end; */
+         align-items: center;
+     }
+   #+end_src
+** Wrapping
+   #+begin_src css
+     .parent {
+         /* Usually use something like this  */
+         flex-wrap: wrap;
+         align-content: flex-start;
+         /* OR */
+         flex-flow: column wrap;
+     }
+   #+end_src
+** Aligning text in separate containers
+   #+begin_src css
+     .parent {
+         align-items: baseline;
+     }
+   #+end_src
+** Ordering children
+   #+begin_src css
+     .child3 {
+         /* The default setting will show first*/
+         order: 0;
+     }
+
+     .child1 {
+         /* will show second */
+         order: 1;
+     }
+
+     .child2 {
+         /* will show third */
+         order: 2;
+     }
+   #+end_src
+** Expanding/shrinking children to fill parent container
+   #+begin_src css
+     .child1 {
+         /* works like ordering */
+         /* growing */
+         flex-grow: 1;
+         /* shrinking */
+         flex-shrink: 1;
+         /* combining, shorthand of grow, shrink and basis */
+         flex: 0 1 auto;
+     }
+   #+end_src
+** Aligning individual children
+   #+begin_src css
+     .child1 {
+         align-self: center;
+     }
+   #+end_src
+* Common Design Techniques
+** Nearly white background and white containers, works similarly in dark mode
+** White works well with pretty much all primary colors
+** Photographs, blend them in well
+** Illustrations
+** Bold type, especially headlines
+** Mix serif and sans
+   - Usually serif for headlines
+** Watermarks
+** Fill UI with small details
+   - Like some vertical text or a button
+
+* Remove heading but leave html export
+  #+BEGIN_EXPORT html
+  <script src="../../assets/jquery-3.3.1.min.js"></script>
+  <script src="../../assets/notes.js"></script>
+  #+END_EXPORT

@@ -1,0 +1,1017 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2020-08-20 Thu 10:32 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Design &amp; CSS</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="Damian Chrzanowski" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="../../assets/org.css"/>
+<link rel="icon" href="../../assets/favicon.ico">
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2020 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Design &amp; CSS</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org0d535d7">1. Good design has</a>
+<ul>
+<li><a href="#org5f87ffa">1.1. Musts:</a></li>
+<li><a href="#org9983ddb">1.2. No visual clutter</a></li>
+<li><a href="#orgfd1dff6">1.3. Theme + Color Splash</a></li>
+<li><a href="#orgaa3c12c">1.4. Pick graphics</a></li>
+<li><a href="#org04825f7">1.5. Feedback</a></li>
+</ul>
+</li>
+<li><a href="#org40aef4b">2. Basics of design</a>
+<ul>
+<li><a href="#orgf92fbcb">2.1. Emotion</a></li>
+<li><a href="#orgaa71ac1">2.2. Communicate visually</a></li>
+<li><a href="#org0120fa6">2.3. Plan</a></li>
+<li><a href="#org6c7cab3">2.4. Mood board</a></li>
+<li><a href="#orgf84666c">2.5. Practice proximity; Layouts</a></li>
+<li><a href="#orgaa2c171">2.6. Alignment</a></li>
+<li><a href="#org8e60ac4">2.7. Fonts</a></li>
+<li><a href="#org3f7f652">2.8. Make it Pop!</a></li>
+<li><a href="#orgf04cfd6">2.9. Colors</a></li>
+<li><a href="#orgf9745ec">2.10. Photos</a></li>
+<li><a href="#orgb3e34dc">2.11. Branding</a></li>
+</ul>
+</li>
+<li><a href="#orgd958628">3. CSS Grid</a>
+<ul>
+<li><a href="#org5ee1d0e">3.1. Setup</a></li>
+<li><a href="#org17bdfd9">3.2. Placing boxes in specific grid places</a></li>
+<li><a href="#org561316b">3.3. Justifying</a></li>
+<li><a href="#org9cd40cb">3.4. Place a Flexbox on the children to further get what is desired from the individual boxes.</a></li>
+</ul>
+</li>
+<li><a href="#org9328adf">4. CSS Flexbox</a>
+<ul>
+<li><a href="#org2815500">4.1. Setup</a></li>
+<li><a href="#org40129ac">4.2. Justifying content</a></li>
+<li><a href="#org8e97b5f">4.3. Aligning items</a></li>
+<li><a href="#orgb82d86c">4.4. Wrapping</a></li>
+<li><a href="#org6d20e6a">4.5. Aligning text in separate containers</a></li>
+<li><a href="#org401e38e">4.6. Ordering children</a></li>
+<li><a href="#org753d561">4.7. Expanding/shrinking children to fill parent container</a></li>
+<li><a href="#org323fbd1">4.8. Aligning individual children</a></li>
+</ul>
+</li>
+<li><a href="#orgd041c69">5. Common Design Techniques</a>
+<ul>
+<li><a href="#orga8f265a">5.1. Nearly white background and white containers, works similarly in dark mode</a></li>
+<li><a href="#org363c277">5.2. White works well with pretty much all primary colors</a></li>
+<li><a href="#org0d7d4ac">5.3. Photographs, blend them in well</a></li>
+<li><a href="#orgbe946df">5.4. Illustrations</a></li>
+<li><a href="#org4c951d8">5.5. Bold type, especially headlines</a></li>
+<li><a href="#org056caa8">5.6. Mix serif and sans</a></li>
+<li><a href="#orgb6e574d">5.7. Watermarks</a></li>
+<li><a href="#orge1d2f1f">5.8. Fill UI with small details</a></li>
+</ul>
+</li>
+<li><a href="#orgfcdc50b">6. Remove heading but leave html export</a></li>
+</ul>
+</div>
+</div>
+<p>
+<a href="../../index.html">Home Page</a>
+</p>
+
+<div id="outline-container-org0d535d7" class="outline-2">
+<h2 id="org0d535d7"><span class="section-number-2">1</span> Good design has</h2>
+<div class="outline-text-2" id="text-1">
+</div>
+<div id="outline-container-org5f87ffa" class="outline-3">
+<h3 id="org5f87ffa"><span class="section-number-3">1.1</span> Musts:</h3>
+<div class="outline-text-3" id="text-1-1">
+</div>
+<ol class="org-ol">
+<li><a id="org7dc27eb"></a>Color<br />
+<div class="outline-text-4" id="text-1-1-1">
+<ul class="org-ul">
+<li>Don't overuse</li>
+<li>Use only a few and be consistent</li>
+</ul>
+</div>
+</li>
+<li><a id="org6f46642"></a>Contrast<br /></li>
+<li><a id="orgb9e6b22"></a>White space<br /></li>
+<li><a id="org4517fe5"></a>Scale<br /></li>
+<li><a id="org1f70d09"></a>Visual Hierarchy<br /></li>
+<li><a id="org2f69bd8"></a>Typography<br /></li>
+</ol>
+</div>
+<div id="outline-container-org9983ddb" class="outline-3">
+<h3 id="org9983ddb"><span class="section-number-3">1.2</span> No visual clutter</h3>
+</div>
+<div id="outline-container-orgfd1dff6" class="outline-3">
+<h3 id="orgfd1dff6"><span class="section-number-3">1.3</span> Theme + Color Splash</h3>
+</div>
+<div id="outline-container-orgaa3c12c" class="outline-3">
+<h3 id="orgaa3c12c"><span class="section-number-3">1.4</span> Pick graphics</h3>
+</div>
+<div id="outline-container-org04825f7" class="outline-3">
+<h3 id="org04825f7"><span class="section-number-3">1.5</span> Feedback</h3>
+<div class="outline-text-3" id="text-1-5">
+<ul class="org-ul">
+<li>One feedback is no feedback!</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-org40aef4b" class="outline-2">
+<h2 id="org40aef4b"><span class="section-number-2">2</span> Basics of design</h2>
+<div class="outline-text-2" id="text-2">
+</div>
+<div id="outline-container-orgf92fbcb" class="outline-3">
+<h3 id="orgf92fbcb"><span class="section-number-3">2.1</span> Emotion</h3>
+<div class="outline-text-3" id="text-2-1">
+<ul class="org-ul">
+<li>Timeless</li>
+<li>Not bound to languages, translates across to anyone</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgaa71ac1" class="outline-3">
+<h3 id="orgaa71ac1"><span class="section-number-3">2.2</span> Communicate visually</h3>
+</div>
+<div id="outline-container-org0120fa6" class="outline-3">
+<h3 id="org0120fa6"><span class="section-number-3">2.3</span> Plan</h3>
+<div class="outline-text-3" id="text-2-3">
+<ul class="org-ul">
+<li>Name of the Project</li>
+<li>Purpose: what are we trying to communicate?</li>
+<li>Audience: who are we communicating to?</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org6c7cab3" class="outline-3">
+<h3 id="org6c7cab3"><span class="section-number-3">2.4</span> Mood board</h3>
+<div class="outline-text-3" id="text-2-4">
+<ul class="org-ul">
+<li>Collage of inspirations</li>
+<li>Potential inspirations:
+<ul class="org-ul">
+<li>Art</li>
+<li>Nature</li>
+<li>Web pages</li>
+<li>Pinterest</li>
+<li>Anything that clicks or is associated</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgf84666c" class="outline-3">
+<h3 id="orgf84666c"><span class="section-number-3">2.5</span> Practice proximity; Layouts</h3>
+<div class="outline-text-3" id="text-2-5">
+<ul class="org-ul">
+<li>Make different versions of it, especially if indecisive</li>
+<li>Take elements that go together and group them</li>
+<li><b>Embrace negative space</b>, utilize empty space to create focus areas</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgaa2c171" class="outline-3">
+<h3 id="orgaa2c171"><span class="section-number-3">2.6</span> Alignment</h3>
+<div class="outline-text-3" id="text-2-6">
+<ul class="org-ul">
+<li>Do not float things around</li>
+<li><b>Anchor</b> things to each other, like text + image or text + graphic</li>
+<li>Keep consistent</li>
+<li>Use grids</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org8e60ac4" class="outline-3">
+<h3 id="org8e60ac4"><span class="section-number-3">2.7</span> Fonts</h3>
+<div class="outline-text-3" id="text-2-7">
+</div>
+<ol class="org-ol">
+<li><a id="org3968c4f"></a>General<br />
+<div class="outline-text-4" id="text-2-7-1">
+<ul class="org-ul">
+<li>Does this complement the purpose of the design?</li>
+<li>What's the message of the design? Match a font to it.</li>
+<li>Make cheat sheets of fonts to go back to that match a specific design</li>
+<li>Font types:
+<ul class="org-ul">
+<li><b>Serif</b>: with little feet</li>
+<li><b>Sans</b>: No feet, looks clean</li>
+<li><b>Display</b>: Headlines, use in moderation</li>
+</ul></li>
+</ul>
+</div>
+</li>
+<li><a id="org1cac0ec"></a>Opposites attract<br />
+<div class="outline-text-4" id="text-2-7-2">
+<ul class="org-ul">
+<li>Mix Sans &amp; Serif, Bold &amp; Light to create contrasts</li>
+<li>Make sure the fonts have the same "message"</li>
+<li>Preferably use the same font family</li>
+<li>Try:
+<ul class="org-ul">
+<li>Expressive vs Neutral</li>
+<li>Tall vs Short</li>
+<li>Serif vs Sans</li>
+</ul></li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+<div id="outline-container-org3f7f652" class="outline-3">
+<h3 id="org3f7f652"><span class="section-number-3">2.8</span> Make it Pop!</h3>
+<div class="outline-text-3" id="text-2-8">
+<ul class="org-ul">
+<li>Grab attention via focal points</li>
+<li>Need contrast
+<ul class="org-ul">
+<li>Dark vs Light</li>
+<li>Big vs Small</li>
+<li>Bold vs Fine</li>
+</ul></li>
+<li><b>Remember</b>: When everything stands out, nothing stands out!</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgf04cfd6" class="outline-3">
+<h3 id="orgf04cfd6"><span class="section-number-3">2.9</span> Colors</h3>
+<div class="outline-text-3" id="text-2-9">
+</div>
+<ol class="org-ol">
+<li><a id="orgc9f7f93"></a>General<br />
+<div class="outline-text-4" id="text-2-9-1">
+<ul class="org-ul">
+<li>Understand meaning behind color</li>
+<li>Pick a hero color for the design
+<ul class="org-ul">
+<li>Find complementary colors to match the hero color</li>
+</ul></li>
+<li><b>Color wheel</b>:
+<ul class="org-ul">
+<li>Analogous: next to each other</li>
+<li>Complementary: opposite (i.e. contrast)</li>
+<li>Split complementary: is a narrow triangle</li>
+<li>Triadic: is a triangle</li>
+</ul></li>
+</ul>
+</div>
+</li>
+<li><a id="org379afe0"></a>Some meaning behind colors<br />
+<div class="outline-text-4" id="text-2-9-2">
+<ul class="org-ul">
+<li>Red + Orange: Attract attention + engage in activity</li>
+<li>Blue + Green: Calming, quiet spaces, trust</li>
+<li>Warm colors: Energize</li>
+<li>Cool colors: Calm</li>
+<li>Yellow: Warning</li>
+<li>Red: Excitement + hunger</li>
+<li>Blue: Safety + security</li>
+</ul>
+</div>
+</li>
+<li><a id="org2d41c9d"></a>Tints &amp; Shades<br />
+<div class="outline-text-4" id="text-2-9-3">
+<ul class="org-ul">
+<li>Broaden your pallet with tints and shades</li>
+<li>Do not worry about creating subtle tints and shades from the theme colors</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+<div id="outline-container-orgf9745ec" class="outline-3">
+<h3 id="orgf9745ec"><span class="section-number-3">2.10</span> Photos</h3>
+<div class="outline-text-3" id="text-2-10">
+<ul class="org-ul">
+<li>Can communicate and idea in an instant</li>
+<li>Right photo can transform the design</li>
+<li>Avoid cheesy cliche:
+<ul class="org-ul">
+<li>Relevant but unique</li>
+</ul></li>
+<li>Scale to a focal point:
+<ul class="org-ul">
+<li>Additionally crop to remove distractions</li>
+</ul></li>
+<li>Add contrast to your text and look for negative space</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgb3e34dc" class="outline-3">
+<h3 id="orgb3e34dc"><span class="section-number-3">2.11</span> Branding</h3>
+<div class="outline-text-3" id="text-2-11">
+</div>
+<ol class="org-ol">
+<li><a id="org73a8fa3"></a>General<br />
+<div class="outline-text-4" id="text-2-11-1">
+<ul class="org-ul">
+<li>More than a logo</li>
+<li>A promise to customers</li>
+</ul>
+</div>
+</li>
+<li><a id="orgbbad1f7"></a>Purpose needs clear description<br />
+<div class="outline-text-4" id="text-2-11-2">
+<ul class="org-ul">
+<li>Long thinking</li>
+<li>Impact you want to have on the world</li>
+<li>Why does the brand exist?
+<ul class="org-ul">
+<li>Example: Tesla wants to transition cars towards green energy</li>
+</ul></li>
+<li>Values: distinct and actionable</li>
+</ul>
+</div>
+</li>
+<li><a id="org8d06373"></a>Tribe<br />
+<div class="outline-text-4" id="text-2-11-3">
+<ul class="org-ul">
+<li>Who are you talking to?</li>
+<li>What do they need?</li>
+<li>What is the paypoint?</li>
+<li>"Find your niche and you'll find your tribe"</li>
+</ul>
+</div>
+</li>
+<li><a id="orgbbaaec2"></a>Narrow down focus<br />
+<div class="outline-text-4" id="text-2-11-4">
+<ul class="org-ul">
+<li>Do not try to please everyone</li>
+<li>Demographics</li>
+<li>What are their desires</li>
+<li>What makes them tick?</li>
+<li><b>Really</b> get to know your customer</li>
+</ul>
+</div>
+</li>
+<li><a id="org942917b"></a>Personality<br />
+<div class="outline-text-4" id="text-2-11-5">
+<ul class="org-ul">
+<li>People are attracted to people alike, same goes for brand attraction</li>
+<li>Its free!!!</li>
+<li>Scale:
+<ul class="org-ul">
+<li>Playful ⇆ Serious</li>
+<li>Youthful ⇆ Mature</li>
+<li>Mass ⇆ Elite</li>
+</ul></li>
+<li><p>
+Explore brand archetypes by <a href="https://medium.com/ebaqdesign/brand-archetypes-the-ultimate-guide-with-48-examples-44b39eb41c8f">Carl Jung</a>
+</p>
+<p class="verse">
+<img src="images/Basics_of_design/2020-08-13_13-44-08_screenshot.png" alt="2020-08-13_13-44-08_screenshot.png" /><br />
+</p></li>
+</ul>
+</div>
+</li>
+<li><a id="org3a07297"></a>Name<br />
+<div class="outline-text-4" id="text-2-11-6">
+<ul class="org-ul">
+<li>Meaningful, future proof, available</li>
+<li>Get a group involved to brain storm</li>
+<li>Make sure that the brand name does not have weird translations (native or foreign)</li>
+<li>Name buckets:
+<ul class="org-ul">
+<li>Descriptive: describe what you do, e.g. "Whole Foods"</li>
+<li>Emotive: feeling or experience, e.g. "Amazon"</li>
+<li>Inventive: weird and wonderful, e.g. "Google"</li>
+</ul></li>
+</ul>
+</div>
+</li>
+<li><a id="orge5b4c1d"></a>Logo<br />
+<div class="outline-text-4" id="text-2-11-7">
+<ul class="org-ul">
+<li>One of the most important things in a brand</li>
+<li>Keep it simple, stupid! (KISS)</li>
+<li>Clarity</li>
+<li>Simplicity</li>
+<li>Symbol + Word Mark: one or the other, or both!</li>
+</ul>
+</div>
+</li>
+<li><a id="org83041b1"></a>Font<br />
+<div class="outline-text-4" id="text-2-11-8">
+<ul class="org-ul">
+<li>Who are you?</li>
+<li>How you articulate that?</li>
+<li>Typography needs to match the era and business goals</li>
+</ul>
+</div>
+</li>
+<li><a id="orgdece73b"></a>Tone<br />
+<div class="outline-text-4" id="text-2-11-9">
+<ul class="org-ul">
+<li>Find a person that mimics your brand and learn off them</li>
+<li>Mind your tone</li>
+<li>"Not what you say, its how you say it!"</li>
+</ul>
+</div>
+</li>
+<li><a id="org825cf9b"></a>General toolkit<br />
+<div class="outline-text-4" id="text-2-11-10">
+<ul class="org-ul">
+<li>Colors/Theme</li>
+<li>Typography</li>
+<li>Logo</li>
+<li>Imagery style, graphics style</li>
+</ul>
+</div>
+</li>
+<li><a id="org45403f6"></a>Evolve<br />
+<div class="outline-text-4" id="text-2-11-11">
+<ul class="org-ul">
+<li>Evolve with your people!</li>
+<li>Evolve to stay relevant!</li>
+<li>Evolve with technology!</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div id="outline-container-orgd958628" class="outline-2">
+<h2 id="orgd958628"><span class="section-number-2">3</span> CSS Grid</h2>
+<div class="outline-text-2" id="text-3">
+</div>
+<div id="outline-container-org5ee1d0e" class="outline-3">
+<h3 id="org5ee1d0e"><span class="section-number-3">3.1</span> Setup</h3>
+<div class="outline-text-3" id="text-3-1">
+<ul class="org-ul">
+<li>HTML setup</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-html">&lt;<span style="color: #c678dd;">div</span> <span style="color: #db5762;">class</span>=<span style="color: #98be65;">"parent"</span>&gt;
+    &lt;<span style="color: #c678dd;">div</span> <span style="color: #db5762;">class</span>=<span style="color: #98be65;">"child1"</span>&gt;
+      Box 1
+    &lt;/<span style="color: #c678dd;">div</span>&gt;
+    &lt;<span style="color: #c678dd;">div</span> <span style="color: #db5762;">class</span>=<span style="color: #98be65;">"child2"</span>&gt;
+      Box 2
+    &lt;/<span style="color: #c678dd;">div</span>&gt;
+    &lt;<span style="color: #c678dd;">div</span> <span style="color: #db5762;">class</span>=<span style="color: #98be65;">"child3"</span>&gt;
+      Box 3
+    &lt;/<span style="color: #c678dd;">div</span>&gt;
+&lt;/<span style="color: #c678dd;">div</span>&gt;
+</pre>
+</div>
+<ul class="org-ul">
+<li>Parent css</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-css"><span style="color: #51afef;">.parent </span><span style="color: #fff0f5;">{</span>
+    <span style="color: #98be65;">display</span>: grid;
+    <span style="color: #98be65;">grid-template-columns</span>: <span style="color: #da8548; font-weight: bold;">33</span>% <span style="color: #da8548; font-weight: bold;">33</span>% <span style="color: #da8548; font-weight: bold;">33</span>%;
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+<ul class="org-ul">
+<li>Keep in mind that you can fractions as css units, e.g.: <code>grid-template-columns: 1fr 2fr 1fr</code> will give 25% 50% 25%</li>
+<li>You can also add rows if needed: <code>grid-template-rows</code></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org17bdfd9" class="outline-3">
+<h3 id="org17bdfd9"><span class="section-number-3">3.2</span> Placing boxes in specific grid places</h3>
+<div class="outline-text-3" id="text-3-2">
+<ul class="org-ul">
+<li>Same applies for columns and rows</li>
+</ul>
+</div>
+<ol class="org-ol">
+<li><a id="orgc4693d1"></a>Method 1<br />
+<div class="outline-text-4" id="text-3-2-1">
+<div class="org-src-container">
+<pre class="src src-css"><span style="color: #51afef;">.child1 </span><span style="color: #fff0f5;">{</span>
+    <span style="color: #98be65;">grid-column-start</span>: <span style="color: #da8548; font-weight: bold;">1</span>; <span style="color: #5B6268;">/* </span><span style="color: #5B6268;">Starts at 1, not 0 </span><span style="color: #5B6268;">*/</span>
+    <span style="color: #98be65;">grid-column-end</span>: <span style="color: #da8548; font-weight: bold;">3</span>;
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+</div>
+</li>
+<li><a id="org26ab1ea"></a>Method 2 (shorthand)<br />
+<div class="outline-text-4" id="text-3-2-2">
+<div class="org-src-container">
+<pre class="src src-css"><span style="color: #51afef;">.child1 </span><span style="color: #fff0f5;">{</span>
+    <span style="color: #98be65;">grid-column</span>: <span style="color: #da8548; font-weight: bold;">1</span>/<span style="color: #da8548; font-weight: bold;">3</span>;
+    <span style="color: #98be65;">grid-row</span>: <span style="color: #da8548; font-weight: bold;">1</span>/<span style="color: #da8548; font-weight: bold;">2</span>;
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+</div>
+</li>
+<li><a id="org435cb06"></a>Method 3 (full layout description)<br />
+<div class="outline-text-4" id="text-3-2-3">
+<ul class="org-ul">
+<li>This needs to placed in the parent</li>
+<li>Now the boxes will be placed as per <code>grid-template-areas</code>. Please note that a <code>.</code> leaves an empty space.</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-css"><span style="color: #51afef;">.parent </span><span style="color: #fff0f5;">{</span>
+    <span style="color: #98be65;">height</span>: <span style="color: #da8548; font-weight: bold;">100vh</span>;
+    <span style="color: #98be65;">display</span>: grid;
+    <span style="color: #98be65;">grid-template-columns</span>: <span style="color: #da8548; font-weight: bold;">33</span>% <span style="color: #da8548; font-weight: bold;">33</span>% <span style="color: #da8548; font-weight: bold;">33</span>%;
+    <span style="color: #98be65;">grid-template-columns</span>: repeat<span style="color: #c678dd;">(</span><span style="color: #da8548; font-weight: bold;">3</span>, <span style="color: #da8548; font-weight: bold;">33</span>%<span style="color: #c678dd;">)</span>; <span style="color: #5B6268;">/* </span><span style="color: #5B6268;">Alternative </span><span style="color: #5B6268;">*/</span>
+    <span style="color: #98be65;">grid-template-columns</span>: repeat<span style="color: #c678dd;">(</span>auto-fill, <span style="color: #da8548; font-weight: bold;">300px</span><span style="color: #c678dd;">)</span>; <span style="color: #5B6268;">/* </span><span style="color: #5B6268;">Alternative, let css grid figure out how many columns it can fit </span><span style="color: #5B6268;">*/</span>
+    <span style="color: #98be65;">grid-template-columns</span>: repeat<span style="color: #c678dd;">(</span>auto-fit, <span style="color: #da8548; font-weight: bold;">300px</span><span style="color: #c678dd;">)</span>; <span style="color: #5B6268;">/* </span><span style="color: #5B6268;">Alternative, let css grid figure out how many columns it can fit but remove empty ones </span><span style="color: #5B6268;">*/</span>
+    <span style="color: #98be65;">grid-template-columns</span>: repeat<span style="color: #c678dd;">(</span>auto-fit, minmax<span style="color: #98be65;">(</span><span style="color: #da8548; font-weight: bold;">300px</span>, <span style="color: #da8548; font-weight: bold;">1fr</span><span style="color: #98be65;">)</span><span style="color: #c678dd;">)</span>; <span style="color: #5B6268;">/* </span><span style="color: #5B6268;">Alternative, provide automatic responsive design </span><span style="color: #5B6268;">*/</span>
+    <span style="color: #98be65;">grid-template-rows</span>: <span style="color: #da8548; font-weight: bold;">1fr</span> <span style="color: #da8548; font-weight: bold;">1fr</span>;
+    <span style="color: #98be65;">grid-template-areas</span>:
+        <span style="color: #98be65;">"box1 box2 box2"</span>
+        <span style="color: #98be65;">"box3 box3 ."</span>;
+<span style="color: #fff0f5;">}</span>
+
+<span style="color: #51afef;">.box1 </span><span style="color: #fff0f5;">{</span>
+    <span style="color: #98be65;">grid-area</span>: box1;
+<span style="color: #fff0f5;">}</span>
+
+<span style="color: #51afef;">.box2 </span><span style="color: #fff0f5;">{</span>
+    <span style="color: #98be65;">grid-area</span>: box2;
+<span style="color: #fff0f5;">}</span>
+
+<span style="color: #51afef;">.box3 </span><span style="color: #fff0f5;">{</span>
+    <span style="color: #98be65;">grid-area</span>: box3;
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+<div id="outline-container-org561316b" class="outline-3">
+<h3 id="org561316b"><span class="section-number-3">3.3</span> Justifying</h3>
+<div class="outline-text-3" id="text-3-3">
+<ul class="org-ul">
+<li>Use <code>justify-items</code> to place the children in the grid as desired</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-css"><span style="color: #51afef;">.parent </span><span style="color: #fff0f5;">{</span>
+    <span style="color: #98be65;">justify-items</span>: start;
+    <span style="color: #98be65;">justify-items</span>: end;
+    <span style="color: #98be65;">justify-items</span>: stretch;
+
+    <span style="color: #5B6268;">/* </span><span style="color: #5B6268;">Will place child in the center of the grid fraction </span><span style="color: #5B6268;">*/</span>
+    <span style="color: #98be65;">justify-items</span>: center;
+    <span style="color: #98be65;">align-items</span>: center;
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+<ul class="org-ul">
+<li>Use <code>align-self</code> to place specific children in the grid as desired vertically</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-css"><span style="color: #51afef;">.box1 </span><span style="color: #fff0f5;">{</span>
+    <span style="color: #98be65;">align-self</span>: center;
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org9cd40cb" class="outline-3">
+<h3 id="org9cd40cb"><span class="section-number-3">3.4</span> Place a Flexbox on the children to further get what is desired from the individual boxes.</h3>
+</div>
+</div>
+<div id="outline-container-org9328adf" class="outline-2">
+<h2 id="org9328adf"><span class="section-number-2">4</span> CSS Flexbox</h2>
+<div class="outline-text-2" id="text-4">
+<ul class="org-ul">
+<li>By default flex places things horizontally</li>
+</ul>
+</div>
+<div id="outline-container-org2815500" class="outline-3">
+<h3 id="org2815500"><span class="section-number-3">4.1</span> Setup</h3>
+<div class="outline-text-3" id="text-4-1">
+<ul class="org-ul">
+<li>HTML setup</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-html">&lt;<span style="color: #c678dd;">div</span> <span style="color: #db5762;">class</span>=<span style="color: #98be65;">"parent"</span>&gt;
+    &lt;<span style="color: #c678dd;">div</span> <span style="color: #db5762;">class</span>=<span style="color: #98be65;">"child1"</span>&gt;
+      Box 1
+    &lt;/<span style="color: #c678dd;">div</span>&gt;
+    &lt;<span style="color: #c678dd;">div</span> <span style="color: #db5762;">class</span>=<span style="color: #98be65;">"child2"</span>&gt;
+      Box 2
+    &lt;/<span style="color: #c678dd;">div</span>&gt;
+    &lt;<span style="color: #c678dd;">div</span> <span style="color: #db5762;">class</span>=<span style="color: #98be65;">"child3"</span>&gt;
+      Box 3
+    &lt;/<span style="color: #c678dd;">div</span>&gt;
+&lt;/<span style="color: #c678dd;">div</span>&gt;
+</pre>
+</div>
+<ul class="org-ul">
+<li>Parent css</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-css"><span style="color: #5B6268;">/* </span><span style="color: #5B6268;">RESET </span><span style="color: #5B6268;">*/</span>
+<span style="color: #51afef;">* </span><span style="color: #fff0f5;">{</span>
+    <span style="color: #98be65;">box-sizing</span>: border-box;
+    <span style="color: #98be65;">margin</span>: <span style="color: #da8548; font-weight: bold;">0</span>;
+    <span style="color: #98be65;">padding</span>: <span style="color: #da8548; font-weight: bold;">0</span>;
+<span style="color: #fff0f5;">}</span>
+
+<span style="color: #51afef;">.parent </span><span style="color: #fff0f5;">{</span>
+    <span style="color: #98be65;">display</span>: flex;
+    <span style="color: #5B6268;">/* </span><span style="color: #5B6268;">CHOOSE AN AXIS </span><span style="color: #5B6268;">*/</span>
+    <span style="color: #98be65;">flex-direction</span>: column;
+    <span style="color: #5B6268;">/* </span><span style="color: #5B6268;">flex-direction: row; </span><span style="color: #5B6268;">*/</span>
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org40129ac" class="outline-3">
+<h3 id="org40129ac"><span class="section-number-3">4.2</span> Justifying content</h3>
+<div class="outline-text-3" id="text-4-2">
+<div class="org-src-container">
+<pre class="src src-css"><span style="color: #51afef;">.parent </span><span style="color: #fff0f5;">{</span>
+    <span style="color: #5B6268;">/* </span><span style="color: #5B6268;">CHOOSE justify-content type </span><span style="color: #5B6268;">*/</span>
+    <span style="color: #98be65;">justify-content</span>: center;
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org8e97b5f" class="outline-3">
+<h3 id="org8e97b5f"><span class="section-number-3">4.3</span> Aligning items</h3>
+<div class="outline-text-3" id="text-4-3">
+<div class="org-src-container">
+<pre class="src src-css"><span style="color: #51afef;">.parent </span><span style="color: #fff0f5;">{</span>
+    <span style="color: #5B6268;">/* </span><span style="color: #5B6268;">CHOOSE one  </span><span style="color: #5B6268;">*/</span>
+    <span style="color: #5B6268;">/* </span><span style="color: #5B6268;">align-items: flex-end; </span><span style="color: #5B6268;">*/</span>
+    <span style="color: #98be65;">align-items</span>: center;
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgb82d86c" class="outline-3">
+<h3 id="orgb82d86c"><span class="section-number-3">4.4</span> Wrapping</h3>
+<div class="outline-text-3" id="text-4-4">
+<div class="org-src-container">
+<pre class="src src-css"><span style="color: #51afef;">.parent </span><span style="color: #fff0f5;">{</span>
+    <span style="color: #5B6268;">/* </span><span style="color: #5B6268;">Usually use something like this  </span><span style="color: #5B6268;">*/</span>
+    <span style="color: #98be65;">flex-wrap</span>: wrap;
+    <span style="color: #98be65;">align-content</span>: flex-start;
+    <span style="color: #5B6268;">/* </span><span style="color: #5B6268;">OR </span><span style="color: #5B6268;">*/</span>
+    <span style="color: #98be65;">flex-flow</span>: column wrap;
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org6d20e6a" class="outline-3">
+<h3 id="org6d20e6a"><span class="section-number-3">4.5</span> Aligning text in separate containers</h3>
+<div class="outline-text-3" id="text-4-5">
+<div class="org-src-container">
+<pre class="src src-css"><span style="color: #51afef;">.parent </span><span style="color: #fff0f5;">{</span>
+    <span style="color: #98be65;">align-items</span>: baseline;
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org401e38e" class="outline-3">
+<h3 id="org401e38e"><span class="section-number-3">4.6</span> Ordering children</h3>
+<div class="outline-text-3" id="text-4-6">
+<div class="org-src-container">
+<pre class="src src-css"><span style="color: #51afef;">.child3 </span><span style="color: #fff0f5;">{</span>
+    <span style="color: #5B6268;">/* </span><span style="color: #5B6268;">The default setting will show first</span><span style="color: #5B6268;">*/</span>
+    <span style="color: #98be65;">order</span>: <span style="color: #da8548; font-weight: bold;">0</span>;
+<span style="color: #fff0f5;">}</span>
+
+<span style="color: #51afef;">.child1 </span><span style="color: #fff0f5;">{</span>
+    <span style="color: #5B6268;">/* </span><span style="color: #5B6268;">will show second </span><span style="color: #5B6268;">*/</span>
+    <span style="color: #98be65;">order</span>: <span style="color: #da8548; font-weight: bold;">1</span>;
+<span style="color: #fff0f5;">}</span>
+
+<span style="color: #51afef;">.child2 </span><span style="color: #fff0f5;">{</span>
+    <span style="color: #5B6268;">/* </span><span style="color: #5B6268;">will show third </span><span style="color: #5B6268;">*/</span>
+    <span style="color: #98be65;">order</span>: <span style="color: #da8548; font-weight: bold;">2</span>;
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org753d561" class="outline-3">
+<h3 id="org753d561"><span class="section-number-3">4.7</span> Expanding/shrinking children to fill parent container</h3>
+<div class="outline-text-3" id="text-4-7">
+<div class="org-src-container">
+<pre class="src src-css"><span style="color: #51afef;">.child1 </span><span style="color: #fff0f5;">{</span>
+    <span style="color: #5B6268;">/* </span><span style="color: #5B6268;">works like ordering </span><span style="color: #5B6268;">*/</span>
+    <span style="color: #5B6268;">/* </span><span style="color: #5B6268;">growing </span><span style="color: #5B6268;">*/</span>
+    <span style="color: #98be65;">flex-grow</span>: <span style="color: #da8548; font-weight: bold;">1</span>;
+    <span style="color: #5B6268;">/* </span><span style="color: #5B6268;">shrinking </span><span style="color: #5B6268;">*/</span>
+    <span style="color: #98be65;">flex-shrink</span>: <span style="color: #da8548; font-weight: bold;">1</span>;
+    <span style="color: #5B6268;">/* </span><span style="color: #5B6268;">combining, shorthand of grow, shrink and basis </span><span style="color: #5B6268;">*/</span>
+    <span style="color: #98be65;">flex</span>: <span style="color: #da8548; font-weight: bold;">0</span> <span style="color: #da8548; font-weight: bold;">1</span> auto;
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org323fbd1" class="outline-3">
+<h3 id="org323fbd1"><span class="section-number-3">4.8</span> Aligning individual children</h3>
+<div class="outline-text-3" id="text-4-8">
+<div class="org-src-container">
+<pre class="src src-css"><span style="color: #51afef;">.child1 </span><span style="color: #fff0f5;">{</span>
+    <span style="color: #98be65;">align-self</span>: center;
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orgd041c69" class="outline-2">
+<h2 id="orgd041c69"><span class="section-number-2">5</span> Common Design Techniques</h2>
+<div class="outline-text-2" id="text-5">
+</div>
+<div id="outline-container-orga8f265a" class="outline-3">
+<h3 id="orga8f265a"><span class="section-number-3">5.1</span> Nearly white background and white containers, works similarly in dark mode</h3>
+</div>
+<div id="outline-container-org363c277" class="outline-3">
+<h3 id="org363c277"><span class="section-number-3">5.2</span> White works well with pretty much all primary colors</h3>
+</div>
+<div id="outline-container-org0d7d4ac" class="outline-3">
+<h3 id="org0d7d4ac"><span class="section-number-3">5.3</span> Photographs, blend them in well</h3>
+</div>
+<div id="outline-container-orgbe946df" class="outline-3">
+<h3 id="orgbe946df"><span class="section-number-3">5.4</span> Illustrations</h3>
+</div>
+<div id="outline-container-org4c951d8" class="outline-3">
+<h3 id="org4c951d8"><span class="section-number-3">5.5</span> Bold type, especially headlines</h3>
+</div>
+<div id="outline-container-org056caa8" class="outline-3">
+<h3 id="org056caa8"><span class="section-number-3">5.6</span> Mix serif and sans</h3>
+<div class="outline-text-3" id="text-5-6">
+<ul class="org-ul">
+<li>Usually serif for headlines</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgb6e574d" class="outline-3">
+<h3 id="orgb6e574d"><span class="section-number-3">5.7</span> Watermarks</h3>
+</div>
+<div id="outline-container-orge1d2f1f" class="outline-3">
+<h3 id="orge1d2f1f"><span class="section-number-3">5.8</span> Fill UI with small details</h3>
+<div class="outline-text-3" id="text-5-8">
+<ul class="org-ul">
+<li>Like some vertical text or a button</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgfcdc50b" class="outline-2">
+<h2 id="orgfcdc50b"><span class="section-number-2">6</span> Remove heading but leave html export</h2>
+<div class="outline-text-2" id="text-6">
+<script src="../../assets/jquery-3.3.1.min.js"></script>
+<script src="../../assets/notes.js"></script>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="date">Date: 2020-07-15 Wed 15:01</p>
+<p class="author">Author: Damian Chrzanowski</p>
+<p class="date">Created: 2020-08-20 Thu 10:32</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>
