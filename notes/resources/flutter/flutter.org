@@ -1,0 +1,907 @@
+#+TITLE: Flutter
+#+DATE: [2021-02-01 Mon 10:31]
+#+AUTHOR: Damian Chrzanowski
+#+EMAIL: pjdamian.chrzanowski@gmail.com
+#+OPTIONS: H:2 toc:2
+#+HTML_HEAD: <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="../../assets/org.css"/>
+#+HTML_HEAD: <link rel="icon" href="../../assets/favicon.ico">
+[[file:../../index.org][Home Page]]
+* Popular packages
+  - *intl*: internationalization and formatting for dates/currencies etc.
+* Overview
+** Flutter Architecture
+   - UI as Code: Building a widget tree
+   - Embrace Platform Differences
+   - One Codebase
+   - Does not use platform specific primitives, it uses its own renderer. Gives a lot of control and more flexibility.
+** Premade styling
+   - Flutter comes with Google's "Material Design" widgets
+   - We can also use Apple's "Cupertino" widgets
+* Project management via CLI
+  - Verify if flutter has everything it needs
+    #+begin_src shell
+      flutter doctor -v
+    #+end_src
+  - Create a project
+    #+begin_src shell
+      flutter create my_project_name
+    #+end_src
+  - Run a project
+    #+begin_src shell
+      cd my_project_name
+      flutter run
+    #+end_src
+* Project directory hierarchy
+  - *models*: Any entities
+  - *providers*: State management providers
+  - *screens*: Individual screens (pages)
+  - *widgets*: Reusable widgets
+  - *services*: App wide services, like 'Settings', 'Resources' or 'RestClient'
+* Dart
+** Imports
+   #+begin_src dart
+     // Importing core libraries
+     import 'dart:math';
+
+     // Importing libraries from external packages
+     import 'package:test/test.dart';
+
+     // Importing files
+     import 'path/to/my_other_file.dart';
+   #+end_src
+** Data Types
+   - Nothing: ~void~
+   - Null: ~null~
+   - Text:
+     - String: ~String~
+     - StringBuffer: ~StringBuffer~
+   - Numbers:
+     - Integers: ~int~
+     - Floats: ~double~
+     - Number, generic, dynamic: ~num~
+   - Boolean: ~bool~
+   - Collections:
+     - Lists: ~List~
+     - Sets: ~Set~
+     - Maps: ~Map~
+   - Time:
+     - Date and time: ~DateTime~
+     - Time span: ~Duration~
+   - URI: ~Uri~
+** Null safety
+   - Add a question mark to the type declared to denote that a type may be ~null~
+     #+begin_src dart
+       String? hello;
+       int? x = null;
+     #+end_src
+** Inferring the type
+   - Use ~var~ like in TypeScript to infer the type
+   #+begin_src dart
+     void main() {
+       int myAge = 30; // is stored as int
+       double myBankAcc = 41.33 // is stored as double
+     }
+   #+end_src
+** Classes
+   - Private and Public: add an *underscore* to a class property or to a class to make it private.
+   - Basic classes
+   #+begin_src dart
+     class Spacecraft {
+       String name;
+       DateTime launchDate;
+
+       // Constructor, with syntactic sugar for assignment to members.
+       Spacecraft(this.name, this.launchDate) {
+       }
+
+       // Named arguments in the constructor, one is with a default value
+       Spacecraft({ String name = 'Hello', DateTime launchDate }) {
+         this.name = name;
+         this.launchDate = launchDate;
+       }
+
+       // Named constructor that forwards to the default one.
+       Spacecraft.unlaunched(String name) : this(name, null);
+
+       int get launchYear => launchDate?.year; // read-only non-final property
+
+       // Method.
+       void describe() {
+         print('Spacecraft: $name');
+         if (launchDate != null) {
+           int years =
+           DateTime.now().difference(launchDate).inDays ~/
+           365;
+           print('Launched: $launchYear ($years years ago)');
+         } else {
+           print('Unlaunched');
+         }
+       }
+     }
+
+     // USAGE
+     var voyager = Spacecraft('Voyager I', DateTime(1977, 9, 5));
+     voyager.describe();
+
+     var voyager3 = Spacecraft.unlaunched('Voyager III');
+     voyager3.describe();
+   #+end_src
+** Inheritance
+   #+begin_src dart
+     class Orbiter extends Spacecraft {
+       double altitude;
+       Orbiter(String name, DateTime launchDate, this.altitude)
+       : super(name, launchDate);
+     }
+   #+end_src
+** Mixins
+   - Please note that in Dart one can mix multiple mixins, but extend only one class
+   #+begin_src dart
+     class Piloted {
+       int astronauts = 1;
+       void describeCrew() {
+         print('Number of astronauts: $astronauts');
+       }
+     }
+
+     // USAGE
+     class PilotedCraft extends Spacecraft with Piloted {
+       // ···
+     }
+   #+end_src
+** Singletons
+   #+begin_src dart
+     class Singleton {
+       final foo = 'foo';
+
+       Singleton._internal();
+       static final Singleton _instance = Singleton._internal();
+       factory Singleton() {
+         return _instance;
+       }
+     }
+
+     // USAGE
+     var x = Singleton().foo;
+   #+end_src
+** Interfaces and abstract classes
+   - Dart has no ~interface~ keyword. Instead, all classes implicitly define an interface. Therefore, you can implement any class.
+   - You can create an abstract class to be extended (or implemented) by a concrete class. Abstract classes can contain abstract methods (with empty bodies).
+   #+begin_src dart
+     abstract class Describable {
+       void describe();
+
+       void describeWithEmphasis() {
+         print('=========');
+         describe();
+         print('=========');
+       }
+     }
+   #+end_src
+   - Any class extending ~Describable~ has the ~describeWithEmphasis()~ method, which calls the extender’s implementation of ~describe()~.
+** Final vs Const
+   - Final is a runtime constant value, it can be set during runtime
+   - Const cannot be changed at runtime it is set during compile time
+* Styling
+** Themes
+   - Insert the theme in the ~MaterialApp~ widget like so:
+   #+begin_src dart
+     class MyApp {
+       build(BuildContext context) {
+         return MaterialApp(
+           title: 'xxx',
+           theme: ThemeDate(
+             primarySwatch: Colors.purple, // setup a main color range (swatch)
+             accentColor: Colors.amber, // for accented widgets
+             fontFamily: 'Quicksand', // global font
+             textTheme: ThemeData.light().textTheme.copyWith(title: TextStyle(fontFamily: 'OpenSans', fontWeight: FontWeight.bold, fontSize: 18))
+             appBarTheme: AppBarTheme(
+               textTheme: ThemeData.light().textTheme.copyWith(title: TextStyle(fontFamily: 'OpenSans'))
+             ),
+           ),
+           home: HomeWidget();
+         );
+       }
+     }
+
+     // reuse the 'textTheme' style in a Text
+     Text('Hiya', style: Theme.of(context).textTheme.title)
+   #+end_src
+   - Use in code like so:
+   #+begin_src dart
+     class MyWidget extends StatelessWidget {
+       build(BuildContext context) {
+         return Text('Hello',
+           style: TextStyle(
+             color: Theme.of(context).primaryColor,
+           ),
+         );
+       }
+     }
+
+   #+end_src
+** Border
+   - Usually on a ~Container~'s decoration:
+   #+begin_src dart
+     Widget build(BuildContext context) {
+       return Container(
+         width: double.infinity,
+         margin: EdgeInsets.all(30),
+         decoration: BoxDecoration(
+           color: Colors.deepPurple,
+           borderRadius: BorderRadius.circular(5),
+           border: Border.all(
+             color: Colors.purple,
+             width: 2,
+           ),
+         ),
+         child: Text(
+           _questionText,
+           style: TextStyle(fontSize: 28, color: Colors.white),
+           textAlign: TextAlign.center,
+         )
+       );
+     }
+   #+end_src
+** Fonts
+   - Adding the OpenSans font as an example
+   - Create an asset folder in the root
+   - Dump the ttf files into a fonts subfolder
+   - In the pub.spec.yaml add the fonts like so:
+   #+begin_src yaml
+       fonts:
+         - family: OpenSans
+           fonts:
+             - asset: assets/fonts/OpenSans-Regular.ttf
+               - asset: assets/fonts/OpenSans-Bold.ttf
+                 weight: 700
+   #+end_src
+   - Whenever choosing a font refer to it as ~'OpenSans'~
+** Font types and sizes in ~TextTheme~
+   | NAME        | SIZE   | WEIGHT    | SPACING |
+   |-------------+--------+-----------+---------|
+   | *headline1* | ~96.0~ | *light*   | ~-1.5~  |
+   | *headline2* | ~60.0~ | *light*   | ~-0.5~  |
+   | *headline3* | ~48.0~ | *regular* | ~0.0~   |
+   | *headline4* | ~34.0~ | *regular* | ~0.25~  |
+   | *headline5* | ~24.0~ | *regular* | ~0.0~   |
+   | *headline6* | ~20.0~ | *medium*  | ~0.15~  |
+   | *subtitle1* | ~16.0~ | *regular* | ~0.15~  |
+   | *subtitle2* | ~14.0~ | *medium*  | ~0.1~   |
+   | *bodyText1* | ~16.0~ | *medium*  | ~0.5~   |
+   | *bodyText2* | ~14.0~ | *regular* | ~0.25~  |
+   | *button*    | ~14.0~ | *medium*  | ~1.25~  |
+   | *caption*   | ~12.0~ | *regular* | ~0.4~   |
+   | *overline*  | ~10.0~ | *regular* | ~1.5~   |
+* Widgets
+** Lifecycle
+*** Stateless
+    - ~Constructor~
+    - ~build()~
+*** Stateful
+    - ~Constructor~
+    - ~initState()~: usually need to call ~super.initState()~
+    - ~build()~
+    - ~setState()~
+    - ~didUpdateWidget()~
+    - ~build()~
+    - ~dispose()~: usually need to call ~super.dispose()~
+*** Binding to native Lifecycles
+    - Extend a ~StatefulWidget~ with a ~WidgetsBindingObserver~ mixin
+    #+begin_src dart
+      class _MyHomePageState extends State<MyHomePage> with WidgetsBindingObserver {
+
+        // Adding the observer
+        @override
+        void initState() {
+          WidgetsBinding.instance.addObserver(this);
+          super.initState();
+        }
+
+        @override
+        void didChangeAppLifecycleState(AppLifecycleState state) {
+          // reacting to the state change
+        }
+
+        // Removing the observer
+        @override
+        void dispose() {
+          WidgetsBinding.instance.removeObserver(this);
+          super.dispose();
+        }
+      }
+    #+end_src
+** Keys
+   - Use the ~Key~ class for unique identification of Widgets
+   - There is a ~UniqueKey~ for generating random keys and ~ValueKey(val)~ for lists or others where we have IDs
+** Popular Types
+*** App and Page Setup
+    - ~MaterialApp~, ~CupertinoApp~
+    - ~Scaffold~, ~CupertinoPageScaffold~
+*** Layout
+    - ~Container~: like a ~div~ in HTML. Usually you'd set the width, height, padding, margin and borders (decoration) through this widget.
+    - ~SizedBox~: like the ~Container~ but requires dimensions. Used as a content separator as well.
+    - ~Row~: use ~mainAxisAlignment~ and/or ~crossAxisAlignment~ to position child widgets
+    - ~Column~: use ~mainAxisAlignment~ and/or ~crossAxisAlignment~ to position child widgets
+    - ~Grid~: very powerful, like always
+*** Row / Column Children
+    - ~Expanded~
+    - ~Flexible~
+*** Content Containers
+    - ~Stack~
+    - ~Card~
+    - ~SingleChildScrollView~
+    - ~showModalBottomSheet~: create a pop up modal from the bottom of the screen
+*** Repeat Elements
+    - ~ListView~: Generally use the ListView.builder() to display only the items that are currently seen on screen. It's just more efficient.
+    - ~GridView~
+    - ~ListTile~
+*** Content Types
+    - ~Text~
+    - ~Image~
+    - ~Icon~
+*** User Input
+    - ~TextField~
+    - ~RaisedButton~, ~FlatButton~, ~IconButton~
+    - ~GestureDetector~
+    - ~InkWell~
+** Stateless vs Stateful
+   [[file:images/Widgets/2021-02-03_15-42-19_screenshot.png]]
+   - Stateless
+   #+begin_src dart
+     class Question extends StatelessWidget {
+       final String _questionText;
+
+       Question(this._questionText);
+
+       @override
+       Widget build(BuildContext context) {
+         return Container(
+           width: double.infinity,
+           margin: EdgeInsets.all(30),
+           child: Text(
+             _questionText,
+             style: TextStyle(fontSize: 28),
+             textAlign: TextAlign.center,
+           )
+         );
+       }
+     }
+   #+end_src
+   - Stateful and ~Scaffold~ example
+   #+begin_src dart
+     class MyApp extends StatefulWidget {
+       @override
+       State<StatefulWidget> createState() {
+         return _MyAppState();
+       }
+     }
+
+     class _MyAppState extends State<MyApp> {
+       String text = 'Hi!';
+
+       void _tapMe() {
+         setState(() {
+             // update state
+             text = "Tapped!";
+         });
+       }
+
+       @override
+       Widget build(BuildContext context) {
+         return MaterialApp(
+           home: Scaffold(
+             appBar: AppBar(
+               title: Text('My First App'),
+             ),
+             drawer: AppDrawer(),
+             body: Column(
+               children: <Widget> [
+                 Text(text),
+                 RaisedButton(
+                   child: Text('Tap me'),
+                   onPressed: _tapMe,
+                 )
+               ]
+             ),
+           ),
+         );
+       }
+     }
+   #+end_src
+** Widget Communication
+   - Pass a function through to the child's Widget via the constructor
+   - Call the function in the child Widget to trigger functionality in the parent
+   #+begin_src dart
+     class MyWidget extends StatelessWidget {
+       final Function _onPressedHandler;
+
+       MyWidget(this._onPressedHandler);
+
+       Widget build(BuildContext context) {
+         return RaisedButton(
+           child: Text('Tap me'),
+           onPressed: () {
+             _onPressedHandler('some data here');
+           },
+           // or if not passing data then:
+           // onPressed: _onPressedHandler
+         )
+       }
+     }
+   #+end_src
+   - A ~StatefulWidget~'s ~State~ sub-class can use the reserved ~widget~ property to access the ~StatefulWidget~ class' properties
+   #+begin_src dart
+     class MyWidget extends StatefulWidget {
+       final Function tx;
+
+       MyWidget(this.tx);
+
+       @override
+       _MyWidget createState() => _MyWidget();
+     }
+
+     class _MyWidget extends State<MyWidget> {
+       void _callAFuncFromWidgetProperty() {
+         // NOTE: 'widget' is a reserved property of the State class that provides access to the parent StatefulWidget class
+         // here you can use the tx property from the MyWidget class (even though we are in _MyWidget class) directly like so:
+         widget.tx();
+
+         // NOTE: furthermore the 'context' of the class is also available as a property
+       }
+     }
+   #+end_src
+** Spawning Widgets from a List
+   #+begin_src dart
+     class MyWidget {
+       // question is a list as follows:
+       var questions = [
+         { qText: 'What is your fav color?', qAns: ['red', 'blue']},
+         { qText: 'What is your fav animal?', qAns: ['dog', 'cat', 'eagle']},
+       ];
+       var qIdx = 0;
+
+       void cb(x) {
+         setState() {
+           // do something with x
+         }
+       }
+       // in the build() method
+       Column(
+         children: [
+           Text('Hello World'),
+           // using the spread operator, casting and toList() to accomplish concatenating the list with the previous widget
+           ...(questions.[qIdx]['qAns'] as List<String>).map((answer) {
+               return Answer(cb, answer); // Answer is a custom widget that takes a callback and a string as the params
+           }).toList()
+         ]
+       )
+
+       // or without array concatenation
+       Column(
+         children: questions.[qIdx]['qAns'].map((answer) {
+             return Answer(cb, answer);
+         }).toList()
+       )
+     }
+   #+end_src
+** User Inputs
+   - Create a property inside of a widget that instantiates a ~TextEditingController~. Access it later.
+   #+begin_src dart
+     class MyWidget {
+       final userInputController = TextEditingController();
+
+       Widget build(BuildContext ctx) {
+         return TextField(
+           decoration: InputDecoration(labelText: 'User Input'),
+           controller: userInputController,
+         )
+       }
+
+       String grabInput() {
+         return userInputController.text;
+       }
+     }
+   #+end_src
+** Using the ListView and GridView builders
+   - Usually use the ~ListTile~ class for each element of the list
+   #+begin_src dart
+     class MyWidget {
+       final var itemArr = [1, 2, 3, 4];
+
+       Widget build() {
+         return ListView.builder(
+           itemBuilder: (ctx, index) {
+             return Widget(itemArr[index]); // Here create widgets from the array
+           },
+           itemCount: itemArr.length
+         );
+       }
+     }
+   #+end_src
+   - ~GridView~ is very similar to a ~ListView~
+   #+begin_src dart
+     GridView.builder(
+       padding: const EdgeInsets.all(10.0),
+       itemCount: products.length,
+       itemBuilder: (ctx, i) => MyWidget(
+         products[i].id
+       )
+       gridDelegate: SliverGridDelegateWithFixedCrossAxicCount(
+         crossAxisCount: 2,
+         childAspectRatio: 3 / 2,
+         crossAxisSpacing: 10,
+         mainAxisSpacing: 10,
+       )
+     )
+
+     // like in the case of a ListView you can use a tile to display the grid elements
+     Widget build(BuildContext ctx) {
+       return GridTile(
+         child: Image.network(imageUrl),
+         fit: BoxFit.cover,
+         footer: GridTileBar(
+           backgroundColor: Colors.black54,
+           leading: IconButton(
+             icon: Icon(Icons.favorite),
+             onPressed: () {
+               // ...
+             }
+           ),
+           trailing: IconButton(
+             icon: Icon(Icons.shopping_cart),
+             onPressed: () {
+               // ...
+             }
+           )
+           title: Text(title),
+           textAlign: TextAlign.center,
+         )
+       )
+     }
+   #+end_src
+** Images
+   - Add images to the pub.spec.yaml file
+   #+begin_src yaml
+       assets:
+         - assets/images/image1.jpeg
+         - assets/images/image2.jpeg
+   #+end_src
+   - In your code then use the ~Image~ widget
+   - Usually you'd wrap it in a ~Container~ or a ~SizedBox~ to set width and height boundaries
+   #+begin_src dart
+     Image.asset('assets/images/image1.jpeg', fit: BoxFit.cover) // cover respects boundaries and scales the img
+   #+end_src
+** Picking Time and Date
+   #+begin_src dart
+     // built-in method
+     showDatePicker(
+       context: context,  // context can normally be grabbed without being passed (StatefulWidget)
+       initialDate: DateTime.now(),
+       firstDate: DateTime(2019),
+       lastDate: DateTime.now()
+     );
+   #+end_src
+** Forcing a round corner with ClipRRect
+   - Wrap a widget with ClipRRect to create round corners as an example:
+   #+begin_src dart
+     ClipRRect(
+       borderRadius: BorderRadius.circular(10),
+       child: GridTile()
+     );
+   #+end_src
+** Drawer
+   - Create a ~AppDrawer~ or whatever class
+   #+begin_src dart
+     class AppDrawer extends StatelessWidget {
+       @override
+       Widget build(BuildContext ctx) {
+         return Drawer(
+           child: Column(
+             children: <Widget>[
+               AppBar(
+                 title: Text('Hello'),
+                 automaticallyImplyLeading: false,
+               ),
+               Divider(),
+               ListTile(
+                 leading: Icon(Icons.payment),
+                 title: Text('Order'),
+                 onTap: () {
+                   Navigator.of(ctx).pushReplacementNamed(OrderScreen.routeName || '/orders'); // either or but prefer a static property on a class
+                 }
+               )
+             ]
+           )
+         )
+       }
+     }
+   #+end_src
+   - Place it in the ~Scaffold~ class like so:
+   #+begin_src dart
+     Scaffold(
+       drawer: AppDrawer()
+     )
+   #+end_src
+** Pull-to-refresh
+   - Add the ~RefreshIndicator~ widget as the topmost/wrapper
+   #+begin_src dart
+     RefreshIndicator(
+       onRefresh: () {
+         _doRefresh(),
+       },
+       child: Column(),
+     );
+
+     // and the callback method looks like follows
+     Future<void> _doRefresh() async {
+       // Do some refreshing logic, usually:
+       // do a http call
+       // update state
+     }
+   #+end_src
+** Scrollable content
+   - If a list is needed then use a ~ListView~ or a ~ListViewBuilder~, however, when user working with forms the individual ~ListTile~ can go out of view and therefore be deconstructed
+   - If deconstruction of widgets is a concern, especially in Forms then use a ~Column~ combined with a ~SingleChildScrollView~
+* Responsive design
+** Using the ~MediaQuery~
+   - Usually store the ~MediaQuery~ object in a variable to remove clutter and provide reusability
+   #+begin_src dart
+     Widget build(BuildContext context) {
+       final mQ = MediaQuery.of(context);
+     }
+   #+end_src
+   - Grabbing the general size object
+   #+begin_src dart
+     final size = MediaQuery.of(context).size;
+   #+end_src
+   - Getting the height or width with the ~MediaQuery~
+   #+begin_src dart
+     Container(
+       height: MediaQuery.of(context).size.height * 0.6 // take 60% of full screen height
+     );
+   #+end_src
+   - Access height/width of a Widget
+   #+begin_src dart
+     final button = RaisedButton();
+     final height = button.preferredSize.height;
+   #+end_src
+   - Height of the status bar
+   #+begin_src dart
+     MediaQuery.of(context).padding.top; // is literally the padding that is added by the status bar
+   #+end_src
+   - Using the ~TextScaleFactor~, kinda like ~rem~/~em~ in CSS
+   #+begin_src dart
+     final curScaleFactor = MediaQuery.of(context).textScaleFactor;
+     Text('Always the same size!', style: TextStyle(fontSize: 20)); // always 20px in size
+     Text('This changes!', style: TextStyle(fontSize: 20 * curScaleFactor)); // adjusted to phone's settings
+   #+end_src
+** Utilizing constraints
+   - Use the ~LayoutBuilder~ to access constraints
+   #+begin_src dart
+     LayoutBuilder(
+       builder: (ctx, constraints) {
+         return Column(
+           childred: <Widget> [
+             Container(
+               height: constraints.maxHeight * 0.4, // 40% height of the parent
+             )
+           ]
+         );
+       }
+     );
+   #+end_src
+** Locking orientation
+   #+begin_src dart
+     void main() {
+       WidgetsFlutterBinding.ensureInitialized();
+       SystemChrome.setPreferredOrentations([
+           // lock to only portrait mode
+           DeviceOrientation.portraitUp,
+           DeviceOrientation.portraitDown,
+       ]);
+
+       runApp(MyApp());
+     }
+   #+end_src
+** Reacting to orientation
+   #+begin_src dart
+     MediaQuery.of(context).orientation == Orientation.landscape;
+     MediaQuery.of(context).orientation == Orientation.portrait;
+   #+end_src
+** Respecting the Softkeyboard Insets
+   - Use the ~MediaQuery~ viewInsets property to know how much overlapping content there is over the app
+   #+begin_src dart
+     Container(
+       padding: EdgeInsets.only(
+         top: 10,
+         left: 10,
+         right: 10,
+         bottom: MediaQuery.of(context).viewInsets.bottom + 10,
+       )
+     )
+   #+end_src
+   - Furthermore there might be a need to wrap the content in a ~SingleChildScrollView~ so that it can be scrolled into the view
+* Adaptive design
+  - Most of widgets have an ~adaptive~ constructor
+  - E.g. the ~Switch~
+  #+begin_src dart
+    Switch.adaptive()
+  #+end_src
+  - Checking the platform
+  #+begin_src dart
+    final isIOs = Platform.isIOS;
+  #+end_src
+  - ~SafeArea~ widget is a wrapper that is used on devices with notches to push content down of off the notch
+* Routing and Navigator
+** Basic Navigation
+   - Close the topmost widget or go back the stack: ~Navigator.of(ctx).pop();~
+   - Go to a page:
+   #+begin_src dart
+     Navigator.of(ctx).push(MaterialPageRoute(
+         builder: (_) {
+           return ComeNewScreen();
+         }
+     ))
+
+   #+end_src
+** Named Routes
+   - A good practice is to add a static string to the named routes' class files to remove the possibility of typos.
+   - Setup routes in the ~MaterialApp~ class:
+   #+begin_src dart
+     MaterialApp(
+       home: Home(),
+       routes: {
+         '/': (ctx) => Home(), // is an automatic home route
+         '/home': (ctx) => Home(),
+         '/details': (ctx) => DetailsScreen(),
+       },
+     )
+   #+end_src
+   - Call the named route:
+   #+begin_src dart
+     Navigator.of(ctx).pushNamed(
+       'details',
+       arguments: {
+         'id': id
+       }
+     )
+   #+end_src
+   - Receive the named arguments in ~DetailsScreen()~:
+   #+begin_src dart
+     class DetailsScreen extends StatelessWidget {
+       Widget build(BuildContext ctx) {
+         final routeArgs = ModalRoute.of(ctx).settings.arguments;
+         final id = routeArgs['id']
+       }
+     }
+   #+end_src
+* State Management with Providers
+** Using the ~Provider~, ~ChangeNotifier~, ~ChangeNotifierProvider~ and ~Consumer~ classes
+   - Create a model
+   #+begin_src dart
+     class Product {
+       final id;
+       final title;
+
+       Product(this.id, this.title);
+     }
+   #+end_src
+   - Create a provider class for the model
+   #+begin_src dart
+     class Products with ChangeNotifier {
+       List<Product> _items = [];
+
+       List<Product> get items {
+         return [..._items];
+       }
+
+       void addProduct(Product p) {
+         _items.add(p);
+         notifyListeners();
+       }
+     }
+   #+end_src
+   - Register a provider (in this case at the root level)
+   #+begin_src dart
+     // single provider
+     ChangeNotifierProvider(
+       builder: (ctx) => Products(), // for Provider 3.0
+       create: (ctx) => Products(), // for Provider 4.0
+       child: MaterialApp(
+         //....
+       );
+     )
+
+     // multiple providers
+     void main() {
+       runApp(
+         MultiProvider(
+           providers: [
+             ChangeNotifierProvider(create: (ctx) => CartModel()),
+             ChangeNotifierProvider(create: (ctx) => Products()),
+             Provider(create: (ctx) => SomeOtherClass()),
+           ],
+           child: MyApp(),
+         ),
+       );
+     }
+   #+end_src
+   - Listening through the ~Consumer~ or ~Provider.of~
+   #+begin_src dart
+     // through the Provider (rebuilds the whole tree on change)
+     final productsData = Provider.of<Products>(ctx);
+     final products = productsData.items;
+
+     // or through the Consumer (preferred due to fine grain control)
+     return Consumer<Products>(
+       builder: (context, products, child) {
+         return Text("Product count: ${products.length}");
+       },
+     );
+
+     // if you want parts that shouldn't rebuild then put them in the child
+     return Consumer<Products>(
+       builder: (context, products, child) {
+         return Column(
+           children: [
+             Text("Product count: ${products.length}"),
+             child, // refers to the Text('Foo') widget
+           ]
+         )
+       },
+       child: Text('Foo')
+     );
+   #+end_src
+   - If there is a need to call the state directly and without the need of establishing a listener, like for wiping the data that is not part of the currently displayed UI, then use the Provider:
+   #+begin_src dart
+     // make sure to set 'listen' to false
+     Provider.of<CartModel>(context, listen: false).removeAll();
+   #+end_src
+** Using a ~ChangeNotifierProxyProvider~ to manage services dependencies
+   #+begin_src dart
+     return MultiProvider(
+       providers: [
+         ChangeNotifierProvider.value(
+           value: Auth(),
+         ),
+         ChangeNotifierProxyProvider<Auth, Products>(
+           builder: (ctx, auth, previousProducts) => Products(
+             auth.token,
+             previousProducts == null ? [] : previousProducts.items,
+           )
+         )
+       ],
+       child: MaterialApp()
+     )
+   #+end_src
+** Alternative way of building widgets from Futures with the ~FutureBuilder~
+   - Also shows an example of ~CircularProgressIndicator~ while loading
+   #+begin_src dart
+     FutureBuilder(
+       future: Provider.of<Products>(context, listen: false).fetchAndSet(),
+       builder: (ctx, dataSnapshot) {
+         if (dataSnapshot.connectionState == ConnectionState.waiting) {
+           return Center(child: CircularProgressIndicator());
+         } else {
+           if (dataSnapshot.error != null) {
+             // show error
+             return Center(child: Text('An error occurred.'))
+           } else {
+             return Consumer<Products>(
+               builder: (ctx, orderData) => ListView.builder(
+                 itemCount: products.length,
+                 itemBuilder: (ctx, i) => ProductItem(products[i]),
+               ),
+             );
+           }
+         }
+       }
+     )
+   #+end_src
+* Delete heading at the end
+  #+BEGIN_EXPORT html
+  <script src="../../assets/jquery-3.3.1.min.js"></script>
+  <script src="../../assets/notes.js"></script>
+  #+END_EXPORT

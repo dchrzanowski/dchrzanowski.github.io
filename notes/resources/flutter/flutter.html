@@ -1,0 +1,1756 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2021-09-01 Wed 10:31 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Flutter</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="Damian Chrzanowski" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="../../assets/org.css"/>
+<link rel="icon" href="../../assets/favicon.ico">
+<script type="text/javascript">
+// @license magnet:?xt=urn:btih:e95b018ef3580986a04669f1b5879592219e2a7a&dn=public-domain.txt Public Domain
+<!--/*--><![CDATA[/*><!--*/
+     function CodeHighlightOn(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.add("code-highlighted");
+         target.classList.add("code-highlighted");
+       }
+     }
+     function CodeHighlightOff(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.remove("code-highlighted");
+         target.classList.remove("code-highlighted");
+       }
+     }
+    /*]]>*///-->
+// @license-end
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Flutter</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orgb3f1118">1. Popular packages</a></li>
+<li><a href="#orgcabadf9">2. Overview</a>
+<ul>
+<li><a href="#org7380550">2.1. Flutter Architecture</a></li>
+<li><a href="#org0ab3dc6">2.2. Premade styling</a></li>
+</ul>
+</li>
+<li><a href="#orgffc1309">3. Project management via CLI</a></li>
+<li><a href="#org9f86a45">4. Project directory hierarchy</a></li>
+<li><a href="#org17491c3">5. Dart</a>
+<ul>
+<li><a href="#org3188ade">5.1. Imports</a></li>
+<li><a href="#org02356fd">5.2. Data Types</a></li>
+<li><a href="#org007be6f">5.3. Null safety</a></li>
+<li><a href="#orgb7416c2">5.4. Inferring the type</a></li>
+<li><a href="#orgbf11e71">5.5. Classes</a></li>
+<li><a href="#org5cbb3b0">5.6. Inheritance</a></li>
+<li><a href="#orgcd961d0">5.7. Mixins</a></li>
+<li><a href="#orgc9d9229">5.8. Singletons</a></li>
+<li><a href="#orga8437bd">5.9. Interfaces and abstract classes</a></li>
+<li><a href="#org1bc7df4">5.10. Final vs Const</a></li>
+</ul>
+</li>
+<li><a href="#org89fc776">6. Styling</a>
+<ul>
+<li><a href="#org58f1fdc">6.1. Themes</a></li>
+<li><a href="#org63bb94c">6.2. Border</a></li>
+<li><a href="#orgb204861">6.3. Fonts</a></li>
+<li><a href="#org3db9f20">6.4. Font types and sizes in <code>TextTheme</code></a></li>
+</ul>
+</li>
+<li><a href="#org516c7a4">7. Widgets</a>
+<ul>
+<li><a href="#org42720f7">7.1. Lifecycle</a></li>
+<li><a href="#org4832c1f">7.2. Keys</a></li>
+<li><a href="#orgaf31e36">7.3. Popular Types</a></li>
+<li><a href="#org0ed24f7">7.4. Stateless vs Stateful</a></li>
+<li><a href="#orgab005ac">7.5. Widget Communication</a></li>
+<li><a href="#orgfcc64b0">7.6. Spawning Widgets from a List</a></li>
+<li><a href="#org081cb6b">7.7. User Inputs</a></li>
+<li><a href="#orga7a0970">7.8. Using the ListView and GridView builders</a></li>
+<li><a href="#orged8febe">7.9. Images</a></li>
+<li><a href="#orgbae3627">7.10. Picking Time and Date</a></li>
+<li><a href="#org1b05c6e">7.11. Forcing a round corner with ClipRRect</a></li>
+<li><a href="#org1d24f65">7.12. Drawer</a></li>
+<li><a href="#org97e11d4">7.13. Pull-to-refresh</a></li>
+<li><a href="#orgf696745">7.14. Scrollable content</a></li>
+</ul>
+</li>
+<li><a href="#orgde8a11a">8. Responsive design</a>
+<ul>
+<li><a href="#org2eb1737">8.1. Using the <code>MediaQuery</code></a></li>
+<li><a href="#org5837cb2">8.2. Utilizing constraints</a></li>
+<li><a href="#orgdef557b">8.3. Locking orientation</a></li>
+<li><a href="#orgd1c113d">8.4. Reacting to orientation</a></li>
+<li><a href="#org171ee87">8.5. Respecting the Softkeyboard Insets</a></li>
+</ul>
+</li>
+<li><a href="#orge2bb4a6">9. Adaptive design</a></li>
+<li><a href="#orgcec21a8">10. Routing and Navigator</a>
+<ul>
+<li><a href="#org6e35e69">10.1. Basic Navigation</a></li>
+<li><a href="#orgce8d756">10.2. Named Routes</a></li>
+</ul>
+</li>
+<li><a href="#orge66be2e">11. State Management with Providers</a>
+<ul>
+<li><a href="#org49bf867">11.1. Using the <code>Provider</code>, <code>ChangeNotifier</code>, <code>ChangeNotifierProvider</code> and <code>Consumer</code> classes</a></li>
+<li><a href="#orgb222ebe">11.2. Using a <code>ChangeNotifierProxyProvider</code> to manage services dependencies</a></li>
+<li><a href="#org7dfd046">11.3. Alternative way of building widgets from Futures with the <code>FutureBuilder</code></a></li>
+</ul>
+</li>
+<li><a href="#orgef2d2b6">12. Delete heading at the end</a></li>
+</ul>
+</div>
+</div>
+<p>
+<a href="../../index.html">Home Page</a>
+</p>
+<div id="outline-container-orgb3f1118" class="outline-2">
+<h2 id="orgb3f1118"><span class="section-number-2">1</span> Popular packages</h2>
+<div class="outline-text-2" id="text-1">
+<ul class="org-ul">
+<li><b>intl</b>: internationalization and formatting for dates/currencies etc.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgcabadf9" class="outline-2">
+<h2 id="orgcabadf9"><span class="section-number-2">2</span> Overview</h2>
+<div class="outline-text-2" id="text-2">
+</div>
+<div id="outline-container-org7380550" class="outline-3">
+<h3 id="org7380550"><span class="section-number-3">2.1</span> Flutter Architecture</h3>
+<div class="outline-text-3" id="text-2-1">
+<ul class="org-ul">
+<li>UI as Code: Building a widget tree</li>
+<li>Embrace Platform Differences</li>
+<li>One Codebase</li>
+<li>Does not use platform specific primitives, it uses its own renderer. Gives a lot of control and more flexibility.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org0ab3dc6" class="outline-3">
+<h3 id="org0ab3dc6"><span class="section-number-3">2.2</span> Premade styling</h3>
+<div class="outline-text-3" id="text-2-2">
+<ul class="org-ul">
+<li>Flutter comes with Google's "Material Design" widgets</li>
+<li>We can also use Apple's "Cupertino" widgets</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-orgffc1309" class="outline-2">
+<h2 id="orgffc1309"><span class="section-number-2">3</span> Project management via CLI</h2>
+<div class="outline-text-2" id="text-3">
+<ul class="org-ul">
+<li><p>
+Verify if flutter has everything it needs
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">flutter doctor -v
+</pre>
+</div></li>
+<li><p>
+Create a project
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">flutter create my_project_name
+</pre>
+</div></li>
+<li><p>
+Run a project
+</p>
+<div class="org-src-container">
+<pre class="src src-shell"><span style="color: #c678dd;">cd</span> my_project_name
+flutter run
+</pre>
+</div></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org9f86a45" class="outline-2">
+<h2 id="org9f86a45"><span class="section-number-2">4</span> Project directory hierarchy</h2>
+<div class="outline-text-2" id="text-4">
+<ul class="org-ul">
+<li><b>models</b>: Any entities</li>
+<li><b>providers</b>: State management providers</li>
+<li><b>screens</b>: Individual screens (pages)</li>
+<li><b>widgets</b>: Reusable widgets</li>
+<li><b>services</b>: App wide services, like 'Settings', 'Resources' or 'RestClient'</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org17491c3" class="outline-2">
+<h2 id="org17491c3"><span class="section-number-2">5</span> Dart</h2>
+<div class="outline-text-2" id="text-5">
+</div>
+<div id="outline-container-org3188ade" class="outline-3">
+<h3 id="org3188ade"><span class="section-number-3">5.1</span> Imports</h3>
+<div class="outline-text-3" id="text-5-1">
+<div class="org-src-container">
+<pre class="src src-dart"><span style="color: #5B6268;">// </span><span style="color: #5B6268;">Importing core libraries</span>
+<span style="color: #c678dd;">import</span> <span style="color: #98be65;">'dart:math'</span>;
+
+<span style="color: #5B6268;">// </span><span style="color: #5B6268;">Importing libraries from external packages</span>
+<span style="color: #c678dd;">import</span> <span style="color: #98be65;">'package:test/test.dart'</span>;
+
+<span style="color: #5B6268;">// </span><span style="color: #5B6268;">Importing files</span>
+<span style="color: #c678dd;">import</span> <span style="color: #98be65;">'path/to/my_other_file.dart'</span>;
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org02356fd" class="outline-3">
+<h3 id="org02356fd"><span class="section-number-3">5.2</span> Data Types</h3>
+<div class="outline-text-3" id="text-5-2">
+<ul class="org-ul">
+<li>Nothing: <code>void</code></li>
+<li>Null: <code>null</code></li>
+<li>Text:
+<ul class="org-ul">
+<li>String: <code>String</code></li>
+<li>StringBuffer: <code>StringBuffer</code></li>
+</ul></li>
+<li>Numbers:
+<ul class="org-ul">
+<li>Integers: <code>int</code></li>
+<li>Floats: <code>double</code></li>
+<li>Number, generic, dynamic: <code>num</code></li>
+</ul></li>
+<li>Boolean: <code>bool</code></li>
+<li>Collections:
+<ul class="org-ul">
+<li>Lists: <code>List</code></li>
+<li>Sets: <code>Set</code></li>
+<li>Maps: <code>Map</code></li>
+</ul></li>
+<li>Time:
+<ul class="org-ul">
+<li>Date and time: <code>DateTime</code></li>
+<li>Time span: <code>Duration</code></li>
+</ul></li>
+<li>URI: <code>Uri</code></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org007be6f" class="outline-3">
+<h3 id="org007be6f"><span class="section-number-3">5.3</span> Null safety</h3>
+<div class="outline-text-3" id="text-5-3">
+<ul class="org-ul">
+<li><p>
+Add a question mark to the type declared to denote that a type may be <code>null</code>
+</p>
+<div class="org-src-container">
+<pre class="src src-dart"><span style="color: #ECBE7B;">String</span>? hello;
+<span style="color: #ECBE7B;">int</span>? x = <span style="color: #a9a1e1;">null</span>;
+</pre>
+</div></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgb7416c2" class="outline-3">
+<h3 id="orgb7416c2"><span class="section-number-3">5.4</span> Inferring the type</h3>
+<div class="outline-text-3" id="text-5-4">
+<ul class="org-ul">
+<li>Use <code>var</code> like in TypeScript to infer the type</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-dart"><span style="color: #ECBE7B;">void</span> <span style="color: #c678dd;">main</span><span style="color: #fff0f5;">()</span> <span style="color: #fff0f5;">{</span>
+  <span style="color: #ECBE7B;">int</span> <span style="color: #db5762;">myAge</span> = <span style="color: #da8548; font-weight: bold;">30</span>; <span style="color: #5B6268;">// </span><span style="color: #5B6268;">is stored as int</span>
+  <span style="color: #ECBE7B;">double</span> <span style="color: #db5762;">myBankAcc</span> = <span style="color: #da8548; font-weight: bold;">41</span>.<span style="color: #da8548; font-weight: bold;">33</span> <span style="color: #5B6268;">// </span><span style="color: #5B6268;">is stored as double</span>
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgbf11e71" class="outline-3">
+<h3 id="orgbf11e71"><span class="section-number-3">5.5</span> Classes</h3>
+<div class="outline-text-3" id="text-5-5">
+<ul class="org-ul">
+<li>Private and Public: add an <b>underscore</b> to a class property or to a class to make it private.</li>
+<li>Basic classes</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-dart"><span style="color: #51afef; font-style: italic;">class</span> <span style="color: #ECBE7B;">Spacecraft</span> <span style="color: #fff0f5;">{</span>
+  <span style="color: #ECBE7B;">String</span> <span style="color: #db5762;">name</span>;
+  <span style="color: #ECBE7B;">DateTime</span> <span style="color: #db5762;">launchDate</span>;
+
+  <span style="color: #5B6268;">// </span><span style="color: #5B6268;">Constructor, with syntactic sugar for assignment to members.</span>
+  <span style="color: #ECBE7B;">Spacecraft</span><span style="color: #c678dd;">(</span><span style="color: #51afef; font-style: italic;">this</span>.<span style="color: #db5762;">name</span>, <span style="color: #51afef; font-style: italic;">this</span>.<span style="color: #db5762;">launchDate</span><span style="color: #c678dd;">)</span> <span style="color: #c678dd;">{</span>
+  <span style="color: #c678dd;">}</span>
+
+  <span style="color: #5B6268;">// </span><span style="color: #5B6268;">Named arguments in the constructor, one is with a default value</span>
+  <span style="color: #ECBE7B;">Spacecraft</span><span style="color: #c678dd;">(</span><span style="color: #98be65;">{</span> <span style="color: #ECBE7B;">String</span> <span style="color: #db5762;">name</span> = <span style="color: #98be65;">'Hello'</span>, <span style="color: #ECBE7B;">DateTime</span> <span style="color: #db5762;">launchDate</span> <span style="color: #98be65;">}</span><span style="color: #c678dd;">)</span> <span style="color: #c678dd;">{</span>
+    <span style="color: #51afef; font-style: italic;">this</span>.name = name;
+    <span style="color: #51afef; font-style: italic;">this</span>.launchDate = launchDate;
+  <span style="color: #c678dd;">}</span>
+
+  <span style="color: #5B6268;">// </span><span style="color: #5B6268;">Named constructor that forwards to the default one.</span>
+  <span style="color: #ECBE7B;">Spacecraft</span>.unlaunched<span style="color: #c678dd;">(</span><span style="color: #ECBE7B;">String</span> <span style="color: #db5762;">name</span><span style="color: #c678dd;">)</span> : <span style="color: #51afef; font-style: italic;">this</span><span style="color: #c678dd;">(</span>name, <span style="color: #a9a1e1;">null</span><span style="color: #c678dd;">)</span>;
+
+  <span style="color: #ECBE7B;">int</span> <span style="color: #c678dd;">get</span> <span style="color: #db5762;">launchYear</span> =&gt; launchDate?.year; <span style="color: #5B6268;">// </span><span style="color: #5B6268;">read-only non-final property</span>
+
+  <span style="color: #5B6268;">// </span><span style="color: #5B6268;">Method.</span>
+  <span style="color: #ECBE7B;">void</span> <span style="color: #c678dd;">describe</span><span style="color: #c678dd;">()</span> <span style="color: #c678dd;">{</span>
+    print<span style="color: #98be65;">(</span><span style="color: #98be65;">'Spacecraft: </span><span style="color: #db5762;">$name</span><span style="color: #98be65;">'</span><span style="color: #98be65;">)</span>;
+    <span style="color: #51afef; font-style: italic;">if</span> <span style="color: #98be65;">(</span>launchDate != <span style="color: #a9a1e1;">null</span><span style="color: #98be65;">)</span> <span style="color: #98be65;">{</span>
+      <span style="color: #ECBE7B;">int</span> <span style="color: #db5762;">years</span> =
+      <span style="color: #ECBE7B;">DateTime</span>.now<span style="color: #00bfff;">()</span>.difference<span style="color: #00bfff;">(</span>launchDate<span style="color: #00bfff;">)</span>.inDays ~/
+      <span style="color: #da8548; font-weight: bold;">365</span>;
+      print<span style="color: #00bfff;">(</span><span style="color: #98be65;">'Launched: </span><span style="color: #db5762;">$launchYear</span><span style="color: #98be65;"> (</span><span style="color: #db5762;">$years</span><span style="color: #98be65;"> years ago)'</span><span style="color: #00bfff;">)</span>;
+    <span style="color: #98be65;">}</span> <span style="color: #51afef; font-style: italic;">else</span> <span style="color: #98be65;">{</span>
+      print<span style="color: #00bfff;">(</span><span style="color: #98be65;">'Unlaunched'</span><span style="color: #00bfff;">)</span>;
+    <span style="color: #98be65;">}</span>
+  <span style="color: #c678dd;">}</span>
+<span style="color: #fff0f5;">}</span>
+
+<span style="color: #5B6268;">// </span><span style="color: #5B6268;">USAGE</span>
+<span style="color: #51afef; font-style: italic;">var</span> <span style="color: #db5762;">voyager</span> = <span style="color: #ECBE7B;">Spacecraft</span><span style="color: #fff0f5;">(</span><span style="color: #98be65;">'Voyager I'</span>, <span style="color: #ECBE7B;">DateTime</span><span style="color: #c678dd;">(</span><span style="color: #da8548; font-weight: bold;">1977</span>, <span style="color: #da8548; font-weight: bold;">9</span>, <span style="color: #da8548; font-weight: bold;">5</span><span style="color: #c678dd;">)</span><span style="color: #fff0f5;">)</span>;
+voyager.describe<span style="color: #fff0f5;">()</span>;
+
+<span style="color: #51afef; font-style: italic;">var</span> <span style="color: #db5762;">voyager3</span> = <span style="color: #ECBE7B;">Spacecraft</span>.unlaunched<span style="color: #fff0f5;">(</span><span style="color: #98be65;">'Voyager III'</span><span style="color: #fff0f5;">)</span>;
+voyager3.describe<span style="color: #fff0f5;">()</span>;
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org5cbb3b0" class="outline-3">
+<h3 id="org5cbb3b0"><span class="section-number-3">5.6</span> Inheritance</h3>
+<div class="outline-text-3" id="text-5-6">
+<div class="org-src-container">
+<pre class="src src-dart"><span style="color: #51afef; font-style: italic;">class</span> <span style="color: #ECBE7B;">Orbiter</span> <span style="color: #51afef; font-style: italic;">extends</span> <span style="color: #ECBE7B;">Spacecraft</span> <span style="color: #fff0f5;">{</span>
+  <span style="color: #ECBE7B;">double</span> <span style="color: #db5762;">altitude</span>;
+  <span style="color: #ECBE7B;">Orbiter</span><span style="color: #c678dd;">(</span><span style="color: #ECBE7B;">String</span> <span style="color: #db5762;">name</span>, <span style="color: #ECBE7B;">DateTime</span> <span style="color: #db5762;">launchDate</span>, <span style="color: #51afef; font-style: italic;">this</span>.altitude<span style="color: #c678dd;">)</span>
+  : <span style="color: #51afef; font-style: italic;">super</span><span style="color: #c678dd;">(</span>name, launchDate<span style="color: #c678dd;">)</span>;
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgcd961d0" class="outline-3">
+<h3 id="orgcd961d0"><span class="section-number-3">5.7</span> Mixins</h3>
+<div class="outline-text-3" id="text-5-7">
+<ul class="org-ul">
+<li>Please note that in Dart one can mix multiple mixins, but extend only one class</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-dart"><span style="color: #51afef; font-style: italic;">class</span> <span style="color: #ECBE7B;">Piloted</span> <span style="color: #fff0f5;">{</span>
+  <span style="color: #ECBE7B;">int</span> <span style="color: #db5762;">astronauts</span> = <span style="color: #da8548; font-weight: bold;">1</span>;
+  <span style="color: #ECBE7B;">void</span> <span style="color: #c678dd;">describeCrew</span><span style="color: #c678dd;">()</span> <span style="color: #c678dd;">{</span>
+    print<span style="color: #98be65;">(</span><span style="color: #98be65;">'Number of astronauts: </span><span style="color: #db5762;">$astronauts</span><span style="color: #98be65;">'</span><span style="color: #98be65;">)</span>;
+  <span style="color: #c678dd;">}</span>
+<span style="color: #fff0f5;">}</span>
+
+<span style="color: #5B6268;">// </span><span style="color: #5B6268;">USAGE</span>
+<span style="color: #51afef; font-style: italic;">class</span> <span style="color: #ECBE7B;">PilotedCraft</span> <span style="color: #51afef; font-style: italic;">extends</span> <span style="color: #ECBE7B;">Spacecraft</span> <span style="color: #51afef; font-style: italic;">with</span> <span style="color: #ECBE7B;">Piloted</span> <span style="color: #fff0f5;">{</span>
+  <span style="color: #5B6268;">// </span><span style="color: #5B6268;">&#183;&#183;&#183;</span>
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgc9d9229" class="outline-3">
+<h3 id="orgc9d9229"><span class="section-number-3">5.8</span> Singletons</h3>
+<div class="outline-text-3" id="text-5-8">
+<div class="org-src-container">
+<pre class="src src-dart"><span style="color: #51afef; font-style: italic;">class</span> <span style="color: #ECBE7B;">Singleton</span> <span style="color: #fff0f5;">{</span>
+  <span style="color: #51afef; font-style: italic;">final</span> <span style="color: #db5762;">foo</span> = <span style="color: #98be65;">'foo'</span>;
+
+  <span style="color: #ECBE7B;">Singleton</span>._internal<span style="color: #c678dd;">()</span>;
+  <span style="color: #c678dd;">static</span> <span style="color: #51afef; font-style: italic;">final</span> <span style="color: #ECBE7B;">Singleton</span> <span style="color: #db5762;">_instance</span> = <span style="color: #ECBE7B;">Singleton</span>._internal<span style="color: #c678dd;">()</span>;
+  <span style="color: #c678dd;">factory</span> <span style="color: #ECBE7B;">Singleton</span><span style="color: #c678dd;">()</span> <span style="color: #c678dd;">{</span>
+    <span style="color: #51afef; font-style: italic;">return</span> _instance;
+  <span style="color: #c678dd;">}</span>
+<span style="color: #fff0f5;">}</span>
+
+<span style="color: #5B6268;">// </span><span style="color: #5B6268;">USAGE</span>
+<span style="color: #51afef; font-style: italic;">var</span> <span style="color: #db5762;">x</span> = <span style="color: #ECBE7B;">Singleton</span><span style="color: #fff0f5;">()</span>.foo;
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orga8437bd" class="outline-3">
+<h3 id="orga8437bd"><span class="section-number-3">5.9</span> Interfaces and abstract classes</h3>
+<div class="outline-text-3" id="text-5-9">
+<ul class="org-ul">
+<li>Dart has no <code>interface</code> keyword. Instead, all classes implicitly define an interface. Therefore, you can implement any class.</li>
+<li>You can create an abstract class to be extended (or implemented) by a concrete class. Abstract classes can contain abstract methods (with empty bodies).</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-dart"><span style="color: #c678dd;">abstract</span> <span style="color: #51afef; font-style: italic;">class</span> <span style="color: #ECBE7B;">Describable</span> <span style="color: #fff0f5;">{</span>
+  <span style="color: #ECBE7B;">void</span> <span style="color: #c678dd;">describe</span><span style="color: #c678dd;">()</span>;
+
+  <span style="color: #ECBE7B;">void</span> <span style="color: #c678dd;">describeWithEmphasis</span><span style="color: #c678dd;">()</span> <span style="color: #c678dd;">{</span>
+    print<span style="color: #98be65;">(</span><span style="color: #98be65;">'========='</span><span style="color: #98be65;">)</span>;
+    describe<span style="color: #98be65;">()</span>;
+    print<span style="color: #98be65;">(</span><span style="color: #98be65;">'========='</span><span style="color: #98be65;">)</span>;
+  <span style="color: #c678dd;">}</span>
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+<ul class="org-ul">
+<li>Any class extending <code>Describable</code> has the <code>describeWithEmphasis()</code> method, which calls the extender’s implementation of <code>describe()</code>.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org1bc7df4" class="outline-3">
+<h3 id="org1bc7df4"><span class="section-number-3">5.10</span> Final vs Const</h3>
+<div class="outline-text-3" id="text-5-10">
+<ul class="org-ul">
+<li>Final is a runtime constant value, it can be set during runtime</li>
+<li>Const cannot be changed at runtime it is set during compile time</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-org89fc776" class="outline-2">
+<h2 id="org89fc776"><span class="section-number-2">6</span> Styling</h2>
+<div class="outline-text-2" id="text-6">
+</div>
+<div id="outline-container-org58f1fdc" class="outline-3">
+<h3 id="org58f1fdc"><span class="section-number-3">6.1</span> Themes</h3>
+<div class="outline-text-3" id="text-6-1">
+<ul class="org-ul">
+<li>Insert the theme in the <code>MaterialApp</code> widget like so:</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-dart"><span style="color: #51afef; font-style: italic;">class</span> <span style="color: #ECBE7B;">MyApp</span> <span style="color: #fff0f5;">{</span>
+  <span style="color: #c678dd;">build</span><span style="color: #c678dd;">(</span><span style="color: #ECBE7B;">BuildContext</span> <span style="color: #db5762;">context</span><span style="color: #c678dd;">)</span> <span style="color: #c678dd;">{</span>
+    <span style="color: #51afef; font-style: italic;">return</span> <span style="color: #ECBE7B;">MaterialApp</span><span style="color: #98be65;">(</span>
+      title: <span style="color: #98be65;">'xxx'</span>,
+      theme: <span style="color: #ECBE7B;">ThemeDate</span><span style="color: #00bfff;">(</span>
+        primarySwatch: <span style="color: #ECBE7B;">Colors</span>.purple, <span style="color: #5B6268;">// </span><span style="color: #5B6268;">setup a main color range (swatch)</span>
+        accentColor: <span style="color: #ECBE7B;">Colors</span>.amber, <span style="color: #5B6268;">// </span><span style="color: #5B6268;">for accented widgets</span>
+        fontFamily: <span style="color: #98be65;">'Quicksand'</span>, <span style="color: #5B6268;">// </span><span style="color: #5B6268;">global font</span>
+        textTheme: <span style="color: #ECBE7B;">ThemeData</span>.light<span style="color: #4db5bd;">()</span>.textTheme.copyWith<span style="color: #4db5bd;">(</span>title: <span style="color: #ECBE7B;">TextStyle</span><span style="color: #32cd32;">(</span>fontFamily: <span style="color: #98be65;">'OpenSans'</span>, fontWeight: <span style="color: #ECBE7B;">FontWeight</span>.bold, fontSize: <span style="color: #da8548; font-weight: bold;">18</span><span style="color: #32cd32;">)</span><span style="color: #4db5bd;">)</span>
+        appBarTheme: <span style="color: #ECBE7B;">AppBarTheme</span><span style="color: #4db5bd;">(</span>
+          textTheme: <span style="color: #ECBE7B;">ThemeData</span>.light<span style="color: #32cd32;">()</span>.textTheme.copyWith<span style="color: #32cd32;">(</span>title: <span style="color: #ECBE7B;">TextStyle</span><span style="color: #c678dd;">(</span>fontFamily: <span style="color: #98be65;">'OpenSans'</span><span style="color: #c678dd;">)</span><span style="color: #32cd32;">)</span>
+        <span style="color: #4db5bd;">)</span>,
+      <span style="color: #00bfff;">)</span>,
+      home: <span style="color: #ECBE7B;">HomeWidget</span><span style="color: #00bfff;">()</span>;
+    <span style="color: #98be65;">)</span>;
+  <span style="color: #c678dd;">}</span>
+<span style="color: #fff0f5;">}</span>
+
+<span style="color: #5B6268;">// </span><span style="color: #5B6268;">reuse the 'textTheme' style in a Text</span>
+<span style="color: #ECBE7B;">Text</span><span style="color: #fff0f5;">(</span><span style="color: #98be65;">'Hiya'</span>, style: <span style="color: #ECBE7B;">Theme</span>.of<span style="color: #c678dd;">(</span>context<span style="color: #c678dd;">)</span>.textTheme.title<span style="color: #fff0f5;">)</span>
+</pre>
+</div>
+<ul class="org-ul">
+<li>Use in code like so:</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-dart"><span style="color: #51afef; font-style: italic;">class</span> <span style="color: #ECBE7B;">MyWidget</span> <span style="color: #51afef; font-style: italic;">extends</span> <span style="color: #ECBE7B;">StatelessWidget</span> <span style="color: #fff0f5;">{</span>
+  <span style="color: #c678dd;">build</span><span style="color: #c678dd;">(</span><span style="color: #ECBE7B;">BuildContext</span> <span style="color: #db5762;">context</span><span style="color: #c678dd;">)</span> <span style="color: #c678dd;">{</span>
+    <span style="color: #51afef; font-style: italic;">return</span> <span style="color: #ECBE7B;">Text</span><span style="color: #98be65;">(</span><span style="color: #98be65;">'Hello'</span>,
+      style: <span style="color: #ECBE7B;">TextStyle</span><span style="color: #00bfff;">(</span>
+        color: <span style="color: #ECBE7B;">Theme</span>.of<span style="color: #4db5bd;">(</span>context<span style="color: #4db5bd;">)</span>.primaryColor,
+      <span style="color: #00bfff;">)</span>,
+    <span style="color: #98be65;">)</span>;
+  <span style="color: #c678dd;">}</span>
+<span style="color: #fff0f5;">}</span>
+
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org63bb94c" class="outline-3">
+<h3 id="org63bb94c"><span class="section-number-3">6.2</span> Border</h3>
+<div class="outline-text-3" id="text-6-2">
+<ul class="org-ul">
+<li>Usually on a <code>Container</code>'s decoration:</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-dart"><span style="color: #ECBE7B;">Widget</span> <span style="color: #c678dd;">build</span><span style="color: #fff0f5;">(</span><span style="color: #ECBE7B;">BuildContext</span> <span style="color: #db5762;">context</span><span style="color: #fff0f5;">)</span> <span style="color: #fff0f5;">{</span>
+  <span style="color: #51afef; font-style: italic;">return</span> <span style="color: #ECBE7B;">Container</span><span style="color: #c678dd;">(</span>
+    width: <span style="color: #ECBE7B;">double</span>.infinity,
+    margin: <span style="color: #ECBE7B;">EdgeInsets</span>.all<span style="color: #98be65;">(</span><span style="color: #da8548; font-weight: bold;">30</span><span style="color: #98be65;">)</span>,
+    decoration: <span style="color: #ECBE7B;">BoxDecoration</span><span style="color: #98be65;">(</span>
+      color: <span style="color: #ECBE7B;">Colors</span>.deepPurple,
+      borderRadius: <span style="color: #ECBE7B;">BorderRadius</span>.circular<span style="color: #00bfff;">(</span><span style="color: #da8548; font-weight: bold;">5</span><span style="color: #00bfff;">)</span>,
+      border: <span style="color: #ECBE7B;">Border</span>.all<span style="color: #00bfff;">(</span>
+        color: <span style="color: #ECBE7B;">Colors</span>.purple,
+        width: <span style="color: #da8548; font-weight: bold;">2</span>,
+      <span style="color: #00bfff;">)</span>,
+    <span style="color: #98be65;">)</span>,
+    child: <span style="color: #ECBE7B;">Text</span><span style="color: #98be65;">(</span>
+      _questionText,
+      style: <span style="color: #ECBE7B;">TextStyle</span><span style="color: #00bfff;">(</span>fontSize: <span style="color: #da8548; font-weight: bold;">28</span>, color: <span style="color: #ECBE7B;">Colors</span>.white<span style="color: #00bfff;">)</span>,
+      textAlign: <span style="color: #ECBE7B;">TextAlign</span>.center,
+    <span style="color: #98be65;">)</span>
+  <span style="color: #c678dd;">)</span>;
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgb204861" class="outline-3">
+<h3 id="orgb204861"><span class="section-number-3">6.3</span> Fonts</h3>
+<div class="outline-text-3" id="text-6-3">
+<ul class="org-ul">
+<li>Adding the OpenSans font as an example</li>
+<li>Create an asset folder in the root</li>
+<li>Dump the ttf files into a fonts subfolder</li>
+<li>In the pub.spec.yaml add the fonts like so:</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-yaml"><span style="color: #db5762;">fonts</span>:
+  - <span style="color: #db5762;">family</span>: OpenSans
+    <span style="color: #db5762;">fonts</span>:
+      - <span style="color: #db5762;">asset</span>: assets/fonts/OpenSans-Regular.ttf
+        - <span style="color: #db5762;">asset</span>: assets/fonts/OpenSans-Bold.ttf
+          <span style="color: #db5762;">weight</span>: 700
+</pre>
+</div>
+<ul class="org-ul">
+<li>Whenever choosing a font refer to it as <code>'OpenSans'</code></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org3db9f20" class="outline-3">
+<h3 id="org3db9f20"><span class="section-number-3">6.4</span> Font types and sizes in <code>TextTheme</code></h3>
+<div class="outline-text-3" id="text-6-4">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">NAME</th>
+<th scope="col" class="org-left">SIZE</th>
+<th scope="col" class="org-left">WEIGHT</th>
+<th scope="col" class="org-left">SPACING</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><b>headline1</b></td>
+<td class="org-left"><code>96.0</code></td>
+<td class="org-left"><b>light</b></td>
+<td class="org-left"><code>-1.5</code></td>
+</tr>
+
+<tr>
+<td class="org-left"><b>headline2</b></td>
+<td class="org-left"><code>60.0</code></td>
+<td class="org-left"><b>light</b></td>
+<td class="org-left"><code>-0.5</code></td>
+</tr>
+
+<tr>
+<td class="org-left"><b>headline3</b></td>
+<td class="org-left"><code>48.0</code></td>
+<td class="org-left"><b>regular</b></td>
+<td class="org-left"><code>0.0</code></td>
+</tr>
+
+<tr>
+<td class="org-left"><b>headline4</b></td>
+<td class="org-left"><code>34.0</code></td>
+<td class="org-left"><b>regular</b></td>
+<td class="org-left"><code>0.25</code></td>
+</tr>
+
+<tr>
+<td class="org-left"><b>headline5</b></td>
+<td class="org-left"><code>24.0</code></td>
+<td class="org-left"><b>regular</b></td>
+<td class="org-left"><code>0.0</code></td>
+</tr>
+
+<tr>
+<td class="org-left"><b>headline6</b></td>
+<td class="org-left"><code>20.0</code></td>
+<td class="org-left"><b>medium</b></td>
+<td class="org-left"><code>0.15</code></td>
+</tr>
+
+<tr>
+<td class="org-left"><b>subtitle1</b></td>
+<td class="org-left"><code>16.0</code></td>
+<td class="org-left"><b>regular</b></td>
+<td class="org-left"><code>0.15</code></td>
+</tr>
+
+<tr>
+<td class="org-left"><b>subtitle2</b></td>
+<td class="org-left"><code>14.0</code></td>
+<td class="org-left"><b>medium</b></td>
+<td class="org-left"><code>0.1</code></td>
+</tr>
+
+<tr>
+<td class="org-left"><b>bodyText1</b></td>
+<td class="org-left"><code>16.0</code></td>
+<td class="org-left"><b>medium</b></td>
+<td class="org-left"><code>0.5</code></td>
+</tr>
+
+<tr>
+<td class="org-left"><b>bodyText2</b></td>
+<td class="org-left"><code>14.0</code></td>
+<td class="org-left"><b>regular</b></td>
+<td class="org-left"><code>0.25</code></td>
+</tr>
+
+<tr>
+<td class="org-left"><b>button</b></td>
+<td class="org-left"><code>14.0</code></td>
+<td class="org-left"><b>medium</b></td>
+<td class="org-left"><code>1.25</code></td>
+</tr>
+
+<tr>
+<td class="org-left"><b>caption</b></td>
+<td class="org-left"><code>12.0</code></td>
+<td class="org-left"><b>regular</b></td>
+<td class="org-left"><code>0.4</code></td>
+</tr>
+
+<tr>
+<td class="org-left"><b>overline</b></td>
+<td class="org-left"><code>10.0</code></td>
+<td class="org-left"><b>regular</b></td>
+<td class="org-left"><code>1.5</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div id="outline-container-org516c7a4" class="outline-2">
+<h2 id="org516c7a4"><span class="section-number-2">7</span> Widgets</h2>
+<div class="outline-text-2" id="text-7">
+</div>
+<div id="outline-container-org42720f7" class="outline-3">
+<h3 id="org42720f7"><span class="section-number-3">7.1</span> Lifecycle</h3>
+<div class="outline-text-3" id="text-7-1">
+</div>
+<ol class="org-ol">
+<li><a id="org55e090b"></a>Stateless<br />
+<div class="outline-text-4" id="text-7-1-1">
+<ul class="org-ul">
+<li><code>Constructor</code></li>
+<li><code>build()</code></li>
+</ul>
+</div>
+</li>
+<li><a id="orgdc950d3"></a>Stateful<br />
+<div class="outline-text-4" id="text-7-1-2">
+<ul class="org-ul">
+<li><code>Constructor</code></li>
+<li><code>initState()</code>: usually need to call <code>super.initState()</code></li>
+<li><code>build()</code></li>
+<li><code>setState()</code></li>
+<li><code>didUpdateWidget()</code></li>
+<li><code>build()</code></li>
+<li><code>dispose()</code>: usually need to call <code>super.dispose()</code></li>
+</ul>
+</div>
+</li>
+<li><a id="org460f7b9"></a>Binding to native Lifecycles<br />
+<div class="outline-text-4" id="text-7-1-3">
+<ul class="org-ul">
+<li>Extend a <code>StatefulWidget</code> with a <code>WidgetsBindingObserver</code> mixin</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-dart"><span style="color: #51afef; font-style: italic;">class</span> <span style="color: #ECBE7B;">_MyHomePageState</span> <span style="color: #51afef; font-style: italic;">extends</span> <span style="color: #ECBE7B;">State</span>&lt;<span style="color: #ECBE7B;">MyHomePage</span>&gt; <span style="color: #51afef; font-style: italic;">with</span> <span style="color: #ECBE7B;">WidgetsBindingObserver</span> <span style="color: #fff0f5;">{</span>
+
+  <span style="color: #5B6268;">// </span><span style="color: #5B6268;">Adding the observer</span>
+  <span style="color: #a9a1e1;">@override</span>
+  <span style="color: #ECBE7B;">void</span> <span style="color: #c678dd;">initState</span><span style="color: #c678dd;">()</span> <span style="color: #c678dd;">{</span>
+    <span style="color: #ECBE7B;">WidgetsBinding</span>.instance.addObserver<span style="color: #98be65;">(</span><span style="color: #51afef; font-style: italic;">this</span><span style="color: #98be65;">)</span>;
+    <span style="color: #51afef; font-style: italic;">super</span>.initState<span style="color: #98be65;">()</span>;
+  <span style="color: #c678dd;">}</span>
+
+  <span style="color: #a9a1e1;">@override</span>
+  <span style="color: #ECBE7B;">void</span> <span style="color: #c678dd;">didChangeAppLifecycleState</span><span style="color: #c678dd;">(</span><span style="color: #ECBE7B;">AppLifecycleState</span> <span style="color: #db5762;">state</span><span style="color: #c678dd;">)</span> <span style="color: #c678dd;">{</span>
+    <span style="color: #5B6268;">// </span><span style="color: #5B6268;">reacting to the state change</span>
+  <span style="color: #c678dd;">}</span>
+
+  <span style="color: #5B6268;">// </span><span style="color: #5B6268;">Removing the observer</span>
+  <span style="color: #a9a1e1;">@override</span>
+  <span style="color: #ECBE7B;">void</span> <span style="color: #c678dd;">dispose</span><span style="color: #c678dd;">()</span> <span style="color: #c678dd;">{</span>
+    <span style="color: #ECBE7B;">WidgetsBinding</span>.instance.removeObserver<span style="color: #98be65;">(</span><span style="color: #51afef; font-style: italic;">this</span><span style="color: #98be65;">)</span>;
+    <span style="color: #51afef; font-style: italic;">super</span>.dispose<span style="color: #98be65;">()</span>;
+  <span style="color: #c678dd;">}</span>
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+<div id="outline-container-org4832c1f" class="outline-3">
+<h3 id="org4832c1f"><span class="section-number-3">7.2</span> Keys</h3>
+<div class="outline-text-3" id="text-7-2">
+<ul class="org-ul">
+<li>Use the <code>Key</code> class for unique identification of Widgets</li>
+<li>There is a <code>UniqueKey</code> for generating random keys and <code>ValueKey(val)</code> for lists or others where we have IDs</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgaf31e36" class="outline-3">
+<h3 id="orgaf31e36"><span class="section-number-3">7.3</span> Popular Types</h3>
+<div class="outline-text-3" id="text-7-3">
+</div>
+<ol class="org-ol">
+<li><a id="org5a4a3ac"></a>App and Page Setup<br />
+<div class="outline-text-4" id="text-7-3-1">
+<ul class="org-ul">
+<li><code>MaterialApp</code>, <code>CupertinoApp</code></li>
+<li><code>Scaffold</code>, <code>CupertinoPageScaffold</code></li>
+</ul>
+</div>
+</li>
+<li><a id="org631cbf4"></a>Layout<br />
+<div class="outline-text-4" id="text-7-3-2">
+<ul class="org-ul">
+<li><code>Container</code>: like a <code>div</code> in HTML. Usually you'd set the width, height, padding, margin and borders (decoration) through this widget.</li>
+<li><code>SizedBox</code>: like the <code>Container</code> but requires dimensions. Used as a content separator as well.</li>
+<li><code>Row</code>: use <code>mainAxisAlignment</code> and/or <code>crossAxisAlignment</code> to position child widgets</li>
+<li><code>Column</code>: use <code>mainAxisAlignment</code> and/or <code>crossAxisAlignment</code> to position child widgets</li>
+<li><code>Grid</code>: very powerful, like always</li>
+</ul>
+</div>
+</li>
+<li><a id="org308be0f"></a>Row / Column Children<br />
+<div class="outline-text-4" id="text-7-3-3">
+<ul class="org-ul">
+<li><code>Expanded</code></li>
+<li><code>Flexible</code></li>
+</ul>
+</div>
+</li>
+<li><a id="org22426e6"></a>Content Containers<br />
+<div class="outline-text-4" id="text-7-3-4">
+<ul class="org-ul">
+<li><code>Stack</code></li>
+<li><code>Card</code></li>
+<li><code>SingleChildScrollView</code></li>
+<li><code>showModalBottomSheet</code>: create a pop up modal from the bottom of the screen</li>
+</ul>
+</div>
+</li>
+<li><a id="org3b6d782"></a>Repeat Elements<br />
+<div class="outline-text-4" id="text-7-3-5">
+<ul class="org-ul">
+<li><code>ListView</code>: Generally use the ListView.builder() to display only the items that are currently seen on screen. It's just more efficient.</li>
+<li><code>GridView</code></li>
+<li><code>ListTile</code></li>
+</ul>
+</div>
+</li>
+<li><a id="org4ed0adb"></a>Content Types<br />
+<div class="outline-text-4" id="text-7-3-6">
+<ul class="org-ul">
+<li><code>Text</code></li>
+<li><code>Image</code></li>
+<li><code>Icon</code></li>
+</ul>
+</div>
+</li>
+<li><a id="org10cdb26"></a>User Input<br />
+<div class="outline-text-4" id="text-7-3-7">
+<ul class="org-ul">
+<li><code>TextField</code></li>
+<li><code>RaisedButton</code>, <code>FlatButton</code>, <code>IconButton</code></li>
+<li><code>GestureDetector</code></li>
+<li><code>InkWell</code></li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+<div id="outline-container-org0ed24f7" class="outline-3">
+<h3 id="org0ed24f7"><span class="section-number-3">7.4</span> Stateless vs Stateful</h3>
+<div class="outline-text-3" id="text-7-4">
+
+<div id="orgd7e7b13" class="figure">
+<p><img src="images/Widgets/2021-02-03_15-42-19_screenshot.png" alt="2021-02-03_15-42-19_screenshot.png" />
+</p>
+</div>
+<ul class="org-ul">
+<li>Stateless</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-dart"><span style="color: #51afef; font-style: italic;">class</span> <span style="color: #ECBE7B;">Question</span> <span style="color: #51afef; font-style: italic;">extends</span> <span style="color: #ECBE7B;">StatelessWidget</span> <span style="color: #fff0f5;">{</span>
+  <span style="color: #51afef; font-style: italic;">final</span> <span style="color: #ECBE7B;">String</span> <span style="color: #db5762;">_questionText</span>;
+
+  <span style="color: #ECBE7B;">Question</span><span style="color: #c678dd;">(</span><span style="color: #51afef; font-style: italic;">this</span>._questionText<span style="color: #c678dd;">)</span>;
+
+  <span style="color: #a9a1e1;">@override</span>
+  <span style="color: #ECBE7B;">Widget</span> <span style="color: #c678dd;">build</span><span style="color: #c678dd;">(</span><span style="color: #ECBE7B;">BuildContext</span> <span style="color: #db5762;">context</span><span style="color: #c678dd;">)</span> <span style="color: #c678dd;">{</span>
+    <span style="color: #51afef; font-style: italic;">return</span> <span style="color: #ECBE7B;">Container</span><span style="color: #98be65;">(</span>
+      width: <span style="color: #ECBE7B;">double</span>.infinity,
+      margin: <span style="color: #ECBE7B;">EdgeInsets</span>.all<span style="color: #00bfff;">(</span><span style="color: #da8548; font-weight: bold;">30</span><span style="color: #00bfff;">)</span>,
+      child: <span style="color: #ECBE7B;">Text</span><span style="color: #00bfff;">(</span>
+        _questionText,
+        style: <span style="color: #ECBE7B;">TextStyle</span><span style="color: #4db5bd;">(</span>fontSize: <span style="color: #da8548; font-weight: bold;">28</span><span style="color: #4db5bd;">)</span>,
+        textAlign: <span style="color: #ECBE7B;">TextAlign</span>.center,
+      <span style="color: #00bfff;">)</span>
+    <span style="color: #98be65;">)</span>;
+  <span style="color: #c678dd;">}</span>
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+<ul class="org-ul">
+<li>Stateful and <code>Scaffold</code> example</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-dart"><span style="color: #51afef; font-style: italic;">class</span> <span style="color: #ECBE7B;">MyApp</span> <span style="color: #51afef; font-style: italic;">extends</span> <span style="color: #ECBE7B;">StatefulWidget</span> <span style="color: #fff0f5;">{</span>
+  <span style="color: #a9a1e1;">@override</span>
+  <span style="color: #ECBE7B;">State</span>&lt;<span style="color: #ECBE7B;">StatefulWidget</span>&gt; <span style="color: #c678dd;">createState</span><span style="color: #c678dd;">()</span> <span style="color: #c678dd;">{</span>
+    <span style="color: #51afef; font-style: italic;">return</span> <span style="color: #ECBE7B;">_MyAppState</span><span style="color: #98be65;">()</span>;
+  <span style="color: #c678dd;">}</span>
+<span style="color: #fff0f5;">}</span>
+
+<span style="color: #51afef; font-style: italic;">class</span> <span style="color: #ECBE7B;">_MyAppState</span> <span style="color: #51afef; font-style: italic;">extends</span> <span style="color: #ECBE7B;">State</span>&lt;<span style="color: #ECBE7B;">MyApp</span>&gt; <span style="color: #fff0f5;">{</span>
+  <span style="color: #ECBE7B;">String</span> <span style="color: #db5762;">text</span> = <span style="color: #98be65;">'Hi!'</span>;
+
+  <span style="color: #ECBE7B;">void</span> <span style="color: #c678dd;">_tapMe</span><span style="color: #c678dd;">()</span> <span style="color: #c678dd;">{</span>
+    setState<span style="color: #98be65;">(</span><span style="color: #00bfff;">()</span> <span style="color: #00bfff;">{</span>
+        <span style="color: #5B6268;">// </span><span style="color: #5B6268;">update state</span>
+        text = <span style="color: #98be65;">"Tapped!"</span>;
+    <span style="color: #00bfff;">}</span><span style="color: #98be65;">)</span>;
+  <span style="color: #c678dd;">}</span>
+
+  <span style="color: #a9a1e1;">@override</span>
+  <span style="color: #ECBE7B;">Widget</span> <span style="color: #c678dd;">build</span><span style="color: #c678dd;">(</span><span style="color: #ECBE7B;">BuildContext</span> <span style="color: #db5762;">context</span><span style="color: #c678dd;">)</span> <span style="color: #c678dd;">{</span>
+    <span style="color: #51afef; font-style: italic;">return</span> <span style="color: #ECBE7B;">MaterialApp</span><span style="color: #98be65;">(</span>
+      home: <span style="color: #ECBE7B;">Scaffold</span><span style="color: #00bfff;">(</span>
+        appBar: <span style="color: #ECBE7B;">AppBar</span><span style="color: #4db5bd;">(</span>
+          title: <span style="color: #ECBE7B;">Text</span><span style="color: #32cd32;">(</span><span style="color: #98be65;">'My First App'</span><span style="color: #32cd32;">)</span>,
+        <span style="color: #4db5bd;">)</span>,
+        drawer: <span style="color: #ECBE7B;">AppDrawer</span><span style="color: #4db5bd;">()</span>,
+        body: <span style="color: #ECBE7B;">Column</span><span style="color: #4db5bd;">(</span>
+          children: &lt;<span style="color: #ECBE7B;">Widget</span>&gt; <span style="color: #32cd32;">[</span>
+            <span style="color: #ECBE7B;">Text</span><span style="color: #c678dd;">(</span>text<span style="color: #c678dd;">)</span>,
+            <span style="color: #ECBE7B;">RaisedButton</span><span style="color: #c678dd;">(</span>
+              child: <span style="color: #ECBE7B;">Text</span><span style="color: #98be65;">(</span><span style="color: #98be65;">'Tap me'</span><span style="color: #98be65;">)</span>,
+              onPressed: _tapMe,
+            <span style="color: #c678dd;">)</span>
+          <span style="color: #32cd32;">]</span>
+        <span style="color: #4db5bd;">)</span>,
+      <span style="color: #00bfff;">)</span>,
+    <span style="color: #98be65;">)</span>;
+  <span style="color: #c678dd;">}</span>
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgab005ac" class="outline-3">
+<h3 id="orgab005ac"><span class="section-number-3">7.5</span> Widget Communication</h3>
+<div class="outline-text-3" id="text-7-5">
+<ul class="org-ul">
+<li>Pass a function through to the child's Widget via the constructor</li>
+<li>Call the function in the child Widget to trigger functionality in the parent</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-dart"><span style="color: #51afef; font-style: italic;">class</span> <span style="color: #ECBE7B;">MyWidget</span> <span style="color: #51afef; font-style: italic;">extends</span> <span style="color: #ECBE7B;">StatelessWidget</span> <span style="color: #fff0f5;">{</span>
+  <span style="color: #51afef; font-style: italic;">final</span> <span style="color: #c678dd;">Function</span> <span style="color: #db5762;">_onPressedHandler</span>;
+
+  <span style="color: #ECBE7B;">MyWidget</span><span style="color: #c678dd;">(</span><span style="color: #51afef; font-style: italic;">this</span>._onPressedHandler<span style="color: #c678dd;">)</span>;
+
+  <span style="color: #ECBE7B;">Widget</span> <span style="color: #c678dd;">build</span><span style="color: #c678dd;">(</span><span style="color: #ECBE7B;">BuildContext</span> <span style="color: #db5762;">context</span><span style="color: #c678dd;">)</span> <span style="color: #c678dd;">{</span>
+    <span style="color: #51afef; font-style: italic;">return</span> <span style="color: #ECBE7B;">RaisedButton</span><span style="color: #98be65;">(</span>
+      child: <span style="color: #ECBE7B;">Text</span><span style="color: #00bfff;">(</span><span style="color: #98be65;">'Tap me'</span><span style="color: #00bfff;">)</span>,
+      onPressed: <span style="color: #00bfff;">()</span> <span style="color: #00bfff;">{</span>
+        _onPressedHandler<span style="color: #4db5bd;">(</span><span style="color: #98be65;">'some data here'</span><span style="color: #4db5bd;">)</span>;
+      <span style="color: #00bfff;">}</span>,
+      <span style="color: #5B6268;">// </span><span style="color: #5B6268;">or if not passing data then:</span>
+      <span style="color: #5B6268;">// </span><span style="color: #5B6268;">onPressed: _onPressedHandler</span>
+    <span style="color: #98be65;">)</span>
+  <span style="color: #c678dd;">}</span>
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+<ul class="org-ul">
+<li>A <code>StatefulWidget</code>'s <code>State</code> sub-class can use the reserved <code>widget</code> property to access the <code>StatefulWidget</code> class' properties</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-dart"><span style="color: #51afef; font-style: italic;">class</span> <span style="color: #ECBE7B;">MyWidget</span> <span style="color: #51afef; font-style: italic;">extends</span> <span style="color: #ECBE7B;">StatefulWidget</span> <span style="color: #fff0f5;">{</span>
+  <span style="color: #51afef; font-style: italic;">final</span> <span style="color: #c678dd;">Function</span> <span style="color: #db5762;">tx</span>;
+
+  <span style="color: #ECBE7B;">MyWidget</span><span style="color: #c678dd;">(</span><span style="color: #51afef; font-style: italic;">this</span>.tx<span style="color: #c678dd;">)</span>;
+
+  <span style="color: #a9a1e1;">@override</span>
+  <span style="color: #ECBE7B;">_MyWidget</span> <span style="color: #c678dd;">createState</span><span style="color: #c678dd;">()</span> =&gt; <span style="color: #ECBE7B;">_MyWidget</span><span style="color: #c678dd;">()</span>;
+<span style="color: #fff0f5;">}</span>
+
+<span style="color: #51afef; font-style: italic;">class</span> <span style="color: #ECBE7B;">_MyWidget</span> <span style="color: #51afef; font-style: italic;">extends</span> <span style="color: #ECBE7B;">State</span>&lt;<span style="color: #ECBE7B;">MyWidget</span>&gt; <span style="color: #fff0f5;">{</span>
+  <span style="color: #ECBE7B;">void</span> <span style="color: #c678dd;">_callAFuncFromWidgetProperty</span><span style="color: #c678dd;">()</span> <span style="color: #c678dd;">{</span>
+    <span style="color: #5B6268;">// </span><span style="color: #d0bf8f;">NOTE</span><span style="color: #5B6268;">: 'widget' is a reserved property of the State class that provides access to the parent StatefulWidget class</span>
+    <span style="color: #5B6268;">// </span><span style="color: #5B6268;">here you can use the tx property from the MyWidget class (even though we are in _MyWidget class) directly like so:</span>
+    widget.tx<span style="color: #98be65;">()</span>;
+
+    <span style="color: #5B6268;">// </span><span style="color: #d0bf8f;">NOTE</span><span style="color: #5B6268;">: furthermore the 'context' of the class is also available as a property</span>
+  <span style="color: #c678dd;">}</span>
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgfcc64b0" class="outline-3">
+<h3 id="orgfcc64b0"><span class="section-number-3">7.6</span> Spawning Widgets from a List</h3>
+<div class="outline-text-3" id="text-7-6">
+<div class="org-src-container">
+<pre class="src src-dart"><span style="color: #51afef; font-style: italic;">class</span> <span style="color: #ECBE7B;">MyWidget</span> <span style="color: #fff0f5;">{</span>
+  <span style="color: #5B6268;">// </span><span style="color: #5B6268;">question is a list as follows:</span>
+  <span style="color: #51afef; font-style: italic;">var</span> <span style="color: #db5762;">questions</span> = <span style="color: #c678dd;">[</span>
+    <span style="color: #98be65;">{</span> qText: <span style="color: #98be65;">'What is your fav color?'</span>, qAns: <span style="color: #00bfff;">[</span><span style="color: #98be65;">'red'</span>, <span style="color: #98be65;">'blue'</span><span style="color: #00bfff;">]</span><span style="color: #98be65;">}</span>,
+    <span style="color: #98be65;">{</span> qText: <span style="color: #98be65;">'What is your fav animal?'</span>, qAns: <span style="color: #00bfff;">[</span><span style="color: #98be65;">'dog'</span>, <span style="color: #98be65;">'cat'</span>, <span style="color: #98be65;">'eagle'</span><span style="color: #00bfff;">]</span><span style="color: #98be65;">}</span>,
+  <span style="color: #c678dd;">]</span>;
+  <span style="color: #51afef; font-style: italic;">var</span> <span style="color: #db5762;">qIdx</span> = <span style="color: #da8548; font-weight: bold;">0</span>;
+
+  <span style="color: #ECBE7B;">void</span> <span style="color: #c678dd;">cb</span><span style="color: #c678dd;">(</span><span style="color: #db5762;">x</span><span style="color: #c678dd;">)</span> <span style="color: #c678dd;">{</span>
+    <span style="color: #c678dd;">setState</span><span style="color: #98be65;">()</span> <span style="color: #98be65;">{</span>
+      <span style="color: #5B6268;">// </span><span style="color: #5B6268;">do something with x</span>
+    <span style="color: #98be65;">}</span>
+  <span style="color: #c678dd;">}</span>
+  <span style="color: #5B6268;">// </span><span style="color: #5B6268;">in the build() method</span>
+  <span style="color: #ECBE7B;">Column</span><span style="color: #c678dd;">(</span>
+    children: <span style="color: #98be65;">[</span>
+      <span style="color: #ECBE7B;">Text</span><span style="color: #00bfff;">(</span><span style="color: #98be65;">'Hello World'</span><span style="color: #00bfff;">)</span>,
+      <span style="color: #5B6268;">// </span><span style="color: #5B6268;">using the spread operator, casting and toList() to accomplish concatenating the list with the previous widget</span>
+      ...<span style="color: #00bfff;">(</span>questions.<span style="color: #4db5bd;">[</span>qIdx<span style="color: #4db5bd;">][</span><span style="color: #98be65;">'qAns'</span><span style="color: #4db5bd;">]</span> <span style="color: #c678dd;">as</span> <span style="color: #ECBE7B;">List</span>&lt;<span style="color: #ECBE7B;">String</span>&gt;<span style="color: #00bfff;">)</span>.map<span style="color: #00bfff;">(</span><span style="color: #4db5bd;">(</span><span style="color: #db5762;">answer</span><span style="color: #4db5bd;">)</span> <span style="color: #4db5bd;">{</span>
+          <span style="color: #51afef; font-style: italic;">return</span> <span style="color: #ECBE7B;">Answer</span><span style="color: #32cd32;">(</span>cb, answer<span style="color: #32cd32;">)</span>; <span style="color: #5B6268;">// </span><span style="color: #5B6268;">Answer is a custom widget that takes a callback and a string as the params</span>
+      <span style="color: #4db5bd;">}</span><span style="color: #00bfff;">)</span>.toList<span style="color: #00bfff;">()</span>
+    <span style="color: #98be65;">]</span>
+  <span style="color: #c678dd;">)</span>
+
+  <span style="color: #5B6268;">// </span><span style="color: #5B6268;">or without array concatenation</span>
+  <span style="color: #ECBE7B;">Column</span><span style="color: #c678dd;">(</span>
+    children: questions.<span style="color: #98be65;">[</span>qIdx<span style="color: #98be65;">][</span><span style="color: #98be65;">'qAns'</span><span style="color: #98be65;">]</span>.map<span style="color: #98be65;">(</span><span style="color: #00bfff;">(</span><span style="color: #db5762;">answer</span><span style="color: #00bfff;">)</span> <span style="color: #00bfff;">{</span>
+        <span style="color: #51afef; font-style: italic;">return</span> <span style="color: #ECBE7B;">Answer</span><span style="color: #4db5bd;">(</span>cb, answer<span style="color: #4db5bd;">)</span>;
+    <span style="color: #00bfff;">}</span><span style="color: #98be65;">)</span>.toList<span style="color: #98be65;">()</span>
+  <span style="color: #c678dd;">)</span>
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org081cb6b" class="outline-3">
+<h3 id="org081cb6b"><span class="section-number-3">7.7</span> User Inputs</h3>
+<div class="outline-text-3" id="text-7-7">
+<ul class="org-ul">
+<li>Create a property inside of a widget that instantiates a <code>TextEditingController</code>. Access it later.</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-dart"><span style="color: #51afef; font-style: italic;">class</span> <span style="color: #ECBE7B;">MyWidget</span> <span style="color: #fff0f5;">{</span>
+  <span style="color: #51afef; font-style: italic;">final</span> <span style="color: #db5762;">userInputController</span> = <span style="color: #ECBE7B;">TextEditingController</span><span style="color: #c678dd;">()</span>;
+
+  <span style="color: #ECBE7B;">Widget</span> <span style="color: #c678dd;">build</span><span style="color: #c678dd;">(</span><span style="color: #ECBE7B;">BuildContext</span> <span style="color: #db5762;">ctx</span><span style="color: #c678dd;">)</span> <span style="color: #c678dd;">{</span>
+    <span style="color: #51afef; font-style: italic;">return</span> <span style="color: #ECBE7B;">TextField</span><span style="color: #98be65;">(</span>
+      decoration: <span style="color: #ECBE7B;">InputDecoration</span><span style="color: #00bfff;">(</span>labelText: <span style="color: #98be65;">'User Input'</span><span style="color: #00bfff;">)</span>,
+      controller: userInputController,
+    <span style="color: #98be65;">)</span>
+  <span style="color: #c678dd;">}</span>
+
+  <span style="color: #ECBE7B;">String</span> <span style="color: #c678dd;">grabInput</span><span style="color: #c678dd;">()</span> <span style="color: #c678dd;">{</span>
+    <span style="color: #51afef; font-style: italic;">return</span> userInputController.text;
+  <span style="color: #c678dd;">}</span>
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orga7a0970" class="outline-3">
+<h3 id="orga7a0970"><span class="section-number-3">7.8</span> Using the ListView and GridView builders</h3>
+<div class="outline-text-3" id="text-7-8">
+<ul class="org-ul">
+<li>Usually use the <code>ListTile</code> class for each element of the list</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-dart"><span style="color: #51afef; font-style: italic;">class</span> <span style="color: #ECBE7B;">MyWidget</span> <span style="color: #fff0f5;">{</span>
+  <span style="color: #51afef; font-style: italic;">final</span> <span style="color: #51afef; font-style: italic;">var</span> <span style="color: #db5762;">itemArr</span> = <span style="color: #c678dd;">[</span><span style="color: #da8548; font-weight: bold;">1</span>, <span style="color: #da8548; font-weight: bold;">2</span>, <span style="color: #da8548; font-weight: bold;">3</span>, <span style="color: #da8548; font-weight: bold;">4</span><span style="color: #c678dd;">]</span>;
+
+  <span style="color: #ECBE7B;">Widget</span> <span style="color: #c678dd;">build</span><span style="color: #c678dd;">()</span> <span style="color: #c678dd;">{</span>
+    <span style="color: #51afef; font-style: italic;">return</span> <span style="color: #ECBE7B;">ListView</span>.builder<span style="color: #98be65;">(</span>
+      itemBuilder: <span style="color: #00bfff;">(</span><span style="color: #db5762;">ctx</span>, <span style="color: #db5762;">index</span><span style="color: #00bfff;">)</span> <span style="color: #00bfff;">{</span>
+        <span style="color: #51afef; font-style: italic;">return</span> <span style="color: #ECBE7B;">Widget</span><span style="color: #4db5bd;">(</span>itemArr<span style="color: #32cd32;">[</span>index<span style="color: #32cd32;">]</span><span style="color: #4db5bd;">)</span>; <span style="color: #5B6268;">// </span><span style="color: #5B6268;">Here create widgets from the array</span>
+      <span style="color: #00bfff;">}</span>,
+      itemCount: itemArr.length
+    <span style="color: #98be65;">)</span>;
+  <span style="color: #c678dd;">}</span>
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+<ul class="org-ul">
+<li><code>GridView</code> is very similar to a <code>ListView</code></li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-dart"><span style="color: #ECBE7B;">GridView</span>.builder<span style="color: #fff0f5;">(</span>
+  padding: <span style="color: #51afef; font-style: italic;">const</span> <span style="color: #ECBE7B;">EdgeInsets</span>.all<span style="color: #c678dd;">(</span><span style="color: #da8548; font-weight: bold;">10</span>.<span style="color: #da8548; font-weight: bold;">0</span><span style="color: #c678dd;">)</span>,
+  itemCount: products.length,
+  itemBuilder: <span style="color: #c678dd;">(</span><span style="color: #db5762;">ctx</span>, <span style="color: #db5762;">i</span><span style="color: #c678dd;">)</span> =&gt; <span style="color: #ECBE7B;">MyWidget</span><span style="color: #c678dd;">(</span>
+    products<span style="color: #98be65;">[</span>i<span style="color: #98be65;">]</span>.id
+  <span style="color: #c678dd;">)</span>
+  gridDelegate: <span style="color: #ECBE7B;">SliverGridDelegateWithFixedCrossAxicCount</span><span style="color: #c678dd;">(</span>
+    crossAxisCount: <span style="color: #da8548; font-weight: bold;">2</span>,
+    childAspectRatio: <span style="color: #da8548; font-weight: bold;">3</span> / <span style="color: #da8548; font-weight: bold;">2</span>,
+    crossAxisSpacing: <span style="color: #da8548; font-weight: bold;">10</span>,
+    mainAxisSpacing: <span style="color: #da8548; font-weight: bold;">10</span>,
+  <span style="color: #c678dd;">)</span>
+<span style="color: #fff0f5;">)</span>
+
+<span style="color: #5B6268;">// </span><span style="color: #5B6268;">like in the case of a ListView you can use a tile to display the grid elements</span>
+<span style="color: #ECBE7B;">Widget</span> <span style="color: #c678dd;">build</span><span style="color: #fff0f5;">(</span><span style="color: #ECBE7B;">BuildContext</span> <span style="color: #db5762;">ctx</span><span style="color: #fff0f5;">)</span> <span style="color: #fff0f5;">{</span>
+  <span style="color: #51afef; font-style: italic;">return</span> <span style="color: #ECBE7B;">GridTile</span><span style="color: #c678dd;">(</span>
+    child: <span style="color: #ECBE7B;">Image</span>.network<span style="color: #98be65;">(</span>imageUrl<span style="color: #98be65;">)</span>,
+    fit: <span style="color: #ECBE7B;">BoxFit</span>.cover,
+    footer: <span style="color: #ECBE7B;">GridTileBar</span><span style="color: #98be65;">(</span>
+      backgroundColor: <span style="color: #ECBE7B;">Colors</span>.black54,
+      leading: <span style="color: #ECBE7B;">IconButton</span><span style="color: #00bfff;">(</span>
+        icon: <span style="color: #ECBE7B;">Icon</span><span style="color: #4db5bd;">(</span><span style="color: #ECBE7B;">Icons</span>.favorite<span style="color: #4db5bd;">)</span>,
+        onPressed: <span style="color: #4db5bd;">()</span> <span style="color: #4db5bd;">{</span>
+          <span style="color: #5B6268;">// </span><span style="color: #5B6268;">...</span>
+        <span style="color: #4db5bd;">}</span>
+      <span style="color: #00bfff;">)</span>,
+      trailing: <span style="color: #ECBE7B;">IconButton</span><span style="color: #00bfff;">(</span>
+        icon: <span style="color: #ECBE7B;">Icon</span><span style="color: #4db5bd;">(</span><span style="color: #ECBE7B;">Icons</span>.shopping_cart<span style="color: #4db5bd;">)</span>,
+        onPressed: <span style="color: #4db5bd;">()</span> <span style="color: #4db5bd;">{</span>
+          <span style="color: #5B6268;">// </span><span style="color: #5B6268;">...</span>
+        <span style="color: #4db5bd;">}</span>
+      <span style="color: #00bfff;">)</span>
+      title: <span style="color: #ECBE7B;">Text</span><span style="color: #00bfff;">(</span>title<span style="color: #00bfff;">)</span>,
+      textAlign: <span style="color: #ECBE7B;">TextAlign</span>.center,
+    <span style="color: #98be65;">)</span>
+  <span style="color: #c678dd;">)</span>
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orged8febe" class="outline-3">
+<h3 id="orged8febe"><span class="section-number-3">7.9</span> Images</h3>
+<div class="outline-text-3" id="text-7-9">
+<ul class="org-ul">
+<li>Add images to the pub.spec.yaml file</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-yaml"><span style="color: #db5762;">assets</span>:
+  - assets/images/image1.jpeg
+  - assets/images/image2.jpeg
+</pre>
+</div>
+<ul class="org-ul">
+<li>In your code then use the <code>Image</code> widget</li>
+<li>Usually you'd wrap it in a <code>Container</code> or a <code>SizedBox</code> to set width and height boundaries</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-dart"><span style="color: #ECBE7B;">Image</span>.asset<span style="color: #fff0f5;">(</span><span style="color: #98be65;">'assets/images/image1.jpeg'</span>, fit: <span style="color: #ECBE7B;">BoxFit</span>.cover<span style="color: #fff0f5;">)</span> <span style="color: #5B6268;">// </span><span style="color: #5B6268;">cover respects boundaries and scales the img</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgbae3627" class="outline-3">
+<h3 id="orgbae3627"><span class="section-number-3">7.10</span> Picking Time and Date</h3>
+<div class="outline-text-3" id="text-7-10">
+<div class="org-src-container">
+<pre class="src src-dart"><span style="color: #5B6268;">// </span><span style="color: #5B6268;">built-in method</span>
+showDatePicker<span style="color: #fff0f5;">(</span>
+  context: context,  <span style="color: #5B6268;">// </span><span style="color: #5B6268;">context can normally be grabbed without being passed (StatefulWidget)</span>
+  initialDate: <span style="color: #ECBE7B;">DateTime</span>.now<span style="color: #c678dd;">()</span>,
+  firstDate: <span style="color: #ECBE7B;">DateTime</span><span style="color: #c678dd;">(</span><span style="color: #da8548; font-weight: bold;">2019</span><span style="color: #c678dd;">)</span>,
+  lastDate: <span style="color: #ECBE7B;">DateTime</span>.now<span style="color: #c678dd;">()</span>
+<span style="color: #fff0f5;">)</span>;
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org1b05c6e" class="outline-3">
+<h3 id="org1b05c6e"><span class="section-number-3">7.11</span> Forcing a round corner with ClipRRect</h3>
+<div class="outline-text-3" id="text-7-11">
+<ul class="org-ul">
+<li>Wrap a widget with ClipRRect to create round corners as an example:</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-dart"><span style="color: #ECBE7B;">ClipRRect</span><span style="color: #fff0f5;">(</span>
+  borderRadius: <span style="color: #ECBE7B;">BorderRadius</span>.circular<span style="color: #c678dd;">(</span><span style="color: #da8548; font-weight: bold;">10</span><span style="color: #c678dd;">)</span>,
+  child: <span style="color: #ECBE7B;">GridTile</span><span style="color: #c678dd;">()</span>
+<span style="color: #fff0f5;">)</span>;
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org1d24f65" class="outline-3">
+<h3 id="org1d24f65"><span class="section-number-3">7.12</span> Drawer</h3>
+<div class="outline-text-3" id="text-7-12">
+<ul class="org-ul">
+<li>Create a <code>AppDrawer</code> or whatever class</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-dart"><span style="color: #51afef; font-style: italic;">class</span> <span style="color: #ECBE7B;">AppDrawer</span> <span style="color: #51afef; font-style: italic;">extends</span> <span style="color: #ECBE7B;">StatelessWidget</span> <span style="color: #fff0f5;">{</span>
+  <span style="color: #a9a1e1;">@override</span>
+  <span style="color: #ECBE7B;">Widget</span> <span style="color: #c678dd;">build</span><span style="color: #c678dd;">(</span><span style="color: #ECBE7B;">BuildContext</span> <span style="color: #db5762;">ctx</span><span style="color: #c678dd;">)</span> <span style="color: #c678dd;">{</span>
+    <span style="color: #51afef; font-style: italic;">return</span> <span style="color: #ECBE7B;">Drawer</span><span style="color: #98be65;">(</span>
+      child: <span style="color: #ECBE7B;">Column</span><span style="color: #00bfff;">(</span>
+        children: &lt;<span style="color: #ECBE7B;">Widget</span>&gt;<span style="color: #4db5bd;">[</span>
+          <span style="color: #ECBE7B;">AppBar</span><span style="color: #32cd32;">(</span>
+            title: <span style="color: #ECBE7B;">Text</span><span style="color: #c678dd;">(</span><span style="color: #98be65;">'Hello'</span><span style="color: #c678dd;">)</span>,
+            automaticallyImplyLeading: <span style="color: #a9a1e1;">false</span>,
+          <span style="color: #32cd32;">)</span>,
+          <span style="color: #ECBE7B;">Divider</span><span style="color: #32cd32;">()</span>,
+          <span style="color: #ECBE7B;">ListTile</span><span style="color: #32cd32;">(</span>
+            leading: <span style="color: #ECBE7B;">Icon</span><span style="color: #c678dd;">(</span><span style="color: #ECBE7B;">Icons</span>.payment<span style="color: #c678dd;">)</span>,
+            title: <span style="color: #ECBE7B;">Text</span><span style="color: #c678dd;">(</span><span style="color: #98be65;">'Order'</span><span style="color: #c678dd;">)</span>,
+            onTap: <span style="color: #c678dd;">()</span> <span style="color: #c678dd;">{</span>
+              <span style="color: #ECBE7B;">Navigator</span>.of<span style="color: #98be65;">(</span>ctx<span style="color: #98be65;">)</span>.pushReplacementNamed<span style="color: #98be65;">(</span><span style="color: #ECBE7B;">OrderScreen</span>.routeName || <span style="color: #98be65;">'/orders'</span><span style="color: #98be65;">)</span>; <span style="color: #5B6268;">// </span><span style="color: #5B6268;">either or but prefer a static property on a class</span>
+            <span style="color: #c678dd;">}</span>
+          <span style="color: #32cd32;">)</span>
+        <span style="color: #4db5bd;">]</span>
+      <span style="color: #00bfff;">)</span>
+    <span style="color: #98be65;">)</span>
+  <span style="color: #c678dd;">}</span>
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+<ul class="org-ul">
+<li>Place it in the <code>Scaffold</code> class like so:</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-dart"><span style="color: #ECBE7B;">Scaffold</span><span style="color: #fff0f5;">(</span>
+  drawer: <span style="color: #ECBE7B;">AppDrawer</span><span style="color: #c678dd;">()</span>
+<span style="color: #fff0f5;">)</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org97e11d4" class="outline-3">
+<h3 id="org97e11d4"><span class="section-number-3">7.13</span> Pull-to-refresh</h3>
+<div class="outline-text-3" id="text-7-13">
+<ul class="org-ul">
+<li>Add the <code>RefreshIndicator</code> widget as the topmost/wrapper</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-dart"><span style="color: #ECBE7B;">RefreshIndicator</span><span style="color: #fff0f5;">(</span>
+  onRefresh: <span style="color: #c678dd;">()</span> <span style="color: #c678dd;">{</span>
+    _doRefresh<span style="color: #98be65;">()</span>,
+  <span style="color: #c678dd;">}</span>,
+  child: <span style="color: #ECBE7B;">Column</span><span style="color: #c678dd;">()</span>,
+<span style="color: #fff0f5;">)</span>;
+
+<span style="color: #5B6268;">// </span><span style="color: #5B6268;">and the callback method looks like follows</span>
+<span style="color: #ECBE7B;">Future</span>&lt;<span style="color: #ECBE7B;">void</span>&gt; <span style="color: #c678dd;">_doRefresh</span><span style="color: #fff0f5;">()</span> <span style="color: #51afef; font-style: italic;">async</span> <span style="color: #fff0f5;">{</span>
+  <span style="color: #5B6268;">// </span><span style="color: #5B6268;">Do some refreshing logic, usually:</span>
+  <span style="color: #5B6268;">// </span><span style="color: #5B6268;">do a http call</span>
+  <span style="color: #5B6268;">// </span><span style="color: #5B6268;">update state</span>
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgf696745" class="outline-3">
+<h3 id="orgf696745"><span class="section-number-3">7.14</span> Scrollable content</h3>
+<div class="outline-text-3" id="text-7-14">
+<ul class="org-ul">
+<li>If a list is needed then use a <code>ListView</code> or a <code>ListViewBuilder</code>, however, when user working with forms the individual <code>ListTile</code> can go out of view and therefore be deconstructed</li>
+<li>If deconstruction of widgets is a concern, especially in Forms then use a <code>Column</code> combined with a <code>SingleChildScrollView</code></li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-orgde8a11a" class="outline-2">
+<h2 id="orgde8a11a"><span class="section-number-2">8</span> Responsive design</h2>
+<div class="outline-text-2" id="text-8">
+</div>
+<div id="outline-container-org2eb1737" class="outline-3">
+<h3 id="org2eb1737"><span class="section-number-3">8.1</span> Using the <code>MediaQuery</code></h3>
+<div class="outline-text-3" id="text-8-1">
+<ul class="org-ul">
+<li>Usually store the <code>MediaQuery</code> object in a variable to remove clutter and provide reusability</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-dart"><span style="color: #ECBE7B;">Widget</span> <span style="color: #c678dd;">build</span><span style="color: #fff0f5;">(</span><span style="color: #ECBE7B;">BuildContext</span> <span style="color: #db5762;">context</span><span style="color: #fff0f5;">)</span> <span style="color: #fff0f5;">{</span>
+  <span style="color: #51afef; font-style: italic;">final</span> <span style="color: #db5762;">mQ</span> = <span style="color: #ECBE7B;">MediaQuery</span>.of<span style="color: #c678dd;">(</span>context<span style="color: #c678dd;">)</span>;
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+<ul class="org-ul">
+<li>Grabbing the general size object</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-dart"><span style="color: #51afef; font-style: italic;">final</span> <span style="color: #db5762;">size</span> = <span style="color: #ECBE7B;">MediaQuery</span>.of<span style="color: #fff0f5;">(</span>context<span style="color: #fff0f5;">)</span>.size;
+</pre>
+</div>
+<ul class="org-ul">
+<li>Getting the height or width with the <code>MediaQuery</code></li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-dart"><span style="color: #ECBE7B;">Container</span><span style="color: #fff0f5;">(</span>
+  height: <span style="color: #ECBE7B;">MediaQuery</span>.of<span style="color: #c678dd;">(</span>context<span style="color: #c678dd;">)</span>.size.height * <span style="color: #da8548; font-weight: bold;">0</span>.<span style="color: #da8548; font-weight: bold;">6</span> <span style="color: #5B6268;">// </span><span style="color: #5B6268;">take 60% of full screen height</span>
+<span style="color: #fff0f5;">)</span>;
+</pre>
+</div>
+<ul class="org-ul">
+<li>Access height/width of a Widget</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-dart"><span style="color: #51afef; font-style: italic;">final</span> <span style="color: #db5762;">button</span> = <span style="color: #ECBE7B;">RaisedButton</span><span style="color: #fff0f5;">()</span>;
+<span style="color: #51afef; font-style: italic;">final</span> <span style="color: #db5762;">height</span> = button.preferredSize.height;
+</pre>
+</div>
+<ul class="org-ul">
+<li>Height of the status bar</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-dart"><span style="color: #ECBE7B;">MediaQuery</span>.of<span style="color: #fff0f5;">(</span>context<span style="color: #fff0f5;">)</span>.padding.top; <span style="color: #5B6268;">// </span><span style="color: #5B6268;">is literally the padding that is added by the status bar</span>
+</pre>
+</div>
+<ul class="org-ul">
+<li>Using the <code>TextScaleFactor</code>, kinda like <code>rem~/~em</code> in CSS</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-dart"><span style="color: #51afef; font-style: italic;">final</span> <span style="color: #db5762;">curScaleFactor</span> = <span style="color: #ECBE7B;">MediaQuery</span>.of<span style="color: #fff0f5;">(</span>context<span style="color: #fff0f5;">)</span>.textScaleFactor;
+<span style="color: #ECBE7B;">Text</span><span style="color: #fff0f5;">(</span><span style="color: #98be65;">'Always the same size!'</span>, style: <span style="color: #ECBE7B;">TextStyle</span><span style="color: #c678dd;">(</span>fontSize: <span style="color: #da8548; font-weight: bold;">20</span><span style="color: #c678dd;">)</span><span style="color: #fff0f5;">)</span>; <span style="color: #5B6268;">// </span><span style="color: #5B6268;">always 20px in size</span>
+<span style="color: #ECBE7B;">Text</span><span style="color: #fff0f5;">(</span><span style="color: #98be65;">'This changes!'</span>, style: <span style="color: #ECBE7B;">TextStyle</span><span style="color: #c678dd;">(</span>fontSize: <span style="color: #da8548; font-weight: bold;">20</span> * curScaleFactor<span style="color: #c678dd;">)</span><span style="color: #fff0f5;">)</span>; <span style="color: #5B6268;">// </span><span style="color: #5B6268;">adjusted to phone's settings</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org5837cb2" class="outline-3">
+<h3 id="org5837cb2"><span class="section-number-3">8.2</span> Utilizing constraints</h3>
+<div class="outline-text-3" id="text-8-2">
+<ul class="org-ul">
+<li>Use the <code>LayoutBuilder</code> to access constraints</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-dart"><span style="color: #ECBE7B;">LayoutBuilder</span><span style="color: #fff0f5;">(</span>
+  builder: <span style="color: #c678dd;">(</span><span style="color: #db5762;">ctx</span>, <span style="color: #db5762;">constraints</span><span style="color: #c678dd;">)</span> <span style="color: #c678dd;">{</span>
+    <span style="color: #51afef; font-style: italic;">return</span> <span style="color: #ECBE7B;">Column</span><span style="color: #98be65;">(</span>
+      childred: &lt;<span style="color: #ECBE7B;">Widget</span>&gt; <span style="color: #00bfff;">[</span>
+        <span style="color: #ECBE7B;">Container</span><span style="color: #4db5bd;">(</span>
+          height: constraints.maxHeight * <span style="color: #da8548; font-weight: bold;">0</span>.<span style="color: #da8548; font-weight: bold;">4</span>, <span style="color: #5B6268;">// </span><span style="color: #5B6268;">40% height of the parent</span>
+        <span style="color: #4db5bd;">)</span>
+      <span style="color: #00bfff;">]</span>
+    <span style="color: #98be65;">)</span>;
+  <span style="color: #c678dd;">}</span>
+<span style="color: #fff0f5;">)</span>;
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgdef557b" class="outline-3">
+<h3 id="orgdef557b"><span class="section-number-3">8.3</span> Locking orientation</h3>
+<div class="outline-text-3" id="text-8-3">
+<div class="org-src-container">
+<pre class="src src-dart"><span style="color: #ECBE7B;">void</span> <span style="color: #c678dd;">main</span><span style="color: #fff0f5;">()</span> <span style="color: #fff0f5;">{</span>
+  <span style="color: #ECBE7B;">WidgetsFlutterBinding</span>.ensureInitialized<span style="color: #c678dd;">()</span>;
+  <span style="color: #ECBE7B;">SystemChrome</span>.setPreferredOrentations<span style="color: #c678dd;">(</span><span style="color: #98be65;">[</span>
+      <span style="color: #5B6268;">// </span><span style="color: #5B6268;">lock to only portrait mode</span>
+      <span style="color: #ECBE7B;">DeviceOrientation</span>.portraitUp,
+      <span style="color: #ECBE7B;">DeviceOrientation</span>.portraitDown,
+  <span style="color: #98be65;">]</span><span style="color: #c678dd;">)</span>;
+
+  runApp<span style="color: #c678dd;">(</span><span style="color: #ECBE7B;">MyApp</span><span style="color: #98be65;">()</span><span style="color: #c678dd;">)</span>;
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgd1c113d" class="outline-3">
+<h3 id="orgd1c113d"><span class="section-number-3">8.4</span> Reacting to orientation</h3>
+<div class="outline-text-3" id="text-8-4">
+<div class="org-src-container">
+<pre class="src src-dart"><span style="color: #ECBE7B;">MediaQuery</span>.of<span style="color: #fff0f5;">(</span>context<span style="color: #fff0f5;">)</span>.orientation == <span style="color: #ECBE7B;">Orientation</span>.landscape;
+<span style="color: #ECBE7B;">MediaQuery</span>.of<span style="color: #fff0f5;">(</span>context<span style="color: #fff0f5;">)</span>.orientation == <span style="color: #ECBE7B;">Orientation</span>.portrait;
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org171ee87" class="outline-3">
+<h3 id="org171ee87"><span class="section-number-3">8.5</span> Respecting the Softkeyboard Insets</h3>
+<div class="outline-text-3" id="text-8-5">
+<ul class="org-ul">
+<li>Use the <code>MediaQuery</code> viewInsets property to know how much overlapping content there is over the app</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-dart"><span style="color: #ECBE7B;">Container</span><span style="color: #fff0f5;">(</span>
+  padding: <span style="color: #ECBE7B;">EdgeInsets</span>.only<span style="color: #c678dd;">(</span>
+    top: <span style="color: #da8548; font-weight: bold;">10</span>,
+    left: <span style="color: #da8548; font-weight: bold;">10</span>,
+    right: <span style="color: #da8548; font-weight: bold;">10</span>,
+    bottom: <span style="color: #ECBE7B;">MediaQuery</span>.of<span style="color: #98be65;">(</span>context<span style="color: #98be65;">)</span>.viewInsets.bottom + <span style="color: #da8548; font-weight: bold;">10</span>,
+  <span style="color: #c678dd;">)</span>
+<span style="color: #fff0f5;">)</span>
+</pre>
+</div>
+<ul class="org-ul">
+<li>Furthermore there might be a need to wrap the content in a <code>SingleChildScrollView</code> so that it can be scrolled into the view</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-orge2bb4a6" class="outline-2">
+<h2 id="orge2bb4a6"><span class="section-number-2">9</span> Adaptive design</h2>
+<div class="outline-text-2" id="text-9">
+<ul class="org-ul">
+<li>Most of widgets have an <code>adaptive</code> constructor</li>
+<li>E.g. the <code>Switch</code></li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-dart"><span style="color: #ECBE7B;">Switch</span>.adaptive<span style="color: #fff0f5;">()</span>
+</pre>
+</div>
+<ul class="org-ul">
+<li>Checking the platform</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-dart"><span style="color: #51afef; font-style: italic;">final</span> <span style="color: #db5762;">isIOs</span> = <span style="color: #ECBE7B;">Platform</span>.isIOS;
+</pre>
+</div>
+<ul class="org-ul">
+<li><code>SafeArea</code> widget is a wrapper that is used on devices with notches to push content down of off the notch</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgcec21a8" class="outline-2">
+<h2 id="orgcec21a8"><span class="section-number-2">10</span> Routing and Navigator</h2>
+<div class="outline-text-2" id="text-10">
+</div>
+<div id="outline-container-org6e35e69" class="outline-3">
+<h3 id="org6e35e69"><span class="section-number-3">10.1</span> Basic Navigation</h3>
+<div class="outline-text-3" id="text-10-1">
+<ul class="org-ul">
+<li>Close the topmost widget or go back the stack: <code>Navigator.of(ctx).pop();</code></li>
+<li>Go to a page:</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-dart"><span style="color: #ECBE7B;">Navigator</span>.of<span style="color: #fff0f5;">(</span>ctx<span style="color: #fff0f5;">)</span>.push<span style="color: #fff0f5;">(</span><span style="color: #ECBE7B;">MaterialPageRoute</span><span style="color: #c678dd;">(</span>
+    builder: <span style="color: #98be65;">(</span><span style="color: #db5762;">_</span><span style="color: #98be65;">)</span> <span style="color: #98be65;">{</span>
+      <span style="color: #51afef; font-style: italic;">return</span> <span style="color: #ECBE7B;">ComeNewScreen</span><span style="color: #00bfff;">()</span>;
+    <span style="color: #98be65;">}</span>
+<span style="color: #c678dd;">)</span><span style="color: #fff0f5;">)</span>
+
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgce8d756" class="outline-3">
+<h3 id="orgce8d756"><span class="section-number-3">10.2</span> Named Routes</h3>
+<div class="outline-text-3" id="text-10-2">
+<ul class="org-ul">
+<li>A good practice is to add a static string to the named routes' class files to remove the possibility of typos.</li>
+<li>Setup routes in the <code>MaterialApp</code> class:</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-dart"><span style="color: #ECBE7B;">MaterialApp</span><span style="color: #fff0f5;">(</span>
+  home: <span style="color: #ECBE7B;">Home</span><span style="color: #c678dd;">()</span>,
+  routes: <span style="color: #c678dd;">{</span>
+    <span style="color: #98be65;">'/'</span>: <span style="color: #98be65;">(</span><span style="color: #db5762;">ctx</span><span style="color: #98be65;">)</span> =&gt; <span style="color: #ECBE7B;">Home</span><span style="color: #98be65;">()</span>, <span style="color: #5B6268;">// </span><span style="color: #5B6268;">is an automatic home route</span>
+    <span style="color: #98be65;">'/home'</span>: <span style="color: #98be65;">(</span><span style="color: #db5762;">ctx</span><span style="color: #98be65;">)</span> =&gt; <span style="color: #ECBE7B;">Home</span><span style="color: #98be65;">()</span>,
+    <span style="color: #98be65;">'/details'</span>: <span style="color: #98be65;">(</span><span style="color: #db5762;">ctx</span><span style="color: #98be65;">)</span> =&gt; <span style="color: #ECBE7B;">DetailsScreen</span><span style="color: #98be65;">()</span>,
+  <span style="color: #c678dd;">}</span>,
+<span style="color: #fff0f5;">)</span>
+</pre>
+</div>
+<ul class="org-ul">
+<li>Call the named route:</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-dart"><span style="color: #ECBE7B;">Navigator</span>.of<span style="color: #fff0f5;">(</span>ctx<span style="color: #fff0f5;">)</span>.pushNamed<span style="color: #fff0f5;">(</span>
+  <span style="color: #98be65;">'details'</span>,
+  arguments: <span style="color: #c678dd;">{</span>
+    <span style="color: #98be65;">'id'</span>: id
+  <span style="color: #c678dd;">}</span>
+<span style="color: #fff0f5;">)</span>
+</pre>
+</div>
+<ul class="org-ul">
+<li>Receive the named arguments in <code>DetailsScreen()</code>:</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-dart"><span style="color: #51afef; font-style: italic;">class</span> <span style="color: #ECBE7B;">DetailsScreen</span> <span style="color: #51afef; font-style: italic;">extends</span> <span style="color: #ECBE7B;">StatelessWidget</span> <span style="color: #fff0f5;">{</span>
+  <span style="color: #ECBE7B;">Widget</span> <span style="color: #c678dd;">build</span><span style="color: #c678dd;">(</span><span style="color: #ECBE7B;">BuildContext</span> <span style="color: #db5762;">ctx</span><span style="color: #c678dd;">)</span> <span style="color: #c678dd;">{</span>
+    <span style="color: #51afef; font-style: italic;">final</span> <span style="color: #db5762;">routeArgs</span> = <span style="color: #ECBE7B;">ModalRoute</span>.of<span style="color: #98be65;">(</span>ctx<span style="color: #98be65;">)</span>.settings.arguments;
+    <span style="color: #51afef; font-style: italic;">final</span> <span style="color: #db5762;">id</span> = routeArgs<span style="color: #98be65;">[</span><span style="color: #98be65;">'id'</span><span style="color: #98be65;">]</span>
+  <span style="color: #c678dd;">}</span>
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orge66be2e" class="outline-2">
+<h2 id="orge66be2e"><span class="section-number-2">11</span> State Management with Providers</h2>
+<div class="outline-text-2" id="text-11">
+</div>
+<div id="outline-container-org49bf867" class="outline-3">
+<h3 id="org49bf867"><span class="section-number-3">11.1</span> Using the <code>Provider</code>, <code>ChangeNotifier</code>, <code>ChangeNotifierProvider</code> and <code>Consumer</code> classes</h3>
+<div class="outline-text-3" id="text-11-1">
+<ul class="org-ul">
+<li>Create a model</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-dart"><span style="color: #51afef; font-style: italic;">class</span> <span style="color: #ECBE7B;">Product</span> <span style="color: #fff0f5;">{</span>
+  <span style="color: #51afef; font-style: italic;">final</span> <span style="color: #db5762;">id</span>;
+  <span style="color: #51afef; font-style: italic;">final</span> <span style="color: #db5762;">title</span>;
+
+  <span style="color: #ECBE7B;">Product</span><span style="color: #c678dd;">(</span><span style="color: #51afef; font-style: italic;">this</span>.id, <span style="color: #51afef; font-style: italic;">this</span>.title<span style="color: #c678dd;">)</span>;
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+<ul class="org-ul">
+<li>Create a provider class for the model</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-dart"><span style="color: #51afef; font-style: italic;">class</span> <span style="color: #ECBE7B;">Products</span> <span style="color: #51afef; font-style: italic;">with</span> <span style="color: #ECBE7B;">ChangeNotifier</span> <span style="color: #fff0f5;">{</span>
+  <span style="color: #ECBE7B;">List</span>&lt;<span style="color: #ECBE7B;">Product</span>&gt; <span style="color: #db5762;">_items</span> = <span style="color: #c678dd;">[]</span>;
+
+  <span style="color: #ECBE7B;">List</span>&lt;<span style="color: #ECBE7B;">Product</span>&gt; <span style="color: #c678dd;">get</span> <span style="color: #db5762;">items</span> <span style="color: #c678dd;">{</span>
+    <span style="color: #51afef; font-style: italic;">return</span> <span style="color: #98be65;">[</span>..._items<span style="color: #98be65;">]</span>;
+  <span style="color: #c678dd;">}</span>
+
+  <span style="color: #ECBE7B;">void</span> <span style="color: #c678dd;">addProduct</span><span style="color: #c678dd;">(</span><span style="color: #ECBE7B;">Product</span> <span style="color: #db5762;">p</span><span style="color: #c678dd;">)</span> <span style="color: #c678dd;">{</span>
+    _items.add<span style="color: #98be65;">(</span>p<span style="color: #98be65;">)</span>;
+    notifyListeners<span style="color: #98be65;">()</span>;
+  <span style="color: #c678dd;">}</span>
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+<ul class="org-ul">
+<li>Register a provider (in this case at the root level)</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-dart"><span style="color: #5B6268;">// </span><span style="color: #5B6268;">single provider</span>
+<span style="color: #ECBE7B;">ChangeNotifierProvider</span><span style="color: #fff0f5;">(</span>
+  builder: <span style="color: #c678dd;">(</span><span style="color: #db5762;">ctx</span><span style="color: #c678dd;">)</span> =&gt; <span style="color: #ECBE7B;">Products</span><span style="color: #c678dd;">()</span>, <span style="color: #5B6268;">// </span><span style="color: #5B6268;">for Provider 3.0</span>
+  create: <span style="color: #c678dd;">(</span><span style="color: #db5762;">ctx</span><span style="color: #c678dd;">)</span> =&gt; <span style="color: #ECBE7B;">Products</span><span style="color: #c678dd;">()</span>, <span style="color: #5B6268;">// </span><span style="color: #5B6268;">for Provider 4.0</span>
+  child: <span style="color: #ECBE7B;">MaterialApp</span><span style="color: #c678dd;">(</span>
+    <span style="color: #5B6268;">//</span><span style="color: #5B6268;">....</span>
+  <span style="color: #c678dd;">)</span>;
+<span style="color: #fff0f5;">)</span>
+
+<span style="color: #5B6268;">// </span><span style="color: #5B6268;">multiple providers</span>
+<span style="color: #ECBE7B;">void</span> <span style="color: #c678dd;">main</span><span style="color: #fff0f5;">()</span> <span style="color: #fff0f5;">{</span>
+  runApp<span style="color: #c678dd;">(</span>
+    <span style="color: #ECBE7B;">MultiProvider</span><span style="color: #98be65;">(</span>
+      providers: <span style="color: #00bfff;">[</span>
+        <span style="color: #ECBE7B;">ChangeNotifierProvider</span><span style="color: #4db5bd;">(</span>create: <span style="color: #32cd32;">(</span><span style="color: #db5762;">ctx</span><span style="color: #32cd32;">)</span> =&gt; <span style="color: #ECBE7B;">CartModel</span><span style="color: #32cd32;">()</span><span style="color: #4db5bd;">)</span>,
+        <span style="color: #ECBE7B;">ChangeNotifierProvider</span><span style="color: #4db5bd;">(</span>create: <span style="color: #32cd32;">(</span><span style="color: #db5762;">ctx</span><span style="color: #32cd32;">)</span> =&gt; <span style="color: #ECBE7B;">Products</span><span style="color: #32cd32;">()</span><span style="color: #4db5bd;">)</span>,
+        <span style="color: #ECBE7B;">Provider</span><span style="color: #4db5bd;">(</span>create: <span style="color: #32cd32;">(</span><span style="color: #db5762;">ctx</span><span style="color: #32cd32;">)</span> =&gt; <span style="color: #ECBE7B;">SomeOtherClass</span><span style="color: #32cd32;">()</span><span style="color: #4db5bd;">)</span>,
+      <span style="color: #00bfff;">]</span>,
+      child: <span style="color: #ECBE7B;">MyApp</span><span style="color: #00bfff;">()</span>,
+    <span style="color: #98be65;">)</span>,
+  <span style="color: #c678dd;">)</span>;
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+<ul class="org-ul">
+<li>Listening through the <code>Consumer</code> or <code>Provider.of</code></li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-dart"><span style="color: #5B6268;">// </span><span style="color: #5B6268;">through the Provider (rebuilds the whole tree on change)</span>
+<span style="color: #51afef; font-style: italic;">final</span> <span style="color: #db5762;">productsData</span> = <span style="color: #ECBE7B;">Provider</span>.of&lt;<span style="color: #ECBE7B;">Products</span>&gt;<span style="color: #fff0f5;">(</span>ctx<span style="color: #fff0f5;">)</span>;
+<span style="color: #51afef; font-style: italic;">final</span> <span style="color: #db5762;">products</span> = productsData.items;
+
+<span style="color: #5B6268;">// </span><span style="color: #5B6268;">or through the Consumer (preferred due to fine grain control)</span>
+<span style="color: #51afef; font-style: italic;">return</span> <span style="color: #ECBE7B;">Consumer</span>&lt;<span style="color: #ECBE7B;">Products</span>&gt;<span style="color: #fff0f5;">(</span>
+  builder: <span style="color: #c678dd;">(</span><span style="color: #db5762;">context</span>, <span style="color: #db5762;">products</span>, <span style="color: #db5762;">child</span><span style="color: #c678dd;">)</span> <span style="color: #c678dd;">{</span>
+    <span style="color: #51afef; font-style: italic;">return</span> <span style="color: #ECBE7B;">Text</span><span style="color: #98be65;">(</span><span style="color: #98be65;">"Product count: </span><span style="color: #db5762;">${products.length}</span><span style="color: #98be65;">"</span><span style="color: #98be65;">)</span>;
+  <span style="color: #c678dd;">}</span>,
+<span style="color: #fff0f5;">)</span>;
+
+<span style="color: #5B6268;">// </span><span style="color: #5B6268;">if you want parts that shouldn't rebuild then put them in the child</span>
+<span style="color: #51afef; font-style: italic;">return</span> <span style="color: #ECBE7B;">Consumer</span>&lt;<span style="color: #ECBE7B;">Products</span>&gt;<span style="color: #fff0f5;">(</span>
+  builder: <span style="color: #c678dd;">(</span><span style="color: #db5762;">context</span>, <span style="color: #db5762;">products</span>, <span style="color: #db5762;">child</span><span style="color: #c678dd;">)</span> <span style="color: #c678dd;">{</span>
+    <span style="color: #51afef; font-style: italic;">return</span> <span style="color: #ECBE7B;">Column</span><span style="color: #98be65;">(</span>
+      children: <span style="color: #00bfff;">[</span>
+        <span style="color: #ECBE7B;">Text</span><span style="color: #4db5bd;">(</span><span style="color: #98be65;">"Product count: </span><span style="color: #db5762;">${products.length}</span><span style="color: #98be65;">"</span><span style="color: #4db5bd;">)</span>,
+        child, <span style="color: #5B6268;">// </span><span style="color: #5B6268;">refers to the Text('Foo') widget</span>
+      <span style="color: #00bfff;">]</span>
+    <span style="color: #98be65;">)</span>
+  <span style="color: #c678dd;">}</span>,
+  child: <span style="color: #ECBE7B;">Text</span><span style="color: #c678dd;">(</span><span style="color: #98be65;">'Foo'</span><span style="color: #c678dd;">)</span>
+<span style="color: #fff0f5;">)</span>;
+</pre>
+</div>
+<ul class="org-ul">
+<li>If there is a need to call the state directly and without the need of establishing a listener, like for wiping the data that is not part of the currently displayed UI, then use the Provider:</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-dart"><span style="color: #5B6268;">// </span><span style="color: #5B6268;">make sure to set 'listen' to false</span>
+<span style="color: #ECBE7B;">Provider</span>.of&lt;<span style="color: #ECBE7B;">CartModel</span>&gt;<span style="color: #fff0f5;">(</span>context, listen: <span style="color: #a9a1e1;">false</span><span style="color: #fff0f5;">)</span>.removeAll<span style="color: #fff0f5;">()</span>;
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgb222ebe" class="outline-3">
+<h3 id="orgb222ebe"><span class="section-number-3">11.2</span> Using a <code>ChangeNotifierProxyProvider</code> to manage services dependencies</h3>
+<div class="outline-text-3" id="text-11-2">
+<div class="org-src-container">
+<pre class="src src-dart"><span style="color: #51afef; font-style: italic;">return</span> <span style="color: #ECBE7B;">MultiProvider</span><span style="color: #fff0f5;">(</span>
+  providers: <span style="color: #c678dd;">[</span>
+    <span style="color: #ECBE7B;">ChangeNotifierProvider</span>.value<span style="color: #98be65;">(</span>
+      value: <span style="color: #ECBE7B;">Auth</span><span style="color: #00bfff;">()</span>,
+    <span style="color: #98be65;">)</span>,
+    <span style="color: #ECBE7B;">ChangeNotifierProxyProvider</span>&lt;<span style="color: #ECBE7B;">Auth</span>, <span style="color: #ECBE7B;">Products</span>&gt;<span style="color: #98be65;">(</span>
+      builder: <span style="color: #00bfff;">(</span><span style="color: #db5762;">ctx</span>, <span style="color: #db5762;">auth</span>, <span style="color: #db5762;">previousProducts</span><span style="color: #00bfff;">)</span> =&gt; <span style="color: #ECBE7B;">Products</span><span style="color: #00bfff;">(</span>
+        auth.token,
+        previousProducts == <span style="color: #a9a1e1;">null</span> ? <span style="color: #4db5bd;">[]</span> : previousProducts.items,
+      <span style="color: #00bfff;">)</span>
+    <span style="color: #98be65;">)</span>
+  <span style="color: #c678dd;">]</span>,
+  child: <span style="color: #ECBE7B;">MaterialApp</span><span style="color: #c678dd;">()</span>
+<span style="color: #fff0f5;">)</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org7dfd046" class="outline-3">
+<h3 id="org7dfd046"><span class="section-number-3">11.3</span> Alternative way of building widgets from Futures with the <code>FutureBuilder</code></h3>
+<div class="outline-text-3" id="text-11-3">
+<ul class="org-ul">
+<li>Also shows an example of <code>CircularProgressIndicator</code> while loading</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-dart"><span style="color: #ECBE7B;">FutureBuilder</span><span style="color: #fff0f5;">(</span>
+  future: <span style="color: #ECBE7B;">Provider</span>.of&lt;<span style="color: #ECBE7B;">Products</span>&gt;<span style="color: #c678dd;">(</span>context, listen: <span style="color: #a9a1e1;">false</span><span style="color: #c678dd;">)</span>.fetchAndSet<span style="color: #c678dd;">()</span>,
+  builder: <span style="color: #c678dd;">(</span><span style="color: #db5762;">ctx</span>, <span style="color: #db5762;">dataSnapshot</span><span style="color: #c678dd;">)</span> <span style="color: #c678dd;">{</span>
+    <span style="color: #51afef; font-style: italic;">if</span> <span style="color: #98be65;">(</span>dataSnapshot.connectionState == <span style="color: #ECBE7B;">ConnectionState</span>.waiting<span style="color: #98be65;">)</span> <span style="color: #98be65;">{</span>
+      <span style="color: #51afef; font-style: italic;">return</span> <span style="color: #ECBE7B;">Center</span><span style="color: #00bfff;">(</span>child: <span style="color: #ECBE7B;">CircularProgressIndicator</span><span style="color: #4db5bd;">()</span><span style="color: #00bfff;">)</span>;
+    <span style="color: #98be65;">}</span> <span style="color: #51afef; font-style: italic;">else</span> <span style="color: #98be65;">{</span>
+      <span style="color: #51afef; font-style: italic;">if</span> <span style="color: #00bfff;">(</span>dataSnapshot.error != <span style="color: #a9a1e1;">null</span><span style="color: #00bfff;">)</span> <span style="color: #00bfff;">{</span>
+        <span style="color: #5B6268;">// </span><span style="color: #5B6268;">show error</span>
+        <span style="color: #51afef; font-style: italic;">return</span> <span style="color: #ECBE7B;">Center</span><span style="color: #4db5bd;">(</span>child: <span style="color: #ECBE7B;">Text</span><span style="color: #32cd32;">(</span><span style="color: #98be65;">'An error occurred.'</span><span style="color: #32cd32;">)</span><span style="color: #4db5bd;">)</span>
+      <span style="color: #00bfff;">}</span> <span style="color: #51afef; font-style: italic;">else</span> <span style="color: #00bfff;">{</span>
+        <span style="color: #51afef; font-style: italic;">return</span> <span style="color: #ECBE7B;">Consumer</span>&lt;<span style="color: #ECBE7B;">Products</span>&gt;<span style="color: #4db5bd;">(</span>
+          builder: <span style="color: #32cd32;">(</span><span style="color: #db5762;">ctx</span>, <span style="color: #db5762;">orderData</span><span style="color: #32cd32;">)</span> =&gt; <span style="color: #ECBE7B;">ListView</span>.builder<span style="color: #32cd32;">(</span>
+            itemCount: products.length,
+            itemBuilder: <span style="color: #c678dd;">(</span><span style="color: #db5762;">ctx</span>, <span style="color: #db5762;">i</span><span style="color: #c678dd;">)</span> =&gt; <span style="color: #ECBE7B;">ProductItem</span><span style="color: #c678dd;">(</span>products<span style="color: #98be65;">[</span>i<span style="color: #98be65;">]</span><span style="color: #c678dd;">)</span>,
+          <span style="color: #32cd32;">)</span>,
+        <span style="color: #4db5bd;">)</span>;
+      <span style="color: #00bfff;">}</span>
+    <span style="color: #98be65;">}</span>
+  <span style="color: #c678dd;">}</span>
+<span style="color: #fff0f5;">)</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orgef2d2b6" class="outline-2">
+<h2 id="orgef2d2b6"><span class="section-number-2">12</span> Delete heading at the end</h2>
+<div class="outline-text-2" id="text-12">
+<script src="../../assets/jquery-3.3.1.min.js"></script>
+<script src="../../assets/notes.js"></script>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="date">Date: 2021-02-01 Mon 10:31</p>
+<p class="author">Author: Damian Chrzanowski</p>
+<p class="date">Created: 2021-09-01 Wed 10:31</p>
+<p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

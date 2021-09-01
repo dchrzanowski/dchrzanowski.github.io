@@ -18,6 +18,8 @@
 
 [[file:resources/angular4/angular4.org][Angular]]
 
+[[file:resources/flutter/flutter.org][Flutter]]
+
 [[file:resources/nativescript/nativescript.org][Nativescript]]
 
 [[file:resources/docker/docker.org][Docker]]
