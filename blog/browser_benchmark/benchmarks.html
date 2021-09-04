@@ -1,0 +1,789 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2021-09-04 Sat 14:09 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Browser Benchmark</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="Damian Chrzanowski" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="../assets/org.css"/>
+<link rel="icon" href="../assets/favicon.ico">
+<script type="text/javascript">
+// @license magnet:?xt=urn:btih:e95b018ef3580986a04669f1b5879592219e2a7a&dn=public-domain.txt Public Domain
+<!--/*--><![CDATA[/*><!--*/
+     function CodeHighlightOn(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.add("code-highlighted");
+         target.classList.add("code-highlighted");
+       }
+     }
+     function CodeHighlightOff(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.remove("code-highlighted");
+         target.classList.remove("code-highlighted");
+       }
+     }
+    /*]]>*///-->
+// @license-end
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Browser Benchmark</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orgf325cb1">1. Browsers</a></li>
+<li><a href="#org7cda839">2. Original Scores</a></li>
+<li><a href="#orgd2bcf3c">3. Weighed Scores for graphing</a></li>
+<li><a href="#org7ea91f1">4. Results</a></li>
+<li><a href="#org909f304">5. Links to benchmarks</a></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgf325cb1" class="outline-2">
+<h2 id="orgf325cb1"><span class="section-number-2">1</span> Browsers</h2>
+<div class="outline-text-2" id="text-1">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-right" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Browser</th>
+<th scope="col" class="org-right">Version</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Chromium</td>
+<td class="org-right">93.0.4577.63-1</td>
+</tr>
+
+<tr>
+<td class="org-left">Google Chrome</td>
+<td class="org-right">92.0.4515.159-1</td>
+</tr>
+
+<tr>
+<td class="org-left">Firefox</td>
+<td class="org-right">91.0.2-1</td>
+</tr>
+
+<tr>
+<td class="org-left">Edge</td>
+<td class="org-right">95.0.997.1-1</td>
+</tr>
+
+<tr>
+<td class="org-left">Nyxt</td>
+<td class="org-right">2.1.1-1</td>
+</tr>
+
+<tr>
+<td class="org-left">Qutebrowser</td>
+<td class="org-right">2.3.1-1</td>
+</tr>
+
+<tr>
+<td class="org-left">Brave</td>
+<td class="org-right">1:1.29.77-1</td>
+</tr>
+
+<tr>
+<td class="org-left">Vivaldi</td>
+<td class="org-right">4.1.2369.21-1</td>
+</tr>
+
+<tr>
+<td class="org-left">Opera</td>
+<td class="org-right">78.0.4093.184-1</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-org7cda839" class="outline-2">
+<h2 id="org7cda839"><span class="section-number-2">2</span> Original Scores</h2>
+<div class="outline-text-2" id="text-2">
+</div>
+<div id="outline-container-orge35b19f" class="outline-3">
+<h3 id="orge35b19f"><span class="section-number-3">2.1</span> Higher is better</h3>
+<div class="outline-text-3" id="text-2-1">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Browser</th>
+<th scope="col" class="org-right">Octane 2.0</th>
+<th scope="col" class="org-right">Basemark 3.0 <code>**</code></th>
+<th scope="col" class="org-right">MotionMark 1.2</th>
+<th scope="col" class="org-right">JetStream2</th>
+<th scope="col" class="org-right">Speedometer 2.0</th>
+<th scope="col" class="org-right">WebXPRT 3</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Chromium</td>
+<td class="org-right">72119</td>
+<td class="org-right">1275.4</td>
+<td class="org-right">1058.38</td>
+<td class="org-right">185.377</td>
+<td class="org-right">189</td>
+<td class="org-right">294</td>
+</tr>
+
+<tr>
+<td class="org-left">Google Chrome</td>
+<td class="org-right">74772</td>
+<td class="org-right">1618.96</td>
+<td class="org-right">1285.86</td>
+<td class="org-right">191.685</td>
+<td class="org-right">228</td>
+<td class="org-right">310</td>
+</tr>
+
+<tr>
+<td class="org-left">Firefox</td>
+<td class="org-right">28195</td>
+<td class="org-right">1109.93</td>
+<td class="org-right">713.10</td>
+<td class="org-right">94.748</td>
+<td class="org-right">143</td>
+<td class="org-right">249</td>
+</tr>
+
+<tr>
+<td class="org-left">Edge</td>
+<td class="org-right">71448</td>
+<td class="org-right">1690.39</td>
+<td class="org-right">970.70</td>
+<td class="org-right">199.335</td>
+<td class="org-right">164</td>
+<td class="org-right">289</td>
+</tr>
+
+<tr>
+<td class="org-left">Nyxt</td>
+<td class="org-right">63374</td>
+<td class="org-right">841.2</td>
+<td class="org-right">522.36</td>
+<td class="org-right">197.490</td>
+<td class="org-right">162</td>
+<td class="org-right">300</td>
+</tr>
+
+<tr>
+<td class="org-left">Qutebrowser</td>
+<td class="org-right">71655</td>
+<td class="org-right">1240.34</td>
+<td class="org-right">928.68</td>
+<td class="org-right">199.251</td>
+<td class="org-right">162.6</td>
+<td class="org-right">241</td>
+</tr>
+
+<tr>
+<td class="org-left">Brave</td>
+<td class="org-right">71835</td>
+<td class="org-right">1580.7</td>
+<td class="org-right">978.93</td>
+<td class="org-right">179.070</td>
+<td class="org-right">165</td>
+<td class="org-right">281</td>
+</tr>
+
+<tr>
+<td class="org-left">Vivaldi</td>
+<td class="org-right">71552</td>
+<td class="org-right">1343.88</td>
+<td class="org-right">1018.16</td>
+<td class="org-right">176.341</td>
+<td class="org-right">164</td>
+<td class="org-right">295</td>
+</tr>
+
+<tr>
+<td class="org-left">Opera</td>
+<td class="org-right">71777</td>
+<td class="org-right">1646.93</td>
+<td class="org-right">998.86</td>
+<td class="org-right">177.310</td>
+<td class="org-right">159</td>
+<td class="org-right">293</td>
+</tr>
+</tbody>
+</table>
+<p class="verse">
+<code>**</code> <b>Error Message in Nyxt</b>, "Browser wasn't able to run WebGL 2.0 Test", which definitely caused the reduced score<br />
+</p>
+</div>
+</div>
+<div id="outline-container-org73a41a6" class="outline-3">
+<h3 id="org73a41a6"><span class="section-number-3">2.2</span> Lower is better</h3>
+<div class="outline-text-3" id="text-2-2">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Browser</th>
+<th scope="col" class="org-right">SunSpider 1.0.2 <code>*</code></th>
+<th scope="col" class="org-right">Kraken <code>*</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Chromium</td>
+<td class="org-right">151.9</td>
+<td class="org-right">550.9</td>
+</tr>
+
+<tr>
+<td class="org-left">Google Chrome</td>
+<td class="org-right">124.9</td>
+<td class="org-right">522.4</td>
+</tr>
+
+<tr>
+<td class="org-left">Firefox</td>
+<td class="org-right">140.8</td>
+<td class="org-right">819.8</td>
+</tr>
+
+<tr>
+<td class="org-left">Edge</td>
+<td class="org-right">154.1</td>
+<td class="org-right">560.8</td>
+</tr>
+
+<tr>
+<td class="org-left">Nyxt</td>
+<td class="org-right">81.6</td>
+<td class="org-right">444.4</td>
+</tr>
+
+<tr>
+<td class="org-left">Qutebrowser</td>
+<td class="org-right">137.5</td>
+<td class="org-right">562.4</td>
+</tr>
+
+<tr>
+<td class="org-left">Brave</td>
+<td class="org-right">150.1</td>
+<td class="org-right">557.5</td>
+</tr>
+
+<tr>
+<td class="org-left">Vivaldi</td>
+<td class="org-right">157.5</td>
+<td class="org-right">559.6</td>
+</tr>
+
+<tr>
+<td class="org-left">Opera</td>
+<td class="org-right">153.4</td>
+<td class="org-right">566.2</td>
+</tr>
+</tbody>
+</table>
+<p class="verse">
+<code>*</code> <b>Lower is better</b>, expressed in milliseconds<br />
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orgd2bcf3c" class="outline-2">
+<h2 id="orgd2bcf3c"><span class="section-number-2">3</span> Weighed Scores for graphing</h2>
+<div class="outline-text-2" id="text-3">
+</div>
+<div id="outline-container-org0ffdf4e" class="outline-3">
+<h3 id="org0ffdf4e"><span class="section-number-3">3.1</span> Higher is better</h3>
+<div class="outline-text-3" id="text-3-1">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Browser</th>
+<th scope="col" class="org-right">Octane 2.0</th>
+<th scope="col" class="org-right">Basemark 3.0 <code>**</code></th>
+<th scope="col" class="org-right">MotionMark 1.2</th>
+<th scope="col" class="org-right">JetStream2</th>
+<th scope="col" class="org-right">Speedometer 2.0</th>
+<th scope="col" class="org-right">WebXPRT 3</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Chromium</td>
+<td class="org-right">901.5</td>
+<td class="org-right">689.4</td>
+<td class="org-right">740.1</td>
+<td class="org-right">842.6</td>
+<td class="org-right">756.0</td>
+<td class="org-right">852.2</td>
+</tr>
+
+<tr>
+<td class="org-left">Google Chrome</td>
+<td class="org-right">934.6</td>
+<td class="org-right">875.1</td>
+<td class="org-right">899.2</td>
+<td class="org-right">871.3</td>
+<td class="org-right">912.0</td>
+<td class="org-right">898.6</td>
+</tr>
+
+<tr>
+<td class="org-left">Firefox</td>
+<td class="org-right">352.4</td>
+<td class="org-right">600.0</td>
+<td class="org-right">498.7</td>
+<td class="org-right">430.7</td>
+<td class="org-right">572.0</td>
+<td class="org-right">721.7</td>
+</tr>
+
+<tr>
+<td class="org-left">Edge</td>
+<td class="org-right">893.1</td>
+<td class="org-right">913.7</td>
+<td class="org-right">678.8</td>
+<td class="org-right">906.1</td>
+<td class="org-right">656.0</td>
+<td class="org-right">837.7</td>
+</tr>
+
+<tr>
+<td class="org-left">Nyxt</td>
+<td class="org-right">792.2</td>
+<td class="org-right">454.7</td>
+<td class="org-right">365.3</td>
+<td class="org-right">897.7</td>
+<td class="org-right">648.0</td>
+<td class="org-right">869.6</td>
+</tr>
+
+<tr>
+<td class="org-left">Qutebrowser</td>
+<td class="org-right">895.7</td>
+<td class="org-right">670.5</td>
+<td class="org-right">649.4</td>
+<td class="org-right">905.7</td>
+<td class="org-right">650.4</td>
+<td class="org-right">698.6</td>
+</tr>
+
+<tr>
+<td class="org-left">Brave</td>
+<td class="org-right">897.9</td>
+<td class="org-right">854.4</td>
+<td class="org-right">684.6</td>
+<td class="org-right">814.0</td>
+<td class="org-right">660.0</td>
+<td class="org-right">814.5</td>
+</tr>
+
+<tr>
+<td class="org-left">Vivaldi</td>
+<td class="org-right">894.4</td>
+<td class="org-right">726.4</td>
+<td class="org-right">712.0</td>
+<td class="org-right">801.5</td>
+<td class="org-right">656.0</td>
+<td class="org-right">855.1</td>
+</tr>
+
+<tr>
+<td class="org-left">Opera</td>
+<td class="org-right">897.2</td>
+<td class="org-right">890.2</td>
+<td class="org-right">698.5</td>
+<td class="org-right">806.0</td>
+<td class="org-right">636.0</td>
+<td class="org-right">849.3</td>
+</tr>
+</tbody>
+</table>
+<p class="verse">
+<code>**</code> <b>Error Message in Nyxt</b>, "Browser wasn't able to run WebGL 2.0 Test", which definitely caused the reduced score<br />
+</p>
+</div>
+</div>
+<div id="outline-container-org46073b2" class="outline-3">
+<h3 id="org46073b2"><span class="section-number-3">3.2</span> Lower is better</h3>
+<div class="outline-text-3" id="text-3-2">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Browser</th>
+<th scope="col" class="org-right">SunSpider 1.0.2 <code>*</code></th>
+<th scope="col" class="org-right">Kraken <code>*</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Chromium</td>
+<td class="org-right">843.9</td>
+<td class="org-right">612.1</td>
+</tr>
+
+<tr>
+<td class="org-left">Google Chrome</td>
+<td class="org-right">693.9</td>
+<td class="org-right">580.4</td>
+</tr>
+
+<tr>
+<td class="org-left">Firefox</td>
+<td class="org-right">782.2</td>
+<td class="org-right">910.9</td>
+</tr>
+
+<tr>
+<td class="org-left">Edge</td>
+<td class="org-right">856.1</td>
+<td class="org-right">623.1</td>
+</tr>
+
+<tr>
+<td class="org-left">Nyxt</td>
+<td class="org-right">453.3</td>
+<td class="org-right">493.8</td>
+</tr>
+
+<tr>
+<td class="org-left">Qutebrowser</td>
+<td class="org-right">763.9</td>
+<td class="org-right">624.9</td>
+</tr>
+
+<tr>
+<td class="org-left">Brave</td>
+<td class="org-right">833.9</td>
+<td class="org-right">619.4</td>
+</tr>
+
+<tr>
+<td class="org-left">Vivaldi</td>
+<td class="org-right">875.0</td>
+<td class="org-right">621.8</td>
+</tr>
+
+<tr>
+<td class="org-left">Opera</td>
+<td class="org-right">852.2</td>
+<td class="org-right">629.1</td>
+</tr>
+</tbody>
+</table>
+<p class="verse">
+<code>*</code> <b>Lower is better</b>, expressed in milliseconds<br />
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org7ea91f1" class="outline-2">
+<h2 id="org7ea91f1"><span class="section-number-2">4</span> Results</h2>
+<div class="outline-text-2" id="text-4">
+</div>
+<div id="outline-container-org50438ea" class="outline-3">
+<h3 id="org50438ea"><span class="section-number-3">4.1</span> Higher is better</h3>
+<div class="outline-text-3" id="text-4-1">
+<p class="verse">
+<object type="image/svg+xml" data="browser_benchmarks.svg" class="org-svg"><br />
+Sorry, your browser does not support SVG.</object><br />
+</p>
+<p class="verse">
+<code>**</code> <b>Error Message in Nyxt</b>, "Browser wasn't able to run WebGL 2.0 Test", which definitely caused the reduced score<br />
+</p>
+</div>
+</div>
+<div id="outline-container-org09f07d5" class="outline-3">
+<h3 id="org09f07d5"><span class="section-number-3">4.2</span> Lower is better</h3>
+<div class="outline-text-3" id="text-4-2">
+<p class="verse">
+<object type="image/svg+xml" data="browser_benchmarks_ms.svg" class="org-svg"><br />
+Sorry, your browser does not support SVG.</object><br />
+</p>
+<p class="verse">
+<code>*</code> <b>Lower is better</b>, expressed in milliseconds<br />
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org909f304" class="outline-2">
+<h2 id="org909f304"><span class="section-number-2">5</span> Links to benchmarks</h2>
+<div class="outline-text-2" id="text-5">
+<p class="verse">
+<a href="https://chromium.github.io/octane/">Octane 2.0</a><br />
+<a href="https://web.basemark.com/">Basemark 3.0</a><br />
+<a href="https://browserbench.org/JetStream2.0/">JetStream2</a><br />
+<a href="https://browserbench.org/MotionMark1.2/">MotionMark 1.2</a><br />
+<a href="https://browserbench.org/Speedometer2.0/">Speedometer 2.0</a><br />
+<a href="https://webkit.org/perf/sunspider/sunspider.html">SunSpider 1.0.2</a><br />
+<a href="https://mozilla.github.io/krakenbenchmark.mozilla.org/index.html">Kraken</a><br />
+<a href="https://www.principledtechnologies.com/benchmarkxprt/webxprt/">WebXPRT 3</a><br />
+</p>
+
+<script src="../assets/jquery-3.3.1.min.js"></script>
+<script src="../assets/notes.js"></script>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="date">Date: 2021-09-03 Fri 21:14</p>
+<p class="author">Author: Damian Chrzanowski</p>
+<p class="date">Created: 2021-09-04 Sat 14:09</p>
+<p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

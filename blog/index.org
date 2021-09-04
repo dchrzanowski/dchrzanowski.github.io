@@ -1,0 +1,16 @@
+#+TITLE: Damian Chrzanowski's Blog
+#+DATE: [2021-09-04 Sat 14:04]
+#+AUTHOR: Damian Chrzanowski
+#+EMAIL: pjdamian.chrzanowski@gmail.com
+#+OPTIONS: TOC:2 num:2
+#+HTML_HEAD: <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="assets/org.css"/>
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="assets/org_index.css"/>
+#+HTML_HEAD: <link rel="icon" href="assets/favicon.ico">
+
+[[file:browser_benchmark/benchmarks.org][Browser Benchmarks]]
+
+#+BEGIN_EXPORT html
+<script src="assets/jquery-3.3.1.min.js"></script>
+<script src="assets/notes.js"></script>
+#+END_EXPORT

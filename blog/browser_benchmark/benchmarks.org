@@ -1,0 +1,118 @@
+#+TITLE: Browser Benchmark
+#+DATE: [2021-09-03 Fri 21:14]
+#+AUTHOR: Damian Chrzanowski
+#+EMAIL: pjdamian.chrzanowski@gmail.com
+#+OPTIONS: TOC:1 num:2
+#+HTML_HEAD: <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="../assets/org.css"/>
+#+HTML_HEAD: <link rel="icon" href="../assets/favicon.ico">
+* Browsers
+  | Browser       |         Version |
+  |---------------+-----------------|
+  | Chromium      |  93.0.4577.63-1 |
+  | Google Chrome | 92.0.4515.159-1 |
+  | Firefox       |        91.0.2-1 |
+  | Edge          |    95.0.997.1-1 |
+  | Nyxt          |         2.1.1-1 |
+  | Qutebrowser   |         2.3.1-1 |
+  | Brave         |     1:1.29.77-1 |
+  | Vivaldi       |   4.1.2369.21-1 |
+  | Opera         | 78.0.4093.184-1 |
+
+* Original Scores
+** Higher is better
+   | Browser       | Octane 2.0 | Basemark 3.0 ~**~ | MotionMark 1.2 | JetStream2 | Speedometer 2.0 | WebXPRT 3 |
+   |---------------+------------+-------------------+----------------+------------+-----------------+-----------|
+   | Chromium      |      72119 |            1275.4 |        1058.38 |    185.377 |             189 |       294 |
+   | Google Chrome |      74772 |           1618.96 |        1285.86 |    191.685 |             228 |       310 |
+   | Firefox       |      28195 |           1109.93 |         713.10 |     94.748 |             143 |       249 |
+   | Edge          |      71448 |           1690.39 |         970.70 |    199.335 |             164 |       289 |
+   | Nyxt          |      63374 |             841.2 |         522.36 |    197.490 |             162 |       300 |
+   | Qutebrowser   |      71655 |           1240.34 |         928.68 |    199.251 |           162.6 |       241 |
+   | Brave         |      71835 |            1580.7 |         978.93 |    179.070 |             165 |       281 |
+   | Vivaldi       |      71552 |           1343.88 |        1018.16 |    176.341 |             164 |       295 |
+   | Opera         |      71777 |           1646.93 |         998.86 |    177.310 |             159 |       293 |
+   #+begin_verse
+  ~**~ *Error Message in Nyxt*, "Browser wasn't able to run WebGL 2.0 Test", which definitely caused the reduced score
+   #+end_verse
+** Lower is better
+   | Browser       | SunSpider 1.0.2 ~*~ | Kraken ~*~ |
+   |---------------+---------------------+------------|
+   | Chromium      |               151.9 |      550.9 |
+   | Google Chrome |               124.9 |      522.4 |
+   | Firefox       |               140.8 |      819.8 |
+   | Edge          |               154.1 |      560.8 |
+   | Nyxt          |                81.6 |      444.4 |
+   | Qutebrowser   |               137.5 |      562.4 |
+   | Brave         |               150.1 |      557.5 |
+   | Vivaldi       |               157.5 |      559.6 |
+   | Opera         |               153.4 |      566.2 |
+   #+begin_verse
+  ~*~ *Lower is better*, expressed in milliseconds
+   #+end_verse
+* Weighed Scores for graphing
+** Higher is better
+   #+PLOT: title:"Higher is better" ind:1 deps:(2 3 4 5 6 7) type:2d with:histograms set:"yrange [0:]" set:"xlabel 'Browser'" set:"ylabel 'Weighed Score out of 1000'" set:"boxwidth 0.9 relative" set:"style fill solid 1.0 border -1" set:"size ratio 0.5"
+   | Browser       | Octane 2.0 | Basemark 3.0 ~**~ | MotionMark 1.2 | JetStream2 | Speedometer 2.0 | WebXPRT 3 |
+   |---------------+------------+-------------------+----------------+------------+-----------------+-----------|
+   | Chromium      |      901.5 |             689.4 |          740.1 |      842.6 |           756.0 |     852.2 |
+   | Google Chrome |      934.6 |             875.1 |          899.2 |      871.3 |           912.0 |     898.6 |
+   | Firefox       |      352.4 |             600.0 |          498.7 |      430.7 |           572.0 |     721.7 |
+   | Edge          |      893.1 |             913.7 |          678.8 |      906.1 |           656.0 |     837.7 |
+   | Nyxt          |      792.2 |             454.7 |          365.3 |      897.7 |           648.0 |     869.6 |
+   | Qutebrowser   |      895.7 |             670.5 |          649.4 |      905.7 |           650.4 |     698.6 |
+   | Brave         |      897.9 |             854.4 |          684.6 |      814.0 |           660.0 |     814.5 |
+   | Vivaldi       |      894.4 |             726.4 |          712.0 |      801.5 |           656.0 |     855.1 |
+   | Opera         |      897.2 |             890.2 |          698.5 |      806.0 |           636.0 |     849.3 |
+   #+TBLFM: $2=($2/80000)*1000;%0.1f::$3=($3/1850)*1000;%0.1f::$4=($4/1430)*1000;%0.1f::$5=($5/220)*1000;%0.1f::$6=($6/250)*1000;%0.1f::$7=($7/345)*1000;%0.1f
+   #+begin_verse
+  ~**~ *Error Message in Nyxt*, "Browser wasn't able to run WebGL 2.0 Test", which definitely caused the reduced score
+   #+end_verse
+** Lower is better
+   #+PLOT: title:"Lower is better" ind:1 deps:(2 3) type:2d with:histograms set:"yrange [0:]" set:"xlabel 'Browser'" set:"ylabel 'Weighed ms out of 1000'" set:"boxwidth 0.9 relative" set:"style fill solid 1.0 border -1" set:"size ratio 0.5"
+   | Browser       | SunSpider 1.0.2 ~*~ | Kraken ~*~ |
+   |---------------+---------------------+------------|
+   | Chromium      |               843.9 |      612.1 |
+   | Google Chrome |               693.9 |      580.4 |
+   | Firefox       |               782.2 |      910.9 |
+   | Edge          |               856.1 |      623.1 |
+   | Nyxt          |               453.3 |      493.8 |
+   | Qutebrowser   |               763.9 |      624.9 |
+   | Brave         |               833.9 |      619.4 |
+   | Vivaldi       |               875.0 |      621.8 |
+   | Opera         |               852.2 |      629.1 |
+   #+TBLFM: $2=($2/180)*1000;%0.1f::$3=($3/900)*1000;%0.1f
+   #+begin_verse
+  ~*~ *Lower is better*, expressed in milliseconds
+   #+end_verse
+* Results
+** Higher is better
+   #+begin_verse
+  [[file:browser_benchmarks.svg]]
+   #+end_verse
+   #+begin_verse
+  ~**~ *Error Message in Nyxt*, "Browser wasn't able to run WebGL 2.0 Test", which definitely caused the reduced score
+   #+end_verse
+** Lower is better
+   #+begin_verse
+  [[file:browser_benchmarks_ms.svg]]
+   #+end_verse
+   #+begin_verse
+  ~*~ *Lower is better*, expressed in milliseconds
+   #+end_verse
+* Links to benchmarks
+  #+begin_verse
+  [[https://chromium.github.io/octane/][Octane 2.0]]
+  [[https://web.basemark.com/][Basemark 3.0]]
+  [[https://browserbench.org/JetStream2.0/][JetStream2]]
+  [[https://browserbench.org/MotionMark1.2/][MotionMark 1.2]]
+  [[https://browserbench.org/Speedometer2.0/][Speedometer 2.0]]
+  [[https://webkit.org/perf/sunspider/sunspider.html][SunSpider 1.0.2]]
+  [[https://mozilla.github.io/krakenbenchmark.mozilla.org/index.html][Kraken]]
+  [[https://www.principledtechnologies.com/benchmarkxprt/webxprt/][WebXPRT 3]]
+  #+end_verse
+
+  #+BEGIN_EXPORT html
+  <script src="../assets/jquery-3.3.1.min.js"></script>
+  <script src="../assets/notes.js"></script>
+  #+END_EXPORT

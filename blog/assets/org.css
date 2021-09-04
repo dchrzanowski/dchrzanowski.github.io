@@ -1,0 +1,189 @@
+body {
+    font-family: 'Source Sans Pro', sans-serif;
+    background: #131519;
+    color: #bbc2cf;
+    font-size: 1.05em;
+    padding: 20px 0px;
+}
+
+@media screen and (min-width: 576px) {
+    body {
+        padding: 20px 10px !important;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    body {
+        padding: 20px 30px !important;
+    }
+}
+
+@media screen and (min-width: 992px) {
+    body {
+        padding: 20px 60px !important;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    body {
+        padding: 20px 150px !important;
+    }
+}
+
+.invert {
+    background: #f8f9fa;
+    color: black;
+}
+
+.btn-invert {
+    color: black !important;
+    background: #f8f9fa !important;
+}
+
+img {
+    max-width: 100%;
+}
+
+h2, h3 {
+    border-bottom: 1px solid #555;
+    cursor: pointer;
+}
+
+h2 {
+    font-size: 2em;
+    margin-top: 43px;
+}
+
+h3 {
+    font-size: 1.3em;
+    margin: 30px 0px -10px 5px;
+}
+
+table {
+    margin-top: 30px;
+    margin-left: 40px;
+}
+
+img {
+    border: 1px solid gray;
+}
+
+pre {
+    border: 2px solid black;
+    box-shadow: 3px 3px 3px black;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto !important;
+    margin: 1.2em;
+    background: #212121;
+    color: #DDD;
+}
+
+pre.src:before {
+    background: black;
+    color: white;
+    border: 1px solid white;
+    top: -7px !important;
+}
+
+code {
+    color: #dc7217;
+}
+
+pre code {
+    color: #ddd;
+}
+
+.org-ol > li {
+    margin-top: 13px;
+    font-weight: bold;
+}
+
+.org-ul > li, .verse, table {
+    font-weight: normal;
+}
+
+a {
+    color: #87cefa;
+    font-size: 1.05em;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.a-invert {
+    color: #007bff;
+}
+
+#invert, #collapse, #expand {
+    transition: height 0.3s;
+    height: 20px;
+    position: fixed;
+    top: 0px;
+    right: 0px;
+    background: #131519;
+    color: white !important;
+    border-left: 1px solid #555;
+    border-bottom: 1px solid #555;
+    border-top: none;
+    border-right: 1px solid #555;
+    cursor: pointer;
+    z-index: 1000;
+}
+
+#collapse {
+    right: 50px;
+}
+
+#expand {
+    right: 80px;
+}
+
+#invert:hover, #collapse:hover, #expand:hover {
+    transition: height 0.3s;
+    height: 30px;
+}
+
+#scroll-button {
+    width: 28px;
+    height: 28px;
+    display: none;
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    opacity: 0.5;
+    cursor: pointer;
+    transition: 0.5s;
+    border: none;
+}
+
+#scroll-button:hover {
+    opacity: 1;
+    transform: scale(1.1, 1.1);
+}
+
+.toggler {
+    cursor: pointer;
+    position: relative;
+    background: none;
+    color: white;
+    border: none;
+    float: right;
+    top: 14px;
+    font-size: 20px;
+}
+
+button:focus {
+    border: none;
+    outline: none;
+}
+
+.toggler-h3 {
+    top: 5px;
+}
+
+object.org-svg {
+    background-color: white !important;
+}
