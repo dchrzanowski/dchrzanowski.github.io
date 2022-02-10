@@ -1,0 +1,125 @@
+* Back End
+** DONE VPS
+   CLOSED: [2020-06-09 Tue 11:23]
+   :PROPERTIES:
+   :ID:       BACK:jhed1cl0eqi0
+   :END:
+   - [7/7] Requirements
+     - [X] Find a cheap but good VPS (DO, AWS, Linode)
+       - Digital Ocean is the best/easiest solution
+     - [X] Full VPS control required
+     - [X] 0.5/1 GB RAM minimum
+     - [X] 1 CPU
+     - [X] Low/Medium level throughput required (it will not be a busy website)
+     - [X] VPS at or under €5 / month
+     - [X] Full access to the VPS' instance
+** DONE Limit access to VPS through SSH only
+   CLOSED: [2020-06-09 Tue 11:23]
+   :PROPERTIES:
+   :ID:       BACK:z6gd1cl0eqi0
+   :END:
+   - [0/2] Requirements
+     - [ ] Full access to the VPS via SSH only
+     - [ ] Provide a second person with ssh access, for safety reasons
+** DONE SSL Certs
+   CLOSED: [2020-06-09 Tue 11:24]
+   :PROPERTIES:
+   :ID:       BACK:urhd1cl0eqi0
+   :END:
+   - [1/1] Requirements
+     - [X] Provide SSL via [[https://letsencrypt.org/][letsencrypt]]
+** DONE Tech Stack
+   CLOSED: [2020-06-09 Tue 11:22]
+   :PROPERTIES:
+   :ID:       BACK:kfjd1cl0eqi0
+   :END:
+   - [3/3] Requirements
+     - [X] Server most likely on Ubuntu
+     - [X] Nginx as reverse proxy
+     - [X] [[https://strapi.io/][Easy CMS solution]]
+** TODO Point domains to DO
+   :PROPERTIES:
+   :ID:       BACK:o7258gy0nqi0
+   :END:
+   - [0/2] Requirements
+     - [ ] Point sri.ait.ie to 165.22.87.161
+     - [ ] Point comand.ie to 165.22.87.161
+     - Alternatively the above domain registrars could pass domain management to DO. The rest of the setup will be carried out on DO then. DO's name servers are:
+       - ns1.digitalocean.com
+       - ns2.digitalocean.com
+       - ns3.digitalocean.com
+** DONE Serve Angular directly via Nginx
+   CLOSED: [2020-07-02 Thu 12:38]
+   :PROPERTIES:
+   :ID:       BACK:8f558gy0nqi0
+   :END:
+   - [0/1] Requirements
+     - [ ] Quick config for Nginx Angular serving
+     #+BEGIN_SRC
+        server {
+
+                root /var/www/3dguide.xyz/html;
+                index index.html;
+
+                server_name 3dguide.xyz www.3dguide.xyz;
+
+                location / {
+                        try_files $uri $uri/ /index.html =404;
+                }
+
+                location ~*  \.(jpg|jpeg|png|gif|ico|css|js|pdf)$ {
+                    expires 7d;
+                }
+
+                listen 443 ssl; # managed by Certbot
+                ssl_certificate /etc/letsencrypt/live/3dguide.xyz/fullchain.pem; # managed by Certbot
+                ssl_certificate_key /etc/letsencrypt/live/3dguide.xyz/privkey.pem; # managed by Certbot
+                include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
+                ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
+        }
+
+        server {
+                server_name 3dguide.xyz www.3dguide.xyz;
+
+                location / {
+                        proxy_pass http://localhost:1337;
+                        proxy_http_version 1.1;
+
+                        proxy_set_header X-Forwarded-Host $host;
+                        proxy_set_header X-Forwarded-Server $host;
+                        proxy_set_header X-Real-IP $remote_addr;
+                        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+                        proxy_set_header X-Forwarded-Proto $scheme;
+                }
+
+                listen 1336 ssl;
+                ssl_certificate /etc/letsencrypt/live/3dguide.xyz/fullchain.pem; # managed by Certbot
+                ssl_certificate_key /etc/letsencrypt/live/3dguide.xyz/privkey.pem; # managed by Certbot
+                include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
+                ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
+        }
+
+        server {
+            if ($host = www.3dguide.xyz) {
+                return 301 https://$host$request_uri;
+            } # managed by Certbot
+
+
+            if ($host = 3dguide.xyz) {
+                return 301 https://$host$request_uri;
+            } # managed by Certbot
+
+
+            listen 80;
+            listen [::]:80;
+
+            server_name 3dguide.xyz www.3dguide.xyz;
+            return 404; # managed by Certbot
+        }
+     #+END_SRC
+** TODO Provide a CI/CD pipeline
+   :PROPERTIES:
+   :ID:       BACK:xk858gy0nqi0
+   :END:
+   - [0/1] Requirements
+     - [ ] Pushing to master automatically updates the server's static content

@@ -1,0 +1,67 @@
+* General
+** TODO Design
+   :PROPERTIES:
+   :ID:       GEN:hw4lscl0eqi0
+   :END:
+   - [4/4] Requirements
+     - [X] Modern design
+     - [X] Sleek UI
+     - [X] Intuitive Navigation
+     - [X] CMS controlled
+   - [0/2] Extras
+     - [ ] "Live Chat" solutions: [[https://www.purechat.com/][purechat]], [[https://www.crazyegg.com/blog/live-chat-software-solutions/][other solutions]]
+     - [ ] "Subscribe to newsletter"?
+   - [3/4] Acceptance Criteria
+     - [X] GTmetrix score of 90+
+     - [ ] High SEO
+     - [X] Eye catchy design
+     - [X] Smooth operation
+   - [5/5] Resources
+     - [X] [[https://zeplin.io/][Zeplin, wireframing and design]] or [[https://www.figma.com/][figma]]
+     - [X] [[https://github.com/gztchan/awesome-design][Awesome design resources]]
+     - [X] [[https://www.technologygateway.ie/network/][List of Tech Gateways]]
+     - [X] [[https://sri.ait.ie/][SRI current website]]
+     - [X] [[http://comand.ie][COMAND current website]]
+** TODO COMAND.IE
+   :PROPERTIES:
+   :ID:       GEN:as7lscl0eqi0
+   :END:
+   - [2/2] Requirements
+     - [X] Modernize website
+     - [X] Create user stories in [[file:comand.ie.org][COMAND user stories]]
+** TODO SRI.IE
+   :PROPERTIES:
+   :ID:       GEN:smalscl0eqi0
+   :END:
+   - [1/2] Requirements
+     - [ ] Modernize website
+     - [X] Create user stories in [[file:sri.ie.org][SRI user stories]]
+** TODO [#A] General Info from Grainne
+   :PROPERTIES:
+   :ID:       GEN:xojc1ey0nqi0
+   :END:
+*** Website
+    - All content on websites should be up to date and revisited regularly
+    - All online marketing materials, brochures/information up to date
+    - Gateway sites should have a link to the TG publications page/TG Booklet
+    - There is limited printed TG material – site downloads are now the preferred option
+    - Avoid using the printed 2019 TG booklet – out of date contact info
+    - Check all areas of website is up to date (expect increased footfall)
+    - Contact info
+    - All old events/info removed
+    - Clear navigation to any TG info and supports page – if you don’t have a supports page link to the TG page
+    - No pixelated/undersized images/Logos
+    - May be useful to have a Covid procedures section, outlining how you intend to communicate post lock down.
+    - Consider your messaging on the Home page, is it clear, should you have a sentence outlining when/you are open – Linking to any new procedures
+    - Make sure you have links to your social accounts on your website. (Header or Footer)
+*** Blogs/Videos/Articles
+    - Write a blog/article e.g. new Covid procedures etc
+    - Reopening blog
+    - Any new platforms/means of communication you now use to assist companies
+    - Video content explaining new ways of working
+    - Video of labs/workspaces (does not have to be long, quick 15 second snap shots of the Gateway. These could go on the Gateway YouTube and be pushed out from there.
+** TODO Animations and lazy loading
+*** [[https://stackoverflow.com/questions/49856414/angular-load-on-a-background-image][Lazy load images]], [[https://css-tricks.com/the-complete-guide-to-lazy-loading-images/][In-depth explanation]]
+*** [[https://johnpapa.net/angular-9-lazy-loading-components/][Lazy loaded components]], [[https://medium.com/angular-in-depth/lazy-load-components-in-angular-596357ab05d8][Ivy tailored lazy component loading]]
+*** [[https://stackoverflow.com/questions/42981136/show-activity-indicator-while-loading-a-lazy-loaded-module-in-angular-2][Animation while loading lazy modules]]
+*** [[https://angular.io/guide/route-animations][Animating route change (official)]]

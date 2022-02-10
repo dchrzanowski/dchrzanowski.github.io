@@ -1,0 +1,48 @@
+* SRI
+  :PROPERTIES:
+  :ID:       SRI:q0bffi61wqi0
+  :END:
+** TODO Current Sections
+   :PROPERTIES:
+   :ID:       SRI:u9ldcdl0eqi0
+   :END:
+   - Diagram of sections provided by Yuhang
+   [[file:images/SRI/2020-06-16_15-26-27_screenshot.png]]
+** TODO Theme
+   :PROPERTIES:
+   :ID:       SRI:n1kd0k61wqi0
+   :END:
+   - [0/3] Requirements
+     - [ ] Currently selected color theme by staff consensus is: [[https://connectcentre.ie/][Connect Center]]
+     - [ ] Currently selected structure is [[https://www.adaptcentre.ie/][Adapt Center]]
+     - [ ] However, the layout is all over the place on the connect website, needs margin/padding/spacing tweaking to look more appealing and less disorganized
+** TODO Twitter feed
+   :PROPERTIES:
+   :ID:       SRI:ba6dhfy0nqi0
+   :END:
+   - [0/1] Requirements
+     - [ ] Provide a live feed of tweets from @aitsri
+** TODO News/Blog Page
+   :PROPERTIES:
+   :ID:       SRI:g1x3ujy0nqi0
+   :END:
+   - [0/3] Requirements
+     - [ ] Add a blog/articles subpage
+     - [ ] EVENTS sub-page from the diagram will be populated in the News/Blog with a characteristic "event" to create a distinction from the other news
+     - [ ] CMS controlled
+** TODO Contact Us Page
+   :PROPERTIES:
+   :ID:       SRI:b6f9jzy0nqi0
+   :END:
+   - [0/2] Requirements
+     - [ ] Add a contact us FUNCTIONING form
+     - [ ] Feedback goes to the CMS, further, CMS emails people of interest (e.g. Anthony and Brian)
+** TODO Nav Bar
+   :PROPERTIES:
+   :ID:       SRI:0teffi61wqi0
+   :END:
+   - [0/1] Requirements
+     - [ ] Due to increased amount of headings (subpages) a doubled up nav bar might have to be used or a sub-menu style version
+** VERIFY Forum
+   - [0/1] Requirements
+     - [ ] This is an extra, but might integrate a forum if needed

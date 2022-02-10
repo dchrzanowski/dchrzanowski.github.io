@@ -1,0 +1,960 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- 2020-09-09 Wed 12:07 -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SRI &amp; COMAND Websites TODO List</title>
+<meta name="generator" content="Org mode">
+<meta name="author" content="Damian Chrzanowski">
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,700|Inconsolata:400,700" rel="stylesheet" type="text/css" />
+<link href="css/style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2020 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">SRI &amp; COMAND Websites TODO List</h1>
+<div class="outline-2" id="meta">
+<table>
+
+
+<colgroup>
+<col  class="org-left">
+
+<col  class="org-left">
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left"><b>Author</b></td>
+<td class="org-left">Damian Chrzanowski (<a href="mailto:pjdamian.chrzanowski@gmail.com">mailto:pjdamian.chrzanowski@gmail.com</a>)</td>
+</tr>
+
+<tr>
+<td class="org-left"><b>Date</b></td>
+<td class="org-left">2020-09-09 12:07:14</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org06e6d82">1. General</a>
+<ul>
+<li><a href="#org1885f05">1.1. <span class="todo TODO">TODO</span> Design</a></li>
+<li><a href="#orga37f75d">1.2. <span class="todo TODO">TODO</span> COMAND.IE</a></li>
+<li><a href="#orgc9aee37">1.3. <span class="todo TODO">TODO</span> SRI.IE</a></li>
+<li><a href="#orgb3b2f00">1.4. <span class="todo TODO">TODO</span> General Info from Grainne</a>
+<ul>
+<li><a href="#org13495c9">1.4.1. Website</a></li>
+<li><a href="#orgbbec449">1.4.2. Blogs/Videos/Articles</a></li>
+</ul>
+</li>
+<li><a href="#org84a13b8">1.5. <span class="todo TODO">TODO</span> Animations and lazy loading</a>
+<ul>
+<li><a href="#org95cd127">1.5.1. Lazy load images, In-depth explanation</a></li>
+<li><a href="#org0c5e316">1.5.2. Lazy loaded components, Ivy tailored lazy component loading</a></li>
+<li><a href="#orgbe68046">1.5.3. Animation while loading lazy modules</a></li>
+<li><a href="#orgbf74a6e">1.5.4. Animating route change (official)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#orgcfd9aee">2. SRI</a>
+<ul>
+<li><a href="#org27c1531">2.1. <span class="todo TODO">TODO</span> Current Sections</a></li>
+<li><a href="#org4e6b2e1">2.2. <span class="todo TODO">TODO</span> Theme</a></li>
+<li><a href="#orgcba7a6e">2.3. <span class="todo TODO">TODO</span> Twitter feed</a></li>
+<li><a href="#orga079a97">2.4. <span class="todo TODO">TODO</span> News/Blog Page</a></li>
+<li><a href="#org12ab3b5">2.5. <span class="todo TODO">TODO</span> Contact Us Page</a></li>
+<li><a href="#orgf531bf1">2.6. <span class="todo TODO">TODO</span> Nav Bar</a></li>
+<li><a href="#org8a99bf1">2.7. <span class="todo VERIFY">VERIFY</span> Forum</a></li>
+</ul>
+</li>
+<li><a href="#orgd647cdf">3. COMAND</a>
+<ul>
+<li><a href="#org84beea7">3.1. <span class="todo TODO">TODO</span> Current Sections</a>
+<ul>
+<li><a href="#org539093f">3.1.1. Home</a></li>
+<li><a href="#org7fd5802">3.1.2. Services</a></li>
+<li><a href="#org7a42b96">3.1.3. Research</a></li>
+<li><a href="#org7c767be">3.1.4. News (Blog)</a></li>
+<li><a href="#orgb9ba33f">3.1.5. Projects</a></li>
+<li><a href="#orge36fff9">3.1.6. Contact</a></li>
+</ul>
+</li>
+<li><a href="#orgcd7ea83">3.2. <span class="todo VERIFY">VERIFY</span> Twitter feed</a></li>
+<li><a href="#org8d72aa4">3.3. <span class="done DONE">DONE</span> News/Blog Page</a></li>
+<li><a href="#orgd5376a2">3.4. <span class="done DONE">DONE</span> Research Page</a></li>
+<li><a href="#org3752845">3.5. <span class="done DONE">DONE</span> Projects Page</a></li>
+<li><a href="#org14580de">3.6. <span class="done DONE">DONE</span> Services Page</a></li>
+<li><a href="#orgee4ca0d">3.7. <span class="todo TODO">TODO</span> EI integration requirements</a></li>
+<li><a href="#orgd0fbb12">3.8. <span class="done DONE">DONE</span> Two different types of COMAND logos</a></li>
+</ul>
+</li>
+<li><a href="#orgbb2f957">4. Back End</a>
+<ul>
+<li><a href="#orgc47d827">4.1. <span class="done DONE">DONE</span> VPS</a></li>
+<li><a href="#org467dc4b">4.2. <span class="done DONE">DONE</span> Limit access to VPS through SSH only</a></li>
+<li><a href="#org0868289">4.3. <span class="done DONE">DONE</span> SSL Certs</a></li>
+<li><a href="#orgb349b7f">4.4. <span class="done DONE">DONE</span> Tech Stack</a></li>
+<li><a href="#org4c4c557">4.5. <span class="todo TODO">TODO</span> Point domains to DO</a></li>
+<li><a href="#orgc355ad1">4.6. <span class="done DONE">DONE</span> Serve Angular directly via Nginx</a></li>
+<li><a href="#org7bee611">4.7. <span class="todo TODO">TODO</span> Provide a CI/CD pipeline</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org06e6d82" class="outline-2">
+<h2 id="org06e6d82"><span class="section-number-2">1</span> General</h2>
+<div class="outline-text-2" id="text-1">
+</div>
+<div id="outline-container-org1885f05" class="outline-3">
+<h3 id="org1885f05"><span class="section-number-3">1.1</span> <span class="todo TODO">TODO</span> Design</h3>
+<div class="outline-text-3" id="text-1-1">
+<pre class="example">
+ID: GEN:hw4lscl0eqi0
+</pre>
+<ul class="org-ul">
+<li><code>[4/4]</code> Requirements
+<ul class="org-ul">
+<li class="on"><code>[X]</code> Modern design</li>
+<li class="on"><code>[X]</code> Sleek UI</li>
+<li class="on"><code>[X]</code> Intuitive Navigation</li>
+<li class="on"><code>[X]</code> CMS controlled</li>
+</ul></li>
+<li><code>[0/2]</code> Extras
+<ul class="org-ul">
+<li class="off"><code>[&#xa0;]</code> "Live Chat" solutions: <a href="https://www.purechat.com/">purechat</a>, <a href="https://www.crazyegg.com/blog/live-chat-software-solutions/">other solutions</a></li>
+<li class="off"><code>[&#xa0;]</code> "Subscribe to newsletter"?</li>
+</ul></li>
+<li><code>[3/4]</code> Acceptance Criteria
+<ul class="org-ul">
+<li class="on"><code>[X]</code> GTmetrix score of 90+</li>
+<li class="off"><code>[&#xa0;]</code> High SEO</li>
+<li class="on"><code>[X]</code> Eye catchy design</li>
+<li class="on"><code>[X]</code> Smooth operation</li>
+</ul></li>
+<li><code>[5/5]</code> Resources
+<ul class="org-ul">
+<li class="on"><code>[X]</code> <a href="https://zeplin.io/">Zeplin, wireframing and design</a> or <a href="https://www.figma.com/">figma</a></li>
+<li class="on"><code>[X]</code> <a href="https://github.com/gztchan/awesome-design">Awesome design resources</a></li>
+<li class="on"><code>[X]</code> <a href="https://www.technologygateway.ie/network/">List of Tech Gateways</a></li>
+<li class="on"><code>[X]</code> <a href="https://sri.ait.ie/">SRI current website</a></li>
+<li class="on"><code>[X]</code> <a href="http://comand.ie">COMAND current website</a></li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orga37f75d" class="outline-3">
+<h3 id="orga37f75d"><span class="section-number-3">1.2</span> <span class="todo TODO">TODO</span> COMAND.IE</h3>
+<div class="outline-text-3" id="text-1-2">
+<pre class="example">
+ID: GEN:as7lscl0eqi0
+</pre>
+<ul class="org-ul">
+<li><code>[2/2]</code> Requirements
+<ul class="org-ul">
+<li class="on"><code>[X]</code> Modernize website</li>
+<li class="on"><code>[X]</code> Create user stories in <a href="sections/comand.ie.html">COMAND user stories</a></li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgc9aee37" class="outline-3">
+<h3 id="orgc9aee37"><span class="section-number-3">1.3</span> <span class="todo TODO">TODO</span> SRI.IE</h3>
+<div class="outline-text-3" id="text-1-3">
+<pre class="example">
+ID: GEN:smalscl0eqi0
+</pre>
+<ul class="org-ul">
+<li><code>[1/2]</code> Requirements
+<ul class="org-ul">
+<li class="off"><code>[&#xa0;]</code> Modernize website</li>
+<li class="on"><code>[X]</code> Create user stories in <a href="sections/sri.ie.html">SRI user stories</a></li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgb3b2f00" class="outline-3">
+<h3 id="orgb3b2f00"><span class="section-number-3">1.4</span> <span class="todo TODO">TODO</span> General Info from Grainne</h3>
+<div class="outline-text-3" id="text-1-4">
+<pre class="example">
+ID: GEN:xojc1ey0nqi0
+</pre>
+</div>
+<div id="outline-container-org13495c9" class="outline-4">
+<h4 id="org13495c9"><span class="section-number-4">1.4.1</span> Website</h4>
+<div class="outline-text-4" id="text-1-4-1">
+<ul class="org-ul">
+<li>All content on websites should be up to date and revisited regularly</li>
+<li>All online marketing materials, brochures/information up to date</li>
+<li>Gateway sites should have a link to the TG publications page/TG Booklet</li>
+<li>There is limited printed TG material – site downloads are now the preferred option</li>
+<li>Avoid using the printed 2019 TG booklet – out of date contact info</li>
+<li>Check all areas of website is up to date (expect increased footfall)</li>
+<li>Contact info</li>
+<li>All old events/info removed</li>
+<li>Clear navigation to any TG info and supports page – if you don’t have a supports page link to the TG page</li>
+<li>No pixelated/undersized images/Logos</li>
+<li>May be useful to have a Covid procedures section, outlining how you intend to communicate post lock down.</li>
+<li>Consider your messaging on the Home page, is it clear, should you have a sentence outlining when/you are open – Linking to any new procedures</li>
+<li>Make sure you have links to your social accounts on your website. (Header or Footer)</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgbbec449" class="outline-4">
+<h4 id="orgbbec449"><span class="section-number-4">1.4.2</span> Blogs/Videos/Articles</h4>
+<div class="outline-text-4" id="text-1-4-2">
+<ul class="org-ul">
+<li>Write a blog/article e.g. new Covid procedures etc</li>
+<li>Reopening blog</li>
+<li>Any new platforms/means of communication you now use to assist companies</li>
+<li>Video content explaining new ways of working</li>
+<li>Video of labs/workspaces (does not have to be long, quick 15 second snap shots of the Gateway. These could go on the Gateway YouTube and be pushed out from there.</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-org84a13b8" class="outline-3">
+<h3 id="org84a13b8"><span class="section-number-3">1.5</span> <span class="todo TODO">TODO</span> Animations and lazy loading</h3>
+<div class="outline-text-3" id="text-1-5">
+</div>
+<div id="outline-container-org95cd127" class="outline-4">
+<h4 id="org95cd127"><span class="section-number-4">1.5.1</span> <a href="https://stackoverflow.com/questions/49856414/angular-load-on-a-background-image">Lazy load images</a>, <a href="https://css-tricks.com/the-complete-guide-to-lazy-loading-images/">In-depth explanation</a></h4>
+</div>
+<div id="outline-container-org0c5e316" class="outline-4">
+<h4 id="org0c5e316"><span class="section-number-4">1.5.2</span> <a href="https://johnpapa.net/angular-9-lazy-loading-components/">Lazy loaded components</a>, <a href="https://medium.com/angular-in-depth/lazy-load-components-in-angular-596357ab05d8">Ivy tailored lazy component loading</a></h4>
+</div>
+<div id="outline-container-orgbe68046" class="outline-4">
+<h4 id="orgbe68046"><span class="section-number-4">1.5.3</span> <a href="https://stackoverflow.com/questions/42981136/show-activity-indicator-while-loading-a-lazy-loaded-module-in-angular-2">Animation while loading lazy modules</a></h4>
+</div>
+<div id="outline-container-orgbf74a6e" class="outline-4">
+<h4 id="orgbf74a6e"><span class="section-number-4">1.5.4</span> <a href="https://angular.io/guide/route-animations">Animating route change (official)</a></h4>
+</div>
+</div>
+</div>
+<div id="outline-container-orgcfd9aee" class="outline-2">
+<h2 id="orgcfd9aee"><span class="section-number-2">2</span> SRI</h2>
+<div class="outline-text-2" id="text-2">
+<pre class="example">
+ID: SRI:q0bffi61wqi0
+</pre>
+</div>
+<div id="outline-container-org27c1531" class="outline-3">
+<h3 id="org27c1531"><span class="section-number-3">2.1</span> <span class="todo TODO">TODO</span> Current Sections</h3>
+<div class="outline-text-3" id="text-2-1">
+<pre class="example">
+ID: SRI:u9ldcdl0eqi0
+</pre>
+<ul class="org-ul">
+<li>Diagram of sections provided by Yuhang</li>
+</ul>
+
+<div class="figure">
+<p><img src="sections/images/SRI/2020-06-16_15-26-27_screenshot.png" alt="2020-06-16_15-26-27_screenshot.png">
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org4e6b2e1" class="outline-3">
+<h3 id="org4e6b2e1"><span class="section-number-3">2.2</span> <span class="todo TODO">TODO</span> Theme</h3>
+<div class="outline-text-3" id="text-2-2">
+<pre class="example">
+ID: SRI:n1kd0k61wqi0
+</pre>
+<ul class="org-ul">
+<li><code>[0/3]</code> Requirements
+<ul class="org-ul">
+<li class="off"><code>[&#xa0;]</code> Currently selected color theme by staff consensus is: <a href="https://connectcentre.ie/">Connect Center</a></li>
+<li class="off"><code>[&#xa0;]</code> Currently selected structure is <a href="https://www.adaptcentre.ie/">Adapt Center</a></li>
+<li class="off"><code>[&#xa0;]</code> However, the layout is all over the place on the connect website, needs margin/padding/spacing tweaking to look more appealing and less disorganized</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgcba7a6e" class="outline-3">
+<h3 id="orgcba7a6e"><span class="section-number-3">2.3</span> <span class="todo TODO">TODO</span> Twitter feed</h3>
+<div class="outline-text-3" id="text-2-3">
+<pre class="example">
+ID: SRI:ba6dhfy0nqi0
+</pre>
+<ul class="org-ul">
+<li><code>[0/1]</code> Requirements
+<ul class="org-ul">
+<li class="off"><code>[&#xa0;]</code> Provide a live feed of tweets from @aitsri</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orga079a97" class="outline-3">
+<h3 id="orga079a97"><span class="section-number-3">2.4</span> <span class="todo TODO">TODO</span> News/Blog Page</h3>
+<div class="outline-text-3" id="text-2-4">
+<pre class="example">
+ID: SRI:g1x3ujy0nqi0
+</pre>
+<ul class="org-ul">
+<li><code>[0/3]</code> Requirements
+<ul class="org-ul">
+<li class="off"><code>[&#xa0;]</code> Add a blog/articles subpage</li>
+<li class="off"><code>[&#xa0;]</code> EVENTS sub-page from the diagram will be populated in the News/Blog with a characteristic "event" to create a distinction from the other news</li>
+<li class="off"><code>[&#xa0;]</code> CMS controlled</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org12ab3b5" class="outline-3">
+<h3 id="org12ab3b5"><span class="section-number-3">2.5</span> <span class="todo TODO">TODO</span> Contact Us Page</h3>
+<div class="outline-text-3" id="text-2-5">
+<pre class="example">
+ID: SRI:b6f9jzy0nqi0
+</pre>
+<ul class="org-ul">
+<li><code>[0/2]</code> Requirements
+<ul class="org-ul">
+<li class="off"><code>[&#xa0;]</code> Add a contact us FUNCTIONING form</li>
+<li class="off"><code>[&#xa0;]</code> Feedback goes to the CMS, further, CMS emails people of interest (e.g. Anthony and Brian)</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgf531bf1" class="outline-3">
+<h3 id="orgf531bf1"><span class="section-number-3">2.6</span> <span class="todo TODO">TODO</span> Nav Bar</h3>
+<div class="outline-text-3" id="text-2-6">
+<pre class="example">
+ID: SRI:0teffi61wqi0
+</pre>
+<ul class="org-ul">
+<li><code>[0/1]</code> Requirements
+<ul class="org-ul">
+<li class="off"><code>[&#xa0;]</code> Due to increased amount of headings (subpages) a doubled up nav bar might have to be used or a sub-menu style version</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org8a99bf1" class="outline-3">
+<h3 id="org8a99bf1"><span class="section-number-3">2.7</span> <span class="todo VERIFY">VERIFY</span> Forum</h3>
+<div class="outline-text-3" id="text-2-7">
+<ul class="org-ul">
+<li><code>[0/1]</code> Requirements
+<ul class="org-ul">
+<li class="off"><code>[&#xa0;]</code> This is an extra, but might integrate a forum if needed</li>
+</ul></li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-orgd647cdf" class="outline-2">
+<h2 id="orgd647cdf"><span class="section-number-2">3</span> COMAND</h2>
+<div class="outline-text-2" id="text-3">
+</div>
+<div id="outline-container-org84beea7" class="outline-3">
+<h3 id="org84beea7"><span class="section-number-3">3.1</span> <span class="todo TODO">TODO</span> Current Sections</h3>
+<div class="outline-text-3" id="text-3-1">
+<pre class="example">
+ID: COM:dy062dl0eqi0
+</pre>
+</div>
+<div id="outline-container-org539093f" class="outline-4">
+<h4 id="org539093f"><span class="section-number-4">3.1.1</span> Home</h4>
+<div class="outline-text-4" id="text-3-1-1">
+<ul class="org-ul">
+<li>TG Logo needs to link to Technology Gateway Website, not EI</li>
+<li>Welcome</li>
+<li>What we do</li>
+<li>Goals: Is there a more user friendly way of displaying the Thematic themes? Layout like this is suitable on a sub page but again with the structure how it is, it makes it text heavy and clunky. Have a look at how MET Gateway treats their themes - <a href="https://metcentre.ie/">https://metcentre.ie/</a> with individual sub pages.</li>
+<li>Media</li>
+<li>Twitter feed</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org7fd5802" class="outline-4">
+<h4 id="org7fd5802"><span class="section-number-4">3.1.2</span> Services</h4>
+<div class="outline-text-4" id="text-3-1-2">
+<p>
+Confusing layout, reorder to:
+</p>
+
+<ul class="org-ul">
+<li>Technology Gateway</li>
+<li>Technology Centre</li>
+<li>Funding Supports
+<ul class="org-ul">
+<li>Innovation Voucher</li>
+<li>Innovation Partnership</li>
+<li>Agile Innovation Fund</li>
+<li>Commericalisation Fund</li>
+</ul></li>
+<li>Contract Research</li>
+<li>Technology Licensing</li>
+<li>EU programme</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org7a42b96" class="outline-4">
+<h4 id="org7a42b96"><span class="section-number-4">3.1.3</span> Research</h4>
+<div class="outline-text-4" id="text-3-1-3">
+<ul class="org-ul">
+<li>Research as presented on the old website, just modernize it</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org7c767be" class="outline-4">
+<h4 id="org7c767be"><span class="section-number-4">3.1.4</span> News (Blog)</h4>
+<div class="outline-text-4" id="text-3-1-4">
+<ul class="org-ul">
+<li>Blog style news page</li>
+<li>Each article contains: an image, a title, category (if any) and content itself</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgb9ba33f" class="outline-4">
+<h4 id="orgb9ba33f"><span class="section-number-4">3.1.5</span> Projects</h4>
+<div class="outline-text-4" id="text-3-1-5">
+<ul class="org-ul">
+<li>Testimonials</li>
+<li>Project History (more info on projects if possible!)</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orge36fff9" class="outline-4">
+<h4 id="orge36fff9"><span class="section-number-4">3.1.6</span> Contact</h4>
+<div class="outline-text-4" id="text-3-1-6">
+<ul class="org-ul">
+<li>Typical form for sending info to the server</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-orgcd7ea83" class="outline-3">
+<h3 id="orgcd7ea83"><span class="section-number-3">3.2</span> <span class="todo VERIFY">VERIFY</span> Twitter feed</h3>
+<div class="outline-text-3" id="text-3-2">
+<pre class="example">
+ID: COM:2x6hpfy0nqi0
+</pre>
+<ul class="org-ul">
+<li><code>[0/1]</code> Requirements
+<ul class="org-ul">
+<li class="off"><code>[&#xa0;]</code> Provide a live feed of tweets from @aitsri</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org8d72aa4" class="outline-3">
+<h3 id="org8d72aa4"><span class="section-number-3">3.3</span> <span class="done DONE">DONE</span> News/Blog Page</h3>
+<div class="outline-text-3" id="text-3-3">
+<pre class="example">
+ID: COM:ozvf2ky0nqi0
+</pre>
+<ul class="org-ul">
+<li><code>[2/2]</code> Requirements
+<ul class="org-ul">
+<li class="on"><code>[X]</code> Add a blog/articles subpage</li>
+<li class="on"><code>[X]</code> CMS controlled</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgd5376a2" class="outline-3">
+<h3 id="orgd5376a2"><span class="section-number-3">3.4</span> <span class="done DONE">DONE</span> Research Page</h3>
+<div class="outline-text-3" id="text-3-4">
+<pre class="example">
+ID: COM:ozvf2ky0nqi0
+</pre>
+<ul class="org-ul">
+<li><code>[2/2]</code> Requirements
+<ul class="org-ul">
+<li class="on"><code>[X]</code> Add a research subpage</li>
+<li class="on"><code>[X]</code> CMS controlled</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org3752845" class="outline-3">
+<h3 id="org3752845"><span class="section-number-3">3.5</span> <span class="done DONE">DONE</span> Projects Page</h3>
+<div class="outline-text-3" id="text-3-5">
+<pre class="example">
+ID: COM:ozvf2ky0nqi0
+</pre>
+<ul class="org-ul">
+<li><code>[2/2]</code> Requirements
+<ul class="org-ul">
+<li class="on"><code>[X]</code> Add a projects subpage</li>
+<li class="on"><code>[X]</code> CMS controlled</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org14580de" class="outline-3">
+<h3 id="org14580de"><span class="section-number-3">3.6</span> <span class="done DONE">DONE</span> Services Page</h3>
+<div class="outline-text-3" id="text-3-6">
+<pre class="example">
+ID: COM:ql68bzy0nqi0
+</pre>
+<ul class="org-ul">
+<li><code>[2/2]</code> Requirements
+<ul class="org-ul">
+<li class="on"><code>[X]</code> Add a services subpage</li>
+<li class="on"><code>[X]</code> CMS controlled</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgee4ca0d" class="outline-3">
+<h3 id="orgee4ca0d"><span class="section-number-3">3.7</span> <span class="todo TODO">TODO</span> EI integration requirements</h3>
+<div class="outline-text-3" id="text-3-7">
+<pre class="example">
+ID: COM:31a8bzy0nqi0
+</pre>
+<ul class="org-ul">
+<li><code>[3/11]</code> Requirements
+<ul class="org-ul">
+<li class="on"><code>[X]</code> Links to TG publications/TB booklet</li>
+<li class="on"><code>[X]</code> Clear navigation to any TG info and supports page</li>
+<li class="off"><code>[&#xa0;]</code> May be useful to have a Covid procedures section, outlining how you intend to communicate post lock down.</li>
+<li class="on"><code>[X]</code> Links to social media header and footer</li>
+<li class="off"><code>[&#xa0;]</code> <a href="https://www.technologygateway.ie/case-studies/npd-data-analytics/">Case study NPD website</a>, <a href="https://twitter.com/AthloneIT/status/1262347541477306368">NPD and SRI on Twitter</a></li>
+<li class="off"><code>[&#xa0;]</code> Capital Call article <a href="https://twitter.com/ait_research/status/1268481505115987968">twitter link</a> (also in gmail Inbox)</li>
+<li class="off"><code>[&#xa0;]</code> <a href="https://twitter.com/AthloneIT/status/1268505145047949321">Funding article</a></li>
+<li class="off"><code>[&#xa0;]</code> Ericsson &amp; Idaso projects</li>
+<li class="off"><code>[&#xa0;]</code> <a href="https://twitter.com/aitsri/status/1273719473774759936">Valeo article</a></li>
+<li class="off"><code>[&#xa0;]</code> <a href="https://twitter.com/Entirl/status/1176778723191902208">EI agri article</a></li>
+<li class="off"><code>[&#xa0;]</code> <a href="https://www.ait.ie/news-and-events/news/ait-and-ericsson-expand-their-research-capabilities-with-a-new-joint-resear">AIT and Ericcson joint research</a></li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgd0fbb12" class="outline-3">
+<h3 id="orgd0fbb12"><span class="section-number-3">3.8</span> <span class="done DONE">DONE</span> Two different types of COMAND logos</h3>
+<div class="outline-text-3" id="text-3-8">
+<ul class="org-ul">
+<li><code>[1/1]</code> Requirements
+<ul class="org-ul">
+<li class="on"><code>[X]</code> Fix so that the same logo is present</li>
+</ul></li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-orgbb2f957" class="outline-2">
+<h2 id="orgbb2f957"><span class="section-number-2">4</span> Back End</h2>
+<div class="outline-text-2" id="text-4">
+</div>
+<div id="outline-container-orgc47d827" class="outline-3">
+<h3 id="orgc47d827"><span class="section-number-3">4.1</span> <span class="done DONE">DONE</span> VPS</h3>
+<div class="outline-text-3" id="text-4-1">
+<pre class="example">
+ID: BACK:jhed1cl0eqi0
+</pre>
+<ul class="org-ul">
+<li><code>[7/7]</code> Requirements
+<ul class="org-ul">
+<li class="on"><code>[X]</code> Find a cheap but good VPS (DO, AWS, Linode)
+<ul class="org-ul">
+<li>Digital Ocean is the best/easiest solution</li>
+</ul></li>
+<li class="on"><code>[X]</code> Full VPS control required</li>
+<li class="on"><code>[X]</code> 0.5/1 GB RAM minimum</li>
+<li class="on"><code>[X]</code> 1 CPU</li>
+<li class="on"><code>[X]</code> Low/Medium level throughput required (it will not be a busy website)</li>
+<li class="on"><code>[X]</code> VPS at or under €5 / month</li>
+<li class="on"><code>[X]</code> Full access to the VPS' instance</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org467dc4b" class="outline-3">
+<h3 id="org467dc4b"><span class="section-number-3">4.2</span> <span class="done DONE">DONE</span> Limit access to VPS through SSH only</h3>
+<div class="outline-text-3" id="text-4-2">
+<pre class="example">
+ID: BACK:z6gd1cl0eqi0
+</pre>
+<ul class="org-ul">
+<li><code>[0/2]</code> Requirements
+<ul class="org-ul">
+<li class="off"><code>[&#xa0;]</code> Full access to the VPS via SSH only</li>
+<li class="off"><code>[&#xa0;]</code> Provide a second person with ssh access, for safety reasons</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org0868289" class="outline-3">
+<h3 id="org0868289"><span class="section-number-3">4.3</span> <span class="done DONE">DONE</span> SSL Certs</h3>
+<div class="outline-text-3" id="text-4-3">
+<pre class="example">
+ID: BACK:urhd1cl0eqi0
+</pre>
+<ul class="org-ul">
+<li><code>[1/1]</code> Requirements
+<ul class="org-ul">
+<li class="on"><code>[X]</code> Provide SSL via <a href="https://letsencrypt.org/">letsencrypt</a></li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgb349b7f" class="outline-3">
+<h3 id="orgb349b7f"><span class="section-number-3">4.4</span> <span class="done DONE">DONE</span> Tech Stack</h3>
+<div class="outline-text-3" id="text-4-4">
+<pre class="example">
+ID: BACK:kfjd1cl0eqi0
+</pre>
+<ul class="org-ul">
+<li><code>[3/3]</code> Requirements
+<ul class="org-ul">
+<li class="on"><code>[X]</code> Server most likely on Ubuntu</li>
+<li class="on"><code>[X]</code> Nginx as reverse proxy</li>
+<li class="on"><code>[X]</code> <a href="https://strapi.io/">Easy CMS solution</a></li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org4c4c557" class="outline-3">
+<h3 id="org4c4c557"><span class="section-number-3">4.5</span> <span class="todo TODO">TODO</span> Point domains to DO</h3>
+<div class="outline-text-3" id="text-4-5">
+<pre class="example">
+ID: BACK:o7258gy0nqi0
+</pre>
+<ul class="org-ul">
+<li><code>[0/2]</code> Requirements
+<ul class="org-ul">
+<li class="off"><code>[&#xa0;]</code> Point sri.ait.ie to 165.22.87.161</li>
+<li class="off"><code>[&#xa0;]</code> Point comand.ie to 165.22.87.161</li>
+<li>Alternatively the above domain registrars could pass domain management to DO. The rest of the setup will be carried out on DO then. DO's name servers are:
+<ul class="org-ul">
+<li>ns1.digitalocean.com</li>
+<li>ns2.digitalocean.com</li>
+<li>ns3.digitalocean.com</li>
+</ul></li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgc355ad1" class="outline-3">
+<h3 id="orgc355ad1"><span class="section-number-3">4.6</span> <span class="done DONE">DONE</span> Serve Angular directly via Nginx</h3>
+<div class="outline-text-3" id="text-4-6">
+<pre class="example">
+ID: BACK:8f558gy0nqi0
+</pre>
+<ul class="org-ul">
+<li><p>
+<code>[0/1]</code> Requirements
+</p>
+<ul class="org-ul">
+<li class="off"><code>[&#xa0;]</code> Quick config for Nginx Angular serving</li>
+</ul>
+<pre class="example">
+server {
+
+        root /var/www/3dguide.xyz/html;
+        index index.html;
+
+        server_name 3dguide.xyz www.3dguide.xyz;
+
+        location / {
+                try_files $uri $uri/ /index.html =404;
+        }
+
+        location ~*  \.(jpg|jpeg|png|gif|ico|css|js|pdf)$ {
+            expires 7d;
+        }
+
+        listen 443 ssl; # managed by Certbot
+        ssl_certificate /etc/letsencrypt/live/3dguide.xyz/fullchain.pem; # managed by Certbot
+        ssl_certificate_key /etc/letsencrypt/live/3dguide.xyz/privkey.pem; # managed by Certbot
+        include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
+        ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
+}
+
+server {
+        server_name 3dguide.xyz www.3dguide.xyz;
+
+        location / {
+                proxy_pass http://localhost:1337;
+                proxy_http_version 1.1;
+
+                proxy_set_header X-Forwarded-Host $host;
+                proxy_set_header X-Forwarded-Server $host;
+                proxy_set_header X-Real-IP $remote_addr;
+                proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+                proxy_set_header X-Forwarded-Proto $scheme;
+        }
+
+        listen 1336 ssl;
+        ssl_certificate /etc/letsencrypt/live/3dguide.xyz/fullchain.pem; # managed by Certbot
+        ssl_certificate_key /etc/letsencrypt/live/3dguide.xyz/privkey.pem; # managed by Certbot
+        include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
+        ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
+}
+
+server {
+    if ($host = www.3dguide.xyz) {
+        return 301 https://$host$request_uri;
+    } # managed by Certbot
+
+
+    if ($host = 3dguide.xyz) {
+        return 301 https://$host$request_uri;
+    } # managed by Certbot
+
+
+    listen 80;
+    listen [::]:80;
+
+    server_name 3dguide.xyz www.3dguide.xyz;
+    return 404; # managed by Certbot
+}
+</pre></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org7bee611" class="outline-3">
+<h3 id="org7bee611"><span class="section-number-3">4.7</span> <span class="todo TODO">TODO</span> Provide a CI/CD pipeline</h3>
+<div class="outline-text-3" id="text-4-7">
+<pre class="example">
+ID: BACK:xk858gy0nqi0
+</pre>
+<ul class="org-ul">
+<li><code>[0/1]</code> Requirements
+<ul class="org-ul">
+<li class="off"><code>[&#xa0;]</code> Pushing to master automatically updates the server's static content</li>
+</ul></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>

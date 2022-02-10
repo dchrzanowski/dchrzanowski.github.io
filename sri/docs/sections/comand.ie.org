@@ -1,0 +1,93 @@
+* COMAND
+** TODO Current Sections
+   :PROPERTIES:
+   :ID:       COM:dy062dl0eqi0
+   :END:
+*** Home
+    - TG Logo needs to link to Technology Gateway Website, not EI
+    - Welcome
+    - What we do
+    - Goals: Is there a more user friendly way of displaying the Thematic themes? Layout like this is suitable on a sub page but again with the structure how it is, it makes it text heavy and clunky. Have a look at how MET Gateway treats their themes - https://metcentre.ie/ with individual sub pages.
+    - Media
+    - Twitter feed
+*** Services
+    Confusing layout, reorder to:
+
+    - Technology Gateway
+    - Technology Centre
+    - Funding Supports
+      - Innovation Voucher
+      - Innovation Partnership
+      - Agile Innovation Fund
+      - Commericalisation Fund
+    - Contract Research
+    - Technology Licensing
+    - EU programme
+*** Research
+    - Research as presented on the old website, just modernize it
+*** News (Blog)
+    - Blog style news page
+    - Each article contains: an image, a title, category (if any) and content itself
+*** Projects
+    - Testimonials
+    - Project History (more info on projects if possible!)
+*** Contact
+    - Typical form for sending info to the server
+** VERIFY Twitter feed
+   :PROPERTIES:
+   :ID:       COM:2x6hpfy0nqi0
+   :END:
+   - [0/1] Requirements
+     - [ ] Provide a live feed of tweets from @aitsri
+** DONE News/Blog Page
+   CLOSED: [2020-09-09 Wed 11:45]
+   :PROPERTIES:
+   :ID:       COM:ozvf2ky0nqi0
+   :END:
+   - [2/2] Requirements
+     - [X] Add a blog/articles subpage
+     - [X] CMS controlled
+** DONE Research Page
+   CLOSED: [2020-09-09 Wed 11:45]
+   :PROPERTIES:
+   :ID:       COM:ozvf2ky0nqi0
+   :END:
+   - [2/2] Requirements
+     - [X] Add a research subpage
+     - [X] CMS controlled
+** DONE Projects Page
+   CLOSED: [2020-09-09 Wed 11:45]
+   :PROPERTIES:
+   :ID:       COM:ozvf2ky0nqi0
+   :END:
+   - [2/2] Requirements
+     - [X] Add a projects subpage
+     - [X] CMS controlled
+** DONE Services Page
+   CLOSED: [2020-09-09 Wed 11:45]
+   :PROPERTIES:
+   :ID:       COM:ql68bzy0nqi0
+   :END:
+   - [2/2] Requirements
+     - [X] Add a services subpage
+     - [X] CMS controlled
+** TODO EI integration requirements
+   :PROPERTIES:
+   :ID:       COM:31a8bzy0nqi0
+   :END:
+   - [3/11] Requirements
+     - [X] Links to TG publications/TB booklet
+     - [X] Clear navigation to any TG info and supports page
+     - [ ] May be useful to have a Covid procedures section, outlining how you intend to communicate post lock down.
+     - [X] Links to social media header and footer
+     - [ ] [[https://www.technologygateway.ie/case-studies/npd-data-analytics/][Case study NPD website]], [[https://twitter.com/AthloneIT/status/1262347541477306368][NPD and SRI on Twitter]]
+     - [ ] Capital Call article [[https://twitter.com/ait_research/status/1268481505115987968][twitter link]] (also in gmail Inbox)
+     - [ ] [[https://twitter.com/AthloneIT/status/1268505145047949321][Funding article]]
+     - [ ] Ericsson & Idaso projects
+     - [ ] [[https://twitter.com/aitsri/status/1273719473774759936][Valeo article]]
+     - [ ] [[https://twitter.com/Entirl/status/1176778723191902208][EI agri article]]
+     - [ ] [[https://www.ait.ie/news-and-events/news/ait-and-ericsson-expand-their-research-capabilities-with-a-new-joint-resear][AIT and Ericcson joint research]]
+** DONE Two different types of COMAND logos
+   CLOSED: [2020-09-09 Wed 11:48]
+   - [1/1] Requirements
+     - [X] Fix so that the same logo is present
