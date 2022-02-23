@@ -282,11 +282,33 @@
 *** Stateful
     - ~Constructor~
     - ~initState()~: usually need to call ~super.initState()~
-    - ~build()~
+      - Called after the constructor. Any init logic, fetching, init() the model, etc.. Its called once and *once ONLY*!
     - ~setState()~
-    - ~didUpdateWidget()~
+      - Set new state, i.e. update state
+    - ~didChangeDependencies()~
+      - Called immediately after ~initState()~ on the first time the widget is built. This method is the first chance you have to call ~BuildContext.inheritFromWidgetOfExactType~. This essentially would make this State 'listen' to changes on a Widget it's inheriting data from.
+    - ~didUpdateWidget(Widget oldWidget)~
+      - Used when the parent Widget changes and needs to rebuild.
+      - If a State's build method depends on an object that can itself change state, for example a ChangeNotifier or Stream, or some other object to which one can subscribe to receive notifications, then be sure to subscribe and unsubscribe properly in initState, didUpdateWidget, and dispose. Example:
+        - In ~initState~, subscribe to the object.
+        - In ~didUpdateWidget~ unsubscribe from the old object and subscribe to the new one if the updated widget configuration requires replacing the object.
+        - In ~dispose~, unsubscribe from the object.
+      - Example implementation:
+        #+begin_src dart
+          @override
+          void didUpdateWidget(Widget oldWidget) {
+            if (oldWidget.importantProperty != widget.importantProperty)  {
+              // parent widget's property has changed
+              // call init on model or whatever init needs to be done here
+            }
+          }
+        #+end_src
     - ~build()~
+      - Widget tree
+    - ~deactivate()~
+      - Rarely User. ~deactivate()~ is called when State is removed from the tree, but it might be reinserted before the current frame change is finished. This method exists basically because State objects can be moved from one point in a tree to another.
     - ~dispose()~: usually need to call ~super.dispose()~
+      - Destruct Widget: normally dispose of listeners here
 *** Binding to native Lifecycles
     - Extend a ~StatefulWidget~ with a ~WidgetsBindingObserver~ mixin
     #+begin_src dart
@@ -900,6 +922,45 @@
        }
      )
    #+end_src
+* Creating local packages
+  - Create a folder called ~packages~ in the root of your project
+  - Create a sub-folder in ~packages/authentication~, for a sample packages called ~authentication~
+  - Inside of the subfolder create a ~pubspec.yaml~
+    - Please note that the ~flutter~ dependencies would be only imported if you're actually using flutter's widgets
+  #+begin_src yaml
+    name: authentication
+    description: Foo bar
+
+    publish_to: 'none'
+
+    version: 1.0.0+1
+
+    environment:
+      sdk: 'copy from main pubspec.yaml'
+
+    dependencies:
+      flutter:
+        sdk: flutter
+
+    dev_dependencies:
+      flutter_test:
+        sdk: flutter
+      lint: ^1.0.0
+
+    flutter:
+      uses-material-design: true
+  #+end_src
+  - Create another sub-folder ~packages/authentication/lib~ in which you'll store your code
+  - Create a file called ~packages/authentication/lib/authentication.dart~
+  #+begin_src dart
+    class Authentication {}
+  #+end_src
+  - In the main project's ~pubspec.yaml~ import the package
+  #+begin_src yaml
+    dependencies:
+      authentication:
+        path: ./packages/authentication
+  #+end_src
 * Delete heading at the end
   #+BEGIN_EXPORT html
   <script src="../../assets/jquery-3.3.1.min.js"></script>

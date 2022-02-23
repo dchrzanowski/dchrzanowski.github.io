@@ -3,14 +3,14 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2021-09-01 Wed 10:31 -->
+<!-- 2022-02-23 Wed 11:14 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Flutter</title>
-<meta name="generator" content="Org mode" />
 <meta name="author" content="Damian Chrzanowski" />
-<style type="text/css">
- <!--/*--><![CDATA[/*><!--*/
+<meta name="generator" content="Org Mode" />
+<style>
+  #content { max-width: 60em; margin: auto; }
   .title  { text-align: center;
              margin-bottom: .2em; }
   .subtitle { text-align: center;
@@ -31,8 +31,9 @@
   #postamble p, #preamble p { font-size: 90%; margin: .2em; }
   p.verse { margin-left: 3%; }
   pre {
-    border: 1px solid #ccc;
-    box-shadow: 3px 3px 3px #eee;
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
     padding: 8pt;
     font-family: monospace;
     overflow: auto;
@@ -41,21 +42,21 @@
   pre.src {
     position: relative;
     overflow: auto;
-    padding-top: 1.2em;
   }
   pre.src:before {
     display: none;
     position: absolute;
-    background-color: white;
-    top: -10px;
-    right: 10px;
+    top: -8px;
+    right: 12px;
     padding: 3px;
-    border: 1px solid black;
+    color: #555;
+    background-color: #f2f2f299;
   }
   pre.src:hover:before { display: inline; margin-top: 14px;}
   /* Languages per Org manual */
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
   pre.src-C:before { content: 'C'; }
   /* pre.src-C++ doesn't work in CSS */
   pre.src-clojure:before { content: 'Clojure'; }
@@ -191,134 +192,112 @@
   .org-info-js_search-highlight
     { background-color: #ffff00; color: #000000; font-weight: bold; }
   .org-svg { width: 90%; }
-  /*]]>*/-->
 </style>
 <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="../../assets/org.css"/>
 <link rel="icon" href="../../assets/favicon.ico">
-<script type="text/javascript">
-// @license magnet:?xt=urn:btih:e95b018ef3580986a04669f1b5879592219e2a7a&dn=public-domain.txt Public Domain
-<!--/*--><![CDATA[/*><!--*/
-     function CodeHighlightOn(elem, id)
-     {
-       var target = document.getElementById(id);
-       if(null != target) {
-         elem.classList.add("code-highlighted");
-         target.classList.add("code-highlighted");
-       }
-     }
-     function CodeHighlightOff(elem, id)
-     {
-       var target = document.getElementById(id);
-       if(null != target) {
-         elem.classList.remove("code-highlighted");
-         target.classList.remove("code-highlighted");
-       }
-     }
-    /*]]>*///-->
-// @license-end
-</script>
 </head>
 <body>
-<div id="content">
+<div id="content" class="content">
 <h1 class="title">Flutter</h1>
-<div id="table-of-contents">
+<div id="table-of-contents" role="doc-toc">
 <h2>Table of Contents</h2>
-<div id="text-table-of-contents">
+<div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgb3f1118">1. Popular packages</a></li>
-<li><a href="#orgcabadf9">2. Overview</a>
+<li><a href="#orgafc0b0c">1. Popular packages</a></li>
+<li><a href="#org37ad0e8">2. Overview</a>
 <ul>
-<li><a href="#org7380550">2.1. Flutter Architecture</a></li>
-<li><a href="#org0ab3dc6">2.2. Premade styling</a></li>
+<li><a href="#orgad3de8b">2.1. Flutter Architecture</a></li>
+<li><a href="#org4be575e">2.2. Premade styling</a></li>
 </ul>
 </li>
-<li><a href="#orgffc1309">3. Project management via CLI</a></li>
-<li><a href="#org9f86a45">4. Project directory hierarchy</a></li>
-<li><a href="#org17491c3">5. Dart</a>
+<li><a href="#org8e9fce9">3. Project management via CLI</a></li>
+<li><a href="#org595060c">4. Project directory hierarchy</a></li>
+<li><a href="#org59edc7d">5. Dart</a>
 <ul>
-<li><a href="#org3188ade">5.1. Imports</a></li>
-<li><a href="#org02356fd">5.2. Data Types</a></li>
-<li><a href="#org007be6f">5.3. Null safety</a></li>
-<li><a href="#orgb7416c2">5.4. Inferring the type</a></li>
-<li><a href="#orgbf11e71">5.5. Classes</a></li>
-<li><a href="#org5cbb3b0">5.6. Inheritance</a></li>
-<li><a href="#orgcd961d0">5.7. Mixins</a></li>
-<li><a href="#orgc9d9229">5.8. Singletons</a></li>
-<li><a href="#orga8437bd">5.9. Interfaces and abstract classes</a></li>
-<li><a href="#org1bc7df4">5.10. Final vs Const</a></li>
+<li><a href="#orge3ce0b0">5.1. Imports</a></li>
+<li><a href="#orge919f13">5.2. Data Types</a></li>
+<li><a href="#org8ff09c2">5.3. Null safety</a></li>
+<li><a href="#org1e7e0c9">5.4. Inferring the type</a></li>
+<li><a href="#org1c2f142">5.5. Classes</a></li>
+<li><a href="#orgdccfa2e">5.6. Inheritance</a></li>
+<li><a href="#org17859fc">5.7. Mixins</a></li>
+<li><a href="#org45e47f7">5.8. Singletons</a></li>
+<li><a href="#orgc07a120">5.9. Interfaces and abstract classes</a></li>
+<li><a href="#org5cf930d">5.10. Final vs Const</a></li>
 </ul>
 </li>
-<li><a href="#org89fc776">6. Styling</a>
+<li><a href="#org673bd1b">6. Styling</a>
 <ul>
-<li><a href="#org58f1fdc">6.1. Themes</a></li>
-<li><a href="#org63bb94c">6.2. Border</a></li>
-<li><a href="#orgb204861">6.3. Fonts</a></li>
-<li><a href="#org3db9f20">6.4. Font types and sizes in <code>TextTheme</code></a></li>
+<li><a href="#org5506f8c">6.1. Themes</a></li>
+<li><a href="#org03f8ebc">6.2. Border</a></li>
+<li><a href="#orgb9e5adf">6.3. Fonts</a></li>
+<li><a href="#org7d632df">6.4. Font types and sizes in <code>TextTheme</code></a></li>
 </ul>
 </li>
-<li><a href="#org516c7a4">7. Widgets</a>
+<li><a href="#org6930c09">7. Widgets</a>
 <ul>
-<li><a href="#org42720f7">7.1. Lifecycle</a></li>
-<li><a href="#org4832c1f">7.2. Keys</a></li>
-<li><a href="#orgaf31e36">7.3. Popular Types</a></li>
-<li><a href="#org0ed24f7">7.4. Stateless vs Stateful</a></li>
-<li><a href="#orgab005ac">7.5. Widget Communication</a></li>
-<li><a href="#orgfcc64b0">7.6. Spawning Widgets from a List</a></li>
-<li><a href="#org081cb6b">7.7. User Inputs</a></li>
-<li><a href="#orga7a0970">7.8. Using the ListView and GridView builders</a></li>
-<li><a href="#orged8febe">7.9. Images</a></li>
-<li><a href="#orgbae3627">7.10. Picking Time and Date</a></li>
-<li><a href="#org1b05c6e">7.11. Forcing a round corner with ClipRRect</a></li>
-<li><a href="#org1d24f65">7.12. Drawer</a></li>
-<li><a href="#org97e11d4">7.13. Pull-to-refresh</a></li>
-<li><a href="#orgf696745">7.14. Scrollable content</a></li>
+<li><a href="#orgafd7785">7.1. Lifecycle</a></li>
+<li><a href="#orga0c70ca">7.2. Keys</a></li>
+<li><a href="#org2a4f60a">7.3. Popular Types</a></li>
+<li><a href="#org186bb78">7.4. Stateless vs Stateful</a></li>
+<li><a href="#orgb6d5deb">7.5. Widget Communication</a></li>
+<li><a href="#org02ff4ab">7.6. Spawning Widgets from a List</a></li>
+<li><a href="#org29f4259">7.7. User Inputs</a></li>
+<li><a href="#org4fb9e73">7.8. Using the ListView and GridView builders</a></li>
+<li><a href="#org350b625">7.9. Images</a></li>
+<li><a href="#org6803378">7.10. Picking Time and Date</a></li>
+<li><a href="#orgb20bfc5">7.11. Forcing a round corner with ClipRRect</a></li>
+<li><a href="#org4353a91">7.12. Drawer</a></li>
+<li><a href="#org95bf30e">7.13. Pull-to-refresh</a></li>
+<li><a href="#orgb80c1fe">7.14. Scrollable content</a></li>
 </ul>
 </li>
-<li><a href="#orgde8a11a">8. Responsive design</a>
+<li><a href="#org8ab37a0">8. Responsive design</a>
 <ul>
-<li><a href="#org2eb1737">8.1. Using the <code>MediaQuery</code></a></li>
-<li><a href="#org5837cb2">8.2. Utilizing constraints</a></li>
-<li><a href="#orgdef557b">8.3. Locking orientation</a></li>
-<li><a href="#orgd1c113d">8.4. Reacting to orientation</a></li>
-<li><a href="#org171ee87">8.5. Respecting the Softkeyboard Insets</a></li>
+<li><a href="#org79e3162">8.1. Using the <code>MediaQuery</code></a></li>
+<li><a href="#orgb3d1550">8.2. Utilizing constraints</a></li>
+<li><a href="#org0a02550">8.3. Locking orientation</a></li>
+<li><a href="#orga5efac1">8.4. Reacting to orientation</a></li>
+<li><a href="#org6751e60">8.5. Respecting the Softkeyboard Insets</a></li>
 </ul>
 </li>
-<li><a href="#orge2bb4a6">9. Adaptive design</a></li>
-<li><a href="#orgcec21a8">10. Routing and Navigator</a>
+<li><a href="#org7a6f065">9. Adaptive design</a></li>
+<li><a href="#org75944ae">10. Routing and Navigator</a>
 <ul>
-<li><a href="#org6e35e69">10.1. Basic Navigation</a></li>
-<li><a href="#orgce8d756">10.2. Named Routes</a></li>
+<li><a href="#org522fe21">10.1. Basic Navigation</a></li>
+<li><a href="#org6625d62">10.2. Named Routes</a></li>
 </ul>
 </li>
-<li><a href="#orge66be2e">11. State Management with Providers</a>
+<li><a href="#org07ba169">11. State Management with Providers</a>
 <ul>
-<li><a href="#org49bf867">11.1. Using the <code>Provider</code>, <code>ChangeNotifier</code>, <code>ChangeNotifierProvider</code> and <code>Consumer</code> classes</a></li>
-<li><a href="#orgb222ebe">11.2. Using a <code>ChangeNotifierProxyProvider</code> to manage services dependencies</a></li>
-<li><a href="#org7dfd046">11.3. Alternative way of building widgets from Futures with the <code>FutureBuilder</code></a></li>
+<li><a href="#org1a708ca">11.1. Using the <code>Provider</code>, <code>ChangeNotifier</code>, <code>ChangeNotifierProvider</code> and <code>Consumer</code> classes</a></li>
+<li><a href="#org2c9adcd">11.2. Using a <code>ChangeNotifierProxyProvider</code> to manage services dependencies</a></li>
+<li><a href="#orgb7d02df">11.3. Alternative way of building widgets from Futures with the <code>FutureBuilder</code></a></li>
 </ul>
 </li>
-<li><a href="#orgef2d2b6">12. Delete heading at the end</a></li>
+<li><a href="#org35a2f89">12. Creating local packages</a></li>
+<li><a href="#org596f92b">13. Delete heading at the end</a></li>
 </ul>
 </div>
 </div>
 <p>
 <a href="../../index.html">Home Page</a>
 </p>
-<div id="outline-container-orgb3f1118" class="outline-2">
-<h2 id="orgb3f1118"><span class="section-number-2">1</span> Popular packages</h2>
+<div id="outline-container-orgafc0b0c" class="outline-2">
+<h2 id="orgafc0b0c"><span class="section-number-2">1.</span> Popular packages</h2>
 <div class="outline-text-2" id="text-1">
 <ul class="org-ul">
 <li><b>intl</b>: internationalization and formatting for dates/currencies etc.</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgcabadf9" class="outline-2">
-<h2 id="orgcabadf9"><span class="section-number-2">2</span> Overview</h2>
+<div id="outline-container-org37ad0e8" class="outline-2">
+<h2 id="org37ad0e8"><span class="section-number-2">2.</span> Overview</h2>
 <div class="outline-text-2" id="text-2">
 </div>
-<div id="outline-container-org7380550" class="outline-3">
-<h3 id="org7380550"><span class="section-number-3">2.1</span> Flutter Architecture</h3>
+<div id="outline-container-orgad3de8b" class="outline-3">
+<h3 id="orgad3de8b"><span class="section-number-3">2.1.</span> Flutter Architecture</h3>
 <div class="outline-text-3" id="text-2-1">
 <ul class="org-ul">
 <li>UI as Code: Building a widget tree</li>
@@ -328,8 +307,8 @@
 </ul>
 </div>
 </div>
-<div id="outline-container-org0ab3dc6" class="outline-3">
-<h3 id="org0ab3dc6"><span class="section-number-3">2.2</span> Premade styling</h3>
+<div id="outline-container-org4be575e" class="outline-3">
+<h3 id="org4be575e"><span class="section-number-3">2.2.</span> Premade styling</h3>
 <div class="outline-text-3" id="text-2-2">
 <ul class="org-ul">
 <li>Flutter comes with Google's "Material Design" widgets</li>
@@ -338,8 +317,8 @@
 </div>
 </div>
 </div>
-<div id="outline-container-orgffc1309" class="outline-2">
-<h2 id="orgffc1309"><span class="section-number-2">3</span> Project management via CLI</h2>
+<div id="outline-container-org8e9fce9" class="outline-2">
+<h2 id="org8e9fce9"><span class="section-number-2">3.</span> Project management via CLI</h2>
 <div class="outline-text-2" id="text-3">
 <ul class="org-ul">
 <li><p>
@@ -367,8 +346,8 @@ flutter run
 </ul>
 </div>
 </div>
-<div id="outline-container-org9f86a45" class="outline-2">
-<h2 id="org9f86a45"><span class="section-number-2">4</span> Project directory hierarchy</h2>
+<div id="outline-container-org595060c" class="outline-2">
+<h2 id="org595060c"><span class="section-number-2">4.</span> Project directory hierarchy</h2>
 <div class="outline-text-2" id="text-4">
 <ul class="org-ul">
 <li><b>models</b>: Any entities</li>
@@ -379,12 +358,12 @@ flutter run
 </ul>
 </div>
 </div>
-<div id="outline-container-org17491c3" class="outline-2">
-<h2 id="org17491c3"><span class="section-number-2">5</span> Dart</h2>
+<div id="outline-container-org59edc7d" class="outline-2">
+<h2 id="org59edc7d"><span class="section-number-2">5.</span> Dart</h2>
 <div class="outline-text-2" id="text-5">
 </div>
-<div id="outline-container-org3188ade" class="outline-3">
-<h3 id="org3188ade"><span class="section-number-3">5.1</span> Imports</h3>
+<div id="outline-container-orge3ce0b0" class="outline-3">
+<h3 id="orge3ce0b0"><span class="section-number-3">5.1.</span> Imports</h3>
 <div class="outline-text-3" id="text-5-1">
 <div class="org-src-container">
 <pre class="src src-dart"><span style="color: #5B6268;">// </span><span style="color: #5B6268;">Importing core libraries</span>
@@ -399,8 +378,8 @@ flutter run
 </div>
 </div>
 </div>
-<div id="outline-container-org02356fd" class="outline-3">
-<h3 id="org02356fd"><span class="section-number-3">5.2</span> Data Types</h3>
+<div id="outline-container-orge919f13" class="outline-3">
+<h3 id="orge919f13"><span class="section-number-3">5.2.</span> Data Types</h3>
 <div class="outline-text-3" id="text-5-2">
 <ul class="org-ul">
 <li>Nothing: <code>void</code></li>
@@ -432,8 +411,8 @@ flutter run
 </ul>
 </div>
 </div>
-<div id="outline-container-org007be6f" class="outline-3">
-<h3 id="org007be6f"><span class="section-number-3">5.3</span> Null safety</h3>
+<div id="outline-container-org8ff09c2" class="outline-3">
+<h3 id="org8ff09c2"><span class="section-number-3">5.3.</span> Null safety</h3>
 <div class="outline-text-3" id="text-5-3">
 <ul class="org-ul">
 <li><p>
@@ -447,8 +426,8 @@ Add a question mark to the type declared to denote that a type may be <code>null
 </ul>
 </div>
 </div>
-<div id="outline-container-orgb7416c2" class="outline-3">
-<h3 id="orgb7416c2"><span class="section-number-3">5.4</span> Inferring the type</h3>
+<div id="outline-container-org1e7e0c9" class="outline-3">
+<h3 id="org1e7e0c9"><span class="section-number-3">5.4.</span> Inferring the type</h3>
 <div class="outline-text-3" id="text-5-4">
 <ul class="org-ul">
 <li>Use <code>var</code> like in TypeScript to infer the type</li>
@@ -462,8 +441,8 @@ Add a question mark to the type declared to denote that a type may be <code>null
 </div>
 </div>
 </div>
-<div id="outline-container-orgbf11e71" class="outline-3">
-<h3 id="orgbf11e71"><span class="section-number-3">5.5</span> Classes</h3>
+<div id="outline-container-org1c2f142" class="outline-3">
+<h3 id="org1c2f142"><span class="section-number-3">5.5.</span> Classes</h3>
 <div class="outline-text-3" id="text-5-5">
 <ul class="org-ul">
 <li>Private and Public: add an <b>underscore</b> to a class property or to a class to make it private.</li>
@@ -513,8 +492,8 @@ voyager3.describe<span style="color: #fff0f5;">()</span>;
 </div>
 </div>
 </div>
-<div id="outline-container-org5cbb3b0" class="outline-3">
-<h3 id="org5cbb3b0"><span class="section-number-3">5.6</span> Inheritance</h3>
+<div id="outline-container-orgdccfa2e" class="outline-3">
+<h3 id="orgdccfa2e"><span class="section-number-3">5.6.</span> Inheritance</h3>
 <div class="outline-text-3" id="text-5-6">
 <div class="org-src-container">
 <pre class="src src-dart"><span style="color: #51afef; font-style: italic;">class</span> <span style="color: #ECBE7B;">Orbiter</span> <span style="color: #51afef; font-style: italic;">extends</span> <span style="color: #ECBE7B;">Spacecraft</span> <span style="color: #fff0f5;">{</span>
@@ -526,8 +505,8 @@ voyager3.describe<span style="color: #fff0f5;">()</span>;
 </div>
 </div>
 </div>
-<div id="outline-container-orgcd961d0" class="outline-3">
-<h3 id="orgcd961d0"><span class="section-number-3">5.7</span> Mixins</h3>
+<div id="outline-container-org17859fc" class="outline-3">
+<h3 id="org17859fc"><span class="section-number-3">5.7.</span> Mixins</h3>
 <div class="outline-text-3" id="text-5-7">
 <ul class="org-ul">
 <li>Please note that in Dart one can mix multiple mixins, but extend only one class</li>
@@ -548,8 +527,8 @@ voyager3.describe<span style="color: #fff0f5;">()</span>;
 </div>
 </div>
 </div>
-<div id="outline-container-orgc9d9229" class="outline-3">
-<h3 id="orgc9d9229"><span class="section-number-3">5.8</span> Singletons</h3>
+<div id="outline-container-org45e47f7" class="outline-3">
+<h3 id="org45e47f7"><span class="section-number-3">5.8.</span> Singletons</h3>
 <div class="outline-text-3" id="text-5-8">
 <div class="org-src-container">
 <pre class="src src-dart"><span style="color: #51afef; font-style: italic;">class</span> <span style="color: #ECBE7B;">Singleton</span> <span style="color: #fff0f5;">{</span>
@@ -568,8 +547,8 @@ voyager3.describe<span style="color: #fff0f5;">()</span>;
 </div>
 </div>
 </div>
-<div id="outline-container-orga8437bd" class="outline-3">
-<h3 id="orga8437bd"><span class="section-number-3">5.9</span> Interfaces and abstract classes</h3>
+<div id="outline-container-orgc07a120" class="outline-3">
+<h3 id="orgc07a120"><span class="section-number-3">5.9.</span> Interfaces and abstract classes</h3>
 <div class="outline-text-3" id="text-5-9">
 <ul class="org-ul">
 <li>Dart has no <code>interface</code> keyword. Instead, all classes implicitly define an interface. Therefore, you can implement any class.</li>
@@ -592,8 +571,8 @@ voyager3.describe<span style="color: #fff0f5;">()</span>;
 </ul>
 </div>
 </div>
-<div id="outline-container-org1bc7df4" class="outline-3">
-<h3 id="org1bc7df4"><span class="section-number-3">5.10</span> Final vs Const</h3>
+<div id="outline-container-org5cf930d" class="outline-3">
+<h3 id="org5cf930d"><span class="section-number-3">5.10.</span> Final vs Const</h3>
 <div class="outline-text-3" id="text-5-10">
 <ul class="org-ul">
 <li>Final is a runtime constant value, it can be set during runtime</li>
@@ -602,12 +581,12 @@ voyager3.describe<span style="color: #fff0f5;">()</span>;
 </div>
 </div>
 </div>
-<div id="outline-container-org89fc776" class="outline-2">
-<h2 id="org89fc776"><span class="section-number-2">6</span> Styling</h2>
+<div id="outline-container-org673bd1b" class="outline-2">
+<h2 id="org673bd1b"><span class="section-number-2">6.</span> Styling</h2>
 <div class="outline-text-2" id="text-6">
 </div>
-<div id="outline-container-org58f1fdc" class="outline-3">
-<h3 id="org58f1fdc"><span class="section-number-3">6.1</span> Themes</h3>
+<div id="outline-container-org5506f8c" class="outline-3">
+<h3 id="org5506f8c"><span class="section-number-3">6.1.</span> Themes</h3>
 <div class="outline-text-3" id="text-6-1">
 <ul class="org-ul">
 <li>Insert the theme in the <code>MaterialApp</code> widget like so:</li>
@@ -653,8 +632,8 @@ voyager3.describe<span style="color: #fff0f5;">()</span>;
 </div>
 </div>
 </div>
-<div id="outline-container-org63bb94c" class="outline-3">
-<h3 id="org63bb94c"><span class="section-number-3">6.2</span> Border</h3>
+<div id="outline-container-org03f8ebc" class="outline-3">
+<h3 id="org03f8ebc"><span class="section-number-3">6.2.</span> Border</h3>
 <div class="outline-text-3" id="text-6-2">
 <ul class="org-ul">
 <li>Usually on a <code>Container</code>'s decoration:</li>
@@ -683,8 +662,8 @@ voyager3.describe<span style="color: #fff0f5;">()</span>;
 </div>
 </div>
 </div>
-<div id="outline-container-orgb204861" class="outline-3">
-<h3 id="orgb204861"><span class="section-number-3">6.3</span> Fonts</h3>
+<div id="outline-container-orgb9e5adf" class="outline-3">
+<h3 id="orgb9e5adf"><span class="section-number-3">6.3.</span> Fonts</h3>
 <div class="outline-text-3" id="text-6-3">
 <ul class="org-ul">
 <li>Adding the OpenSans font as an example</li>
@@ -706,8 +685,8 @@ voyager3.describe<span style="color: #fff0f5;">()</span>;
 </ul>
 </div>
 </div>
-<div id="outline-container-org3db9f20" class="outline-3">
-<h3 id="org3db9f20"><span class="section-number-3">6.4</span> Font types and sizes in <code>TextTheme</code></h3>
+<div id="outline-container-org7d632df" class="outline-3">
+<h3 id="org7d632df"><span class="section-number-3">6.4.</span> Font types and sizes in <code>TextTheme</code></h3>
 <div class="outline-text-3" id="text-6-4">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -825,16 +804,16 @@ voyager3.describe<span style="color: #fff0f5;">()</span>;
 </div>
 </div>
 </div>
-<div id="outline-container-org516c7a4" class="outline-2">
-<h2 id="org516c7a4"><span class="section-number-2">7</span> Widgets</h2>
+<div id="outline-container-org6930c09" class="outline-2">
+<h2 id="org6930c09"><span class="section-number-2">7.</span> Widgets</h2>
 <div class="outline-text-2" id="text-7">
 </div>
-<div id="outline-container-org42720f7" class="outline-3">
-<h3 id="org42720f7"><span class="section-number-3">7.1</span> Lifecycle</h3>
+<div id="outline-container-orgafd7785" class="outline-3">
+<h3 id="orgafd7785"><span class="section-number-3">7.1.</span> Lifecycle</h3>
 <div class="outline-text-3" id="text-7-1">
 </div>
 <ol class="org-ol">
-<li><a id="org55e090b"></a>Stateless<br />
+<li><a id="org71eabd3"></a>Stateless<br />
 <div class="outline-text-4" id="text-7-1-1">
 <ul class="org-ul">
 <li><code>Constructor</code></li>
@@ -842,20 +821,61 @@ voyager3.describe<span style="color: #fff0f5;">()</span>;
 </ul>
 </div>
 </li>
-<li><a id="orgdc950d3"></a>Stateful<br />
+<li><a id="org2e27244"></a>Stateful<br />
 <div class="outline-text-4" id="text-7-1-2">
 <ul class="org-ul">
 <li><code>Constructor</code></li>
-<li><code>initState()</code>: usually need to call <code>super.initState()</code></li>
-<li><code>build()</code></li>
-<li><code>setState()</code></li>
-<li><code>didUpdateWidget()</code></li>
-<li><code>build()</code></li>
-<li><code>dispose()</code>: usually need to call <code>super.dispose()</code></li>
+<li><code>initState()</code>: usually need to call <code>super.initState()</code>
+<ul class="org-ul">
+<li>Called after the constructor. Any init logic, fetching, init() the model, etc.. Its called once and <b>once ONLY</b>!</li>
+</ul></li>
+<li><code>setState()</code>
+<ul class="org-ul">
+<li>Set new state, i.e. update state</li>
+</ul></li>
+<li><code>didChangeDependencies()</code>
+<ul class="org-ul">
+<li>Called immediately after <code>initState()</code> on the first time the widget is built. This method is the first chance you have to call <code>BuildContext.inheritFromWidgetOfExactType</code>. This essentially would make this State 'listen' to changes on a Widget it's inheriting data from.</li>
+</ul></li>
+<li><code>didUpdateWidget(Widget oldWidget)</code>
+<ul class="org-ul">
+<li>Used when the parent Widget changes and needs to rebuild.</li>
+<li>If a State's build method depends on an object that can itself change state, for example a ChangeNotifier or Stream, or some other object to which one can subscribe to receive notifications, then be sure to subscribe and unsubscribe properly in initState, didUpdateWidget, and dispose. Example:
+<ul class="org-ul">
+<li>In <code>initState</code>, subscribe to the object.</li>
+<li>In <code>didUpdateWidget</code> unsubscribe from the old object and subscribe to the new one if the updated widget configuration requires replacing the object.</li>
+<li>In <code>dispose</code>, unsubscribe from the object.</li>
+</ul></li>
+<li><p>
+Example implementation:
+</p>
+<div class="org-src-container">
+<pre class="src src-dart"><span style="color: #a9a1e1;">@override</span>
+<span style="color: #ECBE7B;">void</span> <span style="color: #c678dd;">didUpdateWidget</span><span style="color: #fff0f5;">(</span><span style="color: #ECBE7B;">Widget</span> <span style="color: #db5762;">oldWidget</span><span style="color: #fff0f5;">)</span> <span style="color: #fff0f5;">{</span>
+  <span style="color: #51afef; font-style: italic;">if</span> <span style="color: #c678dd;">(</span>oldWidget.importantProperty != widget.importantProperty<span style="color: #c678dd;">)</span>  <span style="color: #c678dd;">{</span>
+    <span style="color: #5B6268;">// </span><span style="color: #5B6268;">parent widget's property has changed</span>
+    <span style="color: #5B6268;">// </span><span style="color: #5B6268;">call init on model or whatever init needs to be done here</span>
+  <span style="color: #c678dd;">}</span>
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div></li>
+</ul></li>
+<li><code>build()</code>
+<ul class="org-ul">
+<li>Widget tree</li>
+</ul></li>
+<li><code>deactivate()</code>
+<ul class="org-ul">
+<li>Rarely User. <code>deactivate()</code> is called when State is removed from the tree, but it might be reinserted before the current frame change is finished. This method exists basically because State objects can be moved from one point in a tree to another.</li>
+</ul></li>
+<li><code>dispose()</code>: usually need to call <code>super.dispose()</code>
+<ul class="org-ul">
+<li>Destruct Widget: normally dispose of listeners here</li>
+</ul></li>
 </ul>
 </div>
 </li>
-<li><a id="org460f7b9"></a>Binding to native Lifecycles<br />
+<li><a id="org79c4b62"></a>Binding to native Lifecycles<br />
 <div class="outline-text-4" id="text-7-1-3">
 <ul class="org-ul">
 <li>Extend a <code>StatefulWidget</code> with a <code>WidgetsBindingObserver</code> mixin</li>
@@ -888,8 +908,8 @@ voyager3.describe<span style="color: #fff0f5;">()</span>;
 </li>
 </ol>
 </div>
-<div id="outline-container-org4832c1f" class="outline-3">
-<h3 id="org4832c1f"><span class="section-number-3">7.2</span> Keys</h3>
+<div id="outline-container-orga0c70ca" class="outline-3">
+<h3 id="orga0c70ca"><span class="section-number-3">7.2.</span> Keys</h3>
 <div class="outline-text-3" id="text-7-2">
 <ul class="org-ul">
 <li>Use the <code>Key</code> class for unique identification of Widgets</li>
@@ -897,12 +917,12 @@ voyager3.describe<span style="color: #fff0f5;">()</span>;
 </ul>
 </div>
 </div>
-<div id="outline-container-orgaf31e36" class="outline-3">
-<h3 id="orgaf31e36"><span class="section-number-3">7.3</span> Popular Types</h3>
+<div id="outline-container-org2a4f60a" class="outline-3">
+<h3 id="org2a4f60a"><span class="section-number-3">7.3.</span> Popular Types</h3>
 <div class="outline-text-3" id="text-7-3">
 </div>
 <ol class="org-ol">
-<li><a id="org5a4a3ac"></a>App and Page Setup<br />
+<li><a id="org95917f0"></a>App and Page Setup<br />
 <div class="outline-text-4" id="text-7-3-1">
 <ul class="org-ul">
 <li><code>MaterialApp</code>, <code>CupertinoApp</code></li>
@@ -910,7 +930,7 @@ voyager3.describe<span style="color: #fff0f5;">()</span>;
 </ul>
 </div>
 </li>
-<li><a id="org631cbf4"></a>Layout<br />
+<li><a id="orgc0eac9a"></a>Layout<br />
 <div class="outline-text-4" id="text-7-3-2">
 <ul class="org-ul">
 <li><code>Container</code>: like a <code>div</code> in HTML. Usually you'd set the width, height, padding, margin and borders (decoration) through this widget.</li>
@@ -921,7 +941,7 @@ voyager3.describe<span style="color: #fff0f5;">()</span>;
 </ul>
 </div>
 </li>
-<li><a id="org308be0f"></a>Row / Column Children<br />
+<li><a id="org63d6e1d"></a>Row / Column Children<br />
 <div class="outline-text-4" id="text-7-3-3">
 <ul class="org-ul">
 <li><code>Expanded</code></li>
@@ -929,7 +949,7 @@ voyager3.describe<span style="color: #fff0f5;">()</span>;
 </ul>
 </div>
 </li>
-<li><a id="org22426e6"></a>Content Containers<br />
+<li><a id="org5970cd1"></a>Content Containers<br />
 <div class="outline-text-4" id="text-7-3-4">
 <ul class="org-ul">
 <li><code>Stack</code></li>
@@ -939,7 +959,7 @@ voyager3.describe<span style="color: #fff0f5;">()</span>;
 </ul>
 </div>
 </li>
-<li><a id="org3b6d782"></a>Repeat Elements<br />
+<li><a id="org58c75e4"></a>Repeat Elements<br />
 <div class="outline-text-4" id="text-7-3-5">
 <ul class="org-ul">
 <li><code>ListView</code>: Generally use the ListView.builder() to display only the items that are currently seen on screen. It's just more efficient.</li>
@@ -948,7 +968,7 @@ voyager3.describe<span style="color: #fff0f5;">()</span>;
 </ul>
 </div>
 </li>
-<li><a id="org4ed0adb"></a>Content Types<br />
+<li><a id="orgaa64b7f"></a>Content Types<br />
 <div class="outline-text-4" id="text-7-3-6">
 <ul class="org-ul">
 <li><code>Text</code></li>
@@ -957,7 +977,7 @@ voyager3.describe<span style="color: #fff0f5;">()</span>;
 </ul>
 </div>
 </li>
-<li><a id="org10cdb26"></a>User Input<br />
+<li><a id="org4e9cb8f"></a>User Input<br />
 <div class="outline-text-4" id="text-7-3-7">
 <ul class="org-ul">
 <li><code>TextField</code></li>
@@ -969,11 +989,11 @@ voyager3.describe<span style="color: #fff0f5;">()</span>;
 </li>
 </ol>
 </div>
-<div id="outline-container-org0ed24f7" class="outline-3">
-<h3 id="org0ed24f7"><span class="section-number-3">7.4</span> Stateless vs Stateful</h3>
+<div id="outline-container-org186bb78" class="outline-3">
+<h3 id="org186bb78"><span class="section-number-3">7.4.</span> Stateless vs Stateful</h3>
 <div class="outline-text-3" id="text-7-4">
 
-<div id="orgd7e7b13" class="figure">
+<div id="org3735239" class="figure">
 <p><img src="images/Widgets/2021-02-03_15-42-19_screenshot.png" alt="2021-02-03_15-42-19_screenshot.png" />
 </p>
 </div>
@@ -1047,8 +1067,8 @@ voyager3.describe<span style="color: #fff0f5;">()</span>;
 </div>
 </div>
 </div>
-<div id="outline-container-orgab005ac" class="outline-3">
-<h3 id="orgab005ac"><span class="section-number-3">7.5</span> Widget Communication</h3>
+<div id="outline-container-orgb6d5deb" class="outline-3">
+<h3 id="orgb6d5deb"><span class="section-number-3">7.5.</span> Widget Communication</h3>
 <div class="outline-text-3" id="text-7-5">
 <ul class="org-ul">
 <li>Pass a function through to the child's Widget via the constructor</li>
@@ -1099,8 +1119,8 @@ voyager3.describe<span style="color: #fff0f5;">()</span>;
 </div>
 </div>
 </div>
-<div id="outline-container-orgfcc64b0" class="outline-3">
-<h3 id="orgfcc64b0"><span class="section-number-3">7.6</span> Spawning Widgets from a List</h3>
+<div id="outline-container-org02ff4ab" class="outline-3">
+<h3 id="org02ff4ab"><span class="section-number-3">7.6.</span> Spawning Widgets from a List</h3>
 <div class="outline-text-3" id="text-7-6">
 <div class="org-src-container">
 <pre class="src src-dart"><span style="color: #51afef; font-style: italic;">class</span> <span style="color: #ECBE7B;">MyWidget</span> <span style="color: #fff0f5;">{</span>
@@ -1138,8 +1158,8 @@ voyager3.describe<span style="color: #fff0f5;">()</span>;
 </div>
 </div>
 </div>
-<div id="outline-container-org081cb6b" class="outline-3">
-<h3 id="org081cb6b"><span class="section-number-3">7.7</span> User Inputs</h3>
+<div id="outline-container-org29f4259" class="outline-3">
+<h3 id="org29f4259"><span class="section-number-3">7.7.</span> User Inputs</h3>
 <div class="outline-text-3" id="text-7-7">
 <ul class="org-ul">
 <li>Create a property inside of a widget that instantiates a <code>TextEditingController</code>. Access it later.</li>
@@ -1163,8 +1183,8 @@ voyager3.describe<span style="color: #fff0f5;">()</span>;
 </div>
 </div>
 </div>
-<div id="outline-container-orga7a0970" class="outline-3">
-<h3 id="orga7a0970"><span class="section-number-3">7.8</span> Using the ListView and GridView builders</h3>
+<div id="outline-container-org4fb9e73" class="outline-3">
+<h3 id="org4fb9e73"><span class="section-number-3">7.8.</span> Using the ListView and GridView builders</h3>
 <div class="outline-text-3" id="text-7-8">
 <ul class="org-ul">
 <li>Usually use the <code>ListTile</code> class for each element of the list</li>
@@ -1230,8 +1250,8 @@ voyager3.describe<span style="color: #fff0f5;">()</span>;
 </div>
 </div>
 </div>
-<div id="outline-container-orged8febe" class="outline-3">
-<h3 id="orged8febe"><span class="section-number-3">7.9</span> Images</h3>
+<div id="outline-container-org350b625" class="outline-3">
+<h3 id="org350b625"><span class="section-number-3">7.9.</span> Images</h3>
 <div class="outline-text-3" id="text-7-9">
 <ul class="org-ul">
 <li>Add images to the pub.spec.yaml file</li>
@@ -1252,8 +1272,8 @@ voyager3.describe<span style="color: #fff0f5;">()</span>;
 </div>
 </div>
 </div>
-<div id="outline-container-orgbae3627" class="outline-3">
-<h3 id="orgbae3627"><span class="section-number-3">7.10</span> Picking Time and Date</h3>
+<div id="outline-container-org6803378" class="outline-3">
+<h3 id="org6803378"><span class="section-number-3">7.10.</span> Picking Time and Date</h3>
 <div class="outline-text-3" id="text-7-10">
 <div class="org-src-container">
 <pre class="src src-dart"><span style="color: #5B6268;">// </span><span style="color: #5B6268;">built-in method</span>
@@ -1267,8 +1287,8 @@ showDatePicker<span style="color: #fff0f5;">(</span>
 </div>
 </div>
 </div>
-<div id="outline-container-org1b05c6e" class="outline-3">
-<h3 id="org1b05c6e"><span class="section-number-3">7.11</span> Forcing a round corner with ClipRRect</h3>
+<div id="outline-container-orgb20bfc5" class="outline-3">
+<h3 id="orgb20bfc5"><span class="section-number-3">7.11.</span> Forcing a round corner with ClipRRect</h3>
 <div class="outline-text-3" id="text-7-11">
 <ul class="org-ul">
 <li>Wrap a widget with ClipRRect to create round corners as an example:</li>
@@ -1282,8 +1302,8 @@ showDatePicker<span style="color: #fff0f5;">(</span>
 </div>
 </div>
 </div>
-<div id="outline-container-org1d24f65" class="outline-3">
-<h3 id="org1d24f65"><span class="section-number-3">7.12</span> Drawer</h3>
+<div id="outline-container-org4353a91" class="outline-3">
+<h3 id="org4353a91"><span class="section-number-3">7.12.</span> Drawer</h3>
 <div class="outline-text-3" id="text-7-12">
 <ul class="org-ul">
 <li>Create a <code>AppDrawer</code> or whatever class</li>
@@ -1325,8 +1345,8 @@ showDatePicker<span style="color: #fff0f5;">(</span>
 </div>
 </div>
 </div>
-<div id="outline-container-org97e11d4" class="outline-3">
-<h3 id="org97e11d4"><span class="section-number-3">7.13</span> Pull-to-refresh</h3>
+<div id="outline-container-org95bf30e" class="outline-3">
+<h3 id="org95bf30e"><span class="section-number-3">7.13.</span> Pull-to-refresh</h3>
 <div class="outline-text-3" id="text-7-13">
 <ul class="org-ul">
 <li>Add the <code>RefreshIndicator</code> widget as the topmost/wrapper</li>
@@ -1349,8 +1369,8 @@ showDatePicker<span style="color: #fff0f5;">(</span>
 </div>
 </div>
 </div>
-<div id="outline-container-orgf696745" class="outline-3">
-<h3 id="orgf696745"><span class="section-number-3">7.14</span> Scrollable content</h3>
+<div id="outline-container-orgb80c1fe" class="outline-3">
+<h3 id="orgb80c1fe"><span class="section-number-3">7.14.</span> Scrollable content</h3>
 <div class="outline-text-3" id="text-7-14">
 <ul class="org-ul">
 <li>If a list is needed then use a <code>ListView</code> or a <code>ListViewBuilder</code>, however, when user working with forms the individual <code>ListTile</code> can go out of view and therefore be deconstructed</li>
@@ -1359,12 +1379,12 @@ showDatePicker<span style="color: #fff0f5;">(</span>
 </div>
 </div>
 </div>
-<div id="outline-container-orgde8a11a" class="outline-2">
-<h2 id="orgde8a11a"><span class="section-number-2">8</span> Responsive design</h2>
+<div id="outline-container-org8ab37a0" class="outline-2">
+<h2 id="org8ab37a0"><span class="section-number-2">8.</span> Responsive design</h2>
 <div class="outline-text-2" id="text-8">
 </div>
-<div id="outline-container-org2eb1737" class="outline-3">
-<h3 id="org2eb1737"><span class="section-number-3">8.1</span> Using the <code>MediaQuery</code></h3>
+<div id="outline-container-org79e3162" class="outline-3">
+<h3 id="org79e3162"><span class="section-number-3">8.1.</span> Using the <code>MediaQuery</code></h3>
 <div class="outline-text-3" id="text-8-1">
 <ul class="org-ul">
 <li>Usually store the <code>MediaQuery</code> object in a variable to remove clutter and provide reusability</li>
@@ -1417,8 +1437,8 @@ showDatePicker<span style="color: #fff0f5;">(</span>
 </div>
 </div>
 </div>
-<div id="outline-container-org5837cb2" class="outline-3">
-<h3 id="org5837cb2"><span class="section-number-3">8.2</span> Utilizing constraints</h3>
+<div id="outline-container-orgb3d1550" class="outline-3">
+<h3 id="orgb3d1550"><span class="section-number-3">8.2.</span> Utilizing constraints</h3>
 <div class="outline-text-3" id="text-8-2">
 <ul class="org-ul">
 <li>Use the <code>LayoutBuilder</code> to access constraints</li>
@@ -1439,8 +1459,8 @@ showDatePicker<span style="color: #fff0f5;">(</span>
 </div>
 </div>
 </div>
-<div id="outline-container-orgdef557b" class="outline-3">
-<h3 id="orgdef557b"><span class="section-number-3">8.3</span> Locking orientation</h3>
+<div id="outline-container-org0a02550" class="outline-3">
+<h3 id="org0a02550"><span class="section-number-3">8.3.</span> Locking orientation</h3>
 <div class="outline-text-3" id="text-8-3">
 <div class="org-src-container">
 <pre class="src src-dart"><span style="color: #ECBE7B;">void</span> <span style="color: #c678dd;">main</span><span style="color: #fff0f5;">()</span> <span style="color: #fff0f5;">{</span>
@@ -1457,8 +1477,8 @@ showDatePicker<span style="color: #fff0f5;">(</span>
 </div>
 </div>
 </div>
-<div id="outline-container-orgd1c113d" class="outline-3">
-<h3 id="orgd1c113d"><span class="section-number-3">8.4</span> Reacting to orientation</h3>
+<div id="outline-container-orga5efac1" class="outline-3">
+<h3 id="orga5efac1"><span class="section-number-3">8.4.</span> Reacting to orientation</h3>
 <div class="outline-text-3" id="text-8-4">
 <div class="org-src-container">
 <pre class="src src-dart"><span style="color: #ECBE7B;">MediaQuery</span>.of<span style="color: #fff0f5;">(</span>context<span style="color: #fff0f5;">)</span>.orientation == <span style="color: #ECBE7B;">Orientation</span>.landscape;
@@ -1467,8 +1487,8 @@ showDatePicker<span style="color: #fff0f5;">(</span>
 </div>
 </div>
 </div>
-<div id="outline-container-org171ee87" class="outline-3">
-<h3 id="org171ee87"><span class="section-number-3">8.5</span> Respecting the Softkeyboard Insets</h3>
+<div id="outline-container-org6751e60" class="outline-3">
+<h3 id="org6751e60"><span class="section-number-3">8.5.</span> Respecting the Softkeyboard Insets</h3>
 <div class="outline-text-3" id="text-8-5">
 <ul class="org-ul">
 <li>Use the <code>MediaQuery</code> viewInsets property to know how much overlapping content there is over the app</li>
@@ -1490,8 +1510,8 @@ showDatePicker<span style="color: #fff0f5;">(</span>
 </div>
 </div>
 </div>
-<div id="outline-container-orge2bb4a6" class="outline-2">
-<h2 id="orge2bb4a6"><span class="section-number-2">9</span> Adaptive design</h2>
+<div id="outline-container-org7a6f065" class="outline-2">
+<h2 id="org7a6f065"><span class="section-number-2">9.</span> Adaptive design</h2>
 <div class="outline-text-2" id="text-9">
 <ul class="org-ul">
 <li>Most of widgets have an <code>adaptive</code> constructor</li>
@@ -1513,12 +1533,12 @@ showDatePicker<span style="color: #fff0f5;">(</span>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgcec21a8" class="outline-2">
-<h2 id="orgcec21a8"><span class="section-number-2">10</span> Routing and Navigator</h2>
+<div id="outline-container-org75944ae" class="outline-2">
+<h2 id="org75944ae"><span class="section-number-2">10.</span> Routing and Navigator</h2>
 <div class="outline-text-2" id="text-10">
 </div>
-<div id="outline-container-org6e35e69" class="outline-3">
-<h3 id="org6e35e69"><span class="section-number-3">10.1</span> Basic Navigation</h3>
+<div id="outline-container-org522fe21" class="outline-3">
+<h3 id="org522fe21"><span class="section-number-3">10.1.</span> Basic Navigation</h3>
 <div class="outline-text-3" id="text-10-1">
 <ul class="org-ul">
 <li>Close the topmost widget or go back the stack: <code>Navigator.of(ctx).pop();</code></li>
@@ -1535,8 +1555,8 @@ showDatePicker<span style="color: #fff0f5;">(</span>
 </div>
 </div>
 </div>
-<div id="outline-container-orgce8d756" class="outline-3">
-<h3 id="orgce8d756"><span class="section-number-3">10.2</span> Named Routes</h3>
+<div id="outline-container-org6625d62" class="outline-3">
+<h3 id="org6625d62"><span class="section-number-3">10.2.</span> Named Routes</h3>
 <div class="outline-text-3" id="text-10-2">
 <ul class="org-ul">
 <li>A good practice is to add a static string to the named routes' class files to remove the possibility of typos.</li>
@@ -1580,12 +1600,12 @@ showDatePicker<span style="color: #fff0f5;">(</span>
 </div>
 </div>
 </div>
-<div id="outline-container-orge66be2e" class="outline-2">
-<h2 id="orge66be2e"><span class="section-number-2">11</span> State Management with Providers</h2>
+<div id="outline-container-org07ba169" class="outline-2">
+<h2 id="org07ba169"><span class="section-number-2">11.</span> State Management with Providers</h2>
 <div class="outline-text-2" id="text-11">
 </div>
-<div id="outline-container-org49bf867" class="outline-3">
-<h3 id="org49bf867"><span class="section-number-3">11.1</span> Using the <code>Provider</code>, <code>ChangeNotifier</code>, <code>ChangeNotifierProvider</code> and <code>Consumer</code> classes</h3>
+<div id="outline-container-org1a708ca" class="outline-3">
+<h3 id="org1a708ca"><span class="section-number-3">11.1.</span> Using the <code>Provider</code>, <code>ChangeNotifier</code>, <code>ChangeNotifierProvider</code> and <code>Consumer</code> classes</h3>
 <div class="outline-text-3" id="text-11-1">
 <ul class="org-ul">
 <li>Create a model</li>
@@ -1684,8 +1704,8 @@ showDatePicker<span style="color: #fff0f5;">(</span>
 </div>
 </div>
 </div>
-<div id="outline-container-orgb222ebe" class="outline-3">
-<h3 id="orgb222ebe"><span class="section-number-3">11.2</span> Using a <code>ChangeNotifierProxyProvider</code> to manage services dependencies</h3>
+<div id="outline-container-org2c9adcd" class="outline-3">
+<h3 id="org2c9adcd"><span class="section-number-3">11.2.</span> Using a <code>ChangeNotifierProxyProvider</code> to manage services dependencies</h3>
 <div class="outline-text-3" id="text-11-2">
 <div class="org-src-container">
 <pre class="src src-dart"><span style="color: #51afef; font-style: italic;">return</span> <span style="color: #ECBE7B;">MultiProvider</span><span style="color: #fff0f5;">(</span>
@@ -1706,8 +1726,8 @@ showDatePicker<span style="color: #fff0f5;">(</span>
 </div>
 </div>
 </div>
-<div id="outline-container-org7dfd046" class="outline-3">
-<h3 id="org7dfd046"><span class="section-number-3">11.3</span> Alternative way of building widgets from Futures with the <code>FutureBuilder</code></h3>
+<div id="outline-container-orgb7d02df" class="outline-3">
+<h3 id="orgb7d02df"><span class="section-number-3">11.3.</span> Alternative way of building widgets from Futures with the <code>FutureBuilder</code></h3>
 <div class="outline-text-3" id="text-11-3">
 <ul class="org-ul">
 <li>Also shows an example of <code>CircularProgressIndicator</code> while loading</li>
@@ -1738,9 +1758,63 @@ showDatePicker<span style="color: #fff0f5;">(</span>
 </div>
 </div>
 </div>
-<div id="outline-container-orgef2d2b6" class="outline-2">
-<h2 id="orgef2d2b6"><span class="section-number-2">12</span> Delete heading at the end</h2>
+<div id="outline-container-org35a2f89" class="outline-2">
+<h2 id="org35a2f89"><span class="section-number-2">12.</span> Creating local packages</h2>
 <div class="outline-text-2" id="text-12">
+<ul class="org-ul">
+<li>Create a folder called <code>packages</code> in the root of your project</li>
+<li>Create a sub-folder in <code>packages/authentication</code>, for a sample packages called <code>authentication</code></li>
+<li>Inside of the subfolder create a <code>pubspec.yaml</code>
+<ul class="org-ul">
+<li>Please note that the <code>flutter</code> dependencies would be only imported if you're actually using flutter's widgets</li>
+</ul></li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-yaml"><span style="color: #db5762;">name</span>: authentication
+<span style="color: #db5762;">description</span>: Foo bar
+
+<span style="color: #db5762;">publish_to</span>: <span style="color: #98be65;">'none'</span>
+
+<span style="color: #db5762;">version</span>: 1.0.0+1
+
+<span style="color: #db5762;">environment</span>:
+  <span style="color: #db5762;">sdk</span>: <span style="color: #98be65;">'copy from main pubspec.yaml'</span>
+
+<span style="color: #db5762;">dependencies</span>:
+  <span style="color: #db5762;">flutter</span>:
+    <span style="color: #db5762;">sdk</span>: flutter
+
+<span style="color: #db5762;">dev_dependencies</span>:
+  <span style="color: #db5762;">flutter_test</span>:
+    <span style="color: #db5762;">sdk</span>: flutter
+  <span style="color: #db5762;">lint</span>: ^1.0.0
+
+<span style="color: #db5762;">flutter</span>:
+  <span style="color: #db5762;">uses-material-design</span>: <span style="color: #a9a1e1;">true</span>
+</pre>
+</div>
+<ul class="org-ul">
+<li>Create another sub-folder <code>packages/authentication/lib</code> in which you'll store your code</li>
+<li>Create a file called <code>packages/authentication/lib/authentication.dart</code></li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-dart"><span style="color: #51afef; font-style: italic;">class</span> <span style="color: #ECBE7B;">Authentication</span> <span style="color: #fff0f5;">{}</span>
+</pre>
+</div>
+<ul class="org-ul">
+<li>In the main project's <code>pubspec.yaml</code> import the package</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-yaml"><span style="color: #db5762;">dependencies</span>:
+  <span style="color: #db5762;">authentication</span>:
+    <span style="color: #db5762;">path</span>: ./packages/authentication
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org596f92b" class="outline-2">
+<h2 id="org596f92b"><span class="section-number-2">13.</span> Delete heading at the end</h2>
+<div class="outline-text-2" id="text-13">
 <script src="../../assets/jquery-3.3.1.min.js"></script>
 <script src="../../assets/notes.js"></script>
 </div>
@@ -1749,7 +1823,7 @@ showDatePicker<span style="color: #fff0f5;">(</span>
 <div id="postamble" class="status">
 <p class="date">Date: 2021-02-01 Mon 10:31</p>
 <p class="author">Author: Damian Chrzanowski</p>
-<p class="date">Created: 2021-09-01 Wed 10:31</p>
+<p class="date">Created: 2022-02-23 Wed 11:14</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
