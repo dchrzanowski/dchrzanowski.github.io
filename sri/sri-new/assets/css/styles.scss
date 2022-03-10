@@ -1,0 +1,292 @@
+/*----- MAIN FONT STARTS HERE -----*/
+@import url(https://fonts.googleapis.com/css?family=Nunito+Sans:400,400i,600,700,800&display=swap);
+:root {
+    --font-family-sans-serif: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji' !important;
+    --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace !important;
+}
+html {
+    font-family: sans-serif !important;
+    background-color: transparent !important;
+    font-size: 18px !important;
+}
+body {
+    background-color: #FCFCFC !important;
+    font-family: 'Nunito Sans', sans-serif !important;
+}
+/*----- MAIN FONT ENDS HERE -----*/
+
+/*----- HELPERS STARTS HERE -----*/
+.heading {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+}
+
+.heading-green {
+}
+.heading-green::before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: -2px;
+    left: 49px;
+    width: 35px;
+    height: 4px;
+    background-color: #6E349B;
+}
+.heading-green::after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: -2px;
+    width: 35px;
+    height: 4px;
+    background-color: #349B6E;
+}
+.heading-purple {
+}
+.heading-purple::before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: -2px;
+    left: 49px;
+    width: 35px;
+    height: 4px;
+    background-color: #349B6E;
+}
+.heading-purple::after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: -2px;
+    width: 35px;
+    height: 4px;
+    background-color: #6E349B;
+}
+@media screen and (min-width: 1024px) {
+    .heading {
+        font-size: 2.8rem;
+    }
+}
+.pointer {
+    cursor: pointer;
+}
+.divider-sm {
+    height: 0.5rem;
+}
+.divider {
+    height: 1rem;
+}
+.divider-md {
+    height: 1.5rem;
+}
+.divider-lg {
+    height: 2rem;
+}
+.divider-xl {
+    height: 3rem;
+}
+.hr-primary {
+    border-top: 1px solid #263c50;
+}
+.img-shadow {
+    box-shadow: .25rem .25rem 0 rgba(0, 0, 0, 0.2);
+}
+.shadow-sm {
+    box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.1);
+}
+.shadow {
+    box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.15);
+}
+.shadow-lg {
+    box-shadow: 0 1.25rem 3rem rgba(0, 0, 0, 0.175);
+}
+.shadow-none {
+    box-shadow: none;
+}
+.icon-shadow {
+    text-shadow: .25rem .25rem 0 rgba(0, 0, 0, 0.2);
+}
+.icon-shadow-sm {
+    text-shadow: .1rem .1rem 0 rgba(0, 0, 0, 0.2);
+}
+.border {
+    border: 1px solid #ECECEC !important;
+}
+.x-small {
+    font-size: 0.7rem !important;
+}
+/*----- HELPERS ENDS HERE -----*/
+
+/*----- SECTIONS STARTS HERE -----*/
+section {
+    padding-bottom: 18vh;
+    padding-top: 18vh;
+}
+section:first-of-type {
+    // padding-top: 5vh !important;
+}
+.bl-detail-primary {
+    border-left: 65px solid #6E349B;
+}
+.bl-detail-secondary {
+    border-left: 65px solid #0C4FA5;
+}
+.bl-detail-success {
+    border-left: 65px solid #349B6E;
+}
+/*----- SECTIONS ENDS HERE -----*/
+
+/*----- BACKGROUNDS STARTS HERE -----*/
+.bg-dark {
+    background-color: #171621 !important;
+}
+.bg-dark-alt {
+    background-color: #212031 !important;
+}
+/*----- BACKGROUNDS ENDS HERE -----*/
+
+/*----- BACKGROUND GRADIENTS STARTS HERE -----*/
+.bg-primary-gradient {
+    background-image: linear-gradient(#6E349B, #5d2885);
+}
+.bg-secondary-gradient {
+    background-image: linear-gradient(#0C4FA5, #0a438c);
+}
+.bg-success-gradient {
+    background-image: linear-gradient(#349B6E, #28855d);
+}
+/*----- BACKGROUND GRADIENTS ENDS HERE -----*/
+
+/*----- CARD STARTS HERE -----*/
+.card {
+    border-radius: 0 !important;
+    box-shadow: none !important;
+}
+.card-border-primary {
+    border-left: 10px solid #6E349B !important;
+}
+.card-border-secondary {
+    border-left: 10px solid #0C4FA5 !important;
+}
+.card-border-warning {
+    border-left: 10px solid #9B6E34 !important;
+}
+.card-border-success {
+    border-left: 10px solid #349B6E !important;
+}
+@media screen and (min-width: 1024px) {
+    .card-border-primary {
+        border-left: 20px solid #6E349B !important;
+    }
+    .card-border-secondary {
+        border-left: 20px solid #0C4FA5 !important;
+    }
+    .card-border-warning {
+        border-left: 20px solid #9B6E34 !important;
+    }
+    .card-border-success {
+        border-left: 20px solid #349B6E !important;
+    }
+}
+.card-img-top {
+    border-top-left-radius: 0 !important;
+    border-top-right-radius: 0 !important;
+}
+/*----- CARD ENDS HERE -----*/
+
+/*----- BANNER STARTS HERE -----*/
+.banner {
+    background-position: center top;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 1000px;
+    position: relative;
+}
+
+.banner-box {
+    width: 100%;
+    position: absolute;
+    top: 40vh;
+    left: 0;
+}
+
+.banner-text {
+    text-align: center;
+    color: white;
+    text-shadow: 0px 0px 1px black;
+}
+
+.banner-logo {
+    width: 70%;
+}
+
+@media screen and (min-width: 1024px) {
+    .banner-text {
+        text-align: left;
+    }
+    .banner-logo {
+        width: 38%;
+    }
+}
+
+.banner-main-text {
+    font-size: 4rem;
+    font-weight: 600 !important;
+}
+
+.banner-sub-text {
+    font-size: 1.5rem;
+}
+/*----- BANNER ENDS HERE -----*/
+
+/*----- FONT AWESOME STARTS HERE -----*/
+.icon-linkedin {
+    color: #0976b4;
+}
+
+.icon-twitter {
+    color: #55acee;
+}
+
+.fa-stack-1x {
+    color: white;
+}
+
+.fa-hover {
+    -webkit-transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+}
+
+.fa-hover:hover {
+    color: #D9B310;
+}
+
+.fa-sri {
+    color: #D9B310;
+}
+
+.fa-tv {
+    margin-left: 2px;
+    margin-top: 1px;
+}
+
+.fa-4x-mobile {
+    font-size: 4em;
+}
+
+@media screen and (max-width: 768px) {
+    .fa-4x-mobile {
+        font-size: 2em;
+    }
+}
+/*----- FONT AWESOME ENDS HERE -----*/
+
+/*----- FORMS STARTS HERE -----*/
+input, textarea, button {
+    border-radius: 0 !important;
+    box-shadow: none !important;
+}
+/*----- FORMS ENDS HERE -----*/
