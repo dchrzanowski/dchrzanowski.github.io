@@ -1,0 +1,1882 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2022-11-29 Tue 14:55 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Rust</title>
+<meta name="author" content="Damian Chrzanowski" />
+<meta name="generator" content="Org Mode" />
+<style>
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { }
+</style>
+<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="../../assets/org.css"/>
+<link rel="icon" href="../../assets/favicon.ico">
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">Rust</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#org47c875a">1. Links</a>
+<ul>
+<li><a href="#org5ff6de6">1.1. Official Page</a></li>
+<li><a href="#org787be88">1.2. The Rust Book</a></li>
+<li><a href="#org211585b">1.3. Rust Forums</a></li>
+<li><a href="#orgd5afe9a">1.4. Cargo Crates</a></li>
+<li><a href="#org716befa">1.5. Additional Crates, supposedly a better repository</a></li>
+</ul>
+</li>
+<li><a href="#orgd22124b">2. Setup</a>
+<ul>
+<li><a href="#org833b94e">2.1. Installation</a></li>
+<li><a href="#org1cbfe9d">2.2. Adding Components</a></li>
+</ul>
+</li>
+<li><a href="#orgcc9b832">3. Project Management</a></li>
+<li><a href="#orgb0b78d0">4. Basics</a>
+<ul>
+<li><a href="#orgf480b41">4.1. Starting point <code>main</code> function</a></li>
+<li><a href="#org2a65a1a">4.2. Printing output</a></li>
+<li><a href="#orgc7e2808">4.3. Declaring variables</a></li>
+<li><a href="#org8300fd8">4.4. Declaring constants</a></li>
+<li><a href="#org3fe9298">4.5. Getting a String input from <code>stdin</code></a></li>
+</ul>
+</li>
+<li><a href="#orge3f9339">5. Statements and Expressions</a></li>
+<li><a href="#org23fd927">6. Variable shadowing</a></li>
+<li><a href="#orgf56ff65">7. Error Handling and the <code>Result enum</code></a>
+<ul>
+<li><a href="#orgdfc1ca7">7.1. Basic error handling with <code>expect</code></a></li>
+<li><a href="#org9a687da">7.2. Error handling with <code>match</code></a></li>
+</ul>
+</li>
+<li><a href="#orgf532f5b">8. Comparing Values with <code>Ordering</code> and <code>match</code></a>
+<ul>
+<li><a href="#org8c174a3">8.1. We can compare values with the <code>Ordering</code> enum</a></li>
+<li><a href="#orgdf93cd7">8.2. Sample code</a></li>
+</ul>
+</li>
+<li><a href="#org7ade868">9. Random number generation</a>
+<ul>
+<li><a href="#org8a31469">9.1. Add <code>rand</code> to the <code>cargo.toml</code> file</a></li>
+<li><a href="#org21e9334">9.2. Using rand</a></li>
+</ul>
+</li>
+<li><a href="#orgb2199b1">10. Type Casting</a>
+<ul>
+<li><a href="#org71326de">10.1. Strings</a></li>
+</ul>
+</li>
+<li><a href="#org2ef550a">11. Data Types</a>
+<ul>
+<li><a href="#org077a2cb">11.1. Scalar, four primitive types</a></li>
+<li><a href="#org35f04ef">11.2. Compound</a></li>
+</ul>
+</li>
+<li><a href="#orgf8fbe8a">12. Functions</a>
+<ul>
+<li><a href="#org6c5f129">12.1. Declaring a function</a></li>
+<li><a href="#org086106e">12.2. Examples</a></li>
+</ul>
+</li>
+<li><a href="#org50c30e3">13. Control Flow</a>
+<ul>
+<li><a href="#org2e14c31">13.1. <code>if</code> Statements</a></li>
+<li><a href="#orgab8b786">13.2. Infinite <code>loop</code></a></li>
+<li><a href="#orge0bc6f6">13.3. Conditional <code>while</code> loop</a></li>
+<li><a href="#orgaed9d67">13.4. Looping through Collections with <code>for</code></a></li>
+</ul>
+</li>
+<li><a href="#orgd303c0a">14. Ownership</a>
+<ul>
+<li><a href="#orgb120355">14.1. Rules</a></li>
+<li><a href="#org3eca843">14.2. Basic example of Ownership</a></li>
+<li><a href="#orga3ad21a">14.3. Transferring Ownership</a></li>
+<li><a href="#org5a3005d">14.4. Borrowing</a></li>
+</ul>
+</li>
+<li><a href="#org381f9b1">15. Slice Type</a>
+<ul>
+<li><a href="#org132e0a6">15.1. Definition</a></li>
+<li><a href="#orgda057d0">15.2. Caveats</a></li>
+<li><a href="#org1019ba3">15.3. Declaring a Slice uses Rust's Range syntax</a></li>
+<li><a href="#orge108966">15.4. Example on a String Slice</a></li>
+<li><a href="#org373e31f">15.5. Example of a problem noticed by the compiler thanks to Slices usage</a></li>
+</ul>
+</li>
+<li><a href="#org9dab96c">16. Structs</a>
+<ul>
+<li><a href="#org1783aac">16.1. Syntax</a></li>
+<li><a href="#org2d545be">16.2. Builders</a></li>
+<li><a href="#org113725c">16.3. Instantiate an instance from another instance using a shorthand</a></li>
+<li><a href="#org51d9358">16.4. Tuple Structs without names fields</a></li>
+<li><a href="#orge8c22c4">16.5. Unit-like Struct without fields</a></li>
+<li><a href="#orga9775d0">16.6. Method Syntax</a></li>
+</ul>
+</li>
+<li><a href="#orgd4ea768">17. Delete heading at the end</a></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org47c875a" class="outline-2">
+<h2 id="org47c875a"><span class="section-number-2">1.</span> Links</h2>
+<div class="outline-text-2" id="text-1">
+</div>
+<div id="outline-container-org5ff6de6" class="outline-3">
+<h3 id="org5ff6de6"><span class="section-number-3">1.1.</span> <a href="https://www.rust-lang.org/">Official Page</a></h3>
+</div>
+<div id="outline-container-org787be88" class="outline-3">
+<h3 id="org787be88"><span class="section-number-3">1.2.</span> <a href="https://doc.rust-lang.org/stable/book/">The Rust Book</a></h3>
+</div>
+<div id="outline-container-org211585b" class="outline-3">
+<h3 id="org211585b"><span class="section-number-3">1.3.</span> <a href="https://users.rust-lang.org/">Rust Forums</a></h3>
+</div>
+<div id="outline-container-orgd5afe9a" class="outline-3">
+<h3 id="orgd5afe9a"><span class="section-number-3">1.4.</span> <a href="https://crates.io/">Cargo Crates</a></h3>
+</div>
+<div id="outline-container-org716befa" class="outline-3">
+<h3 id="org716befa"><span class="section-number-3">1.5.</span> <a href="https://lib.rs/about">Additional Crates, supposedly a better repository</a></h3>
+</div>
+</div>
+<div id="outline-container-orgd22124b" class="outline-2">
+<h2 id="orgd22124b"><span class="section-number-2">2.</span> Setup</h2>
+<div class="outline-text-2" id="text-2">
+</div>
+<div id="outline-container-org833b94e" class="outline-3">
+<h3 id="org833b94e"><span class="section-number-3">2.1.</span> Installation</h3>
+<div class="outline-text-3" id="text-2-1">
+<ul class="org-ul">
+<li>Install <code>rustup</code>, <code>rust-analyzer</code> and <code>sccache</code></li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-shell"><span style="color: #c678dd;">yay</span> <span style="color: #a9a1e1;">-S</span> rustup rust-analyzer
+</pre>
+</div>
+<ul class="org-ul">
+<li>Install a toolchain and set it as default</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-shell"><span style="color: #c678dd;">rustup</span> default stable
+</pre>
+</div>
+<ul class="org-ul">
+<li>Update the toolchain (if needed)</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-shell"><span style="color: #c678dd;">rustup</span> update
+</pre>
+</div>
+<ul class="org-ul">
+<li>Install a different toolchain, where TOOLCHAIN is one of: stable, beta, nightly or 1.23.0</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-shell"><span style="color: #c678dd;">rustup</span> toolchain install TOOLCHAIN
+</pre>
+</div>
+<ul class="org-ul">
+<li>Install a toolchain for a different architecture, get the list of available architectures with:</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-shell"><span style="color: #c678dd;">rustup</span> target list
+<span style="color: #c678dd;">rustup</span> toolchain install stable-x86_64-pc-windows-gnu
+</pre>
+</div>
+<ul class="org-ul">
+<li>Verify installed version</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-shell"><span style="color: #c678dd;">rustc</span> <span style="color: #a9a1e1;">-V</span>
+</pre>
+</div>
+<ul class="org-ul">
+<li>Add <code>sccache</code> to global rust config in <code>~/.cargo/config</code></li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-conf">[<span style="color: #ECBE7B;">build</span>]
+<span style="color: #db5762;">rustc-wrapper</span> = <span style="color: #98be65;">"sccache"</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org1cbfe9d" class="outline-3">
+<h3 id="org1cbfe9d"><span class="section-number-3">2.2.</span> Adding Components</h3>
+<div class="outline-text-3" id="text-2-2">
+<ul class="org-ul">
+<li>Add a component</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-shell"><span style="color: #c678dd;">rustup</span> component add COMPONENT_NAME
+</pre>
+</div>
+<ul class="org-ul">
+<li>Add the formatter and the language server</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-shell"><span style="color: #c678dd;">rustup</span> component add rustfmt
+<span style="color: #c678dd;">rustup</span> component add rls
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orgcc9b832" class="outline-2">
+<h2 id="orgcc9b832"><span class="section-number-2">3.</span> Project Management</h2>
+<div class="outline-text-2" id="text-3">
+<ul class="org-ul">
+<li><p>
+Creating a new project
+</p>
+<div class="org-src-container">
+<pre class="src src-shell"><span style="color: #c678dd;">cargo</span> new PROJECT_NAME
+</pre>
+</div></li>
+<li><p>
+Check for errors
+</p>
+<div class="org-src-container">
+<pre class="src src-shell"><span style="color: #c678dd;">cargo</span> check
+</pre>
+</div></li>
+<li><p>
+Building a project
+</p>
+<div class="org-src-container">
+<pre class="src src-shell"><span style="color: #c678dd;">cargo</span> build
+</pre>
+</div></li>
+<li><p>
+Building a project for release
+</p>
+<div class="org-src-container">
+<pre class="src src-shell"><span style="color: #c678dd;">cargo</span> build <span style="color: #a9a1e1;">--release</span>
+</pre>
+</div></li>
+<li><p>
+Running a project
+</p>
+<div class="org-src-container">
+<pre class="src src-shell"><span style="color: #c678dd;">cargo</span> run
+</pre>
+</div></li>
+<li><p>
+Updating dependencies
+</p>
+<div class="org-src-container">
+<pre class="src src-shell"><span style="color: #c678dd;">cargo</span> update
+</pre>
+</div></li>
+<li><p>
+Build current dependencies' documentation and open in a browser
+</p>
+<div class="org-src-container">
+<pre class="src src-shell"><span style="color: #c678dd;">cargo</span> doc <span style="color: #a9a1e1;">--open</span>
+</pre>
+</div></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgb0b78d0" class="outline-2">
+<h2 id="orgb0b78d0"><span class="section-number-2">4.</span> Basics</h2>
+<div class="outline-text-2" id="text-4">
+</div>
+<div id="outline-container-orgf480b41" class="outline-3">
+<h3 id="orgf480b41"><span class="section-number-3">4.1.</span> Starting point <code>main</code> function</h3>
+<div class="outline-text-3" id="text-4-1">
+<div class="org-src-container">
+<pre class="src src-rust"><span style="color: #51afef; font-style: italic;">fn</span> <span style="color: #c678dd;">main</span><span style="color: #fff0f5;">()</span> <span style="color: #fff0f5;">{</span>
+    <span style="color: #5B6268;">//</span>
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org2a65a1a" class="outline-3">
+<h3 id="org2a65a1a"><span class="section-number-3">4.2.</span> Printing output</h3>
+<div class="outline-text-3" id="text-4-2">
+<div class="org-src-container">
+<pre class="src src-rust"><span style="color: #51afef; font-style: italic;">use</span> <span style="color: #a9a1e1;">std</span><span style="color: #bbc2cf;">::</span>io<span style="color: #bbc2cf;">;</span>
+<span style="color: #5B6268;">// in main...</span>
+<span style="color: #51afef; font-style: italic;">let</span> <span style="color: #db5762;">x</span> <span style="color: #bbc2cf;">=</span> <span style="color: #a9a1e1;">5</span><span style="color: #bbc2cf;">;</span>
+<span style="color: #51afef; font-style: italic;">let</span> <span style="color: #db5762;">y</span> <span style="color: #bbc2cf;">=</span> <span style="color: #a9a1e1;">10</span><span style="color: #bbc2cf;">;</span>
+<span style="color: #51afef; font-weight: bold;">println!</span><span style="color: #fff0f5;">(</span><span style="color: #98be65;">"Hello world"</span><span style="color: #fff0f5;">)</span><span style="color: #bbc2cf;">;</span> <span style="color: #5B6268;">// it's a macro for printing to stdout</span>
+<span style="color: #51afef; font-weight: bold;">println!</span><span style="color: #fff0f5;">(</span><span style="color: #98be65;">"Var x = {x}"</span><span style="color: #fff0f5;">)</span><span style="color: #bbc2cf;">;</span> <span style="color: #5B6268;">// string interpolation</span>
+<span style="color: #51afef; font-weight: bold;">println!</span><span style="color: #fff0f5;">(</span><span style="color: #98be65;">"Hello world var x = {}, var y = {}"</span>, x, y<span style="color: #fff0f5;">)</span><span style="color: #bbc2cf;">;</span> <span style="color: #5B6268;">// string interpolation</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgc7e2808" class="outline-3">
+<h3 id="orgc7e2808"><span class="section-number-3">4.3.</span> Declaring variables</h3>
+<div class="outline-text-3" id="text-4-3">
+<ul class="org-ul">
+<li>Variables a immutable by default</li>
+<li>Add <code>mut</code> to make a variable mutable</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-rust"><span style="color: #51afef; font-style: italic;">let</span> <span style="color: #db5762;">apples</span> <span style="color: #bbc2cf;">=</span> <span style="color: #a9a1e1;">5</span><span style="color: #bbc2cf;">;</span> <span style="color: #5B6268;">// immutable</span>
+<span style="color: #51afef; font-style: italic;">let</span> <span style="color: #51afef; font-style: italic;">mut</span> <span style="color: #db5762;">bananas</span> <span style="color: #bbc2cf;">=</span> <span style="color: #a9a1e1;">5</span><span style="color: #bbc2cf;">;</span> <span style="color: #5B6268;">// mutables</span>
+
+<span style="color: #51afef; font-style: italic;">let</span> <span style="color: #db5762;">string</span> <span style="color: #bbc2cf;">=</span> <span style="color: #ECBE7B;">String</span><span style="color: #bbc2cf;">::</span><span style="color: #c678dd;">new</span><span style="color: #fff0f5;">()</span><span style="color: #bbc2cf;">;</span> <span style="color: #5B6268;">// string</span>
+</pre>
+</div>
+<ul class="org-ul">
+<li>Declaring variables with a type</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-rust"><span style="color: #51afef; font-style: italic;">let</span> <span style="color: #db5762;">apples</span>: <span style="color: #ECBE7B;">i32</span> <span style="color: #bbc2cf;">=</span> <span style="color: #a9a1e1;">5</span><span style="color: #bbc2cf;">;</span>
+<span style="color: #51afef; font-style: italic;">let</span> <span style="color: #db5762;">string</span>: <span style="color: #ECBE7B;">String</span> <span style="color: #bbc2cf;">=</span> <span style="color: #ECBE7B;">String</span><span style="color: #bbc2cf;">::</span><span style="color: #c678dd;">new</span><span style="color: #fff0f5;">()</span><span style="color: #bbc2cf;">;</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org8300fd8" class="outline-3">
+<h3 id="org8300fd8"><span class="section-number-3">4.4.</span> Declaring constants</h3>
+<div class="outline-text-3" id="text-4-4">
+<ul class="org-ul">
+<li>Can not use <code>mut</code> with constant</li>
+<li>Are always immutable</li>
+<li>Type <b>MUST</b> be annotated</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-rust"><span style="color: #51afef; font-style: italic;">const</span> <span style="color: #a9a1e1;">MY_CONST</span>: <span style="color: #ECBE7B;">u32</span> <span style="color: #bbc2cf;">=</span> <span style="color: #a9a1e1;">45</span><span style="color: #bbc2cf;">;</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org3fe9298" class="outline-3">
+<h3 id="org3fe9298"><span class="section-number-3">4.5.</span> Getting a String input from <code>stdin</code></h3>
+<div class="outline-text-3" id="text-4-5">
+<ul class="org-ul">
+<li>References are immutable by default so we use <code>&amp; mut</code> to make the reference mutable</li>
+<li>Remember to <code>use std::io;</code></li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-rust"><span style="color: #51afef; font-style: italic;">let</span> <span style="color: #51afef; font-style: italic;">mut</span> <span style="color: #db5762;">in_string</span> <span style="color: #bbc2cf;">=</span> <span style="color: #ECBE7B;">String</span><span style="color: #bbc2cf;">::</span><span style="color: #c678dd;">new</span><span style="color: #fff0f5;">()</span><span style="color: #bbc2cf;">;</span>
+<span style="color: #a9a1e1;">io</span><span style="color: #bbc2cf;">::</span><span style="color: #c678dd;">stdin</span><span style="color: #fff0f5;">()</span>
+    <span style="color: #bbc2cf;">.</span><span style="color: #c678dd; font-weight: bold; font-style: italic;">read_line</span><span style="color: #fff0f5;">(</span><span style="color: #bbc2cf;">&amp;</span><span style="color: #51afef; font-style: italic;">mut</span> in_string<span style="color: #fff0f5;">)</span>
+    <span style="color: #bbc2cf;">.</span><span style="color: #c678dd; font-weight: bold; font-style: italic;">expect</span><span style="color: #fff0f5;">(</span><span style="color: #98be65;">"Failed to read line"</span><span style="color: #fff0f5;">)</span><span style="color: #bbc2cf;">;</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orge3f9339" class="outline-2">
+<h2 id="orge3f9339"><span class="section-number-2">5.</span> Statements and Expressions</h2>
+<div class="outline-text-2" id="text-5">
+<ul class="org-ul">
+<li><b>Statements</b> are instructions and perform actions, but do not return any values. E.g. a function declaration</li>
+<li><b>Expressions</b> evaluate to a value being returned. E.g. <code>5</code>, <code>4 + 5</code></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org23fd927" class="outline-2">
+<h2 id="org23fd927"><span class="section-number-2">6.</span> Variable shadowing</h2>
+<div class="outline-text-2" id="text-6">
+<ul class="org-ul">
+<li>It is allowed to use the same variable name one after another, the previous one simply ceases to exist</li>
+<li><p>
+The advantage over <code>mut</code> is that the variable remains immutable and allows to change the type. The most basic example of this is <a href="#orgb2199b1">Type Casting</a>. Furthermore, it reduces the amount of variable names needed to be thought of when type casting, i.e. <code>guess_str</code>, <code>guess_int</code>&#x2026;etc. Here we'll simply just have <code>guess</code>:
+</p>
+<div class="org-src-container">
+<pre class="src src-rust"><span style="color: #51afef; font-style: italic;">let</span> <span style="color: #db5762;">guess</span> <span style="color: #bbc2cf;">=</span> <span style="color: #98be65;">"45"</span><span style="color: #bbc2cf;">;</span>
+<span style="color: #51afef; font-style: italic;">let</span> <span style="color: #db5762;">guess</span>: <span style="color: #ECBE7B;">u32</span> <span style="color: #bbc2cf;">=</span> guess<span style="color: #bbc2cf;">.</span><span style="color: #c678dd; font-weight: bold; font-style: italic;">parse</span><span style="color: #fff0f5;">()</span><span style="color: #bbc2cf;">.</span><span style="color: #c678dd; font-weight: bold; font-style: italic;">expect</span><span style="color: #fff0f5;">(</span><span style="color: #98be65;">"Not a number"</span><span style="color: #fff0f5;">)</span><span style="color: #bbc2cf;">;</span>
+</pre>
+</div></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgf56ff65" class="outline-2">
+<h2 id="orgf56ff65"><span class="section-number-2">7.</span> Error Handling and the <code>Result enum</code></h2>
+<div class="outline-text-2" id="text-7">
+</div>
+<div id="outline-container-orgdfc1ca7" class="outline-3">
+<h3 id="orgdfc1ca7"><span class="section-number-3">7.1.</span> Basic error handling with <code>expect</code></h3>
+<div class="outline-text-3" id="text-7-1">
+<ul class="org-ul">
+<li><code>expect("Failed to read line")</code>, <code>expect</code> is called when a <code>Result</code> calls <code>Err</code>, in this case <code>read_line()</code> could potentially return an <code>Err</code>. If the <code>Result</code> is <code>Ok</code> the <code>expect</code> will pass on the value of <code>Ok</code>, in this case <code>expect</code> would return the length of the string</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-rust"><span style="color: #51afef; font-style: italic;">let</span> <span style="color: #51afef; font-style: italic;">mut</span> <span style="color: #db5762;">in_string</span> <span style="color: #bbc2cf;">=</span> <span style="color: #ECBE7B;">String</span><span style="color: #bbc2cf;">::</span><span style="color: #c678dd;">new</span><span style="color: #fff0f5;">()</span><span style="color: #bbc2cf;">;</span>
+<span style="color: #a9a1e1;">io</span><span style="color: #bbc2cf;">::</span><span style="color: #c678dd;">stdin</span><span style="color: #fff0f5;">()</span>
+    <span style="color: #bbc2cf;">.</span><span style="color: #c678dd; font-weight: bold; font-style: italic;">read_line</span><span style="color: #fff0f5;">(</span><span style="color: #bbc2cf;">&amp;</span><span style="color: #51afef; font-style: italic;">mut</span> in_string<span style="color: #fff0f5;">)</span>
+    <span style="color: #bbc2cf;">.</span><span style="color: #c678dd; font-weight: bold; font-style: italic;">expect</span><span style="color: #fff0f5;">(</span><span style="color: #98be65;">"Failed to read line"</span><span style="color: #fff0f5;">)</span><span style="color: #bbc2cf;">;</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org9a687da" class="outline-3">
+<h3 id="org9a687da"><span class="section-number-3">7.2.</span> Error handling with <code>match</code></h3>
+<div class="outline-text-3" id="text-7-2">
+<ul class="org-ul">
+<li>Here we use <code>_</code> in the <code>Err</code> as a "catchall", which means that we handle <b>ALL</b> errors that may occur.</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-rust"><span style="color: #51afef; font-style: italic;">let</span> <span style="color: #db5762;">guess</span>: <span style="color: #ECBE7B;">u32</span> <span style="color: #bbc2cf;">=</span> <span style="color: #51afef; font-style: italic;">match</span> guess<span style="color: #bbc2cf;">.</span><span style="color: #c678dd; font-weight: bold; font-style: italic;">trim</span><span style="color: #fff0f5;">()</span><span style="color: #bbc2cf;">.</span><span style="color: #c678dd; font-weight: bold; font-style: italic;">parse</span><span style="color: #fff0f5;">()</span> <span style="color: #fff0f5;">{</span>
+    <span style="color: #51afef;">Ok</span><span style="color: #c678dd;">(</span>num<span style="color: #c678dd;">)</span> =&gt; num,
+    <span style="color: #51afef;">Err</span><span style="color: #c678dd;">(</span>_<span style="color: #c678dd;">)</span> =&gt; <span style="color: #51afef; font-weight: bold;">panic!</span><span style="color: #c678dd;">(</span><span style="color: #98be65;">"Not a number!"</span><span style="color: #c678dd;">)</span>,
+<span style="color: #fff0f5;">}</span><span style="color: #bbc2cf;">;</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orgf532f5b" class="outline-2">
+<h2 id="orgf532f5b"><span class="section-number-2">8.</span> Comparing Values with <code>Ordering</code> and <code>match</code></h2>
+<div class="outline-text-2" id="text-8">
+</div>
+<div id="outline-container-org8c174a3" class="outline-3">
+<h3 id="org8c174a3"><span class="section-number-3">8.1.</span> We can compare values with the <code>Ordering</code> enum</h3>
+<div class="outline-text-3" id="text-8-1">
+<ul class="org-ul">
+<li>import it with <code>use std::cmp::Ordering;</code></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgdf93cd7" class="outline-3">
+<h3 id="orgdf93cd7"><span class="section-number-3">8.2.</span> Sample code</h3>
+<div class="outline-text-3" id="text-8-2">
+<div class="org-src-container">
+<pre class="src src-rust"><span style="color: #51afef; font-style: italic;">match</span> guess<span style="color: #bbc2cf;">.</span><span style="color: #c678dd; font-weight: bold; font-style: italic;">cmp</span><span style="color: #fff0f5;">(</span><span style="color: #bbc2cf;">&amp;</span>secret_number<span style="color: #fff0f5;">)</span> <span style="color: #fff0f5;">{</span>
+    <span style="color: #ECBE7B;">Ordering</span><span style="color: #bbc2cf;">::</span><span style="color: #51afef;">Less</span> =&gt; <span style="color: #51afef; font-weight: bold;">println!</span><span style="color: #c678dd;">(</span><span style="color: #98be65;">"Too small!"</span><span style="color: #c678dd;">)</span>,
+    <span style="color: #ECBE7B;">Ordering</span><span style="color: #bbc2cf;">::</span><span style="color: #51afef;">Greater</span> =&gt; <span style="color: #51afef; font-weight: bold;">println!</span><span style="color: #c678dd;">(</span><span style="color: #98be65;">"Too big!"</span><span style="color: #c678dd;">)</span>,
+    <span style="color: #ECBE7B;">Ordering</span><span style="color: #bbc2cf;">::</span><span style="color: #51afef;">Equal</span> =&gt; <span style="color: #51afef; font-weight: bold;">println!</span><span style="color: #c678dd;">(</span><span style="color: #98be65;">"You win!"</span><span style="color: #c678dd;">)</span>,
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+<ul class="org-ul">
+<li><code>secret_number</code> is being compared with <code>guess</code>, both are <code>ints</code> in this case</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-org7ade868" class="outline-2">
+<h2 id="org7ade868"><span class="section-number-2">9.</span> Random number generation</h2>
+<div class="outline-text-2" id="text-9">
+</div>
+<div id="outline-container-org8a31469" class="outline-3">
+<h3 id="org8a31469"><span class="section-number-3">9.1.</span> Add <code>rand</code> to the <code>cargo.toml</code> file</h3>
+<div class="outline-text-3" id="text-9-1">
+<div class="org-src-container">
+<pre class="src src-conf">[<span style="color: #ECBE7B;">dependencies</span>]
+<span style="color: #db5762;">rand</span> = <span style="color: #98be65;">"0.8.3"</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org21e9334" class="outline-3">
+<h3 id="org21e9334"><span class="section-number-3">9.2.</span> Using rand</h3>
+<div class="outline-text-3" id="text-9-2">
+<ul class="org-ul">
+<li>Import the lib with <code>use rand:Rng;</code></li>
+<li><p>
+Generate a number between 1 and 100 (inclusive)
+</p>
+<div class="org-src-container">
+<pre class="src src-rust"><span style="color: #51afef; font-style: italic;">let</span> <span style="color: #db5762;">generated_number</span> <span style="color: #bbc2cf;">=</span> <span style="color: #a9a1e1;">rand</span><span style="color: #bbc2cf;">::</span><span style="color: #c678dd;">thread_rng</span><span style="color: #fff0f5;">()</span><span style="color: #bbc2cf;">.</span><span style="color: #c678dd; font-weight: bold; font-style: italic;">gen_range</span><span style="color: #fff0f5;">(</span><span style="color: #a9a1e1;">1</span>..=<span style="color: #a9a1e1;">100</span><span style="color: #fff0f5;">)</span><span style="color: #bbc2cf;">;</span>
+</pre>
+</div></li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-orgb2199b1" class="outline-2">
+<h2 id="orgb2199b1"><span class="section-number-2">10.</span> Type Casting</h2>
+<div class="outline-text-2" id="text-10">
+</div>
+<div id="outline-container-org71326de" class="outline-3">
+<h3 id="org71326de"><span class="section-number-3">10.1.</span> Strings</h3>
+<div class="outline-text-3" id="text-10-1">
+<ul class="org-ul">
+<li><p>
+Denote the type casted to, in the variable declaration, here it is <code>u32</code>. Call <code>parse</code> on the <code>String</code> variable.
+</p>
+<div class="org-src-container">
+<pre class="src src-rust"><span style="color: #51afef; font-style: italic;">let</span> <span style="color: #db5762;">my_guess</span> <span style="color: #bbc2cf;">=</span> <span style="color: #98be65;">"45"</span><span style="color: #bbc2cf;">;</span>
+<span style="color: #51afef; font-style: italic;">let</span> <span style="color: #db5762;">my_guess</span> <span style="color: #bbc2cf;">=</span> my_guess<span style="color: #bbc2cf;">.</span><span style="color: #c678dd; font-weight: bold; font-style: italic;">trim</span><span style="color: #fff0f5;">()</span><span style="color: #bbc2cf;">.</span><span style="color: #c678dd; font-weight: bold; font-style: italic;">parse</span><span style="color: #fff0f5;">()</span><span style="color: #bbc2cf;">.</span><span style="color: #c678dd; font-weight: bold; font-style: italic;">expect</span><span style="color: #fff0f5;">(</span><span style="color: #98be65;">"Not a number!"</span><span style="color: #fff0f5;">)</span>
+</pre>
+</div></li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-org2ef550a" class="outline-2">
+<h2 id="org2ef550a"><span class="section-number-2">11.</span> Data Types</h2>
+<div class="outline-text-2" id="text-11">
+</div>
+<div id="outline-container-org077a2cb" class="outline-3">
+<h3 id="org077a2cb"><span class="section-number-3">11.1.</span> Scalar, four primitive types</h3>
+<div class="outline-text-3" id="text-11-1">
+</div>
+<div id="outline-container-org5306afe" class="outline-4">
+<h4 id="org5306afe">Integer</h4>
+<div class="outline-text-4" id="text-org5306afe">
+</div>
+<ul class="org-ul">
+<li><a id="org549e974"></a>Individual Integer Types<br />
+<div class="outline-text-5" id="text-org549e974">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Length</th>
+<th scope="col" class="org-left">Signed</th>
+<th scope="col" class="org-left">Unsigned</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">8 bit</td>
+<td class="org-left"><code>i8</code></td>
+<td class="org-left"><code>u8</code></td>
+</tr>
+
+<tr>
+<td class="org-left">16 bit</td>
+<td class="org-left"><code>i16</code></td>
+<td class="org-left"><code>u16</code></td>
+</tr>
+
+<tr>
+<td class="org-left">32 bit</td>
+<td class="org-left"><code>i32</code> (default)</td>
+<td class="org-left"><code>u32</code></td>
+</tr>
+
+<tr>
+<td class="org-left">64 bit</td>
+<td class="org-left"><code>i64</code></td>
+<td class="org-left"><code>u64</code></td>
+</tr>
+
+<tr>
+<td class="org-left">128 bit</td>
+<td class="org-left"><code>i128</code></td>
+<td class="org-left"><code>u128</code></td>
+</tr>
+
+<tr>
+<td class="org-left">arch</td>
+<td class="org-left"><code>isize</code></td>
+<td class="org-left"><code>usize</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+</li>
+<li><a id="org9adb590"></a>Integer Literals<br />
+<div class="outline-text-5" id="text-org9adb590">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-right" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Literal</th>
+<th scope="col" class="org-left">Example</th>
+<th scope="col" class="org-right">Equivalent</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Number (type suffix)</td>
+<td class="org-left"><code>58u8</code></td>
+<td class="org-right">58</td>
+</tr>
+
+<tr>
+<td class="org-left">Number</td>
+<td class="org-left"><code>1_000</code></td>
+<td class="org-right">1000</td>
+</tr>
+
+<tr>
+<td class="org-left">Decimal</td>
+<td class="org-left"><code>86_400</code></td>
+<td class="org-right">86.400</td>
+</tr>
+
+<tr>
+<td class="org-left">Hex</td>
+<td class="org-left"><code>0xff</code></td>
+<td class="org-right">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">Octal</td>
+<td class="org-left"><code>0o77</code></td>
+<td class="org-right">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">Binary</td>
+<td class="org-left"><code>0b1111_0000</code></td>
+<td class="org-right">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">Byte (u8 only)</td>
+<td class="org-left"><code>b'A'</code></td>
+<td class="org-right">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li>
+</ul>
+</div>
+<div id="outline-container-org2d184e7" class="outline-4">
+<h4 id="org2d184e7">Float</h4>
+<div class="outline-text-4" id="text-org2d184e7">
+</div>
+<ul class="org-ul">
+<li><a id="org20b7902"></a>Individual Float Types<br />
+<div class="outline-text-5" id="text-org20b7902">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Length</th>
+<th scope="col" class="org-left">Notation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">32 bit</td>
+<td class="org-left"><code>f32</code></td>
+</tr>
+
+<tr>
+<td class="org-left">64 bit (default)</td>
+<td class="org-left"><code>f64</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+</li>
+</ul>
+</div>
+<div id="outline-container-orge4e85b8" class="outline-4">
+<h4 id="orge4e85b8">Boolean</h4>
+<div class="outline-text-4" id="text-orge4e85b8">
+</div>
+<ul class="org-ul">
+<li><a id="orgef506ca"></a>The Boolean type is <code>bool</code><br /></li>
+<li><a id="orgb5bd995"></a>Values are: <code>true</code> and <code>false</code><br /></li>
+</ul>
+</div>
+<div id="outline-container-org32ba6ef" class="outline-4">
+<h4 id="org32ba6ef">Char</h4>
+<div class="outline-text-4" id="text-org32ba6ef">
+</div>
+<ul class="org-ul">
+<li><a id="org46853b3"></a>Properties<br />
+<div class="outline-text-5" id="text-org46853b3">
+<ul class="org-ul">
+<li>Is the most primitive alphabetical type in Rust</li>
+</ul>
+</div>
+</li>
+<li><a id="org50bb3ce"></a>Example of declaring a <code>char</code><br />
+<div class="outline-text-5" id="text-org50bb3ce">
+<div class="org-src-container">
+<pre class="src src-rust"><span style="color: #51afef; font-style: italic;">let</span> <span style="color: #db5762;">c</span> <span style="color: #bbc2cf;">=</span> <span style="color: #98be65;">'z'</span><span style="color: #bbc2cf;">;</span>
+<span style="color: #51afef; font-style: italic;">let</span> <span style="color: #db5762;">z</span>: <span style="color: #ECBE7B;">char</span> <span style="color: #bbc2cf;">=</span> <span style="color: #98be65;">'&#8484;'</span><span style="color: #bbc2cf;">;</span> <span style="color: #5B6268;">// with explicit type annotation</span>
+<span style="color: #51afef; font-style: italic;">let</span> <span style="color: #db5762;">heart_eyed_cat</span> <span style="color: #bbc2cf;">=</span> <span style="color: #98be65;">'&#128571;'</span><span style="color: #bbc2cf;">;</span>
+</pre>
+</div>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org35f04ef" class="outline-3">
+<h3 id="org35f04ef"><span class="section-number-3">11.2.</span> Compound</h3>
+<div class="outline-text-3" id="text-11-2">
+</div>
+<div id="outline-container-orgebaaf37" class="outline-4">
+<h4 id="orgebaaf37">Tuple</h4>
+<div class="outline-text-4" id="text-orgebaaf37">
+</div>
+<ul class="org-ul">
+<li><a id="org26aaf00"></a>Properties<br />
+<div class="outline-text-5" id="text-org26aaf00">
+<ul class="org-ul">
+<li>Fixed length, cannot grow or shrink</li>
+<li>Supports a variety of types in each tuple's position</li>
+</ul>
+</div>
+</li>
+<li><a id="org2c3e98a"></a>Declaration, Destructuring and Position Access<br />
+<div class="outline-text-5" id="text-org2c3e98a">
+<div class="org-src-container">
+<pre class="src src-rust"><span style="color: #51afef; font-style: italic;">let</span> <span style="color: #db5762;">tup</span>: <span style="color: #fff0f5;">(</span><span style="color: #ECBE7B;">i32</span>, <span style="color: #ECBE7B;">f64</span>, <span style="color: #ECBE7B;">u8</span><span style="color: #fff0f5;">)</span> <span style="color: #bbc2cf;">=</span> <span style="color: #fff0f5;">(</span><span style="color: #a9a1e1;">500</span>, <span style="color: #a9a1e1;">6.4</span>, <span style="color: #a9a1e1;">1</span><span style="color: #fff0f5;">)</span><span style="color: #bbc2cf;">;</span>
+<span style="color: #51afef; font-style: italic;">let</span> <span style="color: #fff0f5;">(</span><span style="color: #db5762;">x</span>, <span style="color: #db5762;">y</span>, <span style="color: #db5762;">z</span><span style="color: #fff0f5;">)</span> <span style="color: #bbc2cf;">=</span> tup<span style="color: #bbc2cf;">;</span>
+
+<span style="color: #51afef; font-weight: bold;">println!</span><span style="color: #fff0f5;">(</span><span style="color: #98be65;">"The value of y is: {y}"</span><span style="color: #fff0f5;">)</span><span style="color: #bbc2cf;">;</span>
+<span style="color: #51afef; font-weight: bold;">println!</span><span style="color: #fff0f5;">(</span><span style="color: #98be65;">"The value at first position is: {tup.0}"</span><span style="color: #fff0f5;">)</span><span style="color: #bbc2cf;">;</span>
+<span style="color: #51afef; font-weight: bold;">println!</span><span style="color: #fff0f5;">(</span><span style="color: #98be65;">"The value at second position is: {tup.1}"</span><span style="color: #fff0f5;">)</span><span style="color: #bbc2cf;">;</span>
+</pre>
+</div>
+</div>
+</li>
+<li><a id="org1724715"></a>Unit<br />
+<div class="outline-text-5" id="text-org1724715">
+<ul class="org-ul">
+<li>A <code>unit</code> is an empty tuple and is denoted as <code>()</code></li>
+<li>A <code>unit</code> represents an empty value or an empty return type</li>
+<li>Expressions implicitly return the <code>unit</code> value if they don’t return any other value</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div id="outline-container-orge83929d" class="outline-4">
+<h4 id="orge83929d">Array</h4>
+<div class="outline-text-4" id="text-orge83929d">
+</div>
+<ul class="org-ul">
+<li><a id="orgca1e4c0"></a>Properties<br />
+<div class="outline-text-5" id="text-orgca1e4c0">
+<ul class="org-ul">
+<li>Every element has to be of the same type</li>
+<li>Have a fixed length</li>
+<li>Is allocated on the Stack</li>
+<li>Provides a check of <b>out of bounds</b> error at runtime and causes a <code>panic</code></li>
+</ul>
+</div>
+</li>
+<li><a id="org9cbb364"></a>Declaration<br />
+<div class="outline-text-5" id="text-org9cbb364">
+<div class="org-src-container">
+<pre class="src src-rust"><span style="color: #51afef; font-style: italic;">let</span> <span style="color: #db5762;">arr</span> <span style="color: #bbc2cf;">=</span> <span style="color: #fff0f5;">[</span><span style="color: #a9a1e1;">4</span>, <span style="color: #a9a1e1;">8</span>, <span style="color: #a9a1e1;">9</span><span style="color: #fff0f5;">]</span><span style="color: #bbc2cf;">;</span> <span style="color: #5B6268;">// type inferred</span>
+<span style="color: #51afef; font-style: italic;">let</span> <span style="color: #db5762;">arr</span>: <span style="color: #fff0f5;">[</span><span style="color: #ECBE7B;">i32</span><span style="color: #bbc2cf;">;</span> <span style="color: #a9a1e1;">3</span><span style="color: #fff0f5;">]</span> <span style="color: #bbc2cf;">=</span> <span style="color: #fff0f5;">[</span><span style="color: #a9a1e1;">4</span>, <span style="color: #a9a1e1;">8</span>, <span style="color: #a9a1e1;">9</span><span style="color: #fff0f5;">]</span><span style="color: #bbc2cf;">;</span> <span style="color: #5B6268;">// type; length provided</span>
+<span style="color: #51afef; font-style: italic;">let</span> <span style="color: #db5762;">arr</span> <span style="color: #bbc2cf;">=</span> <span style="color: #fff0f5;">[</span><span style="color: #a9a1e1;">3</span><span style="color: #bbc2cf;">;</span> <span style="color: #a9a1e1;">5</span><span style="color: #fff0f5;">]</span><span style="color: #bbc2cf;">;</span> <span style="color: #5B6268;">// is equivalent to [3, 3, 3, 3, 3]</span>
+</pre>
+</div>
+</div>
+</li>
+<li><a id="org4ada869"></a>Accessing Elements<br />
+<div class="outline-text-5" id="text-org4ada869">
+<div class="org-src-container">
+<pre class="src src-rust"><span style="color: #51afef; font-style: italic;">let</span> <span style="color: #db5762;">arr</span> <span style="color: #bbc2cf;">=</span> <span style="color: #fff0f5;">[</span><span style="color: #a9a1e1;">4</span>, <span style="color: #a9a1e1;">8</span>, <span style="color: #a9a1e1;">9</span><span style="color: #fff0f5;">]</span><span style="color: #bbc2cf;">;</span> <span style="color: #5B6268;">// type inferred</span>
+<span style="color: #51afef; font-style: italic;">let</span> <span style="color: #db5762;">first_element</span> <span style="color: #bbc2cf;">=</span> arr<span style="color: #fff0f5;">[</span><span style="color: #a9a1e1;">0</span><span style="color: #fff0f5;">]</span><span style="color: #bbc2cf;">;</span>
+<span style="color: #51afef; font-style: italic;">let</span> <span style="color: #db5762;">second_element</span> <span style="color: #bbc2cf;">=</span> arr<span style="color: #fff0f5;">[</span><span style="color: #a9a1e1;">1</span><span style="color: #fff0f5;">]</span><span style="color: #bbc2cf;">;</span>
+</pre>
+</div>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-orgf8fbe8a" class="outline-2">
+<h2 id="orgf8fbe8a"><span class="section-number-2">12.</span> Functions</h2>
+<div class="outline-text-2" id="text-12">
+</div>
+<div id="outline-container-org6c5f129" class="outline-3">
+<h3 id="org6c5f129"><span class="section-number-3">12.1.</span> Declaring a function</h3>
+<div class="outline-text-3" id="text-12-1">
+<ul class="org-ul">
+<li>Functions are declared with the <code>fn</code> keyword</li>
+<li>The rest is standard, as in: parameters/arguments in brackets and the function body in curly brackets</li>
+<li>The return type is declared with this <code>-&gt;</code> symbol follow by the type, e.g. <code>-&gt; i32</code></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org086106e" class="outline-3">
+<h3 id="org086106e"><span class="section-number-3">12.2.</span> Examples</h3>
+<div class="outline-text-3" id="text-12-2">
+<div class="org-src-container">
+<pre class="src src-rust"><span style="color: #51afef; font-style: italic;">fn</span> <span style="color: #c678dd;">main</span><span style="color: #fff0f5;">()</span> <span style="color: #fff0f5;">{</span>
+    <span style="color: #c678dd;">another_function</span><span style="color: #c678dd;">()</span><span style="color: #bbc2cf;">;</span>
+    <span style="color: #c678dd;">print_value</span><span style="color: #c678dd;">(</span><span style="color: #a9a1e1;">44</span><span style="color: #c678dd;">)</span><span style="color: #bbc2cf;">;</span>
+    <span style="color: #51afef; font-style: italic;">let</span> <span style="color: #db5762;">result</span> <span style="color: #bbc2cf;">=</span> <span style="color: #c678dd;">multiply_by_two</span><span style="color: #c678dd;">(</span><span style="color: #a9a1e1;">40</span><span style="color: #c678dd;">)</span><span style="color: #bbc2cf;">;</span>
+<span style="color: #fff0f5;">}</span>
+
+<span style="color: #51afef; font-style: italic;">fn</span> <span style="color: #c678dd;">another_function</span><span style="color: #fff0f5;">()</span> <span style="color: #fff0f5;">{</span>
+    <span style="color: #51afef; font-weight: bold;">println!</span><span style="color: #c678dd;">(</span><span style="color: #98be65;">"Hello, world!"</span><span style="color: #c678dd;">)</span><span style="color: #bbc2cf;">;</span>
+<span style="color: #fff0f5;">}</span>
+
+<span style="color: #51afef; font-style: italic;">fn</span> <span style="color: #c678dd;">print_value</span><span style="color: #fff0f5;">(</span><span style="color: #db5762;">value</span>: <span style="color: #ECBE7B;">i32</span><span style="color: #fff0f5;">)</span> <span style="color: #fff0f5;">{</span>
+    <span style="color: #51afef; font-weight: bold;">println!</span><span style="color: #c678dd;">(</span><span style="color: #98be65;">"Value is: {value}"</span><span style="color: #c678dd;">)</span><span style="color: #bbc2cf;">;</span>
+<span style="color: #fff0f5;">}</span>
+
+<span style="color: #5B6268;">// Note that we don't need to write return if it is a simple example</span>
+<span style="color: #5B6268;">// Also note that there is no semicolon for this implicit return type</span>
+<span style="color: #51afef; font-style: italic;">fn</span> <span style="color: #c678dd;">multiply_by_two</span><span style="color: #fff0f5;">(</span><span style="color: #db5762;">value</span>: <span style="color: #ECBE7B;">i32</span><span style="color: #fff0f5;">)</span> -&gt; <span style="color: #ECBE7B;">i32</span> <span style="color: #fff0f5;">{</span>
+    value <span style="color: #bbc2cf;">*</span> <span style="color: #a9a1e1;">2</span>
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org50c30e3" class="outline-2">
+<h2 id="org50c30e3"><span class="section-number-2">13.</span> Control Flow</h2>
+<div class="outline-text-2" id="text-13">
+</div>
+<div id="outline-container-org2e14c31" class="outline-3">
+<h3 id="org2e14c31"><span class="section-number-3">13.1.</span> <code>if</code> Statements</h3>
+<div class="outline-text-3" id="text-13-1">
+<ul class="org-ul">
+<li>Are the same as in any other language</li>
+<li>Strictly require a <code>bool</code></li>
+<li>Standard combinations of <code>if</code>, <code>else if</code>, <code>else</code> are valid</li>
+</ul>
+</div>
+<div id="outline-container-orge0828fc" class="outline-4">
+<h4 id="orge0828fc"><code>if</code> in a <code>let</code></h4>
+<div class="outline-text-4" id="text-orge0828fc">
+<ul class="org-ul">
+<li>The example below will return either a 5 or a 6 depending on the <code>condition</code></li>
+<li>This is a nifty feature of Rust's expressions that are capable of returning values</li>
+<li>Remember that chains of <code>if</code>, <code>else if</code>, <code>else</code> must all return the same type, otherwise the type would be mixed, which is not allowed</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-rust"><span style="color: #51afef; font-style: italic;">let</span> <span style="color: #db5762;">number</span> <span style="color: #bbc2cf;">=</span> <span style="color: #51afef; font-style: italic;">if</span> condition <span style="color: #fff0f5;">{</span> <span style="color: #a9a1e1;">5</span> <span style="color: #fff0f5;">}</span> <span style="color: #51afef; font-style: italic;">else</span> <span style="color: #fff0f5;">{</span> <span style="color: #a9a1e1;">6</span> <span style="color: #fff0f5;">}</span><span style="color: #bbc2cf;">;</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orgab8b786" class="outline-3">
+<h3 id="orgab8b786"><span class="section-number-3">13.2.</span> Infinite <code>loop</code></h3>
+<div class="outline-text-3" id="text-13-2">
+</div>
+<div id="outline-container-org44700cc" class="outline-4">
+<h4 id="org44700cc"><code>loop</code> Example</h4>
+<div class="outline-text-4" id="text-org44700cc">
+<div class="org-src-container">
+<pre class="src src-rust"><span style="color: #51afef; font-style: italic;">loop</span> <span style="color: #fff0f5;">{</span>
+    <span style="color: #5B6268;">// infinite loop code here</span>
+    <span style="color: #5B6268;">// exit out of loop with break</span>
+    <span style="color: #51afef; font-style: italic;">break</span><span style="color: #bbc2cf;">;</span>
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgb0b172d" class="outline-4">
+<h4 id="orgb0b172d">Returning a value from a <code>loop</code> with <code>break</code></h4>
+<div class="outline-text-4" id="text-orgb0b172d">
+<div class="org-src-container">
+<pre class="src src-rust"><span style="color: #51afef; font-style: italic;">let</span> <span style="color: #db5762;">result</span> <span style="color: #bbc2cf;">=</span> <span style="color: #51afef; font-style: italic;">loop</span> <span style="color: #fff0f5;">{</span>
+    counter += <span style="color: #a9a1e1;">1</span><span style="color: #bbc2cf;">;</span>
+
+    <span style="color: #51afef; font-style: italic;">if</span> counter <span style="color: #bbc2cf;">==</span> <span style="color: #a9a1e1;">10</span> <span style="color: #c678dd;">{</span>
+        <span style="color: #51afef; font-style: italic;">break</span> counter <span style="color: #bbc2cf;">*</span> <span style="color: #a9a1e1;">2</span><span style="color: #bbc2cf;">;</span>
+    <span style="color: #c678dd;">}</span>
+<span style="color: #fff0f5;">}</span><span style="color: #bbc2cf;">;</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org1210ff9" class="outline-4">
+<h4 id="org1210ff9">Using <code>loop</code> labels</h4>
+<div class="outline-text-4" id="text-org1210ff9">
+<ul class="org-ul">
+<li>Labels <b>MUST</b> start with a single apostrophe</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-rust"><span style="color: #51afef; font-style: italic;">fn</span> <span style="color: #c678dd;">main</span><span style="color: #fff0f5;">()</span> <span style="color: #fff0f5;">{</span>
+    <span style="color: #51afef; font-style: italic;">let</span> <span style="color: #51afef; font-style: italic;">mut</span> <span style="color: #db5762;">count</span> <span style="color: #bbc2cf;">=</span> <span style="color: #a9a1e1;">0</span><span style="color: #bbc2cf;">;</span>
+    <span style="color: #bbc2cf;">'</span>counting_up: <span style="color: #51afef; font-style: italic;">loop</span> <span style="color: #c678dd;">{</span>
+        <span style="color: #51afef; font-weight: bold;">println!</span><span style="color: #98be65;">(</span><span style="color: #98be65;">"count = {count}"</span><span style="color: #98be65;">)</span><span style="color: #bbc2cf;">;</span>
+        <span style="color: #51afef; font-style: italic;">let</span> <span style="color: #51afef; font-style: italic;">mut</span> <span style="color: #db5762;">remaining</span> <span style="color: #bbc2cf;">=</span> <span style="color: #a9a1e1;">10</span><span style="color: #bbc2cf;">;</span>
+
+        <span style="color: #51afef; font-style: italic;">loop</span> <span style="color: #98be65;">{</span>
+            <span style="color: #51afef; font-weight: bold;">println!</span><span style="color: #00bfff;">(</span><span style="color: #98be65;">"remaining = {remaining}"</span><span style="color: #00bfff;">)</span><span style="color: #bbc2cf;">;</span>
+            <span style="color: #51afef; font-style: italic;">if</span> remaining <span style="color: #bbc2cf;">==</span> <span style="color: #a9a1e1;">9</span> <span style="color: #00bfff;">{</span>
+                <span style="color: #51afef; font-style: italic;">break</span><span style="color: #bbc2cf;">;</span>
+            <span style="color: #00bfff;">}</span>
+            <span style="color: #51afef; font-style: italic;">if</span> count <span style="color: #bbc2cf;">==</span> <span style="color: #a9a1e1;">2</span> <span style="color: #00bfff;">{</span>
+                <span style="color: #51afef; font-style: italic;">break</span> <span style="color: #bbc2cf;">'</span>counting_up<span style="color: #bbc2cf;">;</span>
+            <span style="color: #00bfff;">}</span>
+            remaining -= <span style="color: #a9a1e1;">1</span><span style="color: #bbc2cf;">;</span>
+        <span style="color: #98be65;">}</span>
+
+        count += <span style="color: #a9a1e1;">1</span><span style="color: #bbc2cf;">;</span>
+    <span style="color: #c678dd;">}</span>
+    <span style="color: #51afef; font-weight: bold;">println!</span><span style="color: #c678dd;">(</span><span style="color: #98be65;">"End count = {count}"</span><span style="color: #c678dd;">)</span><span style="color: #bbc2cf;">;</span>
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orge0bc6f6" class="outline-3">
+<h3 id="orge0bc6f6"><span class="section-number-3">13.3.</span> Conditional <code>while</code> loop</h3>
+<div class="outline-text-3" id="text-13-3">
+<ul class="org-ul">
+<li>Works the exact same way as in most languages, expect the missing brackets</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-rust"><span style="color: #51afef; font-style: italic;">let</span> <span style="color: #51afef; font-style: italic;">mut</span> <span style="color: #db5762;">number</span> <span style="color: #bbc2cf;">=</span> <span style="color: #a9a1e1;">3</span><span style="color: #bbc2cf;">;</span>
+
+<span style="color: #51afef; font-style: italic;">while</span> number <span style="color: #bbc2cf;">!=</span> <span style="color: #a9a1e1;">0</span> <span style="color: #fff0f5;">{</span>
+    <span style="color: #51afef; font-weight: bold;">println!</span><span style="color: #c678dd;">(</span><span style="color: #98be65;">"{number}!"</span><span style="color: #c678dd;">)</span><span style="color: #bbc2cf;">;</span>
+
+    number -= <span style="color: #a9a1e1;">1</span><span style="color: #bbc2cf;">;</span>
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgaed9d67" class="outline-3">
+<h3 id="orgaed9d67"><span class="section-number-3">13.4.</span> Looping through Collections with <code>for</code></h3>
+<div class="outline-text-3" id="text-13-4">
+</div>
+<div id="outline-container-org26953c4" class="outline-4">
+<h4 id="org26953c4">Looping over an array</h4>
+<div class="outline-text-4" id="text-org26953c4">
+<div class="org-src-container">
+<pre class="src src-rust"><span style="color: #51afef; font-style: italic;">let</span> <span style="color: #db5762;">a</span> <span style="color: #bbc2cf;">=</span> <span style="color: #fff0f5;">[</span><span style="color: #a9a1e1;">10</span>, <span style="color: #a9a1e1;">20</span>, <span style="color: #a9a1e1;">30</span>, <span style="color: #a9a1e1;">40</span>, <span style="color: #a9a1e1;">50</span><span style="color: #fff0f5;">]</span><span style="color: #bbc2cf;">;</span>
+
+<span style="color: #51afef; font-style: italic;">for</span> <span style="color: #db5762;">element</span> <span style="color: #51afef; font-style: italic;">in</span> a <span style="color: #fff0f5;">{</span>
+    <span style="color: #51afef; font-weight: bold;">println!</span><span style="color: #c678dd;">(</span><span style="color: #98be65;">"the value is: {element}"</span><span style="color: #c678dd;">)</span><span style="color: #bbc2cf;">;</span>
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org2ea42e1" class="outline-4">
+<h4 id="org2ea42e1">Example of using a <code>Range</code></h4>
+<div class="outline-text-4" id="text-org2ea42e1">
+<div class="org-src-container">
+<pre class="src src-rust"><span style="color: #5B6268;">// forward count</span>
+<span style="color: #51afef; font-style: italic;">for</span> <span style="color: #db5762;">number</span> <span style="color: #51afef; font-style: italic;">in</span> <span style="color: #fff0f5;">(</span><span style="color: #a9a1e1;">1</span>..<span style="color: #a9a1e1;">4</span><span style="color: #fff0f5;">)</span> <span style="color: #fff0f5;">{</span>
+    <span style="color: #51afef; font-weight: bold;">println!</span><span style="color: #c678dd;">(</span><span style="color: #98be65;">"{number}!"</span><span style="color: #c678dd;">)</span><span style="color: #bbc2cf;">;</span>
+<span style="color: #fff0f5;">}</span>
+<span style="color: #5B6268;">// backward count (reversing the Range with rev())</span>
+<span style="color: #51afef; font-style: italic;">for</span> <span style="color: #db5762;">number</span> <span style="color: #51afef; font-style: italic;">in</span> <span style="color: #fff0f5;">(</span><span style="color: #a9a1e1;">1</span>..<span style="color: #a9a1e1;">4</span><span style="color: #fff0f5;">)</span><span style="color: #bbc2cf;">.</span><span style="color: #c678dd; font-weight: bold; font-style: italic;">rev</span><span style="color: #fff0f5;">()</span> <span style="color: #fff0f5;">{</span>
+    <span style="color: #51afef; font-weight: bold;">println!</span><span style="color: #c678dd;">(</span><span style="color: #98be65;">"{number}!"</span><span style="color: #c678dd;">)</span><span style="color: #bbc2cf;">;</span>
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org74d56d5" class="outline-4">
+<h4 id="org74d56d5">Enumerating a collection</h4>
+<div class="outline-text-4" id="text-org74d56d5">
+<ul class="org-ul">
+<li>Calling <code>enumerate</code> on a <code>iterable</code> will return a tuple (index, &amp;item).</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-rust"><span style="color: #51afef; font-style: italic;">let</span> <span style="color: #db5762;">s</span> <span style="color: #bbc2cf;">=</span> <span style="color: #ECBE7B;">String</span><span style="color: #bbc2cf;">::</span><span style="color: #c678dd;">from</span><span style="color: #fff0f5;">(</span><span style="color: #98be65;">"Hello World"</span><span style="color: #fff0f5;">)</span><span style="color: #bbc2cf;">;</span>
+<span style="color: #51afef; font-style: italic;">let</span> <span style="color: #db5762;">bytes</span> <span style="color: #bbc2cf;">=</span> s<span style="color: #bbc2cf;">.</span><span style="color: #c678dd; font-weight: bold; font-style: italic;">as_bytes</span><span style="color: #fff0f5;">()</span><span style="color: #bbc2cf;">;</span>
+
+<span style="color: #51afef; font-style: italic;">for</span> <span style="color: #fff0f5;">(</span><span style="color: #db5762;">i</span>, <span style="color: #bbc2cf;">&amp;</span>item<span style="color: #fff0f5;">)</span> <span style="color: #51afef; font-style: italic;">in</span> bytes<span style="color: #bbc2cf;">.</span><span style="color: #c678dd; font-weight: bold; font-style: italic;">iter</span><span style="color: #fff0f5;">()</span><span style="color: #bbc2cf;">.</span><span style="color: #c678dd; font-weight: bold; font-style: italic;">enumerate</span><span style="color: #fff0f5;">()</span> <span style="color: #fff0f5;">{</span>
+    <span style="color: #5B6268;">// do something with i</span>
+    <span style="color: #5B6268;">// do something with &amp;item</span>
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orgd303c0a" class="outline-2">
+<h2 id="orgd303c0a"><span class="section-number-2">14.</span> Ownership</h2>
+<div class="outline-text-2" id="text-14">
+</div>
+<div id="outline-container-orgb120355" class="outline-3">
+<h3 id="orgb120355"><span class="section-number-3">14.1.</span> Rules</h3>
+<div class="outline-text-3" id="text-14-1">
+<ul class="org-ul">
+<li>Each value in Rust has an owner.</li>
+<li>There can only be one owner at a time.</li>
+<li>When the owner goes out of scope, the value will be dropped.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org3eca843" class="outline-3">
+<h3 id="org3eca843"><span class="section-number-3">14.2.</span> Basic example of Ownership</h3>
+<div class="outline-text-3" id="text-14-2">
+<div class="org-src-container">
+<pre class="src src-rust"><span style="color: #51afef; font-style: italic;">fn</span> <span style="color: #c678dd;">main</span><span style="color: #fff0f5;">()</span> <span style="color: #fff0f5;">{</span>
+    <span style="color: #c678dd;">{</span>                      <span style="color: #5B6268;">// s is not valid here, it&#8217;s not yet declared</span>
+        <span style="color: #51afef; font-style: italic;">let</span> <span style="color: #db5762;">s</span> <span style="color: #bbc2cf;">=</span> <span style="color: #98be65;">"hello"</span><span style="color: #bbc2cf;">;</span>   <span style="color: #5B6268;">// s is valid from this point forward</span>
+
+        <span style="color: #5B6268;">// do stuff with s</span>
+    <span style="color: #c678dd;">}</span>                      <span style="color: #5B6268;">// this scope is now over, and s is no longer valid</span>
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orga3ad21a" class="outline-3">
+<h3 id="orga3ad21a"><span class="section-number-3">14.3.</span> Transferring Ownership</h3>
+<div class="outline-text-3" id="text-14-3">
+</div>
+<div id="outline-container-orga63c2f2" class="outline-4">
+<h4 id="orga63c2f2">Basics</h4>
+<div class="outline-text-4" id="text-orga63c2f2">
+<ul class="org-ul">
+<li>Keeping the rules of ownership in mind the code below will cause an error</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-rust"><span style="color: #51afef; font-style: italic;">let</span> <span style="color: #db5762;">s1</span> <span style="color: #bbc2cf;">=</span> <span style="color: #ECBE7B;">String</span><span style="color: #bbc2cf;">::</span><span style="color: #c678dd;">from</span><span style="color: #fff0f5;">(</span><span style="color: #98be65;">"hello"</span><span style="color: #fff0f5;">)</span><span style="color: #bbc2cf;">;</span>
+<span style="color: #51afef; font-style: italic;">let</span> <span style="color: #db5762;">s2</span> <span style="color: #bbc2cf;">=</span> s1<span style="color: #bbc2cf;">;</span> <span style="color: #5B6268;">// s1 moved to s2 here (literally the pointer has moved and s1 is dropped)</span>
+
+<span style="color: #51afef; font-weight: bold;">println!</span><span style="color: #fff0f5;">(</span><span style="color: #98be65;">"{}, world!"</span>, s1<span style="color: #fff0f5;">)</span><span style="color: #bbc2cf;">;</span> <span style="color: #5B6268;">// s1 is not available anymore</span>
+</pre>
+</div>
+<ul class="org-ul">
+<li>But writing it like this causes no errors</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-rust"><span style="color: #51afef; font-style: italic;">let</span> <span style="color: #db5762;">s1</span> <span style="color: #bbc2cf;">=</span> <span style="color: #ECBE7B;">String</span><span style="color: #bbc2cf;">::</span><span style="color: #c678dd;">from</span><span style="color: #fff0f5;">(</span><span style="color: #98be65;">"hello"</span><span style="color: #fff0f5;">)</span><span style="color: #bbc2cf;">;</span>
+<span style="color: #51afef; font-weight: bold;">println!</span><span style="color: #fff0f5;">(</span><span style="color: #98be65;">"{}, world!"</span>, s1<span style="color: #fff0f5;">)</span><span style="color: #bbc2cf;">;</span> <span style="color: #5B6268;">// s1 is still valid here</span>
+
+<span style="color: #51afef; font-style: italic;">let</span> <span style="color: #db5762;">s2</span> <span style="color: #bbc2cf;">=</span> s1<span style="color: #bbc2cf;">;</span> <span style="color: #5B6268;">// s1 is not valid anymore, because its ownership moves to s2</span>
+<span style="color: #51afef; font-weight: bold;">println!</span><span style="color: #fff0f5;">(</span><span style="color: #98be65;">"{}, world!"</span>, s2<span style="color: #fff0f5;">)</span><span style="color: #bbc2cf;">;</span>
+</pre>
+</div>
+<ul class="org-ul">
+<li>One could also utilize cloning o make sure that both variables have ownership of their data. Please note that copying/cloning is automatic for primitive types.</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-rust"><span style="color: #51afef; font-style: italic;">let</span> <span style="color: #db5762;">s1</span> <span style="color: #bbc2cf;">=</span> <span style="color: #ECBE7B;">String</span><span style="color: #bbc2cf;">::</span><span style="color: #c678dd;">from</span><span style="color: #fff0f5;">(</span><span style="color: #98be65;">"hello"</span><span style="color: #fff0f5;">)</span><span style="color: #bbc2cf;">;</span>
+<span style="color: #51afef; font-style: italic;">let</span> <span style="color: #db5762;">s2</span> <span style="color: #bbc2cf;">=</span> s1<span style="color: #bbc2cf;">.</span><span style="color: #c678dd; font-weight: bold; font-style: italic;">clone</span><span style="color: #fff0f5;">()</span><span style="color: #bbc2cf;">;</span> <span style="color: #5B6268;">// cloning data, i.e. a new pointer is created here</span>
+
+<span style="color: #51afef; font-weight: bold;">println!</span><span style="color: #fff0f5;">(</span><span style="color: #98be65;">"s1 = {}, s2 = {}"</span>, s1, s2<span style="color: #fff0f5;">)</span><span style="color: #bbc2cf;">;</span>
+</pre>
+</div>
+<ul class="org-ul">
+<li>Rust's uniqueness is all about keeping a track of pointers to data on the heap and reassuring that there is always only one owner of the data</li>
+<li>So what about functions? Well, functions can take the ownership and give it back, or they can utilize <a href="#org5a3005d">Borrowing</a> to temporarily gain access, but not the ownership</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org6cf3fca" class="outline-4">
+<h4 id="org6cf3fca">Example of function that takes ownership and an example of a function that makes a copy (due to the parameter being a primitive)</h4>
+<div class="outline-text-4" id="text-org6cf3fca">
+<div class="org-src-container">
+<pre class="src src-rust"><span style="color: #51afef; font-style: italic;">fn</span> <span style="color: #c678dd;">main</span><span style="color: #fff0f5;">()</span> <span style="color: #fff0f5;">{</span>
+    <span style="color: #51afef; font-style: italic;">let</span> <span style="color: #db5762;">s</span> <span style="color: #bbc2cf;">=</span> <span style="color: #ECBE7B;">String</span><span style="color: #bbc2cf;">::</span><span style="color: #c678dd;">from</span><span style="color: #c678dd;">(</span><span style="color: #98be65;">"hello"</span><span style="color: #c678dd;">)</span><span style="color: #bbc2cf;">;</span>  <span style="color: #5B6268;">// s comes into scope</span>
+
+    <span style="color: #c678dd;">takes_ownership</span><span style="color: #c678dd;">(</span>s<span style="color: #c678dd;">)</span><span style="color: #bbc2cf;">;</span>             <span style="color: #5B6268;">// s's value moves into the function...</span>
+                                    <span style="color: #5B6268;">// ... and so is no longer valid here</span>
+
+    <span style="color: #51afef; font-style: italic;">let</span> <span style="color: #db5762;">x</span> <span style="color: #bbc2cf;">=</span> <span style="color: #a9a1e1;">5</span><span style="color: #bbc2cf;">;</span>                      <span style="color: #5B6268;">// x comes into scope</span>
+
+    <span style="color: #c678dd;">makes_copy</span><span style="color: #c678dd;">(</span>x<span style="color: #c678dd;">)</span><span style="color: #bbc2cf;">;</span>                  <span style="color: #5B6268;">// x would move into the function,</span>
+                                    <span style="color: #5B6268;">// but i32 is Copy, so it's okay to still</span>
+                                    <span style="color: #5B6268;">// use x afterward</span>
+
+<span style="color: #fff0f5;">}</span> <span style="color: #5B6268;">// Here, x goes out of scope, then s. But because s's value was moved, nothing</span>
+  <span style="color: #5B6268;">// special happens.</span>
+
+<span style="color: #51afef; font-style: italic;">fn</span> <span style="color: #c678dd;">takes_ownership</span><span style="color: #fff0f5;">(</span><span style="color: #db5762;">some_string</span>: <span style="color: #ECBE7B;">String</span><span style="color: #fff0f5;">)</span> <span style="color: #fff0f5;">{</span> <span style="color: #5B6268;">// some_string comes into scope</span>
+    <span style="color: #51afef; font-weight: bold;">println!</span><span style="color: #c678dd;">(</span><span style="color: #98be65;">"{}"</span>, some_string<span style="color: #c678dd;">)</span><span style="color: #bbc2cf;">;</span>
+<span style="color: #fff0f5;">}</span> <span style="color: #5B6268;">// Here, some_string goes out of scope and `drop` is called. The backing</span>
+  <span style="color: #5B6268;">// memory is freed.</span>
+
+<span style="color: #51afef; font-style: italic;">fn</span> <span style="color: #c678dd;">makes_copy</span><span style="color: #fff0f5;">(</span><span style="color: #db5762;">some_integer</span>: <span style="color: #ECBE7B;">i32</span><span style="color: #fff0f5;">)</span> <span style="color: #fff0f5;">{</span> <span style="color: #5B6268;">// some_integer comes into scope</span>
+    <span style="color: #51afef; font-weight: bold;">println!</span><span style="color: #c678dd;">(</span><span style="color: #98be65;">"{}"</span>, some_integer<span style="color: #c678dd;">)</span><span style="color: #bbc2cf;">;</span>
+<span style="color: #fff0f5;">}</span> <span style="color: #5B6268;">// Here, some_integer goes out of scope. Nothing special happens.</span>
+
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org7936f8b" class="outline-4">
+<h4 id="org7936f8b">Example of a function that takes ownership and gives it back</h4>
+<div class="outline-text-4" id="text-org7936f8b">
+<div class="org-src-container">
+<pre class="src src-rust"><span style="color: #51afef; font-style: italic;">fn</span> <span style="color: #c678dd;">main</span><span style="color: #fff0f5;">()</span> <span style="color: #fff0f5;">{</span>
+    <span style="color: #51afef; font-style: italic;">let</span> <span style="color: #db5762;">s1</span> <span style="color: #bbc2cf;">=</span> <span style="color: #c678dd;">gives_ownership</span><span style="color: #c678dd;">()</span><span style="color: #bbc2cf;">;</span>         <span style="color: #5B6268;">// gives_ownership moves its return</span>
+                                        <span style="color: #5B6268;">// value into s1</span>
+
+    <span style="color: #51afef; font-style: italic;">let</span> <span style="color: #db5762;">s2</span> <span style="color: #bbc2cf;">=</span> <span style="color: #ECBE7B;">String</span><span style="color: #bbc2cf;">::</span><span style="color: #c678dd;">from</span><span style="color: #c678dd;">(</span><span style="color: #98be65;">"hello"</span><span style="color: #c678dd;">)</span><span style="color: #bbc2cf;">;</span>     <span style="color: #5B6268;">// s2 comes into scope</span>
+
+    <span style="color: #51afef; font-style: italic;">let</span> <span style="color: #db5762;">s3</span> <span style="color: #bbc2cf;">=</span> <span style="color: #c678dd;">takes_and_gives_back</span><span style="color: #c678dd;">(</span>s2<span style="color: #c678dd;">)</span><span style="color: #bbc2cf;">;</span>  <span style="color: #5B6268;">// s2 is moved into</span>
+                                        <span style="color: #5B6268;">// takes_and_gives_back, which also</span>
+                                        <span style="color: #5B6268;">// moves its return value into s3</span>
+<span style="color: #fff0f5;">}</span> <span style="color: #5B6268;">// Here, s3 goes out of scope and is dropped. s2 was moved, so nothing</span>
+  <span style="color: #5B6268;">// happens. s1 goes out of scope and is dropped.</span>
+
+<span style="color: #51afef; font-style: italic;">fn</span> <span style="color: #c678dd;">gives_ownership</span><span style="color: #fff0f5;">()</span> -&gt; <span style="color: #ECBE7B;">String</span> <span style="color: #fff0f5;">{</span>             <span style="color: #5B6268;">// gives_ownership will move its</span>
+                                             <span style="color: #5B6268;">// return value into the function</span>
+                                             <span style="color: #5B6268;">// that calls it</span>
+
+    <span style="color: #51afef; font-style: italic;">let</span> <span style="color: #db5762;">some_string</span> <span style="color: #bbc2cf;">=</span> <span style="color: #ECBE7B;">String</span><span style="color: #bbc2cf;">::</span><span style="color: #c678dd;">from</span><span style="color: #c678dd;">(</span><span style="color: #98be65;">"yours"</span><span style="color: #c678dd;">)</span><span style="color: #bbc2cf;">;</span> <span style="color: #5B6268;">// some_string comes into scope</span>
+
+    some_string                              <span style="color: #5B6268;">// some_string is returned and</span>
+                                             <span style="color: #5B6268;">// moves out to the calling</span>
+                                             <span style="color: #5B6268;">// function</span>
+<span style="color: #fff0f5;">}</span>
+
+<span style="color: #5B6268;">// This function takes a String and returns one</span>
+<span style="color: #51afef; font-style: italic;">fn</span> <span style="color: #c678dd;">takes_and_gives_back</span><span style="color: #fff0f5;">(</span><span style="color: #db5762;">a_string</span>: <span style="color: #ECBE7B;">String</span><span style="color: #fff0f5;">)</span> -&gt; <span style="color: #ECBE7B;">String</span> <span style="color: #fff0f5;">{</span> <span style="color: #5B6268;">// a_string comes into</span>
+                                                      <span style="color: #5B6268;">// scope</span>
+
+    a_string  <span style="color: #5B6268;">// a_string is returned and moves out to the calling function</span>
+<span style="color: #fff0f5;">}</span>
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org5a3005d" class="outline-3">
+<h3 id="org5a3005d"><span class="section-number-3">14.4.</span> Borrowing</h3>
+<div class="outline-text-3" id="text-14-4">
+<ul class="org-ul">
+<li>Is what it sounds like. You literally borrow a value's ownership, without claiming ownership. The borrowing is done via <b>references</b>, as in the ampersand symbol, just like in many other languages.</li>
+</ul>
+</div>
+<div id="outline-container-orgfcb8e5e" class="outline-4">
+<h4 id="orgfcb8e5e">Rules</h4>
+<div class="outline-text-4" id="text-orgfcb8e5e">
+<ul class="org-ul">
+<li>At any given time, you can have either one mutable reference or any number of immutable references.</li>
+<li>References must always be valid.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org5e16a52" class="outline-4">
+<h4 id="org5e16a52">Basic example of a borrowed value</h4>
+<div class="outline-text-4" id="text-org5e16a52">
+<ul class="org-ul">
+<li>Here <code>calculate_length</code> borrows the <code>String s</code> and returns its length without the need to give back the ownership of <code>s</code>, it is only borrowed</li>
+<li>Borrows are immutable by default</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-rust"><span style="color: #51afef; font-style: italic;">fn</span> <span style="color: #c678dd;">main</span><span style="color: #fff0f5;">()</span> <span style="color: #fff0f5;">{</span>
+    <span style="color: #51afef; font-style: italic;">let</span> <span style="color: #db5762;">s1</span> <span style="color: #bbc2cf;">=</span> <span style="color: #ECBE7B;">String</span><span style="color: #bbc2cf;">::</span><span style="color: #c678dd;">from</span><span style="color: #c678dd;">(</span><span style="color: #98be65;">"hello"</span><span style="color: #c678dd;">)</span><span style="color: #bbc2cf;">;</span>
+
+    <span style="color: #51afef; font-style: italic;">let</span> <span style="color: #db5762;">len</span> <span style="color: #bbc2cf;">=</span> <span style="color: #c678dd;">calculate_length</span><span style="color: #c678dd;">(</span><span style="color: #bbc2cf;">&amp;</span>s1<span style="color: #c678dd;">)</span><span style="color: #bbc2cf;">;</span>
+
+    <span style="color: #51afef; font-weight: bold;">println!</span><span style="color: #c678dd;">(</span><span style="color: #98be65;">"The length of '{}' is {}."</span>, s1, len<span style="color: #c678dd;">)</span><span style="color: #bbc2cf;">;</span>
+<span style="color: #fff0f5;">}</span>
+
+<span style="color: #51afef; font-style: italic;">fn</span> <span style="color: #c678dd;">calculate_length</span><span style="color: #fff0f5;">(</span><span style="color: #db5762;">s</span>: <span style="color: #bbc2cf;">&amp;</span><span style="color: #ECBE7B;">String</span><span style="color: #fff0f5;">)</span> -&gt; <span style="color: #ECBE7B;">usize</span> <span style="color: #fff0f5;">{</span> <span style="color: #5B6268;">// s is a reference to a String</span>
+    s<span style="color: #bbc2cf;">.</span><span style="color: #c678dd; font-weight: bold; font-style: italic;">len</span><span style="color: #c678dd;">()</span>
+<span style="color: #fff0f5;">}</span> <span style="color: #5B6268;">// Here, s goes out of scope. But because it does not have ownership of what</span>
+  <span style="color: #5B6268;">// it refers to, it is not dropped.</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgb3e0627" class="outline-4">
+<h4 id="orgb3e0627">If we want to borrow and change the value we must create a mutable reference with <code>&amp;mut Type</code></h4>
+<div class="outline-text-4" id="text-orgb3e0627">
+<div class="org-src-container">
+<pre class="src src-rust"><span style="color: #51afef; font-style: italic;">fn</span> <span style="color: #c678dd;">main</span><span style="color: #fff0f5;">()</span> <span style="color: #fff0f5;">{</span>
+    <span style="color: #51afef; font-style: italic;">let</span> <span style="color: #51afef; font-style: italic;">mut</span> <span style="color: #db5762;">s</span> <span style="color: #bbc2cf;">=</span> <span style="color: #ECBE7B;">String</span><span style="color: #bbc2cf;">::</span><span style="color: #c678dd;">from</span><span style="color: #c678dd;">(</span><span style="color: #98be65;">"hello"</span><span style="color: #c678dd;">)</span><span style="color: #bbc2cf;">;</span>
+
+    <span style="color: #c678dd;">change</span><span style="color: #c678dd;">(</span><span style="color: #bbc2cf;">&amp;</span><span style="color: #51afef; font-style: italic;">mut</span> s<span style="color: #c678dd;">)</span><span style="color: #bbc2cf;">;</span>
+<span style="color: #fff0f5;">}</span>
+
+<span style="color: #51afef; font-style: italic;">fn</span> <span style="color: #c678dd;">change</span><span style="color: #fff0f5;">(</span><span style="color: #db5762;">some_string</span>: <span style="color: #bbc2cf;">&amp;</span><span style="color: #51afef; font-style: italic;">mut</span> <span style="color: #ECBE7B;">String</span><span style="color: #fff0f5;">)</span> <span style="color: #fff0f5;">{</span>
+    some_string<span style="color: #bbc2cf;">.</span><span style="color: #c678dd; font-weight: bold; font-style: italic;">push_str</span><span style="color: #c678dd;">(</span><span style="color: #98be65;">", world"</span><span style="color: #c678dd;">)</span><span style="color: #bbc2cf;">;</span>
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org9eddc86" class="outline-4">
+<h4 id="org9eddc86">Mixing immutable and mutable references</h4>
+<div class="outline-text-4" id="text-org9eddc86">
+<ul class="org-ul">
+<li><p>
+However, keep in mind that we can only have <b>ONE</b> mutable reference. The assumption is that the "other" reference may be not in sync with the first one if the first one is modified and therefore this code produces an error:
+</p>
+<div class="org-src-container">
+<pre class="src src-rust"><span style="color: #51afef; font-style: italic;">let</span> <span style="color: #51afef; font-style: italic;">mut</span> <span style="color: #db5762;">s</span> <span style="color: #bbc2cf;">=</span> <span style="color: #ECBE7B;">String</span><span style="color: #bbc2cf;">::</span><span style="color: #c678dd;">from</span><span style="color: #fff0f5;">(</span><span style="color: #98be65;">"hello"</span><span style="color: #fff0f5;">)</span><span style="color: #bbc2cf;">;</span>
+
+<span style="color: #51afef; font-style: italic;">let</span> <span style="color: #db5762;">r1</span> <span style="color: #bbc2cf;">=</span> <span style="color: #bbc2cf;">&amp;</span><span style="color: #51afef; font-style: italic;">mut</span> s<span style="color: #bbc2cf;">;</span> <span style="color: #5B6268;">// first mutable borrow</span>
+<span style="color: #51afef; font-style: italic;">let</span> <span style="color: #db5762;">r2</span> <span style="color: #bbc2cf;">=</span> <span style="color: #bbc2cf;">&amp;</span><span style="color: #51afef; font-style: italic;">mut</span> s<span style="color: #bbc2cf;">;</span> <span style="color: #5B6268;">// second mutable borrow (error)</span>
+
+<span style="color: #5B6268;">// error, trying to use first mutable borrow r1 here</span>
+<span style="color: #51afef; font-weight: bold;">println!</span><span style="color: #fff0f5;">(</span><span style="color: #98be65;">"{}, {}"</span>, r1, r2<span style="color: #fff0f5;">)</span><span style="color: #bbc2cf;">;</span>
+</pre>
+</div></li>
+<li>The same applies to having one or more immutable references while trying to create a mutable reference. There is no guarantee that the immutable references will have the same data after the mutable reference changes its value.</li>
+<li>Users of an immutable reference don’t expect the value to suddenly change out from under them! However, multiple immutable references are allowed because no one who is just reading the data has the ability to affect anyone else’s reading of the data. Example below shows and error with mixing immutable and mutable references causing an error:</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-rust"><span style="color: #51afef; font-style: italic;">fn</span> <span style="color: #c678dd;">main</span><span style="color: #fff0f5;">()</span> <span style="color: #fff0f5;">{</span>
+    <span style="color: #51afef; font-style: italic;">let</span> <span style="color: #51afef; font-style: italic;">mut</span> <span style="color: #db5762;">s</span> <span style="color: #bbc2cf;">=</span> <span style="color: #ECBE7B;">String</span><span style="color: #bbc2cf;">::</span><span style="color: #c678dd;">from</span><span style="color: #c678dd;">(</span><span style="color: #98be65;">"hello"</span><span style="color: #c678dd;">)</span><span style="color: #bbc2cf;">;</span>
+
+    <span style="color: #51afef; font-style: italic;">let</span> <span style="color: #db5762;">r1</span> <span style="color: #bbc2cf;">=</span> <span style="color: #bbc2cf;">&amp;</span>s<span style="color: #bbc2cf;">;</span> <span style="color: #5B6268;">// no problem</span>
+    <span style="color: #51afef; font-style: italic;">let</span> <span style="color: #db5762;">r2</span> <span style="color: #bbc2cf;">=</span> <span style="color: #bbc2cf;">&amp;</span>s<span style="color: #bbc2cf;">;</span> <span style="color: #5B6268;">// no problem</span>
+    <span style="color: #51afef; font-style: italic;">let</span> <span style="color: #db5762;">r3</span> <span style="color: #bbc2cf;">=</span> <span style="color: #bbc2cf;">&amp;</span><span style="color: #51afef; font-style: italic;">mut</span> s<span style="color: #bbc2cf;">;</span> <span style="color: #5B6268;">// BIG PROBLEM</span>
+
+    <span style="color: #51afef; font-weight: bold;">println!</span><span style="color: #c678dd;">(</span><span style="color: #98be65;">"{}, {}, and {}"</span>, r1, r2, r3<span style="color: #c678dd;">)</span><span style="color: #bbc2cf;">;</span>
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+<ul class="org-ul">
+<li>But this code will work just fine because we're using the immutable references before we create the mutable one:</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-rust"><span style="color: #51afef; font-style: italic;">let</span> <span style="color: #51afef; font-style: italic;">mut</span> <span style="color: #db5762;">s</span> <span style="color: #bbc2cf;">=</span> <span style="color: #ECBE7B;">String</span><span style="color: #bbc2cf;">::</span><span style="color: #c678dd;">from</span><span style="color: #fff0f5;">(</span><span style="color: #98be65;">"hello"</span><span style="color: #fff0f5;">)</span><span style="color: #bbc2cf;">;</span>
+
+<span style="color: #51afef; font-style: italic;">let</span> <span style="color: #db5762;">r1</span> <span style="color: #bbc2cf;">=</span> <span style="color: #bbc2cf;">&amp;</span>s<span style="color: #bbc2cf;">;</span> <span style="color: #5B6268;">// no problem</span>
+<span style="color: #51afef; font-style: italic;">let</span> <span style="color: #db5762;">r2</span> <span style="color: #bbc2cf;">=</span> <span style="color: #bbc2cf;">&amp;</span>s<span style="color: #bbc2cf;">;</span> <span style="color: #5B6268;">// no problem</span>
+<span style="color: #51afef; font-weight: bold;">println!</span><span style="color: #fff0f5;">(</span><span style="color: #98be65;">"{} and {}"</span>, r1, r2<span style="color: #fff0f5;">)</span><span style="color: #bbc2cf;">;</span>
+<span style="color: #5B6268;">// variables r1 and r2 will not be used after this point</span>
+
+<span style="color: #51afef; font-style: italic;">let</span> <span style="color: #db5762;">r3</span> <span style="color: #bbc2cf;">=</span> <span style="color: #bbc2cf;">&amp;</span><span style="color: #51afef; font-style: italic;">mut</span> s<span style="color: #bbc2cf;">;</span> <span style="color: #5B6268;">// no problem</span>
+<span style="color: #51afef; font-weight: bold;">println!</span><span style="color: #fff0f5;">(</span><span style="color: #98be65;">"{}"</span>, r3<span style="color: #fff0f5;">)</span><span style="color: #bbc2cf;">;</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org3480ffb" class="outline-4">
+<h4 id="org3480ffb">Protection against Dangling Pointers</h4>
+<div class="outline-text-4" id="text-org3480ffb">
+<ul class="org-ul">
+<li>Example of a code that will cause an error because we're trying to create a dangling pointer without a lifecycle</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-rust"><span style="color: #51afef; font-style: italic;">fn</span> <span style="color: #c678dd;">main</span><span style="color: #fff0f5;">()</span> <span style="color: #fff0f5;">{</span>
+    <span style="color: #51afef; font-style: italic;">let</span> <span style="color: #db5762;">reference_to_nothing</span> <span style="color: #bbc2cf;">=</span> <span style="color: #c678dd;">dangle</span><span style="color: #c678dd;">()</span><span style="color: #bbc2cf;">;</span>
+<span style="color: #fff0f5;">}</span>
+
+<span style="color: #51afef; font-style: italic;">fn</span> <span style="color: #c678dd;">dangle</span><span style="color: #fff0f5;">()</span> -&gt; <span style="color: #bbc2cf;">&amp;</span><span style="color: #ECBE7B;">String</span> <span style="color: #fff0f5;">{</span> <span style="color: #5B6268;">// dangle returns a reference to a String</span>
+
+    <span style="color: #51afef; font-style: italic;">let</span> <span style="color: #db5762;">s</span> <span style="color: #bbc2cf;">=</span> <span style="color: #ECBE7B;">String</span><span style="color: #bbc2cf;">::</span><span style="color: #c678dd;">from</span><span style="color: #c678dd;">(</span><span style="color: #98be65;">"hello"</span><span style="color: #c678dd;">)</span><span style="color: #bbc2cf;">;</span> <span style="color: #5B6268;">// s is a new String</span>
+
+    <span style="color: #bbc2cf;">&amp;</span>s <span style="color: #5B6268;">// we return a reference to the String, s</span>
+<span style="color: #fff0f5;">}</span> <span style="color: #5B6268;">// Here, s goes out of scope, and is dropped. Its memory goes away.</span>
+  <span style="color: #5B6268;">// Danger!</span>
+
+</pre>
+</div>
+<ul class="org-ul">
+<li>The quick and easy solution is to return the value directly (it is a pointer under the hood either way&#x2026;)</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-rust"><span style="color: #51afef; font-style: italic;">fn</span> <span style="color: #c678dd;">main</span><span style="color: #fff0f5;">()</span> <span style="color: #fff0f5;">{</span>
+    <span style="color: #51afef; font-style: italic;">let</span> <span style="color: #db5762;">string</span> <span style="color: #bbc2cf;">=</span> <span style="color: #c678dd;">no_dangle</span><span style="color: #c678dd;">()</span><span style="color: #bbc2cf;">;</span>
+<span style="color: #fff0f5;">}</span>
+
+<span style="color: #51afef; font-style: italic;">fn</span> <span style="color: #c678dd;">no_dangle</span><span style="color: #fff0f5;">()</span> -&gt; <span style="color: #ECBE7B;">String</span> <span style="color: #fff0f5;">{</span>
+    <span style="color: #51afef; font-style: italic;">let</span> <span style="color: #db5762;">s</span> <span style="color: #bbc2cf;">=</span> <span style="color: #ECBE7B;">String</span><span style="color: #bbc2cf;">::</span><span style="color: #c678dd;">from</span><span style="color: #c678dd;">(</span><span style="color: #98be65;">"hello"</span><span style="color: #c678dd;">)</span><span style="color: #bbc2cf;">;</span>
+
+    s
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org381f9b1" class="outline-2">
+<h2 id="org381f9b1"><span class="section-number-2">15.</span> Slice Type</h2>
+<div class="outline-text-2" id="text-15">
+</div>
+<div id="outline-container-org132e0a6" class="outline-3">
+<h3 id="org132e0a6"><span class="section-number-3">15.1.</span> Definition</h3>
+<div class="outline-text-3" id="text-15-1">
+<ul class="org-ul">
+<li>Slices let you reference a contiguous sequence of elements in a collection rather than the whole collection. A slice is a kind of reference, so it does not have ownership.</li>
+<li>Internally a Slice contains the pointer to the start of the data and the length of the data</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgda057d0" class="outline-3">
+<h3 id="orgda057d0"><span class="section-number-3">15.2.</span> Caveats</h3>
+<div class="outline-text-3" id="text-15-2">
+<ul class="org-ul">
+<li>The Slice of a <code>String</code> is a <code>&amp;str</code></li>
+<li>String literals are slices, so a <code>let s = "Hello World"</code> is actually a String slice, the type of <code>s</code> is <code>&amp;str</code></li>
+<li>It is preferred to use String slices as function parameters, because it will accept both <code>&amp;Strings</code> (references) and <code>&amp;str</code> (Slices) due to <i>deref coercions</i>, which will be explained later in <b>Implicit Deref Coercion in Methods and Functions</b></li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-rust"><span style="color: #51afef; font-style: italic;">fn</span> <span style="color: #c678dd;">first_word</span><span style="color: #fff0f5;">(</span><span style="color: #db5762;">s</span>: <span style="color: #bbc2cf;">&amp;</span><span style="color: #ECBE7B;">str</span><span style="color: #fff0f5;">)</span> -&gt; <span style="color: #bbc2cf;">&amp;</span><span style="color: #ECBE7B;">str</span> <span style="color: #fff0f5;">{</span> <span style="color: #5B6268;">// using a &amp;str instead of &amp;String</span>
+    <span style="color: #51afef; font-style: italic;">let</span> <span style="color: #db5762;">bytes</span> <span style="color: #bbc2cf;">=</span> s<span style="color: #bbc2cf;">.</span><span style="color: #c678dd; font-weight: bold; font-style: italic;">as_bytes</span><span style="color: #c678dd;">()</span><span style="color: #bbc2cf;">;</span>
+
+    <span style="color: #51afef; font-style: italic;">for</span> <span style="color: #c678dd;">(</span><span style="color: #db5762;">i</span>, <span style="color: #bbc2cf;">&amp;</span>item<span style="color: #c678dd;">)</span> <span style="color: #51afef; font-style: italic;">in</span> bytes<span style="color: #bbc2cf;">.</span><span style="color: #c678dd; font-weight: bold; font-style: italic;">iter</span><span style="color: #c678dd;">()</span><span style="color: #bbc2cf;">.</span><span style="color: #c678dd; font-weight: bold; font-style: italic;">enumerate</span><span style="color: #c678dd;">()</span> <span style="color: #c678dd;">{</span>
+        <span style="color: #51afef; font-style: italic;">if</span> item <span style="color: #bbc2cf;">==</span> <span style="color: #98be65;">b' '</span> <span style="color: #98be65;">{</span>
+            <span style="color: #51afef; font-style: italic;">return</span> <span style="color: #bbc2cf;">&amp;</span>s<span style="color: #00bfff;">[</span><span style="color: #a9a1e1;">0</span>..i<span style="color: #00bfff;">]</span><span style="color: #bbc2cf;">;</span>
+        <span style="color: #98be65;">}</span>
+    <span style="color: #c678dd;">}</span>
+
+    <span style="color: #bbc2cf;">&amp;</span>s<span style="color: #c678dd;">[</span>..<span style="color: #c678dd;">]</span>
+<span style="color: #fff0f5;">}</span>
+
+<span style="color: #51afef; font-style: italic;">fn</span> <span style="color: #c678dd;">main</span><span style="color: #fff0f5;">()</span> <span style="color: #fff0f5;">{</span>
+    <span style="color: #51afef; font-style: italic;">let</span> <span style="color: #db5762;">my_string</span> <span style="color: #bbc2cf;">=</span> <span style="color: #ECBE7B;">String</span><span style="color: #bbc2cf;">::</span><span style="color: #c678dd;">from</span><span style="color: #c678dd;">(</span><span style="color: #98be65;">"hello world"</span><span style="color: #c678dd;">)</span><span style="color: #bbc2cf;">;</span>
+
+    <span style="color: #5B6268;">// `first_word` works on slices of `String`s, whether partial or whole</span>
+    <span style="color: #51afef; font-style: italic;">let</span> <span style="color: #db5762;">word</span> <span style="color: #bbc2cf;">=</span> <span style="color: #c678dd;">first_word</span><span style="color: #c678dd;">(</span><span style="color: #bbc2cf;">&amp;</span>my_string<span style="color: #98be65;">[</span><span style="color: #a9a1e1;">0</span>..<span style="color: #a9a1e1;">6</span><span style="color: #98be65;">]</span><span style="color: #c678dd;">)</span><span style="color: #bbc2cf;">;</span>
+    <span style="color: #51afef; font-style: italic;">let</span> <span style="color: #db5762;">word</span> <span style="color: #bbc2cf;">=</span> <span style="color: #c678dd;">first_word</span><span style="color: #c678dd;">(</span><span style="color: #bbc2cf;">&amp;</span>my_string<span style="color: #98be65;">[</span>..<span style="color: #98be65;">]</span><span style="color: #c678dd;">)</span><span style="color: #bbc2cf;">;</span>
+    <span style="color: #5B6268;">// `first_word` also works on references to `String`s, which are equivalent</span>
+    <span style="color: #5B6268;">// to whole slices of `String`s</span>
+    <span style="color: #51afef; font-style: italic;">let</span> <span style="color: #db5762;">word</span> <span style="color: #bbc2cf;">=</span> <span style="color: #c678dd;">first_word</span><span style="color: #c678dd;">(</span><span style="color: #bbc2cf;">&amp;</span>my_string<span style="color: #c678dd;">)</span><span style="color: #bbc2cf;">;</span>
+
+    <span style="color: #51afef; font-style: italic;">let</span> <span style="color: #db5762;">my_string_literal</span> <span style="color: #bbc2cf;">=</span> <span style="color: #98be65;">"hello world"</span><span style="color: #bbc2cf;">;</span>
+
+    <span style="color: #5B6268;">// `first_word` works on slices of string literals, whether partial or whole</span>
+    <span style="color: #51afef; font-style: italic;">let</span> <span style="color: #db5762;">word</span> <span style="color: #bbc2cf;">=</span> <span style="color: #c678dd;">first_word</span><span style="color: #c678dd;">(</span><span style="color: #bbc2cf;">&amp;</span>my_string_literal<span style="color: #98be65;">[</span><span style="color: #a9a1e1;">0</span>..<span style="color: #a9a1e1;">6</span><span style="color: #98be65;">]</span><span style="color: #c678dd;">)</span><span style="color: #bbc2cf;">;</span>
+    <span style="color: #51afef; font-style: italic;">let</span> <span style="color: #db5762;">word</span> <span style="color: #bbc2cf;">=</span> <span style="color: #c678dd;">first_word</span><span style="color: #c678dd;">(</span><span style="color: #bbc2cf;">&amp;</span>my_string_literal<span style="color: #98be65;">[</span>..<span style="color: #98be65;">]</span><span style="color: #c678dd;">)</span><span style="color: #bbc2cf;">;</span>
+
+    <span style="color: #5B6268;">// Because string literals *are* string slices already,</span>
+    <span style="color: #5B6268;">// this works too, without the slice syntax!</span>
+    <span style="color: #51afef; font-style: italic;">let</span> <span style="color: #db5762;">word</span> <span style="color: #bbc2cf;">=</span> <span style="color: #c678dd;">first_word</span><span style="color: #c678dd;">(</span>my_string_literal<span style="color: #c678dd;">)</span><span style="color: #bbc2cf;">;</span>
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org1019ba3" class="outline-3">
+<h3 id="org1019ba3"><span class="section-number-3">15.3.</span> Declaring a Slice uses Rust's Range syntax</h3>
+<div class="outline-text-3" id="text-15-3">
+<ul class="org-ul">
+<li>Given some string <code>let s = String:from("Hello");</code></li>
+<li><code>&amp;s[starting_index..ending_index]</code>, ending index is exclusive, starting is inclusive</li>
+<li><code>&amp;s[..3]</code> starting at 0 and ending at 2</li>
+<li><code>&amp;s[2..]</code> starting at 2 and ending at the length of the underlying data</li>
+<li><code>&amp;s[..]</code> the full length</li>
+<li>For Arrays we can use <code>&amp;[i32]</code></li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-rust"><span style="color: #51afef; font-style: italic;">let</span> <span style="color: #db5762;">a</span> <span style="color: #bbc2cf;">=</span> <span style="color: #fff0f5;">[</span><span style="color: #a9a1e1;">1</span>, <span style="color: #a9a1e1;">2</span>, <span style="color: #a9a1e1;">3</span>, <span style="color: #a9a1e1;">4</span>, <span style="color: #a9a1e1;">5</span><span style="color: #fff0f5;">]</span><span style="color: #bbc2cf;">;</span>
+
+<span style="color: #51afef; font-style: italic;">let</span> <span style="color: #db5762;">slice</span> <span style="color: #bbc2cf;">=</span> <span style="color: #bbc2cf;">&amp;</span>a<span style="color: #fff0f5;">[</span><span style="color: #a9a1e1;">1</span>..<span style="color: #a9a1e1;">3</span><span style="color: #fff0f5;">]</span><span style="color: #bbc2cf;">;</span>
+
+<span style="color: #51afef; font-weight: bold;">assert_eq!</span><span style="color: #fff0f5;">(</span>slice, &amp;<span style="color: #c678dd;">[</span><span style="color: #a9a1e1;">2</span>, <span style="color: #a9a1e1;">3</span><span style="color: #c678dd;">]</span><span style="color: #fff0f5;">)</span><span style="color: #bbc2cf;">;</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orge108966" class="outline-3">
+<h3 id="orge108966"><span class="section-number-3">15.4.</span> Example on a String Slice</h3>
+<div class="outline-text-3" id="text-15-4">
+<div class="org-src-container">
+<pre class="src src-rust"><span style="color: #51afef; font-style: italic;">let</span> <span style="color: #db5762;">s</span> <span style="color: #bbc2cf;">=</span> <span style="color: #ECBE7B;">String</span><span style="color: #bbc2cf;">::</span><span style="color: #c678dd;">from</span><span style="color: #fff0f5;">(</span><span style="color: #98be65;">"hello world"</span><span style="color: #fff0f5;">)</span><span style="color: #bbc2cf;">;</span>
+
+<span style="color: #51afef; font-style: italic;">let</span> <span style="color: #db5762;">hello</span> <span style="color: #bbc2cf;">=</span> <span style="color: #bbc2cf;">&amp;</span>s<span style="color: #fff0f5;">[</span><span style="color: #a9a1e1;">0</span>..<span style="color: #a9a1e1;">5</span><span style="color: #fff0f5;">]</span><span style="color: #bbc2cf;">;</span>
+<span style="color: #51afef; font-style: italic;">let</span> <span style="color: #db5762;">world</span> <span style="color: #bbc2cf;">=</span> <span style="color: #bbc2cf;">&amp;</span>s<span style="color: #fff0f5;">[</span><span style="color: #a9a1e1;">6</span>..<span style="color: #a9a1e1;">11</span><span style="color: #fff0f5;">]</span><span style="color: #bbc2cf;">;</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org373e31f" class="outline-3">
+<h3 id="org373e31f"><span class="section-number-3">15.5.</span> Example of a problem noticed by the compiler thanks to Slices usage</h3>
+<div class="outline-text-3" id="text-15-5">
+<div class="org-src-container">
+<pre class="src src-rust"><span style="color: #51afef; font-style: italic;">fn</span> <span style="color: #c678dd;">main</span><span style="color: #fff0f5;">()</span> <span style="color: #fff0f5;">{</span>
+    <span style="color: #51afef; font-style: italic;">let</span> <span style="color: #51afef; font-style: italic;">mut</span> <span style="color: #db5762;">s</span> <span style="color: #bbc2cf;">=</span> <span style="color: #ECBE7B;">String</span><span style="color: #bbc2cf;">::</span><span style="color: #c678dd;">from</span><span style="color: #c678dd;">(</span><span style="color: #98be65;">"hello world"</span><span style="color: #c678dd;">)</span><span style="color: #bbc2cf;">;</span>
+
+    <span style="color: #51afef; font-style: italic;">let</span> <span style="color: #db5762;">word</span> <span style="color: #bbc2cf;">=</span> <span style="color: #c678dd;">first_word</span><span style="color: #c678dd;">(</span><span style="color: #bbc2cf;">&amp;</span>s<span style="color: #c678dd;">)</span><span style="color: #bbc2cf;">;</span> <span style="color: #5B6268;">// returns a Slice containing "hello", immutable borrow</span>
+
+    s<span style="color: #bbc2cf;">.</span><span style="color: #c678dd; font-weight: bold; font-style: italic;">clear</span><span style="color: #c678dd;">()</span><span style="color: #bbc2cf;">;</span> <span style="color: #5B6268;">// error! mutable borrow</span>
+
+    <span style="color: #5B6268;">// error due to ownership rules</span>
+    <span style="color: #5B6268;">// immutable borrow can't occur due to the previous mutable borrow</span>
+    <span style="color: #51afef; font-weight: bold;">println!</span><span style="color: #c678dd;">(</span><span style="color: #98be65;">"the first word is: {}"</span>, word<span style="color: #c678dd;">)</span><span style="color: #bbc2cf;">;</span>
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org9dab96c" class="outline-2">
+<h2 id="org9dab96c"><span class="section-number-2">16.</span> Structs</h2>
+<div class="outline-text-2" id="text-16">
+</div>
+<div id="outline-container-org1783aac" class="outline-3">
+<h3 id="org1783aac"><span class="section-number-3">16.1.</span> Syntax</h3>
+<div class="outline-text-3" id="text-16-1">
+<ul class="org-ul">
+<li>All fields are <code>private</code> by default</li>
+<li>Add <code>pub</code> to make any field public</li>
+<li>Use the dot notation to access fields</li>
+</ul>
+</div>
+<div id="outline-container-orgd0e8870" class="outline-4">
+<h4 id="orgd0e8870">Basic <code>User</code> struct</h4>
+<div class="outline-text-4" id="text-orgd0e8870">
+<div class="org-src-container">
+<pre class="src src-rust"><span style="color: #51afef; font-style: italic;">struct</span> <span style="color: #ECBE7B;">User</span> <span style="color: #fff0f5;">{</span>
+    <span style="color: #51afef; font-style: italic;">pub</span> <span style="color: #db5762; font-style: italic;">active</span>: <span style="color: #ECBE7B;">bool</span>,
+    <span style="color: #db5762; font-style: italic;">username</span>: <span style="color: #ECBE7B;">String</span>,
+    <span style="color: #db5762; font-style: italic;">email</span>: <span style="color: #ECBE7B;">String</span>,
+    <span style="color: #db5762; font-style: italic;">sign_in_count</span>: <span style="color: #ECBE7B;">u64</span>,
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+<ul class="org-ul">
+<li>In the User struct definition we used the owned String type rather than the &amp;str string slice type. This is a deliberate choice because we want each instance of this struct to own all of its data and for that data to be valid for as long as the entire struct is valid. It’s also possible for structs to store references to data owned by something else, but to do so requires the use of lifetimes.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org26f9b2f" class="outline-4">
+<h4 id="org26f9b2f">Changing any fields is not allowed, to change any you must declare the struct with <code>mut</code></h4>
+<div class="outline-text-4" id="text-org26f9b2f">
+<div class="org-src-container">
+<pre class="src src-rust"><span style="color: #51afef; font-style: italic;">fn</span> <span style="color: #c678dd;">main</span><span style="color: #fff0f5;">()</span> <span style="color: #fff0f5;">{</span>
+    <span style="color: #51afef; font-style: italic;">let</span> <span style="color: #51afef; font-style: italic;">mut</span> <span style="color: #db5762;">user1</span> <span style="color: #bbc2cf;">=</span> <span style="color: #ECBE7B;">User</span> <span style="color: #c678dd;">{</span> <span style="color: #5B6268;">// using mut here</span>
+        <span style="color: #a9a1e1; font-style: italic;">email</span>: <span style="color: #ECBE7B;">String</span><span style="color: #bbc2cf;">::</span><span style="color: #c678dd;">from</span><span style="color: #98be65;">(</span><span style="color: #98be65;">"someone@example.com"</span><span style="color: #98be65;">)</span>,
+        <span style="color: #a9a1e1; font-style: italic;">username</span>: <span style="color: #ECBE7B;">String</span><span style="color: #bbc2cf;">::</span><span style="color: #c678dd;">from</span><span style="color: #98be65;">(</span><span style="color: #98be65;">"someusername123"</span><span style="color: #98be65;">)</span>,
+        <span style="color: #a9a1e1; font-style: italic;">active</span>: <span style="color: #a9a1e1;">true</span>,
+        <span style="color: #a9a1e1; font-style: italic;">sign_in_count</span>: <span style="color: #a9a1e1;">1</span>,
+    <span style="color: #c678dd;">}</span><span style="color: #bbc2cf;">;</span>
+
+    <span style="color: #5B6268;">// because user1 is mutable, we are allowed to modify the email field</span>
+    <span style="color: #db5762;">user1</span><span style="color: #bbc2cf;">.</span><span style="color: #a9a1e1; font-style: italic;">email</span> <span style="color: #bbc2cf;">=</span> <span style="color: #ECBE7B;">String</span><span style="color: #bbc2cf;">::</span><span style="color: #c678dd;">from</span><span style="color: #c678dd;">(</span><span style="color: #98be65;">"anotheremail@example.com"</span><span style="color: #c678dd;">)</span><span style="color: #bbc2cf;">;</span>
+<span style="color: #fff0f5;">}</span>
+
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org5f1205f" class="outline-4">
+<h4 id="org5f1205f">Debugging with the <code>Debug</code> derived <code>trait</code></h4>
+<div class="outline-text-4" id="text-org5f1205f">
+<ul class="org-ul">
+<li>Debug with the <code>println!</code> macro</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-rust"><span style="color: #51afef; font-weight: bold;">#</span><span style="color: #fff0f5; font-weight: bold;">[</span><span style="color: #51afef; font-weight: bold;">derive</span><span style="color: #c678dd; font-weight: bold;">(</span><span style="color: #51afef; font-weight: bold;">Debug</span><span style="color: #c678dd; font-weight: bold;">)</span><span style="color: #fff0f5; font-weight: bold;">]</span>  <span style="color: #5B6268;">// note the derive Debug trait</span>
+<span style="color: #51afef; font-style: italic;">struct</span> <span style="color: #ECBE7B;">Rectangle</span> <span style="color: #fff0f5;">{</span>
+    <span style="color: #db5762; font-style: italic;">width</span>: <span style="color: #ECBE7B;">u32</span>,
+    <span style="color: #db5762; font-style: italic;">height</span>: <span style="color: #ECBE7B;">u32</span>,
+<span style="color: #fff0f5;">}</span>
+
+<span style="color: #51afef; font-style: italic;">fn</span> <span style="color: #c678dd;">main</span><span style="color: #fff0f5;">()</span> <span style="color: #fff0f5;">{</span>
+    <span style="color: #51afef; font-style: italic;">let</span> <span style="color: #db5762;">rect1</span> <span style="color: #bbc2cf;">=</span> <span style="color: #ECBE7B;">Rectangle</span> <span style="color: #c678dd;">{</span>
+        <span style="color: #a9a1e1; font-style: italic;">width</span>: <span style="color: #a9a1e1;">30</span>,
+        <span style="color: #a9a1e1; font-style: italic;">height</span>: <span style="color: #a9a1e1;">50</span>,
+    <span style="color: #c678dd;">}</span><span style="color: #bbc2cf;">;</span>
+
+    <span style="color: #51afef; font-weight: bold;">println!</span><span style="color: #c678dd;">(</span><span style="color: #98be65;">"rect1 is {:?}"</span>, rect1<span style="color: #c678dd;">)</span><span style="color: #bbc2cf;">;</span> <span style="color: #5B6268;">// using the :? syntax to debug print</span>
+    <span style="color: #51afef; font-weight: bold;">println!</span><span style="color: #c678dd;">(</span><span style="color: #98be65;">"rect1 is {:#?}"</span>, rect1<span style="color: #c678dd;">)</span><span style="color: #bbc2cf;">;</span> <span style="color: #5B6268;">// using the :#? syntax to pretty-print</span>
+<span style="color: #fff0f5;">}</span>
+
+</pre>
+</div>
+<ul class="org-ul">
+<li>Alternatively use the <code>dbg!</code> macro, note that it returns ownership</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-rust"><span style="color: #51afef; font-weight: bold;">#</span><span style="color: #fff0f5; font-weight: bold;">[</span><span style="color: #51afef; font-weight: bold;">derive</span><span style="color: #c678dd; font-weight: bold;">(</span><span style="color: #51afef; font-weight: bold;">Debug</span><span style="color: #c678dd; font-weight: bold;">)</span><span style="color: #fff0f5; font-weight: bold;">]</span>
+<span style="color: #51afef; font-style: italic;">struct</span> <span style="color: #ECBE7B;">Rectangle</span> <span style="color: #fff0f5;">{</span>
+    <span style="color: #db5762; font-style: italic;">width</span>: <span style="color: #ECBE7B;">u32</span>,
+    <span style="color: #db5762; font-style: italic;">height</span>: <span style="color: #ECBE7B;">u32</span>,
+<span style="color: #fff0f5;">}</span>
+
+<span style="color: #51afef; font-style: italic;">fn</span> <span style="color: #c678dd;">main</span><span style="color: #fff0f5;">()</span> <span style="color: #fff0f5;">{</span>
+    <span style="color: #51afef; font-style: italic;">let</span> <span style="color: #db5762;">scale</span> <span style="color: #bbc2cf;">=</span> <span style="color: #a9a1e1;">2</span><span style="color: #bbc2cf;">;</span>
+    <span style="color: #51afef; font-style: italic;">let</span> <span style="color: #db5762;">rect1</span> <span style="color: #bbc2cf;">=</span> <span style="color: #ECBE7B;">Rectangle</span> <span style="color: #c678dd;">{</span>
+        <span style="color: #a9a1e1; font-style: italic;">width</span>: <span style="color: #51afef; font-weight: bold;">dbg!</span><span style="color: #98be65;">(</span><span style="color: #a9a1e1;">30</span> * scale<span style="color: #98be65;">)</span>, <span style="color: #5B6268;">// returns ownership</span>
+        <span style="color: #a9a1e1; font-style: italic;">height</span>: <span style="color: #a9a1e1;">50</span>,
+    <span style="color: #c678dd;">}</span><span style="color: #bbc2cf;">;</span>
+
+    <span style="color: #51afef; font-weight: bold;">dbg!</span><span style="color: #c678dd;">(</span>&amp;rect1<span style="color: #c678dd;">)</span><span style="color: #bbc2cf;">;</span>
+<span style="color: #fff0f5;">}</span>
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org2d545be" class="outline-3">
+<h3 id="org2d545be"><span class="section-number-3">16.2.</span> Builders</h3>
+<div class="outline-text-3" id="text-16-2">
+<div class="org-src-container">
+<pre class="src src-rust"><span style="color: #51afef; font-style: italic;">fn</span> <span style="color: #c678dd;">build_user</span><span style="color: #fff0f5;">(</span><span style="color: #db5762;">email</span>: <span style="color: #ECBE7B;">String</span>, <span style="color: #db5762;">username</span>: <span style="color: #ECBE7B;">String</span><span style="color: #fff0f5;">)</span> -&gt; <span style="color: #ECBE7B;">User</span> <span style="color: #fff0f5;">{</span>
+    <span style="color: #ECBE7B;">User</span> <span style="color: #c678dd;">{</span>
+        <span style="color: #a9a1e1; font-style: italic;">email</span>: email,
+        <span style="color: #a9a1e1; font-style: italic;">username</span>: username,
+        <span style="color: #a9a1e1; font-style: italic;">active</span>: <span style="color: #a9a1e1;">true</span>,
+        <span style="color: #a9a1e1; font-style: italic;">sign_in_count</span>: <span style="color: #a9a1e1;">1</span>,
+    <span style="color: #c678dd;">}</span>
+<span style="color: #fff0f5;">}</span>
+
+<span style="color: #51afef; font-style: italic;">fn</span> <span style="color: #c678dd;">main</span><span style="color: #fff0f5;">()</span> <span style="color: #fff0f5;">{</span>
+    <span style="color: #51afef; font-style: italic;">let</span> <span style="color: #db5762;">user1</span> <span style="color: #bbc2cf;">=</span> <span style="color: #c678dd;">build_user</span><span style="color: #c678dd;">(</span>
+        <span style="color: #ECBE7B;">String</span><span style="color: #bbc2cf;">::</span><span style="color: #c678dd;">from</span><span style="color: #98be65;">(</span><span style="color: #98be65;">"someone@example.com"</span><span style="color: #98be65;">)</span>,
+        <span style="color: #ECBE7B;">String</span><span style="color: #bbc2cf;">::</span><span style="color: #c678dd;">from</span><span style="color: #98be65;">(</span><span style="color: #98be65;">"someusername123"</span><span style="color: #98be65;">)</span>,
+    <span style="color: #c678dd;">)</span><span style="color: #bbc2cf;">;</span>
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+<ul class="org-ul">
+<li>Or use the <b>Field Init Shorthand</b></li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-rust"><span style="color: #51afef; font-style: italic;">fn</span> <span style="color: #c678dd;">build_user</span><span style="color: #fff0f5;">(</span><span style="color: #db5762;">email</span>: <span style="color: #ECBE7B;">String</span>, <span style="color: #db5762;">username</span>: <span style="color: #ECBE7B;">String</span><span style="color: #fff0f5;">)</span> -&gt; <span style="color: #ECBE7B;">User</span> <span style="color: #fff0f5;">{</span>
+    <span style="color: #ECBE7B;">User</span> <span style="color: #c678dd;">{</span>
+        email,  <span style="color: #5B6268;">// using shorthand</span>
+        username, <span style="color: #5B6268;">// using shorthand</span>
+        <span style="color: #a9a1e1; font-style: italic;">active</span>: <span style="color: #a9a1e1;">true</span>,
+        <span style="color: #a9a1e1; font-style: italic;">sign_in_count</span>: <span style="color: #a9a1e1;">1</span>,
+    <span style="color: #c678dd;">}</span>
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org113725c" class="outline-3">
+<h3 id="org113725c"><span class="section-number-3">16.3.</span> Instantiate an instance from another instance using a shorthand</h3>
+<div class="outline-text-3" id="text-16-3">
+<ul class="org-ul">
+<li>Please note that the fields that we want to overwrite <b>must be</b> above the shorthand notation</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-rust"><span style="color: #51afef; font-style: italic;">fn</span> <span style="color: #c678dd;">main</span><span style="color: #fff0f5;">()</span> <span style="color: #fff0f5;">{</span>
+    <span style="color: #51afef; font-style: italic;">let</span> <span style="color: #db5762;">user1</span> <span style="color: #bbc2cf;">=</span> <span style="color: #ECBE7B;">User</span> <span style="color: #c678dd;">{</span>
+        <span style="color: #a9a1e1; font-style: italic;">email</span>: <span style="color: #ECBE7B;">String</span><span style="color: #bbc2cf;">::</span><span style="color: #c678dd;">from</span><span style="color: #98be65;">(</span><span style="color: #98be65;">"someone@example.com"</span><span style="color: #98be65;">)</span>,
+        <span style="color: #a9a1e1; font-style: italic;">username</span>: <span style="color: #ECBE7B;">String</span><span style="color: #bbc2cf;">::</span><span style="color: #c678dd;">from</span><span style="color: #98be65;">(</span><span style="color: #98be65;">"someusername123"</span><span style="color: #98be65;">)</span>,
+        <span style="color: #a9a1e1; font-style: italic;">active</span>: <span style="color: #a9a1e1;">true</span>,
+        <span style="color: #a9a1e1; font-style: italic;">sign_in_count</span>: <span style="color: #a9a1e1;">1</span>,
+    <span style="color: #c678dd;">}</span><span style="color: #bbc2cf;">;</span>
+
+    <span style="color: #51afef; font-style: italic;">let</span> <span style="color: #db5762;">user2</span> <span style="color: #bbc2cf;">=</span> <span style="color: #ECBE7B;">User</span> <span style="color: #c678dd;">{</span>
+        <span style="color: #a9a1e1; font-style: italic;">email</span>: <span style="color: #ECBE7B;">String</span><span style="color: #bbc2cf;">::</span><span style="color: #c678dd;">from</span><span style="color: #98be65;">(</span><span style="color: #98be65;">"another@example.com"</span><span style="color: #98be65;">)</span>, <span style="color: #5B6268;">// overwriting email</span>
+        ..user1 <span style="color: #5B6268;">// using the other fields from user1</span>
+    <span style="color: #c678dd;">}</span><span style="color: #bbc2cf;">;</span>
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+<ul class="org-ul">
+<li>Note that the struct update syntax uses <code>=</code> like an assignment; this is because it moves the data. In this example, we can no longer use <code>user1</code> after creating <code>user2</code> because the String in the <code>username</code> field of <code>user1</code> was moved into <code>user2</code>. If we had given <code>user2</code> new String values for both <code>email</code> and <code>username</code>, and thus only used the active and sign<sub>in</sub><sub>count</sub> values from <code>user1</code>, then <code>user1</code> would still be valid after creating <code>user2</code>. The types of <code>active</code> and <code>sign_in_count</code> are types that implement the <code>Copy Trait</code>.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org51d9358" class="outline-3">
+<h3 id="org51d9358"><span class="section-number-3">16.4.</span> Tuple Structs without names fields</h3>
+<div class="outline-text-3" id="text-16-4">
+<div class="org-src-container">
+<pre class="src src-rust"><span style="color: #51afef; font-style: italic;">struct</span> <span style="color: #ECBE7B;">Color</span><span style="color: #fff0f5;">(</span><span style="color: #ECBE7B;">i32</span>, <span style="color: #ECBE7B;">i32</span>, <span style="color: #ECBE7B;">i32</span><span style="color: #fff0f5;">)</span><span style="color: #bbc2cf;">;</span>
+<span style="color: #51afef; font-style: italic;">struct</span> <span style="color: #ECBE7B;">Point</span><span style="color: #fff0f5;">(</span><span style="color: #ECBE7B;">i32</span>, <span style="color: #ECBE7B;">i32</span>, <span style="color: #ECBE7B;">i32</span><span style="color: #fff0f5;">)</span><span style="color: #bbc2cf;">;</span>
+
+<span style="color: #51afef; font-style: italic;">fn</span> <span style="color: #c678dd;">main</span><span style="color: #fff0f5;">()</span> <span style="color: #fff0f5;">{</span>
+    <span style="color: #51afef; font-style: italic;">let</span> <span style="color: #db5762;">black</span> <span style="color: #bbc2cf;">=</span> <span style="color: #51afef;">Color</span><span style="color: #c678dd;">(</span><span style="color: #a9a1e1;">0</span>, <span style="color: #a9a1e1;">0</span>, <span style="color: #a9a1e1;">0</span><span style="color: #c678dd;">)</span><span style="color: #bbc2cf;">;</span>
+    <span style="color: #51afef; font-style: italic;">let</span> <span style="color: #db5762;">origin</span> <span style="color: #bbc2cf;">=</span> <span style="color: #51afef;">Point</span><span style="color: #c678dd;">(</span><span style="color: #a9a1e1;">0</span>, <span style="color: #a9a1e1;">0</span>, <span style="color: #a9a1e1;">0</span><span style="color: #c678dd;">)</span><span style="color: #bbc2cf;">;</span>
+<span style="color: #fff0f5;">}</span>
+
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orge8c22c4" class="outline-3">
+<h3 id="orge8c22c4"><span class="section-number-3">16.5.</span> Unit-like Struct without fields</h3>
+<div class="outline-text-3" id="text-16-5">
+<ul class="org-ul">
+<li>Unit-like structs can be useful when you need to implement a <code>trait</code> on some type but don’t have any data that you want to store in the type itself</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-rust"><span style="color: #51afef; font-style: italic;">struct</span> <span style="color: #ECBE7B;">AlwaysEqual</span><span style="color: #bbc2cf;">;</span>
+
+<span style="color: #51afef; font-style: italic;">fn</span> <span style="color: #c678dd;">main</span><span style="color: #fff0f5;">()</span> <span style="color: #fff0f5;">{</span>
+    <span style="color: #51afef; font-style: italic;">let</span> <span style="color: #db5762;">subject</span> <span style="color: #bbc2cf;">=</span> <span style="color: #51afef;">AlwaysEqual</span><span style="color: #bbc2cf;">;</span>
+<span style="color: #fff0f5;">}</span>
+
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orga9775d0" class="outline-3">
+<h3 id="orga9775d0"><span class="section-number-3">16.6.</span> Method Syntax</h3>
+<div class="outline-text-3" id="text-16-6">
+</div>
+<div id="outline-container-org49ce3db" class="outline-4">
+<h4 id="org49ce3db">Basic Example</h4>
+<div class="outline-text-4" id="text-org49ce3db">
+<ul class="org-ul">
+<li>Use the <code>impl</code> block to declare any methods of a <code>struct</code></li>
+<li>The <code>&amp;self</code> essentially borrows the <code>Self</code> instance and is a shorthand of <code>self: &amp;self</code></li>
+<li>Use <code>&amp;mut self</code> to create a method that mutates the instance</li>
+<li>Having a method that takes ownership of the instance by using just <code>self</code> as the first parameter is rare; this technique is usually used when the method transforms <code>self</code> into something else and you want to prevent the caller from using the original instance after the transformation (you'd take the ownership and give back the ownership).</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-rust"><span style="color: #51afef; font-style: italic;">struct</span> <span style="color: #ECBE7B;">Rectangle</span> <span style="color: #fff0f5;">{</span>
+    <span style="color: #db5762; font-style: italic;">width</span>: <span style="color: #ECBE7B;">u32</span>,
+    <span style="color: #db5762; font-style: italic;">height</span>: <span style="color: #ECBE7B;">u32</span>,
+<span style="color: #fff0f5;">}</span>
+
+<span style="color: #51afef; font-style: italic;">impl</span> <span style="color: #ECBE7B;">Rectangle</span> <span style="color: #fff0f5;">{</span>
+    <span style="color: #5B6268;">// implementing the area method on Rectangle struct</span>
+    <span style="color: #51afef; font-style: italic;">fn</span> <span style="color: #c678dd;">area</span><span style="color: #c678dd;">(</span><span style="color: #bbc2cf;">&amp;</span><span style="color: #51afef; font-style: italic;">self</span><span style="color: #c678dd;">)</span> -&gt; <span style="color: #ECBE7B;">u32</span> <span style="color: #c678dd;">{</span>
+        <span style="color: #51afef; font-style: italic;">self</span><span style="color: #bbc2cf;">.</span><span style="color: #a9a1e1; font-style: italic;">width</span> <span style="color: #bbc2cf;">*</span> <span style="color: #51afef; font-style: italic;">self</span><span style="color: #bbc2cf;">.</span><span style="color: #a9a1e1; font-style: italic;">height</span>
+    <span style="color: #c678dd;">}</span>
+
+    <span style="color: #5B6268;">// implementing a mutating method, needs &amp;mut self</span>
+    <span style="color: #51afef; font-style: italic;">fn</span> <span style="color: #c678dd;">expand</span><span style="color: #c678dd;">(</span><span style="color: #bbc2cf;">&amp;</span><span style="color: #51afef; font-style: italic;">mut</span> <span style="color: #51afef; font-style: italic;">self</span>, <span style="color: #db5762;">factor</span>: <span style="color: #ECBE7B;">u32</span><span style="color: #c678dd;">)</span> <span style="color: #c678dd;">{</span>
+        <span style="color: #51afef; font-style: italic;">self</span><span style="color: #bbc2cf;">.</span><span style="color: #a9a1e1; font-style: italic;">width</span> *= factor<span style="color: #bbc2cf;">;</span>
+        <span style="color: #51afef; font-style: italic;">self</span><span style="color: #bbc2cf;">.</span><span style="color: #a9a1e1; font-style: italic;">height</span> *= factor<span style="color: #bbc2cf;">;</span>
+    <span style="color: #c678dd;">}</span>
+
+    <span style="color: #5B6268;">// more parameters, here another Rectangle as other</span>
+    <span style="color: #51afef; font-style: italic;">fn</span> <span style="color: #c678dd;">can_hold</span><span style="color: #c678dd;">(</span><span style="color: #bbc2cf;">&amp;</span><span style="color: #51afef; font-style: italic;">self</span>, <span style="color: #db5762;">other</span>: <span style="color: #bbc2cf;">&amp;</span><span style="color: #ECBE7B;">Rectangle</span><span style="color: #c678dd;">)</span> -&gt; <span style="color: #ECBE7B;">bool</span> <span style="color: #c678dd;">{</span>
+        <span style="color: #51afef; font-style: italic;">self</span><span style="color: #bbc2cf;">.</span><span style="color: #a9a1e1; font-style: italic;">width</span> <span style="color: #bbc2cf;">&gt;</span> other<span style="color: #bbc2cf;">.</span><span style="color: #a9a1e1; font-style: italic;">width</span> <span style="color: #bbc2cf;">&amp;&amp;</span> <span style="color: #51afef; font-style: italic;">self</span><span style="color: #bbc2cf;">.</span><span style="color: #a9a1e1; font-style: italic;">height</span> <span style="color: #bbc2cf;">&gt;</span> other<span style="color: #bbc2cf;">.</span><span style="color: #a9a1e1; font-style: italic;">height</span>
+    <span style="color: #c678dd;">}</span>
+<span style="color: #fff0f5;">}</span>
+
+<span style="color: #51afef; font-style: italic;">fn</span> <span style="color: #c678dd;">main</span><span style="color: #fff0f5;">()</span> <span style="color: #fff0f5;">{</span>
+    <span style="color: #51afef; font-style: italic;">let</span> <span style="color: #51afef; font-style: italic;">mut</span> <span style="color: #db5762;">rect1</span> <span style="color: #bbc2cf;">=</span> <span style="color: #ECBE7B;">Rectangle</span> <span style="color: #c678dd;">{</span>
+        <span style="color: #a9a1e1; font-style: italic;">width</span>: <span style="color: #a9a1e1;">30</span>,
+        <span style="color: #a9a1e1; font-style: italic;">height</span>: <span style="color: #a9a1e1;">50</span>,
+    <span style="color: #c678dd;">}</span><span style="color: #bbc2cf;">;</span>
+
+    <span style="color: #51afef; font-weight: bold;">println!</span><span style="color: #c678dd;">(</span>
+        <span style="color: #98be65;">"The area of the rectangle is {} square pixels."</span>,
+        rect1.area<span style="color: #98be65;">()</span>
+    <span style="color: #c678dd;">)</span><span style="color: #bbc2cf;">;</span>
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org12ab1ae" class="outline-4">
+<h4 id="org12ab1ae">Example of a constructor/builder</h4>
+<div class="outline-text-4" id="text-org12ab1ae">
+<ul class="org-ul">
+<li>Please note that we don't use <code>&amp;self</code> here</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-rust"><span style="color: #51afef; font-style: italic;">struct</span> <span style="color: #ECBE7B;">Rectangle</span> <span style="color: #fff0f5;">{</span>
+    <span style="color: #db5762; font-style: italic;">width</span>: <span style="color: #ECBE7B;">u32</span>,
+    <span style="color: #db5762; font-style: italic;">height</span>: <span style="color: #ECBE7B;">u32</span>,
+<span style="color: #fff0f5;">}</span>
+
+<span style="color: #51afef; font-style: italic;">impl</span> <span style="color: #ECBE7B;">Rectangle</span> <span style="color: #fff0f5;">{</span>
+    <span style="color: #51afef; font-style: italic;">fn</span> <span style="color: #c678dd;">square</span><span style="color: #c678dd;">(</span><span style="color: #db5762;">size</span>: <span style="color: #ECBE7B;">u32</span><span style="color: #c678dd;">)</span> -&gt; <span style="color: #ECBE7B;">Rectangle</span> <span style="color: #c678dd;">{</span>
+        <span style="color: #ECBE7B;">Rectangle</span> <span style="color: #98be65;">{</span>
+            <span style="color: #a9a1e1; font-style: italic;">width</span>: size,
+            <span style="color: #a9a1e1; font-style: italic;">height</span>: size,
+        <span style="color: #98be65;">}</span>
+    <span style="color: #c678dd;">}</span>
+<span style="color: #fff0f5;">}</span>
+
+<span style="color: #51afef; font-style: italic;">fn</span> <span style="color: #c678dd;">main</span><span style="color: #fff0f5;">()</span> <span style="color: #fff0f5;">{</span>
+    <span style="color: #51afef; font-style: italic;">let</span> <span style="color: #db5762;">sq</span> <span style="color: #bbc2cf;">=</span> <span style="color: #ECBE7B;">Rectangle</span><span style="color: #bbc2cf;">::</span><span style="color: #c678dd;">square</span><span style="color: #c678dd;">(</span><span style="color: #a9a1e1;">3</span><span style="color: #c678dd;">)</span><span style="color: #bbc2cf;">;</span>
+<span style="color: #fff0f5;">}</span>
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgd4ea768" class="outline-2">
+<h2 id="orgd4ea768"><span class="section-number-2">17.</span> Delete heading at the end</h2>
+<div class="outline-text-2" id="text-17">
+<script src="../../assets/jquery-3.3.1.min.js"></script>
+<script src="../../assets/notes.js"></script>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="date">Date: 2021-10-28 Thu 20:00</p>
+<p class="author">Author: Damian Chrzanowski</p>
+<p class="date">Created: 2022-11-29 Tue 14:55</p>
+<p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

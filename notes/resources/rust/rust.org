@@ -1,0 +1,880 @@
+#+TITLE: Rust
+#+DATE: [2021-10-28 Thu 20:00]
+#+AUTHOR: Damian Chrzanowski
+#+EMAIL: pjdamian.chrzanowski@gmail.com
+#+OPTIONS: TOC:2 num:2
+#+HTML_HEAD: <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="../../assets/org.css"/>
+#+HTML_HEAD: <link rel="icon" href="../../assets/favicon.ico">
+* Links
+** [[https://www.rust-lang.org/][Official Page]]
+** [[https://doc.rust-lang.org/stable/book/][The Rust Book]]
+** [[https://users.rust-lang.org/][Rust Forums]]
+** [[https://crates.io/][Cargo Crates]]
+** [[https://lib.rs/about][Additional Crates, supposedly a better repository]]
+* Setup
+** Installation
+   - Install ~rustup~, ~rust-analyzer~ and ~sccache~
+   #+begin_src shell
+     yay -S rustup rust-analyzer
+   #+end_src
+   - Install a toolchain and set it as default
+   #+begin_src shell
+     rustup default stable
+   #+end_src
+   - Update the toolchain (if needed)
+   #+begin_src shell
+     rustup update
+   #+end_src
+   - Install a different toolchain, where TOOLCHAIN is one of: stable, beta, nightly or 1.23.0
+   #+begin_src shell
+     rustup toolchain install TOOLCHAIN
+   #+end_src
+   - Install a toolchain for a different architecture, get the list of available architectures with:
+   #+begin_src shell
+     rustup target list
+     rustup toolchain install stable-x86_64-pc-windows-gnu
+   #+end_src
+   - Verify installed version
+   #+begin_src shell
+     rustc -V
+   #+end_src
+   - Add ~sccache~ to global rust config in =~/.cargo/config=
+   #+begin_src conf
+     [build]
+     rustc-wrapper = "sccache"
+   #+end_src
+** Adding Components
+   - Add a component
+   #+begin_src shell
+     rustup component add COMPONENT_NAME
+   #+end_src
+   - Add the formatter and the language server
+   #+begin_src shell
+     rustup component add rustfmt
+     rustup component add rls
+   #+end_src
+* Project Management
+  - Creating a new project
+   #+begin_src shell
+     cargo new PROJECT_NAME
+   #+end_src
+  - Check for errors
+   #+begin_src shell
+     cargo check
+   #+end_src
+  - Building a project
+   #+begin_src shell
+     cargo build
+   #+end_src
+  - Building a project for release
+   #+begin_src shell
+     cargo build --release
+   #+end_src
+  - Running a project
+   #+begin_src shell
+     cargo run
+   #+end_src
+  - Updating dependencies
+   #+begin_src shell
+     cargo update
+   #+end_src
+  - Build current dependencies' documentation and open in a browser
+   #+begin_src shell
+     cargo doc --open
+   #+end_src
+* Basics
+** Starting point ~main~ function
+   #+begin_src rust
+     fn main() {
+         //
+     }
+   #+end_src
+** Printing output
+   #+begin_src rust
+     use std::io;
+     // in main...
+     let x = 5;
+     let y = 10;
+     println!("Hello world"); // it's a macro for printing to stdout
+     println!("Var x = {x}"); // string interpolation
+     println!("Hello world var x = {}, var y = {}", x, y); // string interpolation
+   #+end_src
+** Declaring variables
+   - Variables a immutable by default
+   - Add ~mut~ to make a variable mutable
+   #+begin_src rust
+     let apples = 5; // immutable
+     let mut bananas = 5; // mutables
+
+     let string = String::new(); // string
+   #+end_src
+   - Declaring variables with a type
+   #+begin_src rust
+     let apples: i32 = 5;
+     let string: String = String::new();
+   #+end_src
+** Declaring constants
+   - Can not use ~mut~ with constant
+   - Are always immutable
+   - Type *MUST* be annotated
+   #+begin_src rust
+     const MY_CONST: u32 = 45;
+   #+end_src
+** Getting a String input from ~stdin~
+   - References are immutable by default so we use ~& mut~ to make the reference mutable
+   - Remember to ~use std::io;~
+   #+begin_src rust
+     let mut in_string = String::new();
+     io::stdin()
+         .read_line(&mut in_string)
+         .expect("Failed to read line");
+   #+end_src
+* Statements and Expressions
+  - *Statements* are instructions and perform actions, but do not return any values. E.g. a function declaration
+  - *Expressions* evaluate to a value being returned. E.g. ~5~, ~4 + 5~
+* Variable shadowing
+  - It is allowed to use the same variable name one after another, the previous one simply ceases to exist
+  - The advantage over ~mut~ is that the variable remains immutable and allows to change the type. The most basic example of this is [[id:jy9az9g04jj0][Type Casting]]. Furthermore, it reduces the amount of variable names needed to be thought of when type casting, i.e. ~guess_str~, ~guess_int~...etc. Here we'll simply just have ~guess~:
+    #+begin_src rust
+      let guess = "45";
+      let guess: u32 = guess.parse().expect("Not a number");
+    #+end_src
+* Error Handling and the ~Result enum~
+** Basic error handling with ~expect~
+   - ~expect("Failed to read line")~, ~expect~ is called when a ~Result~ calls ~Err~, in this case ~read_line()~ could potentially return an ~Err~. If the ~Result~ is ~Ok~ the ~expect~ will pass on the value of ~Ok~, in this case ~expect~ would return the length of the string
+   #+begin_src rust
+     let mut in_string = String::new();
+     io::stdin()
+         .read_line(&mut in_string)
+         .expect("Failed to read line");
+   #+end_src
+** Error handling with ~match~
+   - Here we use ~_~ in the ~Err~ as a "catchall", which means that we handle *ALL* errors that may occur.
+   #+begin_src rust
+     let guess: u32 = match guess.trim().parse() {
+         Ok(num) => num,
+         Err(_) => panic!("Not a number!"),
+     };
+   #+end_src
+* Comparing Values with ~Ordering~ and ~match~
+** We can compare values with the ~Ordering~ enum
+   - import it with ~use std::cmp::Ordering;~
+** Sample code
+   #+begin_src rust
+     match guess.cmp(&secret_number) {
+         Ordering::Less => println!("Too small!"),
+         Ordering::Greater => println!("Too big!"),
+         Ordering::Equal => println!("You win!"),
+     }
+   #+end_src
+   - ~secret_number~ is being compared with ~guess~, both are ~ints~ in this case
+* Random number generation
+** Add ~rand~ to the ~cargo.toml~ file
+   #+begin_src conf
+     [dependencies]
+     rand = "0.8.3"
+   #+end_src
+** Using rand
+   - Import the lib with ~use rand:Rng;~
+   - Generate a number between 1 and 100 (inclusive)
+     #+begin_src rust
+       let generated_number = rand::thread_rng().gen_range(1..=100);
+     #+end_src
+* Type Casting
+  :PROPERTIES:
+  :ID:       jy9az9g04jj0
+  :END:
+** Strings
+   - Denote the type casted to, in the variable declaration, here it is ~u32~. Call ~parse~ on the ~String~ variable.
+     #+begin_src rust
+       let my_guess = "45";
+       let my_guess = my_guess.trim().parse().expect("Not a number!")
+     #+end_src
+* Data Types
+** Scalar, four primitive types
+*** Integer
+**** Individual Integer Types
+     | Length  | Signed          | Unsigned |
+     |---------+-----------------+----------|
+     | 8 bit   | ~i8~            | ~u8~     |
+     | 16 bit  | ~i16~           | ~u16~    |
+     | 32 bit  | ~i32~ (default) | ~u32~    |
+     | 64 bit  | ~i64~           | ~u64~    |
+     | 128 bit | ~i128~          | ~u128~   |
+     | arch    | ~isize~         | ~usize~  |
+**** Integer Literals
+     | Literal              | Example       | Equivalent |
+     |----------------------+---------------+------------|
+     | Number (type suffix) | ~58u8~        |         58 |
+     | Number               | ~1_000~       |       1000 |
+     | Decimal              | ~86_400~      |     86.400 |
+     | Hex                  | ~0xff~        |            |
+     | Octal                | ~0o77~        |            |
+     | Binary               | ~0b1111_0000~ |            |
+     | Byte (u8 only)       | ~b'A'~        |            |
+*** Float
+**** Individual Float Types
+     | Length           | Notation |
+     |------------------+----------|
+     | 32 bit           | ~f32~    |
+     | 64 bit (default) | ~f64~    |
+*** Boolean
+**** The Boolean type is ~bool~
+**** Values are: ~true~ and ~false~
+*** Char
+**** Properties
+     - Is the most primitive alphabetical type in Rust
+**** Example of declaring a ~char~
+     #+begin_src rust
+       let c = 'z';
+       let z: char = 'ℤ'; // with explicit type annotation
+       let heart_eyed_cat = '😻';
+     #+end_src
+** Compound
+*** Tuple
+**** Properties
+     - Fixed length, cannot grow or shrink
+     - Supports a variety of types in each tuple's position
+**** Declaration, Destructuring and Position Access
+     #+begin_src rust
+       let tup: (i32, f64, u8) = (500, 6.4, 1);
+       let (x, y, z) = tup;
+
+       println!("The value of y is: {y}");
+       println!("The value at first position is: {tup.0}");
+       println!("The value at second position is: {tup.1}");
+     #+end_src
+**** Unit
+     - A ~unit~ is an empty tuple and is denoted as ~()~
+     - A ~unit~ represents an empty value or an empty return type
+     - Expressions implicitly return the ~unit~ value if they don’t return any other value
+*** Array
+**** Properties
+     - Every element has to be of the same type
+     - Have a fixed length
+     - Is allocated on the Stack
+     - Provides a check of *out of bounds* error at runtime and causes a ~panic~
+**** Declaration
+     #+begin_src rust
+       let arr = [4, 8, 9]; // type inferred
+       let arr: [i32; 3] = [4, 8, 9]; // type; length provided
+       let arr = [3; 5]; // is equivalent to [3, 3, 3, 3, 3]
+     #+end_src
+**** Accessing Elements
+     #+begin_src rust
+       let arr = [4, 8, 9]; // type inferred
+       let first_element = arr[0];
+       let second_element = arr[1];
+     #+end_src
+* Functions
+** Declaring a function
+   - Functions are declared with the ~fn~ keyword
+   - The rest is standard, as in: parameters/arguments in brackets and the function body in curly brackets
+   - The return type is declared with this ~->~ symbol follow by the type, e.g. ~-> i32~
+** Examples
+   #+begin_src rust
+     fn main() {
+         another_function();
+         print_value(44);
+         let result = multiply_by_two(40);
+     }
+
+     fn another_function() {
+         println!("Hello, world!");
+     }
+
+     fn print_value(value: i32) {
+         println!("Value is: {value}");
+     }
+
+     // Note that we don't need to write return if it is a simple example
+     // Also note that there is no semicolon for this implicit return type
+     fn multiply_by_two(value: i32) -> i32 {
+         value * 2
+     }
+   #+end_src
+* Control Flow
+** ~if~ Statements
+   - Are the same as in any other language
+   - Strictly require a ~bool~
+   - Standard combinations of ~if~, ~else if~, ~else~ are valid
+*** ~if~ in a ~let~
+    - The example below will return either a 5 or a 6 depending on the ~condition~
+    - This is a nifty feature of Rust's expressions that are capable of returning values
+    - Remember that chains of ~if~, ~else if~, ~else~ must all return the same type, otherwise the type would be mixed, which is not allowed
+    #+begin_src rust
+      let number = if condition { 5 } else { 6 };
+    #+end_src
+** Infinite ~loop~
+*** ~loop~ Example
+   #+begin_src rust
+     loop {
+         // infinite loop code here
+         // exit out of loop with break
+         break;
+     }
+   #+end_src
+*** Returning a value from a ~loop~ with ~break~
+    #+begin_src rust
+      let result = loop {
+          counter += 1;
+
+          if counter == 10 {
+              break counter * 2;
+          }
+      };
+    #+end_src
+*** Using ~loop~ labels
+    - Labels *MUST* start with a single apostrophe
+    #+begin_src rust
+      fn main() {
+          let mut count = 0;
+          'counting_up: loop {
+              println!("count = {count}");
+              let mut remaining = 10;
+
+              loop {
+                  println!("remaining = {remaining}");
+                  if remaining == 9 {
+                      break;
+                  }
+                  if count == 2 {
+                      break 'counting_up;
+                  }
+                  remaining -= 1;
+              }
+
+              count += 1;
+          }
+          println!("End count = {count}");
+      }
+    #+end_src
+** Conditional ~while~ loop
+   - Works the exact same way as in most languages, expect the missing brackets
+   #+begin_src rust
+     let mut number = 3;
+
+     while number != 0 {
+         println!("{number}!");
+
+         number -= 1;
+     }
+   #+end_src
+** Looping through Collections with ~for~
+*** Looping over an array
+    #+begin_src rust
+      let a = [10, 20, 30, 40, 50];
+
+      for element in a {
+          println!("the value is: {element}");
+      }
+    #+end_src
+*** Example of using a ~Range~
+    #+begin_src rust
+      // forward count
+      for number in (1..4) {
+          println!("{number}!");
+      }
+      // backward count (reversing the Range with rev())
+      for number in (1..4).rev() {
+          println!("{number}!");
+      }
+    #+end_src
+*** Enumerating a collection
+    - Calling ~enumerate~ on a ~iterable~ will return a tuple (index, &item).
+    #+begin_src rust
+      let s = String::from("Hello World");
+      let bytes = s.as_bytes();
+
+      for (i, &item) in bytes.iter().enumerate() {
+          // do something with i
+          // do something with &item
+      }
+    #+end_src
+* Ownership
+** Rules
+   - Each value in Rust has an owner.
+   - There can only be one owner at a time.
+   - When the owner goes out of scope, the value will be dropped.
+** Basic example of Ownership
+   #+begin_src rust
+     fn main() {
+         {                      // s is not valid here, it’s not yet declared
+             let s = "hello";   // s is valid from this point forward
+
+             // do stuff with s
+         }                      // this scope is now over, and s is no longer valid
+     }
+   #+end_src
+** Transferring Ownership
+*** Basics
+   - Keeping the rules of ownership in mind the code below will cause an error
+   #+begin_src rust
+     let s1 = String::from("hello");
+     let s2 = s1; // s1 moved to s2 here (literally the pointer has moved and s1 is dropped)
+
+     println!("{}, world!", s1); // s1 is not available anymore
+   #+end_src
+   - But writing it like this causes no errors
+   #+begin_src rust
+     let s1 = String::from("hello");
+     println!("{}, world!", s1); // s1 is still valid here
+
+     let s2 = s1; // s1 is not valid anymore, because its ownership moves to s2
+     println!("{}, world!", s2);
+   #+end_src
+   - One could also utilize cloning o make sure that both variables have ownership of their data. Please note that copying/cloning is automatic for primitive types.
+   #+begin_src rust
+     let s1 = String::from("hello");
+     let s2 = s1.clone(); // cloning data, i.e. a new pointer is created here
+
+     println!("s1 = {}, s2 = {}", s1, s2);
+   #+end_src
+   - Rust's uniqueness is all about keeping a track of pointers to data on the heap and reassuring that there is always only one owner of the data
+   - So what about functions? Well, functions can take the ownership and give it back, or they can utilize [[id:dxr2x4j09jj0][Borrowing]] to temporarily gain access, but not the ownership
+*** Example of function that takes ownership and an example of a function that makes a copy (due to the parameter being a primitive)
+   #+begin_src rust
+     fn main() {
+         let s = String::from("hello");  // s comes into scope
+
+         takes_ownership(s);             // s's value moves into the function...
+                                         // ... and so is no longer valid here
+
+         let x = 5;                      // x comes into scope
+
+         makes_copy(x);                  // x would move into the function,
+                                         // but i32 is Copy, so it's okay to still
+                                         // use x afterward
+
+     } // Here, x goes out of scope, then s. But because s's value was moved, nothing
+       // special happens.
+
+     fn takes_ownership(some_string: String) { // some_string comes into scope
+         println!("{}", some_string);
+     } // Here, some_string goes out of scope and `drop` is called. The backing
+       // memory is freed.
+
+     fn makes_copy(some_integer: i32) { // some_integer comes into scope
+         println!("{}", some_integer);
+     } // Here, some_integer goes out of scope. Nothing special happens.
+
+   #+end_src
+*** Example of a function that takes ownership and gives it back
+   #+begin_src rust
+     fn main() {
+         let s1 = gives_ownership();         // gives_ownership moves its return
+                                             // value into s1
+
+         let s2 = String::from("hello");     // s2 comes into scope
+
+         let s3 = takes_and_gives_back(s2);  // s2 is moved into
+                                             // takes_and_gives_back, which also
+                                             // moves its return value into s3
+     } // Here, s3 goes out of scope and is dropped. s2 was moved, so nothing
+       // happens. s1 goes out of scope and is dropped.
+
+     fn gives_ownership() -> String {             // gives_ownership will move its
+                                                  // return value into the function
+                                                  // that calls it
+
+         let some_string = String::from("yours"); // some_string comes into scope
+
+         some_string                              // some_string is returned and
+                                                  // moves out to the calling
+                                                  // function
+     }
+
+     // This function takes a String and returns one
+     fn takes_and_gives_back(a_string: String) -> String { // a_string comes into
+                                                           // scope
+
+         a_string  // a_string is returned and moves out to the calling function
+     }
+
+   #+end_src
+** Borrowing
+   :PROPERTIES:
+   :ID:       dxr2x4j09jj0
+   :END:
+   - Is what it sounds like. You literally borrow a value's ownership, without claiming ownership. The borrowing is done via *references*, as in the ampersand symbol, just like in many other languages.
+*** Rules
+    - At any given time, you can have either one mutable reference or any number of immutable references.
+    - References must always be valid.
+*** Basic example of a borrowed value
+    - Here ~calculate_length~ borrows the ~String s~ and returns its length without the need to give back the ownership of ~s~, it is only borrowed
+    - Borrows are immutable by default
+    #+begin_src rust
+      fn main() {
+          let s1 = String::from("hello");
+
+          let len = calculate_length(&s1);
+
+          println!("The length of '{}' is {}.", s1, len);
+      }
+
+      fn calculate_length(s: &String) -> usize { // s is a reference to a String
+          s.len()
+      } // Here, s goes out of scope. But because it does not have ownership of what
+        // it refers to, it is not dropped.
+    #+end_src
+*** If we want to borrow and change the value we must create a mutable reference with ~&mut Type~
+    #+begin_src rust
+      fn main() {
+          let mut s = String::from("hello");
+
+          change(&mut s);
+      }
+
+      fn change(some_string: &mut String) {
+          some_string.push_str(", world");
+      }
+    #+end_src
+*** Mixing immutable and mutable references
+    - However, keep in mind that we can only have *ONE* mutable reference. The assumption is that the "other" reference may be not in sync with the first one if the first one is modified and therefore this code produces an error:
+      #+begin_src rust
+        let mut s = String::from("hello");
+
+        let r1 = &mut s; // first mutable borrow
+        let r2 = &mut s; // second mutable borrow (error)
+
+        // error, trying to use first mutable borrow r1 here
+        println!("{}, {}", r1, r2);
+      #+end_src
+    - The same applies to having one or more immutable references while trying to create a mutable reference. There is no guarantee that the immutable references will have the same data after the mutable reference changes its value.
+    - Users of an immutable reference don’t expect the value to suddenly change out from under them! However, multiple immutable references are allowed because no one who is just reading the data has the ability to affect anyone else’s reading of the data. Example below shows and error with mixing immutable and mutable references causing an error:
+    #+begin_src rust
+      fn main() {
+          let mut s = String::from("hello");
+
+          let r1 = &s; // no problem
+          let r2 = &s; // no problem
+          let r3 = &mut s; // BIG PROBLEM
+
+          println!("{}, {}, and {}", r1, r2, r3);
+      }
+    #+end_src
+    - But this code will work just fine because we're using the immutable references before we create the mutable one:
+    #+begin_src rust
+      let mut s = String::from("hello");
+
+      let r1 = &s; // no problem
+      let r2 = &s; // no problem
+      println!("{} and {}", r1, r2);
+      // variables r1 and r2 will not be used after this point
+
+      let r3 = &mut s; // no problem
+      println!("{}", r3);
+    #+end_src
+*** Protection against Dangling Pointers
+    - Example of a code that will cause an error because we're trying to create a dangling pointer without a lifecycle
+    #+begin_src rust
+      fn main() {
+          let reference_to_nothing = dangle();
+      }
+
+      fn dangle() -> &String { // dangle returns a reference to a String
+
+          let s = String::from("hello"); // s is a new String
+
+          &s // we return a reference to the String, s
+      } // Here, s goes out of scope, and is dropped. Its memory goes away.
+        // Danger!
+
+    #+end_src
+    - The quick and easy solution is to return the value directly (it is a pointer under the hood either way...)
+    #+begin_src rust
+      fn main() {
+          let string = no_dangle();
+      }
+
+      fn no_dangle() -> String {
+          let s = String::from("hello");
+
+          s
+      }
+    #+end_src
+* Slice Type
+** Definition
+   - Slices let you reference a contiguous sequence of elements in a collection rather than the whole collection. A slice is a kind of reference, so it does not have ownership.
+   - Internally a Slice contains the pointer to the start of the data and the length of the data
+** Caveats
+   - The Slice of a ~String~ is a ~&str~
+   - String literals are slices, so a ~let s = "Hello World"~ is actually a String slice, the type of ~s~ is ~&str~
+   - It is preferred to use String slices as function parameters, because it will accept both ~&Strings~ (references) and ~&str~ (Slices) due to /deref coercions/, which will be explained later in *Implicit Deref Coercion in Methods and Functions*
+   #+begin_src rust
+     fn first_word(s: &str) -> &str { // using a &str instead of &String
+         let bytes = s.as_bytes();
+
+         for (i, &item) in bytes.iter().enumerate() {
+             if item == b' ' {
+                 return &s[0..i];
+             }
+         }
+
+         &s[..]
+     }
+
+     fn main() {
+         let my_string = String::from("hello world");
+
+         // `first_word` works on slices of `String`s, whether partial or whole
+         let word = first_word(&my_string[0..6]);
+         let word = first_word(&my_string[..]);
+         // `first_word` also works on references to `String`s, which are equivalent
+         // to whole slices of `String`s
+         let word = first_word(&my_string);
+
+         let my_string_literal = "hello world";
+
+         // `first_word` works on slices of string literals, whether partial or whole
+         let word = first_word(&my_string_literal[0..6]);
+         let word = first_word(&my_string_literal[..]);
+
+         // Because string literals *are* string slices already,
+         // this works too, without the slice syntax!
+         let word = first_word(my_string_literal);
+     }
+   #+end_src
+** Declaring a Slice uses Rust's Range syntax
+   - Given some string ~let s = String:from("Hello");~
+   - ~&s[starting_index..ending_index]~, ending index is exclusive, starting is inclusive
+   - ~&s[..3]~ starting at 0 and ending at 2
+   - ~&s[2..]~ starting at 2 and ending at the length of the underlying data
+   - ~&s[..]~ the full length
+   - For Arrays we can use ~&[i32]~
+   #+begin_src rust
+     let a = [1, 2, 3, 4, 5];
+
+     let slice = &a[1..3];
+
+     assert_eq!(slice, &[2, 3]);
+   #+end_src
+** Example on a String Slice
+   #+begin_src rust
+     let s = String::from("hello world");
+
+     let hello = &s[0..5];
+     let world = &s[6..11];
+   #+end_src
+** Example of a problem noticed by the compiler thanks to Slices usage
+   #+begin_src rust
+     fn main() {
+         let mut s = String::from("hello world");
+
+         let word = first_word(&s); // returns a Slice containing "hello", immutable borrow
+
+         s.clear(); // error! mutable borrow
+
+         // error due to ownership rules
+         // immutable borrow can't occur due to the previous mutable borrow
+         println!("the first word is: {}", word);
+     }
+   #+end_src
+* Structs
+** Syntax
+   - All fields are ~private~ by default
+   - Add ~pub~ to make any field public
+   - Use the dot notation to access fields
+*** Basic ~User~ struct
+    #+begin_src rust
+      struct User {
+          pub active: bool,
+          username: String,
+          email: String,
+          sign_in_count: u64,
+      }
+    #+end_src
+    - In the User struct definition we used the owned String type rather than the &str string slice type. This is a deliberate choice because we want each instance of this struct to own all of its data and for that data to be valid for as long as the entire struct is valid. It’s also possible for structs to store references to data owned by something else, but to do so requires the use of lifetimes.
+*** Changing any fields is not allowed, to change any you must declare the struct with ~mut~
+    #+begin_src rust
+      fn main() {
+          let mut user1 = User { // using mut here
+              email: String::from("someone@example.com"),
+              username: String::from("someusername123"),
+              active: true,
+              sign_in_count: 1,
+          };
+
+          // because user1 is mutable, we are allowed to modify the email field
+          user1.email = String::from("anotheremail@example.com");
+      }
+
+    #+end_src
+*** Debugging with the ~Debug~ derived ~trait~
+    - Debug with the ~println!~ macro
+    #+begin_src rust
+      #[derive(Debug)]  // note the derive Debug trait
+      struct Rectangle {
+          width: u32,
+          height: u32,
+      }
+
+      fn main() {
+          let rect1 = Rectangle {
+              width: 30,
+              height: 50,
+          };
+
+          println!("rect1 is {:?}", rect1); // using the :? syntax to debug print
+          println!("rect1 is {:#?}", rect1); // using the :#? syntax to pretty-print
+      }
+
+    #+end_src
+    - Alternatively use the ~dbg!~ macro, note that it returns ownership
+    #+begin_src rust
+      #[derive(Debug)]
+      struct Rectangle {
+          width: u32,
+          height: u32,
+      }
+
+      fn main() {
+          let scale = 2;
+          let rect1 = Rectangle {
+              width: dbg!(30 * scale), // returns ownership
+              height: 50,
+          };
+
+          dbg!(&rect1);
+      }
+
+    #+end_src
+** Builders
+   #+begin_src rust
+     fn build_user(email: String, username: String) -> User {
+         User {
+             email: email,
+             username: username,
+             active: true,
+             sign_in_count: 1,
+         }
+     }
+
+     fn main() {
+         let user1 = build_user(
+             String::from("someone@example.com"),
+             String::from("someusername123"),
+         );
+     }
+   #+end_src
+   - Or use the *Field Init Shorthand*
+   #+begin_src rust
+     fn build_user(email: String, username: String) -> User {
+         User {
+             email,  // using shorthand
+             username, // using shorthand
+             active: true,
+             sign_in_count: 1,
+         }
+     }
+   #+end_src
+** Instantiate an instance from another instance using a shorthand
+   - Please note that the fields that we want to overwrite *must be* above the shorthand notation
+   #+begin_src rust
+     fn main() {
+         let user1 = User {
+             email: String::from("someone@example.com"),
+             username: String::from("someusername123"),
+             active: true,
+             sign_in_count: 1,
+         };
+
+         let user2 = User {
+             email: String::from("another@example.com"), // overwriting email
+             ..user1 // using the other fields from user1
+         };
+     }
+   #+end_src
+   - Note that the struct update syntax uses ~=~ like an assignment; this is because it moves the data. In this example, we can no longer use ~user1~ after creating ~user2~ because the String in the ~username~ field of ~user1~ was moved into ~user2~. If we had given ~user2~ new String values for both ~email~ and ~username~, and thus only used the active and sign_in_count values from ~user1~, then ~user1~ would still be valid after creating ~user2~. The types of ~active~ and ~sign_in_count~ are types that implement the ~Copy Trait~.
+** Tuple Structs without names fields
+   #+begin_src rust
+     struct Color(i32, i32, i32);
+     struct Point(i32, i32, i32);
+
+     fn main() {
+         let black = Color(0, 0, 0);
+         let origin = Point(0, 0, 0);
+     }
+
+   #+end_src
+** Unit-like Struct without fields
+   - Unit-like structs can be useful when you need to implement a ~trait~ on some type but don’t have any data that you want to store in the type itself
+   #+begin_src rust
+     struct AlwaysEqual;
+
+     fn main() {
+         let subject = AlwaysEqual;
+     }
+
+   #+end_src
+** Method Syntax
+*** Basic Example
+    - Use the ~impl~ block to declare any methods of a ~struct~
+    - The ~&self~ essentially borrows the ~Self~ instance and is a shorthand of ~self: &self~
+    - Use ~&mut self~ to create a method that mutates the instance
+    - Having a method that takes ownership of the instance by using just ~self~ as the first parameter is rare; this technique is usually used when the method transforms ~self~ into something else and you want to prevent the caller from using the original instance after the transformation (you'd take the ownership and give back the ownership).
+    #+begin_src rust
+      struct Rectangle {
+          width: u32,
+          height: u32,
+      }
+
+      impl Rectangle {
+          // implementing the area method on Rectangle struct
+          fn area(&self) -> u32 {
+              self.width * self.height
+          }
+
+          // implementing a mutating method, needs &mut self
+          fn expand(&mut self, factor: u32) {
+              self.width *= factor;
+              self.height *= factor;
+          }
+
+          // more parameters, here another Rectangle as other
+          fn can_hold(&self, other: &Rectangle) -> bool {
+              self.width > other.width && self.height > other.height
+          }
+      }
+
+      fn main() {
+          let mut rect1 = Rectangle {
+              width: 30,
+              height: 50,
+          };
+
+          println!(
+              "The area of the rectangle is {} square pixels.",
+              rect1.area()
+          );
+      }
+    #+end_src
+*** Example of a constructor/builder
+    - Please note that we don't use ~&self~ here
+    #+begin_src rust
+      struct Rectangle {
+          width: u32,
+          height: u32,
+      }
+
+      impl Rectangle {
+          fn square(size: u32) -> Rectangle {
+              Rectangle {
+                  width: size,
+                  height: size,
+              }
+          }
+      }
+
+      fn main() {
+          let sq = Rectangle::square(3);
+      }
+
+    #+end_src
+
+* Delete heading at the end
+  #+BEGIN_EXPORT html
+  <script src="../../assets/jquery-3.3.1.min.js"></script>
+  <script src="../../assets/notes.js"></script>
+  #+END_EXPORT
