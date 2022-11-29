@@ -7,7 +7,7 @@ $('body').prepend("<button id='expand'>➕</button>");
 // add the invert button
 $('body').prepend("<button id='invert'>Invert</button>");
 // add the scroll up button
-$('body').prepend("<img src='images/arrow-up.png' alt='arrow-up' id='scroll-button' onclick='window.scroll(0, 0);'>");
+$('body').prepend("<span id='scroll-button' onclick='window.scroll(0, 0);'>🡅</span>");
 
 // Add elements end
 ////////////////////////////////

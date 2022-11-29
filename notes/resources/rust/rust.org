@@ -2,7 +2,7 @@
 #+DATE: [2021-10-28 Thu 20:00]
 #+AUTHOR: Damian Chrzanowski
 #+EMAIL: pjdamian.chrzanowski@gmail.com
-#+OPTIONS: TOC:2 num:2
+#+OPTIONS: TOC:2 num:3
 #+HTML_HEAD: <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
 #+HTML_HEAD: <link rel="stylesheet" type="text/css" href="../../assets/org.css"/>
 #+HTML_HEAD: <link rel="icon" href="../../assets/favicon.ico">
@@ -636,7 +636,7 @@
          let word = first_word(my_string_literal);
      }
    #+end_src
-** Declaring a Slice uses Rust's Range syntax
+** Declaring a Slice using Rust's Range syntax
    - Given some string ~let s = String:from("Hello");~
    - ~&s[starting_index..ending_index]~, ending index is exclusive, starting is inclusive
    - ~&s[..3]~ starting at 0 and ending at 2
@@ -786,8 +786,8 @@
          };
      }
    #+end_src
-   - Note that the struct update syntax uses ~=~ like an assignment; this is because it moves the data. In this example, we can no longer use ~user1~ after creating ~user2~ because the String in the ~username~ field of ~user1~ was moved into ~user2~. If we had given ~user2~ new String values for both ~email~ and ~username~, and thus only used the active and sign_in_count values from ~user1~, then ~user1~ would still be valid after creating ~user2~. The types of ~active~ and ~sign_in_count~ are types that implement the ~Copy Trait~.
-** Tuple Structs without names fields
+   - Note that the struct update syntax uses ~=~ like an assignment; this is because it moves the data. In this example, we can no longer use ~user1~ after creating ~user2~ because the String in the ~username~ field of ~user1~ was moved into ~user2~. If we had given ~user2~ new String values for both ~email~ and ~username~, and thus only used the active and ~sign_in_count~ values from ~user1~, then ~user1~ would still be valid after creating ~user2~. The types of ~active~ and ~sign_in_count~ are types that implement the ~Copy Trait~.
+** Tuple Structs without named fields
    #+begin_src rust
      struct Color(i32, i32, i32);
      struct Point(i32, i32, i32);

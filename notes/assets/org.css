@@ -56,7 +56,11 @@ h2 {
 
 h3 {
     font-size: 1.3em;
-    margin: 30px 0px -10px 5px;
+    margin: 30px 0px 0px 0px;
+}
+
+h4 {
+    margin-bottom: -5px;
 }
 
 table {
@@ -75,7 +79,7 @@ pre {
     font-family: monospace;
     overflow: auto !important;
     margin: 1.2em;
-    background: #212121;
+    background: #191b20;
     color: #DDD;
 }
 
@@ -147,16 +151,19 @@ a:hover {
 }
 
 #scroll-button {
-    width: 28px;
-    height: 28px;
+    font-size: 1.5em;
     display: none;
     position: fixed;
-    bottom: 10px;
-    right: 10px;
-    opacity: 0.5;
+    bottom: 15px;
+    right: 15px;
+    opacity: 0.4;
     cursor: pointer;
-    transition: 0.5s;
-    border: none;
+    transition: 0.3s;
+    border: 1px solid gray;
+    border-radius: 5px;
+    padding: 3px 10px 0px 10px;
+    background-color: #292d36;
+    z-index: 1000;
 }
 
 #scroll-button:hover {
@@ -182,4 +189,8 @@ button:focus {
 
 .toggler-h3 {
     top: 5px;
+}
+
+object.org-svg {
+    background-color: white !important;
 }
