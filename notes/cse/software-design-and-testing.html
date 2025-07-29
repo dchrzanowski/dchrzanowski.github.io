@@ -1,0 +1,1889 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2025-07-29 Tue 16:00 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Software Design and Testing</title>
+<meta name="author" content="Damian Chrzanowski" />
+<meta name="generator" content="Org Mode" />
+<style type="text/css">
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { }
+</style>
+<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="../assets/org.css"/>
+<link rel="icon" href="../assets/favicon.ico">
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">Software Design and Testing</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#orgef91b04">1. Assesment</a>
+<ul>
+<li><a href="#orgf897ba4">1.1. Scrum Quiz: 24th July</a></li>
+<li><a href="#orgf29df2e">1.2. Written Test - closed book: 31st July</a></li>
+<li><a href="#org3fb207f">1.3. Unit Testing PC based open book: 7th August</a></li>
+</ul>
+</li>
+<li><a href="#orge1dde59">2. Resources</a>
+<ul>
+<li><a href="#org6fcfff4">2.1. Extreme Programming Explained: Addison-Wesley</a></li>
+<li><a href="#org94b3e61">2.2. Scrum and XP from the Trenches: Henrik Kniberg</a></li>
+<li><a href="#orgf499926">2.3. The Scrum Master Training Manual</a></li>
+<li><a href="#org1d0c128">2.4. www.scrumtrainingseries.com</a></li>
+<li><a href="#org947fb34">2.5. scrummethodology.com</a></li>
+<li><a href="#orgb17c3b0">2.6. scrum.org</a></li>
+</ul>
+</li>
+<li><a href="#org8d6df06">3. Definitions</a>
+<ul>
+<li><a href="#org868716d">3.1. User Stories</a></li>
+<li><a href="#org2460316">3.2. Scrum, XP, Kanban</a></li>
+<li><a href="#orgce1bb26">3.3. Version Control</a></li>
+<li><a href="#org535b432">3.4. Basic Unit Testing</a></li>
+<li><a href="#org083f30d">3.5. Testing</a></li>
+<li><a href="#org33aa92a">3.6. Software</a></li>
+<li><a href="#orgc40cc73">3.7. The Software Process</a></li>
+</ul>
+</li>
+<li><a href="#orgdb349f2">4. Challenges Of Software</a></li>
+<li><a href="#org31ba7b0">5. Agile Methodology</a>
+<ul>
+<li><a href="#orgf63b2e0">5.1. The Core</a></li>
+<li><a href="#org73b10a0">5.2. Iterative</a></li>
+</ul>
+</li>
+<li><a href="#orge4f6707">6. User Stories</a>
+<ul>
+<li><a href="#orga12cb29">6.1. Addressing the problem</a></li>
+<li><a href="#org645703f">6.2. User Stories are a pointer to the requirement (in programmer's terms)</a></li>
+<li><a href="#orgfbe2601">6.3. The three C's (how user stories are usually created)</a></li>
+<li><a href="#orgc3f758c">6.4. Definition of User Story</a></li>
+<li><a href="#orgd414d2c">6.5. Example (note that importance of SO THAT)</a></li>
+<li><a href="#orgd006c90">6.6. User Story Types</a></li>
+<li><a href="#org9e2f7df">6.7. Product Backlog&#xa0;&#xa0;&#xa0;<span class="tag"><span class="ATTACH">ATTACH</span></span></a></li>
+<li><a href="#org14143d5">6.8. Story writing workshops</a></li>
+<li><a href="#org8a03bd5">6.9. Why User Stories?</a></li>
+<li><a href="#org9f1a8fb">6.10. DON'T FORGET</a></li>
+<li><a href="#org2226169">6.11. INVEST</a></li>
+</ul>
+</li>
+<li><a href="#org621ecda">7. SCRUM</a>
+<ul>
+<li><a href="#org1285a15">7.1. Definition</a></li>
+<li><a href="#orgf97788f">7.2. Scrum requires a Scrum Master to foster an environment where:</a></li>
+<li><a href="#orgb4f7a9d">7.3. Scrum is simple</a></li>
+<li><a href="#orgd8d61bc">7.4. Scrum Theory</a></li>
+<li><a href="#orgfcb7b69">7.5. Pillars Of Scrum</a></li>
+<li><a href="#org459c1f9">7.6. Scrum Values</a></li>
+<li><a href="#orgcf5f098">7.7. Scrum Team</a></li>
+<li><a href="#orgfea0578">7.8. Scrum Events</a></li>
+<li><a href="#orga4cfc8d">7.9. Scrum Artifacts</a></li>
+</ul>
+</li>
+<li><a href="#orgf9e86bd">8. Revision Questions for Exam</a>
+<ul>
+<li><a href="#orgdd00360">8.1. What is Software</a></li>
+<li><a href="#org6a84200">8.2. What is Software Engineering</a></li>
+<li><a href="#org0fba91b">8.3. Explain why we need to engineer software and not “just code it”.</a></li>
+<li><a href="#org173f251">8.4. What is a software process? Describe the common activities that are part of all software processes</a></li>
+<li><a href="#org7e2c616">8.5. What are the four important or essential attributes that all professional software should have? Suggest four other attributes that may sometimes be significant.</a></li>
+<li><a href="#org0ef0ba9">8.6. Compare Agile and Waterfall</a></li>
+<li><a href="#orgc607b9d">8.7. What are the characteristics of Agile projects?</a></li>
+<li><a href="#orgcbe6b3c">8.8. How is incremental different to iterative?</a></li>
+<li><a href="#org99b8973">8.9. List 2 advantages of the waterfall methodology</a></li>
+<li><a href="#org01ac77d">8.10. What is the scientific method underpinning Agile methods?</a></li>
+<li><a href="#org957c2d0">8.11. Describe the main activities common to all software processes</a></li>
+<li><a href="#orgdb3b792">8.12. What is the software process model or software process description?</a></li>
+<li><a href="#org9334045">8.13. What is the main difference between plan-driven and agile processes?</a></li>
+<li><a href="#org14d1199">8.14. Describe the waterfall model in software development and discuss some of the inherent problems in the waterfall model</a></li>
+<li><a href="#orgb65582f">8.15. Discuss advantages and disadvantages of story cards</a></li>
+<li><a href="#org3381e02">8.16. What are the three parts of a user story. Give examples of a User Story Description. Describe how user story should follow the INVEST principle giving examples to support your answer.</a></li>
+<li><a href="#orga0ba0d0">8.17. With respect to User Stories what is the definition of done. Give examples.</a></li>
+<li><a href="#org542f858">8.18. Cone of uncertainty</a></li>
+<li><a href="#org95ed2ef">8.19. What are “functional” requirements in software development?</a></li>
+<li><a href="#org9ed01f0">8.20. What is a “non-functional” requirement in software development? Provide examples as well</a></li>
+<li><a href="#org0afcbfc">8.21. Explain Spring Velocity and how it is calculated</a></li>
+<li><a href="#org6d69d45">8.22. What is an Agile Method</a></li>
+<li><a href="#org2093c2a">8.23. What does the terms “chickens” and “pigs” relate to with respect to Scrum?</a></li>
+<li><a href="#orgc38a26b">8.24. Describe in detail the Scrum lifecycle and outline the roles, ceremonies and artifacts involved in the Scrum methodology</a></li>
+<li><a href="#org4b459bf">8.25. What is Maven in Java?</a></li>
+<li><a href="#org48fee80">8.26. Some common Maven goals:</a></li>
+<li><a href="#org059ae01">8.27. What is static testing?</a></li>
+<li><a href="#orged872d2">8.28. In software development Describe the fundamental test process using a diagram.</a></li>
+<li><a href="#org531cc6f">8.29. Describe the different test levels you might expect to find in a software development project.</a></li>
+</ul>
+</li>
+<li><a href="#orgf8fdcab">9. Remove at the End</a></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgef91b04" class="outline-2">
+<h2 id="orgef91b04"><span class="section-number-2">1.</span> Assesment</h2>
+<div class="outline-text-2" id="text-1">
+</div>
+<div id="outline-container-orgf897ba4" class="outline-3">
+<h3 id="orgf897ba4"><span class="section-number-3">1.1.</span> Scrum Quiz: 24th July</h3>
+</div>
+
+<div id="outline-container-orgf29df2e" class="outline-3">
+<h3 id="orgf29df2e"><span class="section-number-3">1.2.</span> Written Test - closed book: 31st July</h3>
+</div>
+
+<div id="outline-container-org3fb207f" class="outline-3">
+<h3 id="org3fb207f"><span class="section-number-3">1.3.</span> Unit Testing PC based open book: 7th August</h3>
+</div>
+</div>
+<div id="outline-container-orge1dde59" class="outline-2">
+<h2 id="orge1dde59"><span class="section-number-2">2.</span> Resources</h2>
+<div class="outline-text-2" id="text-2">
+</div>
+<div id="outline-container-org6fcfff4" class="outline-3">
+<h3 id="org6fcfff4"><span class="section-number-3">2.1.</span> Extreme Programming Explained: Addison-Wesley</h3>
+</div>
+
+<div id="outline-container-org94b3e61" class="outline-3">
+<h3 id="org94b3e61"><span class="section-number-3">2.2.</span> Scrum and XP from the Trenches: Henrik Kniberg</h3>
+</div>
+
+<div id="outline-container-orgf499926" class="outline-3">
+<h3 id="orgf499926"><span class="section-number-3">2.3.</span> The Scrum Master Training Manual</h3>
+</div>
+
+<div id="outline-container-org1d0c128" class="outline-3">
+<h3 id="org1d0c128"><span class="section-number-3">2.4.</span> www.scrumtrainingseries.com</h3>
+</div>
+
+<div id="outline-container-org947fb34" class="outline-3">
+<h3 id="org947fb34"><span class="section-number-3">2.5.</span> scrummethodology.com</h3>
+</div>
+
+<div id="outline-container-orgb17c3b0" class="outline-3">
+<h3 id="orgb17c3b0"><span class="section-number-3">2.6.</span> scrum.org</h3>
+</div>
+</div>
+<div id="outline-container-org8d6df06" class="outline-2">
+<h2 id="org8d6df06"><span class="section-number-2">3.</span> Definitions</h2>
+<div class="outline-text-2" id="text-3">
+</div>
+<div id="outline-container-org868716d" class="outline-3">
+<h3 id="org868716d"><span class="section-number-3">3.1.</span> User Stories</h3>
+<div class="outline-text-3" id="text-3-1">
+<ul class="org-ul">
+<li>Are requirements for the software</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org2460316" class="outline-3">
+<h3 id="org2460316"><span class="section-number-3">3.2.</span> Scrum, XP, Kanban</h3>
+</div>
+
+<div id="outline-container-orgce1bb26" class="outline-3">
+<h3 id="orgce1bb26"><span class="section-number-3">3.3.</span> Version Control</h3>
+</div>
+
+<div id="outline-container-org535b432" class="outline-3">
+<h3 id="org535b432"><span class="section-number-3">3.4.</span> Basic Unit Testing</h3>
+</div>
+
+<div id="outline-container-org083f30d" class="outline-3">
+<h3 id="org083f30d"><span class="section-number-3">3.5.</span> Testing</h3>
+<div class="outline-text-3" id="text-3-5">
+<ul class="org-ul">
+<li>The result of software failures is a DAMAGED REPUTATION to self and the company</li>
+<li>Testing objectives: Finding defects in the software, confirming that the system works, assessing the quality of the software, reducing maintenance costs (as a side effect)</li>
+<li>Testing goal: To validate whether the test object (feature) works as expected by the users and other stakeholders</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org33aa92a" class="outline-3">
+<h3 id="org33aa92a"><span class="section-number-3">3.6.</span> Software</h3>
+<div class="outline-text-3" id="text-3-6">
+<ul class="org-ul">
+<li>Computer programs and associated documentation such as requirements, design models and user manuals.</li>
+<li>Be cautious of the defects</li>
+<li>Cost: software is generally more expensive than hardware. Software engineering is concerned with cost-effective software development</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgc40cc73" class="outline-3">
+<h3 id="orgc40cc73"><span class="section-number-3">3.7.</span> The Software Process</h3>
+<div class="outline-text-3" id="text-3-7">
+<ul class="org-ul">
+<li>Activities: Specification, Development, Validation, Evolution</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-orgdb349f2" class="outline-2">
+<h2 id="orgdb349f2"><span class="section-number-2">4.</span> Challenges Of Software</h2>
+<div class="outline-text-2" id="text-4">
+<ul class="org-ul">
+<li>Complex Requirements</li>
+<li>Compatibility Issues</li>
+<li>Cost Estimation and Milestones</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org31ba7b0" class="outline-2">
+<h2 id="org31ba7b0"><span class="section-number-2">5.</span> Agile Methodology</h2>
+<div class="outline-text-2" id="text-5">
+</div>
+<div id="outline-container-orgf63b2e0" class="outline-3">
+<h3 id="orgf63b2e0"><span class="section-number-3">5.1.</span> The Core</h3>
+<div class="outline-text-3" id="text-5-1">
+<ul class="org-ul">
+<li>For Customers</li>
+<li>For Development Teams</li>
+<li>Overall Advantages</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org73b10a0" class="outline-3">
+<h3 id="org73b10a0"><span class="section-number-3">5.2.</span> Iterative</h3>
+<div class="outline-text-3" id="text-5-2">
+<ul class="org-ul">
+<li>Plan</li>
+<li>Design</li>
+<li>Develop</li>
+<li>Test</li>
+<li>Deploy</li>
+<li>Feedback</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-orge4f6707" class="outline-2">
+<h2 id="orge4f6707"><span class="section-number-2">6.</span> User Stories</h2>
+<div class="outline-text-2" id="text-6">
+</div>
+<div id="outline-container-orga12cb29" class="outline-3">
+<h3 id="orga12cb29"><span class="section-number-3">6.1.</span> Addressing the problem</h3>
+<div class="outline-text-3" id="text-6-1">
+</div>
+<div id="outline-container-orgfe4de65" class="outline-4">
+<h4 id="orgfe4de65">Software Requirements</h4>
+<div class="outline-text-4" id="text-orgfe4de65">
+<ul class="org-ul">
+<li>Software requirement is a communications problem</li>
+<li>Those who want software must communicate with those who build it</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org95e00c6" class="outline-4">
+<h4 id="org95e00c6">One Side is Dominant</h4>
+<div class="outline-text-4" id="text-org95e00c6">
+<ul class="org-ul">
+<li>Neither side of the Business or Software devs should be dominant
+<ul class="org-ul">
+<li>Business dominant ex.: I need this, by this date, make it so</li>
+<li>Software dev dominant ex.: Replacing the business language with tech jargon</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org3b4513a" class="outline-4">
+<h4 id="org3b4513a">Resource Allocation</h4>
+<div class="outline-text-4" id="text-org3b4513a">
+<ul class="org-ul">
+<li>Has to be a shared problem</li>
+<li>Businesses tend to want more than they can get in a given time (I need this and I need it by September)</li>
+<li>If devs are responsible:
+<ul class="org-ul">
+<li>Trade quality for features</li>
+<li>Partial implementation of features</li>
+<li>Making decisions that should involve the business</li>
+</ul></li>
+<li>If business is responsible:
+<ul class="org-ul">
+<li>Lengthy requirements and sign-offs (leads to waterfall), overwhelm the dev team, which then leads to the second point</li>
+<li>Features are gradually dropped as deadline loos</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgc5ff960" class="outline-4">
+<h4 id="orgc5ff960">Imperfect Schedules</h4>
+<div class="outline-text-4" id="text-orgc5ff960">
+<ul class="org-ul">
+<li>Cannot perfectly predict a software schedule, as no two software products are the same and no two software devs are the same
+<ul class="org-ul">
+<li>As Software evolves, users get new ideas for the software</li>
+<li>Too many intangibles</li>
+<li>Devs have generally a hard time estimating</li>
+</ul></li>
+<li>If you can't predict a schedule, you can't predict which features will be delivered</li>
+<li>So what to do?
+<ul class="org-ul">
+<li>Make decisions based on the information you have, but do it often</li>
+<li>Rather than make one decision make those decisions throughout the project</li>
+</ul></li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-org645703f" class="outline-3">
+<h3 id="org645703f"><span class="section-number-3">6.2.</span> User Stories are a pointer to the requirement (in programmer's terms)</h3>
+</div>
+
+<div id="outline-container-orgfbe2601" class="outline-3">
+<h3 id="orgfbe2601"><span class="section-number-3">6.3.</span> The three C's (how user stories are usually created)</h3>
+<div class="outline-text-3" id="text-6-3">
+<ul class="org-ul">
+<li>Cards (written description, estimation annotation, notes, etc.)</li>
+<li>Conversation (discussion about it with the product owner in particular, but with the team in general, perhaps the most important <b>C</b>)</li>
+<li>Confirmation (test for completion, acceptance tests confirm a story was coded correctly)</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgc3f758c" class="outline-3">
+<h3 id="orgc3f758c"><span class="section-number-3">6.4.</span> Definition of User Story</h3>
+<div class="outline-text-3" id="text-6-4">
+<ul class="org-ul">
+<li>As a &lt;role&gt;</li>
+<li>I want &lt;goal&gt;</li>
+<li>So that &lt;benefit&gt; (sometimes it is not necessary)</li>
+<li>Acceptance Test (Acceptance Criteria) aka CONDITIONS OF SATISFACTION
+<ul class="org-ul">
+<li>The Given/When/Then Form:
+<ul class="org-ul">
+<li><b>Given</b></li>
+<li><b>And</b></li>
+<li><b>When</b></li>
+<li><b>Then</b></li>
+<li><b>And</b> if any</li>
+</ul></li>
+<li>The Verify Form:
+<ul class="org-ul">
+<li>Verif that&#x2026;</li>
+</ul></li>
+</ul></li>
+</ul>
+</div>
+<div id="outline-container-org9b6bbbb" class="outline-4">
+<h4 id="org9b6bbbb">Adding more detail to a story</h4>
+<div class="outline-text-4" id="text-org9b6bbbb">
+<ul class="org-ul">
+<li>More detailed Acceptance Criteria</li>
+<li>Break down to smaller User Stories (usually you can use the Acceptance Criteria as templates for the smaller stories)</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-orgd414d2c" class="outline-3">
+<h3 id="orgd414d2c"><span class="section-number-3">6.5.</span> Example (note that importance of SO THAT)</h3>
+<div class="outline-text-3" id="text-6-5">
+<p>
+<b>As an</b> Account Manager
+<b>I want</b> a sales report of my account to be sent to my inbox daily
+<b>So that</b> I can monitor the sales progress of my customer portfolio
+</p>
+
+<p>
+Acceptance Test:
+</p>
+<ol class="org-ol">
+<li>Valid Product added - success</li>
+</ol>
+<p>
+<b>Given</b> I am logged in as an admin
+<b>And</b> I am on the "Add Product" form
+<b>When</b> I fill in all the required fields
+<b>And</b> I click the "Add Product" button
+<b>Then</b> I get a "product added successfully" message
+<b>And</b> the product is visible in the Product List
+</p>
+
+<ol class="org-ol">
+<li>Missing required fields - fail</li>
+</ol>
+<p>
+<b>Given</b> xxxxx
+<b>And</b> xxxxx
+<b>When</b> xxxxx
+<b>And</b> xxxxx
+<b>Then</b> xxxxx
+</p>
+</div>
+</div>
+<div id="outline-container-orgd006c90" class="outline-3">
+<h3 id="orgd006c90"><span class="section-number-3">6.6.</span> User Story Types</h3>
+<div class="outline-text-3" id="text-6-6">
+<ul class="org-ul">
+<li><b>Epic</b>: A large one</li>
+<li><b>Theme</b>: A collection of related user stories (usually sit under an Epic, but don't have to)</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org9e2f7df" class="outline-3">
+<h3 id="org9e2f7df"><span class="section-number-3">6.7.</span> Product Backlog&#xa0;&#xa0;&#xa0;<span class="tag"><span class="ATTACH">ATTACH</span></span></h3>
+<div class="outline-text-3" id="text-6-7">
+<ul class="org-ul">
+<li>Have small items on the top, priority</li>
+<li>Big items on the bottom, to be broken down or are of least priority</li>
+<li><b>Grooming the Backlog</b>: keeping it in good shape</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org14143d5" class="outline-3">
+<h3 id="org14143d5"><span class="section-number-3">6.8.</span> Story writing workshops</h3>
+<div class="outline-text-3" id="text-6-8">
+<ul class="org-ul">
+<li>Involve as many stakeholders and the team itself</li>
+<li>Typically done every few sprints, but not too often as to not overload the team</li>
+<li>Brainstorm to generate the stories</li>
+<li>The goal is to write as many stories as possible</li>
+<li>No prioritization at this point, but can be done to distinguish what is truly important</li>
+<li>Start with epics and then iterate to break them down</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org8a03bd5" class="outline-3">
+<h3 id="org8a03bd5"><span class="section-number-3">6.9.</span> Why User Stories?</h3>
+<div class="outline-text-3" id="text-6-9">
+<ul class="org-ul">
+<li>Shift focus from writing to talking</li>
+<li>Words are imprecise, some examples: "Entree comes with soup or salad and a bread." "The user can enter a name. It can be 127 characters."</li>
+<li>User Stories are more understandable and support/encourage iterative development</li>
+<li>Stories are the right size for planning</li>
+<li>Stories support participatory design</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org9f1a8fb" class="outline-3">
+<h3 id="org9f1a8fb"><span class="section-number-3">6.10.</span> DON'T FORGET</h3>
+<div class="outline-text-3" id="text-6-10">
+<ul class="org-ul">
+<li>The story text we write on the cards is less important than the conversations we have</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org2226169" class="outline-3">
+<h3 id="org2226169"><span class="section-number-3">6.11.</span> INVEST</h3>
+<div class="outline-text-3" id="text-6-11">
+<ul class="org-ul">
+<li>Independent</li>
+<li>Negotiable</li>
+<li>Valuable (most important)</li>
+<li>Estimatable</li>
+<li>Small</li>
+<li>Testable</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-org621ecda" class="outline-2">
+<h2 id="org621ecda"><span class="section-number-2">7.</span> SCRUM</h2>
+<div class="outline-text-2" id="text-7">
+</div>
+<div id="outline-container-org1285a15" class="outline-3">
+<h3 id="org1285a15"><span class="section-number-3">7.1.</span> Definition</h3>
+<div class="outline-text-3" id="text-7-1">
+<p class="verse">
+Scrum is a lightweight framework that helps people, teams and organizations generate value through adaptive solutions for complex problems.<br />
+</p>
+</div>
+</div>
+<div id="outline-container-orgf97788f" class="outline-3">
+<h3 id="orgf97788f"><span class="section-number-3">7.2.</span> Scrum requires a Scrum Master to foster an environment where:</h3>
+<div class="outline-text-3" id="text-7-2">
+<ol class="org-ol">
+<li>A Product Owner orders the work for a complex problem into a Product Backlog.</li>
+<li>The Scrum Team runs a selection of the work into an Increment of value during a Sprint.</li>
+<li>The Scrum Team and its stakeholders inspect the results and adjust for the next Sprint.</li>
+<li>Repeat</li>
+</ol>
+</div>
+</div>
+<div id="outline-container-orgb4f7a9d" class="outline-3">
+<h3 id="orgb4f7a9d"><span class="section-number-3">7.3.</span> Scrum is simple</h3>
+<div class="outline-text-3" id="text-7-3">
+<ul class="org-ul">
+<li>Framework is purposefully incomplete</li>
+<li>Is built upon the collective intelligence of the people using it</li>
+<li>Rather than providing detailed instructions, the rules provide guidelines</li>
+<li>Wraps around existing practices or renders them obsolete</li>
+<li>Makes relative efficacy of current management, environment and work techniques; so that improvements can be made</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgd8d61bc" class="outline-3">
+<h3 id="orgd8d61bc"><span class="section-number-3">7.4.</span> Scrum Theory</h3>
+<div class="outline-text-3" id="text-7-4">
+<ul class="org-ul">
+<li>Founded on empiricism and lean thinking
+<ul class="org-ul">
+<li>Empiricism asserts that knowledge comes from experience and decisions are made based on what is observed</li>
+<li>Lean thinking reduces waste and focuses on essentials</li>
+</ul></li>
+<li>Employs an iterative, incremental approach to optimize predictability and to control risk</li>
+<li>Combines four formal events for inspection and adaptation within a containing event: The Sprint.
+<ul class="org-ul">
+<li>Sprint Planning</li>
+<li>Daily Scrum</li>
+<li>Sprint Review</li>
+<li>Sprint Retrospective</li>
+</ul></li>
+<li>Sprint events work because they implement empirical pillars of Scrum: transparency, inspection and adaptation</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgfcb7b69" class="outline-3">
+<h3 id="orgfcb7b69"><span class="section-number-3">7.5.</span> Pillars Of Scrum</h3>
+<div class="outline-text-3" id="text-7-5">
+</div>
+<div id="outline-container-org79e193a" class="outline-4">
+<h4 id="org79e193a">Transparency</h4>
+<div class="outline-text-4" id="text-org79e193a">
+<ul class="org-ul">
+<li>The process and the work must be visible to those performing the work as well as the ones receiving the work</li>
+<li>Artifacts that have low transparency can lead to decisions that diminish value and increase risk</li>
+<li>Enables Inspection</li>
+<li>Inspection without transparency is misleading and wasteful</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org06db6a0" class="outline-4">
+<h4 id="org06db6a0">Inspection</h4>
+<div class="outline-text-4" id="text-org06db6a0">
+<ul class="org-ul">
+<li>Scrum artifacts and the progress towards agreed goals must be inspected frequently and diligently to detect potentially undesirable variance or problems.</li>
+<li>To help with inspection, Scrum provides cadence in the form of its five events</li>
+<li>Inspection enables Adaptation. Inspection without Adaptation is considered pointless.</li>
+<li>Scrum events are designed to provoke change.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orged345e3" class="outline-4">
+<h4 id="orged345e3">Adaptation</h4>
+<div class="outline-text-4" id="text-orged345e3">
+<ul class="org-ul">
+<li>If any aspects of a process deviate outside acceptable limits or if the result is not acceptable, the process being applied or materials used must be adjusted.</li>
+<li>Adjust as soon as possible to minimize further deviation</li>
+<li>Adaptation is difficult if the people involved aren't empowered or self-managing.</li>
+<li>Scrum team is supposed to adapt the moment it learns of anything via inspection</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-org459c1f9" class="outline-3">
+<h3 id="org459c1f9"><span class="section-number-3">7.6.</span> Scrum Values</h3>
+<div class="outline-text-3" id="text-7-6">
+<ul class="org-ul">
+<li><b>Commitment</b>, <b>Focus</b>, <b>Openness</b>, <b>Respect</b>, <b>Courage</b></li>
+<li>The team commits to achieve a goal and support each other</li>
+<li>Focus on the work of the Sprint to make the best possible progress</li>
+<li>Team and the stakeholders are open the work and the challenges</li>
+<li>Respect each other to be capable and independent</li>
+<li><p>
+Have the courage to work through tough problems and do the right thing
+</p>
+
+<p class="verse">
+The above values are utilised by the team and people they work with. If applied well the pillars of transparency, inspection and adaptation come to life building trust.<br />
+</p></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgcf5f098" class="outline-3">
+<h3 id="orgcf5f098"><span class="section-number-3">7.7.</span> Scrum Team</h3>
+<div class="outline-text-3" id="text-7-7">
+</div>
+<div id="outline-container-org0877f51" class="outline-4">
+<h4 id="org0877f51">Consists of a small team, generally:</h4>
+<div class="outline-text-4" id="text-org0877f51">
+<ul class="org-ul">
+<li>One Scrum Master</li>
+<li>One Product Owner</li>
+<li>Developers</li>
+<li>No sub-teams and no hierarchies</li>
+<li>Cohesive unit of professionals focused on the one objective: Product Goal</li>
+<li>Typically 10 or fewer people</li>
+<li>Usually smaller teams work better, communicate better and are more productive</li>
+<li>Too large a team should perhaps split into own Scrum Teams with the same focus on the same product: share same Product Goal, Product Backlog and Product Owner.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org595eb98" class="outline-4">
+<h4 id="org595eb98">Team is cross-functional</h4>
+<div class="outline-text-4" id="text-org595eb98">
+<ul class="org-ul">
+<li>Each member has the skills necessary to create value during each Sprint</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgfb21143" class="outline-4">
+<h4 id="orgfb21143">Self-managing</h4>
+<div class="outline-text-4" id="text-orgfb21143">
+<ul class="org-ul">
+<li>Internally decide who does what, when and how.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org06eb834" class="outline-4">
+<h4 id="org06eb834">Responsible for all product-related activities</h4>
+<div class="outline-text-4" id="text-org06eb834">
+<ul class="org-ul">
+<li>Stakeholder collaboration</li>
+<li>Verification</li>
+<li>Maintenance</li>
+<li>Operation</li>
+<li>Experimentation</li>
+<li>Research and Development</li>
+<li>Anything else that might be required</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org1e5e38e" class="outline-4">
+<h4 id="org1e5e38e">Accountability</h4>
+<div class="outline-text-4" id="text-org1e5e38e">
+<ul class="org-ul">
+<li>Accountable for creating a value, useful Increment every Sprint</li>
+<li>Three specific accountabilities within the Scrum Team
+<ul class="org-ul">
+<li>The Developers</li>
+<li>The Product Owner</li>
+<li>The Scrum Master</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgbb035d5" class="outline-4">
+<h4 id="orgbb035d5">Developers</h4>
+<div class="outline-text-4" id="text-orgbb035d5">
+<ul class="org-ul">
+<li>Are the people that are committed to creating any aspect of usable Increment each Sprint</li>
+<li>The skills necessary may be broad and vary depending on the domain</li>
+<li>But are always accountable for:
+<ul class="org-ul">
+<li>Creating a plan for the Sprint, the Sprint Backlog</li>
+<li>Instilling quality by following the Definition of Done</li>
+<li>Adapting their plan each day toward the Sprint Goal</li>
+<li>Holding each other accountable as professionals</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org5784bc0" class="outline-4">
+<h4 id="org5784bc0">Product Owner</h4>
+<div class="outline-text-4" id="text-org5784bc0">
+<ul class="org-ul">
+<li>Accountable for maximising the value of the product resulting from the work of the Scrum Team</li>
+<li>Accountable for effective Product Backlog management, which includes:
+<ul class="org-ul">
+<li>Developing and explicitly communicating the Product Goal</li>
+<li>Creating and clearly communicating Product Backlog items</li>
+<li>Ordering Product Backlog items</li>
+<li>Ensuring Product Backlog is transparent, visible and understood</li>
+</ul></li>
+<li>The Product Owner may delegate his tasks to others, but is held accountable nonetheless</li>
+<li>The decisions of the Product Owner are transparent via the Product Backlog and through inspectable Increment at the Sprint Review</li>
+<li>If anyone wants to change the Product Backlog they need to convince the Product Owner to do so</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orga9ae690" class="outline-4">
+<h4 id="orga9ae690">Scrum Master</h4>
+<div class="outline-text-4" id="text-orga9ae690">
+<ul class="org-ul">
+<li>Accountable for establishing Scrum as defined by the Guide</li>
+<li>Help everyone understand Scrum and its practices and theories, both withing a team and the organisation</li>
+<li>Is accountable for the team's effectiveness. This is achieved by improving the team's practices within the Scrum framework</li>
+<li>Are true leaders who serve the Team and the organisation</li>
+<li>Some ways how Scrum Masters serve the team:
+<ul class="org-ul">
+<li>Coaching in self-management and cross-functionality</li>
+<li>Help the team in creating high-value Increments that meet DoD</li>
+<li>Remove impediments to the team's progress</li>
+<li>Ensure all Scrum events take place and are positive, productive and kept within a timebox</li>
+</ul></li>
+<li>The Scrum Master serves the Product Owner:
+<ul class="org-ul">
+<li>Help with techniques for better Product Goal definitions and Product Backlog management</li>
+<li>Help understand the need for clear and concise Product Backlog items</li>
+<li>Help in establishing empirical product planning for a complex environment</li>
+<li>Facilitate stakeholder collaboration as requested or when needed</li>
+</ul></li>
+<li>The Scrum Master serves the organisation:
+<ul class="org-ul">
+<li>Lead, train and coach the org in Scrum adoption</li>
+<li>Plan and advise Scrum implementations within the org</li>
+<li>Help employees and stakeholder understand and enact an empirical approach for complex work</li>
+<li>Remove barriers between stakeholders and the Scrum Team</li>
+</ul></li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-orgfea0578" class="outline-3">
+<h3 id="orgfea0578"><span class="section-number-3">7.8.</span> Scrum Events</h3>
+<div class="outline-text-3" id="text-7-8">
+<ul class="org-ul">
+<li>Events exist to create regularity and to minimize meetings not defined in Scrum</li>
+<li>Failure to operate any events results in a lost opportunity to inspect and adapt</li>
+</ul>
+</div>
+<div id="outline-container-orga3c5e74" class="outline-4">
+<h4 id="orga3c5e74">The Sprint</h4>
+<div class="outline-text-4" id="text-orga3c5e74">
+<ul class="org-ul">
+<li>Is the heartbeat of Scrum</li>
+<li>Fixed length, usually a month</li>
+<li>New one starts immediately after the conclusion of the previous Sprint</li>
+<li>All the work that is necessary to achieve the Product Goal (Sprint Planning, Daily Scrums, Sprint Review, Sprint Retrospective) happen within Sprints</li>
+<li>During the Sprint:
+<ul class="org-ul">
+<li>No changes are made to endanger the Sprint Goal</li>
+<li>Quality does not decrease</li>
+<li>Product Backlog is refined as needed</li>
+<li>Scope may be clarified and negotiated with the Product Owner as more is learned</li>
+</ul></li>
+<li>Sprints enable predictability by ensuring inspection and adaptation of progress toward a Product Goal at least once a month</li>
+<li>Shorter sprints can be employed to encourage faster learning, however, longer sprints can stray away from the over goal, the Sprint Goal</li>
+<li>Each Sprint can be considered a mini-project (and now this whole thing makes much more sense)</li>
+<li>Various practices exist to forecast progress: burn-downs, burn-ups, cumulative flow, etc.
+<ul class="org-ul">
+<li>However, remember that in complex environments what will happen is unknown. Only what has happened may be used for future decision making (empiricism).</li>
+</ul></li>
+<li>Sprint may be cancelled if the Spring Goal becomes obsolete. Only the Product Owner has the authority to do so.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org6b9666a" class="outline-4">
+<h4 id="org6b9666a">Sprint Planning</h4>
+<div class="outline-text-4" id="text-org6b9666a">
+<ul class="org-ul">
+<li>Initiates the Sprint by laying out the work to be performed for the Sprint</li>
+<li>Is created by the entire Scrum Team</li>
+<li>PO ensures attendees are prepared to discuss most important PB items and how they map to the Product Goal</li>
+<li>The team may invite other people to provide advice</li>
+<li>Sprint Planning addresses the following topics:
+<ol class="org-ol">
+<li>Why is this Sprint Valuable? - Sprint Goal must be finalized at the end of Sprint Planning, so the PO proposes how to increase value and utility in the Current Sprint, then the team collaborates to define a Sprint Goal. The Sprint Goal communicates why the Goal is valuable.</li>
+<li>What can be Done this Sprint? - PO and the Devs discuss which items from the PB to include in the Sprint. The items may be refined during this process by the team (increases understanding and confidence of what is being done). Selecting items may be hard but empiricism helps as time goes by.</li>
+<li>How will the chosen work get done? - Each item from PB is planned by the Devs to create an Increment that meets the DoD. Often this is accomplished by decomposing an item into tasks/sub-tasks. This is purely at the discretion of the Devs on how they approach this process. No one tells the Devs how to turn PB items into Increments of value.</li>
+</ol></li>
+<li>The timebox for planning is usually 8 hours in a one-month Sprint. For shorter sprints it is less than that.</li>
+<li>The Sprint Goal, PB's items selected for the Sprint and the Delivery Plan of said items are together referred to as the: Sprint Backlog</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgec5df47" class="outline-4">
+<h4 id="orgec5df47">Daily Scrum</h4>
+<div class="outline-text-4" id="text-orgec5df47">
+<ul class="org-ul">
+<li>Goal is to inspect progress towards the Sprint Goal and adapt the Sprint Backlog if necessary (adjust the upcoming planned work)</li>
+<li>Is a 15-minute event for the Developers of the Scrum Team</li>
+<li>Is usually held at the same time and place every working day of the Sprint</li>
+<li>If the PO or Scrum Master are actively working on items from the Sprint Backlog they participate as Devs</li>
+<li>Devs select whatever structure and technique they want, for as long as their Daily Scrum focuses on progress towards the Sprint Goal and produces an actionable plan for the next day (create focus and improves self-management)</li>
+<li>General goals:
+<ul class="org-ul">
+<li>Improve communication</li>
+<li>Identify impediments</li>
+<li>Promote quick decision making</li>
+<li>Eliminate needs for other meetings (hopefully), however, if necessary other meetings happen throughout the day for more detailed discussions and plan adjustments</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orge436133" class="outline-4">
+<h4 id="orge436133">Sprint Review</h4>
+<div class="outline-text-4" id="text-orge436133">
+<ul class="org-ul">
+<li>Inspect the outcome of the Sprint, determine future adaptations</li>
+<li>Present results to key stakeholders and progress towards the Product Goal (discuss progress as well)</li>
+<li>Team and stakeholders discuss what was accomplished in the Sprint and what has changed</li>
+<li>Based on all the information provided a discussion ensues on what to do next</li>
+<li>Product Backlog may be adjusted to meet new opportunities</li>
+<li>Is a working session and should not be a simple presentation</li>
+<li>Is the second to last event, usually timeboxed to 4 hours for a one-month Sprint, less for shorter Sprints.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org1e565b3" class="outline-4">
+<h4 id="org1e565b3">Sprint Retrospective</h4>
+<div class="outline-text-4" id="text-org1e565b3">
+<ul class="org-ul">
+<li>Purpose: Plan ways to increase quality and effectiveness</li>
+<li>Scrum Team inspects how the last Sprint went with regards to: Individuals, Interactions, Processes, Tools and the Definition of Done.</li>
+<li>Identify assumptions and explore their origins</li>
+<li>Scrum Team discusses what went well during the Sprint, what problems were encountered and how the problems were solved (or not solved)</li>
+<li>Scrum Team identifies most helpful changes to improve the way forward. Most impactful improvements are addressed as soon as possible.</li>
+<li>Retrospective concludes the Sprint, timeboxed to three hours for a one-month Sprint, less for shorter sprints.</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-orga4cfc8d" class="outline-3">
+<h3 id="orga4cfc8d"><span class="section-number-3">7.9.</span> Scrum Artifacts</h3>
+<div class="outline-text-3" id="text-7-9">
+<ul class="org-ul">
+<li>Represent work of value</li>
+<li>Designed to maximise transparency of key information</li>
+<li>Each artifact contains a commitment to ensure it provides information that enhances transparency and focus, this transparency and focus' progress can then be measured</li>
+</ul>
+</div>
+<div id="outline-container-org27eea32" class="outline-4">
+<h4 id="org27eea32">Product Backlog</h4>
+<div class="outline-text-4" id="text-org27eea32">
+<ul class="org-ul">
+<li>Emergent, ordered list of what is needed to create and improve the product.</li>
+<li>Single source of work for the Scrum Team</li>
+<li>Any item from the Backlog that can be done within a single Sprint is considered "ready" for Sprint Planning</li>
+<li>Product Backlog refinement or grooming is the act of breaking down items into more precise items</li>
+<li>It is an ongoing process that adds details, descriptions, order and size</li>
+<li>Devs are responsible for the sizing</li>
+<li>PO may influence the Devs by helping understand items and select trade-offs</li>
+</ul>
+</div>
+<ul class="org-ul">
+<li><a id="org0be15b1"></a>Commitment: Product Goal<br />
+<div class="outline-text-5" id="text-org0be15b1">
+<ul class="org-ul">
+<li>Describes a future state of the product which can serve as the target for the Scrum Team to plan against.</li>
+<li>The Product Goal is in the Product Backlog</li>
+<li>Is the long-term objective for the Scrum Team. Fulfil (or abandon) an objective before taking on the next</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div id="outline-container-orgfb337a9" class="outline-4">
+<h4 id="orgfb337a9">Sprint Backlog</h4>
+<div class="outline-text-4" id="text-orgfb337a9">
+<ul class="org-ul">
+<li>Composed of the Sprint Goal (the: why)</li>
+<li>The set of PB items selected for the Sprint (the: what)</li>
+<li>Actionable plan for delivering an Increment (the: how)</li>
+<li>The Sprint Backlog is a plan by and for the Developers</li>
+<li>Is a high-visibility real-time picture of the work that the Devs plan to accomplish during the Sprint to achieve the Sprint Goal</li>
+<li>Update the Backlog when more things are learned about the work</li>
+<li>Should have enough detail that can be discussed during the Daily Scrum</li>
+</ul>
+</div>
+<ul class="org-ul">
+<li><a id="org1332eb7"></a>Commitment: Sprint Goal<br />
+<div class="outline-text-5" id="text-org1332eb7">
+<ul class="org-ul">
+<li>Single objective of the Sprint</li>
+<li>Commitment by the Devs, but has flexibility in terms of the exact work needed to accomplish the goal</li>
+<li>Creates coherence and focus. The whole team is on the same page and work together towards the same goal.</li>
+<li>Is created during Sprint Planning and added to the Sprint Backlog</li>
+<li>As Devs work they keep the Sprint Goal in mind</li>
+<li>If the work turns out more difficult, they collaborate with the PO to negotiate the scope and hopefully achieve the Sprint Goal still</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div id="outline-container-org62b440e" class="outline-4">
+<h4 id="org62b440e">Increment</h4>
+<div class="outline-text-4" id="text-org62b440e">
+<ul class="org-ul">
+<li>Is a concrete stepping stone towards the Product Goal</li>
+<li>Each is additive with the previous one and thoroughly verified to ensure that all Increments work together</li>
+<li>In order to provide value and Increment must be usable</li>
+<li>Multiple Increments may be created within a Sprint</li>
+<li>Increments may be presented to stakeholders sooner, Sprint Review does not need to be solely that moment</li>
+<li>Work cannot be considered part of an Increment unless it meets the Definition of Done</li>
+</ul>
+</div>
+<ul class="org-ul">
+<li><a id="org8cea67a"></a>Commitment: Definition of Done<br />
+<div class="outline-text-5" id="text-org8cea67a">
+<ul class="org-ul">
+<li>Is a formal description of the state of an Increment when it meets the quality measures required for the product</li>
+<li>When a Product Backlog item meets the Definition of Done, an Increment is made</li>
+<li>DoD creates transparency. so that everyone understands what kind of work is necessary to complete a work item to create an Increment.</li>
+<li>If a PB item does not meet the DoD it cannot be released or even presented at the Sprint Review. It goes back to the PB.</li>
+<li>DoD may be an organizational standard, so then all Scrum Teams follow that standard. Otherwise the Scrum Team creates their own DoD appropriate for the product.</li>
+<li>Devs are required to conform with DoD. If multiple teams work on a single product they all share the same DoD.</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-orgf9e86bd" class="outline-2">
+<h2 id="orgf9e86bd"><span class="section-number-2">8.</span> Revision Questions for Exam</h2>
+<div class="outline-text-2" id="text-8">
+</div>
+<div id="outline-container-orgdd00360" class="outline-3">
+<h3 id="orgdd00360"><span class="section-number-3">8.1.</span> What is Software</h3>
+<div class="outline-text-3" id="text-8-1">
+<ul class="org-ul">
+<li>Computer programs and associated documentation such as requirements, design models and user manuals.</li>
+<li>Be cautious of the defects</li>
+<li>Cost: software is generally more expensive than hardware. Software engineering is concerned with cost-effective software development</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org6a84200" class="outline-3">
+<h3 id="org6a84200"><span class="section-number-3">8.2.</span> What is Software Engineering</h3>
+<div class="outline-text-3" id="text-8-2">
+<ul class="org-ul">
+<li>Systematic application of engineering principles to the design, development, testing, deployment and maintenance</li>
+<li>It is about building reliable, efficient and maintainable software in a structured and methodical way - like how civil engineers build bridges or architects design buildings</li>
+<li>Key aspects:
+<ul class="org-ul">
+<li>Requirements analysis - understand what needs to be done</li>
+<li>Design - Plan the software structure</li>
+<li>Implementation - Writing the actual code</li>
+<li>Testing - Check for bugs and ensure quality</li>
+<li>Maintenance - Fixing issues and updating the software after release</li>
+<li>Project management - Managing time, budget and teams</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org0fba91b" class="outline-3">
+<h3 id="org0fba91b"><span class="section-number-3">8.3.</span> Explain why we need to engineer software and not “just code it”.</h3>
+<div class="outline-text-3" id="text-8-3">
+<ul class="org-ul">
+<li>While anyone can code, developing <b>high-quality software</b> for real-world use requires much more than that. Some examples:</li>
+<li>Complexity - Can be huge in terms of lines of code. Without planning the result is often buggy, hard to maintain or unusable</li>
+<li>Scalability &amp; Maintainability - Software needs to grow, adapt and be maintained over time. "Just code it" generally creates technical debt.</li>
+<li>Collaboration - Usually software is developed in teams, so clear design, documentation and standards are essential.</li>
+<li>Quality Assurance - Ensure testing, reviews and quality control to minimise bugs, crashes or security flaws, which could have financial or legal consequences</li>
+<li>Cost &amp; Time Efficiency - Good engineering practices prevent wasted time fixing poor code later.</li>
+</ul>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Aspect</th>
+<th scope="col" class="org-left"><b><b>Software Engineering</b></b></th>
+<th scope="col" class="org-left"><b><b>Civil Engineering (e.g., Bridge)</b></b></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><b><b>Nature of Product</b></b></td>
+<td class="org-left">Intangible, logical systems (code)</td>
+<td class="org-left">Physical structures (steel, concrete)</td>
+</tr>
+
+<tr>
+<td class="org-left"><b><b>Design Tools</b></b></td>
+<td class="org-left">Diagrams, code models, UML, version control</td>
+<td class="org-left">Blueprints, CAD drawings, physical models</td>
+</tr>
+
+<tr>
+<td class="org-left"><b><b>Changes</b></b></td>
+<td class="org-left">Easier to modify (but still costly if unplanned)</td>
+<td class="org-left">Very expensive or impossible to change once built</td>
+</tr>
+
+<tr>
+<td class="org-left"><b><b>Failure Consequences</b></b></td>
+<td class="org-left">Data loss, downtime, security risks</td>
+<td class="org-left">Physical harm, property damage, lives at risk</td>
+</tr>
+
+<tr>
+<td class="org-left"><b><b>Testing</b></b></td>
+<td class="org-left">Simulations, unit tests, automated builds</td>
+<td class="org-left">Physical stress tests, inspections, models</td>
+</tr>
+
+<tr>
+<td class="org-left"><b><b>Maintenance</b></b></td>
+<td class="org-left">Frequent updates, patches, refactoring</td>
+<td class="org-left">Occasional inspections and repairs</td>
+</tr>
+
+<tr>
+<td class="org-left"><b><b>Development Method</b></b></td>
+<td class="org-left">Agile, Waterfall, DevOps, etc.</td>
+<td class="org-left">More linear (Plan → Design → Build → Maintain)</td>
+</tr>
+
+<tr>
+<td class="org-left"><b><b>Team Roles</b></b></td>
+<td class="org-left">Developers, testers, UX designers, project managers</td>
+<td class="org-left">Architects, engineers, surveyors, contractors</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="outline-container-org173f251" class="outline-3">
+<h3 id="org173f251"><span class="section-number-3">8.4.</span> What is a software process? Describe the common activities that are part of all software processes</h3>
+<div class="outline-text-3" id="text-8-4">
+<ul class="org-ul">
+<li>A software process is a structured set of activities used to develop software.</li>
+<li>It defines how software is created, maintained and delivered, providing a framework that guides the entire software development lifecycle (SDLC)</li>
+<li>Activities:
+<ul class="org-ul">
+<li>Specification (requirements gathering/engineering)</li>
+<li>Design and Architecture</li>
+<li>Implementation</li>
+<li>Testing and Validation</li>
+<li>Deployment</li>
+<li>Maintenance and Evolution</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org7e2c616" class="outline-3">
+<h3 id="org7e2c616"><span class="section-number-3">8.5.</span> What are the four important or essential attributes that all professional software should have? Suggest four other attributes that may sometimes be significant.</h3>
+<div class="outline-text-3" id="text-8-5">
+<ul class="org-ul">
+<li>Correctness - Software must do what it is supposed to do</li>
+<li>Reliability - It must work consistently and accurately</li>
+<li>Usability - It should be easy to use and understand for the target users</li>
+<li>Maintainability - Must be easy to modify/fix/update</li>
+</ul>
+</div>
+<div id="outline-container-org5a3652d" class="outline-4">
+<h4 id="org5a3652d">Other significant attributes</h4>
+<div class="outline-text-4" id="text-org5a3652d">
+<ul class="org-ul">
+<li>Efficiency - Should not use too many resources</li>
+<li>Security - Should protect your data and your privacy</li>
+<li>Portability - Ability to run anywhere</li>
+<li>Scalability - Ability to handle growing amount of work or users</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-org0ef0ba9" class="outline-3">
+<h3 id="org0ef0ba9"><span class="section-number-3">8.6.</span> Compare Agile and Waterfall</h3>
+<div class="outline-text-3" id="text-8-6">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left"><b><b>Aspect</b></b></td>
+<td class="org-left"><b><b>Waterfall</b></b></td>
+<td class="org-left"><b><b>Agile</b></b></td>
+</tr>
+
+<tr>
+<td class="org-left">------------------------</td>
+<td class="org-left">----------------------------------------------------------</td>
+<td class="org-left">-----------------------------------------------------------</td>
+</tr>
+
+<tr>
+<td class="org-left"><b><b>Approach</b></b></td>
+<td class="org-left">Linear and sequential</td>
+<td class="org-left">Iterative and incremental</td>
+</tr>
+
+<tr>
+<td class="org-left"><b><b>Phases</b></b></td>
+<td class="org-left">Fixed stages: Requirements → Design → Code → Test → Deploy</td>
+<td class="org-left">Repeated cycles (sprints) with all activities in each cycle</td>
+</tr>
+
+<tr>
+<td class="org-left"><b><b>Flexibility</b></b></td>
+<td class="org-left">Rigid — changes are hard to make once started</td>
+<td class="org-left">Flexible — welcomes changes even late in development</td>
+</tr>
+
+<tr>
+<td class="org-left"><b><b>Customer Involvement</b></b></td>
+<td class="org-left">Minimal after initial planning</td>
+<td class="org-left">High — continuous feedback throughout</td>
+</tr>
+
+<tr>
+<td class="org-left"><b><b>Delivery</b></b></td>
+<td class="org-left">One big release at the end</td>
+<td class="org-left">Frequent small releases (e.g., every 2–4 weeks)</td>
+</tr>
+
+<tr>
+<td class="org-left"><b><b>Best For</b></b></td>
+<td class="org-left">Projects with clear, fixed requirements</td>
+<td class="org-left">Projects with evolving or unclear requirements</td>
+</tr>
+
+<tr>
+<td class="org-left"><b><b>Risk</b></b></td>
+<td class="org-left">High — issues often discovered late</td>
+<td class="org-left">Lower — problems are found early through iterations</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="outline-container-orgc607b9d" class="outline-3">
+<h3 id="orgc607b9d"><span class="section-number-3">8.7.</span> What are the characteristics of Agile projects?</h3>
+<div class="outline-text-3" id="text-8-7">
+<ul class="org-ul">
+<li>Iterative and Incremental Development</li>
+<li>Customer Collaboration</li>
+<li>Welcomes Changes</li>
+<li>Cross-Functional Teams</li>
+<li>Continuous Delivery of Value</li>
+<li>Face-to-Face Communication</li>
+<li>Self-Organizing Teams</li>
+<li>Regular Reflection and Improvement</li>
+<li>Focus on Working Software</li>
+<li>Simplicity</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgcbe6b3c" class="outline-3">
+<h3 id="orgcbe6b3c"><span class="section-number-3">8.8.</span> How is incremental different to iterative?</h3>
+<div class="outline-text-3" id="text-8-8">
+<ul class="org-ul">
+<li>Iterative: Repeat the same process or refine product repeatedly. Build a basic version then improve/revise through repeated cycles</li>
+<li>Incremental: Adding new parts or features over time. Most software is developed in small pieces (increments) that are fully functional. Each increment adds new functionality.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org99b8973" class="outline-3">
+<h3 id="org99b8973"><span class="section-number-3">8.9.</span> List 2 advantages of the waterfall methodology</h3>
+<div class="outline-text-3" id="text-8-9">
+<ul class="org-ul">
+<li>Clear Structure and Documentation</li>
+<li>Well-Suited for Projects with Fixed Requirements</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org01ac77d" class="outline-3">
+<h3 id="org01ac77d"><span class="section-number-3">8.10.</span> What is the scientific method underpinning Agile methods?</h3>
+<div class="outline-text-3" id="text-8-10">
+<ul class="org-ul">
+<li>It is rooted in Empirical Process Control</li>
+<li>Empiricism: knowledge comes from <b>experience</b> and <b>observation</b>, not just upfront prediction. In Agile this is especially reflected in the cycle of learning and improvement.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org957c2d0" class="outline-3">
+<h3 id="org957c2d0"><span class="section-number-3">8.11.</span> Describe the main activities common to all software processes</h3>
+<div class="outline-text-3" id="text-8-11">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left"><b>Activity</b></td>
+<td class="org-left"><b>Purpose</b></td>
+</tr>
+
+<tr>
+<td class="org-left">--------------</td>
+<td class="org-left">--------------------------------</td>
+</tr>
+
+<tr>
+<td class="org-left">Specification</td>
+<td class="org-left">Define what to build</td>
+</tr>
+
+<tr>
+<td class="org-left">Design</td>
+<td class="org-left">Plan how to build it</td>
+</tr>
+
+<tr>
+<td class="org-left">Implementation</td>
+<td class="org-left">Build the software</td>
+</tr>
+
+<tr>
+<td class="org-left">Testing</td>
+<td class="org-left">Verify it works correctly</td>
+</tr>
+
+<tr>
+<td class="org-left">Deployment</td>
+<td class="org-left">Deliver to users</td>
+</tr>
+
+<tr>
+<td class="org-left">Maintenance</td>
+<td class="org-left">Keep software useful and updated</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="outline-container-orgdb3b792" class="outline-3">
+<h3 id="orgdb3b792"><span class="section-number-3">8.12.</span> What is the software process model or software process description?</h3>
+<div class="outline-text-3" id="text-8-12">
+<ul class="org-ul">
+<li>It is an abstract representation or framework that defines the structure, sequence and flow of activities involved in software development. It describes how:
+<ul class="org-ul">
+<li>Software is developed, delivered and maintained</li>
+<li>Provides a blueprint or guidelines for organising tasks, roles and tools throughout the project</li>
+</ul></li>
+<li>Some common software process models:
+<ul class="org-ul">
+<li>Waterfall Model</li>
+<li>Agile Model</li>
+<li>Spiral Model</li>
+<li>V-Model</li>
+<li>Incremental Model</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org9334045" class="outline-3">
+<h3 id="org9334045"><span class="section-number-3">8.13.</span> What is the main difference between plan-driven and agile processes?</h3>
+<div class="outline-text-3" id="text-8-13">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Aspect</th>
+<th scope="col" class="org-left">Plan-Driven Processes</th>
+<th scope="col" class="org-left">Agile Processes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><b><b>Definition</b></b></td>
+<td class="org-left">Rely on detailed planning and documentation.</td>
+<td class="org-left">Emphasize flexibility and iterative development.</td>
+</tr>
+
+<tr>
+<td class="org-left"><b><b>Planning</b></b></td>
+<td class="org-left">Extensive upfront planning and design.</td>
+<td class="org-left">Minimal initial planning; adapt as you go.</td>
+</tr>
+
+<tr>
+<td class="org-left"><b><b>Change Management</b></b></td>
+<td class="org-left">Changes are often difficult and costly to implement.</td>
+<td class="org-left">Embrace changes even late in development.</td>
+</tr>
+
+<tr>
+<td class="org-left"><b><b>Customer Involvement</b></b></td>
+<td class="org-left">Limited customer interaction until later stages.</td>
+<td class="org-left">Continuous customer collaboration throughout.</td>
+</tr>
+
+<tr>
+<td class="org-left"><b><b>Development Approach</b></b></td>
+<td class="org-left">Sequential phases (e.g., Waterfall).</td>
+<td class="org-left">Iterative cycles (sprints) with frequent releases.</td>
+</tr>
+
+<tr>
+<td class="org-left"><b><b>Documentation</b></b></td>
+<td class="org-left">Heavy documentation is required.</td>
+<td class="org-left">Less emphasis on documentation; focus on working software.</td>
+</tr>
+
+<tr>
+<td class="org-left"><b><b>Risk Management</b></b></td>
+<td class="org-left">Risks are identified and planned for upfront.</td>
+<td class="org-left">Risks are managed through iterative feedback and adaptation.</td>
+</tr>
+
+<tr>
+<td class="org-left"><b><b>Team Structure</b></b></td>
+<td class="org-left">Often hierarchical with defined roles.</td>
+<td class="org-left">Cross-functional teams with shared responsibilities.</td>
+</tr>
+
+<tr>
+<td class="org-left"><b><b>Success Metrics</b></b></td>
+<td class="org-left">Success measured by adherence to the plan and documentation.</td>
+<td class="org-left">Success measured by customer satisfaction and working software.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="outline-container-orgabcdae5" class="outline-4">
+<h4 id="orgabcdae5">Key Takeaways</h4>
+<div class="outline-text-4" id="text-orgabcdae5">
+<ul class="org-ul">
+<li><b><b>Plan-Driven Processes</b></b>: These processes are characterized by a structured approach, where detailed planning and documentation are crucial. They are best suited for projects with well-defined requirements and low uncertainty.</li>
+
+<li><b><b>Agile Processes</b></b>: Agile methodologies prioritize adaptability and customer collaboration. They are ideal for projects where requirements may evolve, allowing teams to respond quickly to changes and deliver value incrementally.</li>
+</ul>
+
+<p>
+Understanding these differences helps teams choose the right approach based on project needs, stakeholder expectations, and the level of uncertainty involved.
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org14d1199" class="outline-3">
+<h3 id="org14d1199"><span class="section-number-3">8.14.</span> Describe the waterfall model in software development and discuss some of the inherent problems in the waterfall model</h3>
+<div class="outline-text-3" id="text-8-14">
+<p>
+The Waterfall Model is one of the earliest and most straightforward software development methodologies. It follows a linear and sequential approach, where each phase must be completed before moving on to the next. The typical phases of the Waterfall Model include:
+</p>
+
+<ol class="org-ol">
+<li><b><b>Requirements Analysis</b></b>: Gathering and documenting all the software requirements from stakeholders.</li>
+<li><b><b>System Design</b></b>: Creating the architecture and design specifications based on the requirements.</li>
+<li><b><b>Implementation</b></b>: Writing the actual code and developing the software.</li>
+<li><b><b>Verification (Testing)</b></b>: Testing the software to ensure it meets the specified requirements.</li>
+<li><b><b>Maintenance</b></b>: Addressing any issues or updates needed after deployment.</li>
+</ol>
+</div>
+<div id="outline-container-org3b4bd75" class="outline-4">
+<h4 id="org3b4bd75">Inherent Problems in the Waterfall Model</h4>
+<div class="outline-text-4" id="text-org3b4bd75">
+<p>
+While the Waterfall Model has its advantages, such as simplicity and clear milestones, it also has several inherent problems:
+</p>
+
+<ol class="org-ol">
+<li>Inflexibility to Changes: Once a phase is completed, going back to make changes is often difficult and costly. This rigidity can lead to issues if requirements evolve during the development process.</li>
+<li>Late Testing: Testing occurs only after implementation, which means that defects may not be discovered until late in the project. This can result in significant rework and delays.</li>
+<li>Assumption of Clear Requirements: The model assumes that all requirements can be gathered upfront and that they will remain stable throughout the project. In reality, requirements often change as stakeholders gain a better understanding of their needs.</li>
+<li>Limited Customer Involvement: Customer feedback is typically sought only at the beginning and end of the process. This can lead to a final product that does not fully meet user expectations.</li>
+<li>Risk of Project Overruns: Due to its sequential nature, any delays in one phase can cascade through the project, leading to missed deadlines and budget overruns.</li>
+<li>Difficulty in Managing Complex Projects: For large and complex projects, the Waterfall Model can become unwieldy, making it challenging to manage dependencies and integration between different components.</li>
+</ol>
+</div>
+</div>
+</div>
+<div id="outline-container-orgb65582f" class="outline-3">
+<h3 id="orgb65582f"><span class="section-number-3">8.15.</span> Discuss advantages and disadvantages of story cards</h3>
+<div class="outline-text-3" id="text-8-15">
+</div>
+<div id="outline-container-org83305fa" class="outline-4">
+<h4 id="org83305fa">Advantages</h4>
+<div class="outline-text-4" id="text-org83305fa">
+<ol class="org-ol">
+<li>User-Centric Focus: Story cards emphasize the needs and experiences of the end user, ensuring that development efforts align with user value.</li>
+<li>Simplicity and Clarity: They provide a straightforward way to capture requirements, making it easier for team members to understand what needs to be done without getting bogged down in technical details.</li>
+<li>Facilitates Communication: Story cards encourage discussions among team members and stakeholders, fostering collaboration and shared understanding of project goals.</li>
+<li>Prioritization: They can be easily prioritized based on user needs, business value, or project goals, helping teams focus on delivering the most important features first.</li>
+<li>Flexibility: Story cards can be easily modified or added as new requirements emerge, allowing teams to adapt to changing circumstances and feedback.</li>
+<li>Visual Management: When used on boards (like Kanban boards), story cards provide a visual representation of work in progress, helping teams track progress and identify bottlenecks.</li>
+</ol>
+</div>
+</div>
+<div id="outline-container-org52687d8" class="outline-4">
+<h4 id="org52687d8">Disadvantages</h4>
+<div class="outline-text-4" id="text-org52687d8">
+<ol class="org-ol">
+<li>Over-Simplification: While simplicity is an advantage, it can also lead to oversimplification of complex requirements, potentially missing critical details that need to be addressed.</li>
+<li>Lack of Formal Documentation: Story cards may not provide enough formal documentation for future reference, which can be problematic for onboarding new team members or for long-term maintenance.</li>
+<li>Dependency Management: Managing dependencies between story cards can be challenging, especially if they are not clearly defined, leading to integration issues later in the development process.</li>
+<li>Variable Interpretation: Different team members may interpret story cards differently, leading to inconsistencies in understanding and implementation.</li>
+<li>Potential for Scope Creep: The flexibility of story cards can sometimes lead to scope creep, where additional features or requirements are added without proper evaluation of their impact on the project.</li>
+<li>Time-Consuming: Creating and refining story cards can be time-consuming, especially if there are many stakeholders involved, which may slow down the initial phases of development.</li>
+</ol>
+</div>
+</div>
+</div>
+<div id="outline-container-org3381e02" class="outline-3">
+<h3 id="org3381e02"><span class="section-number-3">8.16.</span> What are the three parts of a user story. Give examples of a User Story Description. Describe how user story should follow the INVEST principle giving examples to support your answer.</h3>
+<div class="outline-text-3" id="text-8-16">
+<ul class="org-ul">
+<li>The three parts of a user story are: <b>As a</b>, <b>I want</b>, <b>So that</b> (aka The Role, The Goal, The Reason or the who/what/why)</li>
+<li>The INVEST principle is a guideline for creating effective user stories. It stands for:
+<ul class="org-ul">
+<li>Independent: User stories should be self-contained and not dependent on other stories.</li>
+<li>Negotiable: User stories should be flexible and open to discussion and changes.</li>
+<li>Valuable: Each user story should deliver value to the user or customer.</li>
+<li>Estimable: User stories should be clear enough to allow for estimation of the effort required to complete them.</li>
+<li>Small: User stories should be small enough to be completed within a single iteration or sprint.</li>
+<li>Testable: User stories should have clear acceptance criteria that allow for testing.</li>
+</ul></li>
+</ul>
+</div>
+<div id="outline-container-org0de8b78" class="outline-4">
+<h4 id="org0de8b78">Examples supporting the INVEST principle</h4>
+<div class="outline-text-4" id="text-org0de8b78">
+<p class="verse">
+Independent:<br />
+Good Example: "As a user, I want to reset my password so that I can regain access to my account."<br />
+Bad Example: "As a user, I want to reset my password and also change my email address." (These are dependent tasks.)<br />
+<br />
+Negotiable:<br />
+Good Example: "As a user, I want to filter search results by price range." (This can be discussed and refined.)<br />
+Bad Example: "As a user, I want the filter to be exactly $10 to $50." (This is too rigid and specific.)<br />
+<br />
+Valuable:<br />
+Good Example: "As a user, I want to save my favorite items so that I can easily find them later." (This provides clear value.)<br />
+Bad Example: "As a user, I want the system to have a blue background." (This does not provide significant value.)<br />
+<br />
+Estimable:<br />
+Good Example: "As a user, I want to view my order history so that I can track my purchases." (This is clear and can be estimated.)<br />
+Bad Example: "As a user, I want to improve the performance of the application." (This is vague and hard to estimate.)<br />
+<br />
+Small:<br />
+Good Example: "As a user, I want to add items to my shopping cart." (This is a small, manageable task.)<br />
+Bad Example: "As a user, I want to build a complete e-commerce platform." (This is too large and complex.)<br />
+<br />
+Testable:<br />
+Good Example: "As a user, I want to receive a confirmation email after placing an order." (This can be tested with clear criteria.)<br />
+Bad Example: "As a user, I want the application to be user-friendly." (This is subjective and lacks clear testing criteria.)<br />
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orga0ba0d0" class="outline-3">
+<h3 id="orga0ba0d0"><span class="section-number-3">8.17.</span> With respect to User Stories what is the definition of done. Give examples.</h3>
+<div class="outline-text-3" id="text-8-17">
+<ul class="org-ul">
+<li>The Definition of Done (DoD) is a clear and concise checklist that outlines the criteria that must be met for a user story to be considered complete.</li>
+<li>Examples:</li>
+<li>Code Completion:
+<ul class="org-ul">
+<li>The code for the user story has been written and adheres to coding standards.</li>
+</ul></li>
+<li>Code Review:
+<ul class="org-ul">
+<li>The code has been reviewed by at least one other team member and all feedback has been addressed.</li>
+</ul></li>
+<li>Testing:
+<ul class="org-ul">
+<li>Unit tests have been written and passed.</li>
+<li>Integration tests have been conducted, and the feature works as expected.</li>
+<li>User acceptance testing (UAT) has been completed with stakeholder approval.</li>
+</ul></li>
+<li>Documentation:
+<ul class="org-ul">
+<li>Relevant documentation has been updated, including user manuals, API documentation, and internal wikis.</li>
+</ul></li>
+<li>Deployment:
+<ul class="org-ul">
+<li>The feature has been deployed to the staging environment and verified.</li>
+<li>The feature is ready for production deployment.</li>
+</ul></li>
+<li>Performance:
+<ul class="org-ul">
+<li>The feature meets performance benchmarks and does not degrade the application's overall performance.</li>
+</ul></li>
+<li>Security:
+<ul class="org-ul">
+<li>Security checks have been performed, and any vulnerabilities have been addressed.</li>
+</ul></li>
+<li>Compliance:
+<ul class="org-ul">
+<li>The feature complies with relevant regulations and standards (e.g., GDPR, accessibility).</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org542f858" class="outline-3">
+<h3 id="org542f858"><span class="section-number-3">8.18.</span> Cone of uncertainty</h3>
+<div class="outline-text-3" id="text-8-18">
+<ul class="org-ul">
+<li>The less of an epic a story is the better it can be estimated, basically&#x2026;</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org95ed2ef" class="outline-3">
+<h3 id="org95ed2ef"><span class="section-number-3">8.19.</span> What are “functional” requirements in software development?</h3>
+<div class="outline-text-3" id="text-8-19">
+<ul class="org-ul">
+<li>Functional requirements are specific statements that define the behavior, capabilities, and functionalities of a software system. They describe what the system should do, outlining the expected interactions between the system and its users, as well as the system's responses to various inputs. Functional requirements are essential for guiding the development process and ensuring that the final product meets user needs and expectations.</li>
+<li>Key characteristics: user-centric, specific and clear, testable, traceable</li>
+<li>Examples:</li>
+<li>User Authentication:
+<ul class="org-ul">
+<li>The system shall allow users to register with a username and password.</li>
+<li>The system shall provide a "Forgot Password" feature to reset passwords via email.</li>
+</ul></li>
+<li>Data Management:
+<ul class="org-ul">
+<li>The system shall allow users to create, read, update, and delete (CRUD) records in the database.</li>
+<li>The system shall validate user input to ensure data integrity.</li>
+</ul></li>
+<li>Reporting:
+<ul class="org-ul">
+<li>The system shall generate monthly sales reports in PDF format.</li>
+<li>The system shall allow users to filter reports by date range and product category.</li>
+</ul></li>
+<li>Search Functionality:
+<ul class="org-ul">
+<li>The system shall provide a search feature that allows users to find products by name, category, or price range.</li>
+<li>The system shall display search results within 2 seconds of submitting a query.</li>
+</ul></li>
+<li>Notifications:
+<ul class="org-ul">
+<li>The system shall send email notifications to users when their orders are shipped.</li>
+<li>The system shall display in-app notifications for important updates.</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org9ed01f0" class="outline-3">
+<h3 id="org9ed01f0"><span class="section-number-3">8.20.</span> What is a “non-functional” requirement in software development? Provide examples as well</h3>
+<div class="outline-text-3" id="text-8-20">
+<ul class="org-ul">
+<li>Non-functional requirements (NFRs) specify the criteria that judge the operation of a system, rather than the specific behaviors or functions it performs. They define how a system should behave and outline the quality attributes, constraints and performance metrics that the system must meet.</li>
+<li>Key characteristics (<b>classifications</b>): Quality attributes (performance, security, usability, etc.), system constraints (impose constraints on the system), measurable (should be quantifiable), broad scope (generally apply to the whole system)</li>
+<li>Examples:</li>
+<li>Performance:
+<ul class="org-ul">
+<li>The system shall handle 1,000 concurrent users without performance degradation.</li>
+<li>The system shall respond to user requests within 2 seconds under normal load conditions.</li>
+</ul></li>
+<li>Scalability:
+<ul class="org-ul">
+<li>The system shall be able to scale horizontally to accommodate an increase in user traffic by 50% without requiring significant reconfiguration.</li>
+</ul></li>
+<li>Security:
+<ul class="org-ul">
+<li>The system shall encrypt all sensitive user data both in transit and at rest.</li>
+<li>The system shall implement role-based access control to restrict user permissions based on their roles.</li>
+</ul></li>
+<li>Usability:
+<ul class="org-ul">
+<li>The system shall allow users to complete the registration process within 5 minutes.</li>
+<li>The system shall provide an intuitive user interface that requires no more than three clicks to access any feature.</li>
+</ul></li>
+<li>Reliability:
+<ul class="org-ul">
+<li>The system shall have an uptime of 99.9% over a one-year period.</li>
+<li>The system shall automatically recover from failures within 5 minutes.</li>
+</ul></li>
+<li>Maintainability:
+<ul class="org-ul">
+<li>The system shall allow for updates and patches to be applied without downtime.</li>
+<li>The system's codebase shall be documented to facilitate onboarding of new developers.</li>
+</ul></li>
+<li>Compliance:
+<ul class="org-ul">
+<li>The system shall comply with GDPR regulations regarding user data privacy and protection.</li>
+<li>The system shall meet accessibility standards (e.g., WCAG 2.1) to ensure usability for individuals with disabilities.</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org0afcbfc" class="outline-3">
+<h3 id="org0afcbfc"><span class="section-number-3">8.21.</span> Explain Spring Velocity and how it is calculated</h3>
+<div class="outline-text-3" id="text-8-21">
+<ul class="org-ul">
+<li>Velocity is a key metric used in Agile methodologies, particularly in Scrum, to measure the amount of work a team can complete during a single sprint. It helps teams estimate their capacity for future sprints and assess their performance over time. Velocity is typically expressed in terms of story points, which are units of measure for the size or complexity of user stories.</li>
+<li>Sprint velocity is calculated by summing the story points of all the user stories that are completed during a sprint.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org6d69d45" class="outline-3">
+<h3 id="org6d69d45"><span class="section-number-3">8.22.</span> What is an Agile Method</h3>
+<div class="outline-text-3" id="text-8-22">
+<ul class="org-ul">
+<li>An Agile method is a flexible and iterative approach to software development that emphasizes collaboration, customer feedback, and rapid delivery of functional software. Agile methodologies prioritize adaptive planning and encourage frequent reassessment and adjustment of plans based on changing requirements and stakeholder input.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org2093c2a" class="outline-3">
+<h3 id="org2093c2a"><span class="section-number-3">8.23.</span> What does the terms “chickens” and “pigs” relate to with respect to Scrum?</h3>
+<div class="outline-text-3" id="text-8-23">
+<ul class="org-ul">
+<li>Chickens: Refer to individuals who are involved in the project but are not directly responsible for the delivery of the product. They have an interest in the project's outcome but do not have a stake in the day-to-day activities of the Scrum team. Examples: Stakeholders, management, customers</li>
+<li>Pigs: refer to the core members of the Scrum team who are fully committed to the project and responsible for delivering the product increment. They are directly involved in the work and have a stake in the success of the project. Examples: PO, Scrum Master, Dev Team</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgc38a26b" class="outline-3">
+<h3 id="orgc38a26b"><span class="section-number-3">8.24.</span> Describe in detail the Scrum lifecycle and outline the roles, ceremonies and artifacts involved in the Scrum methodology</h3>
+</div>
+
+<div id="outline-container-org4b459bf" class="outline-3">
+<h3 id="org4b459bf"><span class="section-number-3">8.25.</span> What is Maven in Java?</h3>
+<div class="outline-text-3" id="text-8-25">
+<ul class="org-ul">
+<li>Maven is a powerful build automation and project management tool primarily used for Java projects. It simplifies the process of managing project dependencies, building applications, and maintaining project structures. Maven is part of the Apache Software Foundation and follows a convention-over-configuration approach, which means it provides a standard way to structure projects and manage their lifecycle.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org48fee80" class="outline-3">
+<h3 id="org48fee80"><span class="section-number-3">8.26.</span> Some common Maven goals:</h3>
+<div class="outline-text-3" id="text-8-26">
+<ul class="org-ul">
+<li>mvn compile: Compiles the source code of the project.</li>
+<li>mvn test: Runs the unit tests using a testing framework (e.g., JUnit).</li>
+<li>mvn package: Packages the compiled code into a distributable format, such as a JAR or WAR file.</li>
+<li>mvn install: Installs the packaged artifact into the local Maven repository, making it available for other projects.</li>
+<li>mvn clean: Cleans the project by removing the target directory, which contains compiled code and packaged artifacts.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org059ae01" class="outline-3">
+<h3 id="org059ae01"><span class="section-number-3">8.27.</span> What is static testing?</h3>
+<div class="outline-text-3" id="text-8-27">
+<ul class="org-ul">
+<li>Static testing is a software testing technique that involves examining the code, documentation, and other project artifacts without executing the program.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orged872d2" class="outline-3">
+<h3 id="orged872d2"><span class="section-number-3">8.28.</span> In software development Describe the fundamental test process using a diagram.</h3>
+<div class="outline-text-3" id="text-8-28">
+<ul class="org-ul">
+<li>The fundamental test process in software development typically consists of several key stages. Below is a diagram that outlines these stages, followed by a detailed description of each phase.</li>
+</ul>
+<p class="verse">
+<del>-------------------</del><br />
+|   Test Planning   |<br />
+<del>-------------------</del><br />
+&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;|<br />
+&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;v<br />
+<del>-------------------</del><br />
+|  Test Design      |<br />
+<del>-------------------</del><br />
+&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;|<br />
+&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;v<br />
+<del>-------------------</del><br />
+|  Test Execution    |<br />
+<del>-------------------</del><br />
+&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;|<br />
+&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;v<br />
+<del>-------------------</del><br />
+|  Test Closure      |<br />
+<del>-------------------</del><br />
+</p>
+</div>
+</div>
+<div id="outline-container-org531cc6f" class="outline-3">
+<h3 id="org531cc6f"><span class="section-number-3">8.29.</span> Describe the different test levels you might expect to find in a software development project.</h3>
+<div class="outline-text-3" id="text-8-29">
+<ul class="org-ul">
+<li>Unit Testing: Testing the smallest testable parts of the application in isolation.</li>
+<li>Integration Testing: Ensuring that combined parts of the application work together as expected.</li>
+<li>System Testing: Testing the application as a whole to ensure it meets specified requirements.</li>
+<li>Acceptance Testing: Validating the software from the end-user's perspective.</li>
+<li>Regression Testing: Re-running previously completed tests to confirm that the software still performs as expected.</li>
+<li>Performance Testing: Evaluating how the system performs under various conditions.</li>
+<li>Security Testing: Testing the application for security flaws and compliance with security standards.</li>
+<li>Usability Testing: Ensuring that the software is user-friendly and meets user expectations.</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-orgf8fdcab" class="outline-2">
+<h2 id="orgf8fdcab"><span class="section-number-2">9.</span> Remove at the End</h2>
+<div class="outline-text-2" id="text-9">
+<script src="../assets/jquery-3.3.1.min.js"></script>
+<script src="../assets/notes.js"></script>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="date">Date: 2025-06-25 Wed 09:00</p>
+<p class="author">Author: Damian Chrzanowski</p>
+<p class="date">Created: 2025-07-29 Tue 16:00</p>
+<p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

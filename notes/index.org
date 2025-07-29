@@ -16,6 +16,8 @@
 
 [[file:y4/index.org][Year 4 Notes]]
 
+[[file:cse/index.org][CSE]]
+
 [[file:resources/elisp/elisp.org][Elisp]]
 
 [[file:resources/angular4/angular4.org][Angular]]
@@ -23,6 +25,8 @@
 [[file:resources/flutter/flutter.org][Flutter]]
 
 [[file:resources/rust/rust.org][Rust]]
+
+[[file:resources/go/go.org][Go (Golang)]]
 
 [[file:resources/nativescript/nativescript.org][Nativescript]]
 

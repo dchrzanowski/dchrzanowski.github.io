@@ -1,0 +1,786 @@
+#+TITLE: Software Design and Testing
+#+DATE: [2025-06-25 Wed 09:00]
+#+AUTHOR: Damian Chrzanowski
+#+EMAIL: pjdamian.chrzanowski@gmail.com
+#+OPTIONS: TOC:2 num:2
+#+HTML_HEAD: <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="../assets/org.css"/>
+#+HTML_HEAD: <link rel="icon" href="../assets/favicon.ico">
+
+* Assesment
+
+** Scrum Quiz: 24th July
+
+** Written Test - closed book: 31st July
+
+** Unit Testing PC based open book: 7th August
+
+* Resources
+
+** Extreme Programming Explained: Addison-Wesley
+
+** Scrum and XP from the Trenches: Henrik Kniberg
+
+** The Scrum Master Training Manual
+
+** www.scrumtrainingseries.com
+
+** scrummethodology.com
+
+** scrum.org
+
+* Definitions
+
+** User Stories
+   - Are requirements for the software
+
+** Scrum, XP, Kanban
+
+** Version Control
+
+** Basic Unit Testing
+
+** Testing
+   - The result of software failures is a DAMAGED REPUTATION to self and the company
+   - Testing objectives: Finding defects in the software, confirming that the system works, assessing the quality of the software, reducing maintenance costs (as a side effect)
+   - Testing goal: To validate whether the test object (feature) works as expected by the users and other stakeholders
+
+** Software
+   - Computer programs and associated documentation such as requirements, design models and user manuals.
+   - Be cautious of the defects
+   - Cost: software is generally more expensive than hardware. Software engineering is concerned with cost-effective software development
+
+** The Software Process
+   - Activities: Specification, Development, Validation, Evolution
+
+* Challenges Of Software
+  - Complex Requirements
+  - Compatibility Issues
+  - Cost Estimation and Milestones
+
+* Agile Methodology
+
+** The Core
+   - For Customers
+   - For Development Teams
+   - Overall Advantages
+
+** Iterative
+   - Plan
+   - Design
+   - Develop
+   - Test
+   - Deploy
+   - Feedback
+
+* User Stories
+
+** Addressing the problem
+
+*** Software Requirements
+    - Software requirement is a communications problem
+    - Those who want software must communicate with those who build it
+
+*** One Side is Dominant
+    - Neither side of the Business or Software devs should be dominant
+      - Business dominant ex.: I need this, by this date, make it so
+      - Software dev dominant ex.: Replacing the business language with tech jargon
+
+*** Resource Allocation
+    - Has to be a shared problem
+    - Businesses tend to want more than they can get in a given time (I need this and I need it by September)
+    - If devs are responsible:
+      - Trade quality for features
+      - Partial implementation of features
+      - Making decisions that should involve the business
+    - If business is responsible:
+      - Lengthy requirements and sign-offs (leads to waterfall), overwhelm the dev team, which then leads to the second point
+      - Features are gradually dropped as deadline loos
+
+*** Imperfect Schedules
+    - Cannot perfectly predict a software schedule, as no two software products are the same and no two software devs are the same
+      - As Software evolves, users get new ideas for the software
+      - Too many intangibles
+      - Devs have generally a hard time estimating
+    - If you can't predict a schedule, you can't predict which features will be delivered
+    - So what to do?
+      - Make decisions based on the information you have, but do it often
+      - Rather than make one decision make those decisions throughout the project
+
+** User Stories are a pointer to the requirement (in programmer's terms)
+
+** The three C's (how user stories are usually created)
+   - Cards (written description, estimation annotation, notes, etc.)
+   - Conversation (discussion about it with the product owner in particular, but with the team in general, perhaps the most important *C*)
+   - Confirmation (test for completion, acceptance tests confirm a story was coded correctly)
+
+** Definition of User Story
+   - As a <role>
+   - I want <goal>
+   - So that <benefit> (sometimes it is not necessary)
+   - Acceptance Test (Acceptance Criteria) aka CONDITIONS OF SATISFACTION
+     - The Given/When/Then Form:
+       - *Given*
+       - *And*
+       - *When*
+       - *Then*
+       - *And* if any
+     - The Verify Form:
+       - Verif that...
+
+*** Adding more detail to a story
+    - More detailed Acceptance Criteria
+    - Break down to smaller User Stories (usually you can use the Acceptance Criteria as templates for the smaller stories)
+
+** Example (note that importance of SO THAT)
+   *As an* Account Manager
+   *I want* a sales report of my account to be sent to my inbox daily
+   *So that* I can monitor the sales progress of my customer portfolio
+
+   Acceptance Test:
+   1. Valid Product added - success
+   *Given* I am logged in as an admin
+   *And* I am on the "Add Product" form
+   *When* I fill in all the required fields
+   *And* I click the "Add Product" button
+   *Then* I get a "product added successfully" message
+   *And* the product is visible in the Product List
+
+   2. Missing required fields - fail
+   *Given* xxxxx
+   *And* xxxxx
+   *When* xxxxx
+   *And* xxxxx
+   *Then* xxxxx
+
+** User Story Types
+   - *Epic*: A large one
+   - *Theme*: A collection of related user stories (usually sit under an Epic, but don't have to)
+
+** Product Backlog                                                   :ATTACH:
+   - Have small items on the top, priority
+   - Big items on the bottom, to be broken down or are of least priority
+   - *Grooming the Backlog*: keeping it in good shape
+
+** Story writing workshops
+   - Involve as many stakeholders and the team itself
+   - Typically done every few sprints, but not too often as to not overload the team
+   - Brainstorm to generate the stories
+   - The goal is to write as many stories as possible
+   - No prioritization at this point, but can be done to distinguish what is truly important
+   - Start with epics and then iterate to break them down
+
+** Why User Stories?
+   - Shift focus from writing to talking
+   - Words are imprecise, some examples: "Entree comes with soup or salad and a bread." "The user can enter a name. It can be 127 characters."
+   - User Stories are more understandable and support/encourage iterative development
+   - Stories are the right size for planning
+   - Stories support participatory design
+
+** DON'T FORGET
+   - The story text we write on the cards is less important than the conversations we have
+
+** INVEST
+   - Independent
+   - Negotiable
+   - Valuable (most important)
+   - Estimatable
+   - Small
+   - Testable
+
+* SCRUM
+
+** Definition
+   #+begin_verse
+Scrum is a lightweight framework that helps people, teams and organizations generate value through adaptive solutions for complex problems.
+   #+end_verse
+
+** Scrum requires a Scrum Master to foster an environment where:
+   1. A Product Owner orders the work for a complex problem into a Product Backlog.
+   2. The Scrum Team runs a selection of the work into an Increment of value during a Sprint.
+   3. The Scrum Team and its stakeholders inspect the results and adjust for the next Sprint.
+   4. Repeat
+
+** Scrum is simple
+   - Framework is purposefully incomplete
+   - Is built upon the collective intelligence of the people using it
+   - Rather than providing detailed instructions, the rules provide guidelines
+   - Wraps around existing practices or renders them obsolete
+   - Makes relative efficacy of current management, environment and work techniques; so that improvements can be made
+
+** Scrum Theory
+   - Founded on empiricism and lean thinking
+     - Empiricism asserts that knowledge comes from experience and decisions are made based on what is observed
+     - Lean thinking reduces waste and focuses on essentials
+   - Employs an iterative, incremental approach to optimize predictability and to control risk
+   - Combines four formal events for inspection and adaptation within a containing event: The Sprint.
+     - Sprint Planning
+     - Daily Scrum
+     - Sprint Review
+     - Sprint Retrospective
+   - Sprint events work because they implement empirical pillars of Scrum: transparency, inspection and adaptation
+
+** Pillars Of Scrum
+
+*** Transparency
+    - The process and the work must be visible to those performing the work as well as the ones receiving the work
+    - Artifacts that have low transparency can lead to decisions that diminish value and increase risk
+    - Enables Inspection
+    - Inspection without transparency is misleading and wasteful
+
+*** Inspection
+    - Scrum artifacts and the progress towards agreed goals must be inspected frequently and diligently to detect potentially undesirable variance or problems.
+    - To help with inspection, Scrum provides cadence in the form of its five events
+    - Inspection enables Adaptation. Inspection without Adaptation is considered pointless.
+    - Scrum events are designed to provoke change.
+
+*** Adaptation
+    - If any aspects of a process deviate outside acceptable limits or if the result is not acceptable, the process being applied or materials used must be adjusted.
+    - Adjust as soon as possible to minimize further deviation
+    - Adaptation is difficult if the people involved aren't empowered or self-managing.
+    - Scrum team is supposed to adapt the moment it learns of anything via inspection
+
+** Scrum Values
+   - *Commitment*, *Focus*, *Openness*, *Respect*, *Courage*
+   - The team commits to achieve a goal and support each other
+   - Focus on the work of the Sprint to make the best possible progress
+   - Team and the stakeholders are open the work and the challenges
+   - Respect each other to be capable and independent
+   - Have the courage to work through tough problems and do the right thing
+
+     #+begin_verse
+     The above values are utilised by the team and people they work with. If applied well the pillars of transparency, inspection and adaptation come to life building trust.
+     #+end_verse
+
+** Scrum Team
+
+*** Consists of a small team, generally:
+    - One Scrum Master
+    - One Product Owner
+    - Developers
+    - No sub-teams and no hierarchies
+    - Cohesive unit of professionals focused on the one objective: Product Goal
+    - Typically 10 or fewer people
+    - Usually smaller teams work better, communicate better and are more productive
+    - Too large a team should perhaps split into own Scrum Teams with the same focus on the same product: share same Product Goal, Product Backlog and Product Owner.
+
+*** Team is cross-functional
+    - Each member has the skills necessary to create value during each Sprint
+
+*** Self-managing
+    - Internally decide who does what, when and how.
+
+*** Responsible for all product-related activities
+    - Stakeholder collaboration
+    - Verification
+    - Maintenance
+    - Operation
+    - Experimentation
+    - Research and Development
+    - Anything else that might be required
+
+*** Accountability
+    - Accountable for creating a value, useful Increment every Sprint
+    - Three specific accountabilities within the Scrum Team
+      - The Developers
+      - The Product Owner
+      - The Scrum Master
+
+*** Developers
+    - Are the people that are committed to creating any aspect of usable Increment each Sprint
+    - The skills necessary may be broad and vary depending on the domain
+    - But are always accountable for:
+      - Creating a plan for the Sprint, the Sprint Backlog
+      - Instilling quality by following the Definition of Done
+      - Adapting their plan each day toward the Sprint Goal
+      - Holding each other accountable as professionals
+
+*** Product Owner
+    - Accountable for maximising the value of the product resulting from the work of the Scrum Team
+    - Accountable for effective Product Backlog management, which includes:
+      - Developing and explicitly communicating the Product Goal
+      - Creating and clearly communicating Product Backlog items
+      - Ordering Product Backlog items
+      - Ensuring Product Backlog is transparent, visible and understood
+    - The Product Owner may delegate his tasks to others, but is held accountable nonetheless
+    - The decisions of the Product Owner are transparent via the Product Backlog and through inspectable Increment at the Sprint Review
+    - If anyone wants to change the Product Backlog they need to convince the Product Owner to do so
+
+*** Scrum Master
+    - Accountable for establishing Scrum as defined by the Guide
+    - Help everyone understand Scrum and its practices and theories, both withing a team and the organisation
+    - Is accountable for the team's effectiveness. This is achieved by improving the team's practices within the Scrum framework
+    - Are true leaders who serve the Team and the organisation
+    - Some ways how Scrum Masters serve the team:
+      - Coaching in self-management and cross-functionality
+      - Help the team in creating high-value Increments that meet DoD
+      - Remove impediments to the team's progress
+      - Ensure all Scrum events take place and are positive, productive and kept within a timebox
+    - The Scrum Master serves the Product Owner:
+      - Help with techniques for better Product Goal definitions and Product Backlog management
+      - Help understand the need for clear and concise Product Backlog items
+      - Help in establishing empirical product planning for a complex environment
+      - Facilitate stakeholder collaboration as requested or when needed
+    - The Scrum Master serves the organisation:
+      - Lead, train and coach the org in Scrum adoption
+      - Plan and advise Scrum implementations within the org
+      - Help employees and stakeholder understand and enact an empirical approach for complex work
+      - Remove barriers between stakeholders and the Scrum Team
+
+** Scrum Events
+   - Events exist to create regularity and to minimize meetings not defined in Scrum
+   - Failure to operate any events results in a lost opportunity to inspect and adapt
+
+*** The Sprint
+    - Is the heartbeat of Scrum
+    - Fixed length, usually a month
+    - New one starts immediately after the conclusion of the previous Sprint
+    - All the work that is necessary to achieve the Product Goal (Sprint Planning, Daily Scrums, Sprint Review, Sprint Retrospective) happen within Sprints
+    - During the Sprint:
+      - No changes are made to endanger the Sprint Goal
+      - Quality does not decrease
+      - Product Backlog is refined as needed
+      - Scope may be clarified and negotiated with the Product Owner as more is learned
+    - Sprints enable predictability by ensuring inspection and adaptation of progress toward a Product Goal at least once a month
+    - Shorter sprints can be employed to encourage faster learning, however, longer sprints can stray away from the over goal, the Sprint Goal
+    - Each Sprint can be considered a mini-project (and now this whole thing makes much more sense)
+    - Various practices exist to forecast progress: burn-downs, burn-ups, cumulative flow, etc.
+      - However, remember that in complex environments what will happen is unknown. Only what has happened may be used for future decision making (empiricism).
+    - Sprint may be cancelled if the Spring Goal becomes obsolete. Only the Product Owner has the authority to do so.
+
+*** Sprint Planning
+    - Initiates the Sprint by laying out the work to be performed for the Sprint
+    - Is created by the entire Scrum Team
+    - PO ensures attendees are prepared to discuss most important PB items and how they map to the Product Goal
+    - The team may invite other people to provide advice
+    - Sprint Planning addresses the following topics:
+      1. Why is this Sprint Valuable? - Sprint Goal must be finalized at the end of Sprint Planning, so the PO proposes how to increase value and utility in the Current Sprint, then the team collaborates to define a Sprint Goal. The Sprint Goal communicates why the Goal is valuable.
+      2. What can be Done this Sprint? - PO and the Devs discuss which items from the PB to include in the Sprint. The items may be refined during this process by the team (increases understanding and confidence of what is being done). Selecting items may be hard but empiricism helps as time goes by.
+      3. How will the chosen work get done? - Each item from PB is planned by the Devs to create an Increment that meets the DoD. Often this is accomplished by decomposing an item into tasks/sub-tasks. This is purely at the discretion of the Devs on how they approach this process. No one tells the Devs how to turn PB items into Increments of value.
+    - The timebox for planning is usually 8 hours in a one-month Sprint. For shorter sprints it is less than that.
+    - The Sprint Goal, PB's items selected for the Sprint and the Delivery Plan of said items are together referred to as the: Sprint Backlog
+
+*** Daily Scrum
+    - Goal is to inspect progress towards the Sprint Goal and adapt the Sprint Backlog if necessary (adjust the upcoming planned work)
+    - Is a 15-minute event for the Developers of the Scrum Team
+    - Is usually held at the same time and place every working day of the Sprint
+    - If the PO or Scrum Master are actively working on items from the Sprint Backlog they participate as Devs
+    - Devs select whatever structure and technique they want, for as long as their Daily Scrum focuses on progress towards the Sprint Goal and produces an actionable plan for the next day (create focus and improves self-management)
+    - General goals:
+      - Improve communication
+      - Identify impediments
+      - Promote quick decision making
+      - Eliminate needs for other meetings (hopefully), however, if necessary other meetings happen throughout the day for more detailed discussions and plan adjustments
+
+*** Sprint Review
+    - Inspect the outcome of the Sprint, determine future adaptations
+    - Present results to key stakeholders and progress towards the Product Goal (discuss progress as well)
+    - Team and stakeholders discuss what was accomplished in the Sprint and what has changed
+    - Based on all the information provided a discussion ensues on what to do next
+    - Product Backlog may be adjusted to meet new opportunities
+    - Is a working session and should not be a simple presentation
+    - Is the second to last event, usually timeboxed to 4 hours for a one-month Sprint, less for shorter Sprints.
+
+*** Sprint Retrospective
+    - Purpose: Plan ways to increase quality and effectiveness
+    - Scrum Team inspects how the last Sprint went with regards to: Individuals, Interactions, Processes, Tools and the Definition of Done.
+    - Identify assumptions and explore their origins
+    - Scrum Team discusses what went well during the Sprint, what problems were encountered and how the problems were solved (or not solved)
+    - Scrum Team identifies most helpful changes to improve the way forward. Most impactful improvements are addressed as soon as possible.
+    - Retrospective concludes the Sprint, timeboxed to three hours for a one-month Sprint, less for shorter sprints.
+
+** Scrum Artifacts
+   - Represent work of value
+   - Designed to maximise transparency of key information
+   - Each artifact contains a commitment to ensure it provides information that enhances transparency and focus, this transparency and focus' progress can then be measured
+
+*** Product Backlog
+    - Emergent, ordered list of what is needed to create and improve the product.
+    - Single source of work for the Scrum Team
+    - Any item from the Backlog that can be done within a single Sprint is considered "ready" for Sprint Planning
+    - Product Backlog refinement or grooming is the act of breaking down items into more precise items
+    - It is an ongoing process that adds details, descriptions, order and size
+    - Devs are responsible for the sizing
+    - PO may influence the Devs by helping understand items and select trade-offs
+**** Commitment: Product Goal
+     - Describes a future state of the product which can serve as the target for the Scrum Team to plan against.
+     - The Product Goal is in the Product Backlog
+     - Is the long-term objective for the Scrum Team. Fulfil (or abandon) an objective before taking on the next
+
+*** Sprint Backlog
+    - Composed of the Sprint Goal (the: why)
+    - The set of PB items selected for the Sprint (the: what)
+    - Actionable plan for delivering an Increment (the: how)
+    - The Sprint Backlog is a plan by and for the Developers
+    - Is a high-visibility real-time picture of the work that the Devs plan to accomplish during the Sprint to achieve the Sprint Goal
+    - Update the Backlog when more things are learned about the work
+    - Should have enough detail that can be discussed during the Daily Scrum
+**** Commitment: Sprint Goal
+     - Single objective of the Sprint
+     - Commitment by the Devs, but has flexibility in terms of the exact work needed to accomplish the goal
+     - Creates coherence and focus. The whole team is on the same page and work together towards the same goal.
+     - Is created during Sprint Planning and added to the Sprint Backlog
+     - As Devs work they keep the Sprint Goal in mind
+     - If the work turns out more difficult, they collaborate with the PO to negotiate the scope and hopefully achieve the Sprint Goal still
+
+*** Increment
+    - Is a concrete stepping stone towards the Product Goal
+    - Each is additive with the previous one and thoroughly verified to ensure that all Increments work together
+    - In order to provide value and Increment must be usable
+    - Multiple Increments may be created within a Sprint
+    - Increments may be presented to stakeholders sooner, Sprint Review does not need to be solely that moment
+    - Work cannot be considered part of an Increment unless it meets the Definition of Done
+**** Commitment: Definition of Done
+     - Is a formal description of the state of an Increment when it meets the quality measures required for the product
+     - When a Product Backlog item meets the Definition of Done, an Increment is made
+     - DoD creates transparency. so that everyone understands what kind of work is necessary to complete a work item to create an Increment.
+     - If a PB item does not meet the DoD it cannot be released or even presented at the Sprint Review. It goes back to the PB.
+     - DoD may be an organizational standard, so then all Scrum Teams follow that standard. Otherwise the Scrum Team creates their own DoD appropriate for the product.
+     - Devs are required to conform with DoD. If multiple teams work on a single product they all share the same DoD.
+
+* Revision Questions for Exam
+
+** What is Software
+   - Computer programs and associated documentation such as requirements, design models and user manuals.
+   - Be cautious of the defects
+   - Cost: software is generally more expensive than hardware. Software engineering is concerned with cost-effective software development
+
+** What is Software Engineering
+   - Systematic application of engineering principles to the design, development, testing, deployment and maintenance
+   - It is about building reliable, efficient and maintainable software in a structured and methodical way - like how civil engineers build bridges or architects design buildings
+   - Key aspects:
+     - Requirements analysis - understand what needs to be done
+     - Design - Plan the software structure
+     - Implementation - Writing the actual code
+     - Testing - Check for bugs and ensure quality
+     - Maintenance - Fixing issues and updating the software after release
+     - Project management - Managing time, budget and teams
+
+** Explain why we need to engineer software and not “just code it”.
+   - While anyone can code, developing *high-quality software* for real-world use requires much more than that. Some examples:
+   - Complexity - Can be huge in terms of lines of code. Without planning the result is often buggy, hard to maintain or unusable
+   - Scalability & Maintainability - Software needs to grow, adapt and be maintained over time. "Just code it" generally creates technical debt.
+   - Collaboration - Usually software is developed in teams, so clear design, documentation and standards are essential.
+   - Quality Assurance - Ensure testing, reviews and quality control to minimise bugs, crashes or security flaws, which could have financial or legal consequences
+   - Cost & Time Efficiency - Good engineering practices prevent wasted time fixing poor code later.
+
+   | Aspect                   | **Software Engineering**                            | **Civil Engineering (e.g., Bridge)**              |
+   |--------------------------+-----------------------------------------------------+---------------------------------------------------|
+   | **Nature of Product**    | Intangible, logical systems (code)                  | Physical structures (steel, concrete)             |
+   | **Design Tools**         | Diagrams, code models, UML, version control         | Blueprints, CAD drawings, physical models         |
+   | **Changes**              | Easier to modify (but still costly if unplanned)    | Very expensive or impossible to change once built |
+   | **Failure Consequences** | Data loss, downtime, security risks                 | Physical harm, property damage, lives at risk     |
+   | **Testing**              | Simulations, unit tests, automated builds           | Physical stress tests, inspections, models        |
+   | **Maintenance**          | Frequent updates, patches, refactoring              | Occasional inspections and repairs                |
+   | **Development Method**   | Agile, Waterfall, DevOps, etc.                      | More linear (Plan → Design → Build → Maintain)    |
+   | **Team Roles**           | Developers, testers, UX designers, project managers | Architects, engineers, surveyors, contractors     |
+
+** What is a software process? Describe the common activities that are part of all software processes
+   - A software process is a structured set of activities used to develop software.
+   - It defines how software is created, maintained and delivered, providing a framework that guides the entire software development lifecycle (SDLC)
+   - Activities:
+     - Specification (requirements gathering/engineering)
+     - Design and Architecture
+     - Implementation
+     - Testing and Validation
+     - Deployment
+     - Maintenance and Evolution
+
+** What are the four important or essential attributes that all professional software should have? Suggest four other attributes that may sometimes be significant.
+   - Correctness - Software must do what it is supposed to do
+   - Reliability - It must work consistently and accurately
+   - Usability - It should be easy to use and understand for the target users
+   - Maintainability - Must be easy to modify/fix/update
+
+*** Other significant attributes
+    - Efficiency - Should not use too many resources
+    - Security - Should protect your data and your privacy
+    - Portability - Ability to run anywhere
+    - Scalability - Ability to handle growing amount of work or users
+
+** Compare Agile and Waterfall
+   | **Aspect**               | **Waterfall**                                              | **Agile**                                                   |
+   | ------------------------ | ---------------------------------------------------------- | ----------------------------------------------------------- |
+   | **Approach**             | Linear and sequential                                      | Iterative and incremental                                   |
+   | **Phases**               | Fixed stages: Requirements → Design → Code → Test → Deploy | Repeated cycles (sprints) with all activities in each cycle |
+   | **Flexibility**          | Rigid — changes are hard to make once started              | Flexible — welcomes changes even late in development        |
+   | **Customer Involvement** | Minimal after initial planning                             | High — continuous feedback throughout                       |
+   | **Delivery**             | One big release at the end                                 | Frequent small releases (e.g., every 2–4 weeks)             |
+   | **Best For**             | Projects with clear, fixed requirements                    | Projects with evolving or unclear requirements              |
+   | **Risk**                 | High — issues often discovered late                        | Lower — problems are found early through iterations         |
+
+** What are the characteristics of Agile projects?
+   - Iterative and Incremental Development
+   - Customer Collaboration
+   - Welcomes Changes
+   - Cross-Functional Teams
+   - Continuous Delivery of Value
+   - Face-to-Face Communication
+   - Self-Organizing Teams
+   - Regular Reflection and Improvement
+   - Focus on Working Software
+   - Simplicity
+
+** How is incremental different to iterative?
+   - Iterative: Repeat the same process or refine product repeatedly. Build a basic version then improve/revise through repeated cycles
+   - Incremental: Adding new parts or features over time. Most software is developed in small pieces (increments) that are fully functional. Each increment adds new functionality.
+
+** List 2 advantages of the waterfall methodology
+   - Clear Structure and Documentation
+   - Well-Suited for Projects with Fixed Requirements
+
+** What is the scientific method underpinning Agile methods?
+   - It is rooted in Empirical Process Control
+   - Empiricism: knowledge comes from *experience* and *observation*, not just upfront prediction. In Agile this is especially reflected in the cycle of learning and improvement.
+
+** Describe the main activities common to all software processes
+   | *Activity*     | *Purpose*                        |
+   | -------------- | -------------------------------- |
+   | Specification  | Define what to build             |
+   | Design         | Plan how to build it             |
+   | Implementation | Build the software               |
+   | Testing        | Verify it works correctly        |
+   | Deployment     | Deliver to users                 |
+   | Maintenance    | Keep software useful and updated |
+
+** What is the software process model or software process description?
+   - It is an abstract representation or framework that defines the structure, sequence and flow of activities involved in software development. It describes how:
+     - Software is developed, delivered and maintained
+     - Provides a blueprint or guidelines for organising tasks, roles and tools throughout the project
+   - Some common software process models:
+     - Waterfall Model
+     - Agile Model
+     - Spiral Model
+     - V-Model
+     - Incremental Model
+
+** What is the main difference between plan-driven and agile processes?
+   | Aspect                   | Plan-Driven Processes                                        | Agile Processes                                                 |
+   |--------------------------+--------------------------------------------------------------+-----------------------------------------------------------------|
+   | **Definition**           | Rely on detailed planning and documentation.                 | Emphasize flexibility and iterative development.                |
+   | **Planning**             | Extensive upfront planning and design.                       | Minimal initial planning; adapt as you go.                      |
+   | **Change Management**    | Changes are often difficult and costly to implement.         | Embrace changes even late in development.                       |
+   | **Customer Involvement** | Limited customer interaction until later stages.             | Continuous customer collaboration throughout.                   |
+   | **Development Approach** | Sequential phases (e.g., Waterfall).                         | Iterative cycles (sprints) with frequent releases.              |
+   | **Documentation**        | Heavy documentation is required.                             | Less emphasis on documentation; focus on working software.      |
+   | **Risk Management**      | Risks are identified and planned for upfront.                | Risks are managed through iterative feedback and adaptation.    |
+   | **Team Structure**       | Often hierarchical with defined roles.                       | Cross-functional teams with shared responsibilities.            |
+   | **Success Metrics**      | Success measured by adherence to the plan and documentation. | Success measured by customer satisfaction and working software. |
+
+*** Key Takeaways
+    - **Plan-Driven Processes**: These processes are characterized by a structured approach, where detailed planning and documentation are crucial. They are best suited for projects with well-defined requirements and low uncertainty.
+
+    - **Agile Processes**: Agile methodologies prioritize adaptability and customer collaboration. They are ideal for projects where requirements may evolve, allowing teams to respond quickly to changes and deliver value incrementally.
+
+    Understanding these differences helps teams choose the right approach based on project needs, stakeholder expectations, and the level of uncertainty involved.
+
+** Describe the waterfall model in software development and discuss some of the inherent problems in the waterfall model
+   The Waterfall Model is one of the earliest and most straightforward software development methodologies. It follows a linear and sequential approach, where each phase must be completed before moving on to the next. The typical phases of the Waterfall Model include:
+
+   1. **Requirements Analysis**: Gathering and documenting all the software requirements from stakeholders.
+   2. **System Design**: Creating the architecture and design specifications based on the requirements.
+   3. **Implementation**: Writing the actual code and developing the software.
+   4. **Verification (Testing)**: Testing the software to ensure it meets the specified requirements.
+   5. **Maintenance**: Addressing any issues or updates needed after deployment.
+
+*** Inherent Problems in the Waterfall Model
+
+    While the Waterfall Model has its advantages, such as simplicity and clear milestones, it also has several inherent problems:
+
+    1. Inflexibility to Changes: Once a phase is completed, going back to make changes is often difficult and costly. This rigidity can lead to issues if requirements evolve during the development process.
+    2. Late Testing: Testing occurs only after implementation, which means that defects may not be discovered until late in the project. This can result in significant rework and delays.
+    3. Assumption of Clear Requirements: The model assumes that all requirements can be gathered upfront and that they will remain stable throughout the project. In reality, requirements often change as stakeholders gain a better understanding of their needs.
+    4. Limited Customer Involvement: Customer feedback is typically sought only at the beginning and end of the process. This can lead to a final product that does not fully meet user expectations.
+    5. Risk of Project Overruns: Due to its sequential nature, any delays in one phase can cascade through the project, leading to missed deadlines and budget overruns.
+    6. Difficulty in Managing Complex Projects: For large and complex projects, the Waterfall Model can become unwieldy, making it challenging to manage dependencies and integration between different components.
+
+** Discuss advantages and disadvantages of story cards
+
+*** Advantages
+    1. User-Centric Focus: Story cards emphasize the needs and experiences of the end user, ensuring that development efforts align with user value.
+    2. Simplicity and Clarity: They provide a straightforward way to capture requirements, making it easier for team members to understand what needs to be done without getting bogged down in technical details.
+    3. Facilitates Communication: Story cards encourage discussions among team members and stakeholders, fostering collaboration and shared understanding of project goals.
+    4. Prioritization: They can be easily prioritized based on user needs, business value, or project goals, helping teams focus on delivering the most important features first.
+    5. Flexibility: Story cards can be easily modified or added as new requirements emerge, allowing teams to adapt to changing circumstances and feedback.
+    6. Visual Management: When used on boards (like Kanban boards), story cards provide a visual representation of work in progress, helping teams track progress and identify bottlenecks.
+
+*** Disadvantages
+    1. Over-Simplification: While simplicity is an advantage, it can also lead to oversimplification of complex requirements, potentially missing critical details that need to be addressed.
+    2. Lack of Formal Documentation: Story cards may not provide enough formal documentation for future reference, which can be problematic for onboarding new team members or for long-term maintenance.
+    3. Dependency Management: Managing dependencies between story cards can be challenging, especially if they are not clearly defined, leading to integration issues later in the development process.
+    4. Variable Interpretation: Different team members may interpret story cards differently, leading to inconsistencies in understanding and implementation.
+    5. Potential for Scope Creep: The flexibility of story cards can sometimes lead to scope creep, where additional features or requirements are added without proper evaluation of their impact on the project.
+    6. Time-Consuming: Creating and refining story cards can be time-consuming, especially if there are many stakeholders involved, which may slow down the initial phases of development.
+
+** What are the three parts of a user story. Give examples of a User Story Description. Describe how user story should follow the INVEST principle giving examples to support your answer.
+   - The three parts of a user story are: *As a*, *I want*, *So that* (aka The Role, The Goal, The Reason or the who/what/why)
+   - The INVEST principle is a guideline for creating effective user stories. It stands for:
+     - Independent: User stories should be self-contained and not dependent on other stories.
+     - Negotiable: User stories should be flexible and open to discussion and changes.
+     - Valuable: Each user story should deliver value to the user or customer.
+     - Estimable: User stories should be clear enough to allow for estimation of the effort required to complete them.
+     - Small: User stories should be small enough to be completed within a single iteration or sprint.
+     - Testable: User stories should have clear acceptance criteria that allow for testing.
+
+*** Examples supporting the INVEST principle
+    #+begin_verse
+   Independent:
+   Good Example: "As a user, I want to reset my password so that I can regain access to my account."
+   Bad Example: "As a user, I want to reset my password and also change my email address." (These are dependent tasks.)
+
+   Negotiable:
+   Good Example: "As a user, I want to filter search results by price range." (This can be discussed and refined.)
+   Bad Example: "As a user, I want the filter to be exactly $10 to $50." (This is too rigid and specific.)
+
+   Valuable:
+   Good Example: "As a user, I want to save my favorite items so that I can easily find them later." (This provides clear value.)
+   Bad Example: "As a user, I want the system to have a blue background." (This does not provide significant value.)
+
+   Estimable:
+   Good Example: "As a user, I want to view my order history so that I can track my purchases." (This is clear and can be estimated.)
+   Bad Example: "As a user, I want to improve the performance of the application." (This is vague and hard to estimate.)
+
+   Small:
+   Good Example: "As a user, I want to add items to my shopping cart." (This is a small, manageable task.)
+   Bad Example: "As a user, I want to build a complete e-commerce platform." (This is too large and complex.)
+
+   Testable:
+   Good Example: "As a user, I want to receive a confirmation email after placing an order." (This can be tested with clear criteria.)
+   Bad Example: "As a user, I want the application to be user-friendly." (This is subjective and lacks clear testing criteria.)
+    #+end_verse
+
+** With respect to User Stories what is the definition of done. Give examples.
+   - The Definition of Done (DoD) is a clear and concise checklist that outlines the criteria that must be met for a user story to be considered complete.
+   - Examples:
+   - Code Completion:
+     - The code for the user story has been written and adheres to coding standards.
+   - Code Review:
+     - The code has been reviewed by at least one other team member and all feedback has been addressed.
+   - Testing:
+     - Unit tests have been written and passed.
+     - Integration tests have been conducted, and the feature works as expected.
+     - User acceptance testing (UAT) has been completed with stakeholder approval.
+   - Documentation:
+     - Relevant documentation has been updated, including user manuals, API documentation, and internal wikis.
+   - Deployment:
+     - The feature has been deployed to the staging environment and verified.
+     - The feature is ready for production deployment.
+   - Performance:
+     - The feature meets performance benchmarks and does not degrade the application's overall performance.
+   - Security:
+     - Security checks have been performed, and any vulnerabilities have been addressed.
+   - Compliance:
+     - The feature complies with relevant regulations and standards (e.g., GDPR, accessibility).
+
+** Cone of uncertainty
+   - The less of an epic a story is the better it can be estimated, basically...
+
+** What are “functional” requirements in software development?
+   - Functional requirements are specific statements that define the behavior, capabilities, and functionalities of a software system. They describe what the system should do, outlining the expected interactions between the system and its users, as well as the system's responses to various inputs. Functional requirements are essential for guiding the development process and ensuring that the final product meets user needs and expectations.
+   - Key characteristics: user-centric, specific and clear, testable, traceable
+   - Examples:
+   - User Authentication:
+     - The system shall allow users to register with a username and password.
+     - The system shall provide a "Forgot Password" feature to reset passwords via email.
+   - Data Management:
+     - The system shall allow users to create, read, update, and delete (CRUD) records in the database.
+     - The system shall validate user input to ensure data integrity.
+   - Reporting:
+     - The system shall generate monthly sales reports in PDF format.
+     - The system shall allow users to filter reports by date range and product category.
+   - Search Functionality:
+     - The system shall provide a search feature that allows users to find products by name, category, or price range.
+     - The system shall display search results within 2 seconds of submitting a query.
+   - Notifications:
+     - The system shall send email notifications to users when their orders are shipped.
+     - The system shall display in-app notifications for important updates.
+
+** What is a “non-functional” requirement in software development? Provide examples as well
+   - Non-functional requirements (NFRs) specify the criteria that judge the operation of a system, rather than the specific behaviors or functions it performs. They define how a system should behave and outline the quality attributes, constraints and performance metrics that the system must meet.
+   - Key characteristics (*classifications*): Quality attributes (performance, security, usability, etc.), system constraints (impose constraints on the system), measurable (should be quantifiable), broad scope (generally apply to the whole system)
+   - Examples:
+   - Performance:
+     - The system shall handle 1,000 concurrent users without performance degradation.
+     - The system shall respond to user requests within 2 seconds under normal load conditions.
+   - Scalability:
+     - The system shall be able to scale horizontally to accommodate an increase in user traffic by 50% without requiring significant reconfiguration.
+   - Security:
+     - The system shall encrypt all sensitive user data both in transit and at rest.
+     - The system shall implement role-based access control to restrict user permissions based on their roles.
+   - Usability:
+     - The system shall allow users to complete the registration process within 5 minutes.
+     - The system shall provide an intuitive user interface that requires no more than three clicks to access any feature.
+   - Reliability:
+     - The system shall have an uptime of 99.9% over a one-year period.
+     - The system shall automatically recover from failures within 5 minutes.
+   - Maintainability:
+     - The system shall allow for updates and patches to be applied without downtime.
+     - The system's codebase shall be documented to facilitate onboarding of new developers.
+   - Compliance:
+     - The system shall comply with GDPR regulations regarding user data privacy and protection.
+     - The system shall meet accessibility standards (e.g., WCAG 2.1) to ensure usability for individuals with disabilities.
+
+** Explain Spring Velocity and how it is calculated
+   - Velocity is a key metric used in Agile methodologies, particularly in Scrum, to measure the amount of work a team can complete during a single sprint. It helps teams estimate their capacity for future sprints and assess their performance over time. Velocity is typically expressed in terms of story points, which are units of measure for the size or complexity of user stories.
+   - Sprint velocity is calculated by summing the story points of all the user stories that are completed during a sprint.
+
+** What is an Agile Method
+   - An Agile method is a flexible and iterative approach to software development that emphasizes collaboration, customer feedback, and rapid delivery of functional software. Agile methodologies prioritize adaptive planning and encourage frequent reassessment and adjustment of plans based on changing requirements and stakeholder input.
+
+** What does the terms “chickens” and “pigs” relate to with respect to Scrum?
+   - Chickens: Refer to individuals who are involved in the project but are not directly responsible for the delivery of the product. They have an interest in the project's outcome but do not have a stake in the day-to-day activities of the Scrum team. Examples: Stakeholders, management, customers
+   - Pigs: refer to the core members of the Scrum team who are fully committed to the project and responsible for delivering the product increment. They are directly involved in the work and have a stake in the success of the project. Examples: PO, Scrum Master, Dev Team
+
+** Describe in detail the Scrum lifecycle and outline the roles, ceremonies and artifacts involved in the Scrum methodology
+
+** What is Maven in Java?
+   - Maven is a powerful build automation and project management tool primarily used for Java projects. It simplifies the process of managing project dependencies, building applications, and maintaining project structures. Maven is part of the Apache Software Foundation and follows a convention-over-configuration approach, which means it provides a standard way to structure projects and manage their lifecycle.
+
+** Some common Maven goals:
+   - mvn compile: Compiles the source code of the project.
+   - mvn test: Runs the unit tests using a testing framework (e.g., JUnit).
+   - mvn package: Packages the compiled code into a distributable format, such as a JAR or WAR file.
+   - mvn install: Installs the packaged artifact into the local Maven repository, making it available for other projects.
+   - mvn clean: Cleans the project by removing the target directory, which contains compiled code and packaged artifacts.
+
+** What is static testing?
+   - Static testing is a software testing technique that involves examining the code, documentation, and other project artifacts without executing the program.
+
+** In software development Describe the fundamental test process using a diagram.
+   - The fundamental test process in software development typically consists of several key stages. Below is a diagram that outlines these stages, followed by a detailed description of each phase.
+   #+begin_verse
++-------------------+
+|   Test Planning   |
++-------------------+
+          |
+          v
++-------------------+
+|  Test Design      |
++-------------------+
+          |
+          v
++-------------------+
+|  Test Execution    |
++-------------------+
+          |
+          v
++-------------------+
+|  Test Closure      |
++-------------------+
+   #+end_verse
+
+** Describe the different test levels you might expect to find in a software development project.
+   - Unit Testing: Testing the smallest testable parts of the application in isolation.
+   - Integration Testing: Ensuring that combined parts of the application work together as expected.
+   - System Testing: Testing the application as a whole to ensure it meets specified requirements.
+   - Acceptance Testing: Validating the software from the end-user's perspective.
+   - Regression Testing: Re-running previously completed tests to confirm that the software still performs as expected.
+   - Performance Testing: Evaluating how the system performs under various conditions.
+   - Security Testing: Testing the application for security flaws and compliance with security standards.
+   - Usability Testing: Ensuring that the software is user-friendly and meets user expectations.
+
+* Remove at the End
+  #+BEGIN_EXPORT html
+  <script src="../assets/jquery-3.3.1.min.js"></script>
+  <script src="../assets/notes.js"></script>
+  #+END_EXPORT
