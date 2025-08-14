@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2025-07-29 Tue 16:01 -->
+<!-- 2025-08-14 Thu 12:04 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Computer Architecture and Networks</title>
@@ -204,96 +204,126 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org5a6df1c">1. Definitions</a></li>
-<li><a href="#orga178370">2. Number Bases</a>
+<li><a href="#orgcdce9cd">1. Definitions</a></li>
+<li><a href="#orgdc2ecc5">2. Number Bases</a>
 <ul>
-<li><a href="#org1f06998">2.1. Decimal</a></li>
-<li><a href="#orgc25a338">2.2. Binary To Decimal</a></li>
-<li><a href="#orgfdf5206">2.3. Octal to Decimal</a></li>
-<li><a href="#org77e69eb">2.4. Hex to Decimal</a></li>
-<li><a href="#orgd121ca6">2.5. Decimal to Binary</a></li>
-<li><a href="#orgd98f51d">2.6. Octal to Binary</a></li>
-<li><a href="#org669cd09">2.7. Hex to Binary</a></li>
-<li><a href="#orgffd94b5">2.8. Binary Addition</a></li>
-<li><a href="#orgc9afbb0">2.9. Binary Multiplication</a></li>
-<li><a href="#orgdd6fe97">2.10. Binary Subtraction</a></li>
-<li><a href="#orge1b8ac8">2.11. Binary Division</a></li>
-<li><a href="#org5313ef9">2.12. 2s Complement</a></li>
+<li><a href="#orgf0cbe25">2.1. Decimal</a></li>
+<li><a href="#org37133c4">2.2. Binary To Decimal</a></li>
+<li><a href="#orga581235">2.3. Octal to Decimal</a></li>
+<li><a href="#org1688b52">2.4. Hex to Decimal</a></li>
+<li><a href="#orgb2f33c6">2.5. Decimal to Binary</a></li>
+<li><a href="#org16864b7">2.6. Octal to Binary</a></li>
+<li><a href="#orgb10944e">2.7. Hex to Binary</a></li>
+<li><a href="#org2e2c075">2.8. Binary Addition</a></li>
+<li><a href="#orgbec5e95">2.9. Binary Multiplication</a></li>
+<li><a href="#orga39a286">2.10. Binary Subtraction</a></li>
+<li><a href="#org380e493">2.11. Binary Division</a></li>
+<li><a href="#org2a98461">2.12. 2s Complement</a></li>
 </ul>
 </li>
-<li><a href="#orgf5a90b9">3. Exam Rundown</a>
+<li><a href="#orgfb486a6">3. Exam 1 Rundown</a>
 <ul>
-<li><a href="#org32a8a84">3.1. Headings of the paper (20 marks each)</a></li>
-<li><a href="#orgb36802e">3.2. Computer system</a></li>
-<li><a href="#orgae82fd9">3.3. Inside the Case</a></li>
-<li><a href="#org981cab4">3.4. Hardware Platform</a></li>
-<li><a href="#org861060c">3.5. Hardware Platforms: Instruction Cycle</a></li>
-<li><a href="#org2dcc7c6">3.6. Java Virtual Machine</a></li>
-<li><a href="#org3dc552e">3.7. Types of computers</a></li>
-<li><a href="#org87c5063">3.8. Components of a PC</a></li>
-<li><a href="#org9cddf1c">3.9. Server/Personal</a></li>
-<li><a href="#org05f7a5e">3.10. OS</a></li>
-<li><a href="#org122ab15">3.11. Computer Application</a></li>
-<li><a href="#org56cc893">3.12. Programming Languages</a></li>
-<li><a href="#orgbcc956a">3.13. Low Level/High level languages</a></li>
-<li><a href="#orgbe39ea1">3.14. Hardware Platforms</a></li>
-<li><a href="#org4c8c3e2">3.15. Machine Code</a></li>
-<li><a href="#org4b85821">3.16. High Level Language</a></li>
-<li><a href="#orgf3ba51d">3.17. Compiler</a></li>
-<li><a href="#org3d1df87">3.18. Hardware Platforms: instruction cycle</a></li>
-<li><a href="#org606f01c">3.19. Key Developments in Networks</a></li>
-<li><a href="#org358f351">3.20. Desktop Virtualization</a></li>
-<li><a href="#orgbd8854f">3.21. True of false</a></li>
-<li><a href="#org42306d9">3.22. Base value conversion</a></li>
-<li><a href="#org3ba0f97">3.23. Binary addition/subtraction/multiplication/division</a></li>
-<li><a href="#org037e3f2">3.24. Databases</a></li>
+<li><a href="#orgd2729d7">3.1. Headings of the paper (20 marks each)</a></li>
+<li><a href="#orgd36648b">3.2. Computer system</a></li>
+<li><a href="#org624a465">3.3. Inside the Case</a></li>
+<li><a href="#org1c956cc">3.4. Hardware Platform</a></li>
+<li><a href="#org6eb12ef">3.5. Hardware Platforms: Instruction Cycle</a></li>
+<li><a href="#org468e37e">3.6. Java Virtual Machine</a></li>
+<li><a href="#org949476c">3.7. Types of computers</a></li>
+<li><a href="#org9fa6bef">3.8. Components of a PC</a></li>
+<li><a href="#org4d75d2d">3.9. Server/Personal</a></li>
+<li><a href="#org9b3bfe4">3.10. OS</a></li>
+<li><a href="#org0cb97c6">3.11. Computer Application</a></li>
+<li><a href="#org846deec">3.12. Programming Languages</a></li>
+<li><a href="#org15556da">3.13. Low Level/High level languages</a></li>
+<li><a href="#org4eaf66c">3.14. Hardware Platforms</a></li>
+<li><a href="#orgda3d627">3.15. Machine Code</a></li>
+<li><a href="#orge13121f">3.16. High Level Language</a></li>
+<li><a href="#orgfe5f615">3.17. Compiler</a></li>
+<li><a href="#org2de49a3">3.18. Hardware Platforms: instruction cycle</a></li>
+<li><a href="#org1cc9fbf">3.19. Key Developments in Networks</a></li>
+<li><a href="#org88acb38">3.20. Desktop Virtualization</a></li>
+<li><a href="#orga5e6b67">3.21. True of false</a></li>
+<li><a href="#org209e3f4">3.22. Base value conversion</a></li>
+<li><a href="#orgb259748">3.23. Binary addition/subtraction/multiplication/division</a></li>
+<li><a href="#org1a89a1c">3.24. Databases</a></li>
 </ul>
 </li>
-<li><a href="#org4c5fe48">4. Remove at the End</a></li>
+<li><a href="#org69f0ab7">4. Packet Tracer</a></li>
+<li><a href="#org3c6fd86">5. Exam 2 Rundown</a>
+<ul>
+<li><a href="#orgeeccfae">5.1. Some Sample questions Networks Intro:</a></li>
+<li><a href="#org5ac6bcd">5.2. Some Sample questions IP Addressing:</a></li>
+<li><a href="#org4bf9d70">5.3. Some Sample questions Network Models and Layers:</a></li>
+<li><a href="#org671b0a2">5.4. Q1 Networks in general (nail this)</a></li>
+<li><a href="#org737d4a0">5.5. Q2 IP Addressing (nail this, cos it helps with packet tracer)</a></li>
+<li><a href="#org71ad618">5.6. Q3 OSI Model (different network types are combined here)</a></li>
+<li><a href="#orgbe546ab">5.7. Q4 Packet Tracer</a></li>
+<li><a href="#org361b521">5.8. Working out the bits for the Network address with a network 192.168.10.0, 4PCs and 1Router</a></li>
+<li><a href="#orgf43fd33">5.9. Working out the bits for the Network address with a network 192.168.200.0, 8PCs and 1Router</a></li>
+</ul>
+</li>
+<li><a href="#org7cd49ed">6. Networks</a></li>
+<li><a href="#org2576454">7. IP Addressing</a></li>
+<li><a href="#org2961627">8. Networking Part 1</a>
+<ul>
+<li><a href="#org8f566f3">8.1. Network architecture:</a></li>
+<li><a href="#org5ecfac5">8.2. Network Models</a></li>
+<li><a href="#orge324f70">8.3. ISO vs TCP/IP Model</a></li>
+</ul>
+</li>
+<li><a href="#orgce03b93">9. ISO/OSI TCP-IP</a>
+<ul>
+<li><a href="#org3a911c7">9.1. ISO/OSI</a></li>
+<li><a href="#org6fc2c18">9.2. TCP/IP</a></li>
+<li><a href="#org23dca66">9.3. Flow of webpage opening</a></li>
+</ul>
+</li>
+<li><a href="#org76ce26f">10. Remove at the End</a></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org5a6df1c" class="outline-2">
-<h2 id="org5a6df1c"><span class="section-number-2">1.</span> Definitions</h2>
+<div id="outline-container-orgcdce9cd" class="outline-2">
+<h2 id="orgcdce9cd"><span class="section-number-2">1.</span> Definitions</h2>
 </div>
-<div id="outline-container-orga178370" class="outline-2">
-<h2 id="orga178370"><span class="section-number-2">2.</span> Number Bases</h2>
+<div id="outline-container-orgdc2ecc5" class="outline-2">
+<h2 id="orgdc2ecc5"><span class="section-number-2">2.</span> Number Bases</h2>
 <div class="outline-text-2" id="text-2">
 </div>
-<div id="outline-container-org1f06998" class="outline-3">
-<h3 id="org1f06998"><span class="section-number-3">2.1.</span> Decimal</h3>
+<div id="outline-container-orgf0cbe25" class="outline-3">
+<h3 id="orgf0cbe25"><span class="section-number-3">2.1.</span> Decimal</h3>
 <div class="outline-text-3" id="text-2-1">
 </div>
-<div id="outline-container-org901e2c7" class="outline-4">
-<h4 id="org901e2c7">1234</h4>
-<div class="outline-text-4" id="text-org901e2c7">
+<div id="outline-container-org3bd3cb1" class="outline-4">
+<h4 id="org3bd3cb1">1234</h4>
+<div class="outline-text-4" id="text-org3bd3cb1">
 <p>
 = (1 * 10<sup>3</sup>) + (2 * 10<sup>2</sup>) + (3 * 10<sup>1</sup>) + (4 * 10<sup>0</sup>)
 = 1000 + 200 + 30 + 4 = 1234
 </p>
 </div>
 </div>
-<div id="outline-container-orgd1349f3" class="outline-4">
-<h4 id="orgd1349f3">1024</h4>
-<div class="outline-text-4" id="text-orgd1349f3">
+<div id="outline-container-org6b94920" class="outline-4">
+<h4 id="org6b94920">1024</h4>
+<div class="outline-text-4" id="text-org6b94920">
 <p>
 = (1 * 10<sup>3</sup>) + (0 * 10<sup>2</sup>) + (2 * 10<sup>1</sup>) + (4 * 10<sup>0</sup>)
 = 1000 + 0 + 20 + 4 = 1024
 </p>
 </div>
 </div>
-<div id="outline-container-org429af7f" class="outline-4">
-<h4 id="org429af7f">20480</h4>
-<div class="outline-text-4" id="text-org429af7f">
+<div id="outline-container-orgfff4c02" class="outline-4">
+<h4 id="orgfff4c02">20480</h4>
+<div class="outline-text-4" id="text-orgfff4c02">
 <p>
 = (2 * 10<sup>4</sup>) + (0 * 10<sup>3</sup>) + (4 * 10<sup>2</sup>) + (8 * 10<sup>1</sup>) + (0 * 10<sup>0</sup>)
 = 20000 + 0 + 400 + 80 + 0 = 20480
 </p>
 </div>
 </div>
-<div id="outline-container-org718239b" class="outline-4">
-<h4 id="org718239b">10</h4>
-<div class="outline-text-4" id="text-org718239b">
+<div id="outline-container-orgdec657c" class="outline-4">
+<h4 id="orgdec657c">10</h4>
+<div class="outline-text-4" id="text-orgdec657c">
 <p>
 = (1 * 10<sup>1</sup>) + (0 * 10<sup>0</sup>)
 = 10 + 0 = 10
@@ -301,13 +331,13 @@
 </div>
 </div>
 </div>
-<div id="outline-container-orgc25a338" class="outline-3">
-<h3 id="orgc25a338"><span class="section-number-3">2.2.</span> Binary To Decimal</h3>
+<div id="outline-container-org37133c4" class="outline-3">
+<h3 id="org37133c4"><span class="section-number-3">2.2.</span> Binary To Decimal</h3>
 <div class="outline-text-3" id="text-2-2">
 </div>
-<div id="outline-container-org51b8f36" class="outline-4">
-<h4 id="org51b8f36">Example: 00111111</h4>
-<div class="outline-text-4" id="text-org51b8f36">
+<div id="outline-container-org5fd1d04" class="outline-4">
+<h4 id="org5fd1d04">Example: 00111111</h4>
+<div class="outline-text-4" id="text-org5fd1d04">
 <p class="verse">
 = (1 * 2<sup>5</sup>) + (1 * 2<sup>4</sup>) + (1 * 2<sup>3</sup>) + (1 * 2<sup>2</sup>) + (1 * 2<sup>1</sup>) + (1 * 2<sup>0</sup>)<br />
 = 32 + 16 + 8 + 4 + 2 + 1<br />
@@ -315,9 +345,9 @@
 </p>
 </div>
 </div>
-<div id="outline-container-org438fb8c" class="outline-4">
-<h4 id="org438fb8c">Example: 11101</h4>
-<div class="outline-text-4" id="text-org438fb8c">
+<div id="outline-container-orgb3941a8" class="outline-4">
+<h4 id="orgb3941a8">Example: 11101</h4>
+<div class="outline-text-4" id="text-orgb3941a8">
 <p class="verse">
 = (1 * 2<sup>4</sup>) + (1 * 2<sup>3</sup>) + (1 * 2<sup>2</sup>) + (0 * 2<sup>1</sup>) + (1 * 2<sup>0</sup>)<br />
 = 16 + 8 + 4 + 0 + 1<br />
@@ -325,9 +355,9 @@
 </p>
 </div>
 </div>
-<div id="outline-container-orgf3472b0" class="outline-4">
-<h4 id="orgf3472b0">Example: 0000000001</h4>
-<div class="outline-text-4" id="text-orgf3472b0">
+<div id="outline-container-org9b448f8" class="outline-4">
+<h4 id="org9b448f8">Example: 0000000001</h4>
+<div class="outline-text-4" id="text-org9b448f8">
 <p class="verse">
 = (0 * 2<sup>9</sup>) + (0 * 2<sup>8</sup>) + (0 * 2<sup>7</sup>) + (0 * 2<sup>6</sup>) + (0 * 2<sup>5</sup>) + (0 * 2<sup>4</sup>) + (0 * 2<sup>3</sup>) + (0 * 2<sup>2</sup>) + (0 * 2<sup>1</sup>) + (1 * 2<sup>0</sup>)<br />
 = 0 + 0 + 0 + 0 + 0 + 0 + 0 + 0 + 0 + 1<br />
@@ -335,9 +365,9 @@
 </p>
 </div>
 </div>
-<div id="outline-container-orgd7c1da5" class="outline-4">
-<h4 id="orgd7c1da5">Example: 1110000010</h4>
-<div class="outline-text-4" id="text-orgd7c1da5">
+<div id="outline-container-orgdcdcb52" class="outline-4">
+<h4 id="orgdcdcb52">Example: 1110000010</h4>
+<div class="outline-text-4" id="text-orgdcdcb52">
 <p class="verse">
 = (1 * 2<sup>9</sup>) + (1 * 2<sup>8</sup>) + (1 * 2<sup>7</sup>) + (0 * 2<sup>6</sup>) + (0 * 2<sup>5</sup>) + (0 * 2<sup>4</sup>) + (0 * 2<sup>3</sup>) + (0 * 2<sup>2</sup>) + (1 * 2<sup>1</sup>) + (0 * 2<sup>0</sup>)<br />
 = 512 + 256 + 128 + 0 + 0 + 0 + 0 + 0 + 2 + 0<br />
@@ -345,89 +375,89 @@
 </p>
 </div>
 </div>
-<div id="outline-container-orgd49d727" class="outline-4">
-<h4 id="orgd49d727">Example: 120000111</h4>
-<div class="outline-text-4" id="text-orgd49d727">
+<div id="outline-container-org749f1f1" class="outline-4">
+<h4 id="org749f1f1">Example: 120000111</h4>
+<div class="outline-text-4" id="text-org749f1f1">
 <p class="verse">
 = ERROR contains a value of 2<br />
 </p>
 </div>
 </div>
 </div>
-<div id="outline-container-orgfdf5206" class="outline-3">
-<h3 id="orgfdf5206"><span class="section-number-3">2.3.</span> Octal to Decimal</h3>
+<div id="outline-container-orga581235" class="outline-3">
+<h3 id="orga581235"><span class="section-number-3">2.3.</span> Octal to Decimal</h3>
 <div class="outline-text-3" id="text-2-3">
 </div>
-<div id="outline-container-orgfb28e6e" class="outline-4">
-<h4 id="orgfb28e6e">Example: 0o74</h4>
-<div class="outline-text-4" id="text-orgfb28e6e">
+<div id="outline-container-org838edcf" class="outline-4">
+<h4 id="org838edcf">Example: 0o74</h4>
+<div class="outline-text-4" id="text-org838edcf">
 <p class="verse">
 = (7 * 8<sup>1</sup>) + (4 * 8<sup>0</sup>)<br />
 = 56 + 4 = 60<br />
 </p>
 </div>
 </div>
-<div id="outline-container-orgb20b045" class="outline-4">
-<h4 id="orgb20b045">Example: 0o112</h4>
-<div class="outline-text-4" id="text-orgb20b045">
+<div id="outline-container-org0f16a49" class="outline-4">
+<h4 id="org0f16a49">Example: 0o112</h4>
+<div class="outline-text-4" id="text-org0f16a49">
 <p class="verse">
 = (1 * 8<sup>2</sup>) + (1 * 8<sup>1</sup>) + (2 * 8<sup>0</sup>)<br />
 = 64 + 8 + 2 = 74<br />
 </p>
 </div>
 </div>
-<div id="outline-container-org640b7c5" class="outline-4">
-<h4 id="org640b7c5">Example: 0o16</h4>
-<div class="outline-text-4" id="text-org640b7c5">
+<div id="outline-container-org8e1cd01" class="outline-4">
+<h4 id="org8e1cd01">Example: 0o16</h4>
+<div class="outline-text-4" id="text-org8e1cd01">
 <p class="verse">
 = (1 * 8<sup>1</sup>) + (6 * 8<sup>0</sup>)<br />
 = 8 + 6 = 14<br />
 </p>
 </div>
 </div>
-<div id="outline-container-orgaa594ed" class="outline-4">
-<h4 id="orgaa594ed">Example: 0o107</h4>
-<div class="outline-text-4" id="text-orgaa594ed">
+<div id="outline-container-org0682664" class="outline-4">
+<h4 id="org0682664">Example: 0o107</h4>
+<div class="outline-text-4" id="text-org0682664">
 <p class="verse">
 = (1 * 8<sup>2</sup>) + (0 * 8<sup>1</sup>) + (7 * 8<sup>0</sup>)<br />
 = 64 + 0 + 7 = 71<br />
 </p>
 </div>
 </div>
-<div id="outline-container-orgdef867a" class="outline-4">
-<h4 id="orgdef867a">Example: 0o306</h4>
-<div class="outline-text-4" id="text-orgdef867a">
+<div id="outline-container-orgb3acdd7" class="outline-4">
+<h4 id="orgb3acdd7">Example: 0o306</h4>
+<div class="outline-text-4" id="text-orgb3acdd7">
 <p class="verse">
 = (3 * 8<sup>2</sup>) + (0 * 8<sup>1</sup>) + (6 * 8<sup>0</sup>)<br />
 = 192 + 0 + 6 = 198<br />
 </p>
 </div>
 </div>
-<div id="outline-container-org5ce52f6" class="outline-4">
-<h4 id="org5ce52f6">Example: 0o796</h4>
-<div class="outline-text-4" id="text-org5ce52f6">
+<div id="outline-container-orgd440c3c" class="outline-4">
+<h4 id="orgd440c3c">Example: 0o796</h4>
+<div class="outline-text-4" id="text-orgd440c3c">
 <p class="verse">
 ERROR contains the number 9<br />
 </p>
 </div>
 </div>
 </div>
-<div id="outline-container-org77e69eb" class="outline-3">
-<h3 id="org77e69eb"><span class="section-number-3">2.4.</span> Hex to Decimal</h3>
+<div id="outline-container-org1688b52" class="outline-3">
+<h3 id="org1688b52"><span class="section-number-3">2.4.</span> Hex to Decimal</h3>
 <div class="outline-text-3" id="text-2-4">
 </div>
-<div id="outline-container-orga774410" class="outline-4">
-<h4 id="orga774410">Example: 0xAB</h4>
-<div class="outline-text-4" id="text-orga774410">
+<div id="outline-container-orgcba4009" class="outline-4">
+<h4 id="orgcba4009">Example: 0xAB</h4>
+<div class="outline-text-4" id="text-orgcba4009">
 <p class="verse">
 = (10 * 16<sup>1</sup>) + (11 * 16<sup>0</sup>)<br />
 = 160 + 11 = 171<br />
 </p>
 </div>
 </div>
-<div id="outline-container-org15d1143" class="outline-4">
-<h4 id="org15d1143">Example: 0x2AF3</h4>
-<div class="outline-text-4" id="text-org15d1143">
+<div id="outline-container-orgc06975e" class="outline-4">
+<h4 id="orgc06975e">Example: 0x2AF3</h4>
+<div class="outline-text-4" id="text-orgc06975e">
 <p class="verse">
 = (2 * 16<sup>3</sup>) + (10 * 16<sup>2</sup>) + (15 * 16<sup>1</sup>) + (3 * 16<sup>0</sup>)<br />
 = 2*4096 + 10*256 + 15*16 + 3 * 1<br />
@@ -435,9 +465,9 @@ ERROR contains the number 9<br />
 </p>
 </div>
 </div>
-<div id="outline-container-orgb9e7fc6" class="outline-4">
-<h4 id="orgb9e7fc6">Example:</h4>
-<div class="outline-text-4" id="text-orgb9e7fc6">
+<div id="outline-container-orgacbc375" class="outline-4">
+<h4 id="orgacbc375">Example:</h4>
+<div class="outline-text-4" id="text-orgacbc375">
 <p class="verse">
 0x107<br />
 = (1 * 16<sup>2</sup>) + (0 * 16<sup>1</sup>) + (7 * 16<sup>0</sup>)<br />
@@ -446,9 +476,9 @@ ERROR contains the number 9<br />
 </p>
 </div>
 </div>
-<div id="outline-container-orgf5eb91e" class="outline-4">
-<h4 id="orgf5eb91e">Example:</h4>
-<div class="outline-text-4" id="text-orgf5eb91e">
+<div id="outline-container-orga05a1de" class="outline-4">
+<h4 id="orga05a1de">Example:</h4>
+<div class="outline-text-4" id="text-orga05a1de">
 <p class="verse">
 0x2BC3<br />
 = (2 * 16<sup>3</sup>) + (11 * 16<sup>2</sup>) + (12 * 16<sup>1</sup>) + (3 * 16<sup>0</sup>)<br />
@@ -457,9 +487,9 @@ ERROR contains the number 9<br />
 </p>
 </div>
 </div>
-<div id="outline-container-org329cd36" class="outline-4">
-<h4 id="org329cd36">Example:</h4>
-<div class="outline-text-4" id="text-org329cd36">
+<div id="outline-container-orgbe330ce" class="outline-4">
+<h4 id="orgbe330ce">Example:</h4>
+<div class="outline-text-4" id="text-orgbe330ce">
 <p class="verse">
 0x7F6<br />
 = (7 * 16<sup>2</sup>) + (15 * 16<sup>1</sup>) + (6 * 16<sup>0</sup>)<br />
@@ -469,8 +499,8 @@ ERROR contains the number 9<br />
 </div>
 </div>
 </div>
-<div id="outline-container-orgd121ca6" class="outline-3">
-<h3 id="orgd121ca6"><span class="section-number-3">2.5.</span> Decimal to Binary</h3>
+<div id="outline-container-orgb2f33c6" class="outline-3">
+<h3 id="orgb2f33c6"><span class="section-number-3">2.5.</span> Decimal to Binary</h3>
 <div class="outline-text-3" id="text-2-5">
 <p class="verse">
 31 in dec to binary<br />
@@ -507,8 +537,8 @@ ERROR contains the number 9<br />
 </p>
 </div>
 </div>
-<div id="outline-container-orgd98f51d" class="outline-3">
-<h3 id="orgd98f51d"><span class="section-number-3">2.6.</span> Octal to Binary</h3>
+<div id="outline-container-org16864b7" class="outline-3">
+<h3 id="org16864b7"><span class="section-number-3">2.6.</span> Octal to Binary</h3>
 <div class="outline-text-3" id="text-2-6">
 <p class="verse">
 Basically each octal value is represented by a 3bit number<br />
@@ -521,8 +551,8 @@ Basically each octal value is represented by a 3bit number<br />
 </p>
 </div>
 </div>
-<div id="outline-container-org669cd09" class="outline-3">
-<h3 id="org669cd09"><span class="section-number-3">2.7.</span> Hex to Binary</h3>
+<div id="outline-container-orgb10944e" class="outline-3">
+<h3 id="orgb10944e"><span class="section-number-3">2.7.</span> Hex to Binary</h3>
 <div class="outline-text-3" id="text-2-7">
 <p class="verse">
 Basically each hex value is represented by a 4bit number<br />
@@ -535,8 +565,8 @@ B = 1011<br />
 </p>
 </div>
 </div>
-<div id="outline-container-orgffd94b5" class="outline-3">
-<h3 id="orgffd94b5"><span class="section-number-3">2.8.</span> Binary Addition</h3>
+<div id="outline-container-org2e2c075" class="outline-3">
+<h3 id="org2e2c075"><span class="section-number-3">2.8.</span> Binary Addition</h3>
 <div class="outline-text-3" id="text-2-8">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -582,9 +612,9 @@ B = 1011<br />
 </tbody>
 </table>
 </div>
-<div id="outline-container-org07ec406" class="outline-4">
-<h4 id="org07ec406">Example</h4>
-<div class="outline-text-4" id="text-org07ec406">
+<div id="outline-container-org97048b2" class="outline-4">
+<h4 id="org97048b2">Example</h4>
+<div class="outline-text-4" id="text-org97048b2">
 <ul class="org-ul">
 <li>We go from right to left like in standard addition</li>
 </ul>
@@ -598,9 +628,9 @@ B = 1011<br />
 </p>
 </div>
 </div>
-<div id="outline-container-org9778b2f" class="outline-4">
-<h4 id="org9778b2f">Example</h4>
-<div class="outline-text-4" id="text-org9778b2f">
+<div id="outline-container-orgcd3ad18" class="outline-4">
+<h4 id="orgcd3ad18">Example</h4>
+<div class="outline-text-4" id="text-orgcd3ad18">
 <p class="verse">
 &#xa0;&#xa0;&#xa0;&#xa0;11<br />
 <br />
@@ -613,8 +643,8 @@ B = 1011<br />
 </div>
 </div>
 </div>
-<div id="outline-container-orgc9afbb0" class="outline-3">
-<h3 id="orgc9afbb0"><span class="section-number-3">2.9.</span> Binary Multiplication</h3>
+<div id="outline-container-orgbec5e95" class="outline-3">
+<h3 id="orgbec5e95"><span class="section-number-3">2.9.</span> Binary Multiplication</h3>
 <div class="outline-text-3" id="text-2-9">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -660,9 +690,9 @@ B = 1011<br />
 </tbody>
 </table>
 </div>
-<div id="outline-container-org3096a9a" class="outline-4">
-<h4 id="org3096a9a">Example</h4>
-<div class="outline-text-4" id="text-org3096a9a">
+<div id="outline-container-orgf44fba4" class="outline-4">
+<h4 id="orgf44fba4">Example</h4>
+<div class="outline-text-4" id="text-orgf44fba4">
 <p class="verse">
 &#xa0;&#xa0;&#xa0;1110<br />
 x    11<br />
@@ -675,8 +705,8 @@ x    11<br />
 </div>
 </div>
 </div>
-<div id="outline-container-orgdd6fe97" class="outline-3">
-<h3 id="orgdd6fe97"><span class="section-number-3">2.10.</span> Binary Subtraction</h3>
+<div id="outline-container-orga39a286" class="outline-3">
+<h3 id="orga39a286"><span class="section-number-3">2.10.</span> Binary Subtraction</h3>
 <div class="outline-text-3" id="text-2-10">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -722,9 +752,9 @@ x    11<br />
 </tbody>
 </table>
 </div>
-<div id="outline-container-orgef1cfb6" class="outline-4">
-<h4 id="orgef1cfb6">Example</h4>
-<div class="outline-text-4" id="text-orgef1cfb6">
+<div id="outline-container-org29ab2e6" class="outline-4">
+<h4 id="org29ab2e6">Example</h4>
+<div class="outline-text-4" id="text-org29ab2e6">
 <ul class="org-ul">
 <li>In here in the second step we "borrow" the 1 from the third step</li>
 </ul>
@@ -739,8 +769,8 @@ x    11<br />
 </div>
 </div>
 </div>
-<div id="outline-container-orge1b8ac8" class="outline-3">
-<h3 id="orge1b8ac8"><span class="section-number-3">2.11.</span> Binary Division</h3>
+<div id="outline-container-org380e493" class="outline-3">
+<h3 id="org380e493"><span class="section-number-3">2.11.</span> Binary Division</h3>
 <div class="outline-text-3" id="text-2-11">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -774,9 +804,9 @@ x    11<br />
 </tbody>
 </table>
 </div>
-<div id="outline-container-org7cdd603" class="outline-4">
-<h4 id="org7cdd603">Good example here: <a href="https://www.youtube.com/watch?v=VKemv9u40gc">YouTube Video</a></h4>
-<div class="outline-text-4" id="text-org7cdd603">
+<div id="outline-container-orgc189202" class="outline-4">
+<h4 id="orgc189202">Good example here: <a href="https://www.youtube.com/watch?v=VKemv9u40gc">YouTube Video</a></h4>
+<div class="outline-text-4" id="text-orgc189202">
 <p class="verse">
 <br />
 &#xa0;&#xa0;&#xa0;&#xa0;01001<br />
@@ -792,8 +822,8 @@ x    11<br />
 </div>
 </div>
 </div>
-<div id="outline-container-org5313ef9" class="outline-3">
-<h3 id="org5313ef9"><span class="section-number-3">2.12.</span> 2s Complement</h3>
+<div id="outline-container-org2a98461" class="outline-3">
+<h3 id="org2a98461"><span class="section-number-3">2.12.</span> 2s Complement</h3>
 <div class="outline-text-3" id="text-2-12">
 <ul class="org-ul">
 <li>The MSB (usually leftmost) signifies positive or negative number. 1 is negative, 0 is positive</li>
@@ -817,12 +847,12 @@ So it is -127<br />
 </div>
 </div>
 </div>
-<div id="outline-container-orgf5a90b9" class="outline-2">
-<h2 id="orgf5a90b9"><span class="section-number-2">3.</span> Exam Rundown</h2>
+<div id="outline-container-orgfb486a6" class="outline-2">
+<h2 id="orgfb486a6"><span class="section-number-2">3.</span> Exam 1 Rundown</h2>
 <div class="outline-text-2" id="text-3">
 </div>
-<div id="outline-container-org32a8a84" class="outline-3">
-<h3 id="org32a8a84"><span class="section-number-3">3.1.</span> Headings of the paper (20 marks each)</h3>
+<div id="outline-container-orgd2729d7" class="outline-3">
+<h3 id="orgd2729d7"><span class="section-number-3">3.1.</span> Headings of the paper (20 marks each)</h3>
 <div class="outline-text-3" id="text-3-1">
 <ul class="org-ul">
 <li>Computer Architecture</li>
@@ -833,8 +863,8 @@ So it is -127<br />
 </ul>
 </div>
 </div>
-<div id="outline-container-orgb36802e" class="outline-3">
-<h3 id="orgb36802e"><span class="section-number-3">3.2.</span> Computer system</h3>
+<div id="outline-container-orgd36648b" class="outline-3">
+<h3 id="orgd36648b"><span class="section-number-3">3.2.</span> Computer system</h3>
 <div class="outline-text-3" id="text-3-2">
 <ul class="org-ul">
 <li>A <b>system</b> is a collection of elements or components that are organized for a common purpose</li>
@@ -863,14 +893,14 @@ So it is -127<br />
 </ul></li>
 </ul>
 
-<div id="orge05bc96" class="figure">
+<div id="org228e287" class="figure">
 <p><img src="images/Exam_Rundown/2025-07-23_17-54-06_screenshot.png" alt="2025-07-23_17-54-06_screenshot.png" />
 </p>
 </div>
 </div>
 </div>
-<div id="outline-container-orgae82fd9" class="outline-3">
-<h3 id="orgae82fd9"><span class="section-number-3">3.3.</span> Inside the Case</h3>
+<div id="outline-container-org624a465" class="outline-3">
+<h3 id="org624a465"><span class="section-number-3">3.3.</span> Inside the Case</h3>
 <div class="outline-text-3" id="text-3-3">
 <ul class="org-ul">
 <li>CPU: "Brain of the computer". Carry out commands from the interfaces.
@@ -907,46 +937,46 @@ So it is -127<br />
 </ul>
 </div>
 </div>
-<div id="outline-container-org981cab4" class="outline-3">
-<h3 id="org981cab4"><span class="section-number-3">3.4.</span> Hardware Platform</h3>
+<div id="outline-container-org1c956cc" class="outline-3">
+<h3 id="org1c956cc"><span class="section-number-3">3.4.</span> Hardware Platform</h3>
 <div class="outline-text-3" id="text-3-4">
 
-<div id="org0adb862" class="figure">
+<div id="org8e0da18" class="figure">
 <p><img src="images/Exam_Rundown/2025-07-22_16-11-32_screenshot.png" alt="2025-07-22_16-11-32_screenshot.png" />
 </p>
 </div>
 </div>
 </div>
-<div id="outline-container-org861060c" class="outline-3">
-<h3 id="org861060c"><span class="section-number-3">3.5.</span> Hardware Platforms: Instruction Cycle</h3>
+<div id="outline-container-org6eb12ef" class="outline-3">
+<h3 id="org6eb12ef"><span class="section-number-3">3.5.</span> Hardware Platforms: Instruction Cycle</h3>
 <div class="outline-text-3" id="text-3-5">
 
-<div id="org9a53f80" class="figure">
+<div id="org525ba8a" class="figure">
 <p><img src="images/Exam_Rundown/2025-07-22_16-12-17_screenshot.png" alt="2025-07-22_16-12-17_screenshot.png" />
 </p>
 </div>
 </div>
 </div>
-<div id="outline-container-org2dcc7c6" class="outline-3">
-<h3 id="org2dcc7c6"><span class="section-number-3">3.6.</span> Java Virtual Machine</h3>
+<div id="outline-container-org468e37e" class="outline-3">
+<h3 id="org468e37e"><span class="section-number-3">3.6.</span> Java Virtual Machine</h3>
 <div class="outline-text-3" id="text-3-6">
 
-<div id="orgfe96a90" class="figure">
+<div id="org8750528" class="figure">
 <p><img src="images/Exam_Rundown/2025-07-22_16-13-23_screenshot.png" alt="2025-07-22_16-13-23_screenshot.png" />
 </p>
 </div>
 </div>
 </div>
-<div id="outline-container-org3dc552e" class="outline-3">
-<h3 id="org3dc552e"><span class="section-number-3">3.7.</span> Types of computers</h3>
+<div id="outline-container-org949476c" class="outline-3">
+<h3 id="org949476c"><span class="section-number-3">3.7.</span> Types of computers</h3>
 <div class="outline-text-3" id="text-3-7">
 <ul class="org-ul">
 <li>Phone, tablet, console, PC, RPi</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org87c5063" class="outline-3">
-<h3 id="org87c5063"><span class="section-number-3">3.8.</span> Components of a PC</h3>
+<div id="outline-container-org9fa6bef" class="outline-3">
+<h3 id="org9fa6bef"><span class="section-number-3">3.8.</span> Components of a PC</h3>
 <div class="outline-text-3" id="text-3-8">
 <ul class="org-ul">
 <li>More RAM, more processing can be done at the same time: true</li>
@@ -955,8 +985,8 @@ So it is -127<br />
 </ul>
 </div>
 </div>
-<div id="outline-container-org9cddf1c" class="outline-3">
-<h3 id="org9cddf1c"><span class="section-number-3">3.9.</span> Server/Personal</h3>
+<div id="outline-container-org4d75d2d" class="outline-3">
+<h3 id="org4d75d2d"><span class="section-number-3">3.9.</span> Server/Personal</h3>
 <div class="outline-text-3" id="text-3-9">
 <ul class="org-ul">
 <li>Generally server serves multiple people and a PC just one, but it can be debated and should be expanded</li>
@@ -964,8 +994,8 @@ So it is -127<br />
 </ul>
 </div>
 </div>
-<div id="outline-container-org05f7a5e" class="outline-3">
-<h3 id="org05f7a5e"><span class="section-number-3">3.10.</span> OS</h3>
+<div id="outline-container-org9b3bfe4" class="outline-3">
+<h3 id="org9b3bfe4"><span class="section-number-3">3.10.</span> OS</h3>
 <div class="outline-text-3" id="text-3-10">
 <ul class="org-ul">
 <li>Is a Software Program</li>
@@ -984,8 +1014,8 @@ So it is -127<br />
 </ul>
 </div>
 </div>
-<div id="outline-container-org122ab15" class="outline-3">
-<h3 id="org122ab15"><span class="section-number-3">3.11.</span> Computer Application</h3>
+<div id="outline-container-org0cb97c6" class="outline-3">
+<h3 id="org0cb97c6"><span class="section-number-3">3.11.</span> Computer Application</h3>
 <div class="outline-text-3" id="text-3-11">
 <ul class="org-ul">
 <li>A piece of software that runs inside your OS and allows you to perform a specific task</li>
@@ -993,8 +1023,8 @@ So it is -127<br />
 </ul>
 </div>
 </div>
-<div id="outline-container-org56cc893" class="outline-3">
-<h3 id="org56cc893"><span class="section-number-3">3.12.</span> Programming Languages</h3>
+<div id="outline-container-org846deec" class="outline-3">
+<h3 id="org846deec"><span class="section-number-3">3.12.</span> Programming Languages</h3>
 <div class="outline-text-3" id="text-3-12">
 <ul class="org-ul">
 <li>Artificial Language that sends instructions to the computer</li>
@@ -1004,8 +1034,8 @@ So it is -127<br />
 </ul>
 </div>
 </div>
-<div id="outline-container-orgbcc956a" class="outline-3">
-<h3 id="orgbcc956a"><span class="section-number-3">3.13.</span> Low Level/High level languages</h3>
+<div id="outline-container-org15556da" class="outline-3">
+<h3 id="org15556da"><span class="section-number-3">3.13.</span> Low Level/High level languages</h3>
 <div class="outline-text-3" id="text-3-13">
 <ul class="org-ul">
 <li>Provide examples</li>
@@ -1030,8 +1060,8 @@ So it is -127<br />
 </ul>
 </div>
 </div>
-<div id="outline-container-orgbe39ea1" class="outline-3">
-<h3 id="orgbe39ea1"><span class="section-number-3">3.14.</span> Hardware Platforms</h3>
+<div id="outline-container-org4eaf66c" class="outline-3">
+<h3 id="org4eaf66c"><span class="section-number-3">3.14.</span> Hardware Platforms</h3>
 <div class="outline-text-3" id="text-3-14">
 <ul class="org-ul">
 <li>Each has a unique machine language</li>
@@ -1046,8 +1076,8 @@ So it is -127<br />
 </ul>
 </div>
 </div>
-<div id="outline-container-org4c8c3e2" class="outline-3">
-<h3 id="org4c8c3e2"><span class="section-number-3">3.15.</span> Machine Code</h3>
+<div id="outline-container-orgda3d627" class="outline-3">
+<h3 id="orgda3d627"><span class="section-number-3">3.15.</span> Machine Code</h3>
 <div class="outline-text-3" id="text-3-15">
 <ul class="org-ul">
 <li>Machine code is the lowest level instruction set for a particular platform, e.g.: register data in memory, jump to a certain instruction</li>
@@ -1056,24 +1086,24 @@ So it is -127<br />
 </ul>
 </div>
 </div>
-<div id="outline-container-org4b85821" class="outline-3">
-<h3 id="org4b85821"><span class="section-number-3">3.16.</span> High Level Language</h3>
+<div id="outline-container-orge13121f" class="outline-3">
+<h3 id="orge13121f"><span class="section-number-3">3.16.</span> High Level Language</h3>
 <div class="outline-text-3" id="text-3-16">
 <ul class="org-ul">
 <li>Transferred to machine code by a compiler</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgf3ba51d" class="outline-3">
-<h3 id="orgf3ba51d"><span class="section-number-3">3.17.</span> Compiler</h3>
+<div id="outline-container-orgfe5f615" class="outline-3">
+<h3 id="orgfe5f615"><span class="section-number-3">3.17.</span> Compiler</h3>
 <div class="outline-text-3" id="text-3-17">
 <ul class="org-ul">
 <li>Is a program that translates a source program written in a high-level programming language into a sequence of machine instructions for a specific computer platform (architecture)</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org3d1df87" class="outline-3">
-<h3 id="org3d1df87"><span class="section-number-3">3.18.</span> Hardware Platforms: instruction cycle</h3>
+<div id="outline-container-org2de49a3" class="outline-3">
+<h3 id="org2de49a3"><span class="section-number-3">3.18.</span> Hardware Platforms: instruction cycle</h3>
 <div class="outline-text-3" id="text-3-18">
 <p class="verse">
 <del>------------------</del><br />
@@ -1092,13 +1122,13 @@ So it is -127<br />
 </p>
 </div>
 </div>
-<div id="outline-container-org606f01c" class="outline-3">
-<h3 id="org606f01c"><span class="section-number-3">3.19.</span> Key Developments in Networks</h3>
+<div id="outline-container-org1cc9fbf" class="outline-3">
+<h3 id="org1cc9fbf"><span class="section-number-3">3.19.</span> Key Developments in Networks</h3>
 <div class="outline-text-3" id="text-3-19">
 </div>
-<div id="outline-container-org77322fc" class="outline-4">
-<h4 id="org77322fc">Distributed Systems</h4>
-<div class="outline-text-4" id="text-org77322fc">
+<div id="outline-container-orgeedfaf5" class="outline-4">
+<h4 id="orgeedfaf5">Distributed Systems</h4>
+<div class="outline-text-4" id="text-orgeedfaf5">
 <ul class="org-ul">
 <li>Distributed computing systems consist of multiple autonomous computers that communicate through a computer network</li>
 <li>Involves hardware &amp; software systems containing more than one processing/storage elements</li>
@@ -1115,9 +1145,9 @@ So it is -127<br />
 </ul>
 </div>
 </div>
-<div id="outline-container-org7433a82" class="outline-4">
-<h4 id="org7433a82">Virtualization</h4>
-<div class="outline-text-4" id="text-org7433a82">
+<div id="outline-container-org25871e4" class="outline-4">
+<h4 id="org25871e4">Virtualization</h4>
+<div class="outline-text-4" id="text-org25871e4">
 <ul class="org-ul">
 <li>Creation of virtual something, such as: hardware platform, OS, storage device, network resources</li>
 <li>Hardware virtualization: creation of a VM that acts like a real computer with an OS. Software ran on these machines is completely separated from the underlying hardware.</li>
@@ -1131,39 +1161,39 @@ So it is -127<br />
 </ul>
 </div>
 </div>
-<div id="outline-container-org668ee15" class="outline-4">
-<h4 id="org668ee15">VMs</h4>
-<div class="outline-text-4" id="text-org668ee15">
+<div id="outline-container-orgcc4b8c3" class="outline-4">
+<h4 id="orgcc4b8c3">VMs</h4>
+<div class="outline-text-4" id="text-orgcc4b8c3">
 <ul class="org-ul">
 <li>Processes running in a VM are limited to the resources given to the VM (RAM, storage, etc.)</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org8ad6e14" class="outline-4">
-<h4 id="org8ad6e14">What is the name of the system running on a VM?</h4>
-<div class="outline-text-4" id="text-org8ad6e14">
+<div id="outline-container-orgd4161a2" class="outline-4">
+<h4 id="orgd4161a2">What is the name of the system running on a VM?</h4>
+<div class="outline-text-4" id="text-orgd4161a2">
 <ul class="org-ul">
 <li>Host OS &gt; Hypervisor &gt; Guest OS</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org6bc7261" class="outline-4">
-<h4 id="org6bc7261">What are the types of Hypervisors</h4>
-<div class="outline-text-4" id="text-org6bc7261">
+<div id="outline-container-orge4d4f26" class="outline-4">
+<h4 id="orge4d4f26">What are the types of Hypervisors</h4>
+<div class="outline-text-4" id="text-orge4d4f26">
 <ul class="org-ul">
 <li>Type 1 vs Type 2</li>
 <li>Include diagrams</li>
 </ul>
 
-<div id="orga2cb584" class="figure">
+<div id="org082f59c" class="figure">
 <p><img src="images/Exam_Rundown/2025-07-22_16-17-22_screenshot.png" alt="2025-07-22_16-17-22_screenshot.png" />
 </p>
 </div>
 </div>
 </div>
-<div id="outline-container-org995d99b" class="outline-4">
-<h4 id="org995d99b">Cloud Computing</h4>
-<div class="outline-text-4" id="text-org995d99b">
+<div id="outline-container-org237916e" class="outline-4">
+<h4 id="org237916e">Cloud Computing</h4>
+<div class="outline-text-4" id="text-org237916e">
 <ul class="org-ul">
 <li>Key word is "SERVICE" where hardware and software is "SHARED"</li>
 <li>It is a Buzzword, so there is no finite definition, many businesses make up what cloud is to them as they go</li>
@@ -1203,25 +1233,25 @@ So it is -127<br />
 </ul>
 </div>
 <ul class="org-ul">
-<li><a id="org4150fd7"></a>With regards to the separation of infrastructure from OS to Application in the Benefits<br />
-<div class="outline-text-5" id="text-org4150fd7">
+<li><a id="orgba8e298"></a>With regards to the separation of infrastructure from OS to Application in the Benefits<br />
+<div class="outline-text-5" id="text-orgba8e298">
 
-<div id="org892272e" class="figure">
+<div id="orgb8741f7" class="figure">
 <p><img src="images/Exam_Rundown/2025-07-23_20-42-46_screenshot.png" alt="2025-07-23_20-42-46_screenshot.png" />
 </p>
 </div>
 </div>
 </li>
-<li><a id="org825f867"></a>Private vs Public cloud<br />
-<div class="outline-text-5" id="text-org825f867">
+<li><a id="org5c79668"></a>Private vs Public cloud<br />
+<div class="outline-text-5" id="text-org5c79668">
 <ul class="org-ul">
 <li>Private is concerned with security and is usually tied to a single entity. Dedicated customers. Sometimes dedicated servers. Confidential.</li>
 <li>Whereas public cloud is accessible to the general public. Many customers. Internet connectivity.</li>
 </ul>
 </div>
 </li>
-<li><a id="org8596d4d"></a>Infrastructure<br />
-<div class="outline-text-5" id="text-org8596d4d">
+<li><a id="orgae81eaf"></a>Infrastructure<br />
+<div class="outline-text-5" id="text-orgae81eaf">
 <ul class="org-ul">
 <li>SaaS (use software, e.g.: Gmail)
 <ul class="org-ul">
@@ -1247,8 +1277,8 @@ So it is -127<br />
 </ul>
 </div>
 </li>
-<li><a id="org7f9fa99"></a>Web Applications<br />
-<div class="outline-text-5" id="text-org7f9fa99">
+<li><a id="orge34f3c6"></a>Web Applications<br />
+<div class="outline-text-5" id="text-orge34f3c6">
 <ul class="org-ul">
 <li>Applications developed in "web" technologies: HTML, JS, PHP, etc.</li>
 <li>Access is gained via a server that serves the application over HTTP/HTTPS and then we can view it in a browser</li>
@@ -1259,18 +1289,18 @@ So it is -127<br />
 </ul>
 </div>
 </div>
-<div id="outline-container-org358f351" class="outline-3">
-<h3 id="org358f351"><span class="section-number-3">3.20.</span> Desktop Virtualization</h3>
+<div id="outline-container-org88acb38" class="outline-3">
+<h3 id="org88acb38"><span class="section-number-3">3.20.</span> Desktop Virtualization</h3>
 <div class="outline-text-3" id="text-3-20">
 
-<div id="org0e5b9f5" class="figure">
+<div id="orgf45607a" class="figure">
 <p><img src="images/Exam_Rundown/2025-07-22_16-19-04_screenshot.png" alt="2025-07-22_16-19-04_screenshot.png" />
 </p>
 </div>
 </div>
 </div>
-<div id="outline-container-orgbd8854f" class="outline-3">
-<h3 id="orgbd8854f"><span class="section-number-3">3.21.</span> True of false</h3>
+<div id="outline-container-orga5e6b67" class="outline-3">
+<h3 id="orga5e6b67"><span class="section-number-3">3.21.</span> True of false</h3>
 <div class="outline-text-3" id="text-3-21">
 <ul class="org-ul">
 <li>A binary number representation in Java</li>
@@ -1279,21 +1309,21 @@ So it is -127<br />
 </ul>
 </div>
 </div>
-<div id="outline-container-org42306d9" class="outline-3">
-<h3 id="org42306d9"><span class="section-number-3">3.22.</span> Base value conversion</h3>
+<div id="outline-container-org209e3f4" class="outline-3">
+<h3 id="org209e3f4"><span class="section-number-3">3.22.</span> Base value conversion</h3>
 </div>
 
-<div id="outline-container-org3ba0f97" class="outline-3">
-<h3 id="org3ba0f97"><span class="section-number-3">3.23.</span> Binary addition/subtraction/multiplication/division</h3>
+<div id="outline-container-orgb259748" class="outline-3">
+<h3 id="orgb259748"><span class="section-number-3">3.23.</span> Binary addition/subtraction/multiplication/division</h3>
 </div>
 
-<div id="outline-container-org037e3f2" class="outline-3">
-<h3 id="org037e3f2"><span class="section-number-3">3.24.</span> Databases</h3>
+<div id="outline-container-org1a89a1c" class="outline-3">
+<h3 id="org1a89a1c"><span class="section-number-3">3.24.</span> Databases</h3>
 <div class="outline-text-3" id="text-3-24">
 </div>
-<div id="outline-container-org18fb79a" class="outline-4">
-<h4 id="org18fb79a">DMBS (RDBMS)</h4>
-<div class="outline-text-4" id="text-org18fb79a">
+<div id="outline-container-org6fb3bfe" class="outline-4">
+<h4 id="org6fb3bfe">DMBS (RDBMS)</h4>
+<div class="outline-text-4" id="text-org6fb3bfe">
 <ul class="org-ul">
 <li>(Relational) Database Management System</li>
 <li>Software system designed to: store, manage and facilitate access to a (relational) database</li>
@@ -1301,9 +1331,9 @@ So it is -127<br />
 </ul>
 </div>
 </div>
-<div id="outline-container-orgf9f3fdd" class="outline-4">
-<h4 id="orgf9f3fdd">Why not use a file system?</h4>
-<div class="outline-text-4" id="text-orgf9f3fdd">
+<div id="outline-container-orgc49d5be" class="outline-4">
+<h4 id="orgc49d5be">Why not use a file system?</h4>
+<div class="outline-text-4" id="text-orgc49d5be">
 <ul class="org-ul">
 <li>Each application has their own way of accessing files and what information they read or write to them.</li>
 <li>A database provides a unified abstraction on how to CRUD data.</li>
@@ -1329,26 +1359,26 @@ So it is -127<br />
 </ul>
 </div>
 </div>
-<div id="outline-container-orgaac3a53" class="outline-4">
-<h4 id="orgaac3a53">Great need for DBMS these days</h4>
-<div class="outline-text-4" id="text-orgaac3a53">
+<div id="outline-container-orgbb796af" class="outline-4">
+<h4 id="orgbb796af">Great need for DBMS these days</h4>
+<div class="outline-text-4" id="text-orgbb796af">
 <ul class="org-ul">
 <li>Corporate and Scientific</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgdb7d5b7" class="outline-4">
-<h4 id="orgdb7d5b7">DBMS is a major part of the Software industry</h4>
-<div class="outline-text-4" id="text-orgdb7d5b7">
+<div id="outline-container-org98f6d4b" class="outline-4">
+<h4 id="org98f6d4b">DBMS is a major part of the Software industry</h4>
+<div class="outline-text-4" id="text-org98f6d4b">
 <ul class="org-ul">
 <li>Oracle, IBM, Microsoft, Sybase, Teradata and new ones continuously emerge</li>
 <li>Open Source are very strong though: MySQL (MariaDB), PostgreSQL, BerkeleyDB</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgd3800aa" class="outline-4">
-<h4 id="orgd3800aa">Related Industries</h4>
-<div class="outline-text-4" id="text-orgd3800aa">
+<div id="outline-container-org052f5f4" class="outline-4">
+<h4 id="org052f5f4">Related Industries</h4>
+<div class="outline-text-4" id="text-org052f5f4">
 <ul class="org-ul">
 <li>Data warehouses</li>
 <li>Document management</li>
@@ -1360,9 +1390,9 @@ So it is -127<br />
 </ul>
 </div>
 </div>
-<div id="outline-container-org837027e" class="outline-4">
-<h4 id="org837027e">Database and roles</h4>
-<div class="outline-text-4" id="text-org837027e">
+<div id="outline-container-orgbe32084" class="outline-4">
+<h4 id="orgbe32084">Database and roles</h4>
+<div class="outline-text-4" id="text-orgbe32084">
 <ul class="org-ul">
 <li>DBMS vendors, programmers: Oracle, IBM, MS</li>
 <li>End users in many fields: Business, education, science</li>
@@ -1377,9 +1407,9 @@ So it is -127<br />
 </ul>
 </div>
 </div>
-<div id="outline-container-orgf6ccf44" class="outline-4">
-<h4 id="orgf6ccf44">DBMS isolation explanations</h4>
-<div class="outline-text-4" id="text-orgf6ccf44">
+<div id="outline-container-org775b48c" class="outline-4">
+<h4 id="org775b48c">DBMS isolation explanations</h4>
+<div class="outline-text-4" id="text-org775b48c">
 <ul class="org-ul">
 <li>DBMS (Database Management System) is software that stores, manages and controls access to the database</li>
 <li>Isolation means that the DBMS separates layers and operations, so that changes or activities on one layer don't affect another</li>
@@ -1392,24 +1422,24 @@ So it is -127<br />
 </ul>
 </div>
 <ul class="org-ul">
-<li><a id="org204ace9"></a>Level of Isolation defined by ANSI/ISO SQL standard<br />
-<div class="outline-text-5" id="text-org204ace9">
+<li><a id="org23c9a39"></a>Level of Isolation defined by ANSI/ISO SQL standard<br />
+<div class="outline-text-5" id="text-org23c9a39">
 
-<div id="org4f79f6e" class="figure">
+<div id="orgc57ebd5" class="figure">
 <p><img src="images/Exam_Rundown/2025-07-23_17-38-04_screenshot.png" alt="2025-07-23_17-38-04_screenshot.png" />
 </p>
 </div>
 </div>
 </li>
-<li><a id="orgd2884e8"></a>Isolation Levels are defined in terms of 3 phenomena that must be prevented between concurrent queries<br />
-<div class="outline-text-5" id="text-orgd2884e8">
+<li><a id="org6f91f5a"></a>Isolation Levels are defined in terms of 3 phenomena that must be prevented between concurrent queries<br />
+<div class="outline-text-5" id="text-org6f91f5a">
 <ul class="org-ul">
 <li>Dirty reads: reading data that has not been committed</li>
 <li>Non repeatable: a transaction rereads data it has previously read and finds that another committed transaction has modified or deleted the data</li>
 <li>Phantom reads: a transaction re-runs a query and gets different results, another committed transaction has inserted additional rows that satisfy the search criteria</li>
 </ul>
 
-<div id="org9a46494" class="figure">
+<div id="org3c0a920" class="figure">
 <p><img src="images/Exam_Rundown/2025-07-23_17-53-20_screenshot.png" alt="2025-07-23_17-53-20_screenshot.png" />
 </p>
 </div>
@@ -1417,9 +1447,9 @@ So it is -127<br />
 </li>
 </ul>
 </div>
-<div id="outline-container-orgd2a23ac" class="outline-4">
-<h4 id="orgd2a23ac">What is metadata</h4>
-<div class="outline-text-4" id="text-orgd2a23ac">
+<div id="outline-container-org91eeb2c" class="outline-4">
+<h4 id="org91eeb2c">What is metadata</h4>
+<div class="outline-text-4" id="text-org91eeb2c">
 <ul class="org-ul">
 <li>Data explaining data</li>
 <li>Location, heart rate, etc, etc.</li>
@@ -1428,17 +1458,17 @@ So it is -127<br />
 </ul>
 </div>
 </div>
-<div id="outline-container-orgb91bbf8" class="outline-4">
-<h4 id="orgb91bbf8">What is a tuple</h4>
-<div class="outline-text-4" id="text-orgb91bbf8">
+<div id="outline-container-org794ae1c" class="outline-4">
+<h4 id="org794ae1c">What is a tuple</h4>
+<div class="outline-text-4" id="text-org794ae1c">
 <ul class="org-ul">
 <li>Single cell or a series of cells. Usually a row, according to google</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org8e658a0" class="outline-4">
-<h4 id="org8e658a0">Primary Key</h4>
-<div class="outline-text-4" id="text-org8e658a0">
+<div id="outline-container-orgc292e3c" class="outline-4">
+<h4 id="orgc292e3c">Primary Key</h4>
+<div class="outline-text-4" id="text-orgc292e3c">
 <ul class="org-ul">
 <li>Unique identify records</li>
 <li>Prevent duplication of data</li>
@@ -1448,25 +1478,25 @@ So it is -127<br />
 </ul>
 </div>
 </div>
-<div id="outline-container-orgc4a13bd" class="outline-4">
-<h4 id="orgc4a13bd">Foreign Key</h4>
-<div class="outline-text-4" id="text-orgc4a13bd">
+<div id="outline-container-orgd60b9c5" class="outline-4">
+<h4 id="orgd60b9c5">Foreign Key</h4>
+<div class="outline-text-4" id="text-orgd60b9c5">
 <ul class="org-ul">
 <li>Is a field in a relational table that matches the primary key column in another table</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org821259b" class="outline-4">
-<h4 id="org821259b">Referential Integrity</h4>
-<div class="outline-text-4" id="text-org821259b">
+<div id="outline-container-org923d40a" class="outline-4">
+<h4 id="org923d40a">Referential Integrity</h4>
+<div class="outline-text-4" id="text-org923d40a">
 <ul class="org-ul">
 <li>Makes sure that the relationships created by the Foreign-Primary keys are not broken</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org227e96d" class="outline-4">
-<h4 id="org227e96d">Transaction</h4>
-<div class="outline-text-4" id="text-org227e96d">
+<div id="outline-container-org3136056" class="outline-4">
+<h4 id="org3136056">Transaction</h4>
+<div class="outline-text-4" id="text-org3136056">
 <ul class="org-ul">
 <li>Key concept</li>
 <li>Logical unit that is independently executed for data retrieval or manipulation</li>
@@ -1474,9 +1504,9 @@ So it is -127<br />
 </ul>
 </div>
 </div>
-<div id="outline-container-org7c861fb" class="outline-4">
-<h4 id="org7c861fb">ACID acronym in Databases</h4>
-<div class="outline-text-4" id="text-org7c861fb">
+<div id="outline-container-org01b43a3" class="outline-4">
+<h4 id="org01b43a3">ACID acronym in Databases</h4>
+<div class="outline-text-4" id="text-org01b43a3">
 <ul class="org-ul">
 <li>Atomicity: Transaction is performed All-or-nothing</li>
 <li>Consistence: No incorrect or corrupted data</li>
@@ -1485,9 +1515,9 @@ So it is -127<br />
 </ul>
 </div>
 </div>
-<div id="outline-container-org0894454" class="outline-4">
-<h4 id="org0894454">Transaction rollback</h4>
-<div class="outline-text-4" id="text-org0894454">
+<div id="outline-container-org2f4f2ee" class="outline-4">
+<h4 id="org2f4f2ee">Transaction rollback</h4>
+<div class="outline-text-4" id="text-org2f4f2ee">
 <ul class="org-ul">
 <li>Transaction log is used to perform a rollback</li>
 <li>Uncommitted transactions are rolled back</li>
@@ -1495,25 +1525,25 @@ So it is -127<br />
 </ul>
 </div>
 </div>
-<div id="outline-container-orgdda5544" class="outline-4">
-<h4 id="orgdda5544">Data Model</h4>
-<div class="outline-text-4" id="text-orgdda5544">
+<div id="outline-container-org1e0bdd7" class="outline-4">
+<h4 id="org1e0bdd7">Data Model</h4>
+<div class="outline-text-4" id="text-org1e0bdd7">
 <ul class="org-ul">
 <li>Is a collection of concepts for describing data</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org8213b51" class="outline-4">
-<h4 id="org8213b51">Schema</h4>
-<div class="outline-text-4" id="text-org8213b51">
+<div id="outline-container-orga82d808" class="outline-4">
+<h4 id="orga82d808">Schema</h4>
+<div class="outline-text-4" id="text-orga82d808">
 <ul class="org-ul">
 <li>Is a description of a particular collection of data, using a given data model. It describes the structure of a database.</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orga565fce" class="outline-4">
-<h4 id="orga565fce">DDL vs DML</h4>
-<div class="outline-text-4" id="text-orga565fce">
+<div id="outline-container-org8a13e59" class="outline-4">
+<h4 id="org8a13e59">DDL vs DML</h4>
+<div class="outline-text-4" id="text-org8a13e59">
 <ul class="org-ul">
 <li>Domain Definition Language (CREATE, ALTER, DROP, TRUNCATE)
 <ul class="org-ul">
@@ -1526,17 +1556,17 @@ So it is -127<br />
 </ul>
 </div>
 </div>
-<div id="outline-container-org548483d" class="outline-4">
-<h4 id="org548483d">Database redesign the structure</h4>
-<div class="outline-text-4" id="text-org548483d">
+<div id="outline-container-org3e13864" class="outline-4">
+<h4 id="org3e13864">Database redesign the structure</h4>
+<div class="outline-text-4" id="text-org3e13864">
 <ul class="org-ul">
 <li>Use a X normal form, to an extent</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgda70894" class="outline-4">
-<h4 id="orgda70894">Six steps for designing data structure</h4>
-<div class="outline-text-4" id="text-orgda70894">
+<div id="outline-container-orge732cdc" class="outline-4">
+<h4 id="orge732cdc">Six steps for designing data structure</h4>
+<div class="outline-text-4" id="text-orge732cdc">
 <ol class="org-ol">
 <li>Identify data elements</li>
 <li>Subdivide each element into its smallest useful components</li>
@@ -1549,9 +1579,420 @@ So it is -127<br />
 </div>
 </div>
 </div>
-<div id="outline-container-org4c5fe48" class="outline-2">
-<h2 id="org4c5fe48"><span class="section-number-2">4.</span> Remove at the End</h2>
+<div id="outline-container-org69f0ab7" class="outline-2">
+<h2 id="org69f0ab7"><span class="section-number-2">4.</span> Packet Tracer</h2>
 <div class="outline-text-2" id="text-4">
+<ul class="org-ul">
+<li>The Question is twofold:
+<ul class="org-ul">
+<li>Must do the calculations yourself</li>
+</ul></li>
+<li>Hook up a laptop with a serial cable to the Router if the router has no console</li>
+<li>The default gateway is the IP address of the router, usually x.x.x.1</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org3c6fd86" class="outline-2">
+<h2 id="org3c6fd86"><span class="section-number-2">5.</span> Exam 2 Rundown</h2>
+<div class="outline-text-2" id="text-5">
+</div>
+<div id="outline-container-orgeeccfae" class="outline-3">
+<h3 id="orgeeccfae"><span class="section-number-3">5.1.</span> Some Sample questions Networks Intro:</h3>
+<div class="outline-text-3" id="text-5-1">
+<ul class="org-ul">
+<li>Internet vs Intranet, network-of-network (public) vs internal network (private)</li>
+<li>Give 3 examples of scopes of classifications of networks: LAN, MAN, WAN (local, metropolitan, wide area network)</li>
+<li>3 examples of non-traditional network endpoints that we might see in the future: Fridge, car, microwave, IoT devices, coffee machine, TV, light bulb, washing machine, etc.</li>
+<li>Give examples of 3 different resources that can be shared via a network: internet access, applications, files, databases, any digital media, any source of data (really) etc.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org5ac6bcd" class="outline-3">
+<h3 id="org5ac6bcd"><span class="section-number-3">5.2.</span> Some Sample questions IP Addressing:</h3>
+<div class="outline-text-3" id="text-5-2">
+<ul class="org-ul">
+<li>Purpose of IP address: unique identification of the end device on the network</li>
+<li>Purpose of the Subnet Mask: divides the network from the host, defines the scope of the network, defines how many IP addresses are in the network</li>
+<li>What is the purpose of NAT: so that the inner network can communicate with the outside network (private to public and vice versa), unregistered to registered, hide the private IP from the Public, make sure to mentioned ports that are used for the mapping inside of a NAT</li>
+<li>Purpose of the 3way handshake: to validate that each of the sides are willing to communicate to each other and establish a reliable connection</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org4bf9d70" class="outline-3">
+<h3 id="org4bf9d70"><span class="section-number-3">5.3.</span> Some Sample questions Network Models and Layers:</h3>
+<div class="outline-text-3" id="text-5-3">
+<ul class="org-ul">
+<li>Describe 3 differences between the token ring and the Ethernet</li>
+<li>List 4 network topologies and describe their advantages/disadvantages</li>
+<li>When would UDP be used over TCP</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org671b0a2" class="outline-3">
+<h3 id="org671b0a2"><span class="section-number-3">5.4.</span> Q1 Networks in general (nail this)</h3>
+</div>
+<div id="outline-container-org737d4a0" class="outline-3">
+<h3 id="org737d4a0"><span class="section-number-3">5.5.</span> Q2 IP Addressing (nail this, cos it helps with packet tracer)</h3>
+</div>
+<div id="outline-container-org71ad618" class="outline-3">
+<h3 id="org71ad618"><span class="section-number-3">5.6.</span> Q3 OSI Model (different network types are combined here)</h3>
+</div>
+<div id="outline-container-orgbe546ab" class="outline-3">
+<h3 id="orgbe546ab"><span class="section-number-3">5.7.</span> Q4 Packet Tracer</h3>
+</div>
+<div id="outline-container-org361b521" class="outline-3">
+<h3 id="org361b521"><span class="section-number-3">5.8.</span> Working out the bits for the Network address with a network 192.168.10.0, 4PCs and 1Router</h3>
+<div class="outline-text-3" id="text-5-8">
+<ul class="org-ul">
+<li>Network ID: 192.168.10.0, we have 4 PCs and a router. So that's 5 devices + 2 IPs(network + broadcast): so we need 7 in total</li>
+<li>* - meets requirements for amount of hosts (line drawn to the left of)</li>
+<li><p>
+Everything to the left of the star in octets is: 1
+</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">Bit Values</td>
+<td class="org-right">128</td>
+<td class="org-right">64</td>
+<td class="org-right">32</td>
+<td class="org-right">16</td>
+<td class="org-right">8</td>
+<td class="org-right">4</td>
+<td class="org-right">2</td>
+<td class="org-right">1</td>
+</tr>
+
+<tr>
+<td class="org-left">Hosts</td>
+<td class="org-right">256</td>
+<td class="org-right">128</td>
+<td class="org-right">64</td>
+<td class="org-right">32</td>
+<td class="org-right">16</td>
+<td class="org-right">(*) 8</td>
+<td class="org-right">4</td>
+<td class="org-right">2</td>
+</tr>
+
+<tr>
+<td class="org-left">Octets</td>
+<td class="org-right">1</td>
+<td class="org-right">1</td>
+<td class="org-right">1</td>
+<td class="org-right">1</td>
+<td class="org-right">1</td>
+<td class="org-right">0</td>
+<td class="org-right">0</td>
+<td class="org-right">0</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+Network ID: 192.168.10.0 (is the network address and is reserved)
+Octets: 128+64+32+16+8 = 248
+Subnet is then: 255.255.255.248
+We have three zeros in octets so CIDR = 32 - 3 = 29
+Broadcast is the last one: 192.168.10.7 (8 possible hosts, which is 8 - 1 to get the broadcast)
+Range is +1 from network to -1 from the broadcast: 192.168.10.1 - 192.168.10.6
+</p></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgf43fd33" class="outline-3">
+<h3 id="orgf43fd33"><span class="section-number-3">5.9.</span> Working out the bits for the Network address with a network 192.168.200.0, 8PCs and 1Router</h3>
+<div class="outline-text-3" id="text-5-9">
+<ul class="org-ul">
+<li>Network ID: 192.168.10.0, we have 8 PCs and a router. So that's 9 devices + 2 IPs(network + broadcast): so we need 11 in total</li>
+<li>* - meets requirements for amount of hosts (line drawn to the left of)</li>
+<li><p>
+Everything to the left of the star in octets is: 1
+</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">Bit Values</td>
+<td class="org-right">128</td>
+<td class="org-right">64</td>
+<td class="org-right">32</td>
+<td class="org-right">16</td>
+<td class="org-right">8</td>
+<td class="org-right">4</td>
+<td class="org-right">2</td>
+<td class="org-right">1</td>
+</tr>
+
+<tr>
+<td class="org-left">Hosts</td>
+<td class="org-right">256</td>
+<td class="org-right">128</td>
+<td class="org-right">64</td>
+<td class="org-right">32</td>
+<td class="org-right">(*) 16</td>
+<td class="org-right">8</td>
+<td class="org-right">4</td>
+<td class="org-right">2</td>
+</tr>
+
+<tr>
+<td class="org-left">Octets</td>
+<td class="org-right">1</td>
+<td class="org-right">1</td>
+<td class="org-right">1</td>
+<td class="org-right">1</td>
+<td class="org-right">0</td>
+<td class="org-right">0</td>
+<td class="org-right">0</td>
+<td class="org-right">0</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+Network ID: 192.168.200.0 (is the network address and is reserved)
+Octets: 128+64+32+16 = 240
+Subnet is then: 255.255.255.240
+We have four zeros in octets so CIDR = 32 - 4 = 28
+Broadcast is the last one: 192.168.200.15 (16 possible hosts, which is 16 - 1 to get the broadcast)
+Range is +1 from network to -1 from the broadcast: 192.168.200.1 - 192.168.200.14
+</p></li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-org7cd49ed" class="outline-2">
+<h2 id="org7cd49ed"><span class="section-number-2">6.</span> Networks</h2>
+<div class="outline-text-2" id="text-6">
+<ul class="org-ul">
+<li>Network: two or more devices connected together to share resources</li>
+<li>Nodes on a network talk using agreed protocols</li>
+<li>Networks are for communication</li>
+<li>Sharing</li>
+<li>Every Network Interface Card(or Controller) (NIC) has a unique 48Bit MAC address</li>
+<li>Pros/Cons
+<ul class="org-ul">
+<li>Pros: Connectivity and Communication, data sharing, hardware sharing, internet access, etc.</li>
+<li>Cons: Hardware/Setup cost, undesirable sharing, data security</li>
+</ul></li>
+<li>Classes: Local(LAN), Metropolitan (MAN, much higher bandwidth), Wide (WAN, large distances)</li>
+<li>Internet is a network of networks, uses a common set of protocols to define endpoint interaction/communication</li>
+<li>Intranet still uses the same protocols as Internet, TCP/IP, HTTP and so on</li>
+<li>Protocol: a set of rules and procedures for communication purposes</li>
+<li>Topologies
+<ul class="org-ul">
+<li>Physical: the actual physical layout of the network components (devices) and how are they physically connected. E.g. Host1 &gt; Switch &gt; router 1 &gt; router 2 &gt; router 3 &gt; switch &gt; firewall &gt; Server</li>
+<li>Logical: describes how the messages travel, how information flows between the nodes. E.g Host1 &gt; Server</li>
+<li>Main topologies are:
+<ul class="org-ul">
+<li>Bus (10Base2): Basic topology, each devices has the same address path, so every message hits every device's NIC. One broken cable and the whole network is down. Expensive, but is easy to implement and extend. It is nearly obsolete.</li>
+<li>Star(10BaseT and 100BaseT Ethernet): Common these days, uses a central hub or switch to connect many device. Easy to install, more expensive (due to the cable and switches),</li>
+<li>Ring: Connected serially, messages flow clockwise or anticlockwise. Circle ring of computers. Growth is easy, but failure of one means the failure of the network</li>
+<li>Mesh: Simplest in terms of logics, but most complex when it comes to physical design. High cost, every device is connected to every other device. High fault tolerance.</li>
+</ul></li>
+</ul></li>
+<li>OSI Model: Physical, Data, Network, Transport, Session, Presentation, Application</li>
+<li>TCP/IP Model: Network Interface, Internet, Transport, Application</li>
+<li>Cabling: Coaxial, Twisted Pair, Fiber Optical</li>
+<li>Subnet mask: its sole purpose is to determine whether an IP is inside of a local network or not, if it is not, then external routing begins</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org2576454" class="outline-2">
+<h2 id="org2576454"><span class="section-number-2">7.</span> IP Addressing</h2>
+<div class="outline-text-2" id="text-7">
+<ul class="org-ul">
+<li>All quite easy stuff, really</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org2961627" class="outline-2">
+<h2 id="org2961627"><span class="section-number-2">8.</span> Networking Part 1</h2>
+<div class="outline-text-2" id="text-8">
+</div>
+<div id="outline-container-org8f566f3" class="outline-3">
+<h3 id="org8f566f3"><span class="section-number-3">8.1.</span> Network architecture:</h3>
+<div class="outline-text-3" id="text-8-1">
+<ul class="org-ul">
+<li>Ethernet: star topology (bus early), inexpensive, easy to install, fast, twisted pair
+<ul class="org-ul">
+<li>Ethernet frame:</li>
+</ul></li>
+</ul>
+
+<div id="org906ddc5" class="figure">
+<p><img src="images/Networking_Part_1/2025-08-13_20-46-58_screenshot.png" alt="2025-08-13_20-46-58_screenshot.png" />
+</p>
+</div>
+<ul class="org-ul">
+<li>Token Ring: ring topology, expensive, stable, 4 or 16Mbps</li>
+<li>Ethernet Vs Token: Ethernet is less expensive and easier to install, easy to add devices, but does not scale well; Token Ring is more secure and stable (not really used anymore), hard to add devices, scales well.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org5ecfac5" class="outline-3">
+<h3 id="org5ecfac5"><span class="section-number-3">8.2.</span> Network Models</h3>
+<div class="outline-text-3" id="text-8-2">
+<ul class="org-ul">
+<li>Client - Server</li>
+<li>Peer to Peer</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orge324f70" class="outline-3">
+<h3 id="orge324f70"><span class="section-number-3">8.3.</span> ISO vs TCP/IP Model</h3>
+<div class="outline-text-3" id="text-8-3">
+
+<div id="org111067c" class="figure">
+<p><img src="images/Networking_Part_1/2025-08-13_20-55-09_screenshot.png" alt="2025-08-13_20-55-09_screenshot.png" />
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orgce03b93" class="outline-2">
+<h2 id="orgce03b93"><span class="section-number-2">9.</span> ISO/OSI TCP-IP</h2>
+<div class="outline-text-2" id="text-9">
+</div>
+<div id="outline-container-org3a911c7" class="outline-3">
+<h3 id="org3a911c7"><span class="section-number-3">9.1.</span> ISO/OSI</h3>
+<div class="outline-text-3" id="text-9-1">
+<ul class="org-ul">
+<li>International Standards Organization (ISO) Open Systems Interconnect (OSI) - standard set of rules that describes the transfer of data between each layer in a network system</li>
+<li>L7: <b>Application Layer</b>: Direct access to network services. Interface between the user and the network by providing services that directly support user applications.</li>
+<li>L6: <b>Presentation Layer</b>: Formatting, Compression, Encryption, Encoding. ASCII, UTF-8, Binary. JPEG, GIF, JSON, etc. Interpret and convert data in various formats.</li>
+<li>L5: <b>Session Layer</b>: Establish, Maintain and Terminate a "session". Session is an exchange of messages between computers. It is faster to have a session when there is a "dialog" as opposed to having a handshake whenever a communication takes place. Synchronization also takes place on this layer by utilising checkpoints (I received up to N bytes).</li>
+<li>L4: <b>Transport Layer</b>: TCP or UDP. Packages are arranged by numbers for later assembly (use of a tracking number), also perform crc checks. Ensure proper sequence of data retrieval by performing error handling on the data sequence, on error: re-transmit data.</li>
+<li>L3: <b>Network Layer</b>: Routers, IP addresses, packet routing, source-to-destination control, traffic control measures.</li>
+<li>L2: <b>Data-Link Layer</b>: Handling of frames by utilising MAC addresses. Break down frames and place the electric signal onto the wire. Error detection and correction is also performed.</li>
+<li>L1: <b>Physical Layer</b>: Physical characteristics of the network (type of cables, connectors, length of cable, etc.), electrical characteristics (how the actual voltages send the signal, low level stuff). Sends the binary data as electrical or optical signals.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org6fc2c18" class="outline-3">
+<h3 id="org6fc2c18"><span class="section-number-3">9.2.</span> TCP/IP</h3>
+<div class="outline-text-3" id="text-9-2">
+<ul class="org-ul">
+<li>Suite of communication protocols.</li>
+<li>WAN uses TCP/IP as its protocol stack</li>
+<li>4 layers, unlike the OSI: Application, Transport, Internet (Network), Link</li>
+<li>Describes how the data end-to-end has to be:
+<ul class="org-ul">
+<li>formatted</li>
+<li>addressed</li>
+<li>transmitted</li>
+<li>routed</li>
+<li>received</li>
+</ul></li>
+<li>Layers
+<ul class="org-ul">
+<li><b>Application Layer (DATA)</b>: Contains all the protocols and methods that fall into the process-to-process communication across the IP network. Uses the transport layer to establish host-to-host connection.
+<ul class="org-ul">
+<li>Telnet, FTP, HTTP, SIP</li>
+</ul></li>
+<li><b>Transport Layer (Segments/Datagrams)</b>: End-to-end communication services for the Application (Transmission Control Protocol (TCP) or User Datagram Protocol (UDP))
+<ul class="org-ul">
+<li>TCP: connection oriented (3 way handshake SYN &gt; SYN ACK &gt; ACK, establish sequence number in the SYN ACK), reliable/guaranteed, flow control (congestion control), full duplex between A and B.
+<ul class="org-ul">
+<li>Segmentation and Reassembly of data blocks. Multiplex/Demultiplex, assign ports to applications. Segments are re-ordered at destination.</li>
+<li>Re-transmit if sequence is off. Sender starts at seq=1 and sends say 1500bytes, the receiver ACKs with Seq=1501. So the sender goes again. But if the data is broken then the receiver will send the last known ACK.</li>
+<li>Establish with: SYN, SYN-ACK, SYN.</li>
+<li>Close with: FIN &gt; ACK + FIN &gt; ACK</li>
+<li>HTTP/FTP use TCP and not UDP</li>
+</ul></li>
+<li>UDP: connectionless transmission, not guaranteed order or delivery.
+<ul class="org-ul">
+<li>Does not guarantee order of data, if order is needed it needs to be implemented by the application</li>
+<li>Does error checking, but does not do anything about them (usually the damaged data is simply discarded).</li>
+<li>DNS and DHCP happen via UDP</li>
+</ul></li>
+</ul></li>
+<li><b>Internet/Network Layer (IP/Packets)</b>: Set of protocols to transmit packets from source to destination. which is achieved by the IP address.
+<ul class="org-ul">
+<li>Three functions: Outgoing Packets (select next hop and transmit), Incoming packets (capture and pass payload to Transport Layer if appropriate), Error Checking</li>
+<li>Example of protocols: IPv4, IPv6, ICMP (Ping)</li>
+</ul></li>
+<li><b>Link Layer (Frames)</b>: Physical and Logical network component, interconnects networks and devices</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org23dca66" class="outline-3">
+<h3 id="org23dca66"><span class="section-number-3">9.3.</span> Flow of webpage opening</h3>
+<div class="outline-text-3" id="text-9-3">
+<ul class="org-ul">
+<li>SYN &gt; SYN ACK &gt; ACK (GET /html) &gt; HTML response &gt; close connection</li>
+<li>Type in address, e.g.g <a href="http://www.ait.ie/engineering">http://www.ait.ie/engineering</a></li>
+</ul>
+</div>
+<div id="outline-container-orgf06179a" class="outline-4">
+<h4 id="orgf06179a">HTTP 1.0</h4>
+<div class="outline-text-4" id="text-orgf06179a">
+<ul class="org-ul">
+<li>Flow non-persistent HTTP /1.0</li>
+<li>HTTP client initiates a TCP connection to the server www.ait.ie on port 80</li>
+<li>HTTP client sends a HTTP request via the established TCP connection to engineering/index.html</li>
+<li>Server receives the request, encapsulates the response object in a HTTP Response Message and sends it back to the client. Requests to close the TCP connection.</li>
+<li>HTTP client receives the Response message and agrees to terminate the TCP connection.</li>
+<li>Connection is closed</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org6b47fa3" class="outline-4">
+<h4 id="org6b47fa3">HTTP 1.1</h4>
+<div class="outline-text-4" id="text-org6b47fa3">
+<ul class="org-ul">
+<li>Added persistent connections, multiple object transfer over a single connection</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org76ce26f" class="outline-2">
+<h2 id="org76ce26f"><span class="section-number-2">10.</span> Remove at the End</h2>
+<div class="outline-text-2" id="text-10">
 <script src="../assets/jquery-3.3.1.min.js"></script>
 <script src="../assets/notes.js"></script>
 </div>
@@ -1560,7 +2001,7 @@ So it is -127<br />
 <div id="postamble" class="status">
 <p class="date">Date: 2025-06-25 Wed 15:02</p>
 <p class="author">Author: Damian Chrzanowski</p>
-<p class="date">Created: 2025-07-29 Tue 16:01</p>
+<p class="date">Created: 2025-08-14 Thu 12:04</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

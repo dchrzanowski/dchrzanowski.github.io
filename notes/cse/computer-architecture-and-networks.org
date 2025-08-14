@@ -306,7 +306,7 @@ The value needs to be flipped, so 111 1110 + 1bit = 111 1111 = 127
 So it is -127
    #+end_verse
 
-* Exam Rundown
+* Exam 1 Rundown
 
 ** Headings of the paper (20 marks each)
    - Computer Architecture
@@ -694,6 +694,161 @@ So it is -127
     4. Identify primary and foreign keys
     5. Review whether the data structure is normalised
     6. Identify the indexes
+
+* Packet Tracer
+  - The Question is twofold:
+    - Must do the calculations yourself
+  - Hook up a laptop with a serial cable to the Router if the router has no console
+  - The default gateway is the IP address of the router, usually x.x.x.1
+
+* Exam 2 Rundown
+
+** Some Sample questions Networks Intro:
+   - Internet vs Intranet, network-of-network (public) vs internal network (private)
+   - Give 3 examples of scopes of classifications of networks: LAN, MAN, WAN (local, metropolitan, wide area network)
+   - 3 examples of non-traditional network endpoints that we might see in the future: Fridge, car, microwave, IoT devices, coffee machine, TV, light bulb, washing machine, etc.
+   - Give examples of 3 different resources that can be shared via a network: internet access, applications, files, databases, any digital media, any source of data (really) etc.
+** Some Sample questions IP Addressing:
+   - Purpose of IP address: unique identification of the end device on the network
+   - Purpose of the Subnet Mask: divides the network from the host, defines the scope of the network, defines how many IP addresses are in the network
+   - What is the purpose of NAT: so that the inner network can communicate with the outside network (private to public and vice versa), unregistered to registered, hide the private IP from the Public, make sure to mentioned ports that are used for the mapping inside of a NAT
+   - Purpose of the 3way handshake: to validate that each of the sides are willing to communicate to each other and establish a reliable connection
+** Some Sample questions Network Models and Layers:
+   - Describe 3 differences between the token ring and the Ethernet
+   - List 4 network topologies and describe their advantages/disadvantages
+   - When would UDP be used over TCP
+** Q1 Networks in general (nail this)
+** Q2 IP Addressing (nail this, cos it helps with packet tracer)
+** Q3 OSI Model (different network types are combined here)
+** Q4 Packet Tracer
+** Working out the bits for the Network address with a network 192.168.10.0, 4PCs and 1Router
+   - Network ID: 192.168.10.0, we have 4 PCs and a router. So that's 5 devices + 2 IPs(network + broadcast): so we need 7 in total
+   - * - meets requirements for amount of hosts (line drawn to the left of)
+   - Everything to the left of the star in octets is: 1
+     | Bit Values | 128 |  64 | 32 | 16 |  8 |     4 | 2 | 1 |
+     | Hosts      | 256 | 128 | 64 | 32 | 16 | (*) 8 | 4 | 2 |
+     | Octets     |   1 |   1 |  1 |  1 |  1 |     0 | 0 | 0 |
+
+     Network ID: 192.168.10.0 (is the network address and is reserved)
+     Octets: 128+64+32+16+8 = 248
+     Subnet is then: 255.255.255.248
+     We have three zeros in octets so CIDR = 32 - 3 = 29
+     Broadcast is the last one: 192.168.10.7 (8 possible hosts, which is 8 - 1 to get the broadcast)
+     Range is +1 from network to -1 from the broadcast: 192.168.10.1 - 192.168.10.6
+
+** Working out the bits for the Network address with a network 192.168.200.0, 8PCs and 1Router
+   - Network ID: 192.168.10.0, we have 8 PCs and a router. So that's 9 devices + 2 IPs(network + broadcast): so we need 11 in total
+   - * - meets requirements for amount of hosts (line drawn to the left of)
+   - Everything to the left of the star in octets is: 1
+     | Bit Values | 128 |  64 | 32 | 16 |      8 | 4 | 2 | 1 |
+     | Hosts      | 256 | 128 | 64 | 32 | (*) 16 | 8 | 4 | 2 |
+     | Octets     |   1 |   1 |  1 |  1 |      0 | 0 | 0 | 0 |
+
+     Network ID: 192.168.200.0 (is the network address and is reserved)
+     Octets: 128+64+32+16 = 240
+     Subnet is then: 255.255.255.240
+     We have four zeros in octets so CIDR = 32 - 4 = 28
+     Broadcast is the last one: 192.168.200.15 (16 possible hosts, which is 16 - 1 to get the broadcast)
+     Range is +1 from network to -1 from the broadcast: 192.168.200.1 - 192.168.200.14
+
+* Networks
+  - Network: two or more devices connected together to share resources
+  - Nodes on a network talk using agreed protocols
+  - Networks are for communication
+  - Sharing
+  - Every Network Interface Card(or Controller) (NIC) has a unique 48Bit MAC address
+  - Pros/Cons
+    - Pros: Connectivity and Communication, data sharing, hardware sharing, internet access, etc.
+    - Cons: Hardware/Setup cost, undesirable sharing, data security
+  - Classes: Local(LAN), Metropolitan (MAN, much higher bandwidth), Wide (WAN, large distances)
+  - Internet is a network of networks, uses a common set of protocols to define endpoint interaction/communication
+  - Intranet still uses the same protocols as Internet, TCP/IP, HTTP and so on
+  - Protocol: a set of rules and procedures for communication purposes
+  - Topologies
+    - Physical: the actual physical layout of the network components (devices) and how are they physically connected. E.g. Host1 > Switch > router 1 > router 2 > router 3 > switch > firewall > Server
+    - Logical: describes how the messages travel, how information flows between the nodes. E.g Host1 > Server
+    - Main topologies are:
+      - Bus (10Base2): Basic topology, each devices has the same address path, so every message hits every device's NIC. One broken cable and the whole network is down. Expensive, but is easy to implement and extend. It is nearly obsolete.
+      - Star(10BaseT and 100BaseT Ethernet): Common these days, uses a central hub or switch to connect many device. Easy to install, more expensive (due to the cable and switches),
+      - Ring: Connected serially, messages flow clockwise or anticlockwise. Circle ring of computers. Growth is easy, but failure of one means the failure of the network
+      - Mesh: Simplest in terms of logics, but most complex when it comes to physical design. High cost, every device is connected to every other device. High fault tolerance.
+  - OSI Model: Physical, Data, Network, Transport, Session, Presentation, Application
+  - TCP/IP Model: Network Interface, Internet, Transport, Application
+  - Cabling: Coaxial, Twisted Pair, Fiber Optical
+  - Subnet mask: its sole purpose is to determine whether an IP is inside of a local network or not, if it is not, then external routing begins
+
+* IP Addressing
+  - All quite easy stuff, really
+
+* Networking Part 1
+** Network architecture:
+   - Ethernet: star topology (bus early), inexpensive, easy to install, fast, twisted pair
+     - Ethernet frame:
+   [[file:images/Networking_Part_1/2025-08-13_20-46-58_screenshot.png]]
+   - Token Ring: ring topology, expensive, stable, 4 or 16Mbps
+   - Ethernet Vs Token: Ethernet is less expensive and easier to install, easy to add devices, but does not scale well; Token Ring is more secure and stable (not really used anymore), hard to add devices, scales well.
+** Network Models
+   - Client - Server
+   - Peer to Peer
+** ISO vs TCP/IP Model
+   [[file:images/Networking_Part_1/2025-08-13_20-55-09_screenshot.png]]
+
+* ISO/OSI TCP-IP
+
+** ISO/OSI
+   - International Standards Organization (ISO) Open Systems Interconnect (OSI) - standard set of rules that describes the transfer of data between each layer in a network system
+   - L7: *Application Layer*: Direct access to network services. Interface between the user and the network by providing services that directly support user applications.
+   - L6: *Presentation Layer*: Formatting, Compression, Encryption, Encoding. ASCII, UTF-8, Binary. JPEG, GIF, JSON, etc. Interpret and convert data in various formats.
+   - L5: *Session Layer*: Establish, Maintain and Terminate a "session". Session is an exchange of messages between computers. It is faster to have a session when there is a "dialog" as opposed to having a handshake whenever a communication takes place. Synchronization also takes place on this layer by utilising checkpoints (I received up to N bytes).
+   - L4: *Transport Layer*: TCP or UDP. Packages are arranged by numbers for later assembly (use of a tracking number), also perform crc checks. Ensure proper sequence of data retrieval by performing error handling on the data sequence, on error: re-transmit data.
+   - L3: *Network Layer*: Routers, IP addresses, packet routing, source-to-destination control, traffic control measures.
+   - L2: *Data-Link Layer*: Handling of frames by utilising MAC addresses. Break down frames and place the electric signal onto the wire. Error detection and correction is also performed.
+   - L1: *Physical Layer*: Physical characteristics of the network (type of cables, connectors, length of cable, etc.), electrical characteristics (how the actual voltages send the signal, low level stuff). Sends the binary data as electrical or optical signals.
+
+** TCP/IP
+   - Suite of communication protocols.
+   - WAN uses TCP/IP as its protocol stack
+   - 4 layers, unlike the OSI: Application, Transport, Internet (Network), Link
+   - Describes how the data end-to-end has to be:
+     - formatted
+     - addressed
+     - transmitted
+     - routed
+     - received
+   - Layers
+     - *Application Layer (DATA)*: Contains all the protocols and methods that fall into the process-to-process communication across the IP network. Uses the transport layer to establish host-to-host connection.
+       - Telnet, FTP, HTTP, SIP
+     - *Transport Layer (Segments/Datagrams)*: End-to-end communication services for the Application (Transmission Control Protocol (TCP) or User Datagram Protocol (UDP))
+       - TCP: connection oriented (3 way handshake SYN > SYN ACK > ACK, establish sequence number in the SYN ACK), reliable/guaranteed, flow control (congestion control), full duplex between A and B.
+         - Segmentation and Reassembly of data blocks. Multiplex/Demultiplex, assign ports to applications. Segments are re-ordered at destination.
+         - Re-transmit if sequence is off. Sender starts at seq=1 and sends say 1500bytes, the receiver ACKs with Seq=1501. So the sender goes again. But if the data is broken then the receiver will send the last known ACK.
+         - Establish with: SYN, SYN-ACK, SYN.
+         - Close with: FIN > ACK + FIN > ACK
+         - HTTP/FTP use TCP and not UDP
+       - UDP: connectionless transmission, not guaranteed order or delivery.
+         - Does not guarantee order of data, if order is needed it needs to be implemented by the application
+         - Does error checking, but does not do anything about them (usually the damaged data is simply discarded).
+         - DNS and DHCP happen via UDP
+     - *Internet/Network Layer (IP/Packets)*: Set of protocols to transmit packets from source to destination. which is achieved by the IP address.
+       - Three functions: Outgoing Packets (select next hop and transmit), Incoming packets (capture and pass payload to Transport Layer if appropriate), Error Checking
+       - Example of protocols: IPv4, IPv6, ICMP (Ping)
+     - *Link Layer (Frames)*: Physical and Logical network component, interconnects networks and devices
+
+** Flow of webpage opening
+   - SYN > SYN ACK > ACK (GET /html) > HTML response > close connection
+   - Type in address, e.g.g http://www.ait.ie/engineering
+
+*** HTTP 1.0
+   - Flow non-persistent HTTP /1.0
+   - HTTP client initiates a TCP connection to the server www.ait.ie on port 80
+   - HTTP client sends a HTTP request via the established TCP connection to engineering/index.html
+   - Server receives the request, encapsulates the response object in a HTTP Response Message and sends it back to the client. Requests to close the TCP connection.
+   - HTTP client receives the Response message and agrees to terminate the TCP connection.
+   - Connection is closed
+
+*** HTTP 1.1
+    - Added persistent connections, multiple object transfer over a single connection
+
 
 * Remove at the End
   #+BEGIN_EXPORT html
