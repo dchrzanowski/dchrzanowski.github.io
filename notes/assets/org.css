@@ -66,6 +66,9 @@ h4 {
 table {
     margin-top: 30px;
     margin-left: 40px;
+    overflow: auto !important;
+    display: block !important;
+    border: none !important;
 }
 
 img {
