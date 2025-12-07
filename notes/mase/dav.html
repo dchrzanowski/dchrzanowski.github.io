@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2025-12-07 Sun 13:54 -->
+<!-- 2025-12-07 Sun 14:12 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>DAV</title>
@@ -193,6 +193,9 @@
     { background-color: #ffff00; color: #000000; font-weight: bold; }
   .org-svg { }
 </style>
+<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="../assets/org.css"/>
+<link rel="icon" href="../assets/favicon.ico">
 </head>
 <body>
 <div id="content" class="content">
@@ -201,17 +204,48 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgdbe997b">1. Exam bits</a></li>
-<li><a href="#org8ff4451">2. Pandas</a></li>
-<li><a href="#orgd52e402">3. Matplotlib</a></li>
+<li><a href="#org69468c4">1. Exam bits</a></li>
+<li><a href="#org12a632d">2. Pandas</a>
+<ul>
+<li><a href="#orga90373c">2.1. Handy tabulate function</a></li>
+<li><a href="#org374164c">2.2. Timing the load time</a></li>
+<li><a href="#orgaa73b3c">2.3. Loading data into df and saving to csv</a></li>
+<li><a href="#orgbf69204">2.4. Reading basic</a></li>
+<li><a href="#orgc5b2c74">2.5. Adding Columns</a></li>
+<li><a href="#org4b862ad">2.6. Calculate sums</a></li>
+<li><a href="#org168c97c">2.7. Cleaning data</a></li>
+<li><a href="#orgaa3ae77">2.8. Renaming columns</a></li>
+<li><a href="#org9cdc7bb">2.9. Replacing values in columns</a></li>
+<li><a href="#org4f76b74">2.10. Displaying count of missing values</a></li>
+<li><a href="#org5787497">2.11. Dropping rows</a></li>
+<li><a href="#org25c2ad5">2.12. Filling missing NaN values using fillna()</a></li>
+<li><a href="#org575e00a">2.13. Create a new dataframe from a frame</a></li>
+<li><a href="#org024ba38">2.14. Summarising</a></li>
+<li><a href="#org8c43257">2.15. IAT</a></li>
+<li><a href="#org5268542">2.16. Queries (like SQL where)</a></li>
+<li><a href="#org6719e6e">2.17. Analysing data</a></li>
+<li><a href="#org1574c37">2.18. Thiago's samples on cleaning</a></li>
+<li><a href="#org5d32c65">2.19. Thiago's samples on analysing</a></li>
+</ul>
+</li>
+<li><a href="#orgc04ce08">3. Matplotlib</a>
+<ul>
+<li><a href="#org45a1f60">3.1. Prepare data</a></li>
+<li><a href="#org921a895">3.2. Bar Chart from Employees data</a></li>
+<li><a href="#orgf221a8e">3.3. Double Stacked Bar Chart from Employees data</a></li>
+<li><a href="#orge2aee52">3.4. Pie Chart from Employees data</a></li>
+<li><a href="#orgf5b9fbe">3.5. Line graph</a></li>
+</ul>
+</li>
+<li><a href="#org52c60d2">4. Remove at the End</a></li>
 </ul>
 </div>
 </div>
 <p>
 <a href="index.html">Home Page</a>
 </p>
-<div id="outline-container-orgdbe997b" class="outline-2">
-<h2 id="orgdbe997b"><span class="section-number-2">1.</span> Exam bits</h2>
+<div id="outline-container-org69468c4" class="outline-2">
+<h2 id="org69468c4"><span class="section-number-2">1.</span> Exam bits</h2>
 <div class="outline-text-2" id="text-1">
 <ul class="org-ul">
 <li>Operate on dataframes</li>
@@ -221,12 +255,12 @@
 </ul>
 </div>
 </div>
-<div id="outline-container-org8ff4451" class="outline-2">
-<h2 id="org8ff4451"><span class="section-number-2">2.</span> Pandas</h2>
+<div id="outline-container-org12a632d" class="outline-2">
+<h2 id="org12a632d"><span class="section-number-2">2.</span> Pandas</h2>
 <div class="outline-text-2" id="text-2">
 </div>
-<div id="outline-container-org43decee" class="outline-3">
-<h3 id="org43decee"><span class="section-number-3">2.1.</span> Handy tabulate function</h3>
+<div id="outline-container-orga90373c" class="outline-3">
+<h3 id="orga90373c"><span class="section-number-3">2.1.</span> Handy tabulate function</h3>
 <div class="outline-text-3" id="text-2-1">
 <div class="org-src-container">
 <pre class="src src-python"><span style="color: #51afef; font-style: italic;">def</span> <span style="color: #c678dd;">printDF</span><span style="color: #fff0f5;">(</span><span style="color: #db5762;">df</span><span style="color: #fff0f5;">)</span>:
@@ -236,8 +270,8 @@
 </div>
 </div>
 </div>
-<div id="outline-container-orgc15d739" class="outline-3">
-<h3 id="orgc15d739"><span class="section-number-3">2.2.</span> Timing the load time</h3>
+<div id="outline-container-org374164c" class="outline-3">
+<h3 id="org374164c"><span class="section-number-3">2.2.</span> Timing the load time</h3>
 <div class="outline-text-3" id="text-2-2">
 <div class="org-src-container">
 <pre class="src src-python"><span style="color: #db5762;">start</span> <span style="color: #bbc2cf;">=</span> time.<span style="color: #c678dd; font-weight: bold; font-style: italic;">time</span><span style="color: #fff0f5;">()</span>
@@ -249,8 +283,8 @@
 </div>
 </div>
 </div>
-<div id="outline-container-orgdd605f4" class="outline-3">
-<h3 id="orgdd605f4"><span class="section-number-3">2.3.</span> Loading data into df and saving to csv</h3>
+<div id="outline-container-orgaa73b3c" class="outline-3">
+<h3 id="orgaa73b3c"><span class="section-number-3">2.3.</span> Loading data into df and saving to csv</h3>
 <div class="outline-text-3" id="text-2-3">
 <div class="org-src-container">
 <pre class="src src-python"><span style="color: #db5762;">df</span> <span style="color: #bbc2cf;">=</span> pd.<span style="color: #51afef; font-weight: bold; font-style: italic;">DataFrame</span><span style="color: #fff0f5;">(</span>data<span style="color: #fff0f5;">)</span> <span style="color: #5B6268;"># dict in the key: [array] format</span>
@@ -260,8 +294,8 @@ df.<span style="color: #c678dd; font-weight: bold; font-style: italic;">to_csv</
 </div>
 </div>
 </div>
-<div id="outline-container-org5afed56" class="outline-3">
-<h3 id="org5afed56"><span class="section-number-3">2.4.</span> Reading basic</h3>
+<div id="outline-container-orgbf69204" class="outline-3">
+<h3 id="orgbf69204"><span class="section-number-3">2.4.</span> Reading basic</h3>
 <div class="outline-text-3" id="text-2-4">
 <div class="org-src-container">
 <pre class="src src-python"><span style="color: #5B6268;"># read in the data</span>
@@ -299,8 +333,8 @@ grouped_df.<span style="color: #c678dd; font-weight: bold; font-style: italic;">
 </div>
 </div>
 </div>
-<div id="outline-container-orge1e0705" class="outline-3">
-<h3 id="orge1e0705"><span class="section-number-3">2.5.</span> Adding Columns</h3>
+<div id="outline-container-orgc5b2c74" class="outline-3">
+<h3 id="orgc5b2c74"><span class="section-number-3">2.5.</span> Adding Columns</h3>
 <div class="outline-text-3" id="text-2-5">
 <div class="org-src-container">
 <pre class="src src-python"><span style="color: #5B6268;"># data has price and quantity</span>
@@ -313,8 +347,8 @@ pd.<span style="color: #a9a1e1; font-style: italic;">options</span>.<span style=
 </div>
 </div>
 </div>
-<div id="outline-container-org9ca871c" class="outline-3">
-<h3 id="org9ca871c"><span class="section-number-3">2.6.</span> Calculate sums</h3>
+<div id="outline-container-org4b862ad" class="outline-3">
+<h3 id="org4b862ad"><span class="section-number-3">2.6.</span> Calculate sums</h3>
 <div class="outline-text-3" id="text-2-6">
 <div class="org-src-container">
 <pre class="src src-python"><span style="color: #5B6268;"># data has price and quantity</span>
@@ -326,8 +360,8 @@ pd.<span style="color: #a9a1e1; font-style: italic;">options</span>.<span style=
 </div>
 </div>
 </div>
-<div id="outline-container-org6ad002e" class="outline-3">
-<h3 id="org6ad002e"><span class="section-number-3">2.7.</span> Cleaning data</h3>
+<div id="outline-container-org168c97c" class="outline-3">
+<h3 id="org168c97c"><span class="section-number-3">2.7.</span> Cleaning data</h3>
 <div class="outline-text-3" id="text-2-7">
 <ul class="org-ul">
 <li><code>select_dtypes</code> (type): select all columns with the specific data type, <code>to_datetime()</code> : convert to datetime, <code>to_numeric(columns, errors)</code> : try to convert to numeric types</li>
@@ -389,8 +423,8 @@ df.<span style="color: #c678dd; font-weight: bold; font-style: italic;">drop_dup
 </div>
 </div>
 </div>
-<div id="outline-container-org2b48677" class="outline-3">
-<h3 id="org2b48677"><span class="section-number-3">2.8.</span> Renaming columns</h3>
+<div id="outline-container-orgaa3ae77" class="outline-3">
+<h3 id="orgaa3ae77"><span class="section-number-3">2.8.</span> Renaming columns</h3>
 <div class="outline-text-3" id="text-2-8">
 <div class="org-src-container">
 <pre class="src src-python"><span style="color: #5B6268;"># first extract the columns of interest</span>
@@ -399,8 +433,8 @@ df.<span style="color: #c678dd; font-weight: bold; font-style: italic;">rename</
 </div>
 </div>
 </div>
-<div id="outline-container-org4826228" class="outline-3">
-<h3 id="org4826228"><span class="section-number-3">2.9.</span> Replacing values in columns</h3>
+<div id="outline-container-org9cdc7bb" class="outline-3">
+<h3 id="org9cdc7bb"><span class="section-number-3">2.9.</span> Replacing values in columns</h3>
 <div class="outline-text-3" id="text-2-9">
 <div class="org-src-container">
 <pre class="src src-python"><span style="color: #5B6268;"># first extract the columns of interest</span>
@@ -409,8 +443,8 @@ df<span style="color: #fff0f5;">[</span><span style="color: #db5762;">'Location'
 </div>
 </div>
 </div>
-<div id="outline-container-orgbad5d2e" class="outline-3">
-<h3 id="orgbad5d2e"><span class="section-number-3">2.10.</span> Displaying count of missing values</h3>
+<div id="outline-container-org4f76b74" class="outline-3">
+<h3 id="org4f76b74"><span class="section-number-3">2.10.</span> Displaying count of missing values</h3>
 <div class="outline-text-3" id="text-2-10">
 <ul class="org-ul">
 <li>isnull boolean same-sized object with values that are NA</li>
@@ -425,8 +459,8 @@ df<span style="color: #fff0f5;">[</span><span style="color: #db5762;">'Location'
 </div>
 </div>
 </div>
-<div id="outline-container-org0ba5fc0" class="outline-3">
-<h3 id="org0ba5fc0"><span class="section-number-3">2.11.</span> Dropping rows</h3>
+<div id="outline-container-org5787497" class="outline-3">
+<h3 id="org5787497"><span class="section-number-3">2.11.</span> Dropping rows</h3>
 <div class="outline-text-3" id="text-2-11">
 <div class="org-src-container">
 <pre class="src src-python"><span style="color: #db5762;">result</span> <span style="color: #bbc2cf;">=</span> df.<span style="color: #c678dd; font-weight: bold; font-style: italic;">dropna</span><span style="color: #fff0f5;">(</span><span style="color: #51afef; font-weight: bold;">how</span><span style="color: #bbc2cf;">=</span><span style="color: #98be65;">'any'</span><span style="color: #fff0f5;">)</span>
@@ -436,8 +470,8 @@ df<span style="color: #fff0f5;">[</span><span style="color: #db5762;">'Location'
 </div>
 </div>
 </div>
-<div id="outline-container-org419d20b" class="outline-3">
-<h3 id="org419d20b"><span class="section-number-3">2.12.</span> Filling missing NaN values using fillna()</h3>
+<div id="outline-container-org25c2ad5" class="outline-3">
+<h3 id="org25c2ad5"><span class="section-number-3">2.12.</span> Filling missing NaN values using fillna()</h3>
 <div class="outline-text-3" id="text-2-12">
 <div class="org-src-container">
 <pre class="src src-python">df<span style="color: #fff0f5;">[</span><span style="color: #98be65;">'Distance'</span><span style="color: #fff0f5;">]</span>.<span style="color: #c678dd; font-weight: bold; font-style: italic;">fillna</span><span style="color: #fff0f5;">(</span><span style="color: #51afef; font-weight: bold;">value</span> <span style="color: #bbc2cf;">=</span> df<span style="color: #c678dd;">[</span><span style="color: #98be65;">'Distance'</span><span style="color: #c678dd;">]</span>.<span style="color: #c678dd; font-weight: bold; font-style: italic;">mean</span><span style="color: #c678dd;">()</span>, <span style="color: #51afef; font-weight: bold;">inplace</span><span style="color: #bbc2cf;">=</span><span style="color: #a9a1e1;">True</span><span style="color: #fff0f5;">)</span> <span style="color: #5B6268;"># fill with mean</span>
@@ -445,8 +479,8 @@ df<span style="color: #fff0f5;">[</span><span style="color: #db5762;">'Location'
 </div>
 </div>
 </div>
-<div id="outline-container-org70d243d" class="outline-3">
-<h3 id="org70d243d"><span class="section-number-3">2.13.</span> Create a new dataframe from a frame</h3>
+<div id="outline-container-org575e00a" class="outline-3">
+<h3 id="org575e00a"><span class="section-number-3">2.13.</span> Create a new dataframe from a frame</h3>
 <div class="outline-text-3" id="text-2-13">
 <div class="org-src-container">
 <pre class="src src-python"><span style="color: #db5762;">activityCalorieSum</span> <span style="color: #bbc2cf;">=</span> dataF.<span style="color: #c678dd; font-weight: bold; font-style: italic;">groupby</span><span style="color: #fff0f5;">(</span><span style="color: #98be65;">'Category'</span><span style="color: #fff0f5;">)[</span><span style="color: #98be65;">'Calories'</span><span style="color: #fff0f5;">]</span>.<span style="color: #c678dd; font-weight: bold; font-style: italic;">sum</span><span style="color: #fff0f5;">()</span>.<span style="color: #c678dd; font-weight: bold; font-style: italic;">to_frame</span><span style="color: #fff0f5;">()</span>
@@ -454,8 +488,8 @@ df<span style="color: #fff0f5;">[</span><span style="color: #db5762;">'Location'
 </div>
 </div>
 </div>
-<div id="outline-container-orgfbd20a4" class="outline-3">
-<h3 id="orgfbd20a4"><span class="section-number-3">2.14.</span> Summarising</h3>
+<div id="outline-container-org024ba38" class="outline-3">
+<h3 id="org024ba38"><span class="section-number-3">2.14.</span> Summarising</h3>
 <div class="outline-text-3" id="text-2-14">
 <div class="org-src-container">
 <pre class="src src-python"><span style="color: #db5762;">query</span> <span style="color: #bbc2cf;">=</span> df.<span style="color: #c678dd; font-weight: bold; font-style: italic;">query</span><span style="color: #fff0f5;">(</span><span style="color: #98be65;">'Category == "Run"'</span><span style="color: #fff0f5;">)</span>
@@ -469,8 +503,8 @@ df<span style="color: #fff0f5;">[</span><span style="color: #db5762;">'Location'
 </div>
 </div>
 </div>
-<div id="outline-container-org15b0822" class="outline-3">
-<h3 id="org15b0822"><span class="section-number-3">2.15.</span> IAT</h3>
+<div id="outline-container-org8c43257" class="outline-3">
+<h3 id="org8c43257"><span class="section-number-3">2.15.</span> IAT</h3>
 <div class="outline-text-3" id="text-2-15">
 <div class="org-src-container">
 <pre class="src src-python">result<span style="color: #fff0f5;">[</span><span style="color: #98be65;">'Product'</span><span style="color: #fff0f5;">]</span>.<span style="color: #a9a1e1; font-style: italic;">iat</span><span style="color: #fff0f5;">[</span><span style="color: #da8548; font-weight: bold;">0</span><span style="color: #fff0f5;">]</span> <span style="color: #5B6268;"># retrieve value from col Product at row 0</span>
@@ -478,8 +512,8 @@ df<span style="color: #fff0f5;">[</span><span style="color: #db5762;">'Location'
 </div>
 </div>
 </div>
-<div id="outline-container-orgcbb3075" class="outline-3">
-<h3 id="orgcbb3075"><span class="section-number-3">2.16.</span> Queries (like SQL where)</h3>
+<div id="outline-container-org5268542" class="outline-3">
+<h3 id="org5268542"><span class="section-number-3">2.16.</span> Queries (like SQL where)</h3>
 <div class="outline-text-3" id="text-2-16">
 <ul class="org-ul">
 <li>Columns in data: Name (str), Age (float64), Department (str), Salary (int), PerformanceScore (float64), StartDate (date)</li>
@@ -559,8 +593,8 @@ filtered_df <span style="color: #bbc2cf;">=</span> df.<span style="color: #a9a1e
 </div>
 </div>
 </div>
-<div id="outline-container-org554332f" class="outline-3">
-<h3 id="org554332f"><span class="section-number-3">2.17.</span> Analysing data</h3>
+<div id="outline-container-org6719e6e" class="outline-3">
+<h3 id="org6719e6e"><span class="section-number-3">2.17.</span> Analysing data</h3>
 <div class="outline-text-3" id="text-2-17">
 <ul class="org-ul">
 <li>sum()</li>
@@ -602,8 +636,8 @@ plt.<span style="color: #c678dd; font-weight: bold; font-style: italic;">show</s
 </div>
 </div>
 </div>
-<div id="outline-container-org76a61b5" class="outline-3">
-<h3 id="org76a61b5"><span class="section-number-3">2.18.</span> Thiago's samples on cleaning</h3>
+<div id="outline-container-org1574c37" class="outline-3">
+<h3 id="org1574c37"><span class="section-number-3">2.18.</span> Thiago's samples on cleaning</h3>
 <div class="outline-text-3" id="text-2-18">
 <div class="org-src-container">
 <pre class="src src-python"><span style="color: #5B6268;"># === 1&#65039; Load the dirty dataset ===</span>
@@ -709,8 +743,8 @@ df.<span style="color: #c678dd; font-weight: bold; font-style: italic;">to_csv</
 </div>
 </div>
 </div>
-<div id="outline-container-orgde62bc6" class="outline-3">
-<h3 id="orgde62bc6"><span class="section-number-3">2.19.</span> Thiago's samples on analysing</h3>
+<div id="outline-container-org5d32c65" class="outline-3">
+<h3 id="org5d32c65"><span class="section-number-3">2.19.</span> Thiago's samples on analysing</h3>
 <div class="outline-text-3" id="text-2-19">
 <div class="org-src-container">
 <pre class="src src-python"><span style="color: #5B6268;"># === LOAD DATA ===</span>
@@ -843,12 +877,12 @@ plt.<span style="color: #c678dd; font-weight: bold; font-style: italic;">show</s
 </div>
 </div>
 </div>
-<div id="outline-container-orgd52e402" class="outline-2">
-<h2 id="orgd52e402"><span class="section-number-2">3.</span> Matplotlib</h2>
+<div id="outline-container-orgc04ce08" class="outline-2">
+<h2 id="orgc04ce08"><span class="section-number-2">3.</span> Matplotlib</h2>
 <div class="outline-text-2" id="text-3">
 </div>
-<div id="outline-container-org78b9b34" class="outline-3">
-<h3 id="org78b9b34"><span class="section-number-3">3.1.</span> Prepare data</h3>
+<div id="outline-container-org45a1f60" class="outline-3">
+<h3 id="org45a1f60"><span class="section-number-3">3.1.</span> Prepare data</h3>
 <div class="outline-text-3" id="text-3-1">
 <div class="org-src-container">
 <pre class="src src-python"><span style="color: #db5762;">df</span> <span style="color: #bbc2cf;">=</span> pd.<span style="color: #c678dd; font-weight: bold; font-style: italic;">read_csv</span><span style="color: #fff0f5;">(</span><span style="color: #98be65;">"employees.csv"</span><span style="color: #fff0f5;">)</span>
@@ -860,8 +894,8 @@ grouped_df.<span style="color: #c678dd; font-weight: bold; font-style: italic;">
 </div>
 </div>
 </div>
-<div id="outline-container-org68df6dd" class="outline-3">
-<h3 id="org68df6dd"><span class="section-number-3">3.2.</span> Bar Chart from Employees data</h3>
+<div id="outline-container-org921a895" class="outline-3">
+<h3 id="org921a895"><span class="section-number-3">3.2.</span> Bar Chart from Employees data</h3>
 <div class="outline-text-3" id="text-3-2">
 <div class="org-src-container">
 <pre class="src src-python"><span style="color: #5B6268;"># Create a bar plot</span>
@@ -883,8 +917,8 @@ plt.<span style="color: #c678dd; font-weight: bold; font-style: italic;">show</s
 </div>
 </div>
 </div>
-<div id="outline-container-org853163f" class="outline-3">
-<h3 id="org853163f"><span class="section-number-3">3.3.</span> Double Stacked Bar Chart from Employees data</h3>
+<div id="outline-container-orgf221a8e" class="outline-3">
+<h3 id="orgf221a8e"><span class="section-number-3">3.3.</span> Double Stacked Bar Chart from Employees data</h3>
 <div class="outline-text-3" id="text-3-3">
 <div class="org-src-container">
 <pre class="src src-python"><span style="color: #5B6268;"># Create a bar plot with stacked bars</span>
@@ -894,8 +928,8 @@ plt.<span style="color: #c678dd; font-weight: bold; font-style: italic;">bar</sp
 </div>
 </div>
 </div>
-<div id="outline-container-org55f448b" class="outline-3">
-<h3 id="org55f448b"><span class="section-number-3">3.4.</span> Pie Chart from Employees data</h3>
+<div id="outline-container-orge2aee52" class="outline-3">
+<h3 id="orge2aee52"><span class="section-number-3">3.4.</span> Pie Chart from Employees data</h3>
 <div class="outline-text-3" id="text-3-4">
 <div class="org-src-container">
 <pre class="src src-python">plt.<span style="color: #c678dd; font-weight: bold; font-style: italic;">pie</span><span style="color: #fff0f5;">(</span>
@@ -914,8 +948,8 @@ plt.<span style="color: #c678dd; font-weight: bold; font-style: italic;">show</s
 </div>
 </div>
 </div>
-<div id="outline-container-org9d5ef54" class="outline-3">
-<h3 id="org9d5ef54"><span class="section-number-3">3.5.</span> Line graph</h3>
+<div id="outline-container-orgf5b9fbe" class="outline-3">
+<h3 id="orgf5b9fbe"><span class="section-number-3">3.5.</span> Line graph</h3>
 <div class="outline-text-3" id="text-3-5">
 <div class="org-src-container">
 <pre class="src src-python">plt.<span style="color: #c678dd; font-weight: bold; font-style: italic;">figure</span><span style="color: #fff0f5;">(</span><span style="color: #51afef; font-weight: bold;">figsize</span><span style="color: #bbc2cf;">=</span><span style="color: #c678dd;">(</span><span style="color: #da8548; font-weight: bold;">13</span>, <span style="color: #da8548; font-weight: bold;">8</span><span style="color: #c678dd;">)</span><span style="color: #fff0f5;">)</span>
@@ -930,18 +964,21 @@ plt.<span style="color: #c678dd; font-weight: bold; font-style: italic;">savefig
 plt.<span style="color: #c678dd; font-weight: bold; font-style: italic;">show</span><span style="color: #fff0f5;">()</span>
 </pre>
 </div>
-
-
+</div>
+</div>
+</div>
+<div id="outline-container-org52c60d2" class="outline-2">
+<h2 id="org52c60d2"><span class="section-number-2">4.</span> Remove at the End</h2>
+<div class="outline-text-2" id="text-4">
 <script src="../assets/jquery-3.3.1.min.js"></script>
 <script src="../assets/notes.js"></script>
-</div>
 </div>
 </div>
 </div>
 <div id="postamble" class="status">
 <p class="date">Date: 2025-11-03 Mon 13:03</p>
 <p class="author">Author: Damian Chrzanowski</p>
-<p class="date">Created: 2025-12-07 Sun 13:54</p>
+<p class="date">Created: 2025-12-07 Sun 14:12</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

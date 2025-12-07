@@ -1,8 +1,7 @@
-#+TITLE: Software Design Year 1 Notes
-#+DATE: <2016-11-12 Sat>
+#+TITLE: MASE Notes
+#+DATE: <2025-12-07 Sun 14:00>
 #+AUTHOR: Damian Chrzanowski
 #+EMAIL: pjdamian.chrzanowski@gmail.com
-#+OPTIONS: TOC:2 num:2
 #+HTML_HEAD: <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
 #+HTML_HEAD: <link rel="stylesheet" type="text/css" href="../assets/org.css"/>
 #+HTML_HEAD: <link rel="stylesheet" type="text/css" href="../assets/org_index.css"/>

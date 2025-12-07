@@ -2,10 +2,10 @@
 #+DATE: [2025-12-07 Sun 13:51]
 #+AUTHOR: Damian Chrzanowski
 #+EMAIL: pjdamian.chrzanowski@gmail.com
-#+OPTIONS: TOC:1 num:2
-#+latex_header: \hypersetup{colorlinks=true,linkcolor=black}
-#+latex_header: \usepackage[margin=1in]{geometry}
-#+latex_header: \usepackage[scaled]{helvet} \renewcommand\familydefault{\sfdefault}
+#+OPTIONS: TOC:2 num:2
+#+HTML_HEAD: <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="../assets/org.css"/>
+#+HTML_HEAD: <link rel="icon" href="../assets/favicon.ico">
 
 [[file:index.org][Home Page]]
 
@@ -23,8 +23,8 @@
   - pipelining
   - clustering vs smp
   - RAID
-
-    #+BEGIN_EXPORT html
-    <script src="../assets/jquery-3.3.1.min.js"></script>
-    <script src="../assets/notes.js"></script>
-    #+END_EXPORT
+* Remove at the End
+  #+BEGIN_EXPORT html
+  <script src="../assets/jquery-3.3.1.min.js"></script>
+  <script src="../assets/notes.js"></script>
+  #+END_EXPORT

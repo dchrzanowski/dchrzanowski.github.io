@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2025-12-07 Sun 13:54 -->
+<!-- 2025-12-07 Sun 14:11 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Agile Design and Testing</title>
@@ -193,6 +193,9 @@
     { background-color: #ffff00; color: #000000; font-weight: bold; }
   .org-svg { }
 </style>
+<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="../assets/org.css"/>
+<link rel="icon" href="../assets/favicon.ico">
 </head>
 <body>
 <div id="content" class="content">
@@ -201,19 +204,29 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgce37aea">1. Scaffold for Parameterized Testing</a></li>
+<li><a href="#org4ba6ed5">1. Scaffold for Parameterized Testing</a>
+<ul>
+<li><a href="#org3d98275">1.1. pom for jupiter and jupiter with params</a></li>
+<li><a href="#orgdcb7fd1">1.2. Using the MethodSource with an expected Throw</a></li>
+<li><a href="#orgc55042e">1.3. Using the MethodSource with an asssertEquals</a></li>
+<li><a href="#orgea5a32d">1.4. Using the CsvSource</a></li>
+<li><a href="#org52ea4e0">1.5. Using the CsvFileSource (put the CSVs in the main/resources directory)</a></li>
+<li><a href="#org4a4dea6">1.6. Using the ValueSource</a></li>
+</ul>
+</li>
+<li><a href="#org25c47d0">2. Remove at the End</a></li>
 </ul>
 </div>
 </div>
 <p>
 <a href="index.html">Home Page</a>
 </p>
-<div id="outline-container-orgce37aea" class="outline-2">
-<h2 id="orgce37aea"><span class="section-number-2">1.</span> Scaffold for Parameterized Testing</h2>
+<div id="outline-container-org4ba6ed5" class="outline-2">
+<h2 id="org4ba6ed5"><span class="section-number-2">1.</span> Scaffold for Parameterized Testing</h2>
 <div class="outline-text-2" id="text-1">
 </div>
-<div id="outline-container-orgad8874c" class="outline-3">
-<h3 id="orgad8874c"><span class="section-number-3">1.1.</span> pom for jupiter and jupiter with params</h3>
+<div id="outline-container-org3d98275" class="outline-3">
+<h3 id="org3d98275"><span class="section-number-3">1.1.</span> pom for jupiter and jupiter with params</h3>
 <div class="outline-text-3" id="text-1-1">
 <div class="org-src-container">
 <pre class="src src-xml"><span style="color: #bbc2cf; background-color: #131519;">&lt;</span><span style="color: #c678dd;">dependencies</span><span style="color: #bbc2cf; background-color: #131519;">&gt;</span>
@@ -240,8 +253,8 @@
 </div>
 </div>
 </div>
-<div id="outline-container-org0037075" class="outline-3">
-<h3 id="org0037075"><span class="section-number-3">1.2.</span> Using the MethodSource with an expected Throw</h3>
+<div id="outline-container-orgdcb7fd1" class="outline-3">
+<h3 id="orgdcb7fd1"><span class="section-number-3">1.2.</span> Using the MethodSource with an expected Throw</h3>
 <div class="outline-text-3" id="text-1-2">
 <div class="org-src-container">
 <pre class="src src-java"><span style="color: #bbc2cf;">@</span><span style="color: #51afef; font-weight: bold;">ParameterizedTest</span><span style="color: #fff0f5;">(</span>name = <span style="color: #98be65;">"All input prices: {0}"</span><span style="color: #fff0f5;">)</span>
@@ -266,8 +279,8 @@
 </div>
 </div>
 </div>
-<div id="outline-container-orgf06a58f" class="outline-3">
-<h3 id="orgf06a58f"><span class="section-number-3">1.3.</span> Using the MethodSource with an asssertEquals</h3>
+<div id="outline-container-orgc55042e" class="outline-3">
+<h3 id="orgc55042e"><span class="section-number-3">1.3.</span> Using the MethodSource with an asssertEquals</h3>
 <div class="outline-text-3" id="text-1-3">
 <div class="org-src-container">
 <pre class="src src-java"><span style="color: #bbc2cf;">@</span><span style="color: #51afef; font-weight: bold;">ParameterizedTest</span><span style="color: #fff0f5;">(</span>name = <span style="color: #98be65;">"Input prices: {0}, should be = {1}"</span><span style="color: #fff0f5;">)</span>
@@ -300,8 +313,8 @@
 </div>
 </div>
 </div>
-<div id="outline-container-org5e900d1" class="outline-3">
-<h3 id="org5e900d1"><span class="section-number-3">1.4.</span> Using the CsvSource</h3>
+<div id="outline-container-orgea5a32d" class="outline-3">
+<h3 id="orgea5a32d"><span class="section-number-3">1.4.</span> Using the CsvSource</h3>
 <div class="outline-text-3" id="text-1-4">
 <div class="org-src-container">
 <pre class="src src-java"><span style="color: #bbc2cf;">@</span><span style="color: #51afef; font-weight: bold;">ParameterizedTest</span>
@@ -314,8 +327,8 @@
 </div>
 </div>
 </div>
-<div id="outline-container-orgf608cee" class="outline-3">
-<h3 id="orgf608cee"><span class="section-number-3">1.5.</span> Using the CsvFileSource (put the CSVs in the main/resources directory)</h3>
+<div id="outline-container-org52ea4e0" class="outline-3">
+<h3 id="org52ea4e0"><span class="section-number-3">1.5.</span> Using the CsvFileSource (put the CSVs in the main/resources directory)</h3>
 <div class="outline-text-3" id="text-1-5">
 <div class="org-src-container">
 <pre class="src src-java"><span style="color: #bbc2cf;">@</span><span style="color: #51afef; font-weight: bold;">ParameterizedTest</span><span style="color: #fff0f5;">(</span>name = <span style="color: #98be65;">"The year {0} should be {1}"</span><span style="color: #fff0f5;">)</span>
@@ -339,8 +352,8 @@ The leapyears.csv file:
 </div>
 </div>
 </div>
-<div id="outline-container-orgbe018c8" class="outline-3">
-<h3 id="orgbe018c8"><span class="section-number-3">1.6.</span> Using the ValueSource</h3>
+<div id="outline-container-org4a4dea6" class="outline-3">
+<h3 id="org4a4dea6"><span class="section-number-3">1.6.</span> Using the ValueSource</h3>
 <div class="outline-text-3" id="text-1-6">
 <div class="org-src-container">
 <pre class="src src-java"><span style="color: #bbc2cf;">@</span><span style="color: #51afef; font-weight: bold;">ParameterizedTest</span><span style="color: #fff0f5;">(</span>name = <span style="color: #98be65;">"Investment of {0} should be illegal"</span><span style="color: #fff0f5;">)</span>
@@ -354,18 +367,21 @@ The leapyears.csv file:
 
 </pre>
 </div>
-
-
+</div>
+</div>
+</div>
+<div id="outline-container-org25c47d0" class="outline-2">
+<h2 id="org25c47d0"><span class="section-number-2">2.</span> Remove at the End</h2>
+<div class="outline-text-2" id="text-2">
 <script src="../assets/jquery-3.3.1.min.js"></script>
 <script src="../assets/notes.js"></script>
-</div>
 </div>
 </div>
 </div>
 <div id="postamble" class="status">
 <p class="date">Date: 2025-10-16 Thu 09:32</p>
 <p class="author">Author: Damian Chrzanowski</p>
-<p class="date">Created: 2025-12-07 Sun 13:54</p>
+<p class="date">Created: 2025-12-07 Sun 14:11</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
