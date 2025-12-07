@@ -1,0 +1,948 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2025-12-07 Sun 13:54 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>DAV</title>
+<meta name="author" content="Damian Chrzanowski" />
+<meta name="generator" content="Org Mode" />
+<style type="text/css">
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { }
+</style>
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">DAV</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#orgdbe997b">1. Exam bits</a></li>
+<li><a href="#org8ff4451">2. Pandas</a></li>
+<li><a href="#orgd52e402">3. Matplotlib</a></li>
+</ul>
+</div>
+</div>
+<p>
+<a href="index.html">Home Page</a>
+</p>
+<div id="outline-container-orgdbe997b" class="outline-2">
+<h2 id="orgdbe997b"><span class="section-number-2">1.</span> Exam bits</h2>
+<div class="outline-text-2" id="text-1">
+<ul class="org-ul">
+<li>Operate on dataframes</li>
+<li>Use matplotlib for graphing.</li>
+<li>GoSales sample, plus more uploaded today</li>
+<li>That's it</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org8ff4451" class="outline-2">
+<h2 id="org8ff4451"><span class="section-number-2">2.</span> Pandas</h2>
+<div class="outline-text-2" id="text-2">
+</div>
+<div id="outline-container-org43decee" class="outline-3">
+<h3 id="org43decee"><span class="section-number-3">2.1.</span> Handy tabulate function</h3>
+<div class="outline-text-3" id="text-2-1">
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #51afef; font-style: italic;">def</span> <span style="color: #c678dd;">printDF</span><span style="color: #fff0f5;">(</span><span style="color: #db5762;">df</span><span style="color: #fff0f5;">)</span>:
+    <span style="color: #c678dd;">print</span><span style="color: #fff0f5;">(</span><span style="color: #c678dd;">tabulate</span><span style="color: #c678dd;">(</span>df, <span style="color: #51afef; font-weight: bold;">headers</span><span style="color: #bbc2cf;">=</span><span style="color: #98be65;">'keys'</span>, <span style="color: #51afef; font-weight: bold;">tablefmt</span><span style="color: #bbc2cf;">=</span><span style="color: #98be65;">'pretty'</span>, <span style="color: #51afef; font-weight: bold;">showindex</span><span style="color: #bbc2cf;">=</span><span style="color: #a9a1e1;">False</span><span style="color: #c678dd;">)</span><span style="color: #fff0f5;">)</span>
+    <span style="color: #c678dd;">print</span><span style="color: #fff0f5;">(</span><span style="color: #98be65;">"</span><span style="color: #51afef; font-style: italic;">\n</span><span style="color: #98be65;">"</span><span style="color: #fff0f5;">)</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgc15d739" class="outline-3">
+<h3 id="orgc15d739"><span class="section-number-3">2.2.</span> Timing the load time</h3>
+<div class="outline-text-3" id="text-2-2">
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #db5762;">start</span> <span style="color: #bbc2cf;">=</span> time.<span style="color: #c678dd; font-weight: bold; font-style: italic;">time</span><span style="color: #fff0f5;">()</span>
+<span style="color: #5B6268;"># some work to be done here</span>
+<span style="color: #db5762;">end</span> <span style="color: #bbc2cf;">=</span> time.<span style="color: #c678dd; font-weight: bold; font-style: italic;">time</span><span style="color: #fff0f5;">()</span>
+<span style="color: #db5762;">time_taken</span> <span style="color: #bbc2cf;">=</span> end <span style="color: #bbc2cf;">-</span> start
+<span style="color: #c678dd;">print</span><span style="color: #fff0f5;">(</span><span style="color: #98be65;">'Time taken: {0} seconds'</span>.<span style="color: #c678dd; font-weight: bold; font-style: italic;">format</span><span style="color: #c678dd;">(</span>time_taken<span style="color: #c678dd;">)</span><span style="color: #fff0f5;">)</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgdd605f4" class="outline-3">
+<h3 id="orgdd605f4"><span class="section-number-3">2.3.</span> Loading data into df and saving to csv</h3>
+<div class="outline-text-3" id="text-2-3">
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #db5762;">df</span> <span style="color: #bbc2cf;">=</span> pd.<span style="color: #51afef; font-weight: bold; font-style: italic;">DataFrame</span><span style="color: #fff0f5;">(</span>data<span style="color: #fff0f5;">)</span> <span style="color: #5B6268;"># dict in the key: [array] format</span>
+<span style="color: #c678dd;">print</span><span style="color: #fff0f5;">(</span>df<span style="color: #fff0f5;">)</span>
+df.<span style="color: #c678dd; font-weight: bold; font-style: italic;">to_csv</span><span style="color: #fff0f5;">(</span><span style="color: #98be65;">"data.csv"</span>, <span style="color: #51afef; font-weight: bold;">index</span><span style="color: #bbc2cf;">=</span><span style="color: #a9a1e1;">False</span><span style="color: #fff0f5;">)</span> <span style="color: #5B6268;"># save to csv</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org5afed56" class="outline-3">
+<h3 id="org5afed56"><span class="section-number-3">2.4.</span> Reading basic</h3>
+<div class="outline-text-3" id="text-2-4">
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #5B6268;"># read in the data</span>
+<span style="color: #db5762;">data</span> <span style="color: #bbc2cf;">=</span> pd.<span style="color: #c678dd; font-weight: bold; font-style: italic;">read_csv</span><span style="color: #fff0f5;">(</span><span style="color: #98be65;">"employees.csv"</span><span style="color: #fff0f5;">)</span>
+<span style="color: #c678dd;">print</span><span style="color: #fff0f5;">(</span><span style="color: #98be65;">"All contents"</span><span style="color: #fff0f5;">)</span>
+<span style="color: #c678dd;">print</span><span style="color: #fff0f5;">(</span>data<span style="color: #fff0f5;">)</span>
+
+<span style="color: #5B6268;"># print info</span>
+<span style="color: #c678dd;">print</span><span style="color: #fff0f5;">(</span>data.<span style="color: #c678dd; font-weight: bold; font-style: italic;">info</span><span style="color: #c678dd;">(</span><span style="color: #51afef; font-weight: bold;">verbose</span><span style="color: #bbc2cf;">=</span><span style="color: #a9a1e1;">True</span>,<span style="color: #51afef; font-weight: bold;">memory_usage</span><span style="color: #bbc2cf;">=</span><span style="color: #98be65;">'deep'</span>,<span style="color: #51afef; font-weight: bold;">show_counts</span><span style="color: #bbc2cf;">=</span><span style="color: #a9a1e1;">True</span><span style="color: #c678dd;">)</span><span style="color: #fff0f5;">)</span>
+
+<span style="color: #5B6268;"># nunique - return number of unique values in each column</span>
+<span style="color: #c678dd;">print</span><span style="color: #fff0f5;">(</span>data.<span style="color: #c678dd; font-weight: bold; font-style: italic;">nunique</span><span style="color: #c678dd;">()</span><span style="color: #fff0f5;">)</span>
+
+<span style="color: #5B6268;"># unique - return the unique values in each column</span>
+<span style="color: #c678dd;">print</span><span style="color: #fff0f5;">(</span>data.<span style="color: #c678dd; font-weight: bold; font-style: italic;">apply</span><span style="color: #c678dd;">(</span>pd.<span style="color: #a9a1e1; font-style: italic;">unique</span><span style="color: #c678dd;">)</span><span style="color: #fff0f5;">)</span>
+
+<span style="color: #c678dd;">print</span><span style="color: #fff0f5;">(</span><span style="color: #98be65;">"Head"</span><span style="color: #fff0f5;">)</span>
+<span style="color: #c678dd;">print</span><span style="color: #fff0f5;">(</span>data.<span style="color: #c678dd; font-weight: bold; font-style: italic;">head</span><span style="color: #c678dd;">(</span><span style="color: #da8548; font-weight: bold;">1</span><span style="color: #c678dd;">)</span><span style="color: #fff0f5;">)</span>
+
+<span style="color: #c678dd;">print</span><span style="color: #fff0f5;">(</span><span style="color: #98be65;">"Tail"</span><span style="color: #fff0f5;">)</span>
+<span style="color: #c678dd;">print</span><span style="color: #fff0f5;">(</span>data.<span style="color: #c678dd; font-weight: bold; font-style: italic;">tail</span><span style="color: #c678dd;">(</span><span style="color: #da8548; font-weight: bold;">2</span><span style="color: #c678dd;">)</span><span style="color: #fff0f5;">)</span>
+
+data<span style="color: #fff0f5;">[</span><span style="color: #db5762;">"Monthly_Salary"</span><span style="color: #fff0f5;">]</span> <span style="color: #bbc2cf;">=</span> data<span style="color: #fff0f5;">[</span><span style="color: #98be65;">"Salary"</span><span style="color: #fff0f5;">]</span> <span style="color: #bbc2cf;">/</span> <span style="color: #da8548; font-weight: bold;">12</span> <span style="color: #5B6268;"># adding a new column</span>
+<span style="color: #c678dd;">print</span><span style="color: #fff0f5;">(</span>data<span style="color: #fff0f5;">)</span>
+
+<span style="color: #db5762;">grouped</span> <span style="color: #bbc2cf;">=</span> data.<span style="color: #c678dd; font-weight: bold; font-style: italic;">groupby</span><span style="color: #fff0f5;">(</span><span style="color: #98be65;">"Department"</span><span style="color: #fff0f5;">)[</span><span style="color: #98be65;">"Salary"</span><span style="color: #fff0f5;">]</span>.<span style="color: #c678dd; font-weight: bold; font-style: italic;">sum</span><span style="color: #fff0f5;">()</span> <span style="color: #5B6268;"># grouping data</span>
+<span style="color: #c678dd;">print</span><span style="color: #fff0f5;">(</span>grouped<span style="color: #fff0f5;">)</span>
+
+<span style="color: #5B6268;"># renaming the column of the grouped data</span>
+<span style="color: #db5762;">grouped_df</span> <span style="color: #bbc2cf;">=</span> data.<span style="color: #c678dd; font-weight: bold; font-style: italic;">groupby</span><span style="color: #fff0f5;">(</span><span style="color: #98be65;">"Department"</span>, <span style="color: #51afef; font-weight: bold;">as_index</span><span style="color: #bbc2cf;">=</span><span style="color: #a9a1e1;">False</span><span style="color: #fff0f5;">)[</span><span style="color: #98be65;">"Salary"</span><span style="color: #fff0f5;">]</span>.<span style="color: #c678dd; font-weight: bold; font-style: italic;">sum</span><span style="color: #fff0f5;">()</span> <span style="color: #5B6268;">#full dataframe</span>
+grouped_df.<span style="color: #c678dd; font-weight: bold; font-style: italic;">rename</span><span style="color: #fff0f5;">(</span><span style="color: #51afef; font-weight: bold;">columns</span><span style="color: #bbc2cf;">=</span><span style="color: #c678dd;">{</span><span style="color: #98be65;">"Salary"</span>: <span style="color: #98be65;">"Total_Salary"</span><span style="color: #c678dd;">}</span>, <span style="color: #51afef; font-weight: bold;">inplace</span><span style="color: #bbc2cf;">=</span><span style="color: #a9a1e1;">True</span><span style="color: #fff0f5;">)</span>
+<span style="color: #c678dd;">print</span><span style="color: #fff0f5;">(</span>grouped_df<span style="color: #fff0f5;">)</span>
+
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orge1e0705" class="outline-3">
+<h3 id="orge1e0705"><span class="section-number-3">2.5.</span> Adding Columns</h3>
+<div class="outline-text-3" id="text-2-5">
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #5B6268;"># data has price and quantity</span>
+<span style="color: #db5762;">df</span> <span style="color: #bbc2cf;">=</span> pdf.<span style="color: #51afef; font-weight: bold; font-style: italic;">DataFrame</span><span style="color: #fff0f5;">(</span>data<span style="color: #fff0f5;">)</span>
+df<span style="color: #fff0f5;">[</span><span style="color: #db5762;">'Total'</span><span style="color: #fff0f5;">]</span> <span style="color: #bbc2cf;">=</span> df<span style="color: #fff0f5;">[</span><span style="color: #98be65;">'Price'</span><span style="color: #fff0f5;">]</span> <span style="color: #bbc2cf;">*</span> df<span style="color: #fff0f5;">[</span><span style="color: #98be65;">'Quantity'</span><span style="color: #fff0f5;">]</span>
+
+<span style="color: #5B6268;"># apply a display format to the floating point numbers</span>
+pd.<span style="color: #a9a1e1; font-style: italic;">options</span>.<span style="color: #a9a1e1; font-style: italic;">display</span>.<span style="color: #db5762; font-style: italic;">float_format</span> <span style="color: #bbc2cf;">=</span> <span style="color: #98be65;">'{:.2f}'</span>.<span style="color: #a9a1e1; font-style: italic;">format</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org9ca871c" class="outline-3">
+<h3 id="org9ca871c"><span class="section-number-3">2.6.</span> Calculate sums</h3>
+<div class="outline-text-3" id="text-2-6">
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #5B6268;"># data has price and quantity</span>
+<span style="color: #db5762;">df</span> <span style="color: #bbc2cf;">=</span> pdf.<span style="color: #51afef; font-weight: bold; font-style: italic;">DataFrame</span><span style="color: #fff0f5;">(</span>data<span style="color: #fff0f5;">)</span>
+
+<span style="color: #5B6268;"># Group the data and sum the quantity sold and the total sales</span>
+<span style="color: #db5762;">prodTotals</span> <span style="color: #bbc2cf;">=</span> df.<span style="color: #c678dd; font-weight: bold; font-style: italic;">groupby</span><span style="color: #fff0f5;">(</span><span style="color: #98be65;">'Product'</span><span style="color: #fff0f5;">)</span>.<span style="color: #c678dd; font-weight: bold; font-style: italic;">agg</span><span style="color: #fff0f5;">(</span><span style="color: #c678dd;">{</span><span style="color: #98be65;">'Quantity'</span>: <span style="color: #98be65;">'sum'</span>, <span style="color: #98be65;">'Total'</span>: <span style="color: #98be65;">'sum'</span><span style="color: #c678dd;">}</span><span style="color: #fff0f5;">)</span>.<span style="color: #c678dd; font-weight: bold; font-style: italic;">reset_index</span><span style="color: #fff0f5;">()</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org6ad002e" class="outline-3">
+<h3 id="org6ad002e"><span class="section-number-3">2.7.</span> Cleaning data</h3>
+<div class="outline-text-3" id="text-2-7">
+<ul class="org-ul">
+<li><code>select_dtypes</code> (type): select all columns with the specific data type, <code>to_datetime()</code> : convert to datetime, <code>to_numeric(columns, errors)</code> : try to convert to numeric types</li>
+<li>Applying numeric values to certain columns</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-python">dataF<span style="color: #fff0f5;">[</span><span style="color: #c678dd;">[</span><span style="color: #98be65;">'Distance'</span>, <span style="color: #98be65;">'Time'</span>, <span style="color: #98be65;">'Calories'</span><span style="color: #c678dd;">]</span><span style="color: #fff0f5;">]</span> <span style="color: #bbc2cf;">=</span> dataf<span style="color: #fff0f5;">[</span><span style="color: #c678dd;">[</span><span style="color: #98be65;">'Distance'</span>, <span style="color: #98be65;">'Time'</span>, <span style="color: #98be65;">'Calories'</span><span style="color: #c678dd;">]</span><span style="color: #fff0f5;">]</span>.<span style="color: #c678dd; font-weight: bold; font-style: italic;">apply</span><span style="color: #fff0f5;">(</span>pd.<span style="color: #a9a1e1; font-style: italic;">to_numeric</span>,<span style="color: #51afef; font-weight: bold;">errors</span><span style="color: #bbc2cf;">=</span><span style="color: #98be65;">'coerce'</span><span style="color: #fff0f5;">)</span>
+<span style="color: #5B6268;"># coerce - converts non numeric to NaN</span>
+<span style="color: #5B6268;"># ignore - ignore the error and don't change the column</span>
+<span style="color: #5B6268;"># raise - raise an error, default</span>
+</pre>
+</div>
+<ul class="org-ul">
+<li>Linear interpolating</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #db5762;">dataF_interpolated</span> <span style="color: #bbc2cf;">=</span> dataF.<span style="color: #c678dd; font-weight: bold; font-style: italic;">interpolate</span><span style="color: #fff0f5;">()</span>
+</pre>
+</div>
+<ul class="org-ul">
+<li>Date parsing</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #5B6268;"># first extract the columns of interest</span>
+<span style="color: #db5762;">date_cols</span> <span style="color: #bbc2cf;">=</span> df<span style="color: #fff0f5;">[</span><span style="color: #c678dd;">[</span><span style="color: #98be65;">'startdate'</span>, <span style="color: #98be65;">'timestamp'</span><span style="color: #c678dd;">]</span><span style="color: #fff0f5;">]</span>.<span style="color: #c678dd; font-weight: bold; font-style: italic;">copy</span><span style="color: #fff0f5;">()</span>
+<span style="color: #c678dd;">print</span><span style="color: #fff0f5;">(</span>date_cols.<span style="color: #c678dd; font-weight: bold; font-style: italic;">info</span><span style="color: #c678dd;">()</span><span style="color: #fff0f5;">)</span>
+data_cols<span style="color: #fff0f5;">[</span><span style="color: #db5762;">'startdate'</span><span style="color: #fff0f5;">]</span> <span style="color: #bbc2cf;">=</span> pd.<span style="color: #c678dd; font-weight: bold; font-style: italic;">to_datetime</span><span style="color: #fff0f5;">(</span>date_cols<span style="color: #c678dd;">[</span><span style="color: #98be65;">'startdate'</span><span style="color: #c678dd;">]</span><span style="color: #fff0f5;">)</span>.<span style="color: #a9a1e1; font-style: italic;">dt</span>.<span style="color: #c678dd; font-weight: bold; font-style: italic;">strftime</span><span style="color: #fff0f5;">(</span><span style="color: #98be65;">'%d-%m-%y'</span><span style="color: #fff0f5;">)</span>
+data_cols<span style="color: #fff0f5;">[</span><span style="color: #db5762;">'timestamp'</span><span style="color: #fff0f5;">]</span> <span style="color: #bbc2cf;">=</span> pd.<span style="color: #c678dd; font-weight: bold; font-style: italic;">to_datetime</span><span style="color: #fff0f5;">(</span>date_cols<span style="color: #c678dd;">[</span><span style="color: #98be65;">'timestamp'</span><span style="color: #c678dd;">]</span><span style="color: #fff0f5;">)</span>.<span style="color: #a9a1e1; font-style: italic;">dt</span>.<span style="color: #c678dd; font-weight: bold; font-style: italic;">strftime</span><span style="color: #fff0f5;">(</span><span style="color: #98be65;">'%d-%m-%y %H:%M:%S'</span><span style="color: #fff0f5;">)</span>
+</pre>
+</div>
+<ul class="org-ul">
+<li>Replace wrong values</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #51afef; font-style: italic;">for</span> <span style="color: #db5762;">x</span> <span style="color: #bbc2cf;">in</span> df.<span style="color: #a9a1e1; font-style: italic;">index</span>:
+    <span style="color: #51afef; font-style: italic;">if</span> df.<span style="color: #a9a1e1; font-style: italic;">loc</span><span style="color: #fff0f5;">[</span>x, <span style="color: #98be65;">'Duration'</span><span style="color: #fff0f5;">]</span> <span style="color: #bbc2cf;">&gt;</span> <span style="color: #da8548; font-weight: bold;">120</span>:
+        df.<span style="color: #a9a1e1; font-style: italic;">loc</span><span style="color: #fff0f5;">[</span><span style="color: #db5762;">x</span>, <span style="color: #db5762;">'Duration'</span><span style="color: #fff0f5;">]</span> <span style="color: #bbc2cf;">=</span> <span style="color: #da8548; font-weight: bold;">120</span>
+</pre>
+</div>
+<ul class="org-ul">
+<li>Delete rows where something is wrong or missing</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #51afef; font-style: italic;">for</span> <span style="color: #db5762;">x</span> <span style="color: #bbc2cf;">in</span> df.<span style="color: #a9a1e1; font-style: italic;">index</span>:
+    <span style="color: #51afef; font-style: italic;">if</span> df.<span style="color: #a9a1e1; font-style: italic;">loc</span><span style="color: #fff0f5;">[</span>x, <span style="color: #98be65;">'Duration'</span><span style="color: #fff0f5;">]</span> <span style="color: #bbc2cf;">&gt;</span> <span style="color: #da8548; font-weight: bold;">120</span>:
+        df.<span style="color: #c678dd; font-weight: bold; font-style: italic;">drop</span><span style="color: #fff0f5;">(</span>x, <span style="color: #51afef; font-weight: bold;">inplace</span><span style="color: #bbc2cf;">=</span><span style="color: #a9a1e1;">True</span><span style="color: #fff0f5;">)</span>
+</pre>
+</div>
+<ul class="org-ul">
+<li>Drop duplicates</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #5B6268;"># Return true for every row that is a dupe</span>
+<span style="color: #c678dd;">print</span><span style="color: #fff0f5;">(</span>df.<span style="color: #c678dd; font-weight: bold; font-style: italic;">duplicated</span><span style="color: #c678dd;">()</span><span style="color: #fff0f5;">)</span>
+
+<span style="color: #5B6268;"># remove dupes</span>
+df.<span style="color: #c678dd; font-weight: bold; font-style: italic;">drop_duplicates</span><span style="color: #fff0f5;">(</span><span style="color: #51afef; font-weight: bold;">inplace</span><span style="color: #bbc2cf;">=</span><span style="color: #a9a1e1;">True</span><span style="color: #fff0f5;">)</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org2b48677" class="outline-3">
+<h3 id="org2b48677"><span class="section-number-3">2.8.</span> Renaming columns</h3>
+<div class="outline-text-3" id="text-2-8">
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #5B6268;"># first extract the columns of interest</span>
+df.<span style="color: #c678dd; font-weight: bold; font-style: italic;">rename</span><span style="color: #fff0f5;">(</span><span style="color: #51afef; font-weight: bold;">columns</span><span style="color: #bbc2cf;">=</span><span style="color: #c678dd;">{</span><span style="color: #98be65;">'from'</span>: <span style="color: #98be65;">'To'</span>, <span style="color: #98be65;">'anotherFrom'</span>: <span style="color: #98be65;">'anotherTo'</span><span style="color: #c678dd;">}</span>, <span style="color: #51afef; font-weight: bold;">inplace</span><span style="color: #bbc2cf;">=</span><span style="color: #a9a1e1;">True</span><span style="color: #fff0f5;">)</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org4826228" class="outline-3">
+<h3 id="org4826228"><span class="section-number-3">2.9.</span> Replacing values in columns</h3>
+<div class="outline-text-3" id="text-2-9">
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #5B6268;"># first extract the columns of interest</span>
+df<span style="color: #fff0f5;">[</span><span style="color: #db5762;">'Location'</span><span style="color: #fff0f5;">]</span> <span style="color: #bbc2cf;">=</span> df<span style="color: #fff0f5;">[</span><span style="color: #98be65;">'Location'</span><span style="color: #fff0f5;">]</span>.<span style="color: #a9a1e1; font-style: italic;">str</span>.<span style="color: #c678dd; font-weight: bold; font-style: italic;">replace</span><span style="color: #fff0f5;">(</span><span style="color: #98be65;">'a'</span>, <span style="color: #98be65;">'@'</span><span style="color: #fff0f5;">)</span>  <span style="color: #5B6268;"># replaces all @ with a</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgbad5d2e" class="outline-3">
+<h3 id="orgbad5d2e"><span class="section-number-3">2.10.</span> Displaying count of missing values</h3>
+<div class="outline-text-3" id="text-2-10">
+<ul class="org-ul">
+<li>isnull boolean same-sized object with values that are NA</li>
+<li>notnull same as above but not null</li>
+<li>any(axis=1) return true if any column in a row contains a missing value</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #db5762;">missing_count</span> <span style="color: #bbc2cf;">=</span> df.<span style="color: #c678dd; font-weight: bold; font-style: italic;">isna</span><span style="color: #fff0f5;">()</span>.<span style="color: #c678dd; font-weight: bold; font-style: italic;">sum</span><span style="color: #fff0f5;">()</span> <span style="color: #5B6268;"># missing values in each column</span>
+<span style="color: #db5762;">missing_rows</span> <span style="color: #bbc2cf;">=</span> df<span style="color: #fff0f5;">[</span>df.<span style="color: #c678dd; font-weight: bold; font-style: italic;">isnull</span><span style="color: #c678dd;">()</span>.<span style="color: #c678dd; font-weight: bold; font-style: italic;">any</span><span style="color: #c678dd;">(</span><span style="color: #51afef; font-weight: bold;">axis</span><span style="color: #bbc2cf;">=</span><span style="color: #da8548; font-weight: bold;">1</span><span style="color: #c678dd;">)</span><span style="color: #fff0f5;">]</span> <span style="color: #5B6268;"># all rows that contain NA values</span>
+<span style="color: #c678dd;">printDF</span><span style="color: #fff0f5;">(</span>missing_rows<span style="color: #fff0f5;">)</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org0ba5fc0" class="outline-3">
+<h3 id="org0ba5fc0"><span class="section-number-3">2.11.</span> Dropping rows</h3>
+<div class="outline-text-3" id="text-2-11">
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #db5762;">result</span> <span style="color: #bbc2cf;">=</span> df.<span style="color: #c678dd; font-weight: bold; font-style: italic;">dropna</span><span style="color: #fff0f5;">(</span><span style="color: #51afef; font-weight: bold;">how</span><span style="color: #bbc2cf;">=</span><span style="color: #98be65;">'any'</span><span style="color: #fff0f5;">)</span>
+<span style="color: #5B6268;"># drop specific column</span>
+<span style="color: #db5762;">result</span> <span style="color: #bbc2cf;">=</span> df.<span style="color: #c678dd; font-weight: bold; font-style: italic;">drop</span><span style="color: #fff0f5;">(</span><span style="color: #c678dd;">[</span><span style="color: #98be65;">'someColumn'</span><span style="color: #c678dd;">]</span><span style="color: #fff0f5;">)</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org419d20b" class="outline-3">
+<h3 id="org419d20b"><span class="section-number-3">2.12.</span> Filling missing NaN values using fillna()</h3>
+<div class="outline-text-3" id="text-2-12">
+<div class="org-src-container">
+<pre class="src src-python">df<span style="color: #fff0f5;">[</span><span style="color: #98be65;">'Distance'</span><span style="color: #fff0f5;">]</span>.<span style="color: #c678dd; font-weight: bold; font-style: italic;">fillna</span><span style="color: #fff0f5;">(</span><span style="color: #51afef; font-weight: bold;">value</span> <span style="color: #bbc2cf;">=</span> df<span style="color: #c678dd;">[</span><span style="color: #98be65;">'Distance'</span><span style="color: #c678dd;">]</span>.<span style="color: #c678dd; font-weight: bold; font-style: italic;">mean</span><span style="color: #c678dd;">()</span>, <span style="color: #51afef; font-weight: bold;">inplace</span><span style="color: #bbc2cf;">=</span><span style="color: #a9a1e1;">True</span><span style="color: #fff0f5;">)</span> <span style="color: #5B6268;"># fill with mean</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org70d243d" class="outline-3">
+<h3 id="org70d243d"><span class="section-number-3">2.13.</span> Create a new dataframe from a frame</h3>
+<div class="outline-text-3" id="text-2-13">
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #db5762;">activityCalorieSum</span> <span style="color: #bbc2cf;">=</span> dataF.<span style="color: #c678dd; font-weight: bold; font-style: italic;">groupby</span><span style="color: #fff0f5;">(</span><span style="color: #98be65;">'Category'</span><span style="color: #fff0f5;">)[</span><span style="color: #98be65;">'Calories'</span><span style="color: #fff0f5;">]</span>.<span style="color: #c678dd; font-weight: bold; font-style: italic;">sum</span><span style="color: #fff0f5;">()</span>.<span style="color: #c678dd; font-weight: bold; font-style: italic;">to_frame</span><span style="color: #fff0f5;">()</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgfbd20a4" class="outline-3">
+<h3 id="orgfbd20a4"><span class="section-number-3">2.14.</span> Summarising</h3>
+<div class="outline-text-3" id="text-2-14">
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #db5762;">query</span> <span style="color: #bbc2cf;">=</span> df.<span style="color: #c678dd; font-weight: bold; font-style: italic;">query</span><span style="color: #fff0f5;">(</span><span style="color: #98be65;">'Category == "Run"'</span><span style="color: #fff0f5;">)</span>
+<span style="color: #db5762;">totalTime</span> <span style="color: #bbc2cf;">=</span> query<span style="color: #fff0f5;">[</span><span style="color: #98be65;">'Time'</span><span style="color: #fff0f5;">]</span>.<span style="color: #c678dd; font-weight: bold; font-style: italic;">sum</span><span style="color: #fff0f5;">()</span>
+<span style="color: #db5762;">totalRuns</span> <span style="color: #bbc2cf;">=</span> <span style="color: #c678dd;">len</span><span style="color: #fff0f5;">(</span>query.<span style="color: #a9a1e1; font-style: italic;">index</span><span style="color: #fff0f5;">)</span>
+<span style="color: #5B6268;"># count instances of things</span>
+<span style="color: #db5762;">totalWalks</span> <span style="color: #bbc2cf;">=</span> df<span style="color: #fff0f5;">[</span><span style="color: #98be65;">'Category'</span><span style="color: #fff0f5;">]</span>.<span style="color: #c678dd; font-weight: bold; font-style: italic;">value_counts</span><span style="color: #fff0f5;">()[</span><span style="color: #98be65;">'Walk'</span><span style="color: #fff0f5;">]</span>
+<span style="color: #db5762;">totalWalkDistance</span> <span style="color: #bbc2cf;">=</span> df.<span style="color: #a9a1e1; font-style: italic;">loc</span><span style="color: #fff0f5;">[</span>df<span style="color: #c678dd;">[</span><span style="color: #98be65;">'Category'</span><span style="color: #c678dd;">]</span> <span style="color: #bbc2cf;">==</span> <span style="color: #98be65;">'Walk'</span>, <span style="color: #98be65;">'Distance'</span><span style="color: #fff0f5;">]</span>.<span style="color: #c678dd; font-weight: bold; font-style: italic;">sum</span><span style="color: #fff0f5;">()</span>
+<span style="color: #db5762;">totalWalkCalories</span> <span style="color: #bbc2cf;">=</span> df.<span style="color: #a9a1e1; font-style: italic;">loc</span><span style="color: #fff0f5;">[</span>df<span style="color: #c678dd;">[</span><span style="color: #98be65;">'Category'</span><span style="color: #c678dd;">]</span> <span style="color: #bbc2cf;">==</span> <span style="color: #98be65;">'Walk'</span>, <span style="color: #98be65;">'Calories'</span><span style="color: #fff0f5;">]</span>.<span style="color: #c678dd; font-weight: bold; font-style: italic;">sum</span><span style="color: #fff0f5;">()</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org15b0822" class="outline-3">
+<h3 id="org15b0822"><span class="section-number-3">2.15.</span> IAT</h3>
+<div class="outline-text-3" id="text-2-15">
+<div class="org-src-container">
+<pre class="src src-python">result<span style="color: #fff0f5;">[</span><span style="color: #98be65;">'Product'</span><span style="color: #fff0f5;">]</span>.<span style="color: #a9a1e1; font-style: italic;">iat</span><span style="color: #fff0f5;">[</span><span style="color: #da8548; font-weight: bold;">0</span><span style="color: #fff0f5;">]</span> <span style="color: #5B6268;"># retrieve value from col Product at row 0</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgcbb3075" class="outline-3">
+<h3 id="orgcbb3075"><span class="section-number-3">2.16.</span> Queries (like SQL where)</h3>
+<div class="outline-text-3" id="text-2-16">
+<ul class="org-ul">
+<li>Columns in data: Name (str), Age (float64), Department (str), Salary (int), PerformanceScore (float64), StartDate (date)</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #db5762;">df</span> <span style="color: #bbc2cf;">=</span> pd.<span style="color: #51afef; font-weight: bold; font-style: italic;">DataFrame</span><span style="color: #fff0f5;">(</span>data<span style="color: #fff0f5;">)</span>
+<span style="color: #5B6268;"># all employees in a certain dept</span>
+<span style="color: #db5762;">it_employees</span> <span style="color: #bbc2cf;">=</span> df.<span style="color: #c678dd; font-weight: bold; font-style: italic;">query</span><span style="color: #fff0f5;">(</span><span style="color: #98be65;">"Department == 'IT'"</span><span style="color: #fff0f5;">)</span>
+<span style="color: #c678dd;">print</span><span style="color: #fff0f5;">(</span>it_employees<span style="color: #fff0f5;">)</span>
+
+<span style="color: #5B6268;"># using and / or</span>
+<span style="color: #db5762;">it_or_hr</span> <span style="color: #bbc2cf;">=</span> df.<span style="color: #c678dd; font-weight: bold; font-style: italic;">query</span><span style="color: #fff0f5;">(</span><span style="color: #98be65;">"Department == 'IT' or Department == 'HR'"</span><span style="color: #fff0f5;">)</span>
+
+<span style="color: #5B6268;"># math operators</span>
+<span style="color: #db5762;">it_high_salary</span> <span style="color: #bbc2cf;">=</span> df.<span style="color: #c678dd; font-weight: bold; font-style: italic;">query</span><span style="color: #fff0f5;">(</span><span style="color: #98be65;">"Department == 'IT' and Salary &gt; 50000"</span><span style="color: #fff0f5;">)</span>
+
+<span style="color: #5B6268;"># range operator (here between 45000 and 60000)</span>
+<span style="color: #db5762;">mid_salary</span> <span style="color: #bbc2cf;">=</span> df.<span style="color: #c678dd; font-weight: bold; font-style: italic;">query</span><span style="color: #fff0f5;">(</span><span style="color: #98be65;">"45000 &lt;= Salary &lt;= 60000"</span><span style="color: #fff0f5;">)</span>
+
+<span style="color: #5B6268;"># string matching, starts with 'A'</span>
+<span style="color: #db5762;">a_names</span> <span style="color: #bbc2cf;">=</span> df.<span style="color: #c678dd; font-weight: bold; font-style: italic;">query</span><span style="color: #fff0f5;">(</span><span style="color: #98be65;">"Name.str.startswith('A')"</span>, <span style="color: #51afef; font-weight: bold;">engine</span><span style="color: #bbc2cf;">=</span><span style="color: #98be65;">'python'</span><span style="color: #fff0f5;">)</span>
+
+<span style="color: #5B6268;"># employees whose name contains the letter 'a'</span>
+<span style="color: #db5762;">contains_a</span> <span style="color: #bbc2cf;">=</span> df.<span style="color: #c678dd; font-weight: bold; font-style: italic;">query</span><span style="color: #fff0f5;">(</span><span style="color: #98be65;">"Name.str.contains('a', case=False)"</span>, <span style="color: #51afef; font-weight: bold;">engine</span><span style="color: #bbc2cf;">=</span><span style="color: #98be65;">'python'</span><span style="color: #fff0f5;">)</span>
+
+<span style="color: #5B6268;"># the 'IN' operator. Employees in IT or Finance (like SQL IN)</span>
+<span style="color: #db5762;">dept_list</span> <span style="color: #bbc2cf;">=</span> <span style="color: #fff0f5;">[</span><span style="color: #98be65;">'IT'</span>, <span style="color: #98be65;">'Finance'</span><span style="color: #fff0f5;">]</span>
+<span style="color: #db5762;">selected_depts</span> <span style="color: #bbc2cf;">=</span> df.<span style="color: #c678dd; font-weight: bold; font-style: italic;">query</span><span style="color: #fff0f5;">(</span><span style="color: #98be65;">"Department in @dept_list"</span><span style="color: #fff0f5;">)</span>
+
+<span style="color: #5B6268;"># Everyone NOT in HR</span>
+<span style="color: #db5762;">non_hr</span> <span style="color: #bbc2cf;">=</span> df.<span style="color: #c678dd; font-weight: bold; font-style: italic;">query</span><span style="color: #fff0f5;">(</span><span style="color: #98be65;">"not Department == 'HR'"</span><span style="color: #fff0f5;">)</span>
+
+<span style="color: #5B6268;"># HR employees with more than 2 years of experience</span>
+<span style="color: #db5762;">experienced_hr</span> <span style="color: #bbc2cf;">=</span> df.<span style="color: #c678dd; font-weight: bold; font-style: italic;">query</span><span style="color: #fff0f5;">(</span><span style="color: #98be65;">"Department == 'HR' and Experience_Years &gt; 2"</span><span style="color: #fff0f5;">)</span>
+
+<span style="color: #5B6268;"># dynamic vars</span>
+<span style="color: #db5762;">dept</span> <span style="color: #bbc2cf;">=</span> <span style="color: #98be65;">'Finance'</span>
+<span style="color: #db5762;">min_exp</span> <span style="color: #bbc2cf;">=</span> <span style="color: #da8548; font-weight: bold;">5</span>
+<span style="color: #db5762;">finance_senior</span> <span style="color: #bbc2cf;">=</span> df.<span style="color: #c678dd; font-weight: bold; font-style: italic;">query</span><span style="color: #fff0f5;">(</span><span style="color: #98be65;">"Department == @dept and Experience_Years &gt;= @min_exp"</span><span style="color: #fff0f5;">)</span>
+
+<span style="color: #5B6268;"># combinations with parens</span>
+<span style="color: #5B6268;"># Employees in IT with salary &gt; 50k OR employees in HR with &lt; 3 years experience</span>
+<span style="color: #db5762;">combo</span> <span style="color: #bbc2cf;">=</span> df.<span style="color: #c678dd; font-weight: bold; font-style: italic;">query</span><span style="color: #fff0f5;">(</span><span style="color: #98be65;">"(Department == 'IT' and Salary &gt; 50000) or (Department == 'HR' and Experience_Years &lt; 3)"</span><span style="color: #fff0f5;">)</span>
+
+<span style="color: #5B6268;"># sort after query</span>
+<span style="color: #5B6268;"># Finance department, sorted by experience descending</span>
+<span style="color: #db5762;">finance_sorted</span> <span style="color: #bbc2cf;">=</span> <span style="color: #fff0f5;">(</span>
+    df.<span style="color: #c678dd; font-weight: bold; font-style: italic;">query</span><span style="color: #c678dd;">(</span><span style="color: #98be65;">"Department == 'Finance'"</span><span style="color: #c678dd;">)</span>
+      .<span style="color: #c678dd; font-weight: bold; font-style: italic;">sort_values</span><span style="color: #c678dd;">(</span><span style="color: #51afef; font-weight: bold;">by</span><span style="color: #bbc2cf;">=</span><span style="color: #98be65;">"Experience_Years"</span>, <span style="color: #51afef; font-weight: bold;">ascending</span><span style="color: #bbc2cf;">=</span><span style="color: #a9a1e1;">False</span><span style="color: #c678dd;">)</span>
+<span style="color: #fff0f5;">)</span>
+
+<span style="color: #5B6268;"># math on the query</span>
+<span style="color: #5B6268;"># Employees whose salary per year of experience &gt; 10,000</span>
+<span style="color: #5B6268;"># (i.e., Salary / Experience_Years &gt; 10_000)</span>
+<span style="color: #db5762;">efficient</span> <span style="color: #bbc2cf;">=</span> df.<span style="color: #c678dd; font-weight: bold; font-style: italic;">query</span><span style="color: #fff0f5;">(</span><span style="color: #98be65;">"(Salary / Experience_Years) &gt; 10000"</span><span style="color: #fff0f5;">)</span>
+
+<span style="color: #5B6268;"># combining query + adding a new column</span>
+<span style="color: #5B6268;"># Add a column for Monthly Salary and query those above 4000</span>
+df<span style="color: #fff0f5;">[</span><span style="color: #db5762;">"Monthly_Salary"</span><span style="color: #fff0f5;">]</span> <span style="color: #bbc2cf;">=</span> df<span style="color: #fff0f5;">[</span><span style="color: #98be65;">"Salary"</span><span style="color: #fff0f5;">]</span> <span style="color: #bbc2cf;">/</span> <span style="color: #da8548; font-weight: bold;">12</span>
+<span style="color: #db5762;">monthly</span> <span style="color: #bbc2cf;">=</span> df.<span style="color: #c678dd; font-weight: bold; font-style: italic;">query</span><span style="color: #fff0f5;">(</span><span style="color: #98be65;">"Monthly_Salary &gt; 4000"</span><span style="color: #fff0f5;">)</span>
+<span style="color: #5B6268;"># print only specific columns</span>
+<span style="color: #51afef; font-style: italic;">print</span><span style="color: #fff0f5;">(</span>monthly<span style="color: #c678dd;">[</span><span style="color: #98be65;">[</span><span style="color: #98be65;">"Name"</span>, <span style="color: #98be65;">"Department"</span>, <span style="color: #98be65;">"Monthly_Salary"</span><span style="color: #98be65;">]</span><span style="color: #c678dd;">]</span>, <span style="color: #98be65;">"</span><span style="color: #51afef; font-style: italic;">\n</span><span style="color: #98be65;">"</span>
+
+<span style="color: #5B6268;"># query + group + aggregate</span>
+<span style="color: #5B6268;"># Total salary per department, but only for employees with salary &gt; 45000</span>
+filtered_group <span style="color: #bbc2cf;">=</span> <span style="color: #c678dd;">(</span>
+    df.<span style="color: #c678dd; font-weight: bold; font-style: italic;">query</span><span style="color: #98be65;">(</span><span style="color: #98be65;">"Salary &gt; 45000"</span><span style="color: #98be65;">)</span>
+      .<span style="color: #c678dd; font-weight: bold; font-style: italic;">groupby</span><span style="color: #98be65;">(</span><span style="color: #98be65;">"Department"</span><span style="color: #98be65;">)[</span><span style="color: #98be65;">"Salary"</span><span style="color: #98be65;">]</span>
+      .<span style="color: #c678dd; font-weight: bold; font-style: italic;">sum</span><span style="color: #98be65;">()</span>
+      .<span style="color: #c678dd; font-weight: bold; font-style: italic;">reset_index</span><span style="color: #98be65;">()</span>
+      .<span style="color: #c678dd; font-weight: bold; font-style: italic;">rename</span><span style="color: #98be65;">(</span><span style="color: #51afef; font-weight: bold;">columns</span><span style="color: #bbc2cf;">=</span><span style="color: #00bfff;">{</span><span style="color: #98be65;">"Salary"</span>: <span style="color: #98be65;">"Total_Salary"</span><span style="color: #00bfff;">}</span><span style="color: #98be65;">)</span>
+<span style="color: #c678dd;">)</span>
+<span style="color: #5B6268;"># filter with loc</span>
+condition <span style="color: #bbc2cf;">=</span> df<span style="color: #c678dd;">[</span><span style="color: #98be65;">'Salary'</span><span style="color: #c678dd;">]</span> <span style="color: #bbc2cf;">&gt;</span> <span style="color: #da8548; font-weight: bold;">45000</span>
+filtered_df <span style="color: #bbc2cf;">=</span> df.<span style="color: #a9a1e1; font-style: italic;">loc</span><span style="color: #c678dd;">[</span>condition<span style="color: #c678dd;">]</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org554332f" class="outline-3">
+<h3 id="org554332f"><span class="section-number-3">2.17.</span> Analysing data</h3>
+<div class="outline-text-3" id="text-2-17">
+<ul class="org-ul">
+<li>sum()</li>
+<li>mean()</li>
+<li>median()</li>
+<li>count()</li>
+<li>std()</li>
+<li>min()</li>
+<li>max()</li>
+<li>pivot(): pivots the data based on the index, columns and values parameters</li>
+<li>cut(): bins the data in equal-sized bins</li>
+<li>nlargest(n=10, columns=['Total Sales']).sort<sub>values</sub>('Total Sales', ascending=False):</li>
+<li>The data has: state, fire<sub>year</sub>, fire<sub>month</sub>, acres<sub>burned</sub>, days<sub>burning</sub>, fire<sub>count</sub></li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #5B6268;"># mean fire</span>
+<span style="color: #db5762;">meanFires</span> <span style="color: #bbc2cf;">=</span> fires.<span style="color: #c678dd; font-weight: bold; font-style: italic;">groupby</span><span style="color: #fff0f5;">(</span><span style="color: #98be65;">'state'</span><span style="color: #fff0f5;">)</span>.<span style="color: #c678dd; font-weight: bold; font-style: italic;">mean</span><span style="color: #fff0f5;">()</span>.<span style="color: #c678dd; font-weight: bold; font-style: italic;">round</span><span style="color: #fff0f5;">(</span><span style="color: #da8548; font-weight: bold;">2</span><span style="color: #fff0f5;">)</span>
+
+<span style="color: #5B6268;"># better breakdown</span>
+<span style="color: #db5762;">meanFires2</span> <span style="color: #bbc2cf;">=</span> fires.<span style="color: #c678dd; font-weight: bold; font-style: italic;">groupby</span><span style="color: #fff0f5;">(</span><span style="color: #c678dd;">[</span><span style="color: #98be65;">'state'</span>, <span style="color: #98be65;">'fire_year'</span>, <span style="color: #98be65;">'fire_month'</span><span style="color: #c678dd;">]</span><span style="color: #fff0f5;">)</span>.<span style="color: #c678dd; font-weight: bold; font-style: italic;">mean</span><span style="color: #fff0f5;">()</span>.<span style="color: #c678dd; font-weight: bold; font-style: italic;">round</span><span style="color: #fff0f5;">(</span><span style="color: #da8548; font-weight: bold;">2</span><span style="color: #fff0f5;">)</span>
+
+<span style="color: #5B6268;"># using aggregation to apply sum, count and mean</span>
+<span style="color: #db5762;">result</span> <span style="color: #bbc2cf;">=</span> fires.<span style="color: #c678dd; font-weight: bold; font-style: italic;">groupby</span><span style="color: #fff0f5;">(</span><span style="color: #c678dd;">[</span><span style="color: #98be65;">'state'</span>, <span style="color: #98be65;">'fire_year'</span>, <span style="color: #98be65;">'fire_month'</span><span style="color: #c678dd;">]</span><span style="color: #fff0f5;">)</span>.<span style="color: #c678dd; font-weight: bold; font-style: italic;">agg</span><span style="color: #fff0f5;">(</span><span style="color: #c678dd;">{</span><span style="color: #98be65;">'days_burning'</span>: <span style="color: #98be65;">[</span><span style="color: #98be65;">'sum'</span>, <span style="color: #98be65;">'count'</span>, <span style="color: #98be65;">'mean'</span><span style="color: #98be65;">]</span><span style="color: #c678dd;">}</span><span style="color: #fff0f5;">)</span>
+
+<span style="color: #5B6268;"># flip the data with pivot()</span>
+df.<span style="color: #c678dd; font-weight: bold; font-style: italic;">pivot</span><span style="color: #fff0f5;">(</span><span style="color: #51afef; font-weight: bold;">index</span><span style="color: #bbc2cf;">=</span><span style="color: #98be65;">'fire_year'</span>,<span style="color: #51afef; font-weight: bold;">columns</span><span style="color: #bbc2cf;">=</span><span style="color: #98be65;">'state'</span>,<span style="color: #51afef; font-weight: bold;">values</span><span style="color: #bbc2cf;">=</span><span style="color: #98be65;">'acres_burned'</span><span style="color: #fff0f5;">)</span>.<span style="color: #c678dd; font-weight: bold; font-style: italic;">plot</span><span style="color: #fff0f5;">()</span> <span style="color: #5B6268;"># if we want to plot it</span>
+plt.<span style="color: #c678dd; font-weight: bold; font-style: italic;">xlabel</span><span style="color: #fff0f5;">(</span><span style="color: #98be65;">'Year'</span><span style="color: #fff0f5;">)</span>
+plt.<span style="color: #c678dd; font-weight: bold; font-style: italic;">ylabel</span><span style="color: #fff0f5;">(</span><span style="color: #98be65;">'Acres burned'</span><span style="color: #fff0f5;">)</span>
+plt.<span style="color: #c678dd; font-weight: bold; font-style: italic;">title</span><span style="color: #fff0f5;">(</span><span style="color: #98be65;">'Acres burned by year'</span><span style="color: #fff0f5;">)</span>
+plt.<span style="color: #c678dd; font-weight: bold; font-style: italic;">show</span><span style="color: #fff0f5;">()</span>
+
+<span style="color: #5B6268;"># new df from a pivot</span>
+<span style="color: #db5762;">new_df</span> <span style="color: #bbc2cf;">=</span> df.<span style="color: #c678dd; font-weight: bold; font-style: italic;">pivot</span><span style="color: #fff0f5;">(</span><span style="color: #51afef; font-weight: bold;">index</span><span style="color: #bbc2cf;">=</span><span style="color: #98be65;">'fire_year'</span>,<span style="color: #51afef; font-weight: bold;">columns</span><span style="color: #bbc2cf;">=</span><span style="color: #98be65;">'state'</span>,<span style="color: #51afef; font-weight: bold;">values</span><span style="color: #bbc2cf;">=</span><span style="color: #98be65;">'acres_burned'</span>,<span style="color: #51afef; font-weight: bold;">aggfunc</span><span style="color: #bbc2cf;">=</span><span style="color: #98be65;">'sum'</span><span style="color: #fff0f5;">)</span>
+
+<span style="color: #5B6268;"># cutting</span>
+<span style="color: #db5762;">binned_data</span> <span style="color: #bbc2cf;">=</span> pd.<span style="color: #c678dd; font-weight: bold; font-style: italic;">but</span><span style="color: #fff0f5;">(</span>fires_filtered<span style="color: #c678dd;">[</span><span style="color: #98be65;">'acres_burned'</span><span style="color: #c678dd;">]</span>,<span style="color: #51afef; font-weight: bold;">bins</span><span style="color: #bbc2cf;">=</span><span style="color: #da8548; font-weight: bold;">4</span><span style="color: #fff0f5;">)</span>
+
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org76a61b5" class="outline-3">
+<h3 id="org76a61b5"><span class="section-number-3">2.18.</span> Thiago's samples on cleaning</h3>
+<div class="outline-text-3" id="text-2-18">
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #5B6268;"># === 1&#65039; Load the dirty dataset ===</span>
+<span style="color: #db5762;">df</span> <span style="color: #bbc2cf;">=</span> pd.<span style="color: #c678dd; font-weight: bold; font-style: italic;">read_csv</span><span style="color: #fff0f5;">(</span><span style="color: #98be65;">"employees_dirty_interpolate.csv"</span><span style="color: #fff0f5;">)</span>
+<span style="color: #c678dd;">print</span><span style="color: #fff0f5;">(</span><span style="color: #98be65;">"=== ORIGINAL DATA (First 10 Rows) ==="</span><span style="color: #fff0f5;">)</span>
+<span style="color: #c678dd;">print</span><span style="color: #fff0f5;">(</span>df.<span style="color: #c678dd; font-weight: bold; font-style: italic;">head</span><span style="color: #c678dd;">(</span><span style="color: #da8548; font-weight: bold;">10</span><span style="color: #c678dd;">)</span><span style="color: #fff0f5;">)</span>
+
+<span style="color: #c678dd;">print</span><span style="color: #fff0f5;">(</span><span style="color: #98be65;">"</span><span style="color: #51afef; font-style: italic;">\n</span><span style="color: #98be65;">=== DATAFRAME OVERVIEW ==="</span><span style="color: #fff0f5;">)</span>
+<span style="color: #c678dd;">print</span><span style="color: #fff0f5;">(</span><span style="color: #98be65;">f"Number of rows: </span><span style="color: #51afef; font-style: italic;">{</span><span style="color: #bbc2cf; background-color: #131519;">df.</span><span style="color: #a9a1e1; background-color: #131519; font-style: italic;">shape</span><span style="color: #bbc2cf; background-color: #131519;">[</span><span style="color: #da8548; background-color: #131519; font-weight: bold;">0</span><span style="color: #bbc2cf; background-color: #131519;">]</span><span style="color: #51afef; font-style: italic;">}</span><span style="color: #98be65;">"</span><span style="color: #fff0f5;">)</span>
+<span style="color: #c678dd;">print</span><span style="color: #fff0f5;">(</span><span style="color: #98be65;">f"Number of columns: </span><span style="color: #51afef; font-style: italic;">{</span><span style="color: #bbc2cf; background-color: #131519;">df.</span><span style="color: #a9a1e1; background-color: #131519; font-style: italic;">shape</span><span style="color: #bbc2cf; background-color: #131519;">[</span><span style="color: #da8548; background-color: #131519; font-weight: bold;">1</span><span style="color: #bbc2cf; background-color: #131519;">]</span><span style="color: #51afef; font-style: italic;">}</span><span style="color: #98be65;">"</span><span style="color: #fff0f5;">)</span>
+
+<span style="color: #c678dd;">print</span><span style="color: #fff0f5;">(</span><span style="color: #98be65;">"</span><span style="color: #51afef; font-style: italic;">\n</span><span style="color: #98be65;">=== DATA TYPES &amp; MEMORY USAGE ==="</span><span style="color: #fff0f5;">)</span>
+df.<span style="color: #c678dd; font-weight: bold; font-style: italic;">info</span><span style="color: #fff0f5;">(</span><span style="color: #51afef; font-weight: bold;">verbose</span><span style="color: #bbc2cf;">=</span><span style="color: #a9a1e1;">True</span>, <span style="color: #51afef; font-weight: bold;">memory_usage</span><span style="color: #bbc2cf;">=</span><span style="color: #98be65;">'deep'</span>, <span style="color: #51afef; font-weight: bold;">show_counts</span><span style="color: #bbc2cf;">=</span><span style="color: #a9a1e1;">True</span><span style="color: #fff0f5;">)</span>
+
+<span style="color: #c678dd;">print</span><span style="color: #fff0f5;">(</span><span style="color: #98be65;">"</span><span style="color: #51afef; font-style: italic;">\n</span><span style="color: #98be65;">=== COUNT OF MISSING VALUES PER COLUMN ==="</span><span style="color: #fff0f5;">)</span>
+<span style="color: #c678dd;">print</span><span style="color: #fff0f5;">(</span>df.<span style="color: #c678dd; font-weight: bold; font-style: italic;">isnull</span><span style="color: #c678dd;">()</span>.<span style="color: #c678dd; font-weight: bold; font-style: italic;">sum</span><span style="color: #c678dd;">()</span><span style="color: #fff0f5;">)</span>
+
+<span style="color: #c678dd;">print</span><span style="color: #fff0f5;">(</span><span style="color: #98be65;">"</span><span style="color: #51afef; font-style: italic;">\n</span><span style="color: #98be65;">=== PERCENTAGE OF MISSING VALUES PER COLUMN ==="</span><span style="color: #fff0f5;">)</span>
+<span style="color: #c678dd;">print</span><span style="color: #fff0f5;">(</span><span style="color: #c678dd;">(</span>df.<span style="color: #c678dd; font-weight: bold; font-style: italic;">isnull</span><span style="color: #98be65;">()</span>.<span style="color: #c678dd; font-weight: bold; font-style: italic;">mean</span><span style="color: #98be65;">()</span> <span style="color: #bbc2cf;">*</span> <span style="color: #da8548; font-weight: bold;">100</span><span style="color: #c678dd;">)</span>.<span style="color: #c678dd; font-weight: bold; font-style: italic;">round</span><span style="color: #c678dd;">(</span><span style="color: #da8548; font-weight: bold;">2</span><span style="color: #c678dd;">)</span><span style="color: #fff0f5;">)</span>
+
+<span style="color: #c678dd;">print</span><span style="color: #fff0f5;">(</span><span style="color: #98be65;">"</span><span style="color: #51afef; font-style: italic;">\n</span><span style="color: #98be65;">=== UNIQUE VALUE COUNT PER COLUMN ==="</span><span style="color: #fff0f5;">)</span>
+<span style="color: #c678dd;">print</span><span style="color: #fff0f5;">(</span>df.<span style="color: #c678dd; font-weight: bold; font-style: italic;">nunique</span><span style="color: #c678dd;">()</span><span style="color: #fff0f5;">)</span>
+
+<span style="color: #c678dd;">print</span><span style="color: #fff0f5;">(</span><span style="color: #98be65;">"</span><span style="color: #51afef; font-style: italic;">\n</span><span style="color: #98be65;">=== SAMPLE STATISTICS FOR NUMERIC COLUMNS ==="</span><span style="color: #fff0f5;">)</span>
+<span style="color: #c678dd;">print</span><span style="color: #fff0f5;">(</span>df.<span style="color: #c678dd; font-weight: bold; font-style: italic;">describe</span><span style="color: #c678dd;">(</span><span style="color: #51afef; font-weight: bold;">include</span><span style="color: #bbc2cf;">=</span><span style="color: #98be65;">'number'</span><span style="color: #c678dd;">)</span><span style="color: #fff0f5;">)</span>
+
+<span style="color: #c678dd;">print</span><span style="color: #fff0f5;">(</span><span style="color: #98be65;">"</span><span style="color: #51afef; font-style: italic;">\n</span><span style="color: #98be65;">=== SAMPLE STATISTICS FOR OBJECT COLUMNS ==="</span><span style="color: #fff0f5;">)</span>
+<span style="color: #c678dd;">print</span><span style="color: #fff0f5;">(</span>df.<span style="color: #c678dd; font-weight: bold; font-style: italic;">describe</span><span style="color: #c678dd;">(</span><span style="color: #51afef; font-weight: bold;">include</span><span style="color: #bbc2cf;">=</span><span style="color: #98be65;">'object'</span><span style="color: #c678dd;">)</span><span style="color: #fff0f5;">)</span>
+
+
+
+<span style="color: #5B6268;"># === 2&#65039; Strip spaces from string columns ===</span>
+df<span style="color: #fff0f5;">[</span><span style="color: #db5762;">"Name"</span><span style="color: #fff0f5;">]</span> <span style="color: #bbc2cf;">=</span> df<span style="color: #fff0f5;">[</span><span style="color: #98be65;">"Name"</span><span style="color: #fff0f5;">]</span>.<span style="color: #a9a1e1; font-style: italic;">str</span>.<span style="color: #c678dd; font-weight: bold; font-style: italic;">strip</span><span style="color: #fff0f5;">()</span>
+df<span style="color: #fff0f5;">[</span><span style="color: #db5762;">"Department"</span><span style="color: #fff0f5;">]</span> <span style="color: #bbc2cf;">=</span> df<span style="color: #fff0f5;">[</span><span style="color: #98be65;">"Department"</span><span style="color: #fff0f5;">]</span>.<span style="color: #a9a1e1; font-style: italic;">str</span>.<span style="color: #c678dd; font-weight: bold; font-style: italic;">strip</span><span style="color: #fff0f5;">()</span>
+<span style="color: #c678dd;">print</span><span style="color: #fff0f5;">(</span><span style="color: #98be65;">"</span><span style="color: #51afef; font-style: italic;">\n</span><span style="color: #98be65;">=== AFTER STRIPPING SPACES ==="</span><span style="color: #fff0f5;">)</span>
+<span style="color: #c678dd;">print</span><span style="color: #fff0f5;">(</span>df<span style="color: #c678dd;">[</span><span style="color: #98be65;">[</span><span style="color: #98be65;">"Name"</span>, <span style="color: #98be65;">"Department"</span><span style="color: #98be65;">]</span><span style="color: #c678dd;">]</span>.<span style="color: #c678dd; font-weight: bold; font-style: italic;">head</span><span style="color: #c678dd;">()</span><span style="color: #fff0f5;">)</span>
+
+<span style="color: #5B6268;"># === 3&#65039; Identify data types ===</span>
+<span style="color: #c678dd;">print</span><span style="color: #fff0f5;">(</span><span style="color: #98be65;">"</span><span style="color: #51afef; font-style: italic;">\n</span><span style="color: #98be65;">=== COLUMNS BY DATA TYPE ==="</span><span style="color: #fff0f5;">)</span>
+<span style="color: #c678dd;">print</span><span style="color: #fff0f5;">(</span><span style="color: #98be65;">"Object columns:"</span>, df.<span style="color: #c678dd; font-weight: bold; font-style: italic;">select_dtypes</span><span style="color: #c678dd;">(</span><span style="color: #51afef; font-weight: bold;">include</span><span style="color: #bbc2cf;">=</span><span style="color: #98be65;">"object"</span><span style="color: #c678dd;">)</span>.<span style="color: #a9a1e1; font-style: italic;">columns</span>.<span style="color: #c678dd; font-weight: bold; font-style: italic;">tolist</span><span style="color: #c678dd;">()</span><span style="color: #fff0f5;">)</span>
+<span style="color: #c678dd;">print</span><span style="color: #fff0f5;">(</span><span style="color: #98be65;">"Numeric columns:"</span>, df.<span style="color: #c678dd; font-weight: bold; font-style: italic;">select_dtypes</span><span style="color: #c678dd;">(</span><span style="color: #51afef; font-weight: bold;">include</span><span style="color: #bbc2cf;">=</span><span style="color: #98be65;">"number"</span><span style="color: #c678dd;">)</span>.<span style="color: #a9a1e1; font-style: italic;">columns</span>.<span style="color: #c678dd; font-weight: bold; font-style: italic;">tolist</span><span style="color: #c678dd;">()</span><span style="color: #fff0f5;">)</span>
+
+<span style="color: #5B6268;"># === 4 Convert Age and PerformanceScore to numeric ===</span>
+df<span style="color: #fff0f5;">[</span><span style="color: #db5762;">"Age"</span><span style="color: #fff0f5;">]</span> <span style="color: #bbc2cf;">=</span> pd.<span style="color: #c678dd; font-weight: bold; font-style: italic;">to_numeric</span><span style="color: #fff0f5;">(</span>df<span style="color: #c678dd;">[</span><span style="color: #98be65;">"Age"</span><span style="color: #c678dd;">]</span>, <span style="color: #51afef; font-weight: bold;">errors</span><span style="color: #bbc2cf;">=</span><span style="color: #98be65;">"coerce"</span><span style="color: #fff0f5;">)</span>
+df<span style="color: #fff0f5;">[</span><span style="color: #db5762;">"PerformanceScore"</span><span style="color: #fff0f5;">]</span> <span style="color: #bbc2cf;">=</span> pd.<span style="color: #c678dd; font-weight: bold; font-style: italic;">to_numeric</span><span style="color: #fff0f5;">(</span>df<span style="color: #c678dd;">[</span><span style="color: #98be65;">"PerformanceScore"</span><span style="color: #c678dd;">]</span>, <span style="color: #51afef; font-weight: bold;">errors</span><span style="color: #bbc2cf;">=</span><span style="color: #98be65;">"coerce"</span><span style="color: #fff0f5;">)</span>
+<span style="color: #c678dd;">print</span><span style="color: #fff0f5;">(</span><span style="color: #98be65;">"</span><span style="color: #51afef; font-style: italic;">\n</span><span style="color: #98be65;">=== AFTER CONVERTING NUMERIC COLUMNS ==="</span><span style="color: #fff0f5;">)</span>
+<span style="color: #c678dd;">print</span><span style="color: #fff0f5;">(</span>df<span style="color: #c678dd;">[</span><span style="color: #98be65;">[</span><span style="color: #98be65;">"Name"</span>, <span style="color: #98be65;">"Age"</span>, <span style="color: #98be65;">"PerformanceScore"</span><span style="color: #98be65;">]</span><span style="color: #c678dd;">]</span>.<span style="color: #c678dd; font-weight: bold; font-style: italic;">head</span><span style="color: #c678dd;">()</span><span style="color: #fff0f5;">)</span>
+
+<span style="color: #5B6268;"># === 5&#65039; Clean and convert Salary column ===</span>
+df<span style="color: #fff0f5;">[</span><span style="color: #db5762;">"Salary"</span><span style="color: #fff0f5;">]</span> <span style="color: #bbc2cf;">=</span> <span style="color: #fff0f5;">(</span>
+    df<span style="color: #c678dd;">[</span><span style="color: #98be65;">"Salary"</span><span style="color: #c678dd;">]</span>
+    .<span style="color: #c678dd; font-weight: bold; font-style: italic;">astype</span><span style="color: #c678dd;">(</span>str<span style="color: #c678dd;">)</span>
+    .<span style="color: #a9a1e1; font-style: italic;">str</span>.<span style="color: #c678dd; font-weight: bold; font-style: italic;">replace</span><span style="color: #c678dd;">(</span><span style="color: #98be65;">"[$,]"</span>, <span style="color: #98be65;">""</span>, <span style="color: #51afef; font-weight: bold;">regex</span><span style="color: #bbc2cf;">=</span><span style="color: #a9a1e1;">True</span><span style="color: #c678dd;">)</span>
+<span style="color: #fff0f5;">)</span>
+df<span style="color: #fff0f5;">[</span><span style="color: #db5762;">"Salary"</span><span style="color: #fff0f5;">]</span> <span style="color: #bbc2cf;">=</span> pd.<span style="color: #c678dd; font-weight: bold; font-style: italic;">to_numeric</span><span style="color: #fff0f5;">(</span>df<span style="color: #c678dd;">[</span><span style="color: #98be65;">"Salary"</span><span style="color: #c678dd;">]</span>, <span style="color: #51afef; font-weight: bold;">errors</span><span style="color: #bbc2cf;">=</span><span style="color: #98be65;">"coerce"</span><span style="color: #fff0f5;">)</span>
+<span style="color: #c678dd;">print</span><span style="color: #fff0f5;">(</span><span style="color: #98be65;">"</span><span style="color: #51afef; font-style: italic;">\n</span><span style="color: #98be65;">=== AFTER CLEANING SALARY ==="</span><span style="color: #fff0f5;">)</span>
+<span style="color: #c678dd;">print</span><span style="color: #fff0f5;">(</span>df<span style="color: #c678dd;">[</span><span style="color: #98be65;">[</span><span style="color: #98be65;">"Name"</span>, <span style="color: #98be65;">"Salary"</span><span style="color: #98be65;">]</span><span style="color: #c678dd;">]</span><span style="color: #fff0f5;">)</span>
+
+<span style="color: #5B6268;"># === 6&#65039;&#8419; Convert StartDate to datetime (handles all formats safely) ===</span>
+<span style="color: #db5762;">s</span> <span style="color: #bbc2cf;">=</span> df<span style="color: #fff0f5;">[</span><span style="color: #98be65;">"StartDate"</span><span style="color: #fff0f5;">]</span>.<span style="color: #c678dd; font-weight: bold; font-style: italic;">astype</span><span style="color: #fff0f5;">(</span>str<span style="color: #fff0f5;">)</span>.<span style="color: #a9a1e1; font-style: italic;">str</span>.<span style="color: #c678dd; font-weight: bold; font-style: italic;">strip</span><span style="color: #fff0f5;">()</span>
+
+df<span style="color: #fff0f5;">[</span><span style="color: #db5762;">"StartDate"</span><span style="color: #fff0f5;">]</span> <span style="color: #bbc2cf;">=</span> <span style="color: #fff0f5;">(</span>
+    pd.<span style="color: #c678dd; font-weight: bold; font-style: italic;">to_datetime</span><span style="color: #c678dd;">(</span>s, <span style="color: #51afef; font-weight: bold;">format</span><span style="color: #bbc2cf;">=</span><span style="color: #98be65;">"%Y-%m-%d"</span>, <span style="color: #51afef; font-weight: bold;">errors</span><span style="color: #bbc2cf;">=</span><span style="color: #98be65;">"coerce"</span><span style="color: #c678dd;">)</span>    <span style="color: #5B6268;"># 2019-03-15</span>
+      .<span style="color: #c678dd; font-weight: bold; font-style: italic;">fillna</span><span style="color: #c678dd;">(</span>pd.<span style="color: #c678dd; font-weight: bold; font-style: italic;">to_datetime</span><span style="color: #98be65;">(</span>s, <span style="color: #51afef; font-weight: bold;">format</span><span style="color: #bbc2cf;">=</span><span style="color: #98be65;">"%Y/%m/%d"</span>, <span style="color: #51afef; font-weight: bold;">errors</span><span style="color: #bbc2cf;">=</span><span style="color: #98be65;">"coerce"</span><span style="color: #98be65;">)</span><span style="color: #c678dd;">)</span>  <span style="color: #5B6268;"># 2020/01/05</span>
+      .<span style="color: #c678dd; font-weight: bold; font-style: italic;">fillna</span><span style="color: #c678dd;">(</span>pd.<span style="color: #c678dd; font-weight: bold; font-style: italic;">to_datetime</span><span style="color: #98be65;">(</span>s, <span style="color: #51afef; font-weight: bold;">format</span><span style="color: #bbc2cf;">=</span><span style="color: #98be65;">"%d/%m/%Y"</span>, <span style="color: #51afef; font-weight: bold;">errors</span><span style="color: #bbc2cf;">=</span><span style="color: #98be65;">"coerce"</span><span style="color: #98be65;">)</span><span style="color: #c678dd;">)</span>  <span style="color: #5B6268;"># 18/04/2018</span>
+<span style="color: #fff0f5;">)</span>
+
+<span style="color: #c678dd;">print</span><span style="color: #fff0f5;">(</span><span style="color: #98be65;">"</span><span style="color: #51afef; font-style: italic;">\n</span><span style="color: #98be65;">=== AFTER CONVERTING DATES ==="</span><span style="color: #fff0f5;">)</span>
+<span style="color: #c678dd;">print</span><span style="color: #fff0f5;">(</span>df<span style="color: #c678dd;">[</span><span style="color: #98be65;">[</span><span style="color: #98be65;">"Name"</span>, <span style="color: #98be65;">"StartDate"</span><span style="color: #98be65;">]</span><span style="color: #c678dd;">]</span><span style="color: #fff0f5;">)</span>
+<span style="color: #c678dd;">print</span><span style="color: #fff0f5;">(</span><span style="color: #98be65;">"Data type:"</span>, df<span style="color: #c678dd;">[</span><span style="color: #98be65;">"StartDate"</span><span style="color: #c678dd;">]</span>.<span style="color: #a9a1e1; font-style: italic;">dtype</span><span style="color: #fff0f5;">)</span>
+
+<span style="color: #5B6268;"># === 7&#65039; Check missing values before filling ===</span>
+<span style="color: #c678dd;">print</span><span style="color: #fff0f5;">(</span><span style="color: #98be65;">"</span><span style="color: #51afef; font-style: italic;">\n</span><span style="color: #98be65;">=== MISSING VALUES BEFORE CLEANING ==="</span><span style="color: #fff0f5;">)</span>
+<span style="color: #c678dd;">print</span><span style="color: #fff0f5;">(</span>df.<span style="color: #c678dd; font-weight: bold; font-style: italic;">isnull</span><span style="color: #c678dd;">()</span>.<span style="color: #c678dd; font-weight: bold; font-style: italic;">sum</span><span style="color: #c678dd;">()</span><span style="color: #fff0f5;">)</span>
+
+<span style="color: #5B6268;"># === 8&#65039; Interpolate missing numeric values ===</span>
+df<span style="color: #fff0f5;">[</span><span style="color: #c678dd;">[</span><span style="color: #98be65;">"Age"</span>, <span style="color: #98be65;">"PerformanceScore"</span>, <span style="color: #98be65;">"Salary"</span><span style="color: #c678dd;">]</span><span style="color: #fff0f5;">]</span> <span style="color: #bbc2cf;">=</span> df<span style="color: #fff0f5;">[</span><span style="color: #c678dd;">[</span><span style="color: #98be65;">"Age"</span>, <span style="color: #98be65;">"PerformanceScore"</span>, <span style="color: #98be65;">"Salary"</span><span style="color: #c678dd;">]</span><span style="color: #fff0f5;">]</span>.<span style="color: #c678dd; font-weight: bold; font-style: italic;">interpolate</span><span style="color: #fff0f5;">()</span>
+<span style="color: #c678dd;">print</span><span style="color: #fff0f5;">(</span><span style="color: #98be65;">"</span><span style="color: #51afef; font-style: italic;">\n</span><span style="color: #98be65;">=== AFTER INTERPOLATION ==="</span><span style="color: #fff0f5;">)</span>
+<span style="color: #c678dd;">print</span><span style="color: #fff0f5;">(</span>df<span style="color: #c678dd;">[</span><span style="color: #98be65;">[</span><span style="color: #98be65;">"Name"</span>, <span style="color: #98be65;">"Age"</span>, <span style="color: #98be65;">"PerformanceScore"</span>, <span style="color: #98be65;">"Salary"</span><span style="color: #98be65;">]</span><span style="color: #c678dd;">]</span><span style="color: #fff0f5;">)</span>
+
+<span style="color: #5B6268;"># === 9&#65039; Fill remaining missing values ===</span>
+df<span style="color: #fff0f5;">[</span><span style="color: #db5762;">"Department"</span><span style="color: #fff0f5;">]</span> <span style="color: #bbc2cf;">=</span> df<span style="color: #fff0f5;">[</span><span style="color: #98be65;">"Department"</span><span style="color: #fff0f5;">]</span>.<span style="color: #c678dd; font-weight: bold; font-style: italic;">fillna</span><span style="color: #fff0f5;">(</span><span style="color: #98be65;">"Unknown"</span><span style="color: #fff0f5;">)</span>
+df<span style="color: #fff0f5;">[</span><span style="color: #db5762;">"StartDate"</span><span style="color: #fff0f5;">]</span> <span style="color: #bbc2cf;">=</span> df<span style="color: #fff0f5;">[</span><span style="color: #98be65;">"StartDate"</span><span style="color: #fff0f5;">]</span>.<span style="color: #c678dd; font-weight: bold; font-style: italic;">fillna</span><span style="color: #fff0f5;">(</span>pd.<span style="color: #51afef; font-weight: bold; font-style: italic;">Timestamp</span><span style="color: #c678dd;">(</span><span style="color: #98be65;">"2020-01-01"</span><span style="color: #c678dd;">)</span><span style="color: #fff0f5;">)</span>
+df<span style="color: #fff0f5;">[</span><span style="color: #db5762;">"Age"</span><span style="color: #fff0f5;">]</span> <span style="color: #bbc2cf;">=</span> df<span style="color: #fff0f5;">[</span><span style="color: #98be65;">"Age"</span><span style="color: #fff0f5;">]</span>.<span style="color: #c678dd; font-weight: bold; font-style: italic;">fillna</span><span style="color: #fff0f5;">(</span>df<span style="color: #c678dd;">[</span><span style="color: #98be65;">"Age"</span><span style="color: #c678dd;">]</span>.<span style="color: #c678dd; font-weight: bold; font-style: italic;">mean</span><span style="color: #c678dd;">()</span><span style="color: #fff0f5;">)</span>
+df<span style="color: #fff0f5;">[</span><span style="color: #db5762;">"Salary"</span><span style="color: #fff0f5;">]</span> <span style="color: #bbc2cf;">=</span> df<span style="color: #fff0f5;">[</span><span style="color: #98be65;">"Salary"</span><span style="color: #fff0f5;">]</span>.<span style="color: #c678dd; font-weight: bold; font-style: italic;">fillna</span><span style="color: #fff0f5;">(</span>df<span style="color: #c678dd;">[</span><span style="color: #98be65;">"Salary"</span><span style="color: #c678dd;">]</span>.<span style="color: #c678dd; font-weight: bold; font-style: italic;">mean</span><span style="color: #c678dd;">()</span><span style="color: #fff0f5;">)</span>
+df<span style="color: #fff0f5;">[</span><span style="color: #db5762;">"PerformanceScore"</span><span style="color: #fff0f5;">]</span> <span style="color: #bbc2cf;">=</span> df<span style="color: #fff0f5;">[</span><span style="color: #98be65;">"PerformanceScore"</span><span style="color: #fff0f5;">]</span>.<span style="color: #c678dd; font-weight: bold; font-style: italic;">fillna</span><span style="color: #fff0f5;">(</span>df<span style="color: #c678dd;">[</span><span style="color: #98be65;">"PerformanceScore"</span><span style="color: #c678dd;">]</span>.<span style="color: #c678dd; font-weight: bold; font-style: italic;">mean</span><span style="color: #c678dd;">()</span><span style="color: #fff0f5;">)</span>
+<span style="color: #c678dd;">print</span><span style="color: #fff0f5;">(</span><span style="color: #98be65;">"</span><span style="color: #51afef; font-style: italic;">\n</span><span style="color: #98be65;">=== AFTER FILLING REMAINING NAs ==="</span><span style="color: #fff0f5;">)</span>
+<span style="color: #c678dd;">print</span><span style="color: #fff0f5;">(</span>df.<span style="color: #c678dd; font-weight: bold; font-style: italic;">isnull</span><span style="color: #c678dd;">()</span>.<span style="color: #c678dd; font-weight: bold; font-style: italic;">sum</span><span style="color: #c678dd;">()</span><span style="color: #fff0f5;">)</span>
+
+<span style="color: #5B6268;"># === 10 Drop duplicates (if any) ===</span>
+df.<span style="color: #c678dd; font-weight: bold; font-style: italic;">drop_duplicates</span><span style="color: #fff0f5;">(</span><span style="color: #51afef; font-weight: bold;">inplace</span><span style="color: #bbc2cf;">=</span><span style="color: #a9a1e1;">True</span><span style="color: #fff0f5;">)</span>
+
+<span style="color: #5B6268;"># === 11 Final verification ===</span>
+<span style="color: #c678dd;">print</span><span style="color: #fff0f5;">(</span><span style="color: #98be65;">"</span><span style="color: #51afef; font-style: italic;">\n</span><span style="color: #98be65;">=== FINAL CLEANED DATA INFO ==="</span><span style="color: #fff0f5;">)</span>
+<span style="color: #c678dd;">print</span><span style="color: #fff0f5;">(</span>df.<span style="color: #c678dd; font-weight: bold; font-style: italic;">info</span><span style="color: #c678dd;">()</span><span style="color: #fff0f5;">)</span>
+<span style="color: #c678dd;">print</span><span style="color: #fff0f5;">(</span><span style="color: #98be65;">"</span><span style="color: #51afef; font-style: italic;">\n</span><span style="color: #98be65;">=== CLEANED DATA PREVIEW ==="</span><span style="color: #fff0f5;">)</span>
+<span style="color: #c678dd;">print</span><span style="color: #fff0f5;">(</span>df<span style="color: #fff0f5;">)</span>
+
+<span style="color: #5B6268;"># === 12 Save cleaned dataset ===</span>
+df.<span style="color: #c678dd; font-weight: bold; font-style: italic;">to_csv</span><span style="color: #fff0f5;">(</span><span style="color: #98be65;">"employees_interpolated_clean.csv"</span>, <span style="color: #51afef; font-weight: bold;">index</span><span style="color: #bbc2cf;">=</span><span style="color: #a9a1e1;">False</span><span style="color: #fff0f5;">)</span>
+<span style="color: #c678dd;">print</span><span style="color: #fff0f5;">(</span><span style="color: #98be65;">"</span><span style="color: #51afef; font-style: italic;">\n</span><span style="color: #98be65;">&#9989; Cleaned file saved as employees_interpolated_clean.csv"</span><span style="color: #fff0f5;">)</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgde62bc6" class="outline-3">
+<h3 id="orgde62bc6"><span class="section-number-3">2.19.</span> Thiago's samples on analysing</h3>
+<div class="outline-text-3" id="text-2-19">
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #5B6268;"># === LOAD DATA ===</span>
+<span style="color: #db5762;">sales</span> <span style="color: #bbc2cf;">=</span> pd.<span style="color: #c678dd; font-weight: bold; font-style: italic;">read_csv</span><span style="color: #fff0f5;">(</span><span style="color: #98be65;">"sales_analysis.csv"</span>, <span style="color: #51afef; font-weight: bold;">parse_dates</span><span style="color: #bbc2cf;">=</span><span style="color: #c678dd;">[</span><span style="color: #98be65;">"OrderDate"</span><span style="color: #c678dd;">]</span><span style="color: #fff0f5;">)</span>
+
+<span style="color: #c678dd;">print</span><span style="color: #fff0f5;">(</span><span style="color: #98be65;">"</span><span style="color: #51afef; font-style: italic;">\n</span><span style="color: #98be65;">=== HEAD (first 5 rows) ==="</span><span style="color: #fff0f5;">)</span>
+<span style="color: #c678dd;">print</span><span style="color: #fff0f5;">(</span>sales.<span style="color: #c678dd; font-weight: bold; font-style: italic;">head</span><span style="color: #c678dd;">()</span><span style="color: #fff0f5;">)</span>
+
+<span style="color: #c678dd;">print</span><span style="color: #fff0f5;">(</span><span style="color: #98be65;">"</span><span style="color: #51afef; font-style: italic;">\n</span><span style="color: #98be65;">=== INFO ==="</span><span style="color: #fff0f5;">)</span>
+sales.<span style="color: #c678dd; font-weight: bold; font-style: italic;">info</span><span style="color: #fff0f5;">()</span>
+
+<span style="color: #c678dd;">print</span><span style="color: #fff0f5;">(</span><span style="color: #98be65;">"</span><span style="color: #51afef; font-style: italic;">\n</span><span style="color: #98be65;">=== BASIC STATS (numeric columns) ==="</span><span style="color: #fff0f5;">)</span>
+<span style="color: #c678dd;">print</span><span style="color: #fff0f5;">(</span>sales.<span style="color: #c678dd; font-weight: bold; font-style: italic;">describe</span><span style="color: #c678dd;">()</span><span style="color: #fff0f5;">)</span>
+
+<span style="color: #5B6268;"># ----------------------------------------------------</span>
+<span style="color: #5B6268;"># GROUPBY + AGGREGATION</span>
+<span style="color: #5B6268;"># ----------------------------------------------------</span>
+<span style="color: #c678dd;">print</span><span style="color: #fff0f5;">(</span><span style="color: #98be65;">"</span><span style="color: #51afef; font-style: italic;">\n</span><span style="color: #98be65;">=== Total Revenue by Region &amp; Category ==="</span><span style="color: #fff0f5;">)</span>
+<span style="color: #db5762;">by_region_cat</span> <span style="color: #bbc2cf;">=</span> <span style="color: #fff0f5;">(</span>
+    sales
+    .<span style="color: #c678dd; font-weight: bold; font-style: italic;">groupby</span><span style="color: #c678dd;">(</span><span style="color: #98be65;">[</span><span style="color: #98be65;">"Region"</span>, <span style="color: #98be65;">"Category"</span><span style="color: #98be65;">]</span>, <span style="color: #51afef; font-weight: bold;">as_index</span><span style="color: #bbc2cf;">=</span><span style="color: #a9a1e1;">False</span><span style="color: #c678dd;">)[</span><span style="color: #98be65;">"Revenue"</span><span style="color: #c678dd;">]</span>
+    .<span style="color: #c678dd; font-weight: bold; font-style: italic;">sum</span><span style="color: #c678dd;">()</span>
+<span style="color: #fff0f5;">)</span>
+<span style="color: #c678dd;">print</span><span style="color: #fff0f5;">(</span>by_region_cat<span style="color: #fff0f5;">)</span>
+
+<span style="color: #c678dd;">print</span><span style="color: #fff0f5;">(</span><span style="color: #98be65;">"</span><span style="color: #51afef; font-style: italic;">\n</span><span style="color: #98be65;">=== Mean Units and Mean Profit by Category ==="</span><span style="color: #fff0f5;">)</span>
+<span style="color: #db5762;">by_cat</span> <span style="color: #bbc2cf;">=</span> sales.<span style="color: #c678dd; font-weight: bold; font-style: italic;">groupby</span><span style="color: #fff0f5;">(</span><span style="color: #98be65;">"Category"</span>, <span style="color: #51afef; font-weight: bold;">as_index</span><span style="color: #bbc2cf;">=</span><span style="color: #a9a1e1;">False</span><span style="color: #fff0f5;">)</span>.<span style="color: #c678dd; font-weight: bold; font-style: italic;">agg</span><span style="color: #fff0f5;">(</span>
+    <span style="color: #51afef; font-weight: bold;">mean_units</span><span style="color: #bbc2cf;">=</span><span style="color: #c678dd;">(</span><span style="color: #98be65;">"Units"</span>, <span style="color: #98be65;">"mean"</span><span style="color: #c678dd;">)</span>,
+    <span style="color: #51afef; font-weight: bold;">mean_profit</span><span style="color: #bbc2cf;">=</span><span style="color: #c678dd;">(</span><span style="color: #98be65;">"Profit"</span>, <span style="color: #98be65;">"mean"</span><span style="color: #c678dd;">)</span>
+<span style="color: #fff0f5;">)</span>
+<span style="color: #c678dd;">print</span><span style="color: #fff0f5;">(</span>by_cat<span style="color: #fff0f5;">)</span>
+
+<span style="color: #5B6268;"># ----------------------------------------------------</span>
+<span style="color: #5B6268;"># PIVOT TABLE</span>
+<span style="color: #5B6268;"># ----------------------------------------------------</span>
+<span style="color: #c678dd;">print</span><span style="color: #fff0f5;">(</span><span style="color: #98be65;">"</span><span style="color: #51afef; font-style: italic;">\n</span><span style="color: #98be65;">=== Pivot table: sum Revenue by Region x Category ==="</span><span style="color: #fff0f5;">)</span>
+<span style="color: #db5762;">pvt</span> <span style="color: #bbc2cf;">=</span> pd.<span style="color: #c678dd; font-weight: bold; font-style: italic;">pivot_table</span><span style="color: #fff0f5;">(</span>
+    sales,
+    <span style="color: #51afef; font-weight: bold;">index</span><span style="color: #bbc2cf;">=</span><span style="color: #98be65;">"Region"</span>,
+    <span style="color: #51afef; font-weight: bold;">columns</span><span style="color: #bbc2cf;">=</span><span style="color: #98be65;">"Category"</span>,
+    <span style="color: #51afef; font-weight: bold;">values</span><span style="color: #bbc2cf;">=</span><span style="color: #98be65;">"Revenue"</span>,
+    <span style="color: #51afef; font-weight: bold;">aggfunc</span><span style="color: #bbc2cf;">=</span><span style="color: #98be65;">"sum"</span>,
+    <span style="color: #51afef; font-weight: bold;">fill_value</span><span style="color: #bbc2cf;">=</span><span style="color: #da8548; font-weight: bold;">0</span>
+<span style="color: #fff0f5;">)</span>
+<span style="color: #c678dd;">print</span><span style="color: #fff0f5;">(</span>pvt<span style="color: #fff0f5;">)</span>
+
+<span style="color: #c678dd;">print</span><span style="color: #fff0f5;">(</span><span style="color: #98be65;">"</span><span style="color: #51afef; font-style: italic;">\n</span><span style="color: #98be65;">=== Pivot table: avg Profit by Channel x Category ==="</span><span style="color: #fff0f5;">)</span>
+<span style="color: #db5762;">pvt2</span> <span style="color: #bbc2cf;">=</span> pd.<span style="color: #c678dd; font-weight: bold; font-style: italic;">pivot_table</span><span style="color: #fff0f5;">(</span>
+    sales,
+    <span style="color: #51afef; font-weight: bold;">index</span><span style="color: #bbc2cf;">=</span><span style="color: #98be65;">"Channel"</span>,
+    <span style="color: #51afef; font-weight: bold;">columns</span><span style="color: #bbc2cf;">=</span><span style="color: #98be65;">"Category"</span>,
+    <span style="color: #51afef; font-weight: bold;">values</span><span style="color: #bbc2cf;">=</span><span style="color: #98be65;">"Profit"</span>,
+    <span style="color: #51afef; font-weight: bold;">aggfunc</span><span style="color: #bbc2cf;">=</span><span style="color: #98be65;">"mean"</span>,
+    <span style="color: #51afef; font-weight: bold;">fill_value</span><span style="color: #bbc2cf;">=</span><span style="color: #da8548; font-weight: bold;">0</span>
+<span style="color: #fff0f5;">)</span>
+<span style="color: #c678dd;">print</span><span style="color: #fff0f5;">(</span>pvt2<span style="color: #fff0f5;">)</span>
+
+<span style="color: #5B6268;"># ----------------------------------------------------</span>
+<span style="color: #5B6268;"># BINNING WITH cut() AND qcut()</span>
+<span style="color: #5B6268;"># ----------------------------------------------------</span>
+<span style="color: #c678dd;">print</span><span style="color: #fff0f5;">(</span><span style="color: #98be65;">"</span><span style="color: #51afef; font-style: italic;">\n</span><span style="color: #98be65;">=== Binning UnitPrice into 4 equal-width bins (cut) ==="</span><span style="color: #fff0f5;">)</span>
+<span style="color: #db5762;">price_bins</span> <span style="color: #bbc2cf;">=</span> pd.<span style="color: #c678dd; font-weight: bold; font-style: italic;">cut</span><span style="color: #fff0f5;">(</span>sales<span style="color: #c678dd;">[</span><span style="color: #98be65;">"UnitPrice"</span><span style="color: #c678dd;">]</span>, <span style="color: #51afef; font-weight: bold;">bins</span><span style="color: #bbc2cf;">=</span><span style="color: #da8548; font-weight: bold;">4</span><span style="color: #fff0f5;">)</span>
+<span style="color: #c678dd;">print</span><span style="color: #fff0f5;">(</span>price_bins.<span style="color: #c678dd; font-weight: bold; font-style: italic;">value_counts</span><span style="color: #c678dd;">(</span><span style="color: #51afef; font-weight: bold;">dropna</span><span style="color: #bbc2cf;">=</span><span style="color: #a9a1e1;">False</span><span style="color: #c678dd;">)</span><span style="color: #fff0f5;">)</span>
+
+<span style="color: #c678dd;">print</span><span style="color: #fff0f5;">(</span><span style="color: #98be65;">"</span><span style="color: #51afef; font-style: italic;">\n</span><span style="color: #98be65;">=== Binning Revenue into 4 quantiles (qcut) ==="</span><span style="color: #fff0f5;">)</span>
+<span style="color: #db5762;">rev_bins</span> <span style="color: #bbc2cf;">=</span> pd.<span style="color: #c678dd; font-weight: bold; font-style: italic;">qcut</span><span style="color: #fff0f5;">(</span>sales<span style="color: #c678dd;">[</span><span style="color: #98be65;">"Revenue"</span><span style="color: #c678dd;">]</span>, <span style="color: #51afef; font-weight: bold;">q</span><span style="color: #bbc2cf;">=</span><span style="color: #da8548; font-weight: bold;">4</span>, <span style="color: #51afef; font-weight: bold;">duplicates</span><span style="color: #bbc2cf;">=</span><span style="color: #98be65;">"drop"</span><span style="color: #fff0f5;">)</span>
+<span style="color: #c678dd;">print</span><span style="color: #fff0f5;">(</span>rev_bins.<span style="color: #c678dd; font-weight: bold; font-style: italic;">value_counts</span><span style="color: #c678dd;">(</span><span style="color: #51afef; font-weight: bold;">dropna</span><span style="color: #bbc2cf;">=</span><span style="color: #a9a1e1;">False</span><span style="color: #c678dd;">)</span><span style="color: #fff0f5;">)</span>
+
+<span style="color: #5B6268;"># ----------------------------------------------------</span>
+<span style="color: #5B6268;"># TOP N (nLARGEST)</span>
+<span style="color: #5B6268;"># ----------------------------------------------------</span>
+<span style="color: #c678dd;">print</span><span style="color: #fff0f5;">(</span><span style="color: #98be65;">"</span><span style="color: #51afef; font-style: italic;">\n</span><span style="color: #98be65;">=== Top 5 orders by Profit ==="</span><span style="color: #fff0f5;">)</span>
+<span style="color: #db5762;">top_profit</span> <span style="color: #bbc2cf;">=</span> sales.<span style="color: #c678dd; font-weight: bold; font-style: italic;">nlargest</span><span style="color: #fff0f5;">(</span><span style="color: #da8548; font-weight: bold;">5</span>, <span style="color: #98be65;">"Profit"</span><span style="color: #fff0f5;">)</span>
+<span style="color: #c678dd;">print</span><span style="color: #fff0f5;">(</span>top_profit<span style="color: #c678dd;">[</span><span style="color: #98be65;">[</span><span style="color: #98be65;">"OrderID"</span>, <span style="color: #98be65;">"Region"</span>, <span style="color: #98be65;">"Category"</span>, <span style="color: #98be65;">"Revenue"</span>, <span style="color: #98be65;">"Profit"</span><span style="color: #98be65;">]</span><span style="color: #c678dd;">]</span><span style="color: #fff0f5;">)</span>
+
+<span style="color: #5B6268;"># ----------------------------------------------------</span>
+<span style="color: #5B6268;"># PERCENT CHANGE (monthly revenue per region)</span>
+<span style="color: #5B6268;"># ----------------------------------------------------</span>
+<span style="color: #c678dd;">print</span><span style="color: #fff0f5;">(</span><span style="color: #98be65;">"</span><span style="color: #51afef; font-style: italic;">\n</span><span style="color: #98be65;">=== Monthly Revenue and Percent Change per Region ==="</span><span style="color: #fff0f5;">)</span>
+<span style="color: #db5762;">monthly</span> <span style="color: #bbc2cf;">=</span> <span style="color: #fff0f5;">(</span>
+    sales
+    .<span style="color: #c678dd; font-weight: bold; font-style: italic;">set_index</span><span style="color: #c678dd;">(</span><span style="color: #98be65;">"OrderDate"</span><span style="color: #c678dd;">)</span>
+    .<span style="color: #c678dd; font-weight: bold; font-style: italic;">groupby</span><span style="color: #c678dd;">(</span><span style="color: #98be65;">"Region"</span><span style="color: #c678dd;">)[</span><span style="color: #98be65;">"Revenue"</span><span style="color: #c678dd;">]</span>
+    .<span style="color: #c678dd; font-weight: bold; font-style: italic;">resample</span><span style="color: #c678dd;">(</span><span style="color: #98be65;">"MS"</span><span style="color: #c678dd;">)</span>  <span style="color: #5B6268;"># MS = Month Start</span>
+    .<span style="color: #c678dd; font-weight: bold; font-style: italic;">sum</span><span style="color: #c678dd;">()</span>
+    .<span style="color: #c678dd; font-weight: bold; font-style: italic;">reset_index</span><span style="color: #c678dd;">()</span>
+<span style="color: #fff0f5;">)</span>
+monthly<span style="color: #fff0f5;">[</span><span style="color: #db5762;">"PctChange"</span><span style="color: #fff0f5;">]</span> <span style="color: #bbc2cf;">=</span> monthly.<span style="color: #c678dd; font-weight: bold; font-style: italic;">groupby</span><span style="color: #fff0f5;">(</span><span style="color: #98be65;">"Region"</span><span style="color: #fff0f5;">)[</span><span style="color: #98be65;">"Revenue"</span><span style="color: #fff0f5;">]</span>.<span style="color: #c678dd; font-weight: bold; font-style: italic;">pct_change</span><span style="color: #fff0f5;">()</span>
+<span style="color: #c678dd;">print</span><span style="color: #fff0f5;">(</span>monthly.<span style="color: #c678dd; font-weight: bold; font-style: italic;">head</span><span style="color: #c678dd;">(</span><span style="color: #da8548; font-weight: bold;">12</span><span style="color: #c678dd;">)</span><span style="color: #fff0f5;">)</span>
+
+<span style="color: #5B6268;"># ----------------------------------------------------</span>
+<span style="color: #5B6268;"># RANKING</span>
+<span style="color: #5B6268;"># ----------------------------------------------------</span>
+<span style="color: #c678dd;">print</span><span style="color: #fff0f5;">(</span><span style="color: #98be65;">"</span><span style="color: #51afef; font-style: italic;">\n</span><span style="color: #98be65;">=== Ranking orders by Profit (1 = lowest) ==="</span><span style="color: #fff0f5;">)</span>
+sales<span style="color: #fff0f5;">[</span><span style="color: #db5762;">"ProfitRank"</span><span style="color: #fff0f5;">]</span> <span style="color: #bbc2cf;">=</span> sales<span style="color: #fff0f5;">[</span><span style="color: #98be65;">"Profit"</span><span style="color: #fff0f5;">]</span>.<span style="color: #c678dd; font-weight: bold; font-style: italic;">rank</span><span style="color: #fff0f5;">(</span><span style="color: #51afef; font-weight: bold;">method</span><span style="color: #bbc2cf;">=</span><span style="color: #98be65;">"average"</span>, <span style="color: #51afef; font-weight: bold;">ascending</span><span style="color: #bbc2cf;">=</span><span style="color: #a9a1e1;">True</span><span style="color: #fff0f5;">)</span>
+<span style="color: #c678dd;">print</span><span style="color: #fff0f5;">(</span>sales<span style="color: #c678dd;">[</span><span style="color: #98be65;">[</span><span style="color: #98be65;">"OrderID"</span>, <span style="color: #98be65;">"Profit"</span>, <span style="color: #98be65;">"ProfitRank"</span><span style="color: #98be65;">]</span><span style="color: #c678dd;">]</span>.<span style="color: #c678dd; font-weight: bold; font-style: italic;">head</span><span style="color: #c678dd;">()</span><span style="color: #fff0f5;">)</span>
+
+<span style="color: #5B6268;"># ----------------------------------------------------</span>
+<span style="color: #5B6268;"># PLOTS (Matplotlib only, no seaborn)</span>
+<span style="color: #5B6268;"># ----------------------------------------------------</span>
+
+<span style="color: #5B6268;"># 1) Bar chart: total Revenue by Region</span>
+<span style="color: #c678dd;">print</span><span style="color: #fff0f5;">(</span><span style="color: #98be65;">"</span><span style="color: #51afef; font-style: italic;">\n</span><span style="color: #98be65;">=== Plot: Total Revenue by Region ==="</span><span style="color: #fff0f5;">)</span>
+<span style="color: #db5762;">rev_by_region</span> <span style="color: #bbc2cf;">=</span> sales.<span style="color: #c678dd; font-weight: bold; font-style: italic;">groupby</span><span style="color: #fff0f5;">(</span><span style="color: #98be65;">"Region"</span><span style="color: #fff0f5;">)[</span><span style="color: #98be65;">"Revenue"</span><span style="color: #fff0f5;">]</span>.<span style="color: #c678dd; font-weight: bold; font-style: italic;">sum</span><span style="color: #fff0f5;">()</span>
+plt.<span style="color: #c678dd; font-weight: bold; font-style: italic;">figure</span><span style="color: #fff0f5;">()</span>
+rev_by_region.<span style="color: #c678dd; font-weight: bold; font-style: italic;">plot</span><span style="color: #fff0f5;">(</span><span style="color: #51afef; font-weight: bold;">kind</span><span style="color: #bbc2cf;">=</span><span style="color: #98be65;">"bar"</span><span style="color: #fff0f5;">)</span>
+plt.<span style="color: #c678dd; font-weight: bold; font-style: italic;">title</span><span style="color: #fff0f5;">(</span><span style="color: #98be65;">"Total Revenue by Region"</span><span style="color: #fff0f5;">)</span>
+plt.<span style="color: #c678dd; font-weight: bold; font-style: italic;">xlabel</span><span style="color: #fff0f5;">(</span><span style="color: #98be65;">"Region"</span><span style="color: #fff0f5;">)</span>
+plt.<span style="color: #c678dd; font-weight: bold; font-style: italic;">ylabel</span><span style="color: #fff0f5;">(</span><span style="color: #98be65;">"Revenue"</span><span style="color: #fff0f5;">)</span>
+plt.<span style="color: #c678dd; font-weight: bold; font-style: italic;">tight_layout</span><span style="color: #fff0f5;">()</span>
+plt.<span style="color: #c678dd; font-weight: bold; font-style: italic;">show</span><span style="color: #fff0f5;">()</span>
+
+<span style="color: #5B6268;"># 2) Line chart: monthly Revenue for one Region (e.g. Leinster)</span>
+<span style="color: #c678dd;">print</span><span style="color: #fff0f5;">(</span><span style="color: #98be65;">"</span><span style="color: #51afef; font-style: italic;">\n</span><span style="color: #98be65;">=== Plot: Monthly Revenue for Leinster ==="</span><span style="color: #fff0f5;">)</span>
+<span style="color: #db5762;">leinster_monthly</span> <span style="color: #bbc2cf;">=</span> <span style="color: #fff0f5;">(</span>
+    sales<span style="color: #c678dd;">[</span>sales<span style="color: #98be65;">[</span><span style="color: #98be65;">"Region"</span><span style="color: #98be65;">]</span> <span style="color: #bbc2cf;">==</span> <span style="color: #98be65;">"Leinster"</span><span style="color: #c678dd;">]</span>
+    .<span style="color: #c678dd; font-weight: bold; font-style: italic;">set_index</span><span style="color: #c678dd;">(</span><span style="color: #98be65;">"OrderDate"</span><span style="color: #c678dd;">)[</span><span style="color: #98be65;">"Revenue"</span><span style="color: #c678dd;">]</span>
+    .<span style="color: #c678dd; font-weight: bold; font-style: italic;">resample</span><span style="color: #c678dd;">(</span><span style="color: #98be65;">"MS"</span><span style="color: #c678dd;">)</span>
+    .<span style="color: #c678dd; font-weight: bold; font-style: italic;">sum</span><span style="color: #c678dd;">()</span>
+<span style="color: #fff0f5;">)</span>
+plt.<span style="color: #c678dd; font-weight: bold; font-style: italic;">figure</span><span style="color: #fff0f5;">()</span>
+leinster_monthly.<span style="color: #c678dd; font-weight: bold; font-style: italic;">plot</span><span style="color: #fff0f5;">(</span><span style="color: #51afef; font-weight: bold;">kind</span><span style="color: #bbc2cf;">=</span><span style="color: #98be65;">"line"</span>, <span style="color: #51afef; font-weight: bold;">marker</span><span style="color: #bbc2cf;">=</span><span style="color: #98be65;">"o"</span><span style="color: #fff0f5;">)</span>
+plt.<span style="color: #c678dd; font-weight: bold; font-style: italic;">title</span><span style="color: #fff0f5;">(</span><span style="color: #98be65;">"Monthly Revenue - Leinster"</span><span style="color: #fff0f5;">)</span>
+plt.<span style="color: #c678dd; font-weight: bold; font-style: italic;">xlabel</span><span style="color: #fff0f5;">(</span><span style="color: #98be65;">"Month"</span><span style="color: #fff0f5;">)</span>
+plt.<span style="color: #c678dd; font-weight: bold; font-style: italic;">ylabel</span><span style="color: #fff0f5;">(</span><span style="color: #98be65;">"Revenue"</span><span style="color: #fff0f5;">)</span>
+plt.<span style="color: #c678dd; font-weight: bold; font-style: italic;">tight_layout</span><span style="color: #fff0f5;">()</span>
+plt.<span style="color: #c678dd; font-weight: bold; font-style: italic;">show</span><span style="color: #fff0f5;">()</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orgd52e402" class="outline-2">
+<h2 id="orgd52e402"><span class="section-number-2">3.</span> Matplotlib</h2>
+<div class="outline-text-2" id="text-3">
+</div>
+<div id="outline-container-org78b9b34" class="outline-3">
+<h3 id="org78b9b34"><span class="section-number-3">3.1.</span> Prepare data</h3>
+<div class="outline-text-3" id="text-3-1">
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #db5762;">df</span> <span style="color: #bbc2cf;">=</span> pd.<span style="color: #c678dd; font-weight: bold; font-style: italic;">read_csv</span><span style="color: #fff0f5;">(</span><span style="color: #98be65;">"employees.csv"</span><span style="color: #fff0f5;">)</span>
+
+<span style="color: #5B6268;"># Group by Department and sum the Salary</span>
+<span style="color: #db5762;">grouped_df</span> <span style="color: #bbc2cf;">=</span> df.<span style="color: #c678dd; font-weight: bold; font-style: italic;">groupby</span><span style="color: #fff0f5;">(</span><span style="color: #98be65;">"Department"</span>, <span style="color: #51afef; font-weight: bold;">as_index</span><span style="color: #bbc2cf;">=</span><span style="color: #a9a1e1;">False</span><span style="color: #fff0f5;">)[</span><span style="color: #98be65;">"Salary"</span><span style="color: #fff0f5;">]</span>.<span style="color: #c678dd; font-weight: bold; font-style: italic;">sum</span><span style="color: #fff0f5;">()</span>
+grouped_df.<span style="color: #c678dd; font-weight: bold; font-style: italic;">rename</span><span style="color: #fff0f5;">(</span><span style="color: #51afef; font-weight: bold;">columns</span><span style="color: #bbc2cf;">=</span><span style="color: #c678dd;">{</span><span style="color: #98be65;">"Salary"</span>: <span style="color: #98be65;">"Total_Salary"</span><span style="color: #c678dd;">}</span>, <span style="color: #51afef; font-weight: bold;">inplace</span><span style="color: #bbc2cf;">=</span><span style="color: #a9a1e1;">True</span><span style="color: #fff0f5;">)</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org68df6dd" class="outline-3">
+<h3 id="org68df6dd"><span class="section-number-3">3.2.</span> Bar Chart from Employees data</h3>
+<div class="outline-text-3" id="text-3-2">
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #5B6268;"># Create a bar plot</span>
+plt.<span style="color: #c678dd; font-weight: bold; font-style: italic;">bar</span><span style="color: #fff0f5;">(</span>grouped_df<span style="color: #c678dd;">[</span><span style="color: #98be65;">"Department"</span><span style="color: #c678dd;">]</span>, grouped_df<span style="color: #c678dd;">[</span><span style="color: #98be65;">"Total_Salary"</span><span style="color: #c678dd;">]</span>, <span style="color: #51afef; font-weight: bold;">color</span><span style="color: #bbc2cf;">=</span><span style="color: #98be65;">"skyblue"</span>, <span style="color: #51afef; font-weight: bold;">edgecolor</span><span style="color: #bbc2cf;">=</span><span style="color: #98be65;">"black"</span><span style="color: #fff0f5;">)</span>
+
+<span style="color: #5B6268;"># Add labels and title</span>
+plt.<span style="color: #c678dd; font-weight: bold; font-style: italic;">title</span><span style="color: #fff0f5;">(</span><span style="color: #98be65;">"Total Salary by Department"</span>, <span style="color: #51afef; font-weight: bold;">fontsize</span><span style="color: #bbc2cf;">=</span><span style="color: #da8548; font-weight: bold;">14</span>, <span style="color: #51afef; font-weight: bold;">fontweight</span><span style="color: #bbc2cf;">=</span><span style="color: #98be65;">"bold"</span><span style="color: #fff0f5;">)</span>
+plt.<span style="color: #c678dd; font-weight: bold; font-style: italic;">xlabel</span><span style="color: #fff0f5;">(</span><span style="color: #98be65;">"Department"</span>, <span style="color: #51afef; font-weight: bold;">fontsize</span><span style="color: #bbc2cf;">=</span><span style="color: #da8548; font-weight: bold;">12</span><span style="color: #fff0f5;">)</span>
+plt.<span style="color: #c678dd; font-weight: bold; font-style: italic;">ylabel</span><span style="color: #fff0f5;">(</span><span style="color: #98be65;">"Total Salary (&#8364;)"</span>, <span style="color: #51afef; font-weight: bold;">fontsize</span><span style="color: #bbc2cf;">=</span><span style="color: #da8548; font-weight: bold;">12</span><span style="color: #fff0f5;">)</span>
+
+<span style="color: #5B6268;"># Add value labels on top of bars</span>
+<span style="color: #51afef; font-style: italic;">for</span> <span style="color: #db5762;">i</span>, <span style="color: #db5762;">value</span> <span style="color: #bbc2cf;">in</span> <span style="color: #c678dd;">enumerate</span><span style="color: #fff0f5;">(</span>grouped_df<span style="color: #c678dd;">[</span><span style="color: #98be65;">"Total_Salary"</span><span style="color: #c678dd;">]</span><span style="color: #fff0f5;">)</span>:
+    plt.<span style="color: #c678dd; font-weight: bold; font-style: italic;">text</span><span style="color: #fff0f5;">(</span>i, value <span style="color: #bbc2cf;">+</span> <span style="color: #da8548; font-weight: bold;">1000</span>, <span style="color: #c678dd;">str</span><span style="color: #c678dd;">(</span>value<span style="color: #c678dd;">)</span>, <span style="color: #51afef; font-weight: bold;">ha</span><span style="color: #bbc2cf;">=</span><span style="color: #98be65;">'center'</span>, <span style="color: #51afef; font-weight: bold;">va</span><span style="color: #bbc2cf;">=</span><span style="color: #98be65;">'bottom'</span>, <span style="color: #51afef; font-weight: bold;">fontsize</span><span style="color: #bbc2cf;">=</span><span style="color: #da8548; font-weight: bold;">10</span><span style="color: #fff0f5;">)</span>
+
+<span style="color: #5B6268;"># Display the plot</span>
+plt.<span style="color: #c678dd; font-weight: bold; font-style: italic;">tight_layout</span><span style="color: #fff0f5;">()</span>
+plt.<span style="color: #c678dd; font-weight: bold; font-style: italic;">show</span><span style="color: #fff0f5;">()</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org853163f" class="outline-3">
+<h3 id="org853163f"><span class="section-number-3">3.3.</span> Double Stacked Bar Chart from Employees data</h3>
+<div class="outline-text-3" id="text-3-3">
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #5B6268;"># Create a bar plot with stacked bars</span>
+plt.<span style="color: #c678dd; font-weight: bold; font-style: italic;">bar</span><span style="color: #fff0f5;">(</span>prodTotals<span style="color: #c678dd;">[</span><span style="color: #98be65;">'Product'</span><span style="color: #c678dd;">]</span>, prodTotals<span style="color: #c678dd;">[</span><span style="color: #98be65;">'Qty'</span><span style="color: #c678dd;">]</span>, <span style="color: #51afef; font-weight: bold;">label</span><span style="color: #bbc2cf;">=</span><span style="color: #98be65;">'Quantity Sold'</span>, <span style="color: #51afef; font-weight: bold;">color</span><span style="color: #bbc2cf;">=</span><span style="color: #98be65;">'blue'</span>,<span style="color: #51afef; font-weight: bold;">bottom</span><span style="color: #bbc2cf;">=</span>prodTotals<span style="color: #c678dd;">[</span><span style="color: #98be65;">'Total'</span><span style="color: #c678dd;">]</span><span style="color: #fff0f5;">)</span>
+plt.<span style="color: #c678dd; font-weight: bold; font-style: italic;">bar</span><span style="color: #fff0f5;">(</span>prodTotals<span style="color: #c678dd;">[</span><span style="color: #98be65;">'Product'</span><span style="color: #c678dd;">]</span>, prodTotals<span style="color: #c678dd;">[</span><span style="color: #98be65;">'Total'</span><span style="color: #c678dd;">]</span>, <span style="color: #51afef; font-weight: bold;">label</span><span style="color: #bbc2cf;">=</span><span style="color: #98be65;">'Total Sales'</span>, <span style="color: #51afef; font-weight: bold;">color</span><span style="color: #bbc2cf;">=</span><span style="color: #98be65;">'red'</span><span style="color: #fff0f5;">)</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org55f448b" class="outline-3">
+<h3 id="org55f448b"><span class="section-number-3">3.4.</span> Pie Chart from Employees data</h3>
+<div class="outline-text-3" id="text-3-4">
+<div class="org-src-container">
+<pre class="src src-python">plt.<span style="color: #c678dd; font-weight: bold; font-style: italic;">pie</span><span style="color: #fff0f5;">(</span>
+    grouped_df<span style="color: #c678dd;">[</span><span style="color: #98be65;">"Total_Salary"</span><span style="color: #c678dd;">]</span>,  <span style="color: #5B6268;"># values</span>
+    <span style="color: #51afef; font-weight: bold;">labels</span><span style="color: #bbc2cf;">=</span>grouped_df<span style="color: #c678dd;">[</span><span style="color: #98be65;">"Department"</span><span style="color: #c678dd;">]</span>,  <span style="color: #5B6268;"># labels</span>
+    <span style="color: #51afef; font-weight: bold;">autopct</span><span style="color: #bbc2cf;">=</span><span style="color: #98be65;">"%1.1f%%"</span>,  <span style="color: #5B6268;"># show percentages</span>
+    <span style="color: #51afef; font-weight: bold;">startangle</span><span style="color: #bbc2cf;">=</span><span style="color: #da8548; font-weight: bold;">90</span>,  <span style="color: #5B6268;"># rotate so first slice starts at top</span>
+    <span style="color: #51afef; font-weight: bold;">colors</span><span style="color: #bbc2cf;">=</span><span style="color: #c678dd;">[</span><span style="color: #98be65;">"#66b3ff"</span>, <span style="color: #98be65;">"#99ff99"</span>, <span style="color: #98be65;">"#ffcc99"</span><span style="color: #c678dd;">]</span>
+<span style="color: #fff0f5;">)</span>
+
+plt.<span style="color: #c678dd; font-weight: bold; font-style: italic;">title</span><span style="color: #fff0f5;">(</span><span style="color: #98be65;">"Total Salary Distribution by Department"</span><span style="color: #fff0f5;">)</span>
+plt.<span style="color: #c678dd; font-weight: bold; font-style: italic;">axis</span><span style="color: #fff0f5;">(</span><span style="color: #98be65;">"equal"</span><span style="color: #fff0f5;">)</span>  <span style="color: #5B6268;"># make sure pie is a circle</span>
+plt.<span style="color: #c678dd; font-weight: bold; font-style: italic;">tight_layout</span><span style="color: #fff0f5;">()</span>
+plt.<span style="color: #c678dd; font-weight: bold; font-style: italic;">show</span><span style="color: #fff0f5;">()</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org9d5ef54" class="outline-3">
+<h3 id="org9d5ef54"><span class="section-number-3">3.5.</span> Line graph</h3>
+<div class="outline-text-3" id="text-3-5">
+<div class="org-src-container">
+<pre class="src src-python">plt.<span style="color: #c678dd; font-weight: bold; font-style: italic;">figure</span><span style="color: #fff0f5;">(</span><span style="color: #51afef; font-weight: bold;">figsize</span><span style="color: #bbc2cf;">=</span><span style="color: #c678dd;">(</span><span style="color: #da8548; font-weight: bold;">13</span>, <span style="color: #da8548; font-weight: bold;">8</span><span style="color: #c678dd;">)</span><span style="color: #fff0f5;">)</span>
+<span style="color: #5B6268;"># first two params are x axis and y axis respectively</span>
+plt.<span style="color: #c678dd; font-weight: bold; font-style: italic;">plot</span><span style="color: #fff0f5;">(</span>montly_data<span style="color: #c678dd;">[</span><span style="color: #98be65;">'Month'</span><span style="color: #c678dd;">]</span>, monthly_data<span style="color: #c678dd;">[</span><span style="color: #98be65;">'Total'</span><span style="color: #c678dd;">]</span>, <span style="color: #51afef; font-weight: bold;">label</span><span style="color: #bbc2cf;">=</span><span style="color: #98be65;">'Revenue Totals by Month'</span>, <span style="color: #51afef; font-weight: bold;">marker</span><span style="color: #bbc2cf;">=</span><span style="color: #98be65;">'o'</span>, <span style="color: #51afef; font-weight: bold;">linestyle</span><span style="color: #bbc2cf;">=</span><span style="color: #98be65;">'-'</span><span style="color: #fff0f5;">)</span>
+plt.<span style="color: #c678dd; font-weight: bold; font-style: italic;">xlabel</span><span style="color: #fff0f5;">(</span><span style="color: #98be65;">'Month'</span><span style="color: #fff0f5;">)</span>
+plt.<span style="color: #c678dd; font-weight: bold; font-style: italic;">ylabel</span><span style="color: #fff0f5;">(</span><span style="color: #98be65;">'Totals'</span><span style="color: #fff0f5;">)</span>
+plt.<span style="color: #c678dd; font-weight: bold; font-style: italic;">title</span><span style="color: #fff0f5;">(</span><span style="color: #98be65;">'Total by Month'</span><span style="color: #fff0f5;">)</span>
+plt.<span style="color: #c678dd; font-weight: bold; font-style: italic;">xticks</span><span style="color: #fff0f5;">(</span><span style="color: #51afef; font-weight: bold;">rotation</span><span style="color: #bbc2cf;">=</span><span style="color: #da8548; font-weight: bold;">0</span><span style="color: #fff0f5;">)</span>
+plt.<span style="color: #c678dd; font-weight: bold; font-style: italic;">tight_layout</span><span style="color: #fff0f5;">()</span> <span style="color: #5B6268;"># fits the plot better</span>
+plt.<span style="color: #c678dd; font-weight: bold; font-style: italic;">savefig</span><span style="color: #fff0f5;">(</span><span style="color: #98be65;">"totals.png"</span><span style="color: #fff0f5;">)</span> <span style="color: #5B6268;"># save as png</span>
+plt.<span style="color: #c678dd; font-weight: bold; font-style: italic;">show</span><span style="color: #fff0f5;">()</span>
+</pre>
+</div>
+
+
+<script src="../assets/jquery-3.3.1.min.js"></script>
+<script src="../assets/notes.js"></script>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="date">Date: 2025-11-03 Mon 13:03</p>
+<p class="author">Author: Damian Chrzanowski</p>
+<p class="date">Created: 2025-12-07 Sun 13:54</p>
+<p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

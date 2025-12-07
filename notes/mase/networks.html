@@ -3,10 +3,10 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2025-12-07 Sun 13:55 -->
+<!-- 2025-12-07 Sun 13:54 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Damian Chrzanowski's Notes</title>
+<title>Networks</title>
 <meta name="author" content="Damian Chrzanowski" />
 <meta name="generator" content="Org Mode" />
 <style type="text/css">
@@ -193,93 +193,163 @@
     { background-color: #ffff00; color: #000000; font-weight: bold; }
   .org-svg { }
 </style>
-<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
-<link rel="stylesheet" type="text/css" href="assets/org.css"/>
-<link rel="stylesheet" type="text/css" href="assets/org_index.css"/>
-<link rel="icon" href="assets/favicon.ico">
 </head>
 <body>
 <div id="content" class="content">
-<h1 class="title">Damian Chrzanowski's Notes</h1>
+<h1 class="title">Networks</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#org4ab3cd4">1. Assignment</a></li>
+<li><a href="#org3a7016d">2. Exams (answer 3 of 4)</a></li>
+</ul>
+</div>
+</div>
 <p>
-<a href="y1/index.html">Year 1 Notes</a>
+<a href="index.html">Home Page</a>
+</p>
+<div id="outline-container-org4ab3cd4" class="outline-2">
+<h2 id="org4ab3cd4"><span class="section-number-2">1.</span> Assignment</h2>
+<div class="outline-text-2" id="text-1">
+<ul class="org-ul">
+<li>Start with the highest amount of hosts</li>
+</ul>
+<p class="verse">
+lab 6.2 (3)<br />
+192.168.20.0<br />
+<br />
+left is 50 hosts (1 network)<br />
+<br />
+top is 2 hosts (1 network)<br />
+<br />
+r1 - r2 (1 network)<br />
+r2 - r3 (1 network)<br />
+r1 - r3 (1 network)<br />
+<br />
+right is 2 hosts (1 network)<br />
 </p>
 
 <p>
-<a href="y2/index.html">Year 2 Notes</a>
+Split between 128 and 64 (we need 50 hosts + 2 for broadcast and network)
 </p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-left" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">hosts</th>
+<th scope="col" class="org-right">256</th>
+<th scope="col" class="org-right">128</th>
+<th scope="col" class="org-left">*64</th>
+<th scope="col" class="org-right">32</th>
+<th scope="col" class="org-right">16</th>
+<th scope="col" class="org-right">8</th>
+<th scope="col" class="org-right">4</th>
+<th scope="col" class="org-right">2</th>
+<th scope="col" class="org-left">&#xa0;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">bits</td>
+<td class="org-right">128</td>
+<td class="org-right">64</td>
+<td class="org-left">*32</td>
+<td class="org-right">16</td>
+<td class="org-right">8</td>
+<td class="org-right">4</td>
+<td class="org-right">2</td>
+<td class="org-right">1</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">octets</td>
+<td class="org-right">1</td>
+<td class="org-right">1</td>
+<td class="org-left">0</td>
+<td class="org-right">0</td>
+<td class="org-right">0</td>
+<td class="org-right">0</td>
+<td class="org-right">0</td>
+<td class="org-right">0</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
 
 <p>
-<a href="y3/index.html">Year 3 Notes</a>
+Network ID: 192.168.20.0
+Octets: 128 + 64 = 192
+Subnet is = 255.255.255.192
+CIDR has 6 zeroes = 32 - 6 = 26
+Broadcast is the last one 192.168.20.63
+Range is +1 from the network to -1 from the broadcast = 192.168.20.1 - 192.168.20.62
 </p>
 
-<p>
-<a href="y4/index.html">Year 4 Notes</a>
+<p class="verse">
+So then the next network available is the one after the previous broadcast, which is 192.168.20.64<br />
 </p>
+</div>
+</div>
+<div id="outline-container-org3a7016d" class="outline-2">
+<h2 id="org3a7016d"><span class="section-number-2">2.</span> Exams (answer 3 of 4)</h2>
+<div class="outline-text-2" id="text-2">
+<ul class="org-ul">
+<li><b>don't mind the wording here, some of it could be wrong</b></li>
+<li>LOOK AT PAST PAPERS</li>
+<li>a) usually is an easy part (how does this work), probs explain a layer in detail</li>
+<li>b) a little bit more complex and touches on different parts</li>
+<li>part b examples: routing is definitely a question, different algos. routing vs forwarding. l over r</li>
+<li>what does a network header look like?</li>
+<li>if the server is busy how does the network deal with it</li>
+<li>web request vs mail request (lifecycle/lifetime)</li>
+<li>what happens where ipv4 and ipv6 is mixed</li>
+<li>centralized vs decentralized</li>
+<li>Quality of Experience of things, important (as it is for our chatgpt research)</li>
+<li>different streaming approaches, what they are and how they work</li>
+<li>jitter (and other network characteristics), payout delay value</li>
+<li>how to design a network (Connor based stuff), usually we'll deal with classless</li>
+<li>synchronization</li>
+<li>different classes of services, policies for classes of services</li>
+<li>client to server vs peer to peer</li>
+<li>caching</li>
+<li>understand and be able to explain things. e.g. company sets up a service: how would they deal with setting up a streaming service</li>
+</ul>
 
-<p>
-<a href="cse/index.html">CSE</a>
-</p>
 
-<p>
-<a href="mase/index.html">MASE</a>
-</p>
-
-<p>
-<a href="resources/elisp/elisp.html">Elisp</a>
-</p>
-
-<p>
-<a href="resources/angular4/angular4.html">Angular</a>
-</p>
-
-<p>
-<a href="resources/flutter/flutter.html">Flutter</a>
-</p>
-
-<p>
-<a href="resources/rust/rust.html">Rust</a>
-</p>
-
-<p>
-<a href="resources/go/go.html">Go (Golang)</a>
-</p>
-
-<p>
-<a href="resources/nativescript/nativescript.html">Nativescript</a>
-</p>
-
-<p>
-<a href="resources/docker/docker.html">Docker</a>
-</p>
-
-<p>
-<a href="resources/heroku/heroku.html">Heroku</a>
-</p>
-
-<p>
-<a href="resources/regex/regex.html">Regex</a>
-</p>
-
-<p>
-<a href="resources/webpack/webpack.html">Webpack</a>
-</p>
-
-<p>
-<a href="resources/websockets/websockets.html">WebSockets</a>
-</p>
-
-<p>
-<a href="resources/designNcss/designNcss.html">Design &amp; CSS</a>
-</p>
-
-<script src="assets/jquery-3.3.1.min.js"></script>
-<script src="assets/notes.js"></script>
+<script src="../assets/jquery-3.3.1.min.js"></script>
+<script src="../assets/notes.js"></script>
+</div>
+</div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Date: 2018-12-13 Thu 20:49</p>
+<p class="date">Date: 2025-11-13 Thu 15:26</p>
 <p class="author">Author: Damian Chrzanowski</p>
-<p class="date">Created: 2025-12-07 Sun 13:55</p>
+<p class="date">Created: 2025-12-07 Sun 13:54</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

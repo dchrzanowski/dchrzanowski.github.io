@@ -1,0 +1,136 @@
+#+TITLE: Agile Design and Testing
+#+DATE: [2025-10-16 Thu 09:32]
+#+AUTHOR: Damian Chrzanowski
+#+EMAIL: pjdamian.chrzanowski@gmail.com
+#+OPTIONS: TOC:1 num:2
+#+latex_header: \hypersetup{colorlinks=true,linkcolor=black}
+#+latex_header: \usepackage[margin=1in]{geometry}
+#+latex_header: \usepackage[scaled]{helvet} \renewcommand\familydefault{\sfdefault}
+
+[[file:index.org][Home Page]]
+
+* Scaffold for Parameterized Testing
+
+** pom for jupiter and jupiter with params
+#+begin_src xml
+  <dependencies>
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter-api</artifactId>
+      <version>5.4.2</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter-engine</artifactId>
+      <version>5.4.2</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter-params</artifactId>
+      <version>5.4.2</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+#+end_src
+
+
+** Using the MethodSource with an expected Throw
+#+begin_src java
+  @ParameterizedTest(name = "All input prices: {0}")
+  @MethodSource("provideShoppingInvalidInputArray")
+  @DisplayName("Shopping Invalid Input Array")
+  void testShoppingInvalidInputArray(double[] prices) {
+
+      IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
+              () -> Shopping.calculateFinalTotal(prices, false));
+
+      assertEquals("Five items are expected as the input array.", exception.getMessage());
+  }
+
+  static Stream<Arguments> provideShoppingInvalidInputArray() {
+      return Stream.of(
+              Arguments.of(new double[] {0, 0, 0, 0}),  // 4 items
+              Arguments.of(new double[] {2, 1, 0, 0, 0, 0}) // 5 items
+      );
+  }
+
+#+end_src
+
+** Using the MethodSource with an asssertEquals
+#+begin_src java
+  @ParameterizedTest(name = "Input prices: {0}, should be = {1}")
+  @MethodSource("provideShoppingNonPriority")
+  @DisplayName("Shopping Valid non-Priority Input Prices")
+  void testShoppingNonPriority(double[] prices, double shouldBe) {
+      assertEquals(Shopping.calculateFinalTotal(prices, false), shouldBe, 0.01);
+  }
+
+  static Stream<Arguments> provideShoppingNonPriority() {
+      return Stream.of(
+              Arguments.of(new double[] {0, 0, 0, 0, 0}, 0.0),
+              Arguments.of(new double[] {0.01, 0, 0, 0, 0}, 0.01), // 0.01
+
+              Arguments.of(new double[] {20, 20, 9.99, 0, 0}, 49.99), // 49.99
+              Arguments.of(new double[] {20, 20, 10, 0, 0}, 47.5), // 50 = 47.5
+              Arguments.of(new double[] {20, 20, 10.01, 0, 0}, 47.51), // 50.01 = 47.51
+
+              Arguments.of(new double[] {20, 20, 10, 40, 9.99}, 94.99), // 99.99 = 94.99
+              Arguments.of(new double[] {50, 50, 0, 0, 0}, 90.0), // 100 = 90
+              Arguments.of(new double[] {50, 50, 0.01, 0, 0}, 90.0), // 100.01 = 90
+
+              Arguments.of(new double[] {50, 50, 99.99, 0, 0}, 179.99), // 199.99 = 179.99
+              Arguments.of(new double[] {50, 50, 50, 50, 0}, 170.0), // 200 = 170
+              Arguments.of(new double[] {50, 50, 50, 50.01, 0}, 170.0) // 200.01 = 170.0
+      );
+  }
+
+#+end_src
+
+** Using the CsvSource
+#+begin_src java
+  @ParameterizedTest
+  @CsvSource(value= {"10:F","30:E","45:D","60:C","75:B","87:A"},delimiter=':')
+  void testGrades(int gradeNum,char shouldBeGrade) {
+  	assertEquals(shouldBeGrade,studentGrade.getGrade(gradeNum));
+  }
+
+#+end_src
+
+** Using the CsvFileSource (put the CSVs in the main/resources directory)
+#+begin_src java
+  @ParameterizedTest(name = "The year {0} should be {1}")
+  @CsvFileSource(resources = "/leapyears.csv")
+  void testLeapYears(int year, boolean shouldBe) {
+      assertEquals(DateUtils.isLeapYear(year), shouldBe);
+  }
+
+#+end_src
+The leapyears.csv file:
+#+begin_src csv
+  1992,True
+  1996,True
+  1991,False
+  1900,False
+  2000,True
+#+end_src
+
+** Using the ValueSource
+#+begin_src java
+  @ParameterizedTest(name = "Investment of {0} should be illegal")
+  @ValueSource(ints= {800, 999, 10001, 11000})
+  void testExceptionThrowingInvestments(int investment) {
+      IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
+              () -> InvestmentCalc.calculateInvestment(investment, 4));
+
+      assertEquals("Investment has to be between 1000 and 10 000. Given value: " + investment, exception.getMessage());
+  }
+
+#+end_src
+
+
+    #+BEGIN_EXPORT html
+    <script src="../assets/jquery-3.3.1.min.js"></script>
+    <script src="../assets/notes.js"></script>
+    #+END_EXPORT

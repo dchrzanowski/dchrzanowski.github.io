@@ -1,0 +1,115 @@
+1. Cloud Services
+   - How to use a cloud service. Benefits and challenges of using cloud platforms
+#+begin_verse
+*How to use a cloud service*
+
+You sign up with a provider (like Azure, AWS, GCP), choose the service you need: such as virtual machines, databases, or storage—and deploy resources through the web portal, CLI, or APIs. You then configure, monitor, and scale them on demand.
+
+*Benefits*
+
+No upfront hardware costs
+
+Easy scaling
+
+High availability and global access
+
+Pay-as-you-go pricing
+
+Managed services reduce maintenance work
+
+*Challenges*
+
+Requires internet connectivity
+
+Costs can grow if not monitored
+
+Security and compliance must be managed properly
+
+Potential vendor lock-in
+#+end_verse
+2. Microservices
+   - Definition of microservices and examples of use cases. Why microservices are important in application development
+#+begin_verse
+*Definition*
+
+Microservices are small, independent services that each handle a specific business function. They communicate over APIs.
+
+*Use cases*
+
+E-commerce systems (separate services for payments, catalog, inventory)
+
+Streaming platforms (user service, recommendation service, analytics)
+
+Banking apps (authentication, accounts, transactions)
+
+*Why they’re important*
+
+They improve scalability, allow teams to develop and deploy features independently, and increase resilience—if one service fails, the whole system doesn’t collapse.
+#+end_verse
+3. Cloud setup
+   - Steps to setup a cloud service account (Azure)
+   - Describe the instance setup
+#+begin_verse
+*Steps to set up an Azure account*
+
+Go to the Azure website and create a Microsoft account.
+
+Choose a subscription (free trial or paid).
+
+Set up billing information.
+
+Access the Azure Portal and start creating resources.
+
+*Describe the instance setup*
+
+You create a resource—often a Virtual Machine (VM). You pick:
+
+Region
+
+OS (Linux/Windows)
+
+Size (CPU/RAM)
+
+Storage
+
+Networking settings
+Then deploy it and connect via SSH or RDP.
+#+end_verse
+
+4. Launching a New Instance
+   - What is an instance?
+   - What can be done with an instance?
+#+begin_verse
+What is an instance?
+
+An instance is a virtual machine or compute resource running in the cloud.
+
+What can be done with an instance?
+
+You can run applications, host websites, deploy databases, perform data processing, test software, or use it like a remote computer for development.
+#+end_verse
+5. Using linux commands
+   - ls
+   - cd
+   - echo
+   - cat
+   - grep
+   - sudo
+   - vim
+   - mkdir
+   - clear
+   - rm
+   - systemctl
+6. Installation of packages (this is covered)
+   - htop
+   - tree
+   - postgresql
+   - sudo apt update
+7. Database creation (this is covered)
+   - do this via dbeaver
+8. Demonstrating cloud storage
+   - show creation of a blob, upload a file and access it
+9. Upload and running a jar file
+   - upload the jar file to the bucket, then use wget to get that file. but show alternative with scp
+10. Using postman
+   - show the individual commands that can be ran

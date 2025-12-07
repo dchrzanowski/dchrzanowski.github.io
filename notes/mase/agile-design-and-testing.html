@@ -1,0 +1,372 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2025-12-07 Sun 13:54 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Agile Design and Testing</title>
+<meta name="author" content="Damian Chrzanowski" />
+<meta name="generator" content="Org Mode" />
+<style type="text/css">
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { }
+</style>
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">Agile Design and Testing</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#orgce37aea">1. Scaffold for Parameterized Testing</a></li>
+</ul>
+</div>
+</div>
+<p>
+<a href="index.html">Home Page</a>
+</p>
+<div id="outline-container-orgce37aea" class="outline-2">
+<h2 id="orgce37aea"><span class="section-number-2">1.</span> Scaffold for Parameterized Testing</h2>
+<div class="outline-text-2" id="text-1">
+</div>
+<div id="outline-container-orgad8874c" class="outline-3">
+<h3 id="orgad8874c"><span class="section-number-3">1.1.</span> pom for jupiter and jupiter with params</h3>
+<div class="outline-text-3" id="text-1-1">
+<div class="org-src-container">
+<pre class="src src-xml"><span style="color: #bbc2cf; background-color: #131519;">&lt;</span><span style="color: #c678dd;">dependencies</span><span style="color: #bbc2cf; background-color: #131519;">&gt;</span>
+  <span style="color: #bbc2cf; background-color: #131519;">&lt;</span><span style="color: #c678dd;">dependency</span><span style="color: #bbc2cf; background-color: #131519;">&gt;</span>
+    <span style="color: #bbc2cf; background-color: #131519;">&lt;</span><span style="color: #c678dd;">groupId</span><span style="color: #bbc2cf; background-color: #131519;">&gt;</span><span style="color: #bbc2cf; background-color: #131519;">org.junit.jupiter</span><span style="color: #bbc2cf; background-color: #131519;">&lt;</span><span style="color: #bbc2cf; background-color: #131519;">/</span><span style="color: #c678dd;">groupId</span><span style="color: #bbc2cf; background-color: #131519;">&gt;</span>
+    <span style="color: #bbc2cf; background-color: #131519;">&lt;</span><span style="color: #c678dd;">artifactId</span><span style="color: #bbc2cf; background-color: #131519;">&gt;</span><span style="color: #bbc2cf; background-color: #131519;">junit-jupiter-api</span><span style="color: #bbc2cf; background-color: #131519;">&lt;</span><span style="color: #bbc2cf; background-color: #131519;">/</span><span style="color: #c678dd;">artifactId</span><span style="color: #bbc2cf; background-color: #131519;">&gt;</span>
+    <span style="color: #bbc2cf; background-color: #131519;">&lt;</span><span style="color: #c678dd;">version</span><span style="color: #bbc2cf; background-color: #131519;">&gt;</span><span style="color: #bbc2cf; background-color: #131519;">5.4.2</span><span style="color: #bbc2cf; background-color: #131519;">&lt;</span><span style="color: #bbc2cf; background-color: #131519;">/</span><span style="color: #c678dd;">version</span><span style="color: #bbc2cf; background-color: #131519;">&gt;</span>
+    <span style="color: #bbc2cf; background-color: #131519;">&lt;</span><span style="color: #c678dd;">scope</span><span style="color: #bbc2cf; background-color: #131519;">&gt;</span><span style="color: #bbc2cf; background-color: #131519;">test</span><span style="color: #bbc2cf; background-color: #131519;">&lt;</span><span style="color: #bbc2cf; background-color: #131519;">/</span><span style="color: #c678dd;">scope</span><span style="color: #bbc2cf; background-color: #131519;">&gt;</span>
+  <span style="color: #bbc2cf; background-color: #131519;">&lt;</span><span style="color: #bbc2cf; background-color: #131519;">/</span><span style="color: #c678dd;">dependency</span><span style="color: #bbc2cf; background-color: #131519;">&gt;</span>
+  <span style="color: #bbc2cf; background-color: #131519;">&lt;</span><span style="color: #c678dd;">dependency</span><span style="color: #bbc2cf; background-color: #131519;">&gt;</span>
+    <span style="color: #bbc2cf; background-color: #131519;">&lt;</span><span style="color: #c678dd;">groupId</span><span style="color: #bbc2cf; background-color: #131519;">&gt;</span><span style="color: #bbc2cf; background-color: #131519;">org.junit.jupiter</span><span style="color: #bbc2cf; background-color: #131519;">&lt;</span><span style="color: #bbc2cf; background-color: #131519;">/</span><span style="color: #c678dd;">groupId</span><span style="color: #bbc2cf; background-color: #131519;">&gt;</span>
+    <span style="color: #bbc2cf; background-color: #131519;">&lt;</span><span style="color: #c678dd;">artifactId</span><span style="color: #bbc2cf; background-color: #131519;">&gt;</span><span style="color: #bbc2cf; background-color: #131519;">junit-jupiter-engine</span><span style="color: #bbc2cf; background-color: #131519;">&lt;</span><span style="color: #bbc2cf; background-color: #131519;">/</span><span style="color: #c678dd;">artifactId</span><span style="color: #bbc2cf; background-color: #131519;">&gt;</span>
+    <span style="color: #bbc2cf; background-color: #131519;">&lt;</span><span style="color: #c678dd;">version</span><span style="color: #bbc2cf; background-color: #131519;">&gt;</span><span style="color: #bbc2cf; background-color: #131519;">5.4.2</span><span style="color: #bbc2cf; background-color: #131519;">&lt;</span><span style="color: #bbc2cf; background-color: #131519;">/</span><span style="color: #c678dd;">version</span><span style="color: #bbc2cf; background-color: #131519;">&gt;</span>
+    <span style="color: #bbc2cf; background-color: #131519;">&lt;</span><span style="color: #c678dd;">scope</span><span style="color: #bbc2cf; background-color: #131519;">&gt;</span><span style="color: #bbc2cf; background-color: #131519;">test</span><span style="color: #bbc2cf; background-color: #131519;">&lt;</span><span style="color: #bbc2cf; background-color: #131519;">/</span><span style="color: #c678dd;">scope</span><span style="color: #bbc2cf; background-color: #131519;">&gt;</span>
+  <span style="color: #bbc2cf; background-color: #131519;">&lt;</span><span style="color: #bbc2cf; background-color: #131519;">/</span><span style="color: #c678dd;">dependency</span><span style="color: #bbc2cf; background-color: #131519;">&gt;</span>
+  <span style="color: #bbc2cf; background-color: #131519;">&lt;</span><span style="color: #c678dd;">dependency</span><span style="color: #bbc2cf; background-color: #131519;">&gt;</span>
+    <span style="color: #bbc2cf; background-color: #131519;">&lt;</span><span style="color: #c678dd;">groupId</span><span style="color: #bbc2cf; background-color: #131519;">&gt;</span><span style="color: #bbc2cf; background-color: #131519;">org.junit.jupiter</span><span style="color: #bbc2cf; background-color: #131519;">&lt;</span><span style="color: #bbc2cf; background-color: #131519;">/</span><span style="color: #c678dd;">groupId</span><span style="color: #bbc2cf; background-color: #131519;">&gt;</span>
+    <span style="color: #bbc2cf; background-color: #131519;">&lt;</span><span style="color: #c678dd;">artifactId</span><span style="color: #bbc2cf; background-color: #131519;">&gt;</span><span style="color: #bbc2cf; background-color: #131519;">junit-jupiter-params</span><span style="color: #bbc2cf; background-color: #131519;">&lt;</span><span style="color: #bbc2cf; background-color: #131519;">/</span><span style="color: #c678dd;">artifactId</span><span style="color: #bbc2cf; background-color: #131519;">&gt;</span>
+    <span style="color: #bbc2cf; background-color: #131519;">&lt;</span><span style="color: #c678dd;">version</span><span style="color: #bbc2cf; background-color: #131519;">&gt;</span><span style="color: #bbc2cf; background-color: #131519;">5.4.2</span><span style="color: #bbc2cf; background-color: #131519;">&lt;</span><span style="color: #bbc2cf; background-color: #131519;">/</span><span style="color: #c678dd;">version</span><span style="color: #bbc2cf; background-color: #131519;">&gt;</span>
+    <span style="color: #bbc2cf; background-color: #131519;">&lt;</span><span style="color: #c678dd;">scope</span><span style="color: #bbc2cf; background-color: #131519;">&gt;</span><span style="color: #bbc2cf; background-color: #131519;">test</span><span style="color: #bbc2cf; background-color: #131519;">&lt;</span><span style="color: #bbc2cf; background-color: #131519;">/</span><span style="color: #c678dd;">scope</span><span style="color: #bbc2cf; background-color: #131519;">&gt;</span>
+  <span style="color: #bbc2cf; background-color: #131519;">&lt;</span><span style="color: #bbc2cf; background-color: #131519;">/</span><span style="color: #c678dd;">dependency</span><span style="color: #bbc2cf; background-color: #131519;">&gt;</span>
+<span style="color: #bbc2cf; background-color: #131519;">&lt;</span><span style="color: #bbc2cf; background-color: #131519;">/</span><span style="color: #c678dd;">dependencies</span><span style="color: #bbc2cf; background-color: #131519;">&gt;</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org0037075" class="outline-3">
+<h3 id="org0037075"><span class="section-number-3">1.2.</span> Using the MethodSource with an expected Throw</h3>
+<div class="outline-text-3" id="text-1-2">
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #bbc2cf;">@</span><span style="color: #51afef; font-weight: bold;">ParameterizedTest</span><span style="color: #fff0f5;">(</span>name = <span style="color: #98be65;">"All input prices: {0}"</span><span style="color: #fff0f5;">)</span>
+<span style="color: #bbc2cf;">@</span><span style="color: #51afef; font-weight: bold;">MethodSource</span><span style="color: #fff0f5;">(</span><span style="color: #98be65;">"provideShoppingInvalidInputArray"</span><span style="color: #fff0f5;">)</span>
+<span style="color: #bbc2cf;">@</span><span style="color: #51afef; font-weight: bold;">DisplayName</span><span style="color: #fff0f5;">(</span><span style="color: #98be65;">"Shopping Invalid Input Array"</span><span style="color: #fff0f5;">)</span>
+<span style="color: #ECBE7B;">void</span> <span style="color: #c678dd;">testShoppingInvalidInputArray</span><span style="color: #fff0f5;">(</span><span style="color: #ECBE7B;">double</span><span style="color: #c678dd;">[]</span> prices<span style="color: #fff0f5;">)</span> <span style="color: #fff0f5;">{</span>
+
+    <span style="color: #ECBE7B;">IllegalArgumentException</span> exception = <span style="color: #c678dd;">assertThrows</span><span style="color: #c678dd;">(</span><span style="color: #ECBE7B;">IllegalArgumentException</span>.<span style="color: #51afef; font-style: italic;">class</span>,
+            <span style="color: #98be65;">()</span> -&gt; Shopping.<span style="color: #c678dd;">calculateFinalTotal</span><span style="color: #98be65;">(</span>prices, <span style="color: #a9a1e1;">false</span><span style="color: #98be65;">)</span><span style="color: #c678dd;">)</span>;
+
+    <span style="color: #c678dd;">assertEquals</span><span style="color: #c678dd;">(</span><span style="color: #98be65;">"Five items are expected as the input array."</span>, exception.<span style="color: #c678dd;">getMessage</span><span style="color: #98be65;">()</span><span style="color: #c678dd;">)</span>;
+<span style="color: #fff0f5;">}</span>
+
+<span style="color: #51afef; font-style: italic;">static</span> <span style="color: #ECBE7B;">Stream</span><span style="color: #fff0f5;">&lt;</span><span style="color: #ECBE7B;">Arguments</span><span style="color: #fff0f5;">&gt;</span> <span style="color: #c678dd;">provideShoppingInvalidInputArray</span><span style="color: #fff0f5;">()</span> <span style="color: #fff0f5;">{</span>
+    <span style="color: #51afef; font-style: italic;">return</span> Stream.<span style="color: #c678dd;">of</span><span style="color: #c678dd;">(</span>
+            Arguments.<span style="color: #c678dd;">of</span><span style="color: #98be65;">(</span><span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">double</span><span style="color: #00bfff;">[]</span> <span style="color: #00bfff;">{</span><span style="color: #da8548; font-weight: bold;">0</span>, <span style="color: #da8548; font-weight: bold;">0</span>, <span style="color: #da8548; font-weight: bold;">0</span>, <span style="color: #da8548; font-weight: bold;">0</span><span style="color: #00bfff;">}</span><span style="color: #98be65;">)</span>,  <span style="color: #5B6268;">// 4 items</span>
+            Arguments.<span style="color: #c678dd;">of</span><span style="color: #98be65;">(</span><span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">double</span><span style="color: #00bfff;">[]</span> <span style="color: #00bfff;">{</span><span style="color: #da8548; font-weight: bold;">2</span>, <span style="color: #da8548; font-weight: bold;">1</span>, <span style="color: #da8548; font-weight: bold;">0</span>, <span style="color: #da8548; font-weight: bold;">0</span>, <span style="color: #da8548; font-weight: bold;">0</span>, <span style="color: #da8548; font-weight: bold;">0</span><span style="color: #00bfff;">}</span><span style="color: #98be65;">)</span> <span style="color: #5B6268;">// 5 items</span>
+    <span style="color: #c678dd;">)</span>;
+<span style="color: #fff0f5;">}</span>
+
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgf06a58f" class="outline-3">
+<h3 id="orgf06a58f"><span class="section-number-3">1.3.</span> Using the MethodSource with an asssertEquals</h3>
+<div class="outline-text-3" id="text-1-3">
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #bbc2cf;">@</span><span style="color: #51afef; font-weight: bold;">ParameterizedTest</span><span style="color: #fff0f5;">(</span>name = <span style="color: #98be65;">"Input prices: {0}, should be = {1}"</span><span style="color: #fff0f5;">)</span>
+<span style="color: #bbc2cf;">@</span><span style="color: #51afef; font-weight: bold;">MethodSource</span><span style="color: #fff0f5;">(</span><span style="color: #98be65;">"provideShoppingNonPriority"</span><span style="color: #fff0f5;">)</span>
+<span style="color: #bbc2cf;">@</span><span style="color: #51afef; font-weight: bold;">DisplayName</span><span style="color: #fff0f5;">(</span><span style="color: #98be65;">"Shopping Valid non-Priority Input Prices"</span><span style="color: #fff0f5;">)</span>
+<span style="color: #ECBE7B;">void</span> <span style="color: #c678dd;">testShoppingNonPriority</span><span style="color: #fff0f5;">(</span><span style="color: #ECBE7B;">double</span><span style="color: #c678dd;">[]</span> prices, <span style="color: #ECBE7B;">double</span> shouldBe<span style="color: #fff0f5;">)</span> <span style="color: #fff0f5;">{</span>
+    <span style="color: #c678dd;">assertEquals</span><span style="color: #c678dd;">(</span>Shopping.<span style="color: #c678dd;">calculateFinalTotal</span><span style="color: #98be65;">(</span>prices, <span style="color: #a9a1e1;">false</span><span style="color: #98be65;">)</span>, shouldBe, <span style="color: #da8548; font-weight: bold;">0.01</span><span style="color: #c678dd;">)</span>;
+<span style="color: #fff0f5;">}</span>
+
+<span style="color: #51afef; font-style: italic;">static</span> <span style="color: #ECBE7B;">Stream</span><span style="color: #fff0f5;">&lt;</span><span style="color: #ECBE7B;">Arguments</span><span style="color: #fff0f5;">&gt;</span> <span style="color: #c678dd;">provideShoppingNonPriority</span><span style="color: #fff0f5;">()</span> <span style="color: #fff0f5;">{</span>
+    <span style="color: #51afef; font-style: italic;">return</span> Stream.<span style="color: #c678dd;">of</span><span style="color: #c678dd;">(</span>
+            Arguments.<span style="color: #c678dd;">of</span><span style="color: #98be65;">(</span><span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">double</span><span style="color: #00bfff;">[]</span> <span style="color: #00bfff;">{</span><span style="color: #da8548; font-weight: bold;">0</span>, <span style="color: #da8548; font-weight: bold;">0</span>, <span style="color: #da8548; font-weight: bold;">0</span>, <span style="color: #da8548; font-weight: bold;">0</span>, <span style="color: #da8548; font-weight: bold;">0</span><span style="color: #00bfff;">}</span>, <span style="color: #da8548; font-weight: bold;">0.0</span><span style="color: #98be65;">)</span>,
+            Arguments.<span style="color: #c678dd;">of</span><span style="color: #98be65;">(</span><span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">double</span><span style="color: #00bfff;">[]</span> <span style="color: #00bfff;">{</span><span style="color: #da8548; font-weight: bold;">0.01</span>, <span style="color: #da8548; font-weight: bold;">0</span>, <span style="color: #da8548; font-weight: bold;">0</span>, <span style="color: #da8548; font-weight: bold;">0</span>, <span style="color: #da8548; font-weight: bold;">0</span><span style="color: #00bfff;">}</span>, <span style="color: #da8548; font-weight: bold;">0.01</span><span style="color: #98be65;">)</span>, <span style="color: #5B6268;">// 0.01</span>
+
+            Arguments.<span style="color: #c678dd;">of</span><span style="color: #98be65;">(</span><span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">double</span><span style="color: #00bfff;">[]</span> <span style="color: #00bfff;">{</span><span style="color: #da8548; font-weight: bold;">20</span>, <span style="color: #da8548; font-weight: bold;">20</span>, <span style="color: #da8548; font-weight: bold;">9.99</span>, <span style="color: #da8548; font-weight: bold;">0</span>, <span style="color: #da8548; font-weight: bold;">0</span><span style="color: #00bfff;">}</span>, <span style="color: #da8548; font-weight: bold;">49.99</span><span style="color: #98be65;">)</span>, <span style="color: #5B6268;">// 49.99</span>
+            Arguments.<span style="color: #c678dd;">of</span><span style="color: #98be65;">(</span><span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">double</span><span style="color: #00bfff;">[]</span> <span style="color: #00bfff;">{</span><span style="color: #da8548; font-weight: bold;">20</span>, <span style="color: #da8548; font-weight: bold;">20</span>, <span style="color: #da8548; font-weight: bold;">10</span>, <span style="color: #da8548; font-weight: bold;">0</span>, <span style="color: #da8548; font-weight: bold;">0</span><span style="color: #00bfff;">}</span>, <span style="color: #da8548; font-weight: bold;">47.5</span><span style="color: #98be65;">)</span>, <span style="color: #5B6268;">// 50 = 47.5</span>
+            Arguments.<span style="color: #c678dd;">of</span><span style="color: #98be65;">(</span><span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">double</span><span style="color: #00bfff;">[]</span> <span style="color: #00bfff;">{</span><span style="color: #da8548; font-weight: bold;">20</span>, <span style="color: #da8548; font-weight: bold;">20</span>, <span style="color: #da8548; font-weight: bold;">10.01</span>, <span style="color: #da8548; font-weight: bold;">0</span>, <span style="color: #da8548; font-weight: bold;">0</span><span style="color: #00bfff;">}</span>, <span style="color: #da8548; font-weight: bold;">47.51</span><span style="color: #98be65;">)</span>, <span style="color: #5B6268;">// 50.01 = 47.51</span>
+
+            Arguments.<span style="color: #c678dd;">of</span><span style="color: #98be65;">(</span><span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">double</span><span style="color: #00bfff;">[]</span> <span style="color: #00bfff;">{</span><span style="color: #da8548; font-weight: bold;">20</span>, <span style="color: #da8548; font-weight: bold;">20</span>, <span style="color: #da8548; font-weight: bold;">10</span>, <span style="color: #da8548; font-weight: bold;">40</span>, <span style="color: #da8548; font-weight: bold;">9.99</span><span style="color: #00bfff;">}</span>, <span style="color: #da8548; font-weight: bold;">94.99</span><span style="color: #98be65;">)</span>, <span style="color: #5B6268;">// 99.99 = 94.99</span>
+            Arguments.<span style="color: #c678dd;">of</span><span style="color: #98be65;">(</span><span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">double</span><span style="color: #00bfff;">[]</span> <span style="color: #00bfff;">{</span><span style="color: #da8548; font-weight: bold;">50</span>, <span style="color: #da8548; font-weight: bold;">50</span>, <span style="color: #da8548; font-weight: bold;">0</span>, <span style="color: #da8548; font-weight: bold;">0</span>, <span style="color: #da8548; font-weight: bold;">0</span><span style="color: #00bfff;">}</span>, <span style="color: #da8548; font-weight: bold;">90.0</span><span style="color: #98be65;">)</span>, <span style="color: #5B6268;">// 100 = 90</span>
+            Arguments.<span style="color: #c678dd;">of</span><span style="color: #98be65;">(</span><span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">double</span><span style="color: #00bfff;">[]</span> <span style="color: #00bfff;">{</span><span style="color: #da8548; font-weight: bold;">50</span>, <span style="color: #da8548; font-weight: bold;">50</span>, <span style="color: #da8548; font-weight: bold;">0.01</span>, <span style="color: #da8548; font-weight: bold;">0</span>, <span style="color: #da8548; font-weight: bold;">0</span><span style="color: #00bfff;">}</span>, <span style="color: #da8548; font-weight: bold;">90.0</span><span style="color: #98be65;">)</span>, <span style="color: #5B6268;">// 100.01 = 90</span>
+
+            Arguments.<span style="color: #c678dd;">of</span><span style="color: #98be65;">(</span><span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">double</span><span style="color: #00bfff;">[]</span> <span style="color: #00bfff;">{</span><span style="color: #da8548; font-weight: bold;">50</span>, <span style="color: #da8548; font-weight: bold;">50</span>, <span style="color: #da8548; font-weight: bold;">99.99</span>, <span style="color: #da8548; font-weight: bold;">0</span>, <span style="color: #da8548; font-weight: bold;">0</span><span style="color: #00bfff;">}</span>, <span style="color: #da8548; font-weight: bold;">179.99</span><span style="color: #98be65;">)</span>, <span style="color: #5B6268;">// 199.99 = 179.99</span>
+            Arguments.<span style="color: #c678dd;">of</span><span style="color: #98be65;">(</span><span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">double</span><span style="color: #00bfff;">[]</span> <span style="color: #00bfff;">{</span><span style="color: #da8548; font-weight: bold;">50</span>, <span style="color: #da8548; font-weight: bold;">50</span>, <span style="color: #da8548; font-weight: bold;">50</span>, <span style="color: #da8548; font-weight: bold;">50</span>, <span style="color: #da8548; font-weight: bold;">0</span><span style="color: #00bfff;">}</span>, <span style="color: #da8548; font-weight: bold;">170.0</span><span style="color: #98be65;">)</span>, <span style="color: #5B6268;">// 200 = 170</span>
+            Arguments.<span style="color: #c678dd;">of</span><span style="color: #98be65;">(</span><span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">double</span><span style="color: #00bfff;">[]</span> <span style="color: #00bfff;">{</span><span style="color: #da8548; font-weight: bold;">50</span>, <span style="color: #da8548; font-weight: bold;">50</span>, <span style="color: #da8548; font-weight: bold;">50</span>, <span style="color: #da8548; font-weight: bold;">50.01</span>, <span style="color: #da8548; font-weight: bold;">0</span><span style="color: #00bfff;">}</span>, <span style="color: #da8548; font-weight: bold;">170.0</span><span style="color: #98be65;">)</span> <span style="color: #5B6268;">// 200.01 = 170.0</span>
+    <span style="color: #c678dd;">)</span>;
+<span style="color: #fff0f5;">}</span>
+
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org5e900d1" class="outline-3">
+<h3 id="org5e900d1"><span class="section-number-3">1.4.</span> Using the CsvSource</h3>
+<div class="outline-text-3" id="text-1-4">
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #bbc2cf;">@</span><span style="color: #51afef; font-weight: bold;">ParameterizedTest</span>
+<span style="color: #bbc2cf;">@</span><span style="color: #51afef; font-weight: bold;">CsvSource</span><span style="color: #fff0f5;">(</span>value= <span style="color: #c678dd;">{</span><span style="color: #98be65;">"10:F"</span>,<span style="color: #98be65;">"30:E"</span>,<span style="color: #98be65;">"45:D"</span>,<span style="color: #98be65;">"60:C"</span>,<span style="color: #98be65;">"75:B"</span>,<span style="color: #98be65;">"87:A"</span><span style="color: #c678dd;">}</span>,delimiter=<span style="color: #98be65;">':'</span><span style="color: #fff0f5;">)</span>
+<span style="color: #ECBE7B;">void</span> <span style="color: #c678dd;">testGrades</span><span style="color: #fff0f5;">(</span><span style="color: #ECBE7B;">int</span> gradeNum,<span style="color: #ECBE7B;">char</span> shouldBeGrade<span style="color: #fff0f5;">)</span> <span style="color: #fff0f5;">{</span>
+    <span style="color: #c678dd;">assertEquals</span><span style="color: #c678dd;">(</span>shouldBeGrade,studentGrade.<span style="color: #c678dd;">getGrade</span><span style="color: #98be65;">(</span>gradeNum<span style="color: #98be65;">)</span><span style="color: #c678dd;">)</span>;
+<span style="color: #fff0f5;">}</span>
+
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgf608cee" class="outline-3">
+<h3 id="orgf608cee"><span class="section-number-3">1.5.</span> Using the CsvFileSource (put the CSVs in the main/resources directory)</h3>
+<div class="outline-text-3" id="text-1-5">
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #bbc2cf;">@</span><span style="color: #51afef; font-weight: bold;">ParameterizedTest</span><span style="color: #fff0f5;">(</span>name = <span style="color: #98be65;">"The year {0} should be {1}"</span><span style="color: #fff0f5;">)</span>
+<span style="color: #bbc2cf;">@</span><span style="color: #51afef; font-weight: bold;">CsvFileSource</span><span style="color: #fff0f5;">(</span>resources = <span style="color: #98be65;">"/leapyears.csv"</span><span style="color: #fff0f5;">)</span>
+<span style="color: #ECBE7B;">void</span> <span style="color: #c678dd;">testLeapYears</span><span style="color: #fff0f5;">(</span><span style="color: #ECBE7B;">int</span> year, <span style="color: #ECBE7B;">boolean</span> shouldBe<span style="color: #fff0f5;">)</span> <span style="color: #fff0f5;">{</span>
+    <span style="color: #c678dd;">assertEquals</span><span style="color: #c678dd;">(</span>DateUtils.<span style="color: #c678dd;">isLeapYear</span><span style="color: #98be65;">(</span>year<span style="color: #98be65;">)</span>, shouldBe<span style="color: #c678dd;">)</span>;
+<span style="color: #fff0f5;">}</span>
+
+</pre>
+</div>
+<p>
+The leapyears.csv file:
+</p>
+<div class="org-src-container">
+<pre class="src src-csv"><span style="color: #da8548; font-weight: bold;">1992</span><span style="color: #bbc2cf;">,</span><span style="color: #98be65;">True</span>
+<span style="color: #da8548; font-weight: bold;">1996</span><span style="color: #bbc2cf;">,</span><span style="color: #98be65;">True</span>
+<span style="color: #da8548; font-weight: bold;">1991</span><span style="color: #bbc2cf;">,</span><span style="color: #98be65;">False</span>
+<span style="color: #da8548; font-weight: bold;">1900</span><span style="color: #bbc2cf;">,</span><span style="color: #98be65;">False</span>
+<span style="color: #da8548; font-weight: bold;">2000</span><span style="color: #bbc2cf;">,</span><span style="color: #98be65;">True</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgbe018c8" class="outline-3">
+<h3 id="orgbe018c8"><span class="section-number-3">1.6.</span> Using the ValueSource</h3>
+<div class="outline-text-3" id="text-1-6">
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #bbc2cf;">@</span><span style="color: #51afef; font-weight: bold;">ParameterizedTest</span><span style="color: #fff0f5;">(</span>name = <span style="color: #98be65;">"Investment of {0} should be illegal"</span><span style="color: #fff0f5;">)</span>
+<span style="color: #bbc2cf;">@</span><span style="color: #51afef; font-weight: bold;">ValueSource</span><span style="color: #fff0f5;">(</span>ints= <span style="color: #c678dd;">{</span><span style="color: #da8548; font-weight: bold;">800</span>, <span style="color: #da8548; font-weight: bold;">999</span>, <span style="color: #da8548; font-weight: bold;">10001</span>, <span style="color: #da8548; font-weight: bold;">11000</span><span style="color: #c678dd;">}</span><span style="color: #fff0f5;">)</span>
+<span style="color: #ECBE7B;">void</span> <span style="color: #c678dd;">testExceptionThrowingInvestments</span><span style="color: #fff0f5;">(</span><span style="color: #ECBE7B;">int</span> investment<span style="color: #fff0f5;">)</span> <span style="color: #fff0f5;">{</span>
+    <span style="color: #ECBE7B;">IllegalArgumentException</span> exception = <span style="color: #c678dd;">assertThrows</span><span style="color: #c678dd;">(</span><span style="color: #ECBE7B;">IllegalArgumentException</span>.<span style="color: #51afef; font-style: italic;">class</span>,
+            <span style="color: #98be65;">()</span> -&gt; InvestmentCalc.<span style="color: #c678dd;">calculateInvestment</span><span style="color: #98be65;">(</span>investment, <span style="color: #da8548; font-weight: bold;">4</span><span style="color: #98be65;">)</span><span style="color: #c678dd;">)</span>;
+
+    <span style="color: #c678dd;">assertEquals</span><span style="color: #c678dd;">(</span><span style="color: #98be65;">"Investment has to be between 1000 and 10 000. Given value: "</span> + investment, exception.<span style="color: #c678dd;">getMessage</span><span style="color: #98be65;">()</span><span style="color: #c678dd;">)</span>;
+<span style="color: #fff0f5;">}</span>
+
+</pre>
+</div>
+
+
+<script src="../assets/jquery-3.3.1.min.js"></script>
+<script src="../assets/notes.js"></script>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="date">Date: 2025-10-16 Thu 09:32</p>
+<p class="author">Author: Damian Chrzanowski</p>
+<p class="date">Created: 2025-12-07 Sun 13:54</p>
+<p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

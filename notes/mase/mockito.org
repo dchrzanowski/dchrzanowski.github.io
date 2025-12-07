@@ -1,0 +1,209 @@
+#+TITLE: Mockito
+#+DATE: [2025-11-13 Thu 19:14]
+#+AUTHOR: Damian Chrzanowski
+#+EMAIL: pjdamian.chrzanowski@gmail.com
+#+OPTIONS: TOC:1 num:2
+#+latex_header: \hypersetup{colorlinks=true,linkcolor=black}
+#+latex_header: \usepackage[margin=1in]{geometry}
+#+latex_header: \usepackage[scaled]{helvet} \renewcommand\familydefault{\sfdefault}
+
+[[file:index.org][Home Page]]
+
+* Sample
+  #+begin_src java
+    class PayoutSchedulerTestMG {
+
+    	TransactionDAO transactionDAO;
+    	MembershipDAO membershipDAO;
+    	StripeService stripeService;
+    	AuditLogger auditLogger; // Mock AuditLogger
+    	List<TransactionDto> transactions;
+    	PayoutScheduler payoutScheduler;
+
+    	// MG
+    	@BeforeEach
+    	void setup() {
+    		transactionDAO = mock(TransactionDAO.class);
+    		membershipDAO = mock(MembershipDAO.class);
+    		stripeService = mock(StripeService.class);
+    		auditLogger = mock(AuditLogger.class); // Mock AuditLogger
+    		transactions = new ArrayList<>();
+    		payoutScheduler = new PayoutScheduler(transactionDAO, membershipDAO, stripeService, auditLogger);
+    	}
+
+    	// MG
+    	@Test // 1
+    	void whenNoTransactionToProcessReturnsZero() throws EduStreamDAOException, EduStreamStripeException, SQLException {
+    		// Mock behavior: No transactions found
+    		when(transactionDAO.retrieveUnprocessedTransactions(anyInt())).thenReturn(new ArrayList<>());
+    		// Call reconcile method
+    		int result = payoutScheduler.reconcile(1);
+    		// Assert that 0 transactions were processed
+    		assertEquals(0, result);
+    		// Verify that transaction fetch was logged
+    		verify(auditLogger).logTransactionFetch(1, 0);
+    		// verify that no getMembershipDetails was called
+    		verify(membershipDAO, times(0)).getMembershipDetails(anyInt());
+    		// Verify no interaction with setPayoutDetails and sendPayout
+    		verify(membershipDAO, never()).setPayoutDetails(anyInt(), any());
+    		verify(stripeService, never()).sendPayout(any());
+    		// Verify no payout calculation or payout sent was logged
+    		verify(auditLogger, never()).logPayoutCalculation(anyInt(), anyDouble());
+    		verify(auditLogger, never()).logPayoutSent(anyInt(), anyDouble());
+    	}
+
+    	@Test // 2
+    	void testEduStreamDAOException() throws SQLException, EduStreamStripeException {
+    		// Mock behavior: SQLException thrown
+    		when(transactionDAO.retrieveUnprocessedTransactions(anyInt())).thenThrow(new SQLException());
+    		// Assert that the EduStreamDAOException is thrown with the correct message
+    		EduStreamDAOException exception = assertThrows(EduStreamDAOException.class, () -> {
+    			payoutScheduler.reconcile(1);
+    		});
+    		assertEquals("Error in connection to EduStream database", exception.getMessage());
+    		verify(auditLogger).logPayoutFailure(1, "Error in connection to EduStream database");
+    		// Verify no interaction with setPayoutDetails and sendPayout
+    		verify(membershipDAO, never()).setPayoutDetails(anyInt(), any());
+    		verify(stripeService, never()).sendPayout(any());
+    		// Verify no payout calculation or payout sent was logged
+    		verify(auditLogger, never()).logPayoutCalculation(anyInt(), anyDouble());
+    		verify(auditLogger, never()).logPayoutSent(anyInt(), anyDouble());
+    	}
+
+    	@Test // 3
+    	void whenOneTransactionToProcessReturnsOne() throws EduStreamDAOException, EduStreamStripeException, SQLException {
+    		// Create a single transaction
+    		transactions.add(new TransactionDto(1, 100.0));
+    		// Mock behavior: One transaction found
+    		when(transactionDAO.retrieveUnprocessedTransactions(anyInt())).thenReturn(transactions);
+    		// Mock membership details
+    		when(membershipDAO.getMembershipDetails(anyInt())).thenReturn(new MembershipDto(1, 0.1));
+    		// Call reconcile method
+    		int result = payoutScheduler.reconcile(1);
+    		// Assert that 1 transaction was processed
+    		assertEquals(1, result);
+    		// Verify logging of transaction fetch and payout calculation
+    		verify(auditLogger).logTransactionFetch(1, 1);
+    		verify(auditLogger).logPayoutCalculation(1, 90.0); // 100 - 10% commission
+    		verify(auditLogger).logPayoutSent(1, 90.0);
+    		// Verify interactions with setPayoutDetails and sendPayout
+    		verify(membershipDAO, times(1)).setPayoutDetails(anyInt(), any(PayoutDto.class));
+    		verify(stripeService, times(1)).sendPayout(any(PayoutDto.class));
+    	}
+
+    	@Test // 4
+    	void whenTwoTransactionsToProcessReturnsTwo() throws EduStreamDAOException, EduStreamStripeException, SQLException {
+    		// Create two transactions
+    		transactions.add(new TransactionDto(1, 100.0)); // First transaction of 100.0
+    		transactions.add(new TransactionDto(1, 200.0)); // Second transaction of 200.0
+    		// Mock behavior: Two transactions returned
+    		when(transactionDAO.retrieveUnprocessedTransactions(anyInt())).thenReturn(transactions);
+    		// Mock membership details (e.g., 10% commission rate)
+    		when(membershipDAO.getMembershipDetails(anyInt())).thenReturn(new MembershipDto(1, 0.1));
+    		// Call reconcile method for educator with ID 1
+    		int result = payoutScheduler.reconcile(1);
+    		// Assert that 2 transactions were processed
+    		assertEquals(2, result);
+    		// Verify logging of transaction fetch
+    		verify(auditLogger).logTransactionFetch(1, 2);
+    		// Verify that payout calculation is logged (total payout: 100 + 200, minus 10%
+    		// commission)
+    		verify(auditLogger).logPayoutCalculation(1, 270.0); // 300 - 10% commission = 270.0
+    		// Verify that payout was sent to Stripe
+    		verify(auditLogger).logPayoutSent(1, 270.0);
+    		// Verify that MembershipDAO setPayoutDetails is called with the correct payout
+    		verify(membershipDAO, times(1)).setPayoutDetails(anyInt(), any(PayoutDto.class));
+    		verify(stripeService, times(1)).sendPayout(any(PayoutDto.class));
+    	}
+
+    	@Test // 5
+    	void testEduStreamStripeException() throws SQLException, EduStreamStripeException {
+    		// Create a single transaction
+    		transactions.add(new TransactionDto(1, 100.0));
+    		// Mock behavior: One transaction found
+    		when(transactionDAO.retrieveUnprocessedTransactions(anyInt())).thenReturn(transactions);
+    		// Mock membership details
+    		when(membershipDAO.getMembershipDetails(anyInt())).thenReturn(new MembershipDto(1, 0.1));
+    		// Mock behavior: StripeService throws an exception
+    		doThrow(new EduStreamStripeException("Stripe Payment Error")).when(stripeService)
+    				.sendPayout(any(PayoutDto.class));
+    		// Assert that EduStreamStripeException is thrown with the correct message
+    		EduStreamStripeException exception = assertThrows(EduStreamStripeException.class, () -> {
+    			payoutScheduler.reconcile(1);
+    		});
+    		assertEquals("Stripe Payment Error", exception.getMessage());
+    		// Verify logging of transaction fetch and payout calculation, but log failure
+    		// when Stripe error occurs
+    		verify(auditLogger).logTransactionFetch(1, 1);
+    		verify(auditLogger).logPayoutCalculation(1, 90.0); // 100 - 10% commission
+    		verify(auditLogger).logPayoutFailure(1, "Stripe Error: Stripe Payment Error");
+    		// Verify that setPayoutDetails is not called
+    		verify(membershipDAO, never()).setPayoutDetails(anyInt(), any(PayoutDto.class));
+    	}
+    }
+  #+end_src
+* Concrete Class
+  #+begin_src java
+    public class PayoutScheduler {
+
+        private TransactionDAO transactionDAO;
+        private MembershipDAO membershipDAO;
+        private StripeService stripeService;
+        private AuditLogger auditLogger; // New addition
+
+        public PayoutScheduler(TransactionDAO transactionDAO, MembershipDAO membershipDAO, StripeService stripeService, AuditLogger auditLogger) {
+            this.transactionDAO = transactionDAO;
+            this.membershipDAO = membershipDAO;
+            this.stripeService = stripeService;
+            this.auditLogger = auditLogger; // New addition
+        }
+
+        public int reconcile(int educatorId) throws EduStreamDAOException, EduStreamStripeException {
+            try {
+                // Retrieve all transactions for the last 30 days
+                List<TransactionDto> transactions = transactionDAO.retrieveUnprocessedTransactions(educatorId);
+                auditLogger.logTransactionFetch(educatorId, transactions.size()); // Log transaction fetch
+
+                if (transactions.isEmpty()) {
+                    return 0; // No transactions to process
+                }
+
+                // Retrieve membership info
+                MembershipDto membership = membershipDAO.getMembershipDetails(educatorId);
+                double commissionRate = membership.getCommissionRate();
+
+                // Calculate total payout (apply commission)
+                double totalAmount = 0;
+                for (TransactionDto transaction : transactions) {
+                    totalAmount += transaction.getAmount() * (1 - commissionRate);
+                }
+
+                auditLogger.logPayoutCalculation(educatorId, totalAmount); // Log payout calculation
+
+                // Create payout details
+                PayoutDto payoutDto = new PayoutDto(educatorId, totalAmount);
+
+                // Send payout details to Stripe
+                stripeService.sendPayout(payoutDto);
+                auditLogger.logPayoutSent(educatorId, totalAmount); // Log payout sent
+
+                // Store payout information
+                membershipDAO.setPayoutDetails(educatorId, payoutDto);
+
+                return transactions.size();
+
+            } catch (SQLException e) {
+                auditLogger.logPayoutFailure(educatorId, "Error in connection to EduStream database"); // Log failure due to SQLException
+                throw new EduStreamDAOException("Error in connection to EduStream database");
+            } catch (EduStreamStripeException e) {
+                auditLogger.logPayoutFailure(educatorId, "Stripe Error: " + e.getMessage()); // Log failure due to Stripe exception
+                throw e;
+            }
+        }
+    }
+  #+end_src
+
+    #+BEGIN_EXPORT html
+    <script src="../assets/jquery-3.3.1.min.js"></script>
+    <script src="../assets/notes.js"></script>
+    #+END_EXPORT

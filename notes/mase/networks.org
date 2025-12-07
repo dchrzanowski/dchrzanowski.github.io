@@ -1,0 +1,71 @@
+#+TITLE: Networks
+#+DATE: [2025-11-13 Thu 15:26]
+#+AUTHOR: Damian Chrzanowski
+#+EMAIL: pjdamian.chrzanowski@gmail.com
+#+OPTIONS: TOC:1 num:2
+#+latex_header: \hypersetup{colorlinks=true,linkcolor=black}
+#+latex_header: \usepackage[margin=1in]{geometry}
+#+latex_header: \usepackage[scaled]{helvet} \renewcommand\familydefault{\sfdefault}
+
+[[file:index.org][Home Page]]
+
+* Assignment
+  - Start with the highest amount of hosts
+  #+begin_verse
+lab 6.2 (3)
+192.168.20.0
+
+left is 50 hosts (1 network)
+
+top is 2 hosts (1 network)
+
+r1 - r2 (1 network)
+r2 - r3 (1 network)
+r1 - r3 (1 network)
+
+right is 2 hosts (1 network)
+  #+end_verse
+
+  Split between 128 and 64 (we need 50 hosts + 2 for broadcast and network)
+  | hosts  | 256 | 128 | *64 | 32 | 16 | 8 | 4 | 2 |   |
+  |--------+-----+-----+-----+----+----+---+---+---+---|
+  | bits   | 128 |  64 | *32 | 16 |  8 | 4 | 2 | 1 |   |
+  |--------+-----+-----+-----+----+----+---+---+---+---|
+  | octets |   1 |   1 | 0   |  0 |  0 | 0 | 0 | 0 |   |
+
+  Network ID: 192.168.20.0
+  Octets: 128 + 64 = 192
+  Subnet is = 255.255.255.192
+  CIDR has 6 zeroes = 32 - 6 = 26
+  Broadcast is the last one 192.168.20.63
+  Range is +1 from the network to -1 from the broadcast = 192.168.20.1 - 192.168.20.62
+
+#+begin_verse
+So then the next network available is the one after the previous broadcast, which is 192.168.20.64
+#+end_verse
+* Exams (answer 3 of 4)
+  - *don't mind the wording here, some of it could be wrong*
+  - LOOK AT PAST PAPERS
+  - a) usually is an easy part (how does this work), probs explain a layer in detail
+  - b) a little bit more complex and touches on different parts
+  - part b examples: routing is definitely a question, different algos. routing vs forwarding. l over r
+  - what does a network header look like?
+  - if the server is busy how does the network deal with it
+  - web request vs mail request (lifecycle/lifetime)
+  - what happens where ipv4 and ipv6 is mixed
+  - centralized vs decentralized
+  - Quality of Experience of things, important (as it is for our chatgpt research)
+  - different streaming approaches, what they are and how they work
+  - jitter (and other network characteristics), payout delay value
+  - how to design a network (Connor based stuff), usually we'll deal with classless
+  - synchronization
+  - different classes of services, policies for classes of services
+  - client to server vs peer to peer
+  - caching
+  - understand and be able to explain things. e.g. company sets up a service: how would they deal with setting up a streaming service
+
+
+    #+BEGIN_EXPORT html
+    <script src="../assets/jquery-3.3.1.min.js"></script>
+    <script src="../assets/notes.js"></script>
+    #+END_EXPORT

@@ -1,0 +1,30 @@
+#+TITLE: Computer Architecture And Cloud Services
+#+DATE: [2025-12-07 Sun 13:51]
+#+AUTHOR: Damian Chrzanowski
+#+EMAIL: pjdamian.chrzanowski@gmail.com
+#+OPTIONS: TOC:1 num:2
+#+latex_header: \hypersetup{colorlinks=true,linkcolor=black}
+#+latex_header: \usepackage[margin=1in]{geometry}
+#+latex_header: \usepackage[scaled]{helvet} \renewcommand\familydefault{\sfdefault}
+
+[[file:index.org][Home Page]]
+
+* Intro
+* Exam
+  - Evaluating cloud security (+ equations) come up on the exam
+  - IoT cloud architecture
+* Exams (3 out of 4)
+  - ex: compare say two cloud providers
+  - architecture vs cloud, should be a 50/50 split between these
+  - SPI model, attributes of cloud, cloud vs soa, (all in the past papers)
+  - How to assess cloud providers (STAR)
+  - cisc vs risc
+  - resource ownership, deadlock, race conditions
+  - pipelining
+  - clustering vs smp
+  - RAID
+
+    #+BEGIN_EXPORT html
+    <script src="../assets/jquery-3.3.1.min.js"></script>
+    <script src="../assets/notes.js"></script>
+    #+END_EXPORT

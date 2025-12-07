@@ -18,6 +18,8 @@
 
 [[file:cse/index.org][CSE]]
 
+[[file:mase/index.org][MASE]]
+
 [[file:resources/elisp/elisp.org][Elisp]]
 
 [[file:resources/angular4/angular4.org][Angular]]

@@ -1,0 +1,1759 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2025-12-07 Sun 13:54 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Databases</title>
+<meta name="author" content="Damian Chrzanowski" />
+<meta name="generator" content="Org Mode" />
+<style type="text/css">
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { }
+</style>
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">Databases</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#org54d80d0">1. Exam Question Bank</a></li>
+<li><a href="#org5568722">2. DML/DDL</a></li>
+<li><a href="#orgbd9e7ee">3. DB Functions</a></li>
+<li><a href="#org55d8fc2">4. Types</a></li>
+<li><a href="#org0455371">5. SQL</a></li>
+<li><a href="#org23d7e8f">6. Procedures vs Functions</a></li>
+<li><a href="#orge235998">7. Views</a></li>
+<li><a href="#orgc65f67e">8. Triggers</a></li>
+<li><a href="#orgea3f7dc">9. Events</a></li>
+<li><a href="#orgc52fdbc">10. JDBC</a></li>
+<li><a href="#orge59a48c">11. SQL Injection Attacks</a></li>
+<li><a href="#org888bd7d">12. Stored Procedures vs Java</a></li>
+<li><a href="#org09b0645">13. Normalisation</a></li>
+<li><a href="#org6b42b50">14. ERDs</a></li>
+<li><a href="#org82ffdf9">15. ORMs (JPA)</a></li>
+<li><a href="#org7a8b7d7">16. Transaction Management</a></li>
+<li><a href="#org03c070c">17. NoSQL</a></li>
+</ul>
+</div>
+</div>
+<p>
+<a href="index.html">Home Page</a>
+</p>
+<div id="outline-container-org54d80d0" class="outline-2">
+<h2 id="org54d80d0"><span class="section-number-2">1.</span> Exam Question Bank</h2>
+<div class="outline-text-2" id="text-1">
+</div>
+<div id="outline-container-org32cefec" class="outline-3">
+<h3 id="org32cefec"><span class="section-number-3">1.1.</span> Questions</h3>
+<div class="outline-text-3" id="text-1-1">
+</div>
+<div id="outline-container-org68c8c7b" class="outline-4">
+<h4 id="org68c8c7b">ERD</h4>
+<div class="outline-text-4" id="text-org68c8c7b">
+<ul class="org-ul">
+<li>(4x) Draw an ERD</li>
+<li>Phases of DB design</li>
+<li>DB Modelling</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org05ac408" class="outline-4">
+<h4 id="org05ac408">SQL</h4>
+<div class="outline-text-4" id="text-org05ac408">
+<ul class="org-ul">
+<li>(2x) Create SQL Tables</li>
+<li>(3x) Construct SQL Queries based on Tables in an Appendix</li>
+<li>(2) Construct an SQL Join Query</li>
+<li>Construct an SQL Join Query with Group By</li>
+<li>Diff between Functions and Procedures</li>
+<li>(2x) Write a Function</li>
+<li>(3x) Write a Procedure
+<ul class="org-ul">
+<li>(2x) with transaction (<code>declare continue handler for sqlexception</code> is necessary here)</li>
+</ul></li>
+<li>Write a Trigger</li>
+<li>Write an Event</li>
+<li>Write an Index</li>
+<li>(2x) Subqueries vs Joins</li>
+<li>(3x) SQL Injection, what is it?
+<ul class="org-ul">
+<li>(2x) 3 ways to protext</li>
+<li>(2x) Explain two different types</li>
+</ul></li>
+<li>(1x) Dynamic SQL</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org45f5d25" class="outline-4">
+<h4 id="org45f5d25">JDBC/JPA</h4>
+<div class="outline-text-4" id="text-org45f5d25">
+<ul class="org-ul">
+<li>(3x) Analyse a bit of JPA code, draw out tables and columns</li>
+<li>(4x) Explain Object Relational Paradigm Mismatch.
+<ul class="org-ul">
+<li>(1x) Focus on 5 problems</li>
+<li>(3x) Focus on Associations (how JPA resolves this?)</li>
+</ul></li>
+<li>(2x) Compare JPA and JDBC</li>
+<li>Create a JPA EntityManager
+<ul class="org-ul">
+<li>Save Entity</li>
+<li>Update Entity</li>
+<li>Delete Entity</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgaee3917" class="outline-4">
+<h4 id="orgaee3917">Concurrency</h4>
+<div class="outline-text-4" id="text-orgaee3917">
+<ul class="org-ul">
+<li>Preventing Deadlock. Four levels of isolation.</li>
+<li>(2x) Four common concurrency problems
+<ul class="org-ul">
+<li>Data integrity</li>
+<li>Locking behaviour</li>
+<li>Concurrency elimination vs Performance</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgf2e0c4d" class="outline-4">
+<h4 id="orgf2e0c4d">NoSQL</h4>
+<div class="outline-text-4" id="text-orgf2e0c4d">
+<ul class="org-ul">
+<li>(2x) ACID vs BASE. Trade-offs with regards to the CAP Theorem.</li>
+<li>(3x) What is NoSQL and provide 4 types that exist with examples on where they are used and what are the names of these technologies</li>
+<li>(1x) Denormalization</li>
+<li>(1x) What is Big Data
+<ul class="org-ul">
+<li>Explain 4Vs of Big Data</li>
+</ul></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org5568722" class="outline-2">
+<h2 id="org5568722"><span class="section-number-2">2.</span> DML/DDL</h2>
+<div class="outline-text-2" id="text-2">
+</div>
+<div id="outline-container-org1648333" class="outline-3">
+<h3 id="org1648333"><span class="section-number-3">2.1.</span> Data Manipulation Language</h3>
+<div class="outline-text-3" id="text-2-1">
+<ul class="org-ul">
+<li><code>select/insert/delete/update</code> into tables, basically</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org478e8a2" class="outline-3">
+<h3 id="org478e8a2"><span class="section-number-3">2.2.</span> Data Definition Language</h3>
+<div class="outline-text-3" id="text-2-2">
+<ul class="org-ul">
+<li><code>create/alter/drop</code> tables/attributes</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-orgbd9e7ee" class="outline-2">
+<h2 id="orgbd9e7ee"><span class="section-number-2">3.</span> DB Functions</h2>
+<div class="outline-text-2" id="text-3">
+</div>
+<div id="outline-container-org9267ea4" class="outline-3">
+<h3 id="org9267ea4"><span class="section-number-3">3.1.</span> Scalar</h3>
+<div class="outline-text-3" id="text-3-1">
+<ul class="org-ul">
+<li>UCASE()</li>
+<li>LCASE()</li>
+<li>LEN(): length of a text field</li>
+<li>ROUND(): rounds to a specified number of decimal places, e.g.: <code>select round(wage, 2)</code> two decimal places</li>
+<li>NOW()</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orge8cf7d5" class="outline-3">
+<h3 id="orge8cf7d5"><span class="section-number-3">3.2.</span> Aggregate</h3>
+<div class="outline-text-3" id="text-3-2">
+<ul class="org-ul">
+<li>AVG()</li>
+<li>COUNT()</li>
+<li>SUM()</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-org55d8fc2" class="outline-2">
+<h2 id="org55d8fc2"><span class="section-number-2">4.</span> Types</h2>
+<div class="outline-text-2" id="text-4">
+<ul class="org-ul">
+<li>CHAR(size)</li>
+<li>VARCHAR(size)</li>
+<li>TEXT</li>
+<li>INT(max<sub>digits</sub><sub>or</sub><sub>omit</sub>)</li>
+<li>TINYINT</li>
+<li>DECIMAL(size, decimal<sub>places</sub>)</li>
+<li>DATE: YYYY-MM-DD</li>
+<li>DATETIME: YYYY-MM-DD HH:MI:SS</li>
+<li>TIMESTAMP: YYYY-MM-DD HH:MI:SS</li>
+<li>NULL: use with IS NULL or IS NOT NULL rather than <code>=</code></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org0455371" class="outline-2">
+<h2 id="org0455371"><span class="section-number-2">5.</span> SQL</h2>
+<div class="outline-text-2" id="text-5">
+</div>
+<div id="outline-container-orgf820f4e" class="outline-3">
+<h3 id="orgf820f4e"><span class="section-number-3">5.1.</span> Insert</h3>
+<div class="outline-text-3" id="text-5-1">
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #51afef; font-style: italic;">insert</span> <span style="color: #51afef; font-style: italic;">into</span> <span style="color: #ECBE7B;">table_name</span>
+<span style="color: #51afef; font-style: italic;">values</span> <span style="color: #fff0f5;">(</span><span style="color: #98be65; font-weight: bold;">'02/25/08'</span><span style="color: #bbc2cf;">,</span> <span style="color: #98be65; font-weight: bold;">'pizza'</span><span style="color: #bbc2cf;">,</span> <span style="color: #98be65; font-weight: bold;">70</span><span style="color: #fff0f5;">)</span><span style="color: #bbc2cf;">;</span>
+
+<span style="color: #51afef; font-style: italic;">insert</span> <span style="color: #51afef; font-style: italic;">into</span> <span style="color: #ECBE7B;">table_name</span> <span style="color: #fff0f5;">(</span><span style="color: #db5762;">date</span><span style="color: #bbc2cf;">,</span> <span style="color: #db5762;">name</span><span style="color: #bbc2cf;">,</span> <span style="color: #db5762;">qty</span><span style="color: #fff0f5;">)</span>
+<span style="color: #51afef; font-style: italic;">values</span> <span style="color: #fff0f5;">(</span><span style="color: #98be65; font-weight: bold;">'02/25/08'</span><span style="color: #bbc2cf;">,</span> <span style="color: #98be65; font-weight: bold;">'pizza'</span><span style="color: #bbc2cf;">,</span> <span style="color: #98be65; font-weight: bold;">70</span><span style="color: #fff0f5;">)</span><span style="color: #bbc2cf;">;</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgf71cc0c" class="outline-3">
+<h3 id="orgf71cc0c"><span class="section-number-3">5.2.</span> Delete</h3>
+<div class="outline-text-3" id="text-5-2">
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #51afef; font-style: italic;">delete</span> <span style="color: #51afef; font-style: italic;">from</span> <span style="color: #ECBE7B;">table_name</span>
+<span style="color: #51afef; font-style: italic;">where</span> <span style="color: #db5762;">condition</span><span style="color: #bbc2cf;">;</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgf44edbb" class="outline-3">
+<h3 id="orgf44edbb"><span class="section-number-3">5.3.</span> Update</h3>
+<div class="outline-text-3" id="text-5-3">
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #51afef; font-style: italic;">update</span> <span style="color: #ECBE7B;">table_name</span>
+<span style="color: #51afef; font-style: italic;">set</span> <span style="color: #db5762;">attr</span> <span style="color: #bbc2cf;">=</span> <span style="color: #db5762;">some_val</span>
+<span style="color: #51afef; font-style: italic;">where</span> <span style="color: #db5762;">condition</span><span style="color: #bbc2cf;">;</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgb528f71" class="outline-3">
+<h3 id="orgb528f71"><span class="section-number-3">5.4.</span> Joins</h3>
+<div class="outline-text-3" id="text-5-4">
+<ul class="org-ul">
+<li><code>join</code> (aka <code>inner join</code>)</li>
+<li><code>left join</code></li>
+<li><code>right join</code></li>
+<li><code>full join</code></li>
+<li>One table join</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #51afef; font-style: italic;">select</span> <span style="color: #db5762;">column_names</span>
+<span style="color: #51afef; font-style: italic;">from</span> <span style="color: #ECBE7B;">table_1</span> <span style="color: #51afef; font-style: italic;">as</span> <span style="color: #db5762;">t1</span>
+<span style="color: #51afef; font-style: italic;">join</span> <span style="color: #ECBE7B;">table2</span> <span style="color: #51afef; font-style: italic;">as</span> <span style="color: #db5762;">t2</span>
+on <span style="color: #ECBE7B;">t1</span><span style="color: #bbc2cf;">.</span><span style="color: #db5762;">id</span> <span style="color: #bbc2cf;">=</span> <span style="color: #ECBE7B;">t2</span><span style="color: #bbc2cf;">.</span><span style="color: #db5762;">t1_id</span><span style="color: #bbc2cf;">;</span>
+</pre>
+</div>
+<ul class="org-ul">
+<li>Two table join</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #51afef; font-style: italic;">select</span> <span style="color: #db5762;">column_names</span>
+<span style="color: #51afef; font-style: italic;">from</span> <span style="color: #ECBE7B;">table_1</span> <span style="color: #51afef; font-style: italic;">as</span> <span style="color: #db5762;">t1</span>
+<span style="color: #51afef; font-style: italic;">join</span> <span style="color: #ECBE7B;">table2</span> <span style="color: #51afef; font-style: italic;">as</span> <span style="color: #db5762;">t2</span>
+on <span style="color: #ECBE7B;">t1</span><span style="color: #bbc2cf;">.</span><span style="color: #db5762;">id</span> <span style="color: #bbc2cf;">=</span> <span style="color: #ECBE7B;">t2</span><span style="color: #bbc2cf;">.</span><span style="color: #db5762;">t1_id</span>
+<span style="color: #51afef; font-style: italic;">join</span> <span style="color: #ECBE7B;">table3</span> <span style="color: #51afef; font-style: italic;">as</span> <span style="color: #db5762;">t3</span>
+on <span style="color: #ECBE7B;">t2</span><span style="color: #bbc2cf;">.</span><span style="color: #db5762;">id</span> <span style="color: #bbc2cf;">=</span> <span style="color: #ECBE7B;">t3</span><span style="color: #bbc2cf;">.</span><span style="color: #db5762;">t2_id</span><span style="color: #bbc2cf;">;</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orge5734e0" class="outline-3">
+<h3 id="orge5734e0"><span class="section-number-3">5.5.</span> Like</h3>
+<div class="outline-text-3" id="text-5-5">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Like Operator</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">LIKE 'a%'</td>
+<td class="org-left">Starts with a</td>
+</tr>
+
+<tr>
+<td class="org-left">LIKE '%a'</td>
+<td class="org-left">Ends with a</td>
+</tr>
+
+<tr>
+<td class="org-left">LIKE '%or%'</td>
+<td class="org-left">Has or at any position</td>
+</tr>
+
+<tr>
+<td class="org-left">LIKE '<sub>r</sub>%'</td>
+<td class="org-left">Has an 'r' at the second position</td>
+</tr>
+
+<tr>
+<td class="org-left">LIKE 'a_%'</td>
+<td class="org-left">Starts with a, and has at least 2 chars in length</td>
+</tr>
+
+<tr>
+<td class="org-left">LIKE 'a__%'</td>
+<td class="org-left">Starts with a, and has at least 3 chars in length</td>
+</tr>
+
+<tr>
+<td class="org-left">LIKE 'a%o'</td>
+<td class="org-left">Starts with a and ends with o</td>
+</tr>
+</tbody>
+</table>
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #51afef; font-style: italic;">select</span> <span style="color: #db5762;">col_name</span>
+<span style="color: #51afef; font-style: italic;">from</span> <span style="color: #ECBE7B;">table_name</span>
+<span style="color: #51afef; font-style: italic;">where</span> <span style="color: #db5762;">col</span> <span style="color: #51afef; font-style: italic;">LIKE</span> <span style="color: #db5762;">pattern</span><span style="color: #bbc2cf;">;</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org7641f6e" class="outline-3">
+<h3 id="org7641f6e"><span class="section-number-3">5.6.</span> Between</h3>
+<div class="outline-text-3" id="text-5-6">
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #51afef; font-style: italic;">SELECT</span> <span style="color: #c678dd;">column_name</span><span style="color: #fff0f5;">(</span><span style="color: #db5762;">s</span><span style="color: #fff0f5;">)</span>
+<span style="color: #51afef; font-style: italic;">FROM</span> <span style="color: #ECBE7B;">table_name</span>
+<span style="color: #51afef; font-style: italic;">WHERE</span> <span style="color: #db5762;">column_name</span> <span style="color: #51afef; font-style: italic;">BETWEEN</span> <span style="color: #db5762;">value1</span> AND <span style="color: #db5762;">value2</span><span style="color: #bbc2cf;">;</span>
+</pre>
+</div>
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #51afef; font-style: italic;">SELECT</span> <span style="color: #c678dd;">column_name</span><span style="color: #fff0f5;">(</span><span style="color: #db5762;">s</span><span style="color: #fff0f5;">)</span>
+<span style="color: #51afef; font-style: italic;">FROM</span> <span style="color: #ECBE7B;">table_name</span>
+<span style="color: #51afef; font-style: italic;">WHERE</span> <span style="color: #db5762;">column_name</span> NOT <span style="color: #51afef; font-style: italic;">BETWEEN</span> <span style="color: #db5762;">value1</span> AND <span style="color: #db5762;">value2</span><span style="color: #bbc2cf;">;</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org287bab7" class="outline-3">
+<h3 id="org287bab7"><span class="section-number-3">5.7.</span> Group by and Having</h3>
+<div class="outline-text-3" id="text-5-7">
+<ul class="org-ul">
+<li><p>
+Group by determines how the data is grouped and having determines which groups to include
+</p>
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #51afef; font-style: italic;">select</span> <span style="color: #db5762;">department</span><span style="color: #bbc2cf;">,</span> <span style="color: #db5762;">gender</span><span style="color: #bbc2cf;">,</span> <span style="color: #c678dd;">count</span><span style="color: #fff0f5;">(</span><span style="color: #bbc2cf;">*</span><span style="color: #fff0f5;">)</span> <span style="color: #51afef; font-style: italic;">as</span> <span style="color: #db5762;">"Number of Emp"</span>
+<span style="color: #51afef; font-style: italic;">from</span> <span style="color: #ECBE7B;">details</span>
+<span style="color: #51afef; font-style: italic;">group</span> by <span style="color: #db5762;">department</span><span style="color: #bbc2cf;">,</span> <span style="color: #db5762;">gender</span>
+<span style="color: #51afef; font-style: italic;">having</span> <span style="color: #c678dd;">count</span><span style="color: #fff0f5;">(</span><span style="color: #bbc2cf;">*</span><span style="color: #fff0f5;">)</span> <span style="color: #bbc2cf;">&gt;</span> <span style="color: #98be65; font-weight: bold;">2</span><span style="color: #bbc2cf;">;</span>
+</pre>
+</div></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgf620fb8" class="outline-3">
+<h3 id="orgf620fb8"><span class="section-number-3">5.8.</span> Group by and rollup</h3>
+<div class="outline-text-3" id="text-5-8">
+<ul class="org-ul">
+<li><p>
+Includes an additional row after every group with a summary
+</p>
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #51afef; font-style: italic;">select</span> <span style="color: #db5762;">department</span><span style="color: #bbc2cf;">,</span> <span style="color: #db5762;">gender</span><span style="color: #bbc2cf;">,</span> <span style="color: #c678dd;">count</span><span style="color: #fff0f5;">(</span><span style="color: #bbc2cf;">*</span><span style="color: #fff0f5;">)</span> <span style="color: #51afef; font-style: italic;">as</span> <span style="color: #db5762;">"Number of Emp"</span>
+<span style="color: #51afef; font-style: italic;">from</span> <span style="color: #ECBE7B;">details</span>
+<span style="color: #51afef; font-style: italic;">group</span> by <span style="color: #db5762;">department</span><span style="color: #bbc2cf;">,</span> <span style="color: #db5762;">gender</span> <span style="color: #51afef; font-style: italic;">with</span> rollup<span style="color: #bbc2cf;">;</span>
+</pre>
+</div></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgd0bad03" class="outline-3">
+<h3 id="orgd0bad03"><span class="section-number-3">5.9.</span> Unions</h3>
+<div class="outline-text-3" id="text-5-9">
+<ul class="org-ul">
+<li>Each side must have the same amount of columns</li>
+<li><p>
+Columns must have similar data types
+</p>
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #51afef; font-style: italic;">select</span> <span style="color: #db5762;">column1</span><span style="color: #bbc2cf;">,</span> <span style="color: #db5762;">column2</span> <span style="color: #51afef; font-style: italic;">from</span> <span style="color: #ECBE7B;">table1</span>
+union
+<span style="color: #51afef; font-style: italic;">select</span> <span style="color: #db5762;">column1</span><span style="color: #bbc2cf;">,</span> <span style="color: #db5762;">column2</span> <span style="color: #51afef; font-style: italic;">from</span> <span style="color: #ECBE7B;">table2</span><span style="color: #bbc2cf;">;</span>
+</pre>
+</div></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgc237a55" class="outline-3">
+<h3 id="orgc237a55"><span class="section-number-3">5.10.</span> Index</h3>
+<div class="outline-text-3" id="text-5-10">
+<ul class="org-ul">
+<li>Speeds up a data retrieval for a specific column</li>
+<li><p>
+Avoid on columns that are updated frequently as that will likely slow the whole database down, rather than speed up
+</p>
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #51afef; font-style: italic;">create</span> <span style="color: #51afef; font-style: italic;">index</span> lastname_index
+on <span style="color: #ECBE7B;">table_name</span><span style="color: #fff0f5;">(</span>last_name<span style="color: #fff0f5;">)</span><span style="color: #bbc2cf;">;</span>
+
+show <span style="color: #51afef; font-style: italic;">index</span> <span style="color: #51afef; font-style: italic;">from</span> table_name<span style="color: #bbc2cf;">;</span>
+
+<span style="color: #51afef; font-style: italic;">drop</span> <span style="color: #51afef; font-style: italic;">index</span> lastname_index on <span style="color: #ECBE7B;">table_name</span><span style="color: #bbc2cf;">;</span>
+</pre>
+</div></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org4b4e281" class="outline-3">
+<h3 id="org4b4e281"><span class="section-number-3">5.11.</span> Subqueries in <code>where</code></h3>
+<div class="outline-text-3" id="text-5-11">
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #51afef; font-style: italic;">select</span> <span style="color: #51afef; font-style: italic;">distinct</span> <span style="color: #db5762;">customer_name</span>
+<span style="color: #51afef; font-style: italic;">from</span> <span style="color: #ECBE7B;">details</span>
+<span style="color: #51afef; font-style: italic;">where</span> <span style="color: #db5762;">customer_name</span> in <span style="color: #fff0f5;">(</span><span style="color: #51afef; font-style: italic;">select</span> <span style="color: #db5762;">customer_name</span> <span style="color: #51afef; font-style: italic;">from</span> <span style="color: #ECBE7B;">depositor</span><span style="color: #fff0f5;">)</span><span style="color: #bbc2cf;">;</span>
+</pre>
+</div>
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #51afef; font-style: italic;">select</span> <span style="color: #51afef; font-style: italic;">distinct</span> <span style="color: #db5762;">customer_name</span>
+<span style="color: #51afef; font-style: italic;">from</span> <span style="color: #ECBE7B;">details</span>
+<span style="color: #51afef; font-style: italic;">where</span> <span style="color: #db5762;">customer_name</span> not in <span style="color: #fff0f5;">(</span><span style="color: #51afef; font-style: italic;">select</span> <span style="color: #db5762;">customer_name</span> <span style="color: #51afef; font-style: italic;">from</span> <span style="color: #ECBE7B;">depositor</span><span style="color: #fff0f5;">)</span><span style="color: #bbc2cf;">;</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org423a4bd" class="outline-3">
+<h3 id="org423a4bd"><span class="section-number-3">5.12.</span> Joins vs Subqueries</h3>
+<div class="outline-text-3" id="text-5-12">
+<ul class="org-ul">
+<li>A join can included columns from both tables, a subquery cannot</li>
+<li>A join tends to be more intuitive when there are relationships</li>
+<li>A subquery can pass aggregate functions to the main query</li>
+<li>A subquery is more intuitive on ad hoc relationships</li>
+<li>Long complex queries tend to be easier to debug and to code</li>
+<li>Performance impact of many subqueries can be substantial when compared to joins</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-org23d7e8f" class="outline-2">
+<h2 id="org23d7e8f"><span class="section-number-2">6.</span> Procedures vs Functions</h2>
+<div class="outline-text-2" id="text-6">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Procedure</th>
+<th scope="col" class="org-left">Function</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Can return a value via OUT</td>
+<td class="org-left">Has to return a value</td>
+</tr>
+
+<tr>
+<td class="org-left">Operations (CRUD)</td>
+<td class="org-left">Calculation</td>
+</tr>
+
+<tr>
+<td class="org-left">Must be called with CALL</td>
+<td class="org-left">Can be used inside of queries</td>
+</tr>
+
+<tr>
+<td class="org-left">Can change data</td>
+<td class="org-left">Should not change data</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="outline-container-orgf94a113" class="outline-3">
+<h3 id="orgf94a113"><span class="section-number-3">6.1.</span> Function</h3>
+<div class="outline-text-3" id="text-6-1">
+<ul class="org-ul">
+<li>Calculates the order total by getting the qty from OrderDetails table and price from the Products table</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #51afef; font-style: italic;">DROP</span> <span style="color: #51afef; font-style: italic;">FUNCTION</span> <span style="color: #51afef; font-style: italic;">IF</span> <span style="color: #51afef; font-style: italic;">EXISTS</span> calculate_order_total<span style="color: #bbc2cf;">;</span>
+DELIMITER <span style="color: #bbc2cf;">//</span>
+
+<span style="color: #51afef; font-style: italic;">CREATE</span> <span style="color: #51afef; font-style: italic;">FUNCTION</span> <span style="color: #ECBE7B;">calculate_order_total</span> <span style="color: #fff0f5;">(</span>
+order_id_param <span style="color: #ECBE7B;">INT</span>
+<span style="color: #fff0f5;">)</span>
+<span style="color: #51afef; font-style: italic;">RETURNS</span> <span style="color: #ECBE7B;">DECIMAL</span><span style="color: #fff0f5;">(</span><span style="color: #98be65; font-weight: bold;">10</span><span style="color: #bbc2cf;">,</span><span style="color: #98be65; font-weight: bold;">2</span><span style="color: #fff0f5;">)</span>
+DETERMINISTIC <span style="color: #5B6268;">-- means that the output does not change when the same input is provided (alternative is NOT DETERMINISTIC)</span>
+<span style="color: #51afef; font-style: italic;">BEGIN</span>
+<span style="color: #51afef; font-style: italic;">DECLARE</span> total_var <span style="color: #ECBE7B;">DECIMAL</span><span style="color: #fff0f5;">(</span><span style="color: #da8548; font-weight: bold;">10</span><span style="color: #bbc2cf;">,</span><span style="color: #da8548; font-weight: bold;">2</span><span style="color: #fff0f5;">)</span><span style="color: #bbc2cf;">;</span>
+
+<span style="color: #5B6268;">-- Calculate total value for the given order_id</span>
+<span style="color: #51afef; font-style: italic;">SELECT</span> <span style="color: #c678dd;">SUM</span><span style="color: #fff0f5;">(</span><span style="color: #ECBE7B;">od</span><span style="color: #bbc2cf;">.</span><span style="color: #db5762;">quantity</span> <span style="color: #bbc2cf;">*</span> <span style="color: #ECBE7B;">p</span><span style="color: #bbc2cf;">.</span><span style="color: #db5762;">unit_price</span><span style="color: #fff0f5;">)</span>
+<span style="color: #db5762;">INTO</span> total_var
+<span style="color: #51afef; font-style: italic;">FROM</span> <span style="color: #ECBE7B;">Order_Details</span> <span style="color: #db5762;">od</span>
+<span style="color: #51afef; font-style: italic;">JOIN</span> <span style="color: #ECBE7B;">Products</span> <span style="color: #db5762;">p</span>
+ON <span style="color: #ECBE7B;">od</span><span style="color: #bbc2cf;">.</span><span style="color: #db5762;">product_id</span> <span style="color: #bbc2cf;">=</span> <span style="color: #ECBE7B;">p</span><span style="color: #bbc2cf;">.</span><span style="color: #db5762;">product_id</span>
+<span style="color: #51afef; font-style: italic;">WHERE</span> <span style="color: #ECBE7B;">od</span><span style="color: #bbc2cf;">.</span><span style="color: #db5762;">order_id</span> <span style="color: #bbc2cf;">=</span> <span style="color: #db5762;">order_id_param</span><span style="color: #bbc2cf;">;</span>
+
+<span style="color: #51afef; font-style: italic;">return</span> total_var<span style="color: #bbc2cf;">;</span>
+<span style="color: #51afef; font-style: italic;">END</span><span style="color: #bbc2cf;">//</span>
+DELIMITER <span style="color: #bbc2cf;">;</span>
+</pre>
+</div>
+<ul class="org-ul">
+<li>Use like this:</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #51afef; font-style: italic;">SELECT</span> <span style="color: #c678dd;">calculate_order_total</span><span style="color: #fff0f5;">(</span><span style="color: #98be65; font-weight: bold;">5001</span><span style="color: #fff0f5;">)</span><span style="color: #bbc2cf;">;</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org28ddfcd" class="outline-3">
+<h3 id="org28ddfcd"><span class="section-number-3">6.2.</span> Procedure</h3>
+<div class="outline-text-3" id="text-6-2">
+<ul class="org-ul">
+<li>Updates the total<sub>amount</sub> field in the Orders table using the total calculated by the calculate<sub>order</sub><sub>total</sub> function</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #51afef; font-style: italic;">DROP</span> <span style="color: #51afef; font-style: italic;">PROCEDURE</span> <span style="color: #51afef; font-style: italic;">IF</span> <span style="color: #51afef; font-style: italic;">EXISTS</span> update_order_total<span style="color: #bbc2cf;">;</span>
+DELIMITER <span style="color: #bbc2cf;">//</span>
+
+<span style="color: #51afef; font-style: italic;">CREATE</span> <span style="color: #51afef; font-style: italic;">PROCEDURE</span> update_order_total <span style="color: #fff0f5;">(</span>
+in order_id_param INT
+<span style="color: #fff0f5;">)</span>
+<span style="color: #51afef; font-style: italic;">BEGIN</span>
+<span style="color: #51afef; font-style: italic;">DECLARE</span> total_calc <span style="color: #ECBE7B;">DECIMAL</span><span style="color: #fff0f5;">(</span><span style="color: #da8548; font-weight: bold;">10</span><span style="color: #bbc2cf;">,</span><span style="color: #da8548; font-weight: bold;">2</span><span style="color: #fff0f5;">)</span><span style="color: #bbc2cf;">;</span>
+
+<span style="color: #5B6268;">-- Call the stored function to get the total</span>
+<span style="color: #51afef; font-style: italic;">SET</span> <span style="color: #ECBE7B;">total_calc</span> <span style="color: #bbc2cf;">=</span> calculate_order_total<span style="color: #fff0f5;">(</span>order_id_param<span style="color: #fff0f5;">)</span><span style="color: #bbc2cf;">;</span>
+
+<span style="color: #5B6268;">-- Update the Orders table with the calculated total</span>
+<span style="color: #51afef; font-style: italic;">UPDATE</span> <span style="color: #ECBE7B;">Orders</span>
+<span style="color: #51afef; font-style: italic;">SET</span> <span style="color: #db5762;">total_amount</span> <span style="color: #bbc2cf;">=</span> <span style="color: #db5762;">total_calc</span>
+<span style="color: #51afef; font-style: italic;">WHERE</span> <span style="color: #db5762;">order_id</span> <span style="color: #bbc2cf;">=</span> <span style="color: #db5762;">order_id_param</span><span style="color: #bbc2cf;">;</span>
+<span style="color: #51afef; font-style: italic;">END</span><span style="color: #bbc2cf;">//</span>
+DELIMITER <span style="color: #bbc2cf;">;</span>
+</pre>
+</div>
+<ul class="org-ul">
+<li>Use like this:</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-sql">CALL upate_order_total<span style="color: #fff0f5;">(</span><span style="color: #da8548; font-weight: bold;">5001</span><span style="color: #fff0f5;">)</span><span style="color: #bbc2cf;">;</span>
+</pre>
+</div>
+<ul class="org-ul">
+<li>Procedure with error handling</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-sql">DELIMITER <span style="color: #bbc2cf;">//</span>
+
+<span style="color: #51afef; font-style: italic;">CREATE</span> <span style="color: #51afef; font-style: italic;">PROCEDURE</span> update_invoice_credit_total
+<span style="color: #fff0f5;">(</span>
+invoice_id_param INT<span style="color: #bbc2cf;">,</span>
+credit_total_param <span style="color: #ECBE7B;">DECIMAL</span><span style="color: #c678dd;">(</span><span style="color: #da8548; font-weight: bold;">9</span><span style="color: #bbc2cf;">,</span> <span style="color: #da8548; font-weight: bold;">2</span><span style="color: #c678dd;">)</span>
+<span style="color: #fff0f5;">)</span>
+<span style="color: #51afef; font-style: italic;">BEGIN</span>
+<span style="color: #51afef; font-style: italic;">DECLARE</span> sql_error TINYINT <span style="color: #51afef; font-weight: bold;">DEFAULT</span> FALSE<span style="color: #bbc2cf;">;</span>
+
+<span style="color: #51afef; font-style: italic;">DECLARE</span> CONTINUE HANDLER <span style="color: #51afef; font-style: italic;">for</span> SQLEXCEPTION
+<span style="color: #51afef; font-style: italic;">SET</span> <span style="color: #ECBE7B;">sql_error</span> <span style="color: #bbc2cf;">=</span> <span style="color: #98be65; font-weight: bold;">TRUE</span><span style="color: #bbc2cf;">;</span> <span style="color: #5B6268;">-- declaration to set sql_error to TRUE when an exception occurs</span>
+
+<span style="color: #51afef; font-style: italic;">START</span> <span style="color: #51afef; font-style: italic;">TRANSACTION</span><span style="color: #bbc2cf;">;</span>
+
+<span style="color: #51afef; font-style: italic;">UPDATE</span> <span style="color: #ECBE7B;">invoices</span>
+<span style="color: #51afef; font-style: italic;">SET</span> <span style="color: #db5762;">credit_total</span> <span style="color: #bbc2cf;">=</span> <span style="color: #db5762;">credit_total_param</span>
+<span style="color: #51afef; font-style: italic;">WHERE</span> <span style="color: #db5762;">invoice_id</span> <span style="color: #bbc2cf;">=</span> <span style="color: #db5762;">invoice_id_param</span><span style="color: #bbc2cf;">;</span>
+
+<span style="color: #51afef; font-style: italic;">IF</span> sql_error <span style="color: #bbc2cf;">=</span> FALSE THEN
+<span style="color: #51afef; font-style: italic;">COMMIT</span><span style="color: #bbc2cf;">;</span>
+ELSE
+<span style="color: #51afef; font-style: italic;">ROLLBACK</span><span style="color: #bbc2cf;">;</span>
+<span style="color: #51afef; font-style: italic;">END</span> <span style="color: #51afef; font-style: italic;">IF</span><span style="color: #bbc2cf;">;</span>
+<span style="color: #51afef; font-style: italic;">END</span> <span style="color: #bbc2cf;">//</span>
+</pre>
+</div>
+<ul class="org-ul">
+<li>Same as above but with INput and OUTput</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-sql">DELIMITER <span style="color: #bbc2cf;">//</span>
+
+<span style="color: #51afef; font-style: italic;">CREATE</span> <span style="color: #51afef; font-style: italic;">PROCEDURE</span> update_invoice_credit_total
+<span style="color: #fff0f5;">(</span>
+in invoice_id_param INT<span style="color: #bbc2cf;">,</span>
+in credit_total_param <span style="color: #ECBE7B;">DECIMAL</span><span style="color: #c678dd;">(</span><span style="color: #da8548; font-weight: bold;">9</span><span style="color: #bbc2cf;">,</span> <span style="color: #da8548; font-weight: bold;">2</span><span style="color: #c678dd;">)</span>
+<span style="color: #51afef; font-style: italic;">OUT</span> update_count int
+<span style="color: #fff0f5;">)</span>
+<span style="color: #51afef; font-style: italic;">BEGIN</span>
+<span style="color: #51afef; font-style: italic;">DECLARE</span> sql_error TINYINT <span style="color: #51afef; font-weight: bold;">DEFAULT</span> FALSE<span style="color: #bbc2cf;">;</span>
+
+<span style="color: #51afef; font-style: italic;">DECLARE</span> CONTINUE HANDLER <span style="color: #51afef; font-style: italic;">for</span> SQLEXCEPTION
+<span style="color: #51afef; font-style: italic;">SET</span> <span style="color: #ECBE7B;">sql_error</span> <span style="color: #bbc2cf;">=</span> <span style="color: #98be65; font-weight: bold;">TRUE</span><span style="color: #bbc2cf;">;</span> <span style="color: #5B6268;">-- declaration to set sql_error to TRUE when an exception occurs</span>
+
+<span style="color: #51afef; font-style: italic;">START</span> <span style="color: #51afef; font-style: italic;">TRANSACTION</span><span style="color: #bbc2cf;">;</span>
+
+<span style="color: #51afef; font-style: italic;">UPDATE</span> <span style="color: #ECBE7B;">invoices</span>
+<span style="color: #51afef; font-style: italic;">SET</span> <span style="color: #db5762;">credit_total</span> <span style="color: #bbc2cf;">=</span> <span style="color: #db5762;">credit_total_param</span>
+<span style="color: #51afef; font-style: italic;">WHERE</span> <span style="color: #db5762;">invoice_id</span> <span style="color: #bbc2cf;">=</span> <span style="color: #db5762;">invoice_id_param</span><span style="color: #bbc2cf;">;</span>
+
+<span style="color: #51afef; font-style: italic;">IF</span> sql_error <span style="color: #bbc2cf;">=</span> FALSE THEN
+<span style="color: #51afef; font-style: italic;">SET</span> <span style="color: #ECBE7B;">update_count</span> <span style="color: #bbc2cf;">=</span> <span style="color: #98be65; font-weight: bold;">1</span><span style="color: #bbc2cf;">;</span>
+<span style="color: #51afef; font-style: italic;">COMMIT</span><span style="color: #bbc2cf;">;</span>
+ELSE
+<span style="color: #51afef; font-style: italic;">SET</span> <span style="color: #ECBE7B;">update_count</span> <span style="color: #bbc2cf;">=</span> <span style="color: #98be65; font-weight: bold;">0</span><span style="color: #bbc2cf;">;</span>
+<span style="color: #51afef; font-style: italic;">ROLLBACK</span><span style="color: #bbc2cf;">;</span>
+<span style="color: #51afef; font-style: italic;">END</span> <span style="color: #51afef; font-style: italic;">IF</span><span style="color: #bbc2cf;">;</span>
+<span style="color: #51afef; font-style: italic;">END</span> <span style="color: #bbc2cf;">//</span>
+
+delimiter <span style="color: #bbc2cf;">;</span>
+
+CALL update_invoice_credit_total<span style="color: #fff0f5;">(</span><span style="color: #da8548; font-weight: bold;">5001</span><span style="color: #bbc2cf;">,</span> <span style="color: #bbc2cf;">@</span>update_count<span style="color: #fff0f5;">)</span><span style="color: #bbc2cf;">;</span>  <span style="color: #5B6268;">-- call the procedure</span>
+<span style="color: #51afef; font-style: italic;">select</span> <span style="color: #bbc2cf;">@</span><span style="color: #db5762;">update_count</span><span style="color: #bbc2cf;">;</span> <span style="color: #5B6268;">-- check output</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orge235998" class="outline-2">
+<h2 id="orge235998"><span class="section-number-2">7.</span> Views</h2>
+<div class="outline-text-2" id="text-7">
+</div>
+<div id="outline-container-org62b689a" class="outline-3">
+<h3 id="org62b689a"><span class="section-number-3">7.1.</span> Benefits</h3>
+<div class="outline-text-3" id="text-7-1">
+<ul class="org-ul">
+<li>Design Independence: limit exposure of tables' data, also if the underlying table changes, all we have to do is update the View and the end-user is unaware of any changes</li>
+<li>Data Security: restrict access to data</li>
+<li>Simplified queries: hide complexity</li>
+<li>Updatability: while restricted, Views can be used to update/insert/delete data</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org17b979c" class="outline-3">
+<h3 id="org17b979c"><span class="section-number-3">7.2.</span> Usage</h3>
+<div class="outline-text-3" id="text-7-2">
+<ul class="org-ul">
+<li>Declaration</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #51afef; font-style: italic;">CREATE</span> <span style="color: #51afef; font-style: italic;">VIEW</span> <span style="color: #ECBE7B;">my_details</span> <span style="color: #51afef; font-style: italic;">AS</span>
+<span style="color: #51afef; font-style: italic;">SELECT</span> <span style="color: #db5762;">firstName</span><span style="color: #bbc2cf;">,</span> <span style="color: #db5762;">lastName</span> <span style="color: #51afef; font-style: italic;">FROM</span> <span style="color: #ECBE7B;">details</span><span style="color: #bbc2cf;">;</span>
+
+<span style="color: #51afef; font-style: italic;">CREATE</span> <span style="color: #51afef; font-style: italic;">VIEW</span> <span style="color: #ECBE7B;">my_details</span> <span style="color: #51afef; font-style: italic;">AS</span>
+<span style="color: #51afef; font-style: italic;">SELECT</span> <span style="color: #db5762;">firstName</span><span style="color: #bbc2cf;">,</span> <span style="color: #db5762;">lastName</span><span style="color: #bbc2cf;">,</span> <span style="color: #db5762;">rate</span> <span style="color: #bbc2cf;">*</span> <span style="color: #db5762;">hours</span> <span style="color: #51afef; font-style: italic;">as</span> <span style="color: #db5762;">wage</span>
+<span style="color: #51afef; font-style: italic;">FROM</span> <span style="color: #ECBE7B;">details</span><span style="color: #bbc2cf;">;</span>
+<span style="color: #5B6268;">-- output columns: firstName, lastName, wage (named column)</span>
+</pre>
+</div>
+<ul class="org-ul">
+<li>Usage</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #51afef; font-style: italic;">SELECT</span> <span style="color: #bbc2cf;">*</span> <span style="color: #51afef; font-style: italic;">from</span> <span style="color: #ECBE7B;">view_name</span><span style="color: #bbc2cf;">;</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orgc65f67e" class="outline-2">
+<h2 id="orgc65f67e"><span class="section-number-2">8.</span> Triggers</h2>
+<div class="outline-text-2" id="text-8">
+</div>
+<div id="outline-container-org56f7814" class="outline-3">
+<h3 id="org56f7814"><span class="section-number-3">8.1.</span> Info</h3>
+<div class="outline-text-3" id="text-8-1">
+<ul class="org-ul">
+<li>Named block that fires when insert, update or delete statement is executed</li>
+<li>Triggers can be fired before or after the statement</li>
+<li>You must specify a FOR EACH ROW clause. Creates a row-level trigger that fires once for each row that is modified.</li>
+<li>Only row-level triggers in MySQL are supported</li>
+<li>Show existing triggers with <code>SHOW TRIGGERS;</code> or <code>SHOW TRIGGERS IN database_name;</code></li>
+<li>You cannot alter triggers, you have to delete(drop) the previous one if you want to override it.</li>
+<li>Triggers are a bit dangerous as some inner workings might not be visible if the developer is not aware of the existing triggers.</li>
+<li>Can slow down processing if there are a lot of triggers</li>
+<li>Can make maintenance difficult</li>
+<li>Hard to debug</li>
+<li>Can cause non-obvious deadlocks</li>
+<li>Note that <code>update</code> and <code>insert</code> use <code>NEW</code> and <code>delete</code> uses <code>OLD</code></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org3cbb772" class="outline-3">
+<h3 id="org3cbb772"><span class="section-number-3">8.2.</span> Before Update Trigger</h3>
+<div class="outline-text-3" id="text-8-2">
+<ul class="org-ul">
+<li>Declaration</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-sql">DELIMITER <span style="color: #bbc2cf;">//</span>
+
+<span style="color: #51afef; font-style: italic;">CREATE</span> <span style="color: #51afef; font-style: italic;">TRIGGER</span> <span style="color: #ECBE7B;">details_before_update</span>
+<span style="color: #51afef; font-style: italic;">BEFORE</span> <span style="color: #51afef; font-style: italic;">UPDATE</span> ON <span style="color: #ECBE7B;">details</span>
+<span style="color: #51afef; font-style: italic;">for</span> <span style="color: #51afef; font-style: italic;">EACH</span> <span style="color: #51afef; font-style: italic;">ROW</span>
+<span style="color: #51afef; font-style: italic;">BEGIN</span>
+<span style="color: #51afef; font-style: italic;">SET</span> <span style="color: #51afef; font-style: italic;">NEW</span><span style="color: #bbc2cf;">.</span>department <span style="color: #bbc2cf;">=</span> UPPER<span style="color: #fff0f5;">(</span><span style="color: #51afef; font-style: italic;">NEW</span><span style="color: #bbc2cf;">.</span>department<span style="color: #fff0f5;">)</span>
+<span style="color: #51afef; font-style: italic;">END</span> <span style="color: #bbc2cf;">//</span>
+</pre>
+</div>
+<ul class="org-ul">
+<li>Will fire when:</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #51afef; font-style: italic;">update</span> <span style="color: #ECBE7B;">details</span>
+<span style="color: #51afef; font-style: italic;">set</span> <span style="color: #db5762;">department</span> <span style="color: #bbc2cf;">=</span> <span style="color: #98be65; font-weight: bold;">"any dept"</span>
+<span style="color: #51afef; font-style: italic;">where</span> <span style="color: #db5762;">id</span> <span style="color: #bbc2cf;">=</span> <span style="color: #98be65; font-weight: bold;">5</span><span style="color: #bbc2cf;">;</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org46d515f" class="outline-3">
+<h3 id="org46d515f"><span class="section-number-3">8.3.</span> After Insert Trigger</h3>
+<div class="outline-text-3" id="text-8-3">
+<ul class="org-ul">
+<li>Declaration</li>
+<li>In this example we first create an audit table that stores information about each insert on a different table</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #51afef; font-style: italic;">drop</span> <span style="color: #51afef; font-style: italic;">table</span> <span style="color: #51afef; font-style: italic;">if</span> <span style="color: #51afef; font-style: italic;">exists</span> <span style="color: #ECBE7B;">orders_audit</span><span style="color: #bbc2cf;">;</span>
+
+<span style="color: #51afef; font-style: italic;">create</span> <span style="color: #51afef; font-style: italic;">table</span> <span style="color: #ECBE7B;">orders_audit</span>
+<span style="color: #fff0f5;">(</span>
+<span style="color: #db5762;">order_id</span> <span style="color: #ECBE7B;">int</span> not <span style="color: #ECBE7B;">null</span><span style="color: #bbc2cf;">,</span>
+<span style="color: #db5762;">customer_id</span> <span style="color: #ECBE7B;">int</span> not <span style="color: #ECBE7B;">null</span><span style="color: #bbc2cf;">,</span>
+<span style="color: #db5762;">action_type</span> <span style="color: #ECBE7B;">varchar</span><span style="color: #c678dd;">(</span><span style="color: #98be65; font-weight: bold;">50</span><span style="color: #c678dd;">)</span><span style="color: #bbc2cf;">,</span>
+<span style="color: #db5762;">action_date</span> <span style="color: #ECBE7B;">datetime</span> not <span style="color: #ECBE7B;">null</span>
+<span style="color: #fff0f5;">)</span>
+
+delimiter <span style="color: #bbc2cf;">//</span>
+
+<span style="color: #51afef; font-style: italic;">drop</span> <span style="color: #51afef; font-style: italic;">trigger</span> <span style="color: #51afef; font-style: italic;">if</span> <span style="color: #51afef; font-style: italic;">exists</span> orders_after_insert<span style="color: #bbc2cf;">;</span>
+
+<span style="color: #51afef; font-style: italic;">create</span> <span style="color: #51afef; font-style: italic;">trigger</span> <span style="color: #ECBE7B;">orders_after_insert</span>
+<span style="color: #51afef; font-style: italic;">after</span> <span style="color: #51afef; font-style: italic;">insert</span> on <span style="color: #ECBE7B;">orders</span>
+<span style="color: #51afef; font-style: italic;">for</span> <span style="color: #51afef; font-style: italic;">each</span> <span style="color: #51afef; font-style: italic;">row</span>
+<span style="color: #51afef; font-style: italic;">begin</span>
+<span style="color: #51afef; font-style: italic;">insert</span> <span style="color: #51afef; font-style: italic;">into</span> orders_audit <span style="color: #51afef; font-style: italic;">values</span>
+<span style="color: #fff0f5;">(</span><span style="color: #51afef; font-style: italic;">NEW</span><span style="color: #bbc2cf;">.</span>order_id<span style="color: #bbc2cf;">,</span> <span style="color: #51afef; font-style: italic;">NEW</span><span style="color: #bbc2cf;">.</span>customer_id<span style="color: #bbc2cf;">,</span> "INSERTED"<span style="color: #bbc2cf;">,</span> NOW<span style="color: #c678dd;">()</span><span style="color: #fff0f5;">)</span><span style="color: #bbc2cf;">;</span>
+<span style="color: #51afef; font-style: italic;">end</span> <span style="color: #bbc2cf;">//</span>
+</pre>
+</div>
+<ul class="org-ul">
+<li>Will fire when:</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #51afef; font-style: italic;">insert</span> <span style="color: #51afef; font-style: italic;">into</span> <span style="color: #ECBE7B;">orders</span> <span style="color: #51afef; font-style: italic;">values</span> <span style="color: #fff0f5;">(</span><span style="color: #98be65; font-weight: bold;">1215</span><span style="color: #bbc2cf;">,</span> <span style="color: #98be65; font-weight: bold;">11</span><span style="color: #bbc2cf;">,</span> <span style="color: #98be65; font-weight: bold;">'2009-11-23'</span><span style="color: #bbc2cf;">,</span> <span style="color: #98be65; font-weight: bold;">'2009-11-28'</span><span style="color: #fff0f5;">)</span><span style="color: #bbc2cf;">;</span>
+
+<span style="color: #5B6268;">-- check with</span>
+<span style="color: #51afef; font-style: italic;">select</span> <span style="color: #bbc2cf;">*</span> <span style="color: #51afef; font-style: italic;">from</span> <span style="color: #ECBE7B;">orders_audit</span><span style="color: #bbc2cf;">;</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgfb772ba" class="outline-3">
+<h3 id="orgfb772ba"><span class="section-number-3">8.4.</span> After Delete Trigger</h3>
+<div class="outline-text-3" id="text-8-4">
+<ul class="org-ul">
+<li>Declaration</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #51afef; font-style: italic;">drop</span> <span style="color: #51afef; font-style: italic;">trigger</span> <span style="color: #51afef; font-style: italic;">if</span> <span style="color: #51afef; font-style: italic;">exists</span> orders_after_delete<span style="color: #bbc2cf;">;</span>
+
+delimiter <span style="color: #bbc2cf;">//</span>
+
+<span style="color: #51afef; font-style: italic;">create</span> <span style="color: #51afef; font-style: italic;">trigger</span> <span style="color: #ECBE7B;">orders_after_delete</span>
+<span style="color: #51afef; font-style: italic;">after</span> <span style="color: #51afef; font-style: italic;">delete</span> on <span style="color: #ECBE7B;">orders</span>
+<span style="color: #51afef; font-style: italic;">for</span> <span style="color: #51afef; font-style: italic;">each</span> <span style="color: #51afef; font-style: italic;">row</span>
+<span style="color: #51afef; font-style: italic;">begin</span>
+<span style="color: #51afef; font-style: italic;">insert</span> <span style="color: #51afef; font-style: italic;">into</span> <span style="color: #ECBE7B;">orders_audit</span> <span style="color: #51afef; font-style: italic;">values</span>
+<span style="color: #fff0f5;">(</span><span style="color: #ECBE7B;">OLD</span><span style="color: #bbc2cf;">.</span><span style="color: #db5762;">order_id</span><span style="color: #bbc2cf;">,</span> <span style="color: #ECBE7B;">OLD</span><span style="color: #bbc2cf;">.</span><span style="color: #db5762;">customer_id</span><span style="color: #bbc2cf;">,</span> <span style="color: #98be65; font-weight: bold;">"DELETED"</span><span style="color: #bbc2cf;">,</span> <span style="color: #c678dd;">NOW</span><span style="color: #c678dd;">()</span><span style="color: #fff0f5;">)</span><span style="color: #bbc2cf;">;</span>
+<span style="color: #51afef; font-style: italic;">end</span> <span style="color: #bbc2cf;">//</span>
+</pre>
+</div>
+<ul class="org-ul">
+<li>Will fire when:</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #51afef; font-style: italic;">delete</span> <span style="color: #51afef; font-style: italic;">from</span> <span style="color: #ECBE7B;">orders</span> <span style="color: #51afef; font-style: italic;">where</span> <span style="color: #db5762;">order_id</span> <span style="color: #bbc2cf;">=</span> <span style="color: #98be65; font-weight: bold;">1216</span><span style="color: #bbc2cf;">;</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orgea3f7dc" class="outline-2">
+<h2 id="orgea3f7dc"><span class="section-number-2">9.</span> Events</h2>
+<div class="outline-text-2" id="text-9">
+<ul class="org-ul">
+<li>Fires an event according to the event scheduler</li>
+<li>The event scheduler is switched off by default. Check with <code>show variables</code>, set with <code>set global event_scheduler = on</code></li>
+<li>Can be one-off or be recurring</li>
+<li>Can use <code>interval</code> such as: <code>minute, hour, day, week, month, year</code></li>
+</ul>
+</div>
+<div id="outline-container-org173bbe6" class="outline-3">
+<h3 id="org173bbe6"><span class="section-number-3">9.1.</span> One-Off</h3>
+<div class="outline-text-3" id="text-9-1">
+<ul class="org-ul">
+<li>Declaration</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #51afef; font-style: italic;">drop</span> event <span style="color: #51afef; font-style: italic;">if</span> <span style="color: #51afef; font-style: italic;">exists</span> one_time_delete_audit_rows<span style="color: #bbc2cf;">;</span>
+
+delimiter <span style="color: #bbc2cf;">//</span>
+
+<span style="color: #51afef; font-style: italic;">create</span> event one_time_delete_audit_rows
+ON SCHEDULE AT now<span style="color: #fff0f5;">()</span> <span style="color: #bbc2cf;">+</span> <span style="color: #ECBE7B;">interval</span> <span style="color: #da8548; font-weight: bold;">10</span> minute
+do <span style="color: #51afef; font-style: italic;">begin</span>
+<span style="color: #51afef; font-style: italic;">delete</span> <span style="color: #51afef; font-style: italic;">from</span> <span style="color: #ECBE7B;">orders_audit</span> <span style="color: #51afef; font-style: italic;">where</span> <span style="color: #db5762;">action_date</span> <span style="color: #bbc2cf;">&lt;</span> <span style="color: #c678dd;">now</span><span style="color: #fff0f5;">()</span> <span style="color: #bbc2cf;">-</span> <span style="color: #ECBE7B;">interval</span> <span style="color: #da8548; font-weight: bold;">10</span> <span style="color: #db5762;">minute</span><span style="color: #bbc2cf;">;</span>
+<span style="color: #51afef; font-style: italic;">end</span> <span style="color: #bbc2cf;">//</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org5d2a94c" class="outline-3">
+<h3 id="org5d2a94c"><span class="section-number-3">9.2.</span> Recurring</h3>
+<div class="outline-text-3" id="text-9-2">
+<ul class="org-ul">
+<li>Declaration</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #51afef; font-style: italic;">drop</span> event <span style="color: #51afef; font-style: italic;">if</span> <span style="color: #51afef; font-style: italic;">exists</span> monthly_delete_audit_rows<span style="color: #bbc2cf;">;</span>
+
+delimiter <span style="color: #bbc2cf;">//</span>
+
+<span style="color: #51afef; font-style: italic;">create</span> event monthly_delete_audit_rows
+on schedule every <span style="color: #da8548; font-weight: bold;">1</span> month
+do <span style="color: #51afef; font-style: italic;">begin</span>
+<span style="color: #51afef; font-style: italic;">delete</span> <span style="color: #51afef; font-style: italic;">from</span> <span style="color: #ECBE7B;">orders_audit</span> <span style="color: #51afef; font-style: italic;">where</span> <span style="color: #db5762;">action_date</span> <span style="color: #bbc2cf;">&lt;</span> <span style="color: #c678dd;">now</span><span style="color: #fff0f5;">()</span> <span style="color: #bbc2cf;">-</span> <span style="color: #ECBE7B;">interval</span> <span style="color: #da8548; font-weight: bold;">1</span> <span style="color: #db5762;">month</span><span style="color: #bbc2cf;">;</span>
+<span style="color: #51afef; font-style: italic;">end</span> <span style="color: #bbc2cf;">//</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org8b4f463" class="outline-3">
+<h3 id="org8b4f463"><span class="section-number-3">9.3.</span> Altering (enable/disable only)</h3>
+<div class="outline-text-3" id="text-9-3">
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #51afef; font-style: italic;">alter</span> event monthly_delete_audit_rows disable<span style="color: #bbc2cf;">;</span>
+<span style="color: #51afef; font-style: italic;">alter</span> event monthly_delete_audit_rows enable<span style="color: #bbc2cf;">;</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orgc52fdbc" class="outline-2">
+<h2 id="orgc52fdbc"><span class="section-number-2">10.</span> JDBC</h2>
+<div class="outline-text-2" id="text-10">
+</div>
+<div id="outline-container-org6116db1" class="outline-3">
+<h3 id="org6116db1"><span class="section-number-3">10.1.</span> Using JDBC</h3>
+<div class="outline-text-3" id="text-10-1">
+<ol class="org-ol">
+<li>Load the driver</li>
+<li>Define the connection URL</li>
+<li>Establish connection</li>
+<li>Create a Statement object</li>
+<li>Execute a query using the statement</li>
+<li>Process the result</li>
+<li>Close the connection</li>
+</ol>
+</div>
+</div>
+<div id="outline-container-org8eeefbc" class="outline-3">
+<h3 id="org8eeefbc"><span class="section-number-3">10.2.</span> Important objects</h3>
+<div class="outline-text-3" id="text-10-2">
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #ECBE7B;">Connection</span> con = DriverManager.<span style="color: #c678dd;">getConnection</span><span style="color: #fff0f5;">(</span>url + dbName, userName, password<span style="color: #fff0f5;">)</span>;
+<span style="color: #ECBE7B;">Statement</span> stmt = con.<span style="color: #c678dd;">createStatement</span><span style="color: #fff0f5;">()</span>;
+<span style="color: #ECBE7B;">ResultSet</span> rs = stmt.<span style="color: #c678dd;">executeQuery</span><span style="color: #fff0f5;">(</span><span style="color: #98be65;">"select * from movies;"</span><span style="color: #fff0f5;">)</span>; <span style="color: #5B6268;">// read</span>
+stmt.<span style="color: #c678dd;">executeUpdate</span><span style="color: #fff0f5;">(</span><span style="color: #98be65;">"insert...."</span><span style="color: #fff0f5;">)</span>; <span style="color: #5B6268;">// insert data</span>
+stmt.<span style="color: #c678dd;">executeUpdate</span><span style="color: #fff0f5;">(</span><span style="color: #98be65;">"delete from...."</span><span style="color: #fff0f5;">)</span>; <span style="color: #5B6268;">// delete data</span>
+
+<span style="color: #ECBE7B;">PreparedStatement</span> ps = con.<span style="color: #c678dd;">prepareStatement</span><span style="color: #fff0f5;">(</span><span style="color: #98be65;">"select * from pm.perf where cell_id = ?"</span><span style="color: #fff0f5;">)</span>; <span style="color: #5B6268;">// prepared statement</span>
+ps.<span style="color: #c678dd;">setString</span><span style="color: #fff0f5;">(</span><span style="color: #da8548; font-weight: bold;">1</span>, <span style="color: #98be65;">"1"</span><span style="color: #fff0f5;">)</span>; <span style="color: #5B6268;">// set the value safely</span>
+ps.<span style="color: #c678dd;">setInt</span><span style="color: #fff0f5;">(</span><span style="color: #da8548; font-weight: bold;">1</span>, <span style="color: #da8548; font-weight: bold;">1</span><span style="color: #fff0f5;">)</span>; <span style="color: #5B6268;">// set the value safely</span>
+ps.<span style="color: #c678dd;">setFloat</span><span style="color: #fff0f5;">(</span><span style="color: #da8548; font-weight: bold;">1</span>, <span style="color: #da8548; font-weight: bold;">1.0f</span><span style="color: #fff0f5;">)</span>; <span style="color: #5B6268;">// set the value safely</span>
+ps.<span style="color: #c678dd;">execute</span><span style="color: #fff0f5;">()</span>;
+
+rs.<span style="color: #c678dd;">getString</span><span style="color: #fff0f5;">(</span>columnIndex<span style="color: #fff0f5;">)</span>
+    rs.<span style="color: #c678dd;">getString</span><span style="color: #fff0f5;">(</span>columnName<span style="color: #fff0f5;">)</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgd817a6a" class="outline-3">
+<h3 id="orgd817a6a"><span class="section-number-3">10.3.</span> The ResultSet</h3>
+<div class="outline-text-3" id="text-10-3">
+<ul class="org-ul">
+<li>Is a table of data generated by the SQL query. Allows you to iterate over the rows that have been retrieved.</li>
+<li>Retrieves data row by row, maps the results to the closest Java data types.</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-orge59a48c" class="outline-2">
+<h2 id="orge59a48c"><span class="section-number-2">11.</span> SQL Injection Attacks</h2>
+<div class="outline-text-2" id="text-11">
+</div>
+<div id="outline-container-orgb0e4e23" class="outline-3">
+<h3 id="orgb0e4e23"><span class="section-number-3">11.1.</span> Protection</h3>
+<div class="outline-text-3" id="text-11-1">
+<ul class="org-ul">
+<li>User prepared statements</li>
+<li>Use ORMs</li>
+<li>Sanitisation of input data</li>
+<li>Database permissions</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgf4e037a" class="outline-3">
+<h3 id="orgf4e037a"><span class="section-number-3">11.2.</span> Improperly handled escape characters</h3>
+<div class="outline-text-3" id="text-11-2">
+<div class="org-src-container">
+<pre class="src src-java">stmt = <span style="color: #98be65;">"select * from users where name = '"</span> + userName + <span style="color: #98be65;">"';"</span>;
+
+<span style="color: #5B6268;">// we can set userName to ' OR '1' = '1</span>
+<span style="color: #5B6268;">// and thus always return all users and retrieve all data</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org84b6826" class="outline-3">
+<h3 id="org84b6826"><span class="section-number-3">11.3.</span> Incorrect data type management</h3>
+<div class="outline-text-3" id="text-11-3">
+<div class="org-src-container">
+<pre class="src src-java">stmt = <span style="color: #98be65;">"select * from userinfo where id = "</span> + id_var + <span style="color: #98be65;">";"</span>;
+
+<span style="color: #5B6268;">// we can set id_var to something like this "1; DROP TABLE users"</span>
+
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgaeedbd0" class="outline-3">
+<h3 id="orgaeedbd0"><span class="section-number-3">11.4.</span> Blind SQL injection</h3>
+<div class="outline-text-3" id="text-11-4">
+<ul class="org-ul">
+<li>Relies on server responses to deduce the inner workings.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgc3d8dbe" class="outline-3">
+<h3 id="orgc3d8dbe"><span class="section-number-3">11.5.</span> Second-Order SQL injection</h3>
+<div class="outline-text-3" id="text-11-5">
+<ul class="org-ul">
+<li>A user may insert an SQL as some sort of a field. That field gets then inserted into a database completely unsanitised.</li>
+<li>Later on, this bit of SQL code may get executed during the retrieval (say looking at a profile page, but the address is the actual SQL).</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-org888bd7d" class="outline-2">
+<h2 id="org888bd7d"><span class="section-number-2">12.</span> Stored Procedures vs Java</h2>
+<div class="outline-text-2" id="text-12">
+</div>
+<div id="outline-container-org0357e80" class="outline-3">
+<h3 id="org0357e80"><span class="section-number-3">12.1.</span> Performance</h3>
+<div class="outline-text-3" id="text-12-1">
+<ul class="org-ul">
+<li>SP: faster for batch operations, complex SQL, large datasets</li>
+<li>Java: faster in-memory processing &amp; computational tasks</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org529bd28" class="outline-3">
+<h3 id="org529bd28"><span class="section-number-3">12.2.</span> Maintainability</h3>
+<div class="outline-text-3" id="text-12-2">
+<ul class="org-ul">
+<li>SP: harder to test and maintain</li>
+<li>Java: easier to version, debug and extend</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgccc185d" class="outline-3">
+<h3 id="orgccc185d"><span class="section-number-3">12.3.</span> Portability</h3>
+<div class="outline-text-3" id="text-12-3">
+<ul class="org-ul">
+<li>SP: db specific, vendor lock-in</li>
+<li>Java: db agnostic</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org157905f" class="outline-3">
+<h3 id="org157905f"><span class="section-number-3">12.4.</span> Security</h3>
+<div class="outline-text-3" id="text-12-4">
+<ul class="org-ul">
+<li>SP: encapsulates sql logic, restrict access, reduce injection risk</li>
+<li>Java: secure with prepared statements &amp; ORM frameworks</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgbc56ff6" class="outline-3">
+<h3 id="orgbc56ff6"><span class="section-number-3">12.5.</span> Complexity of Logic</h3>
+<div class="outline-text-3" id="text-12-5">
+<ul class="org-ul">
+<li>SP: Best form DB-centric logic, aggregations and triggers</li>
+<li>Java: Complex operations are done best via code</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org7d06498" class="outline-3">
+<h3 id="org7d06498"><span class="section-number-3">12.6.</span> Transactions &amp; Scalability</h3>
+<div class="outline-text-3" id="text-12-6">
+<ul class="org-ul">
+<li>SP: strong db-level transaction control, vertical scaling (potential bottleneck)</li>
+<li>Java: distributed transactions, horizontal scaling</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org6af4310" class="outline-3">
+<h3 id="org6af4310"><span class="section-number-3">12.7.</span> Summary</h3>
+<div class="outline-text-3" id="text-12-7">
+<ul class="org-ul">
+<li>SP: efficient for heavy db work, security and encapsulation</li>
+<li>Java: flexible, portable, scalable, suited for complex logic</li>
+<li>Hybrid: often best approach</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-org09b0645" class="outline-2">
+<h2 id="org09b0645"><span class="section-number-2">13.</span> Normalisation</h2>
+<div class="outline-text-2" id="text-13">
+<ul class="org-ul">
+<li>Is the process where a database is designed in a way that removes redundancies, and increases the clarity in organizing data in a database.</li>
+<li>Usually involves dividing large tables into smaller ones.</li>
+<li>Objective is to isolate data so that CRUDs are more specific and less broad.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org6b42b50" class="outline-2">
+<h2 id="org6b42b50"><span class="section-number-2">14.</span> ERDs</h2>
+<div class="outline-text-2" id="text-14">
+</div>
+<div id="outline-container-org2677f1b" class="outline-3">
+<h3 id="org2677f1b"><span class="section-number-3">14.1.</span> Benefits</h3>
+<div class="outline-text-3" id="text-14-1">
+<ol class="org-ol">
+<li>Visual clarity</li>
+<li>Improved communication</li>
+<li>Reduces errors</li>
+<li>Efficient database design</li>
+<li>Simplifies maintenance</li>
+</ol>
+</div>
+</div>
+<div id="outline-container-org6b3b460" class="outline-3">
+<h3 id="org6b3b460"><span class="section-number-3">14.2.</span> Poor modelling</h3>
+<div class="outline-text-3" id="text-14-2">
+<ul class="org-ul">
+<li>Data redundancy</li>
+<li>Inconsistent data</li>
+<li>Difficult maintenance</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgaac9b74" class="outline-3">
+<h3 id="orgaac9b74"><span class="section-number-3">14.3.</span> ER Modelling Phases</h3>
+<div class="outline-text-3" id="text-14-3">
+<ol class="org-ol">
+<li>Specify the Entities</li>
+<li>Specify Relationships</li>
+<li>Specify Connectivity and Optionality</li>
+<li>Add the Attributes</li>
+</ol>
+</div>
+</div>
+<div id="outline-container-orgfe31e49" class="outline-3">
+<h3 id="orgfe31e49"><span class="section-number-3">14.4.</span> Database Modelling</h3>
+<div class="outline-text-3" id="text-14-4">
+</div>
+<div id="outline-container-org46c8ba2" class="outline-4">
+<h4 id="org46c8ba2">CDM (Conceptual Data Modelling)</h4>
+<div class="outline-text-4" id="text-org46c8ba2">
+<ul class="org-ul">
+<li>Capture the satellite view of the business requirements</li>
+<li>Raw entities and their relationships only (cardinality)</li>
+<li>What problems does the business solve?</li>
+<li>What do the ideas or concepts mean? (concept may be basic or critical, depending on the requirements of the business)</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org4f6bb1c" class="outline-4">
+<h4 id="org4f6bb1c">LDM (Logical Data Modelling)</h4>
+<div class="outline-text-4" id="text-org4f6bb1c">
+<ul class="org-ul">
+<li>Designing the actual database schema</li>
+<li>CDM may reveal that a Customer places Orders, but LDM will reveal that a customer has a name, address, can place many orders, etc.</li>
+<li>Apply normalisation here</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgb960fa2" class="outline-4">
+<h4 id="orgb960fa2">PDM (Physical Data Modelling)</h4>
+<div class="outline-text-4" id="text-orgb960fa2">
+<ul class="org-ul">
+<li>Is the actual implementation in some sort of software, e.g.: MySQL, Postgres, MongoDB, etc.</li>
+<li>Here we actually write the code for creating the tables/documents</li>
+<li>Develop constraints specific to a DB: PKs, FKs, Unique, etc.</li>
+<li>Views, procedures, or any other additional functionality</li>
+<li>Most of databases if even of the relational type differ slightly, so the implementation can differ from one type of software to another (as in one DB to another DB)</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org82ffdf9" class="outline-2">
+<h2 id="org82ffdf9"><span class="section-number-2">15.</span> ORMs (JPA)</h2>
+<div class="outline-text-2" id="text-15">
+<ul class="org-ul">
+<li>Use language's Objects to save/retrieve data instead of using SQL</li>
+<li>Map between an object and a row in a database table</li>
+</ul>
+</div>
+<div id="outline-container-org67beb59" class="outline-3">
+<h3 id="org67beb59"><span class="section-number-3">15.1.</span> ORM Mismatch</h3>
+<div class="outline-text-3" id="text-15-1">
+<ul class="org-ul">
+<li>DBs store data in rows and tables</li>
+<li>We can simulate object associations using relations between rows in tables</li>
+<li>But there are some conceptual differences</li>
+<li>ORM Mismatch basically means that objects models and relational models do not work together very well
+<ul class="org-ul">
+<li>RDBMS: Represent data in a tabular format. Mathematical concepts</li>
+<li>Object Oriented langs: represents data as an interconnected graph. Software engineering concepts.</li>
+</ul></li>
+</ul>
+</div>
+<div id="outline-container-orgefb9f8c" class="outline-4">
+<h4 id="orgefb9f8c">The 5 Problems</h4>
+<div class="outline-text-4" id="text-orgefb9f8c">
+<ol class="org-ol">
+<li>Granularity: Objects are more granular. E.g. User Class may have an Address class and other subclasses. SQL only has tables and columns do deal with this, while possible it is just not as easy to translate.</li>
+<li>Subtypes: OOP has inheritance and polymorphism, new subclasses can extend previous ones. No such thing in SQL.</li>
+<li>Identity: Sameness in OOP <code>object1 == object2</code> same object at the same memory location, othwerise we use the <code>equals</code> method to compare objects. In SQL the Identity is expressed by the primary key.</li>
+<li>Associations: Java has associations via object references and supports any type. SQL has only one-to-one and one-to-many. Many-to-many is simulated by creating an associative table.</li>
+<li>Data navigation: In OOP we generally use getters to navigate to nested or associated objects, it is relatively easy to accomplish. In SQL we have to use JOINs.</li>
+</ol>
+</div>
+</div>
+</div>
+<div id="outline-container-org2d59be0" class="outline-3">
+<h3 id="org2d59be0"><span class="section-number-3">15.2.</span> Java Annotations</h3>
+<div class="outline-text-3" id="text-15-2">
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #51afef; font-style: italic;">class</span> <span style="color: #ECBE7B;">User</span> <span style="color: #fff0f5;">{</span>
+    <span style="color: #bbc2cf;">@</span><span style="color: #51afef; font-weight: bold;">Id</span>
+    <span style="color: #bbc2cf;">@</span><span style="color: #51afef; font-weight: bold;">GeneratedValue</span>
+    <span style="color: #51afef; font-style: italic;">private</span> <span style="color: #ECBE7B;">int</span> id;
+
+    <span style="color: #51afef; font-style: italic;">private</span> <span style="color: #ECBE7B;">String</span> name;
+
+    <span style="color: #bbc2cf;">@</span><span style="color: #51afef; font-weight: bold;">OneToMany</span><span style="color: #c678dd;">(</span>targetEntity = <span style="color: #ECBE7B;">Invoice</span>.<span style="color: #51afef; font-style: italic;">class</span><span style="color: #c678dd;">)</span>
+    <span style="color: #bbc2cf;">@</span><span style="color: #51afef; font-weight: bold;">JoinColumn</span><span style="color: #c678dd;">(</span>name = <span style="color: #98be65;">"FKColumnName"</span><span style="color: #c678dd;">)</span>
+    <span style="color: #ECBE7B;">List</span><span style="color: #c678dd;">&lt;</span><span style="color: #ECBE7B;">Invoice</span><span style="color: #c678dd;">&gt;</span> invoices;
+
+    <span style="color: #bbc2cf;">@</span><span style="color: #51afef; font-weight: bold;">ManyToMany</span><span style="color: #c678dd;">(</span>targetEntity = <span style="color: #ECBE7B;">Book</span>.<span style="color: #51afef; font-style: italic;">class</span><span style="color: #c678dd;">)</span>
+    <span style="color: #bbc2cf;">@</span><span style="color: #51afef; font-weight: bold;">JoinTable</span><span style="color: #c678dd;">(</span>name = <span style="color: #98be65;">"book_mapping"</span><span style="color: #c678dd;">)</span> <span style="color: #5B6268;">// is optional, otherwise JPA will create the table itself</span>
+    <span style="color: #ECBE7B;">List</span><span style="color: #c678dd;">&lt;</span><span style="color: #ECBE7B;">Invoice</span><span style="color: #c678dd;">&gt;</span> invoices;
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org8852974" class="outline-3">
+<h3 id="org8852974"><span class="section-number-3">15.3.</span> Java JPA Snippets</h3>
+<div class="outline-text-3" id="text-15-3">
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #5B6268;">// in attributes create entity man factory and entity man</span>
+<span style="color: #ECBE7B;">EntityManagerFactory</span> emf = Persistence.<span style="color: #c678dd;">createEntityManagerFactory</span><span style="color: #fff0f5;">(</span><span style="color: #98be65;">"db_name"</span><span style="color: #fff0f5;">)</span>;
+<span style="color: #ECBE7B;">EntityManager</span> em = emf.<span style="color: #c678dd;">createEntityManager</span><span style="color: #fff0f5;">()</span>;
+
+<span style="color: #5B6268;">// create: employee method, get a transaction, begin, persist, commit</span>
+<span style="color: #ECBE7B;">Employee</span> e = <span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">Employee</span><span style="color: #fff0f5;">(</span>name, lastname<span style="color: #fff0f5;">)</span>;
+<span style="color: #ECBE7B;">EntityTransaction</span> trans = em.<span style="color: #c678dd;">getTransaction</span><span style="color: #fff0f5;">()</span>;
+trans.<span style="color: #c678dd;">begin</span><span style="color: #fff0f5;">()</span>;
+em.<span style="color: #c678dd;">persist</span><span style="color: #fff0f5;">(</span>e<span style="color: #fff0f5;">)</span>;
+trans.<span style="color: #c678dd;">commit</span><span style="color: #fff0f5;">()</span>;
+
+<span style="color: #5B6268;">// update: find employee, trans, begin, set on entity, commit</span>
+<span style="color: #ECBE7B;">Employee</span> e = em.<span style="color: #c678dd;">find</span><span style="color: #fff0f5;">(</span><span style="color: #ECBE7B;">Employee</span>.<span style="color: #51afef; font-style: italic;">class</span>, aID<span style="color: #fff0f5;">)</span>;
+<span style="color: #ECBE7B;">EntityTransaction</span> trans = em.<span style="color: #c678dd;">getTransaction</span><span style="color: #fff0f5;">()</span>;
+trans.<span style="color: #c678dd;">begin</span><span style="color: #fff0f5;">()</span>;
+e.<span style="color: #c678dd;">setLastName</span><span style="color: #fff0f5;">(</span>newLastName<span style="color: #fff0f5;">)</span>;
+trans.<span style="color: #c678dd;">commit</span><span style="color: #fff0f5;">()</span>;
+
+<span style="color: #5B6268;">// delete: find employee, trans, begin, remove on em, commit</span>
+<span style="color: #ECBE7B;">Employee</span> e = em.<span style="color: #c678dd;">find</span><span style="color: #fff0f5;">(</span><span style="color: #ECBE7B;">Employee</span>.<span style="color: #51afef; font-style: italic;">class</span>, aID<span style="color: #fff0f5;">)</span>;
+<span style="color: #ECBE7B;">EntityTransaction</span> trans = em.<span style="color: #c678dd;">getTransaction</span><span style="color: #fff0f5;">()</span>;
+trans.<span style="color: #c678dd;">begin</span><span style="color: #fff0f5;">()</span>;
+em.<span style="color: #c678dd;">remove</span><span style="color: #fff0f5;">(</span>e<span style="color: #fff0f5;">)</span>;
+trans.<span style="color: #c678dd;">commit</span><span style="color: #fff0f5;">()</span>;
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org7a8b7d7" class="outline-2">
+<h2 id="org7a8b7d7"><span class="section-number-2">16.</span> Transaction Management</h2>
+<div class="outline-text-2" id="text-16">
+</div>
+<div id="outline-container-org3846932" class="outline-3">
+<h3 id="org3846932"><span class="section-number-3">16.1.</span> Concurrency Control</h3>
+<div class="outline-text-3" id="text-16-1">
+<ul class="org-ul">
+<li>Ensure that the database integrity is intact when accessed and manipulated by multiple users simultaneously</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orge021fe4" class="outline-3">
+<h3 id="orge021fe4"><span class="section-number-3">16.2.</span> Consistency</h3>
+<div class="outline-text-3" id="text-16-2">
+<ul class="org-ul">
+<li>A DB is in a consistent state when there are no contradictions between items stored in the database</li>
+<li>DBMS must take measures to ensure consistency, albeit occasionally a DB enters inconsistency, so it is the DBMS' role to make sure that the inconsistency is only temporary. If another user accesses data during an inconsistency, then that is a major problem.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org02d7e0d" class="outline-3">
+<h3 id="org02d7e0d"><span class="section-number-3">16.3.</span> Autocommit</h3>
+<div class="outline-text-3" id="text-16-3">
+<ul class="org-ul">
+<li>Normally MySQL is in <code>autocommit</code> mode, as in: all CRUDs are committed immediately upon execution</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org7d20607" class="outline-3">
+<h3 id="org7d20607"><span class="section-number-3">16.4.</span> Transactions</h3>
+<div class="outline-text-3" id="text-16-4">
+<ul class="org-ul">
+<li>We start a transaction, execute a series of CRUDS, then we end the transaction. So we basically go from consistent -&gt; not consistent -&gt; consistent. If there are any errors during execution the DBMS will "rollback" any changes and we go back to a consistent state. During a transaction any other user cannot "touch" the same data, they basically have to wait for their turn.</li>
+<li>A transaction must satisfy the four requirements of ACID:
+<ul class="org-ul">
+<li>Atomicity: each bit of the transaction either completes successfully or none of it does.</li>
+<li>Consistency: If there is no concurrency, then a transaction must start and end at a consistent state.</li>
+<li>Isolation: Outcome of all transactions should be the same, whether done in series or concurrently.</li>
+<li>Durability: When the transaction completes the effect have to be permanent, even if the system crashes.</li>
+</ul></li>
+</ul>
+</div>
+<div id="outline-container-orgaf7b8d2" class="outline-4">
+<h4 id="orgaf7b8d2">States of a Transaction</h4>
+<div class="outline-text-4" id="text-orgaf7b8d2">
+
+<div id="org41d254e" class="figure">
+<p><img src="images/Exam_Prep/2025-12-06_17-53-05_screenshot.png" alt="2025-12-06_17-53-05_screenshot.png" />
+</p>
+</div>
+<ul class="org-ul">
+<li>Active: start transaction</li>
+<li>Partially committed: last statement executed, changes not yet permanent</li>
+<li>Committed: changes made permanent</li>
+<li>Failed: logical error or user interrupt. rollback has already been placed. commit may cause a rollback as well.</li>
+<li>Aborted: all effects of the transaction have been removed</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-orgf3a37c0" class="outline-3">
+<h3 id="orgf3a37c0"><span class="section-number-3">16.5.</span> Declaration</h3>
+<div class="outline-text-3" id="text-16-5">
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #51afef; font-style: italic;">start</span> <span style="color: #51afef; font-style: italic;">transaction</span><span style="color: #bbc2cf;">;</span>
+
+<span style="color: #5B6268;">-- do work here</span>
+
+<span style="color: #51afef; font-style: italic;">commit</span><span style="color: #bbc2cf;">;</span> <span style="color: #5B6268;">-- success</span>
+<span style="color: #51afef; font-style: italic;">rollback</span><span style="color: #bbc2cf;">;</span> <span style="color: #5B6268;">-- when failed, but done automatically when not in a Stored Procedure</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org2132085" class="outline-3">
+<h3 id="org2132085"><span class="section-number-3">16.6.</span> Concurrency</h3>
+<div class="outline-text-3" id="text-16-6">
+</div>
+<div id="outline-container-org8315902" class="outline-4">
+<h4 id="org8315902">Four types of problems</h4>
+<div class="outline-text-4" id="text-org8315902">
+</div>
+<ul class="org-ul">
+<li><a id="orgac556ec"></a>Dirty Reads<br />
+<div class="outline-text-5" id="text-orgac556ec">
+<ul class="org-ul">
+<li>Accessing data that hasn't been committed yet.</li>
+</ul>
+</div>
+</li>
+<li><a id="org3d51579"></a>Lost Updates<br />
+<div class="outline-text-5" id="text-org3d51579">
+<ul class="org-ul">
+<li>Occurs when two transactions select the same row and update it independently based on the original value. The later update will overwrite the earlier update.</li>
+</ul>
+</div>
+</li>
+<li><a id="org8359755"></a>Nonrepeatable Reads<br />
+<div class="outline-text-5" id="text-org8359755">
+<ul class="org-ul">
+<li>Occurs when two select statements read data while a transaction is taking place (which could happen during a single SP). The first select may have a different value than the next one if the transaction took place in-between.</li>
+</ul>
+</div>
+</li>
+<li><a id="orgd296384"></a>Phantom Reads<br />
+<div class="outline-text-5" id="text-orgd296384">
+<ul class="org-ul">
+<li>A transaction re-runs a query and gets different results, another committed transaction has inserted additional rows that satisfy the search criteria.</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div id="outline-container-orgfc3c07f" class="outline-4">
+<h4 id="orgfc3c07f">Solution</h4>
+<div class="outline-text-4" id="text-orgfc3c07f">
+<ul class="org-ul">
+<li>Use <code>SET TRANSACTION ISOLATION LEVEL</code></li>
+</ul>
+
+<div id="orgae5665d" class="figure">
+<p><img src="images/Exam_Prep/2025-12-06_18-20-13_screenshot.png" alt="2025-12-06_18-20-13_screenshot.png" />
+</p>
+</div>
+<ul class="org-ul">
+<li>SERIALIZABLE: prevents all problems but comes at a large performance cost due to the usage of heavy locking. It basically removes concurrency when operating on the same data.</li>
+<li>READ UNCOMMITTED: sets no locks and therefore all concurrency problems exist. Best performance though.</li>
+<li>READ COMMITTED: Works with other transactions well, as it prevents seeing what has not been committed yet. But it does allow for other concurrency problems.</li>
+<li>REPEATABLE READS (default in MySQL): Locks placed on all the data within a transaction, so it prevents others from updating it. Good middle ground, but phantom reads can occur.</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-orgb6037a7" class="outline-3">
+<h3 id="orgb6037a7"><span class="section-number-3">16.7.</span> Deadlock</h3>
+<div class="outline-text-3" id="text-16-7">
+<ul class="org-ul">
+<li>Neither of transactions can be committed because each has a lock on a resource needed by another transaction.</li>
+<li><p>
+Example of a possible deadlock:
+</p>
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #5B6268;">-- transaction 1</span>
+<span style="color: #51afef; font-style: italic;">START</span> <span style="color: #51afef; font-style: italic;">TRANSACTION</span><span style="color: #bbc2cf;">;</span>
+<span style="color: #51afef; font-style: italic;">UPDATE</span> <span style="color: #ECBE7B;">savings</span> <span style="color: #51afef; font-style: italic;">SET</span> <span style="color: #db5762;">balance</span> <span style="color: #bbc2cf;">=</span> <span style="color: #db5762;">balance</span> <span style="color: #bbc2cf;">-</span> <span style="color: #db5762;">transfer_amount</span><span style="color: #bbc2cf;">;</span>
+<span style="color: #51afef; font-style: italic;">UPDATE</span> <span style="color: #ECBE7B;">checking</span> <span style="color: #51afef; font-style: italic;">SET</span> <span style="color: #db5762;">balance</span> <span style="color: #bbc2cf;">=</span> <span style="color: #db5762;">balance</span> <span style="color: #bbc2cf;">+</span> <span style="color: #db5762;">transfer_amount</span><span style="color: #bbc2cf;">;</span>
+<span style="color: #51afef; font-style: italic;">COMMIT</span><span style="color: #bbc2cf;">;</span>
+
+<span style="color: #5B6268;">-- transaction 2</span>
+<span style="color: #51afef; font-style: italic;">START</span> <span style="color: #51afef; font-style: italic;">TRANSACTION</span><span style="color: #bbc2cf;">;</span>
+<span style="color: #51afef; font-style: italic;">UPDATE</span> <span style="color: #ECBE7B;">checking</span> <span style="color: #51afef; font-style: italic;">SET</span> <span style="color: #db5762;">balance</span> <span style="color: #bbc2cf;">=</span> <span style="color: #db5762;">balance</span> <span style="color: #bbc2cf;">-</span> <span style="color: #db5762;">transfer_amount</span><span style="color: #bbc2cf;">;</span>
+<span style="color: #51afef; font-style: italic;">UPDATE</span> <span style="color: #ECBE7B;">savings</span> <span style="color: #51afef; font-style: italic;">SET</span> <span style="color: #db5762;">balance</span> <span style="color: #bbc2cf;">=</span> <span style="color: #db5762;">balance</span> <span style="color: #bbc2cf;">+</span> <span style="color: #db5762;">transfer_amount</span><span style="color: #bbc2cf;">;</span>
+<span style="color: #51afef; font-style: italic;">COMMIT</span><span style="color: #bbc2cf;">;</span>
+</pre>
+</div></li>
+<li>Now, suppose that the first statement in transaction 1 locks the savings account, and the first statement in transaction 2 locks the checking account.  At that point, a deadlock occurs because transaction 1 needs the savings account and transaction 2 has to be rolled back so the other can proceed, and the loser is known as a <b>Deadlock Victim</b>.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org2160304" class="outline-3">
+<h3 id="org2160304"><span class="section-number-3">16.8.</span> Preventing Deadlock</h3>
+<div class="outline-text-3" id="text-16-8">
+<ol class="org-ol">
+<li>Don't allow transactions to remain open very long</li>
+<li>Don't use a transaction level higher than necessary</li>
+<li>Make large changes when you can be assured of near exclusive access</li>
+<li>Take locks into consideration when coding transactions</li>
+</ol>
+</div>
+</div>
+</div>
+<div id="outline-container-org03c070c" class="outline-2">
+<h2 id="org03c070c"><span class="section-number-2">17.</span> NoSQL</h2>
+<div class="outline-text-2" id="text-17">
+</div>
+<div id="outline-container-orgdc628a7" class="outline-3">
+<h3 id="orgdc628a7"><span class="section-number-3">17.1.</span> Advantages</h3>
+<div class="outline-text-3" id="text-17-1">
+<ul class="org-ul">
+<li>Elastic scaling</li>
+<li>Big data</li>
+<li>Reduced personnel costs</li>
+<li>Reduced equipment costs</li>
+<li>Flexible data models</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgf194899" class="outline-3">
+<h3 id="orgf194899"><span class="section-number-3">17.2.</span> BigData</h3>
+<div class="outline-text-3" id="text-17-2">
+<ul class="org-ul">
+<li>Massive amounts of rapidly growing data</li>
+<li>Diverse</li>
+<li>Not formally modelled</li>
+<li>Unstructured</li>
+<li>Heterogeneous</li>
+<li>Data is valuable</li>
+<li>The 4Vs:
+<ul class="org-ul">
+<li>Volume: sheer amount</li>
+<li>Variety: sheer variety, different forms etc.</li>
+<li>Veracity: biases, noise, abnormality</li>
+<li>Velocity: high generation amount</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgddf364b" class="outline-3">
+<h3 id="orgddf364b"><span class="section-number-3">17.3.</span> NoSQL Characteristics</h3>
+<div class="outline-text-3" id="text-17-3">
+<ul class="org-ul">
+<li>Other means than tabular</li>
+<li>Horizontal scaling rather than vertical</li>
+<li>Relax on one or more ACID properties</li>
+<li>Does not use SQL</li>
+<li>Manage large volumes of data</li>
+<li>Data is partitioned among different machines</li>
+<li>Distributed fault-tolerant architecture</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgd7cd3c1" class="outline-3">
+<h3 id="orgd7cd3c1"><span class="section-number-3">17.4.</span> Types</h3>
+<div class="outline-text-3" id="text-17-4">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">NoSQL Category</th>
+<th scope="col" class="org-left">Use Case</th>
+<th scope="col" class="org-left">Best-know Tech</th>
+<th scope="col" class="org-left">Size</th>
+<th scope="col" class="org-left">Complexity</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">key-value stores</td>
+<td class="org-left">Caches, Simple domains with fast access</td>
+<td class="org-left">Redis, Memcached</td>
+<td class="org-left">XL</td>
+<td class="org-left">S</td>
+</tr>
+
+<tr>
+<td class="org-left">column-family stores</td>
+<td class="org-left">Write-heavy applications, logging, data analytics</td>
+<td class="org-left">Cassandra, HBase</td>
+<td class="org-left">L</td>
+<td class="org-left">M</td>
+</tr>
+
+<tr>
+<td class="org-left">document-oriented db</td>
+<td class="org-left">Content management, real-time analytics, E-commerce</td>
+<td class="org-left">MongoDB, CouchDB</td>
+<td class="org-left">M</td>
+<td class="org-left">L</td>
+</tr>
+
+<tr>
+<td class="org-left">graph database</td>
+<td class="org-left">Social networks, Fraud detection, Access control</td>
+<td class="org-left">Neo4j, AllegroGraph</td>
+<td class="org-left">S</td>
+<td class="org-left">XL</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="outline-container-org22c0890" class="outline-3">
+<h3 id="org22c0890"><span class="section-number-3">17.5.</span> Denormalization</h3>
+<div class="outline-text-3" id="text-17-5">
+<ul class="org-ul">
+<li>Denormalization: we generally don't worry here about redundant or even duplicated data (e.g. copy over an employee's job description). Consider the purpose of the DB.</li>
+<li>No joins, because the data is in a denormalization state</li>
+<li>Denormalization can improve performance by: removing joins, pre-compute aggregate data, "storing" the count of the "many" elements in a one-to-many relationship as an attribute of the "one" relation</li>
+<li>When to denormalize:
+<ul class="org-ul">
+<li>When a column from a join is repeatedly used</li>
+<li>If a table updates infrequently (data remains relatively constant)</li>
+<li>Include columns with derived values when those values are used frequently</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orged67a34" class="outline-3">
+<h3 id="orged67a34"><span class="section-number-3">17.6.</span> CAP Theorem</h3>
+<div class="outline-text-3" id="text-17-6">
+<p class="verse">
+It is stated that a distributed computer system cannot simultaneously provide all three of the following guarantees:<br />
+</p>
+<ol class="org-ol">
+<li>Consistency: Write a value and get the same value back. There are windows of inconsistency.</li>
+<li>Availability: May not be able to write or read. System may say that you can't write because it wants to keep the system consistent.</li>
+<li>Partition Tolerance: The system continues to operate despite arbitrary partitioning due to network failure.</li>
+</ol>
+<p class="verse">
+You can have at most two of the above.<br />
+To scale you need partitioning, so you have to sacrifice either availability or consistency.<br />
+In almost all cases you would choose availability over consistency.<br />
+But it may depend on the service you are providing.<br />
+</p>
+</div>
+<div id="outline-container-org58f11a6" class="outline-4">
+<h4 id="org58f11a6">Consistency Model</h4>
+<div class="outline-text-4" id="text-org58f11a6">
+<ul class="org-ul">
+<li>When something is written in node A, can I read it from node B? The answer is <b>maybe</b>.</li>
+<li>EVENTUAL CONSISTENCY is the general answer</li>
+<li>When no updates occur for a long period of time, eventually all updates will propagate through the system and all the nodes will be consistent</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgf7894cd" class="outline-4">
+<h4 id="orgf7894cd">BASE</h4>
+<div class="outline-text-4" id="text-orgf7894cd">
+<ul class="org-ul">
+<li>(B)asically (A)vailable, (S)oft state, (E)ventual consistency
+<ul class="org-ul">
+<li>Basically Available: system seems to work all the time</li>
+<li>Soft State: it doesn't have to be consistent all the time</li>
+<li>Eventual Consistency: becomes consistent at some later time</li>
+</ul></li>
+<li>CAP systems aren't ACID, they are BASE</li>
+</ul>
+
+
+
+<script src="../assets/jquery-3.3.1.min.js"></script>
+<script src="../assets/notes.js"></script>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="date">Date: 2025-12-05 Fri 12:00</p>
+<p class="author">Author: Damian Chrzanowski</p>
+<p class="date">Created: 2025-12-07 Sun 13:54</p>
+<p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>
