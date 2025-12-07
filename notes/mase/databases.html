@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2025-12-07 Sun 14:11 -->
+<!-- 2025-12-07 Sun 19:43 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Databases</title>
@@ -204,150 +204,150 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgb951964">1. Exam Question Bank</a>
+<li><a href="#org2439fcf">1. Exam Question Bank</a>
 <ul>
-<li><a href="#orgd7222c7">1.1. Questions</a></li>
+<li><a href="#org5b6da4e">1.1. ERD</a></li>
+<li><a href="#orgeae53df">1.2. SQL</a></li>
+<li><a href="#org57b1919">1.3. JDBC/JPA</a></li>
+<li><a href="#org43b7beb">1.4. Concurrency</a></li>
+<li><a href="#orgfe9855b">1.5. NoSQL</a></li>
 </ul>
 </li>
-<li><a href="#org2a528c2">2. DML/DDL</a>
+<li><a href="#org77de7a4">2. DML/DDL</a>
 <ul>
-<li><a href="#orgb6f3bf1">2.1. Data Manipulation Language</a></li>
-<li><a href="#org9d15769">2.2. Data Definition Language</a></li>
+<li><a href="#orga62d1b5">2.1. Data Manipulation Language</a></li>
+<li><a href="#orgeeac777">2.2. Data Definition Language</a></li>
 </ul>
 </li>
-<li><a href="#org2acffa1">3. DB Functions</a>
+<li><a href="#org477f338">3. DB Functions</a>
 <ul>
-<li><a href="#org337ffc3">3.1. Scalar</a></li>
-<li><a href="#orge86ff19">3.2. Aggregate</a></li>
+<li><a href="#org5b57dae">3.1. Scalar</a></li>
+<li><a href="#orgf86e6e6">3.2. Aggregate</a></li>
 </ul>
 </li>
-<li><a href="#org70f9408">4. Types</a></li>
-<li><a href="#orgd4089aa">5. SQL</a>
+<li><a href="#org883d330">4. Types</a></li>
+<li><a href="#org945ab2a">5. SQL</a>
 <ul>
-<li><a href="#org04b0e87">5.1. Insert</a></li>
-<li><a href="#orge741214">5.2. Delete</a></li>
-<li><a href="#org69d6be1">5.3. Update</a></li>
-<li><a href="#org50442ac">5.4. Joins</a></li>
-<li><a href="#org1802e31">5.5. Like</a></li>
-<li><a href="#org5a65736">5.6. Between</a></li>
-<li><a href="#org703471c">5.7. Group by and Having</a></li>
-<li><a href="#org6c2fca6">5.8. Group by and rollup</a></li>
-<li><a href="#org89bc440">5.9. Unions</a></li>
-<li><a href="#org72bc62b">5.10. Index</a></li>
-<li><a href="#org22dad9d">5.11. Subqueries in <code>where</code></a></li>
-<li><a href="#orgf50a3c0">5.12. Joins vs Subqueries</a></li>
+<li><a href="#orgef69395">5.1. Insert</a></li>
+<li><a href="#org5dce9ed">5.2. Delete</a></li>
+<li><a href="#orgea5bdb0">5.3. Update</a></li>
+<li><a href="#org424107f">5.4. Joins</a></li>
+<li><a href="#orgd2433f9">5.5. Like</a></li>
+<li><a href="#org5186c34">5.6. Between</a></li>
+<li><a href="#org51e9f11">5.7. Group by and Having</a></li>
+<li><a href="#orgc2b6f03">5.8. Group by and rollup</a></li>
+<li><a href="#org93b4ab9">5.9. Unions</a></li>
+<li><a href="#orgb89afca">5.10. Index</a></li>
+<li><a href="#org5250088">5.11. Subqueries in <code>where</code></a></li>
+<li><a href="#org55ef19a">5.12. Joins vs Subqueries</a></li>
 </ul>
 </li>
-<li><a href="#org0f561fc">6. Procedures vs Functions</a>
+<li><a href="#org8f71f6d">6. Procedures vs Functions</a>
 <ul>
-<li><a href="#org99b1e10">6.1. Function</a></li>
-<li><a href="#orgde89467">6.2. Procedure</a></li>
+<li><a href="#org378aff6">6.1. Function</a></li>
+<li><a href="#org653c3ea">6.2. Procedure</a></li>
 </ul>
 </li>
-<li><a href="#org975302d">7. Views</a>
+<li><a href="#org5cccb2d">7. Views</a>
 <ul>
-<li><a href="#org4555e8c">7.1. Benefits</a></li>
-<li><a href="#orgf927be1">7.2. Usage</a></li>
+<li><a href="#org43d3ed0">7.1. Benefits</a></li>
+<li><a href="#orga82f158">7.2. Usage</a></li>
 </ul>
 </li>
-<li><a href="#orgd9aca2f">8. Triggers</a>
+<li><a href="#org3644d7d">8. Triggers</a>
 <ul>
-<li><a href="#org01fa421">8.1. Info</a></li>
-<li><a href="#orgdc56839">8.2. Before Update Trigger</a></li>
-<li><a href="#orgd57028e">8.3. After Insert Trigger</a></li>
-<li><a href="#orgb9475d1">8.4. After Delete Trigger</a></li>
+<li><a href="#orgea650dc">8.1. Info</a></li>
+<li><a href="#orgac9744c">8.2. Before Update Trigger</a></li>
+<li><a href="#org7b239d5">8.3. After Insert Trigger</a></li>
+<li><a href="#org88c28c7">8.4. After Delete Trigger</a></li>
 </ul>
 </li>
-<li><a href="#orge5192e2">9. Events</a>
+<li><a href="#org7107c22">9. Events</a>
 <ul>
-<li><a href="#orgc13ff2c">9.1. One-Off</a></li>
-<li><a href="#org5dab0de">9.2. Recurring</a></li>
-<li><a href="#org4ae4272">9.3. Altering (enable/disable only)</a></li>
+<li><a href="#orgf0b9961">9.1. One-Off</a></li>
+<li><a href="#orgddec872">9.2. Recurring</a></li>
+<li><a href="#org4d09934">9.3. Altering (enable/disable only)</a></li>
 </ul>
 </li>
-<li><a href="#orge246b66">10. JDBC</a>
+<li><a href="#orgfa3b2e7">10. JDBC</a>
 <ul>
-<li><a href="#orgdeb6c97">10.1. Using JDBC</a></li>
-<li><a href="#org404e55d">10.2. Important objects</a></li>
-<li><a href="#org118f6b1">10.3. The ResultSet</a></li>
+<li><a href="#org316b9ef">10.1. Using JDBC</a></li>
+<li><a href="#org60a787e">10.2. Important objects</a></li>
+<li><a href="#org6cda62d">10.3. The ResultSet</a></li>
 </ul>
 </li>
-<li><a href="#org77e42e1">11. SQL Injection Attacks</a>
+<li><a href="#orgefd1333">11. SQL Injection Attacks</a>
 <ul>
-<li><a href="#orgc8c2c60">11.1. Protection</a></li>
-<li><a href="#org1886a30">11.2. Improperly handled escape characters</a></li>
-<li><a href="#orgd0f1df1">11.3. Incorrect data type management</a></li>
-<li><a href="#org52161ee">11.4. Blind SQL injection</a></li>
-<li><a href="#org3a07f21">11.5. Second-Order SQL injection</a></li>
+<li><a href="#org784d80b">11.1. Protection</a></li>
+<li><a href="#org9dde8ad">11.2. Improperly handled escape characters</a></li>
+<li><a href="#org5a85b69">11.3. Incorrect data type management</a></li>
+<li><a href="#org1f74f79">11.4. Blind SQL injection</a></li>
+<li><a href="#org3827e6f">11.5. Second-Order SQL injection</a></li>
 </ul>
 </li>
-<li><a href="#org744561a">12. Stored Procedures vs Java</a>
+<li><a href="#orgbf92cae">12. Stored Procedures vs Java</a>
 <ul>
-<li><a href="#org277f4e3">12.1. Performance</a></li>
-<li><a href="#orge64fe34">12.2. Maintainability</a></li>
-<li><a href="#org3df5968">12.3. Portability</a></li>
-<li><a href="#orgd6fcb79">12.4. Security</a></li>
-<li><a href="#org381f136">12.5. Complexity of Logic</a></li>
-<li><a href="#orgbcabff5">12.6. Transactions &amp; Scalability</a></li>
-<li><a href="#orge68a4fd">12.7. Summary</a></li>
+<li><a href="#orgfe0ff58">12.1. Performance</a></li>
+<li><a href="#org269da51">12.2. Maintainability</a></li>
+<li><a href="#org775fba5">12.3. Portability</a></li>
+<li><a href="#orgc0b3a26">12.4. Security</a></li>
+<li><a href="#org667f467">12.5. Complexity of Logic</a></li>
+<li><a href="#orgc46465e">12.6. Transactions &amp; Scalability</a></li>
+<li><a href="#orgb03e038">12.7. Summary</a></li>
 </ul>
 </li>
-<li><a href="#org83715fe">13. Normalisation</a></li>
-<li><a href="#org02d44a2">14. ERDs</a>
+<li><a href="#org33e73bd">13. Normalisation</a></li>
+<li><a href="#org960c444">14. ERDs</a>
 <ul>
-<li><a href="#orgbf40d7c">14.1. Benefits</a></li>
-<li><a href="#orga6663e7">14.2. Poor modelling</a></li>
-<li><a href="#org10a2376">14.3. ER Modelling Phases</a></li>
-<li><a href="#orgd3602f7">14.4. Database Modelling</a></li>
+<li><a href="#org95aa31c">14.1. Benefits</a></li>
+<li><a href="#orgb6a9d3f">14.2. Poor modelling</a></li>
+<li><a href="#org88b1f9b">14.3. ER Modelling Phases</a></li>
+<li><a href="#orgee71297">14.4. Database Modelling</a></li>
 </ul>
 </li>
-<li><a href="#org62ff60c">15. ORMs (JPA)</a>
+<li><a href="#org6c03ddf">15. ORMs (JPA)</a>
 <ul>
-<li><a href="#org879d6b9">15.1. ORM Mismatch</a></li>
-<li><a href="#org54010f3">15.2. Java Annotations</a></li>
-<li><a href="#orgd3e3719">15.3. Java JPA Snippets</a></li>
+<li><a href="#org596b577">15.1. ORM Mismatch</a></li>
+<li><a href="#org7cdaafc">15.2. Java Annotations</a></li>
+<li><a href="#org28c979d">15.3. Java JPA Snippets</a></li>
 </ul>
 </li>
-<li><a href="#orgcbb1555">16. Transaction Management</a>
+<li><a href="#org894441c">16. Transaction Management</a>
 <ul>
-<li><a href="#orgede5336">16.1. Concurrency Control</a></li>
-<li><a href="#orge7f910f">16.2. Consistency</a></li>
-<li><a href="#orge7336df">16.3. Autocommit</a></li>
-<li><a href="#org49484df">16.4. Transactions</a></li>
-<li><a href="#org6469fb3">16.5. Declaration</a></li>
-<li><a href="#org2833865">16.6. Concurrency</a></li>
-<li><a href="#org4806090">16.7. Deadlock</a></li>
-<li><a href="#orgbda68ed">16.8. Preventing Deadlock</a></li>
+<li><a href="#orgb901d9f">16.1. Concurrency Control</a></li>
+<li><a href="#org08922c5">16.2. Consistency</a></li>
+<li><a href="#org37d14b4">16.3. Autocommit</a></li>
+<li><a href="#org24b6201">16.4. Transactions</a></li>
+<li><a href="#org8b68fe4">16.5. Declaration</a></li>
+<li><a href="#orga372f20">16.6. Concurrency</a></li>
+<li><a href="#orgcb8f04a">16.7. Deadlock</a></li>
+<li><a href="#org93a66ec">16.8. Preventing Deadlock</a></li>
 </ul>
 </li>
-<li><a href="#org386cb50">17. NoSQL</a>
+<li><a href="#orgb02d53a">17. NoSQL</a>
 <ul>
-<li><a href="#orgfd567f6">17.1. Advantages</a></li>
-<li><a href="#org9312de3">17.2. BigData</a></li>
-<li><a href="#orgde35d81">17.3. NoSQL Characteristics</a></li>
-<li><a href="#org5a891bd">17.4. Types</a></li>
-<li><a href="#org3ebb72d">17.5. Denormalization</a></li>
-<li><a href="#org373faca">17.6. CAP Theorem</a></li>
+<li><a href="#org7c8067d">17.1. Advantages</a></li>
+<li><a href="#org1298a31">17.2. BigData</a></li>
+<li><a href="#org5f0ab44">17.3. NoSQL Characteristics</a></li>
+<li><a href="#orgdde2211">17.4. Types</a></li>
+<li><a href="#org33dba21">17.5. Denormalization</a></li>
+<li><a href="#org149dbb5">17.6. CAP Theorem</a></li>
 </ul>
 </li>
-<li><a href="#org84a5301">18. Remove at the End</a></li>
+<li><a href="#org02929c7">18. Remove at the End</a></li>
 </ul>
 </div>
 </div>
 <p>
 <a href="index.html">Home Page</a>
 </p>
-<div id="outline-container-orgb951964" class="outline-2">
-<h2 id="orgb951964"><span class="section-number-2">1.</span> Exam Question Bank</h2>
+<div id="outline-container-org2439fcf" class="outline-2">
+<h2 id="org2439fcf"><span class="section-number-2">1.</span> Exam Question Bank</h2>
 <div class="outline-text-2" id="text-1">
 </div>
-<div id="outline-container-orgd7222c7" class="outline-3">
-<h3 id="orgd7222c7"><span class="section-number-3">1.1.</span> Questions</h3>
+<div id="outline-container-org5b6da4e" class="outline-3">
+<h3 id="org5b6da4e"><span class="section-number-3">1.1.</span> ERD</h3>
 <div class="outline-text-3" id="text-1-1">
-</div>
-<div id="outline-container-orge23e82a" class="outline-4">
-<h4 id="orge23e82a">ERD</h4>
-<div class="outline-text-4" id="text-orge23e82a">
 <ul class="org-ul">
 <li>(4x) Draw an ERD</li>
 <li>Phases of DB design</li>
@@ -355,9 +355,9 @@
 </ul>
 </div>
 </div>
-<div id="outline-container-orgd61ca13" class="outline-4">
-<h4 id="orgd61ca13">SQL</h4>
-<div class="outline-text-4" id="text-orgd61ca13">
+<div id="outline-container-orgeae53df" class="outline-3">
+<h3 id="orgeae53df"><span class="section-number-3">1.2.</span> SQL</h3>
+<div class="outline-text-3" id="text-1-2">
 <ul class="org-ul">
 <li>(2x) Create SQL Tables</li>
 <li>(3x) Construct SQL Queries based on Tables in an Appendix</li>
@@ -382,9 +382,9 @@
 </ul>
 </div>
 </div>
-<div id="outline-container-org7f9b7f6" class="outline-4">
-<h4 id="org7f9b7f6">JDBC/JPA</h4>
-<div class="outline-text-4" id="text-org7f9b7f6">
+<div id="outline-container-org57b1919" class="outline-3">
+<h3 id="org57b1919"><span class="section-number-3">1.3.</span> JDBC/JPA</h3>
+<div class="outline-text-3" id="text-1-3">
 <ul class="org-ul">
 <li>(3x) Analyse a bit of JPA code, draw out tables and columns</li>
 <li>(4x) Explain Object Relational Paradigm Mismatch.
@@ -402,9 +402,9 @@
 </ul>
 </div>
 </div>
-<div id="outline-container-orgd481d7d" class="outline-4">
-<h4 id="orgd481d7d">Concurrency</h4>
-<div class="outline-text-4" id="text-orgd481d7d">
+<div id="outline-container-org43b7beb" class="outline-3">
+<h3 id="org43b7beb"><span class="section-number-3">1.4.</span> Concurrency</h3>
+<div class="outline-text-3" id="text-1-4">
 <ul class="org-ul">
 <li>Preventing Deadlock. Four levels of isolation.</li>
 <li>(2x) Four common concurrency problems
@@ -416,9 +416,9 @@
 </ul>
 </div>
 </div>
-<div id="outline-container-orge878343" class="outline-4">
-<h4 id="orge878343">NoSQL</h4>
-<div class="outline-text-4" id="text-orge878343">
+<div id="outline-container-orgfe9855b" class="outline-3">
+<h3 id="orgfe9855b"><span class="section-number-3">1.5.</span> NoSQL</h3>
+<div class="outline-text-3" id="text-1-5">
 <ul class="org-ul">
 <li>(2x) ACID vs BASE. Trade-offs with regards to the CAP Theorem.</li>
 <li>(3x) What is NoSQL and provide 4 types that exist with examples on where they are used and what are the names of these technologies</li>
@@ -431,21 +431,20 @@
 </div>
 </div>
 </div>
-</div>
-<div id="outline-container-org2a528c2" class="outline-2">
-<h2 id="org2a528c2"><span class="section-number-2">2.</span> DML/DDL</h2>
+<div id="outline-container-org77de7a4" class="outline-2">
+<h2 id="org77de7a4"><span class="section-number-2">2.</span> DML/DDL</h2>
 <div class="outline-text-2" id="text-2">
 </div>
-<div id="outline-container-orgb6f3bf1" class="outline-3">
-<h3 id="orgb6f3bf1"><span class="section-number-3">2.1.</span> Data Manipulation Language</h3>
+<div id="outline-container-orga62d1b5" class="outline-3">
+<h3 id="orga62d1b5"><span class="section-number-3">2.1.</span> Data Manipulation Language</h3>
 <div class="outline-text-3" id="text-2-1">
 <ul class="org-ul">
 <li><code>select/insert/delete/update</code> into tables, basically</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org9d15769" class="outline-3">
-<h3 id="org9d15769"><span class="section-number-3">2.2.</span> Data Definition Language</h3>
+<div id="outline-container-orgeeac777" class="outline-3">
+<h3 id="orgeeac777"><span class="section-number-3">2.2.</span> Data Definition Language</h3>
 <div class="outline-text-3" id="text-2-2">
 <ul class="org-ul">
 <li><code>create/alter/drop</code> tables/attributes</li>
@@ -453,12 +452,12 @@
 </div>
 </div>
 </div>
-<div id="outline-container-org2acffa1" class="outline-2">
-<h2 id="org2acffa1"><span class="section-number-2">3.</span> DB Functions</h2>
+<div id="outline-container-org477f338" class="outline-2">
+<h2 id="org477f338"><span class="section-number-2">3.</span> DB Functions</h2>
 <div class="outline-text-2" id="text-3">
 </div>
-<div id="outline-container-org337ffc3" class="outline-3">
-<h3 id="org337ffc3"><span class="section-number-3">3.1.</span> Scalar</h3>
+<div id="outline-container-org5b57dae" class="outline-3">
+<h3 id="org5b57dae"><span class="section-number-3">3.1.</span> Scalar</h3>
 <div class="outline-text-3" id="text-3-1">
 <ul class="org-ul">
 <li>UCASE()</li>
@@ -469,8 +468,8 @@
 </ul>
 </div>
 </div>
-<div id="outline-container-orge86ff19" class="outline-3">
-<h3 id="orge86ff19"><span class="section-number-3">3.2.</span> Aggregate</h3>
+<div id="outline-container-orgf86e6e6" class="outline-3">
+<h3 id="orgf86e6e6"><span class="section-number-3">3.2.</span> Aggregate</h3>
 <div class="outline-text-3" id="text-3-2">
 <ul class="org-ul">
 <li>AVG()</li>
@@ -480,8 +479,8 @@
 </div>
 </div>
 </div>
-<div id="outline-container-org70f9408" class="outline-2">
-<h2 id="org70f9408"><span class="section-number-2">4.</span> Types</h2>
+<div id="outline-container-org883d330" class="outline-2">
+<h2 id="org883d330"><span class="section-number-2">4.</span> Types</h2>
 <div class="outline-text-2" id="text-4">
 <ul class="org-ul">
 <li>CHAR(size)</li>
@@ -497,12 +496,12 @@
 </ul>
 </div>
 </div>
-<div id="outline-container-orgd4089aa" class="outline-2">
-<h2 id="orgd4089aa"><span class="section-number-2">5.</span> SQL</h2>
+<div id="outline-container-org945ab2a" class="outline-2">
+<h2 id="org945ab2a"><span class="section-number-2">5.</span> SQL</h2>
 <div class="outline-text-2" id="text-5">
 </div>
-<div id="outline-container-org04b0e87" class="outline-3">
-<h3 id="org04b0e87"><span class="section-number-3">5.1.</span> Insert</h3>
+<div id="outline-container-orgef69395" class="outline-3">
+<h3 id="orgef69395"><span class="section-number-3">5.1.</span> Insert</h3>
 <div class="outline-text-3" id="text-5-1">
 <div class="org-src-container">
 <pre class="src src-sql"><span style="color: #51afef; font-style: italic;">insert</span> <span style="color: #51afef; font-style: italic;">into</span> <span style="color: #ECBE7B;">table_name</span>
@@ -514,8 +513,8 @@
 </div>
 </div>
 </div>
-<div id="outline-container-orge741214" class="outline-3">
-<h3 id="orge741214"><span class="section-number-3">5.2.</span> Delete</h3>
+<div id="outline-container-org5dce9ed" class="outline-3">
+<h3 id="org5dce9ed"><span class="section-number-3">5.2.</span> Delete</h3>
 <div class="outline-text-3" id="text-5-2">
 <div class="org-src-container">
 <pre class="src src-sql"><span style="color: #51afef; font-style: italic;">delete</span> <span style="color: #51afef; font-style: italic;">from</span> <span style="color: #ECBE7B;">table_name</span>
@@ -524,8 +523,8 @@
 </div>
 </div>
 </div>
-<div id="outline-container-org69d6be1" class="outline-3">
-<h3 id="org69d6be1"><span class="section-number-3">5.3.</span> Update</h3>
+<div id="outline-container-orgea5bdb0" class="outline-3">
+<h3 id="orgea5bdb0"><span class="section-number-3">5.3.</span> Update</h3>
 <div class="outline-text-3" id="text-5-3">
 <div class="org-src-container">
 <pre class="src src-sql"><span style="color: #51afef; font-style: italic;">update</span> <span style="color: #ECBE7B;">table_name</span>
@@ -535,8 +534,8 @@
 </div>
 </div>
 </div>
-<div id="outline-container-org50442ac" class="outline-3">
-<h3 id="org50442ac"><span class="section-number-3">5.4.</span> Joins</h3>
+<div id="outline-container-org424107f" class="outline-3">
+<h3 id="org424107f"><span class="section-number-3">5.4.</span> Joins</h3>
 <div class="outline-text-3" id="text-5-4">
 <ul class="org-ul">
 <li><code>join</code> (aka <code>inner join</code>)</li>
@@ -566,8 +565,8 @@ on <span style="color: #ECBE7B;">t2</span><span style="color: #bbc2cf;">.</span>
 </div>
 </div>
 </div>
-<div id="outline-container-org1802e31" class="outline-3">
-<h3 id="org1802e31"><span class="section-number-3">5.5.</span> Like</h3>
+<div id="outline-container-orgd2433f9" class="outline-3">
+<h3 id="orgd2433f9"><span class="section-number-3">5.5.</span> Like</h3>
 <div class="outline-text-3" id="text-5-5">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -628,8 +627,8 @@ on <span style="color: #ECBE7B;">t2</span><span style="color: #bbc2cf;">.</span>
 </div>
 </div>
 </div>
-<div id="outline-container-org5a65736" class="outline-3">
-<h3 id="org5a65736"><span class="section-number-3">5.6.</span> Between</h3>
+<div id="outline-container-org5186c34" class="outline-3">
+<h3 id="org5186c34"><span class="section-number-3">5.6.</span> Between</h3>
 <div class="outline-text-3" id="text-5-6">
 <div class="org-src-container">
 <pre class="src src-sql"><span style="color: #51afef; font-style: italic;">SELECT</span> <span style="color: #c678dd;">column_name</span><span style="color: #fff0f5;">(</span><span style="color: #db5762;">s</span><span style="color: #fff0f5;">)</span>
@@ -645,8 +644,8 @@ on <span style="color: #ECBE7B;">t2</span><span style="color: #bbc2cf;">.</span>
 </div>
 </div>
 </div>
-<div id="outline-container-org703471c" class="outline-3">
-<h3 id="org703471c"><span class="section-number-3">5.7.</span> Group by and Having</h3>
+<div id="outline-container-org51e9f11" class="outline-3">
+<h3 id="org51e9f11"><span class="section-number-3">5.7.</span> Group by and Having</h3>
 <div class="outline-text-3" id="text-5-7">
 <ul class="org-ul">
 <li><p>
@@ -662,8 +661,8 @@ Group by determines how the data is grouped and having determines which groups t
 </ul>
 </div>
 </div>
-<div id="outline-container-org6c2fca6" class="outline-3">
-<h3 id="org6c2fca6"><span class="section-number-3">5.8.</span> Group by and rollup</h3>
+<div id="outline-container-orgc2b6f03" class="outline-3">
+<h3 id="orgc2b6f03"><span class="section-number-3">5.8.</span> Group by and rollup</h3>
 <div class="outline-text-3" id="text-5-8">
 <ul class="org-ul">
 <li><p>
@@ -678,8 +677,8 @@ Includes an additional row after every group with a summary
 </ul>
 </div>
 </div>
-<div id="outline-container-org89bc440" class="outline-3">
-<h3 id="org89bc440"><span class="section-number-3">5.9.</span> Unions</h3>
+<div id="outline-container-org93b4ab9" class="outline-3">
+<h3 id="org93b4ab9"><span class="section-number-3">5.9.</span> Unions</h3>
 <div class="outline-text-3" id="text-5-9">
 <ul class="org-ul">
 <li>Each side must have the same amount of columns</li>
@@ -695,8 +694,8 @@ union
 </ul>
 </div>
 </div>
-<div id="outline-container-org72bc62b" class="outline-3">
-<h3 id="org72bc62b"><span class="section-number-3">5.10.</span> Index</h3>
+<div id="outline-container-orgb89afca" class="outline-3">
+<h3 id="orgb89afca"><span class="section-number-3">5.10.</span> Index</h3>
 <div class="outline-text-3" id="text-5-10">
 <ul class="org-ul">
 <li>Speeds up a data retrieval for a specific column</li>
@@ -715,8 +714,8 @@ show <span style="color: #51afef; font-style: italic;">index</span> <span style=
 </ul>
 </div>
 </div>
-<div id="outline-container-org22dad9d" class="outline-3">
-<h3 id="org22dad9d"><span class="section-number-3">5.11.</span> Subqueries in <code>where</code></h3>
+<div id="outline-container-org5250088" class="outline-3">
+<h3 id="org5250088"><span class="section-number-3">5.11.</span> Subqueries in <code>where</code></h3>
 <div class="outline-text-3" id="text-5-11">
 <div class="org-src-container">
 <pre class="src src-sql"><span style="color: #51afef; font-style: italic;">select</span> <span style="color: #51afef; font-style: italic;">distinct</span> <span style="color: #db5762;">customer_name</span>
@@ -732,8 +731,8 @@ show <span style="color: #51afef; font-style: italic;">index</span> <span style=
 </div>
 </div>
 </div>
-<div id="outline-container-orgf50a3c0" class="outline-3">
-<h3 id="orgf50a3c0"><span class="section-number-3">5.12.</span> Joins vs Subqueries</h3>
+<div id="outline-container-org55ef19a" class="outline-3">
+<h3 id="org55ef19a"><span class="section-number-3">5.12.</span> Joins vs Subqueries</h3>
 <div class="outline-text-3" id="text-5-12">
 <ul class="org-ul">
 <li>A join can included columns from both tables, a subquery cannot</li>
@@ -746,8 +745,8 @@ show <span style="color: #51afef; font-style: italic;">index</span> <span style=
 </div>
 </div>
 </div>
-<div id="outline-container-org0f561fc" class="outline-2">
-<h2 id="org0f561fc"><span class="section-number-2">6.</span> Procedures vs Functions</h2>
+<div id="outline-container-org8f71f6d" class="outline-2">
+<h2 id="org8f71f6d"><span class="section-number-2">6.</span> Procedures vs Functions</h2>
 <div class="outline-text-2" id="text-6">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -786,8 +785,8 @@ show <span style="color: #51afef; font-style: italic;">index</span> <span style=
 </tbody>
 </table>
 </div>
-<div id="outline-container-org99b1e10" class="outline-3">
-<h3 id="org99b1e10"><span class="section-number-3">6.1.</span> Function</h3>
+<div id="outline-container-org378aff6" class="outline-3">
+<h3 id="org378aff6"><span class="section-number-3">6.1.</span> Function</h3>
 <div class="outline-text-3" id="text-6-1">
 <ul class="org-ul">
 <li>Calculates the order total by getting the qty from OrderDetails table and price from the Products table</li>
@@ -826,8 +825,8 @@ DELIMITER <span style="color: #bbc2cf;">;</span>
 </div>
 </div>
 </div>
-<div id="outline-container-orgde89467" class="outline-3">
-<h3 id="orgde89467"><span class="section-number-3">6.2.</span> Procedure</h3>
+<div id="outline-container-org653c3ea" class="outline-3">
+<h3 id="org653c3ea"><span class="section-number-3">6.2.</span> Procedure</h3>
 <div class="outline-text-3" id="text-6-2">
 <ul class="org-ul">
 <li>Updates the total<sub>amount</sub> field in the Orders table using the total calculated by the calculate<sub>order</sub><sub>total</sub> function</li>
@@ -933,12 +932,12 @@ CALL update_invoice_credit_total<span style="color: #fff0f5;">(</span><span styl
 </div>
 </div>
 </div>
-<div id="outline-container-org975302d" class="outline-2">
-<h2 id="org975302d"><span class="section-number-2">7.</span> Views</h2>
+<div id="outline-container-org5cccb2d" class="outline-2">
+<h2 id="org5cccb2d"><span class="section-number-2">7.</span> Views</h2>
 <div class="outline-text-2" id="text-7">
 </div>
-<div id="outline-container-org4555e8c" class="outline-3">
-<h3 id="org4555e8c"><span class="section-number-3">7.1.</span> Benefits</h3>
+<div id="outline-container-org43d3ed0" class="outline-3">
+<h3 id="org43d3ed0"><span class="section-number-3">7.1.</span> Benefits</h3>
 <div class="outline-text-3" id="text-7-1">
 <ul class="org-ul">
 <li>Design Independence: limit exposure of tables' data, also if the underlying table changes, all we have to do is update the View and the end-user is unaware of any changes</li>
@@ -948,8 +947,8 @@ CALL update_invoice_credit_total<span style="color: #fff0f5;">(</span><span styl
 </ul>
 </div>
 </div>
-<div id="outline-container-orgf927be1" class="outline-3">
-<h3 id="orgf927be1"><span class="section-number-3">7.2.</span> Usage</h3>
+<div id="outline-container-orga82f158" class="outline-3">
+<h3 id="orga82f158"><span class="section-number-3">7.2.</span> Usage</h3>
 <div class="outline-text-3" id="text-7-2">
 <ul class="org-ul">
 <li>Declaration</li>
@@ -974,12 +973,12 @@ CALL update_invoice_credit_total<span style="color: #fff0f5;">(</span><span styl
 </div>
 </div>
 </div>
-<div id="outline-container-orgd9aca2f" class="outline-2">
-<h2 id="orgd9aca2f"><span class="section-number-2">8.</span> Triggers</h2>
+<div id="outline-container-org3644d7d" class="outline-2">
+<h2 id="org3644d7d"><span class="section-number-2">8.</span> Triggers</h2>
 <div class="outline-text-2" id="text-8">
 </div>
-<div id="outline-container-org01fa421" class="outline-3">
-<h3 id="org01fa421"><span class="section-number-3">8.1.</span> Info</h3>
+<div id="outline-container-orgea650dc" class="outline-3">
+<h3 id="orgea650dc"><span class="section-number-3">8.1.</span> Info</h3>
 <div class="outline-text-3" id="text-8-1">
 <ul class="org-ul">
 <li>Named block that fires when insert, update or delete statement is executed</li>
@@ -997,8 +996,8 @@ CALL update_invoice_credit_total<span style="color: #fff0f5;">(</span><span styl
 </ul>
 </div>
 </div>
-<div id="outline-container-orgdc56839" class="outline-3">
-<h3 id="orgdc56839"><span class="section-number-3">8.2.</span> Before Update Trigger</h3>
+<div id="outline-container-orgac9744c" class="outline-3">
+<h3 id="orgac9744c"><span class="section-number-3">8.2.</span> Before Update Trigger</h3>
 <div class="outline-text-3" id="text-8-2">
 <ul class="org-ul">
 <li>Declaration</li>
@@ -1025,8 +1024,8 @@ CALL update_invoice_credit_total<span style="color: #fff0f5;">(</span><span styl
 </div>
 </div>
 </div>
-<div id="outline-container-orgd57028e" class="outline-3">
-<h3 id="orgd57028e"><span class="section-number-3">8.3.</span> After Insert Trigger</h3>
+<div id="outline-container-org7b239d5" class="outline-3">
+<h3 id="org7b239d5"><span class="section-number-3">8.3.</span> After Insert Trigger</h3>
 <div class="outline-text-3" id="text-8-3">
 <ul class="org-ul">
 <li>Declaration</li>
@@ -1068,8 +1067,8 @@ delimiter <span style="color: #bbc2cf;">//</span>
 </div>
 </div>
 </div>
-<div id="outline-container-orgb9475d1" class="outline-3">
-<h3 id="orgb9475d1"><span class="section-number-3">8.4.</span> After Delete Trigger</h3>
+<div id="outline-container-org88c28c7" class="outline-3">
+<h3 id="org88c28c7"><span class="section-number-3">8.4.</span> After Delete Trigger</h3>
 <div class="outline-text-3" id="text-8-4">
 <ul class="org-ul">
 <li>Declaration</li>
@@ -1098,8 +1097,8 @@ delimiter <span style="color: #bbc2cf;">//</span>
 </div>
 </div>
 </div>
-<div id="outline-container-orge5192e2" class="outline-2">
-<h2 id="orge5192e2"><span class="section-number-2">9.</span> Events</h2>
+<div id="outline-container-org7107c22" class="outline-2">
+<h2 id="org7107c22"><span class="section-number-2">9.</span> Events</h2>
 <div class="outline-text-2" id="text-9">
 <ul class="org-ul">
 <li>Fires an event according to the event scheduler</li>
@@ -1108,8 +1107,8 @@ delimiter <span style="color: #bbc2cf;">//</span>
 <li>Can use <code>interval</code> such as: <code>minute, hour, day, week, month, year</code></li>
 </ul>
 </div>
-<div id="outline-container-orgc13ff2c" class="outline-3">
-<h3 id="orgc13ff2c"><span class="section-number-3">9.1.</span> One-Off</h3>
+<div id="outline-container-orgf0b9961" class="outline-3">
+<h3 id="orgf0b9961"><span class="section-number-3">9.1.</span> One-Off</h3>
 <div class="outline-text-3" id="text-9-1">
 <ul class="org-ul">
 <li>Declaration</li>
@@ -1128,8 +1127,8 @@ do <span style="color: #51afef; font-style: italic;">begin</span>
 </div>
 </div>
 </div>
-<div id="outline-container-org5dab0de" class="outline-3">
-<h3 id="org5dab0de"><span class="section-number-3">9.2.</span> Recurring</h3>
+<div id="outline-container-orgddec872" class="outline-3">
+<h3 id="orgddec872"><span class="section-number-3">9.2.</span> Recurring</h3>
 <div class="outline-text-3" id="text-9-2">
 <ul class="org-ul">
 <li>Declaration</li>
@@ -1148,8 +1147,8 @@ do <span style="color: #51afef; font-style: italic;">begin</span>
 </div>
 </div>
 </div>
-<div id="outline-container-org4ae4272" class="outline-3">
-<h3 id="org4ae4272"><span class="section-number-3">9.3.</span> Altering (enable/disable only)</h3>
+<div id="outline-container-org4d09934" class="outline-3">
+<h3 id="org4d09934"><span class="section-number-3">9.3.</span> Altering (enable/disable only)</h3>
 <div class="outline-text-3" id="text-9-3">
 <div class="org-src-container">
 <pre class="src src-sql"><span style="color: #51afef; font-style: italic;">alter</span> event monthly_delete_audit_rows disable<span style="color: #bbc2cf;">;</span>
@@ -1159,12 +1158,12 @@ do <span style="color: #51afef; font-style: italic;">begin</span>
 </div>
 </div>
 </div>
-<div id="outline-container-orge246b66" class="outline-2">
-<h2 id="orge246b66"><span class="section-number-2">10.</span> JDBC</h2>
+<div id="outline-container-orgfa3b2e7" class="outline-2">
+<h2 id="orgfa3b2e7"><span class="section-number-2">10.</span> JDBC</h2>
 <div class="outline-text-2" id="text-10">
 </div>
-<div id="outline-container-orgdeb6c97" class="outline-3">
-<h3 id="orgdeb6c97"><span class="section-number-3">10.1.</span> Using JDBC</h3>
+<div id="outline-container-org316b9ef" class="outline-3">
+<h3 id="org316b9ef"><span class="section-number-3">10.1.</span> Using JDBC</h3>
 <div class="outline-text-3" id="text-10-1">
 <ol class="org-ol">
 <li>Load the driver</li>
@@ -1177,8 +1176,8 @@ do <span style="color: #51afef; font-style: italic;">begin</span>
 </ol>
 </div>
 </div>
-<div id="outline-container-org404e55d" class="outline-3">
-<h3 id="org404e55d"><span class="section-number-3">10.2.</span> Important objects</h3>
+<div id="outline-container-org60a787e" class="outline-3">
+<h3 id="org60a787e"><span class="section-number-3">10.2.</span> Important objects</h3>
 <div class="outline-text-3" id="text-10-2">
 <div class="org-src-container">
 <pre class="src src-java"><span style="color: #ECBE7B;">Connection</span> con = DriverManager.<span style="color: #c678dd;">getConnection</span><span style="color: #fff0f5;">(</span>url + dbName, userName, password<span style="color: #fff0f5;">)</span>;
@@ -1199,8 +1198,8 @@ rs.<span style="color: #c678dd;">getString</span><span style="color: #fff0f5;">(
 </div>
 </div>
 </div>
-<div id="outline-container-org118f6b1" class="outline-3">
-<h3 id="org118f6b1"><span class="section-number-3">10.3.</span> The ResultSet</h3>
+<div id="outline-container-org6cda62d" class="outline-3">
+<h3 id="org6cda62d"><span class="section-number-3">10.3.</span> The ResultSet</h3>
 <div class="outline-text-3" id="text-10-3">
 <ul class="org-ul">
 <li>Is a table of data generated by the SQL query. Allows you to iterate over the rows that have been retrieved.</li>
@@ -1209,12 +1208,12 @@ rs.<span style="color: #c678dd;">getString</span><span style="color: #fff0f5;">(
 </div>
 </div>
 </div>
-<div id="outline-container-org77e42e1" class="outline-2">
-<h2 id="org77e42e1"><span class="section-number-2">11.</span> SQL Injection Attacks</h2>
+<div id="outline-container-orgefd1333" class="outline-2">
+<h2 id="orgefd1333"><span class="section-number-2">11.</span> SQL Injection Attacks</h2>
 <div class="outline-text-2" id="text-11">
 </div>
-<div id="outline-container-orgc8c2c60" class="outline-3">
-<h3 id="orgc8c2c60"><span class="section-number-3">11.1.</span> Protection</h3>
+<div id="outline-container-org784d80b" class="outline-3">
+<h3 id="org784d80b"><span class="section-number-3">11.1.</span> Protection</h3>
 <div class="outline-text-3" id="text-11-1">
 <ul class="org-ul">
 <li>User prepared statements</li>
@@ -1224,8 +1223,8 @@ rs.<span style="color: #c678dd;">getString</span><span style="color: #fff0f5;">(
 </ul>
 </div>
 </div>
-<div id="outline-container-org1886a30" class="outline-3">
-<h3 id="org1886a30"><span class="section-number-3">11.2.</span> Improperly handled escape characters</h3>
+<div id="outline-container-org9dde8ad" class="outline-3">
+<h3 id="org9dde8ad"><span class="section-number-3">11.2.</span> Improperly handled escape characters</h3>
 <div class="outline-text-3" id="text-11-2">
 <div class="org-src-container">
 <pre class="src src-java">stmt = <span style="color: #98be65;">"select * from users where name = '"</span> + userName + <span style="color: #98be65;">"';"</span>;
@@ -1236,8 +1235,8 @@ rs.<span style="color: #c678dd;">getString</span><span style="color: #fff0f5;">(
 </div>
 </div>
 </div>
-<div id="outline-container-orgd0f1df1" class="outline-3">
-<h3 id="orgd0f1df1"><span class="section-number-3">11.3.</span> Incorrect data type management</h3>
+<div id="outline-container-org5a85b69" class="outline-3">
+<h3 id="org5a85b69"><span class="section-number-3">11.3.</span> Incorrect data type management</h3>
 <div class="outline-text-3" id="text-11-3">
 <div class="org-src-container">
 <pre class="src src-java">stmt = <span style="color: #98be65;">"select * from userinfo where id = "</span> + id_var + <span style="color: #98be65;">";"</span>;
@@ -1248,16 +1247,18 @@ rs.<span style="color: #c678dd;">getString</span><span style="color: #fff0f5;">(
 </div>
 </div>
 </div>
-<div id="outline-container-org52161ee" class="outline-3">
-<h3 id="org52161ee"><span class="section-number-3">11.4.</span> Blind SQL injection</h3>
+<div id="outline-container-org1f74f79" class="outline-3">
+<h3 id="org1f74f79"><span class="section-number-3">11.4.</span> Blind SQL injection</h3>
 <div class="outline-text-3" id="text-11-4">
 <ul class="org-ul">
-<li>Relies on server responses to deduce the inner workings.</li>
+<li>Relies on server responses to deduce the inner workings. Usually uses timings or boolean response.</li>
+<li>One can start with simple queries "Does the first character of the admin’s password hash start with A". Then based on the timing we may know if it is a yes or a no. And so on so forth.</li>
+<li>Does the user admin exist?</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org3a07f21" class="outline-3">
-<h3 id="org3a07f21"><span class="section-number-3">11.5.</span> Second-Order SQL injection</h3>
+<div id="outline-container-org3827e6f" class="outline-3">
+<h3 id="org3827e6f"><span class="section-number-3">11.5.</span> Second-Order SQL injection</h3>
 <div class="outline-text-3" id="text-11-5">
 <ul class="org-ul">
 <li>A user may insert an SQL as some sort of a field. That field gets then inserted into a database completely unsanitised.</li>
@@ -1266,12 +1267,12 @@ rs.<span style="color: #c678dd;">getString</span><span style="color: #fff0f5;">(
 </div>
 </div>
 </div>
-<div id="outline-container-org744561a" class="outline-2">
-<h2 id="org744561a"><span class="section-number-2">12.</span> Stored Procedures vs Java</h2>
+<div id="outline-container-orgbf92cae" class="outline-2">
+<h2 id="orgbf92cae"><span class="section-number-2">12.</span> Stored Procedures vs Java</h2>
 <div class="outline-text-2" id="text-12">
 </div>
-<div id="outline-container-org277f4e3" class="outline-3">
-<h3 id="org277f4e3"><span class="section-number-3">12.1.</span> Performance</h3>
+<div id="outline-container-orgfe0ff58" class="outline-3">
+<h3 id="orgfe0ff58"><span class="section-number-3">12.1.</span> Performance</h3>
 <div class="outline-text-3" id="text-12-1">
 <ul class="org-ul">
 <li>SP: faster for batch operations, complex SQL, large datasets</li>
@@ -1279,8 +1280,8 @@ rs.<span style="color: #c678dd;">getString</span><span style="color: #fff0f5;">(
 </ul>
 </div>
 </div>
-<div id="outline-container-orge64fe34" class="outline-3">
-<h3 id="orge64fe34"><span class="section-number-3">12.2.</span> Maintainability</h3>
+<div id="outline-container-org269da51" class="outline-3">
+<h3 id="org269da51"><span class="section-number-3">12.2.</span> Maintainability</h3>
 <div class="outline-text-3" id="text-12-2">
 <ul class="org-ul">
 <li>SP: harder to test and maintain</li>
@@ -1288,8 +1289,8 @@ rs.<span style="color: #c678dd;">getString</span><span style="color: #fff0f5;">(
 </ul>
 </div>
 </div>
-<div id="outline-container-org3df5968" class="outline-3">
-<h3 id="org3df5968"><span class="section-number-3">12.3.</span> Portability</h3>
+<div id="outline-container-org775fba5" class="outline-3">
+<h3 id="org775fba5"><span class="section-number-3">12.3.</span> Portability</h3>
 <div class="outline-text-3" id="text-12-3">
 <ul class="org-ul">
 <li>SP: db specific, vendor lock-in</li>
@@ -1297,8 +1298,8 @@ rs.<span style="color: #c678dd;">getString</span><span style="color: #fff0f5;">(
 </ul>
 </div>
 </div>
-<div id="outline-container-orgd6fcb79" class="outline-3">
-<h3 id="orgd6fcb79"><span class="section-number-3">12.4.</span> Security</h3>
+<div id="outline-container-orgc0b3a26" class="outline-3">
+<h3 id="orgc0b3a26"><span class="section-number-3">12.4.</span> Security</h3>
 <div class="outline-text-3" id="text-12-4">
 <ul class="org-ul">
 <li>SP: encapsulates sql logic, restrict access, reduce injection risk</li>
@@ -1306,8 +1307,8 @@ rs.<span style="color: #c678dd;">getString</span><span style="color: #fff0f5;">(
 </ul>
 </div>
 </div>
-<div id="outline-container-org381f136" class="outline-3">
-<h3 id="org381f136"><span class="section-number-3">12.5.</span> Complexity of Logic</h3>
+<div id="outline-container-org667f467" class="outline-3">
+<h3 id="org667f467"><span class="section-number-3">12.5.</span> Complexity of Logic</h3>
 <div class="outline-text-3" id="text-12-5">
 <ul class="org-ul">
 <li>SP: Best form DB-centric logic, aggregations and triggers</li>
@@ -1315,8 +1316,8 @@ rs.<span style="color: #c678dd;">getString</span><span style="color: #fff0f5;">(
 </ul>
 </div>
 </div>
-<div id="outline-container-orgbcabff5" class="outline-3">
-<h3 id="orgbcabff5"><span class="section-number-3">12.6.</span> Transactions &amp; Scalability</h3>
+<div id="outline-container-orgc46465e" class="outline-3">
+<h3 id="orgc46465e"><span class="section-number-3">12.6.</span> Transactions &amp; Scalability</h3>
 <div class="outline-text-3" id="text-12-6">
 <ul class="org-ul">
 <li>SP: strong db-level transaction control, vertical scaling (potential bottleneck)</li>
@@ -1324,8 +1325,8 @@ rs.<span style="color: #c678dd;">getString</span><span style="color: #fff0f5;">(
 </ul>
 </div>
 </div>
-<div id="outline-container-orge68a4fd" class="outline-3">
-<h3 id="orge68a4fd"><span class="section-number-3">12.7.</span> Summary</h3>
+<div id="outline-container-orgb03e038" class="outline-3">
+<h3 id="orgb03e038"><span class="section-number-3">12.7.</span> Summary</h3>
 <div class="outline-text-3" id="text-12-7">
 <ul class="org-ul">
 <li>SP: efficient for heavy db work, security and encapsulation</li>
@@ -1335,8 +1336,8 @@ rs.<span style="color: #c678dd;">getString</span><span style="color: #fff0f5;">(
 </div>
 </div>
 </div>
-<div id="outline-container-org83715fe" class="outline-2">
-<h2 id="org83715fe"><span class="section-number-2">13.</span> Normalisation</h2>
+<div id="outline-container-org33e73bd" class="outline-2">
+<h2 id="org33e73bd"><span class="section-number-2">13.</span> Normalisation</h2>
 <div class="outline-text-2" id="text-13">
 <ul class="org-ul">
 <li>Is the process where a database is designed in a way that removes redundancies, and increases the clarity in organizing data in a database.</li>
@@ -1345,12 +1346,12 @@ rs.<span style="color: #c678dd;">getString</span><span style="color: #fff0f5;">(
 </ul>
 </div>
 </div>
-<div id="outline-container-org02d44a2" class="outline-2">
-<h2 id="org02d44a2"><span class="section-number-2">14.</span> ERDs</h2>
+<div id="outline-container-org960c444" class="outline-2">
+<h2 id="org960c444"><span class="section-number-2">14.</span> ERDs</h2>
 <div class="outline-text-2" id="text-14">
 </div>
-<div id="outline-container-orgbf40d7c" class="outline-3">
-<h3 id="orgbf40d7c"><span class="section-number-3">14.1.</span> Benefits</h3>
+<div id="outline-container-org95aa31c" class="outline-3">
+<h3 id="org95aa31c"><span class="section-number-3">14.1.</span> Benefits</h3>
 <div class="outline-text-3" id="text-14-1">
 <ol class="org-ol">
 <li>Visual clarity</li>
@@ -1361,8 +1362,8 @@ rs.<span style="color: #c678dd;">getString</span><span style="color: #fff0f5;">(
 </ol>
 </div>
 </div>
-<div id="outline-container-orga6663e7" class="outline-3">
-<h3 id="orga6663e7"><span class="section-number-3">14.2.</span> Poor modelling</h3>
+<div id="outline-container-orgb6a9d3f" class="outline-3">
+<h3 id="orgb6a9d3f"><span class="section-number-3">14.2.</span> Poor modelling</h3>
 <div class="outline-text-3" id="text-14-2">
 <ul class="org-ul">
 <li>Data redundancy</li>
@@ -1371,8 +1372,8 @@ rs.<span style="color: #c678dd;">getString</span><span style="color: #fff0f5;">(
 </ul>
 </div>
 </div>
-<div id="outline-container-org10a2376" class="outline-3">
-<h3 id="org10a2376"><span class="section-number-3">14.3.</span> ER Modelling Phases</h3>
+<div id="outline-container-org88b1f9b" class="outline-3">
+<h3 id="org88b1f9b"><span class="section-number-3">14.3.</span> ER Modelling Phases</h3>
 <div class="outline-text-3" id="text-14-3">
 <ol class="org-ol">
 <li>Specify the Entities</li>
@@ -1382,13 +1383,13 @@ rs.<span style="color: #c678dd;">getString</span><span style="color: #fff0f5;">(
 </ol>
 </div>
 </div>
-<div id="outline-container-orgd3602f7" class="outline-3">
-<h3 id="orgd3602f7"><span class="section-number-3">14.4.</span> Database Modelling</h3>
+<div id="outline-container-orgee71297" class="outline-3">
+<h3 id="orgee71297"><span class="section-number-3">14.4.</span> Database Modelling</h3>
 <div class="outline-text-3" id="text-14-4">
 </div>
-<div id="outline-container-org9120085" class="outline-4">
-<h4 id="org9120085">CDM (Conceptual Data Modelling)</h4>
-<div class="outline-text-4" id="text-org9120085">
+<div id="outline-container-org740c428" class="outline-4">
+<h4 id="org740c428">CDM (Conceptual Data Modelling)</h4>
+<div class="outline-text-4" id="text-org740c428">
 <ul class="org-ul">
 <li>Capture the satellite view of the business requirements</li>
 <li>Raw entities and their relationships only (cardinality)</li>
@@ -1397,9 +1398,9 @@ rs.<span style="color: #c678dd;">getString</span><span style="color: #fff0f5;">(
 </ul>
 </div>
 </div>
-<div id="outline-container-org7b3ba8f" class="outline-4">
-<h4 id="org7b3ba8f">LDM (Logical Data Modelling)</h4>
-<div class="outline-text-4" id="text-org7b3ba8f">
+<div id="outline-container-org639ec76" class="outline-4">
+<h4 id="org639ec76">LDM (Logical Data Modelling)</h4>
+<div class="outline-text-4" id="text-org639ec76">
 <ul class="org-ul">
 <li>Designing the actual database schema</li>
 <li>CDM may reveal that a Customer places Orders, but LDM will reveal that a customer has a name, address, can place many orders, etc.</li>
@@ -1407,9 +1408,9 @@ rs.<span style="color: #c678dd;">getString</span><span style="color: #fff0f5;">(
 </ul>
 </div>
 </div>
-<div id="outline-container-org6c44820" class="outline-4">
-<h4 id="org6c44820">PDM (Physical Data Modelling)</h4>
-<div class="outline-text-4" id="text-org6c44820">
+<div id="outline-container-org228f46a" class="outline-4">
+<h4 id="org228f46a">PDM (Physical Data Modelling)</h4>
+<div class="outline-text-4" id="text-org228f46a">
 <ul class="org-ul">
 <li>Is the actual implementation in some sort of software, e.g.: MySQL, Postgres, MongoDB, etc.</li>
 <li>Here we actually write the code for creating the tables/documents</li>
@@ -1421,16 +1422,16 @@ rs.<span style="color: #c678dd;">getString</span><span style="color: #fff0f5;">(
 </div>
 </div>
 </div>
-<div id="outline-container-org62ff60c" class="outline-2">
-<h2 id="org62ff60c"><span class="section-number-2">15.</span> ORMs (JPA)</h2>
+<div id="outline-container-org6c03ddf" class="outline-2">
+<h2 id="org6c03ddf"><span class="section-number-2">15.</span> ORMs (JPA)</h2>
 <div class="outline-text-2" id="text-15">
 <ul class="org-ul">
 <li>Use language's Objects to save/retrieve data instead of using SQL</li>
 <li>Map between an object and a row in a database table</li>
 </ul>
 </div>
-<div id="outline-container-org879d6b9" class="outline-3">
-<h3 id="org879d6b9"><span class="section-number-3">15.1.</span> ORM Mismatch</h3>
+<div id="outline-container-org596b577" class="outline-3">
+<h3 id="org596b577"><span class="section-number-3">15.1.</span> ORM Mismatch</h3>
 <div class="outline-text-3" id="text-15-1">
 <ul class="org-ul">
 <li>DBs store data in rows and tables</li>
@@ -1443,9 +1444,9 @@ rs.<span style="color: #c678dd;">getString</span><span style="color: #fff0f5;">(
 </ul></li>
 </ul>
 </div>
-<div id="outline-container-org7250761" class="outline-4">
-<h4 id="org7250761">The 5 Problems</h4>
-<div class="outline-text-4" id="text-org7250761">
+<div id="outline-container-org1511d9d" class="outline-4">
+<h4 id="org1511d9d">The 5 Problems</h4>
+<div class="outline-text-4" id="text-org1511d9d">
 <ol class="org-ol">
 <li>Granularity: Objects are more granular. E.g. User Class may have an Address class and other subclasses. SQL only has tables and columns do deal with this, while possible it is just not as easy to translate.</li>
 <li>Subtypes: OOP has inheritance and polymorphism, new subclasses can extend previous ones. No such thing in SQL.</li>
@@ -1456,8 +1457,8 @@ rs.<span style="color: #c678dd;">getString</span><span style="color: #fff0f5;">(
 </div>
 </div>
 </div>
-<div id="outline-container-org54010f3" class="outline-3">
-<h3 id="org54010f3"><span class="section-number-3">15.2.</span> Java Annotations</h3>
+<div id="outline-container-org7cdaafc" class="outline-3">
+<h3 id="org7cdaafc"><span class="section-number-3">15.2.</span> Java Annotations</h3>
 <div class="outline-text-3" id="text-15-2">
 <div class="org-src-container">
 <pre class="src src-java"><span style="color: #51afef; font-style: italic;">class</span> <span style="color: #ECBE7B;">User</span> <span style="color: #fff0f5;">{</span>
@@ -1479,8 +1480,8 @@ rs.<span style="color: #c678dd;">getString</span><span style="color: #fff0f5;">(
 </div>
 </div>
 </div>
-<div id="outline-container-orgd3e3719" class="outline-3">
-<h3 id="orgd3e3719"><span class="section-number-3">15.3.</span> Java JPA Snippets</h3>
+<div id="outline-container-org28c979d" class="outline-3">
+<h3 id="org28c979d"><span class="section-number-3">15.3.</span> Java JPA Snippets</h3>
 <div class="outline-text-3" id="text-15-3">
 <div class="org-src-container">
 <pre class="src src-java"><span style="color: #5B6268;">// in attributes create entity man factory and entity man</span>
@@ -1512,20 +1513,20 @@ trans.<span style="color: #c678dd;">commit</span><span style="color: #fff0f5;">(
 </div>
 </div>
 </div>
-<div id="outline-container-orgcbb1555" class="outline-2">
-<h2 id="orgcbb1555"><span class="section-number-2">16.</span> Transaction Management</h2>
+<div id="outline-container-org894441c" class="outline-2">
+<h2 id="org894441c"><span class="section-number-2">16.</span> Transaction Management</h2>
 <div class="outline-text-2" id="text-16">
 </div>
-<div id="outline-container-orgede5336" class="outline-3">
-<h3 id="orgede5336"><span class="section-number-3">16.1.</span> Concurrency Control</h3>
+<div id="outline-container-orgb901d9f" class="outline-3">
+<h3 id="orgb901d9f"><span class="section-number-3">16.1.</span> Concurrency Control</h3>
 <div class="outline-text-3" id="text-16-1">
 <ul class="org-ul">
 <li>Ensure that the database integrity is intact when accessed and manipulated by multiple users simultaneously</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orge7f910f" class="outline-3">
-<h3 id="orge7f910f"><span class="section-number-3">16.2.</span> Consistency</h3>
+<div id="outline-container-org08922c5" class="outline-3">
+<h3 id="org08922c5"><span class="section-number-3">16.2.</span> Consistency</h3>
 <div class="outline-text-3" id="text-16-2">
 <ul class="org-ul">
 <li>A DB is in a consistent state when there are no contradictions between items stored in the database</li>
@@ -1533,16 +1534,16 @@ trans.<span style="color: #c678dd;">commit</span><span style="color: #fff0f5;">(
 </ul>
 </div>
 </div>
-<div id="outline-container-orge7336df" class="outline-3">
-<h3 id="orge7336df"><span class="section-number-3">16.3.</span> Autocommit</h3>
+<div id="outline-container-org37d14b4" class="outline-3">
+<h3 id="org37d14b4"><span class="section-number-3">16.3.</span> Autocommit</h3>
 <div class="outline-text-3" id="text-16-3">
 <ul class="org-ul">
 <li>Normally MySQL is in <code>autocommit</code> mode, as in: all CRUDs are committed immediately upon execution</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org49484df" class="outline-3">
-<h3 id="org49484df"><span class="section-number-3">16.4.</span> Transactions</h3>
+<div id="outline-container-org24b6201" class="outline-3">
+<h3 id="org24b6201"><span class="section-number-3">16.4.</span> Transactions</h3>
 <div class="outline-text-3" id="text-16-4">
 <ul class="org-ul">
 <li>We start a transaction, execute a series of CRUDS, then we end the transaction. So we basically go from consistent -&gt; not consistent -&gt; consistent. If there are any errors during execution the DBMS will "rollback" any changes and we go back to a consistent state. During a transaction any other user cannot "touch" the same data, they basically have to wait for their turn.</li>
@@ -1555,11 +1556,11 @@ trans.<span style="color: #c678dd;">commit</span><span style="color: #fff0f5;">(
 </ul></li>
 </ul>
 </div>
-<div id="outline-container-orgf951299" class="outline-4">
-<h4 id="orgf951299">States of a Transaction</h4>
-<div class="outline-text-4" id="text-orgf951299">
+<div id="outline-container-orgd067004" class="outline-4">
+<h4 id="orgd067004">States of a Transaction</h4>
+<div class="outline-text-4" id="text-orgd067004">
 
-<div id="org7bbe6c7" class="figure">
+<div id="org0540b14" class="figure">
 <p><img src="images/Exam_Prep/2025-12-06_17-53-05_screenshot.png" alt="2025-12-06_17-53-05_screenshot.png" />
 </p>
 </div>
@@ -1573,8 +1574,8 @@ trans.<span style="color: #c678dd;">commit</span><span style="color: #fff0f5;">(
 </div>
 </div>
 </div>
-<div id="outline-container-org6469fb3" class="outline-3">
-<h3 id="org6469fb3"><span class="section-number-3">16.5.</span> Declaration</h3>
+<div id="outline-container-org8b68fe4" class="outline-3">
+<h3 id="org8b68fe4"><span class="section-number-3">16.5.</span> Declaration</h3>
 <div class="outline-text-3" id="text-16-5">
 <div class="org-src-container">
 <pre class="src src-sql"><span style="color: #51afef; font-style: italic;">start</span> <span style="color: #51afef; font-style: italic;">transaction</span><span style="color: #bbc2cf;">;</span>
@@ -1587,53 +1588,53 @@ trans.<span style="color: #c678dd;">commit</span><span style="color: #fff0f5;">(
 </div>
 </div>
 </div>
-<div id="outline-container-org2833865" class="outline-3">
-<h3 id="org2833865"><span class="section-number-3">16.6.</span> Concurrency</h3>
+<div id="outline-container-orga372f20" class="outline-3">
+<h3 id="orga372f20"><span class="section-number-3">16.6.</span> Concurrency</h3>
 <div class="outline-text-3" id="text-16-6">
 </div>
-<div id="outline-container-org23f8e22" class="outline-4">
-<h4 id="org23f8e22">Four types of problems</h4>
-<div class="outline-text-4" id="text-org23f8e22">
+<div id="outline-container-orgae53af0" class="outline-4">
+<h4 id="orgae53af0">Four types of problems</h4>
+<div class="outline-text-4" id="text-orgae53af0">
 </div>
 <ul class="org-ul">
-<li><a id="orgd305f40"></a>Dirty Reads<br />
-<div class="outline-text-5" id="text-orgd305f40">
+<li><a id="org356e843"></a>Dirty Reads<br />
+<div class="outline-text-5" id="text-org356e843">
 <ul class="org-ul">
-<li>Accessing data that hasn't been committed yet.</li>
+<li>Accessing data that hasn't been committed yet. It's even worse when the first transaction rolls back, so the other transaction read something that shouldn't even exist.</li>
 </ul>
 </div>
 </li>
-<li><a id="org48e516a"></a>Lost Updates<br />
-<div class="outline-text-5" id="text-org48e516a">
+<li><a id="org4e187a2"></a>Lost Updates<br />
+<div class="outline-text-5" id="text-org4e187a2">
 <ul class="org-ul">
 <li>Occurs when two transactions select the same row and update it independently based on the original value. The later update will overwrite the earlier update.</li>
 </ul>
 </div>
 </li>
-<li><a id="orgbcd4b47"></a>Nonrepeatable Reads<br />
-<div class="outline-text-5" id="text-orgbcd4b47">
+<li><a id="org8b17f9a"></a>Nonrepeatable Reads<br />
+<div class="outline-text-5" id="text-org8b17f9a">
 <ul class="org-ul">
 <li>Occurs when two select statements read data while a transaction is taking place (which could happen during a single SP). The first select may have a different value than the next one if the transaction took place in-between.</li>
 </ul>
 </div>
 </li>
-<li><a id="org76a0dbc"></a>Phantom Reads<br />
-<div class="outline-text-5" id="text-org76a0dbc">
+<li><a id="org6fcf9bc"></a>Phantom Reads<br />
+<div class="outline-text-5" id="text-org6fcf9bc">
 <ul class="org-ul">
-<li>A transaction re-runs a query and gets different results, another committed transaction has inserted additional rows that satisfy the search criteria.</li>
+<li>A transaction re-runs a query and gets different results that operate on multiple rows, another committed transaction has inserted additional rows or deleted some row that satisfy the search criteria. So now when the first transaction runs the query again it gets a different result.</li>
 </ul>
 </div>
 </li>
 </ul>
 </div>
-<div id="outline-container-org0a9101d" class="outline-4">
-<h4 id="org0a9101d">Solution</h4>
-<div class="outline-text-4" id="text-org0a9101d">
+<div id="outline-container-orgaf01e45" class="outline-4">
+<h4 id="orgaf01e45">Solution</h4>
+<div class="outline-text-4" id="text-orgaf01e45">
 <ul class="org-ul">
 <li>Use <code>SET TRANSACTION ISOLATION LEVEL</code></li>
 </ul>
 
-<div id="orgd5f6a26" class="figure">
+<div id="org402a83d" class="figure">
 <p><img src="images/Exam_Prep/2025-12-06_18-20-13_screenshot.png" alt="2025-12-06_18-20-13_screenshot.png" />
 </p>
 </div>
@@ -1646,8 +1647,8 @@ trans.<span style="color: #c678dd;">commit</span><span style="color: #fff0f5;">(
 </div>
 </div>
 </div>
-<div id="outline-container-org4806090" class="outline-3">
-<h3 id="org4806090"><span class="section-number-3">16.7.</span> Deadlock</h3>
+<div id="outline-container-orgcb8f04a" class="outline-3">
+<h3 id="orgcb8f04a"><span class="section-number-3">16.7.</span> Deadlock</h3>
 <div class="outline-text-3" id="text-16-7">
 <ul class="org-ul">
 <li>Neither of transactions can be committed because each has a lock on a resource needed by another transaction.</li>
@@ -1672,8 +1673,8 @@ Example of a possible deadlock:
 </ul>
 </div>
 </div>
-<div id="outline-container-orgbda68ed" class="outline-3">
-<h3 id="orgbda68ed"><span class="section-number-3">16.8.</span> Preventing Deadlock</h3>
+<div id="outline-container-org93a66ec" class="outline-3">
+<h3 id="org93a66ec"><span class="section-number-3">16.8.</span> Preventing Deadlock</h3>
 <div class="outline-text-3" id="text-16-8">
 <ol class="org-ol">
 <li>Don't allow transactions to remain open very long</li>
@@ -1684,12 +1685,12 @@ Example of a possible deadlock:
 </div>
 </div>
 </div>
-<div id="outline-container-org386cb50" class="outline-2">
-<h2 id="org386cb50"><span class="section-number-2">17.</span> NoSQL</h2>
+<div id="outline-container-orgb02d53a" class="outline-2">
+<h2 id="orgb02d53a"><span class="section-number-2">17.</span> NoSQL</h2>
 <div class="outline-text-2" id="text-17">
 </div>
-<div id="outline-container-orgfd567f6" class="outline-3">
-<h3 id="orgfd567f6"><span class="section-number-3">17.1.</span> Advantages</h3>
+<div id="outline-container-org7c8067d" class="outline-3">
+<h3 id="org7c8067d"><span class="section-number-3">17.1.</span> Advantages</h3>
 <div class="outline-text-3" id="text-17-1">
 <ul class="org-ul">
 <li>Elastic scaling</li>
@@ -1700,8 +1701,8 @@ Example of a possible deadlock:
 </ul>
 </div>
 </div>
-<div id="outline-container-org9312de3" class="outline-3">
-<h3 id="org9312de3"><span class="section-number-3">17.2.</span> BigData</h3>
+<div id="outline-container-org1298a31" class="outline-3">
+<h3 id="org1298a31"><span class="section-number-3">17.2.</span> BigData</h3>
 <div class="outline-text-3" id="text-17-2">
 <ul class="org-ul">
 <li>Massive amounts of rapidly growing data</li>
@@ -1720,8 +1721,8 @@ Example of a possible deadlock:
 </ul>
 </div>
 </div>
-<div id="outline-container-orgde35d81" class="outline-3">
-<h3 id="orgde35d81"><span class="section-number-3">17.3.</span> NoSQL Characteristics</h3>
+<div id="outline-container-org5f0ab44" class="outline-3">
+<h3 id="org5f0ab44"><span class="section-number-3">17.3.</span> NoSQL Characteristics</h3>
 <div class="outline-text-3" id="text-17-3">
 <ul class="org-ul">
 <li>Other means than tabular</li>
@@ -1734,8 +1735,8 @@ Example of a possible deadlock:
 </ul>
 </div>
 </div>
-<div id="outline-container-org5a891bd" class="outline-3">
-<h3 id="org5a891bd"><span class="section-number-3">17.4.</span> Types</h3>
+<div id="outline-container-orgdde2211" class="outline-3">
+<h3 id="orgdde2211"><span class="section-number-3">17.4.</span> Types</h3>
 <div class="outline-text-3" id="text-17-4">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -1796,8 +1797,8 @@ Example of a possible deadlock:
 </table>
 </div>
 </div>
-<div id="outline-container-org3ebb72d" class="outline-3">
-<h3 id="org3ebb72d"><span class="section-number-3">17.5.</span> Denormalization</h3>
+<div id="outline-container-org33dba21" class="outline-3">
+<h3 id="org33dba21"><span class="section-number-3">17.5.</span> Denormalization</h3>
 <div class="outline-text-3" id="text-17-5">
 <ul class="org-ul">
 <li>Denormalization: we generally don't worry here about redundant or even duplicated data (e.g. copy over an employee's job description). Consider the purpose of the DB.</li>
@@ -1812,8 +1813,8 @@ Example of a possible deadlock:
 </ul>
 </div>
 </div>
-<div id="outline-container-org373faca" class="outline-3">
-<h3 id="org373faca"><span class="section-number-3">17.6.</span> CAP Theorem</h3>
+<div id="outline-container-org149dbb5" class="outline-3">
+<h3 id="org149dbb5"><span class="section-number-3">17.6.</span> CAP Theorem</h3>
 <div class="outline-text-3" id="text-17-6">
 <p class="verse">
 It is stated that a distributed computer system cannot simultaneously provide all three of the following guarantees:<br />
@@ -1830,9 +1831,9 @@ In almost all cases you would choose availability over consistency.<br />
 But it may depend on the service you are providing.<br />
 </p>
 </div>
-<div id="outline-container-orgc488ab2" class="outline-4">
-<h4 id="orgc488ab2">Consistency Model</h4>
-<div class="outline-text-4" id="text-orgc488ab2">
+<div id="outline-container-org8211917" class="outline-4">
+<h4 id="org8211917">Consistency Model</h4>
+<div class="outline-text-4" id="text-org8211917">
 <ul class="org-ul">
 <li>When something is written in node A, can I read it from node B? The answer is <b>maybe</b>.</li>
 <li>EVENTUAL CONSISTENCY is the general answer</li>
@@ -1840,9 +1841,9 @@ But it may depend on the service you are providing.<br />
 </ul>
 </div>
 </div>
-<div id="outline-container-orga3fa9e1" class="outline-4">
-<h4 id="orga3fa9e1">BASE</h4>
-<div class="outline-text-4" id="text-orga3fa9e1">
+<div id="outline-container-orgba46716" class="outline-4">
+<h4 id="orgba46716">BASE</h4>
+<div class="outline-text-4" id="text-orgba46716">
 <ul class="org-ul">
 <li>(B)asically (A)vailable, (S)oft state, (E)ventual consistency
 <ul class="org-ul">
@@ -1856,8 +1857,8 @@ But it may depend on the service you are providing.<br />
 </div>
 </div>
 </div>
-<div id="outline-container-org84a5301" class="outline-2">
-<h2 id="org84a5301"><span class="section-number-2">18.</span> Remove at the End</h2>
+<div id="outline-container-org02929c7" class="outline-2">
+<h2 id="org02929c7"><span class="section-number-2">18.</span> Remove at the End</h2>
 <div class="outline-text-2" id="text-18">
 <script src="../assets/jquery-3.3.1.min.js"></script>
 <script src="../assets/notes.js"></script>
@@ -1867,7 +1868,7 @@ But it may depend on the service you are providing.<br />
 <div id="postamble" class="status">
 <p class="date">Date: 2025-12-05 Fri 12:00</p>
 <p class="author">Author: Damian Chrzanowski</p>
-<p class="date">Created: 2025-12-07 Sun 14:11</p>
+<p class="date">Created: 2025-12-07 Sun 19:43</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

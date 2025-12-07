@@ -10,50 +10,49 @@
 [[file:index.org][Home Page]]
 
 * Exam Question Bank
-** Questions
-*** ERD
-   - (4x) Draw an ERD
-   - Phases of DB design
-   - DB Modelling
-*** SQL
-   - (2x) Create SQL Tables
-   - (3x) Construct SQL Queries based on Tables in an Appendix
-   - (2) Construct an SQL Join Query
-   - Construct an SQL Join Query with Group By
-   - Diff between Functions and Procedures
-   - (2x) Write a Function
-   - (3x) Write a Procedure
-     - (2x) with transaction (~declare continue handler for sqlexception~ is necessary here)
-   - Write a Trigger
-   - Write an Event
-   - Write an Index
-   - (2x) Subqueries vs Joins
-   - (3x) SQL Injection, what is it?
-     - (2x) 3 ways to protext
-     - (2x) Explain two different types
-   - (1x) Dynamic SQL
-*** JDBC/JPA
-   - (3x) Analyse a bit of JPA code, draw out tables and columns
-   - (4x) Explain Object Relational Paradigm Mismatch.
-     - (1x) Focus on 5 problems
-     - (3x) Focus on Associations (how JPA resolves this?)
-   - (2x) Compare JPA and JDBC
-   - Create a JPA EntityManager
-     - Save Entity
-     - Update Entity
-     - Delete Entity
-*** Concurrency
-   - Preventing Deadlock. Four levels of isolation.
-   - (2x) Four common concurrency problems
-     - Data integrity
-     - Locking behaviour
-     - Concurrency elimination vs Performance
-*** NoSQL
-   - (2x) ACID vs BASE. Trade-offs with regards to the CAP Theorem.
-   - (3x) What is NoSQL and provide 4 types that exist with examples on where they are used and what are the names of these technologies
-   - (1x) Denormalization
-   - (1x) What is Big Data
-     - Explain 4Vs of Big Data
+** ERD
+  - (4x) Draw an ERD
+  - Phases of DB design
+  - DB Modelling
+** SQL
+  - (2x) Create SQL Tables
+  - (3x) Construct SQL Queries based on Tables in an Appendix
+  - (2) Construct an SQL Join Query
+  - Construct an SQL Join Query with Group By
+  - Diff between Functions and Procedures
+  - (2x) Write a Function
+  - (3x) Write a Procedure
+    - (2x) with transaction (~declare continue handler for sqlexception~ is necessary here)
+  - Write a Trigger
+  - Write an Event
+  - Write an Index
+  - (2x) Subqueries vs Joins
+  - (3x) SQL Injection, what is it?
+    - (2x) 3 ways to protext
+    - (2x) Explain two different types
+  - (1x) Dynamic SQL
+** JDBC/JPA
+  - (3x) Analyse a bit of JPA code, draw out tables and columns
+  - (4x) Explain Object Relational Paradigm Mismatch.
+    - (1x) Focus on 5 problems
+    - (3x) Focus on Associations (how JPA resolves this?)
+  - (2x) Compare JPA and JDBC
+  - Create a JPA EntityManager
+    - Save Entity
+    - Update Entity
+    - Delete Entity
+** Concurrency
+  - Preventing Deadlock. Four levels of isolation.
+  - (2x) Four common concurrency problems
+    - Data integrity
+    - Locking behaviour
+    - Concurrency elimination vs Performance
+** NoSQL
+  - (2x) ACID vs BASE. Trade-offs with regards to the CAP Theorem.
+  - (3x) What is NoSQL and provide 4 types that exist with examples on where they are used and what are the names of these technologies
+  - (1x) Denormalization
+  - (1x) What is Big Data
+    - Explain 4Vs of Big Data
 * DML/DDL
 ** Data Manipulation Language
    - ~select/insert/delete/update~ into tables, basically
@@ -518,7 +517,9 @@
 
    #+end_src
 ** Blind SQL injection
-   - Relies on server responses to deduce the inner workings.
+   - Relies on server responses to deduce the inner workings. Usually uses timings or boolean response.
+   - One can start with simple queries "Does the first character of the admin’s password hash start with A". Then based on the timing we may know if it is a yes or a no. And so on so forth.
+   - Does the user admin exist?
 ** Second-Order SQL injection
    - A user may insert an SQL as some sort of a field. That field gets then inserted into a database completely unsanitised.
    - Later on, this bit of SQL code may get executed during the retrieval (say looking at a profile page, but the address is the actual SQL).
@@ -677,13 +678,13 @@
 ** Concurrency
 *** Four types of problems
 **** Dirty Reads
-     - Accessing data that hasn't been committed yet.
+     - Accessing data that hasn't been committed yet. It's even worse when the first transaction rolls back, so the other transaction read something that shouldn't even exist.
 **** Lost Updates
      - Occurs when two transactions select the same row and update it independently based on the original value. The later update will overwrite the earlier update.
 **** Nonrepeatable Reads
      - Occurs when two select statements read data while a transaction is taking place (which could happen during a single SP). The first select may have a different value than the next one if the transaction took place in-between.
 **** Phantom Reads
-     - A transaction re-runs a query and gets different results, another committed transaction has inserted additional rows that satisfy the search criteria.
+     - A transaction re-runs a query and gets different results that operate on multiple rows, another committed transaction has inserted additional rows or deleted some row that satisfy the search criteria. So now when the first transaction runs the query again it gets a different result.
 *** Solution
     - Use ~SET TRANSACTION ISOLATION LEVEL~
     [[file:images/Exam_Prep/2025-12-06_18-20-13_screenshot.png]]
