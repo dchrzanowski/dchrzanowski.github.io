@@ -124,13 +124,13 @@
 ** Like
    | Like Operator | Description                                       |
    |---------------+---------------------------------------------------|
-   | LIKE 'a%'     | Starts with a                                     |
-   | LIKE '%a'     | Ends with a                                       |
-   | LIKE '%or%'   | Has or at any position                            |
-   | LIKE '_r%'    | Has an 'r' at the second position                 |
-   | LIKE 'a_%'    | Starts with a, and has at least 2 chars in length |
-   | LIKE 'a__%'   | Starts with a, and has at least 3 chars in length |
-   | LIKE 'a%o'    | Starts with a and ends with o                     |
+   | ~LIKE 'a%'~   | Starts with a                                     |
+   | ~LIKE '%a'~   | Ends with a                                       |
+   | ~LIKE '%or%'~ | Has or at any position                            |
+   | ~LIKE '_r%'~  | Has an 'r' at the second position                 |
+   | ~LIKE 'a_%'~  | Starts with a, and has at least 2 chars in length |
+   | ~LIKE 'a__%'~ | Starts with a, and has at least 3 chars in length |
+   | ~LIKE 'a%o'~  | Starts with a and ends with o                     |
    #+begin_src sql
      select col_name
      from table_name
@@ -326,6 +326,21 @@
      CALL update_invoice_credit_total(5001, @update_count);  -- call the procedure
      select @update_count; -- check output
    #+end_src
+* Dynamic SQL
+  - It works like prepared statements in Java
+    #+begin_src sql
+      delimiter //
+
+      CREATE PROCEDURE dynamic(IN tbl CHAR(64), IN col CHAR(64))
+      BEGIN
+          SET @s = CONCAT('SELECT ',col,' FROM ',tbl );
+          PREPARE stmt FROM @s;
+          EXECUTE stmt;
+          DEALLOCATE PREPARE stmt;
+      END //
+
+      delimiter ;
+    #+end_src
 * Views
 ** Benefits
    - Design Independence: limit exposure of tables' data, also if the underlying table changes, all we have to do is update the View and the end-user is unaware of any changes
