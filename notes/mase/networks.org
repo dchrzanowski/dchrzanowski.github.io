@@ -386,7 +386,7 @@
     - Checksum: error-checking for header+data.
     - Options: e.g., MSS, window scale, timestamps.
     - Data: upper-layer data (e.g., HTTP).
-      #+begin_verse
+    #+begin_src markdown
     0                   15                  31
     +-------------------+-------------------+
     |    Source Port    |  Destination Port |
@@ -406,12 +406,12 @@
     |                 Data                  |
     |              (Payload)                |
     +---------------------------------------+
-      #+end_verse
+    #+end_src
 *** UDP Datagram
     - Length: header + data length in bytes.
     - Checksum: covers header+data (optional in IPv4, mandatory in IPv6).
     - Data: upper-layer data (e.g., DNS, VoIP).
-      #+begin_verse
+      #+begin_src markdown
     0                   15                  31
     +-------------------+-------------------+
     |    Source Port    |  Destination Port |
@@ -421,7 +421,7 @@
     |                 Data                  |
     |              (Payload)                |
     +---------------------------------------+
-      #+end_verse
+      #+end_src
 *** IPv4 Packet
     - Version: 4 for IPv4.
     - IHL: Internet Header Length (size of IP header).
@@ -434,7 +434,7 @@
     - Source/Destination IP: addresses.
     - Options: rarely used.
     - Data: typically a TCP/UDP segment (or ICMP, etc.).
-      #+begin_verse
+      #+begin_src markdown
     0                   7                   15                  23                  31
     +-------+-------+-------+---------------+-------------------+-------------------+
     |Version|  IHL  | DSCP  |     ECN       |      Total Length                     |
@@ -452,14 +452,14 @@
     |                                   Data                                        |
     |                               (Payload)                                       |
     +-------------------------------------------------------------------------------+
-      #+end_verse
+      #+end_src
 *** Ethernet Frame
     - Destination MAC (6B)
     - Source MAC (6B)
     - EtherType (2B): e.g., 0x0800 = IPv4, 0x86DD = IPv6, 0x0806 = ARP.
     - Payload: usually 46–1500 bytes (may include padding).
     - FCS: Frame Check Sequence (CRC-32, 4B) for error detection.
-      #+begin_verse
+      #+begin_src markdown
        (Preamble + SFD)   [not usually shown in logical diagrams]
     +---------+-------------------+-------------------+---------+---------------+---------+
     |Preamble | Destination MAC   |   Source MAC      | EtherType / Length      |   ...   |
@@ -474,7 +474,7 @@
                                                    |       FCS (CRC)      |
                                                    |        4 bytes       |
                                                    +----------------------+
-      #+end_verse
+      #+end_src
 ** End-to-End delay calculation between switch R1 and host R2
    - Assuming there is no propagation delay, no process delay and no queuing delay it is TOTAL DELAY = L/R1 + L/R2
 ** Sequence of frame transmission in a IEEE 802.11 wireless lan while channel is busy
