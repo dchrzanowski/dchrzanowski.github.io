@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2025-12-07 Sun 14:12 -->
+<!-- 2025-12-10 Wed 18:31 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Networks</title>
@@ -204,18 +204,1500 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org64d978f">1. Assignment</a></li>
-<li><a href="#org25d2ed6">2. Exams (answer 3 of 4)</a></li>
-<li><a href="#orgeb4934f">3. Remove at the End</a></li>
+<li><a href="#orga0372cf">1. Solutions to Questions</a>
+<ul>
+<li><a href="#orge0c6878">1.1. Use Dijkstra to calculate the shortest path</a></li>
+<li><a href="#orgd3fa3e6">1.2. Host A sends 5 data segments to Host B. How many packets are sent altogether if packet 2 is lost, but eventually all arrive? Show behaviour, segments sent and sequence breakdown for GBN, SR, TCP</a></li>
+<li><a href="#org255e33b">1.3. List 3 types of multimedia synchronizations</a></li>
+<li><a href="#org24a4368">1.4. Describe sending an Email with details across the stack</a></li>
+<li><a href="#orgf6e33a1">1.5. Diff between quality of experience and quality of service</a></li>
+<li><a href="#orgb486167">1.6. What is FCAPS? and NETCONF</a></li>
+<li><a href="#org98c3c64">1.7. Calculate distance tables after a link cost has changed</a></li>
+<li><a href="#orge68b728">1.8. NAT traversal problem</a></li>
+<li><a href="#org0717524">1.9. DHCP discovery</a></li>
+<li><a href="#orgafef8c6">1.10. Difference between forwarding and routing</a></li>
+<li><a href="#orgab255fd">1.11. How are routing decisions made in an MPLS-enabled network? Compare to others.</a></li>
+<li><a href="#org17133ea">1.12. Contents of different containers</a></li>
+<li><a href="#orgd29c3c5">1.13. End-to-End delay calculation between switch R1 and host R2</a></li>
+<li><a href="#org6f41606">1.14. Sequence of frame transmission in a IEEE 802.11 wireless lan while channel is busy</a></li>
+<li><a href="#org84b8d92">1.15. For a certain amount of hops (4) at a certain bps (9600) and propagation delay (0.001s), a message of 3200 bits</a></li>
+</ul>
+</li>
+<li><a href="#org86df27e">2. Repeated Qs</a>
+<ul>
+<li><a href="#org6bdd4de">2.1. Always There</a></li>
+<li><a href="#org90ccc64">2.2. Nearly always there</a></li>
+</ul>
+</li>
+<li><a href="#org08ab013">3. Exam Question Bank</a>
+<ul>
+<li><a href="#orgae3ad7b">3.1. Seems that we have about 28 questions that repeat</a></li>
+<li><a href="#orgea5afd8">3.2. Networking Calculations, Delays, Etc.</a></li>
+<li><a href="#org08637d1">3.3. Networking Basics</a></li>
+</ul>
+</li>
+<li><a href="#org2e45e9f">4. Lecturer's Tips Exams (answer 3 of 4)</a></li>
+<li><a href="#orgb27ddf7">5. Working out Hosts on a Network</a></li>
+<li><a href="#org9a41c16">6. Terminology</a></li>
+<li><a href="#org38f0e6a">7. Communication Networks and The Internet</a>
+<ul>
+<li><a href="#org949de12">7.1. Internet</a></li>
+<li><a href="#org065c9aa">7.2. Packet Switches</a></li>
+<li><a href="#org3e97c8c">7.3. Access networks</a></li>
+<li><a href="#orgbba20d8">7.4. Network Core</a></li>
+<li><a href="#org617a3d7">7.5. Structure of the Internet</a></li>
+<li><a href="#org8ca7ff5">7.6. Delay, loss and throughput</a></li>
+<li><a href="#org53e1bfa">7.7. Response Time (RTT)</a></li>
+</ul>
+</li>
+<li><a href="#org3176c6c">8. Network Model</a>
+<ul>
+<li><a href="#org683ecd2">8.1. Why Layering</a></li>
+<li><a href="#org9322b19">8.2. Example of Encapsulation and the Travel of a Message</a></li>
+<li><a href="#org366d4d0">8.3. Application Layer (7)</a></li>
+<li><a href="#orgcbe6ec5">8.4. Presentation Layer (6)</a></li>
+<li><a href="#orgf929949">8.5. Session Layer (5)</a></li>
+<li><a href="#orgf721c96">8.6. Transport Layer (4)</a></li>
+<li><a href="#org9434dfe">8.7. Network Layer (3)</a></li>
+<li><a href="#org1b05cdd">8.8. Data Link Layer (2)</a></li>
+<li><a href="#org35ea918">8.9. Physical Layer (1)</a></li>
+</ul>
+</li>
+<li><a href="#org1facbcd">9. LAN, WAN, RAN, Wireless (5G)</a></li>
+<li><a href="#orgf337349">10. Multimedia Networking</a></li>
+<li><a href="#org33736f4">11. QoS, QoS Support, QoE</a></li>
+<li><a href="#org1b7debb">12. Network Congestion</a></li>
+<li><a href="#org07095bc">13. Network Management, Traffic Engineering, Network-Application Performance</a></li>
+<li><a href="#orgc9de3ec">14. Remove at the End</a></li>
 </ul>
 </div>
 </div>
 <p>
 <a href="index.html">Home Page</a>
 </p>
-<div id="outline-container-org64d978f" class="outline-2">
-<h2 id="org64d978f"><span class="section-number-2">1.</span> Assignment</h2>
+<div id="outline-container-orga0372cf" class="outline-2">
+<h2 id="orga0372cf"><span class="section-number-2">1.</span> Solutions to Questions</h2>
 <div class="outline-text-2" id="text-1">
+</div>
+<div id="outline-container-orge0c6878" class="outline-3">
+<h3 id="orge0c6878"><span class="section-number-3">1.1.</span> Use Dijkstra to calculate the shortest path</h3>
+<div class="outline-text-3" id="text-1-1">
+
+<div id="orgcc2272d" class="figure">
+<p><img src="images/Solutions_to_Questions/2025-12-10_09-36-24_screenshot.png" alt="2025-12-10_09-36-24_screenshot.png" />
+</p>
+</div>
+</div>
+<div id="outline-container-org080e990" class="outline-4">
+<h4 id="org080e990">Current best !means visited</h4>
+<div class="outline-text-4" id="text-org080e990">
+<ul class="org-ul">
+<li>a!: o &gt; a (2)</li>
+<li>b!: o &gt; a &gt; b (4)</li>
+<li>c!: o &gt; c (4)</li>
+<li>d!: o &gt; a &gt; b &gt; d (8)</li>
+<li>e!: o &gt; a &gt; b &gt; e (7)</li>
+<li>f!: o &gt; a &gt; f (14)</li>
+<li>t!: o &gt; a &gt; b &gt; d &gt; t (13)</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org7a434b2" class="outline-4">
+<h4 id="org7a434b2">Step 1</h4>
+<div class="outline-text-4" id="text-org7a434b2">
+<ul class="org-ul">
+<li>Start node o</li>
+<li>o = 0</li>
+<li>a = 2</li>
+<li>b = 5</li>
+<li>c = 4</li>
+<li>visited = {}</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgea2e938" class="outline-4">
+<h4 id="orgea2e938">Step 2</h4>
+<div class="outline-text-4" id="text-orgea2e938">
+<ul class="org-ul">
+<li>Start node a (next shortest, cost 2)</li>
+<li>a = 2 (stays the same)</li>
+<li>b = 4 (shorter than before)</li>
+<li>f = 2 + 12 = 14</li>
+<li>d = 2 + 7 = 9</li>
+<li>c = 4</li>
+<li>e = inf</li>
+<li>t = inf</li>
+<li>visited = {a}</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org82e8ef7" class="outline-4">
+<h4 id="org82e8ef7">Step 3</h4>
+<div class="outline-text-4" id="text-org82e8ef7">
+<ul class="org-ul">
+<li>Start node c (next shortest, cost 4)</li>
+<li>update:</li>
+<li>b = 4 (discard 5, no change)</li>
+<li>e = 4 + 4 = 8</li>
+<li>visited = {a, c}</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org4f41cd0" class="outline-4">
+<h4 id="org4f41cd0">Step 4</h4>
+<div class="outline-text-4" id="text-org4f41cd0">
+<ul class="org-ul">
+<li>Start node b (cost 4)</li>
+<li>update</li>
+<li>d = 8 (better 9)</li>
+<li>e = 7 (better than 8)</li>
+<li>visited = {a,c,b}</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org85827d7" class="outline-4">
+<h4 id="org85827d7">Step 5</h4>
+<div class="outline-text-4" id="text-org85827d7">
+<ul class="org-ul">
+<li>Start node e (cost 7)</li>
+<li>d = 8 (no change)</li>
+<li>t = 14</li>
+<li>visited = {a,c,b,e}</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org66db463" class="outline-4">
+<h4 id="org66db463">Step 6</h4>
+<div class="outline-text-4" id="text-org66db463">
+<ul class="org-ul">
+<li>Start node d (cost 8)</li>
+<li>t = 13 (better, update path)</li>
+<li>visited = {a,c,b,e,d}</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgb57a198" class="outline-4">
+<h4 id="orgb57a198">Step 7</h4>
+<div class="outline-text-4" id="text-orgb57a198">
+<ul class="org-ul">
+<li>Start node t (cost 13)</li>
+<li>f = 16 (worse)</li>
+<li>visited = {a,c,b,e,d,t}</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgd4dd1fb" class="outline-4">
+<h4 id="orgd4dd1fb">Step 8</h4>
+<div class="outline-text-4" id="text-orgd4dd1fb">
+<ul class="org-ul">
+<li>Start node f (cost 13)</li>
+<li>worse to all neighbours</li>
+<li>visited = {a,c,b,e,d,t,f}</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-orgd3fa3e6" class="outline-3">
+<h3 id="orgd3fa3e6"><span class="section-number-3">1.2.</span> Host A sends 5 data segments to Host B. How many packets are sent altogether if packet 2 is lost, but eventually all arrive? Show behaviour, segments sent and sequence breakdown for GBN, SR, TCP</h3>
+<div class="outline-text-3" id="text-1-2">
+</div>
+<div id="outline-container-orgf156a22" class="outline-4">
+<h4 id="orgf156a22">GBN</h4>
+<div class="outline-text-4" id="text-orgf156a22">
+<ul class="org-ul">
+<li>Sender sends: 1, 2, 3, 4, 5</li>
+<li>Segment 2 is lost</li>
+<li>ACK cumulative:
+<ul class="org-ul">
+<li>Sends ACK1 for packet 1, and more ACK1s for packets 3, 4 and 5 (seg 1 is missing)</li>
+</ul></li>
+<li>Sender times out on Seg 2</li>
+<li>Sender re-transmits seg 2 3 4 5</li>
+<li>Receiver sends ack2-3-4-5</li>
+<li>Sequence is: 1, 2, 3, 4, 5, 2, 3, 4, 5</li>
+<li>Total packets from sender 5 + 4 = 9, total packets from receiver 4 + 4 = 8.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org38bb7fa" class="outline-4">
+<h4 id="org38bb7fa">SR</h4>
+<div class="outline-text-4" id="text-org38bb7fa">
+<ul class="org-ul">
+<li>Sender sends: 1, 2, 3, 4, 5</li>
+<li>Sender sends individual ACKs for each of received segments = 1, 3, 4, 5</li>
+<li>Receiver receives: ACK1 3 4 5, ACK 2 times out</li>
+<li>Receiver re-sends Seg 2</li>
+<li>Sequence is: 1, 2, 3, 4, 5, 2</li>
+<li>Total sent packets = 6</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org059f8a7" class="outline-4">
+<h4 id="org059f8a7">TCP (no delayed ACK, cumulative ACK)</h4>
+<div class="outline-text-4" id="text-org059f8a7">
+<ul class="org-ul">
+<li>Sender sends: 1, 2, 3, 4, 5</li>
+<li>Receiver ACKs instantly for each segment
+<ul class="org-ul">
+<li>ACK1 for seg 1</li>
+<li>Segment 2 is lost</li>
+<li>For segments 3 4 5 the receiver send ACK2 3 times and thus triggers a Fast Retransmit</li>
+<li>Receiver, however, stores 3 4 5</li>
+</ul></li>
+<li>Sender, triggered by 3 duplicate ACKs re-sends seg 2</li>
+<li>Receiver then responds with ACK6</li>
+<li>Sequence is: 1, 2, 3, 4, 5</li>
+<li>Fast-retransmit: 2</li>
+<li>Total sent packets = 6</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-org255e33b" class="outline-3">
+<h3 id="org255e33b"><span class="section-number-3">1.3.</span> List 3 types of multimedia synchronizations</h3>
+<div class="outline-text-3" id="text-1-3">
+</div>
+<div id="outline-container-org8af532c" class="outline-4">
+<h4 id="org8af532c">Intra-media Synchronization (internal synchronization)</h4>
+<div class="outline-text-4" id="text-org8af532c">
+<ul class="org-ul">
+<li>Ensuring video frames are shown at the correct frame rate</li>
+<li>Ensuring audio samples are played sequentially without gaps or overlaps</li>
+<li>Goal: maintain correct timing so that playback is smooth and continuous</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org0b798c6" class="outline-4">
+<h4 id="org0b798c6">Inter-media Synchronization (lip-sync)</h4>
+<div class="outline-text-4" id="text-org0b798c6">
+<ul class="org-ul">
+<li>Matching audio with video</li>
+<li>Synchronizing background audio with animation</li>
+<li>Goal: maintain alignment between multiple streams (audio + video, video + text, etc)</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org3bcce15" class="outline-4">
+<h4 id="org3bcce15">Group synchronization</h4>
+<div class="outline-text-4" id="text-org3bcce15">
+<ul class="org-ul">
+<li>Ensuring all participants of a multimedia playback receive the data at the same time, so that all experience it simultaneously</li>
+<li>Synchronizing slides or media during a live video conference</li>
+<li>Goal: Ensure consistent playback across different users</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-org24a4368" class="outline-3">
+<h3 id="org24a4368"><span class="section-number-3">1.4.</span> Describe sending an Email with details across the stack</h3>
+<div class="outline-text-3" id="text-1-4">
+</div>
+<div id="outline-container-orge168d66" class="outline-4">
+<h4 id="orge168d66">Message from alice@tus.edu to bob@gmit.edu</h4>
+</div>
+<div id="outline-container-orgdf7246e" class="outline-4">
+<h4 id="orgdf7246e">Alice (layer 7)</h4>
+<div class="outline-text-4" id="text-orgdf7246e">
+<ul class="org-ul">
+<li>Uses a UA to compose an email: From: xxx, To: xxx, subject: xxx</li>
+<li>Alice clicks send and the UA creates a message in SMTP format (header + body)</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org1739177" class="outline-4">
+<h4 id="org1739177">Alice (layer 6)</h4>
+<div class="outline-text-4" id="text-org1739177">
+<ul class="org-ul">
+<li>Character encoding, mime structure</li>
+<li>TLS handshake</li>
+<li>Encrypts the data before sending</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgcfe3525" class="outline-4">
+<h4 id="orgcfe3525">Alice (layer 5)</h4>
+<div class="outline-text-4" id="text-orgcfe3525">
+<ul class="org-ul">
+<li>Establish, manage and terminate the SMTP session</li>
+<li>STARTTLS (if needed)</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org2e43530" class="outline-4">
+<h4 id="org2e43530">Alice (layer 4)</h4>
+<div class="outline-text-4" id="text-org2e43530">
+<ul class="org-ul">
+<li>Message split up into TCP segments</li>
+<li>TCP three-way-handshake with the mail server: syn, syn-ack, ack</li>
+<li>Flow control, sequencing, re-transmission and error checking</li>
+<li>When done, TCP connection close</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org3826980" class="outline-4">
+<h4 id="org3826980">Alice (layer 3)</h4>
+<div class="outline-text-4" id="text-org3826980">
+<ul class="org-ul">
+<li>IP packets</li>
+<li>Source IP (alice's IP, could be NATed)</li>
+<li>Destination IP -&gt; mailserver</li>
+<li>Alice's device passes TCP segments to IP</li>
+<li>Each segment is encapsulated in an IP packet: IP header: src IP, dest IP, TTL, protocol (TCP), etc</li>
+<li>Routing:
+<ul class="org-ul">
+<li>Packet is sent through the default gateway (first hop, i.e. the first router)</li>
+<li>Router checks the destination IP, consults the routing table and forwards the packet to mailserver</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgacf3469" class="outline-4">
+<h4 id="orgacf3469">Alice (layer 2)</h4>
+<div class="outline-text-4" id="text-orgacf3469">
+<ul class="org-ul">
+<li>Ethernet, WiFi</li>
+<li>MAC addresses</li>
+<li>Alice's host knows default gateway IP</li>
+<li>It uses ARP to find the gateway's MAC if not in ARP cache:
+<ul class="org-ul">
+<li>ARP request (broadcast): "Who has gateway IP? Tells on broadcast"</li>
+<li>ARP reply (unicast): "Gateway's MAC is AA:BB:CC:DD:EE:FF"</li>
+</ul></li>
+<li>Alice's NIC encapsulates each IP packet in a Layer 2 frame:
+<ul class="org-ul">
+<li>Ethernet header: dest MAC = router MAC, src = Alice's MAC.</li>
+<li>Frame type indicates IPv4.</li>
+</ul></li>
+<li>Frame is sent across the LAN to the router</li>
+<li>At each hop the frame is stripped and re-encapsulated with new source/dest MAC for that link.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgce6b8ad" class="outline-4">
+<h4 id="orgce6b8ad">Alice (layer 1)</h4>
+<div class="outline-text-4" id="text-orgce6b8ad">
+<ul class="org-ul">
+<li>Frames are turned into bits and sent over a medium (copper, optical, radio, etc.)</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgb7568a7" class="outline-4">
+<h4 id="orgb7568a7">SMTP server @ tus.edu (Alice's mail server)</h4>
+<div class="outline-text-4" id="text-orgb7568a7">
+<ul class="org-ul">
+<li>Re-assemble the data
+<ul class="org-ul">
+<li>L1: signals &gt; bits</li>
+<li>L2: bits &gt; frames &gt; strip L2 header</li>
+<li>L3: frames &gt; IP packets &gt; IP header check</li>
+<li>L4: IP packets &gt; TCP segments</li>
+<li>L5-L7: SMTP server processes the session and email</li>
+</ul></li>
+<li>App layer at the server
+<ul class="org-ul">
+<li>Receive the SMTP conversation from Alice's UA</li>
+<li>Store/queue the message</li>
+<li>Now needs to deliver the message onward to gmit.edu mail server</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org546b468" class="outline-4">
+<h4 id="org546b468">SMTP server @ tus.edu (Alice's mail server)</h4>
+<div class="outline-text-4" id="text-org546b468">
+<ul class="org-ul">
+<li>The mail transfer agent (MTA) queries the DNS for MX gmit.edu</li>
+<li>MTA opens an SMTP session with mail.gmit.edu</li>
+<li>Sends message MAIL FROM: alice, RCPT TO: bob, DATA: &#x2026;.</li>
+<li>Same layer logic as before with regards to TCP -&gt; IP -&gt; Frames</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org8b27a04" class="outline-4">
+<h4 id="org8b27a04">SMTP server @ gmit.edu (Bob's server)</h4>
+<div class="outline-text-4" id="text-org8b27a04">
+<ul class="org-ul">
+<li>L1 to L7 as before, Bob's server receives the message</li>
+<li>The server places the new message in Bob's inbox</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org0fc473a" class="outline-4">
+<h4 id="org0fc473a">Bob receives mail</h4>
+<div class="outline-text-4" id="text-org0fc473a">
+<ul class="org-ul">
+<li>Bob uses a UA</li>
+<li>Using either POP3 or IMAP bob checks his email with his username/password combination</li>
+<li>UA requests a list of messages</li>
+<li>UA sees a new message and downloads it</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-orgf6e33a1" class="outline-3">
+<h3 id="orgf6e33a1"><span class="section-number-3">1.5.</span> Diff between quality of experience and quality of service</h3>
+<div class="outline-text-3" id="text-1-5">
+</div>
+<div id="outline-container-orga64b564" class="outline-4">
+<h4 id="orga64b564">QoS</h4>
+<div class="outline-text-4" id="text-orga64b564">
+<ul class="org-ul">
+<li>Refers to <b>network-level performance guarantee</b> such as delay, loss, jitter, throughput, scheduling, priority handling, congestion control and resource allocation</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org4aeea07" class="outline-4">
+<h4 id="org4aeea07">QoE</h4>
+<div class="outline-text-4" id="text-org4aeea07">
+<ul class="org-ul">
+<li>Refers to <b>what the end user actually perceives</b>, which depends not only on the network metrics but also on the video compression, playout buffering, error concealment and human tolerance patterns</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgd67dba6" class="outline-4">
+<h4 id="orgd67dba6">In terms of Video codecs</h4>
+<div class="outline-text-4" id="text-orgd67dba6">
+</div>
+<ul class="org-ul">
+<li><a id="org4912e1b"></a>QoS<br />
+<div class="outline-text-5" id="text-org4912e1b">
+<ul class="org-ul">
+<li>The coded determines the bitrate required</li>
+<li>Higher bitrate require more bandwidth, if bandwidth is not sufficient then we get: packet loss, packet queue, delay increase.</li>
+<li>Coded bitrate affects network load and thus the network's ability to deliver QoS metric</li>
+</ul>
+</div>
+</li>
+<li><a id="org6ebac0a"></a>QoE<br />
+<div class="outline-text-5" id="text-org6ebac0a">
+<ul class="org-ul">
+<li>Codec determines the video quality seen by the viewer: sharpness, smoothness, aftifacts</li>
+<li>The higher the compression the higher the distortions</li>
+<li>Adaptive streaming adjusts the bitrate to the current transfer rate to maintain a good experience for the end user</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div id="outline-container-org12e3dd7" class="outline-4">
+<h4 id="org12e3dd7">In terms of Transmission Effects: Delay, Loss, Jitter</h4>
+<div class="outline-text-4" id="text-org12e3dd7">
+</div>
+<ul class="org-ul">
+<li><a id="org3cd1221"></a>QoS<br />
+<div class="outline-text-5" id="text-org3cd1221">
+<ul class="org-ul">
+<li>Objective and Measurable metrics</li>
+<li>E2E delay: time it takes for packets to travel, the longer the worse</li>
+<li>Jitter: variation in packet arrival times, buffering partially fixes that</li>
+<li>Packet loss: packets dropped due to congestion</li>
+<li>Throughput: amount of data successfully delivered</li>
+<li>Scheduling and priority: mechanisms like FIFO and priority queuing and weighted fair queuing impact multimedia flows</li>
+</ul>
+</div>
+</li>
+<li><a id="orga64e284"></a>QoE<br />
+<div class="outline-text-5" id="text-orga64e284">
+<ul class="org-ul">
+<li>User's perception depends on how the application handles imparements</li>
+<li>Delay: Large delays cause late audio/video frames, lip-sync problems or complete interruptions</li>
+<li>Jitter: Causes uneven playback unless smoothed with a buffer</li>
+<li>Loss: Visible artifacts or missing frames, applications use <b>error concealment</b> or <b>interpolation</b> to hide these effects</li>
+<li>Buffering: Users may see freezing or stalling during video streaming</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div id="outline-container-orgd6795df" class="outline-4">
+<h4 id="orgd6795df">Evaluation</h4>
+<div class="outline-text-4" id="text-orgd6795df">
+</div>
+<ul class="org-ul">
+<li><a id="orgae3a67d"></a>QoS (Network centered)<br />
+<div class="outline-text-5" id="text-orgae3a67d">
+<ul class="org-ul">
+<li>Measuring packet delay</li>
+<li>Loss rates</li>
+<li>Jitter statistics</li>
+<li>Throughput measurements</li>
+<li>Router queue behaviour</li>
+<li>Any of the above are objective and can be measured</li>
+</ul>
+</div>
+</li>
+<li><a id="orgcdf9ace"></a>QoE (User centric)<br />
+<div class="outline-text-5" id="text-orgcdf9ace">
+<ul class="org-ul">
+<li>Depends on the application behaviour and human perception
+<ul class="org-ul">
+<li>Video quality</li>
+<li>Smoothness (no freezing)</li>
+<li>Audio-video synchronization</li>
+<li>Subjective viewing satisfaction</li>
+</ul></li>
+<li>Not directly measured on the network, but depends on the techniques applied by the application
+<ul class="org-ul">
+<li>Playout buffering</li>
+<li>Adaptive Bitrate (ABR) control</li>
+<li>Error concealment</li>
+<li>Codec choice</li>
+<li>Compression level</li>
+<li>Pre-recorded vs live-stream characteristics</li>
+<li>Human tolerance to impairments</li>
+</ul></li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div id="outline-container-org592e7cc" class="outline-4">
+<h4 id="org592e7cc">Summary</h4>
+<div class="outline-text-4" id="text-org592e7cc">
+<ul class="org-ul">
+<li>QoE involves human perception and QoS involves measurable network-level parameters.</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-orgb486167" class="outline-3">
+<h3 id="orgb486167"><span class="section-number-3">1.6.</span> What is FCAPS? and NETCONF</h3>
+<div class="outline-text-3" id="text-1-6">
+</div>
+<div id="outline-container-orgf392f0a" class="outline-4">
+<h4 id="orgf392f0a">NETCONF</h4>
+<div class="outline-text-4" id="text-orgf392f0a">
+<ul class="org-ul">
+<li>Network Configuration Protocol is used to install, modify and delete configuration of network devices</li>
+<li>Client-server model</li>
+<li>RPC based</li>
+<li>Usually runs over SSH</li>
+<li>XML based communication</li>
+<li>NETCONF sits within the (C) of FCAPS as in: configuration
+<ul class="org-ul">
+<li>Albeit NETCONF can indirectly support: Fault Management (diagnostics retrieval), Performance Management (reading counters or operational state), Security Management (updating configs to more secure ones, controlling access)</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org4a340e3" class="outline-4">
+<h4 id="org4a340e3">What is FCAPS?</h4>
+<div class="outline-text-4" id="text-org4a340e3">
+<ul class="org-ul">
+<li>It is a standard framework use to describe five core areas of network management</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orge210d56" class="outline-4">
+<h4 id="orge210d56">(F) Fault Management</h4>
+<div class="outline-text-4" id="text-orge210d56">
+<ul class="org-ul">
+<li>Detect, isolate and correct fault in the network.</li>
+<li>Alarm detection, event logging, error detection, rapid fault recovery</li>
+<li>Minimise downtime</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgf0e51e5" class="outline-4">
+<h4 id="orgf0e51e5">(C) Configuration Management</h4>
+<div class="outline-text-4" id="text-orgf0e51e5">
+<ul class="org-ul">
+<li>Device setup, configuration backups, change tracking, inventory of hardware, ensuring correct device configuration (setup)</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org0d45fe4" class="outline-4">
+<h4 id="org0d45fe4">(A) Accounting Management</h4>
+<div class="outline-text-4" id="text-org0d45fe4">
+<ul class="org-ul">
+<li>Measure and record usage of network resources for: billing, auditing or cost allocation. Tracks per-user bandwidth consumption.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgfea54e8" class="outline-4">
+<h4 id="orgfea54e8">(P) Performance Management</h4>
+<div class="outline-text-4" id="text-orgfea54e8">
+<ul class="org-ul">
+<li>Ensure the network is delivering expected performance levels.</li>
+<li>Monitor: throughput, delay, jitter, packet loss and utilisation bottlenecks</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgfc4c9be" class="outline-4">
+<h4 id="orgfc4c9be">(S) Security Management</h4>
+<div class="outline-text-4" id="text-orgfc4c9be">
+<ul class="org-ul">
+<li>Protect network from unauthorised access and threats</li>
+<li>Authentication, access control, encryption, intrusion detection and enforcement of policies.</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-org98c3c64" class="outline-3">
+<h3 id="org98c3c64"><span class="section-number-3">1.7.</span> Calculate distance tables after a link cost has changed</h3>
+<div class="outline-text-3" id="text-1-7">
+
+<div id="orge051659" class="figure">
+<p><img src="images/Solutions_to_Questions/2025-12-10_12-09-43_screenshot.png" alt="2025-12-10_12-09-43_screenshot.png" />
+</p>
+</div>
+</div>
+<div id="outline-container-org68e9ca9" class="outline-4">
+<h4 id="org68e9ca9">3a</h4>
+<div class="outline-text-4" id="text-org68e9ca9">
+</div>
+<ul class="org-ul">
+<li><a id="org379bf23"></a>Original<br />
+<div class="outline-text-5" id="text-org379bf23">
+<ul class="org-ul">
+<li>x &lt;&gt; y = 3</li>
+<li>x &lt;&gt; z = 50</li>
+<li>z &lt;&gt; x = 1</li>
+<li>x table:
+<ul class="org-ul">
+<li>to x = 0</li>
+<li>to y = 3</li>
+<li>to z = 4 (50 or (3+1)=4 with 2 hop)</li>
+</ul></li>
+<li>y table:
+<ul class="org-ul">
+<li>to y = 0</li>
+<li>to x = 3</li>
+<li>to z = 1</li>
+</ul></li>
+<li>z table:
+<ul class="org-ul">
+<li>to z = 0</li>
+<li>to y = 1</li>
+<li>to x = 4 (better than 50)</li>
+</ul></li>
+</ul>
+</div>
+</li>
+<li><a id="org285f8d8"></a>After<br />
+<div class="outline-text-5" id="text-org285f8d8">
+<ul class="org-ul">
+<li>x &lt;&gt; y = 1 (changed, decreased, cost reduction)</li>
+<li>x &lt;&gt; z = 2 (better than 50)</li>
+<li>z &lt;&gt; x = 1</li>
+<li>x table (recomputes distance):
+<ul class="org-ul">
+<li>to x = 0</li>
+<li>to y = 1</li>
+<li><p>
+to z = 2
+</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-right" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">dest</th>
+<th scope="col" class="org-right">cost</th>
+<th scope="col" class="org-left">next hop</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">x</td>
+<td class="org-right">0</td>
+<td class="org-left">x</td>
+</tr>
+
+<tr>
+<td class="org-left">y</td>
+<td class="org-right">1</td>
+<td class="org-left">y</td>
+</tr>
+
+<tr>
+<td class="org-left">z</td>
+<td class="org-right">2</td>
+<td class="org-left">y</td>
+</tr>
+</tbody>
+</table></li>
+</ul></li>
+<li>y table (recompute distance):
+<ul class="org-ul">
+<li>to y = 0</li>
+<li>to x = 1</li>
+<li><p>
+to z = 1
+</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-right" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">dest</th>
+<th scope="col" class="org-right">cost</th>
+<th scope="col" class="org-left">next hop</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">y</td>
+<td class="org-right">0</td>
+<td class="org-left">y</td>
+</tr>
+
+<tr>
+<td class="org-left">x</td>
+<td class="org-right">1</td>
+<td class="org-left">x</td>
+</tr>
+
+<tr>
+<td class="org-left">z</td>
+<td class="org-right">1</td>
+<td class="org-left">z</td>
+</tr>
+</tbody>
+</table></li>
+</ul></li>
+<li>z table (recompute distance):
+<ul class="org-ul">
+<li>to z = 0</li>
+<li>to y = 1</li>
+<li><p>
+to x = 2 (better than 50)
+</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-right" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">dest</th>
+<th scope="col" class="org-right">cost</th>
+<th scope="col" class="org-left">next hop</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">z</td>
+<td class="org-right">0</td>
+<td class="org-left">z</td>
+</tr>
+
+<tr>
+<td class="org-left">x</td>
+<td class="org-right">2</td>
+<td class="org-left">y</td>
+</tr>
+
+<tr>
+<td class="org-left">y</td>
+<td class="org-right">1</td>
+<td class="org-left">z</td>
+</tr>
+</tbody>
+</table></li>
+</ul></li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div id="outline-container-orgb84c651" class="outline-4">
+<h4 id="orgb84c651">3b</h4>
+<div class="outline-text-4" id="text-orgb84c651">
+</div>
+<ul class="org-ul">
+<li><a id="org73326d3"></a>Original<br />
+<div class="outline-text-5" id="text-org73326d3">
+<ul class="org-ul">
+<li>x &lt;&gt; y = 3</li>
+<li>y &lt;&gt; z = 1</li>
+<li>z &lt;&gt; z = 50</li>
+<li>x table:
+<ul class="org-ul">
+<li>to x = 0</li>
+<li>to y = 3</li>
+<li>to z = 4 (50 or 4 with 2 hop)</li>
+</ul></li>
+<li>y table:
+<ul class="org-ul">
+<li>to y = 0</li>
+<li>to x = 3</li>
+<li>to z = 1</li>
+</ul></li>
+<li>z table:
+<ul class="org-ul">
+<li>to z = 0</li>
+<li>to x = 4 (or 50 with)</li>
+<li>to y = 1</li>
+</ul></li>
+</ul>
+</div>
+</li>
+<li><a id="org170d683"></a>After<br />
+<div class="outline-text-5" id="text-org170d683">
+<ul class="org-ul">
+<li>x &lt;&gt; y = 55</li>
+<li>x table (recomputes distance):
+<ul class="org-ul">
+<li>to x = 0</li>
+<li>to y = 55</li>
+<li><p>
+to z = 50 (55 + 1 is worse)
+</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-right" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">dest</th>
+<th scope="col" class="org-right">cost</th>
+<th scope="col" class="org-left">next hop</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">x</td>
+<td class="org-right">0</td>
+<td class="org-left">x</td>
+</tr>
+
+<tr>
+<td class="org-left">y</td>
+<td class="org-right">55</td>
+<td class="org-left">y</td>
+</tr>
+
+<tr>
+<td class="org-left">z</td>
+<td class="org-right">50</td>
+<td class="org-left">z</td>
+</tr>
+</tbody>
+</table></li>
+</ul></li>
+<li>y table (recompute distance):
+<ul class="org-ul">
+<li>to y = 0</li>
+<li>to x = 51 (better than 55)</li>
+<li><p>
+to z = 1
+</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-right" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">dest</th>
+<th scope="col" class="org-right">cost</th>
+<th scope="col" class="org-left">next hop</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">y</td>
+<td class="org-right">0</td>
+<td class="org-left">y</td>
+</tr>
+
+<tr>
+<td class="org-left">x</td>
+<td class="org-right">51</td>
+<td class="org-left">x</td>
+</tr>
+
+<tr>
+<td class="org-left">z</td>
+<td class="org-right">1</td>
+<td class="org-left">z</td>
+</tr>
+</tbody>
+</table></li>
+</ul></li>
+<li>z table (recompute distance):
+<ul class="org-ul">
+<li>to z = 0</li>
+<li>to y = 1</li>
+<li><p>
+to x = 50
+</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-right" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">dest</th>
+<th scope="col" class="org-right">cost</th>
+<th scope="col" class="org-left">next hop</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">z</td>
+<td class="org-right">0</td>
+<td class="org-left">z</td>
+</tr>
+
+<tr>
+<td class="org-left">y</td>
+<td class="org-right">1</td>
+<td class="org-left">y</td>
+</tr>
+
+<tr>
+<td class="org-left">x</td>
+<td class="org-right">50</td>
+<td class="org-left">x</td>
+</tr>
+</tbody>
+</table></li>
+</ul></li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orge68b728" class="outline-3">
+<h3 id="orge68b728"><span class="section-number-3">1.8.</span> NAT traversal problem</h3>
+<div class="outline-text-3" id="text-1-8">
+<ul class="org-ul">
+<li>In certain circumstance the outside world needs to know your IP to communicate with you. NAT prevents that from happening.</li>
+<li>Solution: use static open ports or UPnP (automatically requests a port to be open from the router to the outside world)</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org0717524" class="outline-3">
+<h3 id="org0717524"><span class="section-number-3">1.9.</span> DHCP discovery</h3>
+<div class="outline-text-3" id="text-1-9">
+<ul class="org-ul">
+<li>Client has no IP and no broadcast</li>
+<li>Fires a DHCPDISCOVERY</li>
+<li>DHCP server replies with DHCPOFFER
+<ul class="org-ul">
+<li>Offer IP address</li>
+<li>Subnet mask</li>
+<li>Default gateway</li>
+<li>Lease duration</li>
+<li>DNS server</li>
+</ul></li>
+<li>Client replies with DHCPREQUEST</li>
+<li>Server replies with DHCPACK</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgafef8c6" class="outline-3">
+<h3 id="orgafef8c6"><span class="section-number-3">1.10.</span> Difference between forwarding and routing</h3>
+<div class="outline-text-3" id="text-1-10">
+<ul class="org-ul">
+<li><code>Forwarding</code> is the local function inside of a router. When a packet arrives the router consults the forwarding table and moves the packet to the correct output link. Very fast nano seconds.</li>
+<li><code>Routing</code> is a network-wide process used to decide the path that a packet takes from source to destination. Routing algorithms are used here and the information is exchanged between routers, routers then update their forwarding tables so that a packet can reach its destination.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgab255fd" class="outline-3">
+<h3 id="orgab255fd"><span class="section-number-3">1.11.</span> How are routing decisions made in an MPLS-enabled network? Compare to others.</h3>
+<div class="outline-text-3" id="text-1-11">
+</div>
+<div id="outline-container-org7191771" class="outline-4">
+<h4 id="org7191771">Multiprocess Label Switching (MPLS)</h4>
+<div class="outline-text-4" id="text-org7191771">
+<ul class="org-ul">
+<li>Ingress router (router at the edge) first MPLS router receives an IP packet
+<ul class="org-ul">
+<li>Consults routing and label forwarding tables</li>
+<li>Adds an MPLS label to the packet, now the packet is routed based on its label</li>
+</ul></li>
+<li>Core routers forward using labels only
+<ul class="org-ul">
+<li>Core routers do not examine the IP anymore</li>
+</ul></li>
+<li>Egress router at the other edge removes the label once the packet exits the MPLS "area".</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org9edf7f4" class="outline-4">
+<h4 id="org9edf7f4">Characteristics of MPLS</h4>
+<div class="outline-text-4" id="text-org9edf7f4">
+<ul class="org-ul">
+<li>Forwarding uses fixed-size labels instead of IP</li>
+<li>Decisions are made per Label Switch Path (LSP)</li>
+<li>Paths can be traffic-engineered</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org0387ab8" class="outline-4">
+<h4 id="org0387ab8">Compared to IP routing</h4>
+<div class="outline-text-4" id="text-org0387ab8">
+<ul class="org-ul">
+<li>MPLS is faster and supports many services like VPNs, QoS and other services</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-org17133ea" class="outline-3">
+<h3 id="org17133ea"><span class="section-number-3">1.12.</span> Contents of different containers</h3>
+<div class="outline-text-3" id="text-1-12">
+</div>
+<div id="outline-container-org5aab791" class="outline-4">
+<h4 id="org5aab791">TCP Packet</h4>
+<div class="outline-text-4" id="text-org5aab791">
+<ul class="org-ul">
+<li>Source/Destination Port: identify apps.</li>
+<li>Sequence Number: byte number of first data byte.</li>
+<li>Acknowledgment Number: next expected byte.</li>
+<li>Data Offset: size of TCP header.</li>
+<li>Flags: SYN, ACK, FIN, RST, PSH, URG, etc.</li>
+<li>Window Size: flow control.</li>
+<li>Checksum: error-checking for header+data.</li>
+<li>Options: e.g., MSS, window scale, timestamps.</li>
+<li><p>
+Data: upper-layer data (e.g., HTTP).
+</p>
+<p class="verse">
+0                   15                  31<br />
+<del>-------------------</del>--------------&#x2013;&#x2014;+<br />
+|    Source Port    |  Destination Port |<br />
+<del>-------------------</del>--------------&#x2013;&#x2014;+<br />
+|               Sequence Number         |<br />
+<del>---------------------------------------</del><br />
+|           Acknowledgment Number       |<br />
+<del>-------</del>---<del>-------</del>--------------&#x2013;&#x2014;+<br />
+| Data  |   |       |                   |<br />
+|Offset | R |Flags  |   Window Size     |<br />
+|(4bit) |svd(9bits) |                   |<br />
+<del>-------</del>---<del>-------</del>--------------&#x2013;&#x2014;+<br />
+|     Checksum       |  Urgent Pointer  |<br />
+<del>--------------------</del>-------------&#x2013;&#x2014;+<br />
+|    Options (if any, variable length)  |<br />
+<del>---------------------------------------</del><br />
+|                 Data                  |<br />
+|              (Payload)                |<br />
+<del>---------------------------------------</del><br />
+</p></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org1455acd" class="outline-4">
+<h4 id="org1455acd">UDP Datagram</h4>
+<div class="outline-text-4" id="text-org1455acd">
+<ul class="org-ul">
+<li>Length: header + data length in bytes.</li>
+<li>Checksum: covers header+data (optional in IPv4, mandatory in IPv6).</li>
+<li><p>
+Data: upper-layer data (e.g., DNS, VoIP).
+</p>
+<p class="verse">
+0                   15                  31<br />
+<del>-------------------</del>--------------&#x2013;&#x2014;+<br />
+|    Source Port    |  Destination Port |<br />
+<del>-------------------</del>--------------&#x2013;&#x2014;+<br />
+|         Length    |      Checksum     |<br />
+<del>-------------------</del>--------------&#x2013;&#x2014;+<br />
+|                 Data                  |<br />
+|              (Payload)                |<br />
+<del>---------------------------------------</del><br />
+</p></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org79abb5b" class="outline-4">
+<h4 id="org79abb5b">IPv4 Packet</h4>
+<div class="outline-text-4" id="text-org79abb5b">
+<ul class="org-ul">
+<li>Version: 4 for IPv4.</li>
+<li>IHL: Internet Header Length (size of IP header).</li>
+<li>DSCP/ECN: QoS and congestion info.</li>
+<li>Total Length: entire packet length.</li>
+<li>Identification/Flags/Fragment Offset: fragmentation.</li>
+<li>TTL: hop limit.</li>
+<li>Protocol: next layer (e.g., 6 = TCP, 17 = UDP).</li>
+<li>Header Checksum: for IPv4 header.</li>
+<li>Source/Destination IP: addresses.</li>
+<li>Options: rarely used.</li>
+<li><p>
+Data: typically a TCP/UDP segment (or ICMP, etc.).
+</p>
+<p class="verse">
+0                   7                   15                  23                  31<br />
+<del>-------</del>-------<del>-------</del>---------------<del>-------------------</del>--------------&#x2013;&#x2014;+<br />
+|Version|  IHL  | DSCP  |     ECN       |      Total Length                     |<br />
+<del>-------</del>-------<del>-------</del>---------------<del>-------------------</del>--------------&#x2013;&#x2014;+<br />
+|         Identification                |Flags|   Fragment Offset               |<br />
+<del>---------------------------------------</del>-----<del>---------------------------------</del><br />
+|   Time To Live   |    Protocol        |          Header Checksum              |<br />
+<del>------------------</del>--------------------<del>---------------------------------------</del><br />
+|                        Source IP Address                                      |<br />
+<del>-------------------------------------------------------------------------------</del><br />
+|                     Destination IP Address                                    |<br />
+<del>-------------------------------------------------------------------------------</del><br />
+|                    Options (if any, variable)                                 |<br />
+<del>-------------------------------------------------------------------------------</del><br />
+|                                   Data                                        |<br />
+|                               (Payload)                                       |<br />
+<del>-------------------------------------------------------------------------------</del><br />
+</p></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org22de379" class="outline-4">
+<h4 id="org22de379">Ethernet Frame</h4>
+<div class="outline-text-4" id="text-org22de379">
+<ul class="org-ul">
+<li>Destination MAC (6B)</li>
+<li>Source MAC (6B)</li>
+<li>EtherType (2B): e.g., 0x0800 = IPv4, 0x86DD = IPv6, 0x0806 = ARP.</li>
+<li>Payload: usually 46–1500 bytes (may include padding).</li>
+<li><p>
+FCS: Frame Check Sequence (CRC-32, 4B) for error detection.
+</p>
+<p class="verse">
+&#xa0;&#xa0;&#xa0;(Preamble + SFD)   [not usually shown in logical diagrams]<br />
+<del>---------</del>-------------------<del>-------------------</del>---------<del>---------------</del>----&#x2013;&#x2014;+<br />
+|Preamble | Destination MAC   |   Source MAC      | EtherType / Length      |   &#x2026;   |<br />
+|7 bytes  |   (6 bytes)       |    (6 bytes)      |        (2 bytes)        |         |<br />
+<del>---------</del>-------------------<del>-------------------</del>-------------------------<del>---------</del><br />
+&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;|<br />
+&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;v<br />
+&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;<del>------------------------------------------</del><br />
+&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;|            Payload (Data)                |<br />
+&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;|   (e.g., an IPv4 packet, IPv6, ARP)      |<br />
+&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;<del>-------------------</del>-----------------&#x2013;&#x2014;+<br />
+&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;|       FCS (CRC)      |<br />
+&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;|        4 bytes       |<br />
+&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;<del>----------------------</del><br />
+</p></li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-orgd29c3c5" class="outline-3">
+<h3 id="orgd29c3c5"><span class="section-number-3">1.13.</span> End-to-End delay calculation between switch R1 and host R2</h3>
+<div class="outline-text-3" id="text-1-13">
+<ul class="org-ul">
+<li>Assuming there is no propagation delay, no process delay and no queuing delay it is TOTAL DELAY = L/R1 + L/R2</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org6f41606" class="outline-3">
+<h3 id="org6f41606"><span class="section-number-3">1.14.</span> Sequence of frame transmission in a IEEE 802.11 wireless lan while channel is busy</h3>
+<div class="outline-text-3" id="text-1-14">
+<ul class="org-ul">
+<li>We have 4 devices A B C D</li>
+<li>Backoff values are B(40) C(10) and D(20)</li>
+<li>When device A transmits, the other devices detect a busy channel and wait.</li>
+<li>After A finishes the other devices start a countdown of their Backoff values</li>
+<li>C reaches zero first and transmits first
+<ul class="org-ul">
+<li>Now B is 30</li>
+<li>D is 10</li>
+</ul></li>
+<li>D reaches zero and transmits next
+<ul class="org-ul">
+<li>Now B is 20</li>
+</ul></li>
+<li>B reaches zero and transmits last</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org84b8d92" class="outline-3">
+<h3 id="org84b8d92"><span class="section-number-3">1.15.</span> For a certain amount of hops (4) at a certain bps (9600) and propagation delay (0.001s), a message of 3200 bits</h3>
+<div class="outline-text-3" id="text-1-15">
+<ul class="org-ul">
+<li>Calc end-to-end data transfer delay for message switching, assuming additional 16bit header required</li>
+<li>Calc end-to-end data transfer delay for datagram packet switching, assuming fixed packet size 1024bit + 16bit header</li>
+<li>Two reasons why packet switching is preferred to circuit switching</li>
+</ul>
+</div>
+<div id="outline-container-org8244847" class="outline-4">
+<h4 id="org8244847">Message switching delay</h4>
+<div class="outline-text-4" id="text-org8244847">
+</div>
+<ul class="org-ul">
+<li><a id="orga98ad47"></a>Given<br />
+<div class="outline-text-5" id="text-orga98ad47">
+<ul class="org-ul">
+<li>Number of hops = 4</li>
+<li>Link rate = 9600 bps</li>
+<li>Propagation delay = 0.001s</li>
+<li>Message length = 3200 bits</li>
+<li>Header = 16 bit</li>
+<li>Processing delay = 0</li>
+<li>No ACKs</li>
+</ul>
+</div>
+</li>
+<li><a id="org3edea24"></a>Step 1, message size<br />
+<div class="outline-text-5" id="text-org3edea24">
+<ul class="org-ul">
+<li>Total message size = 3216 bits</li>
+</ul>
+</div>
+</li>
+<li><a id="orgbcba1ec"></a>Step 2, transmission delay per hop<br />
+<div class="outline-text-5" id="text-orgbcba1ec">
+<ul class="org-ul">
+<li>T<sub>x</sub> = L/R = 3216/9600 = 0.335 sec</li>
+</ul>
+</div>
+</li>
+<li><a id="org6e80e46"></a>Step 3, propagation delay per hop<br />
+<div class="outline-text-5" id="text-org6e80e46">
+<ul class="org-ul">
+<li>T<sub>p</sub> = 0.001 sec</li>
+</ul>
+</div>
+</li>
+<li><a id="orgbee0473"></a>Step 4, total delay per hop<br />
+<div class="outline-text-5" id="text-orgbee0473">
+<ul class="org-ul">
+<li>T<sub>hop</sub> = Tx + Tp = 0.335 + 0.001 = 0.336 sec</li>
+</ul>
+</div>
+</li>
+<li><a id="org6ca0f75"></a>Step 5, total across 4 hops<br />
+<div class="outline-text-5" id="text-org6ca0f75">
+<ul class="org-ul">
+<li>T<sub>total</sub> = 4 * 0.336 = 1.344 sec</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div id="outline-container-org3429c2d" class="outline-4">
+<h4 id="org3429c2d">Datagram packet switching delay</h4>
+<div class="outline-text-4" id="text-org3429c2d">
+</div>
+<ul class="org-ul">
+<li><a id="orgfcf780d"></a>Given<br />
+<div class="outline-text-5" id="text-orgfcf780d">
+<ul class="org-ul">
+<li>Message size = 3200 bits</li>
+<li>Header per packet = 16 bits</li>
+<li>Packet size = 1024 bits</li>
+<li>Link rate = 9600 bps</li>
+<li>Propagation per hop = 0.001 s</li>
+<li>Number of hops = 4</li>
+</ul>
+</div>
+</li>
+<li><a id="orga42596f"></a>Determine how many packets are needed<br />
+<div class="outline-text-5" id="text-orga42596f">
+<ul class="org-ul">
+<li>Useful payload per packet = 1024 - 16 = 1008 bits</li>
+<li>Number of packets = 3200 / 1008 = 3.18 -&gt; 4 packets needed</li>
+</ul>
+</div>
+</li>
+<li><a id="orgec533e5"></a>Transmission delay per packet<br />
+<div class="outline-text-5" id="text-orgec533e5">
+<ul class="org-ul">
+<li>T<sub>x</sub> = L/R = 1024 / 9600 = 0.10667 sec</li>
+<li>T<sub>p</sub> = 0.001s</li>
+<li>T<sub>hop</sub> = 0.10667 + 0.001s = 0.10767 sec</li>
+</ul>
+</div>
+</li>
+<li><a id="org7eb2ec6"></a>Total<br />
+<div class="outline-text-5" id="text-org7eb2ec6">
+<ul class="org-ul">
+<li>In a datagram packages are streamed, so the delay is the 4 hops of the first packet + the delay for one hop of the remaining packets, so</li>
+<li>4 * 0.10767 = 0.43068 sec</li>
+<li>Remaining packets = 3 * 0.10767s = 0.32001 sec</li>
+<li>So the total is: 0.43068s + 0.32001s = 0.75069 sec</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-org86df27e" class="outline-2">
+<h2 id="org86df27e"><span class="section-number-2">2.</span> Repeated Qs</h2>
+<div class="outline-text-2" id="text-2">
+</div>
+<div id="outline-container-org6bdd4de" class="outline-3">
+<h3 id="org6bdd4de"><span class="section-number-3">2.1.</span> Always There</h3>
+<div class="outline-text-3" id="text-2-1">
+<ul class="org-ul">
+<li>Use Dijkstra to calculate the shortest path</li>
+<li>Host A sends 5 data segments to Host B. How many packets are sent altogether if packet 2 is lost, but eventually all arrive? Show behaviour, segments sent and sequence breakdown for GBN, SR, TCP - List 3 types of multimedia synchronizations.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org90ccc64" class="outline-3">
+<h3 id="org90ccc64"><span class="section-number-3">2.2.</span> Nearly always there</h3>
+<div class="outline-text-3" id="text-2-2">
+<ul class="org-ul">
+<li>Describe sending an Email in details</li>
+<li>Diff between quality of experience and quality of service</li>
+<li>What is FCAPS</li>
+<li>Calculate distance tables after a link cost has changed</li>
+<li>Router connects 3 subnets provide addresses that will provide 125, 60, 60 interfaces. Provide three network addresses that will work here.</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-org08ab013" class="outline-2">
+<h2 id="org08ab013"><span class="section-number-2">3.</span> Exam Question Bank</h2>
+<div class="outline-text-2" id="text-3">
+</div>
+<div id="outline-container-orgae3ad7b" class="outline-3">
+<h3 id="orgae3ad7b"><span class="section-number-3">3.1.</span> Seems that we have about 28 questions that repeat</h3>
+</div>
+<div id="outline-container-orgea5afd8" class="outline-3">
+<h3 id="orgea5afd8"><span class="section-number-3">3.2.</span> Networking Calculations, Delays, Etc.</h3>
+<div class="outline-text-3" id="text-3-2">
+<ul class="org-ul">
+<li>(2x) Difference between forwarding and routing</li>
+<li>(2x) How are routing decisions made in an MPLS-enabled network? Compare to others.</li>
+<li>(2x) Make and role of each parts of the Protocol Data unit in the Network Layer.</li>
+<li>(2x) End-to-End delay calculation between switch R1 and host R2
+<ul class="org-ul">
+<li>(2x) store and forward packet switching</li>
+</ul></li>
+<li>(2x) Sequence of frame transmission in a IEEE 802.11 wireless lan while channel is busy</li>
+<li>(3x) Describe sending an Email in details
+<ul class="org-ul">
+<li>(1x) Focus on Application and Transport layers</li>
+<li>(1x) Focus on Application, Transport and Network layers</li>
+</ul></li>
+<li>(2x) For a certain amount of hops (4) at a certain bps and propagation delay (0.001s), a message of 3200 bits:
+<ul class="org-ul">
+<li>(2x) Calc end-to-end data transfer delay for message switching, assuming additional 16bit header required</li>
+<li>(2x) Calc end-to-end data transfer delay for datagram packet switching, assuming fixed packet size 1024bit + 16bit header</li>
+<li>(2x) Two reasons why packet switching is preferred to circuit switching</li>
+</ul></li>
+<li>(2x) Based on a diagram that sends packets of audio and a receiver receiving them:
+<ul class="org-ul">
+<li>(2x) Delay from sender to receiver</li>
+<li>(2x) If the audio playback starts immediately when packet 1 arrives, which packet will not arrive on time for playout?</li>
+<li>(2x) What is the minimum playout delay at the receiver? So that all 8 packets arrive in time for playout?</li>
+<li>(2x) Compute the estimated delay for packets 2 to 8 using the formula for the average network delay (u=0.1)?</li>
+<li>(2x) Compute the estimated deviation of delay from the estimated average for packets 2 to 8, use the formula for est. avg. deviation of delay (take β=0.1)?</li>
+</ul></li>
+<li>(3x) Diff between quality of experience and quality of service in terms of
+<ul class="org-ul">
+<li>(2x) video codecs</li>
+<li>(2x) transmission effects (delay, loss, etc.) and evaluation</li>
+<li>You may reference peer reviewed conference/journal publications</li>
+</ul></li>
+<li>(2x) With regards to P2P vs Client Server Architecture explain and justify the file distribution times.</li>
+<li>(1x) Adaptive applications and Quality of Experience</li>
+<li>(1x) Link increase vs Cache capacity for a set network needs</li>
+<li>(1x) Msg consists of 3600 bits and a 144 header at a transport layer -&gt; +152 at internet layer -&gt; two networks +16bit. Destination network has max packet size of 1240. How many bits at destination?</li>
+<li>(1x) CDN Solution</li>
+<li>(2x) List 4 sources of packet delay and explain them, considering 3 links with different speed rates</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org08637d1" class="outline-3">
+<h3 id="org08637d1"><span class="section-number-3">3.3.</span> Networking Basics</h3>
+<div class="outline-text-3" id="text-3-3">
+<ul class="org-ul">
+<li>(3x) What is FCAPS</li>
+<li>(2x) IPv4 vs IPv6 challenges</li>
+<li>(2x) Brief overview of HTTP. operation, connection types, messages, why is it stateless</li>
+<li>(2x) What is web caching and the benefits of it?</li>
+<li>(1x) HLR and VLR in GSM networks. What similarities with Mobile IP?</li>
+<li>(3x) Calculate distance tables after a link cost has changed</li>
+<li>(1x) Create a forwarding table for a datagram network</li>
+<li>(1x) Role of port numbers in multiplexing and de-multiplexing in TCP connections.</li>
+<li>(1x) Routing algorithms global/decentralized and static/dynamic</li>
+<li>(2x) Which streaming solutions are good for the needs of a specific company?</li>
+<li>(3x) Router connects 3 subnets provide addresses that will provide 125, 60, 60 interfaces. Provide three network addresses that will work here.</li>
+<li>(2x) Two mobile nodes in a foreign network, can we use the same care-of-address in mobile IP?</li>
+<li>(2x) Compare and contrast different services with the Intserv model.</li>
+<li>(4x) Use Dijkstra to calculate the shortest path</li>
+<li>(4x) List 3 types of multimedia synchronizations.
+<ul class="org-ul">
+<li>(1x) Discuss one factor that may affect synchronization specification for one of the types</li>
+</ul></li>
+<li>(4x) Host A sends 5 data segments to Host B. How many packets are sent altogether if packet 2 is lost, but eventually all arrive? Show behaviour, segments sent and sequence breakdown for
+<ul class="org-ul">
+<li>GBN, SR, TCP</li>
+</ul></li>
+<li>(2x) What is congestion control vs flow control? How are they managed</li>
+<li>(2x) Explain the token bucket with regards to the regulating the traffic entering a network. Show a diagram. Explain how the bucket
+<ul class="org-ul">
+<li>(1x) Controls the avg peak</li>
+<li>(1x) Controls the peak rate</li>
+<li>(1x) Controls burst size</li>
+</ul></li>
+<li>(2x) Explain RIP based on a diagram included</li>
+<li>(1x) Explain NAT</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-org2e45e9f" class="outline-2">
+<h2 id="org2e45e9f"><span class="section-number-2">4.</span> Lecturer's Tips Exams (answer 3 of 4)</h2>
+<div class="outline-text-2" id="text-4">
+<ul class="org-ul">
+<li><b>don't mind the wording here, some of it could be wrong</b></li>
+<li>LOOK AT PAST PAPERS</li>
+<li>a) usually is an easy part (how does this work), probs explain a layer in detail</li>
+<li>b) a little bit more complex and touches on different parts</li>
+<li>part b examples: routing is definitely a question, different algos. routing vs forwarding. l over r</li>
+<li>what does a network header look like?</li>
+<li>if the server is busy how does the network deal with it</li>
+<li>web request vs mail request (lifecycle/lifetime)</li>
+<li>what happens where ipv4 and ipv6 is mixed</li>
+<li>centralized vs decentralized</li>
+<li>Quality of Experience of things, important (as it is for our chatgpt research)</li>
+<li>different streaming approaches, what they are and how they work</li>
+<li>jitter (and other network characteristics), payout delay value</li>
+<li>how to design a network (Connor based stuff), usually we'll deal with classless</li>
+<li>synchronization</li>
+<li>different classes of services, policies for classes of services</li>
+<li>client to server vs peer to peer</li>
+<li>caching</li>
+<li>understand and be able to explain things. e.g. company sets up a service: how would they deal with setting up a streaming service</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgb27ddf7" class="outline-2">
+<h2 id="orgb27ddf7"><span class="section-number-2">5.</span> Working out Hosts on a Network</h2>
+<div class="outline-text-2" id="text-5">
 <ul class="org-ul">
 <li>Start with the highest amount of hosts</li>
 </ul>
@@ -258,8 +1740,6 @@ Split between 128 and 64 (we need 50 hosts + 2 for broadcast and network)
 <col  class="org-right" />
 
 <col  class="org-right" />
-
-<col  class="org-left" />
 </colgroup>
 <thead>
 <tr>
@@ -272,7 +1752,6 @@ Split between 128 and 64 (we need 50 hosts + 2 for broadcast and network)
 <th scope="col" class="org-right">8</th>
 <th scope="col" class="org-right">4</th>
 <th scope="col" class="org-right">2</th>
-<th scope="col" class="org-left">&#xa0;</th>
 </tr>
 </thead>
 <tbody>
@@ -286,7 +1765,6 @@ Split between 128 and 64 (we need 50 hosts + 2 for broadcast and network)
 <td class="org-right">4</td>
 <td class="org-right">2</td>
 <td class="org-right">1</td>
-<td class="org-left">&#xa0;</td>
 </tr>
 </tbody>
 <tbody>
@@ -300,7 +1778,6 @@ Split between 128 and 64 (we need 50 hosts + 2 for broadcast and network)
 <td class="org-right">0</td>
 <td class="org-right">0</td>
 <td class="org-right">0</td>
-<td class="org-left">&#xa0;</td>
 </tr>
 </tbody>
 </table>
@@ -319,35 +1796,1000 @@ So then the next network available is the one after the previous broadcast, whic
 </p>
 </div>
 </div>
-<div id="outline-container-org25d2ed6" class="outline-2">
-<h2 id="org25d2ed6"><span class="section-number-2">2.</span> Exams (answer 3 of 4)</h2>
-<div class="outline-text-2" id="text-2">
+<div id="outline-container-org9a41c16" class="outline-2">
+<h2 id="org9a41c16"><span class="section-number-2">6.</span> Terminology</h2>
+<div class="outline-text-2" id="text-6">
 <ul class="org-ul">
-<li><b>don't mind the wording here, some of it could be wrong</b></li>
-<li>LOOK AT PAST PAPERS</li>
-<li>a) usually is an easy part (how does this work), probs explain a layer in detail</li>
-<li>b) a little bit more complex and touches on different parts</li>
-<li>part b examples: routing is definitely a question, different algos. routing vs forwarding. l over r</li>
-<li>what does a network header look like?</li>
-<li>if the server is busy how does the network deal with it</li>
-<li>web request vs mail request (lifecycle/lifetime)</li>
-<li>what happens where ipv4 and ipv6 is mixed</li>
-<li>centralized vs decentralized</li>
-<li>Quality of Experience of things, important (as it is for our chatgpt research)</li>
-<li>different streaming approaches, what they are and how they work</li>
-<li>jitter (and other network characteristics), payout delay value</li>
-<li>how to design a network (Connor based stuff), usually we'll deal with classless</li>
-<li>synchronization</li>
-<li>different classes of services, policies for classes of services</li>
-<li>client to server vs peer to peer</li>
-<li>caching</li>
-<li>understand and be able to explain things. e.g. company sets up a service: how would they deal with setting up a streaming service</li>
+<li>bit: smallest amount of data</li>
+<li>physical link: between transmitter and receiver</li>
+<li>guided media: cable, copper (twister pair - TP), fiber, coax</li>
+<li>unguided media: radio waves, signal propagates freely</li>
+<li>WAN: wide are network (across cities, countries, has many MANs)</li>
+<li>MAN: metropolitan area network (has many LANs)</li>
+<li>LAN: local area network</li>
+<li>PAN: personal area network</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgeb4934f" class="outline-2">
-<h2 id="orgeb4934f"><span class="section-number-2">3.</span> Remove at the End</h2>
-<div class="outline-text-2" id="text-3">
+<div id="outline-container-org38f0e6a" class="outline-2">
+<h2 id="org38f0e6a"><span class="section-number-2">7.</span> Communication Networks and The Internet</h2>
+<div class="outline-text-2" id="text-7">
+</div>
+<div id="outline-container-org949de12" class="outline-3">
+<h3 id="org949de12"><span class="section-number-3">7.1.</span> Internet</h3>
+<div class="outline-text-3" id="text-7-1">
+<ul class="org-ul">
+<li>Hosts: end systems running network applications</li>
+<li>Transmission rate: bandwidth bits/sec</li>
+<li>Internet is a network of networks</li>
+<li>Protocols: are used by systems and different layers to send information from one end to another
+<ul class="org-ul">
+<li>Define the <b>format</b>, <b>order</b> of <b>sent messages and received</b> among network entities and <b>actions taken</b> on messages</li>
+</ul></li>
+<li>IETF: internet engineering task force</li>
+<li>Infrastructure that provides services to applications</li>
+<li>Network edge: is the boundary where the private network meets the public network and also is the point where hosts connect to the network.
+<ul class="org-ul">
+<li>How to connect to it?: Residential access nets, institutions, mobile networks, etc.</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org065c9aa" class="outline-3">
+<h3 id="org065c9aa"><span class="section-number-3">7.2.</span> Packet Switches</h3>
+<div class="outline-text-3" id="text-7-2">
+<ul class="org-ul">
+<li>Packets: are the "packages" of information sent through the network</li>
+<li>Packet switch: takes a packet on the input link and forwards it on the outgoing link</li>
+<li>Routers: use in network core</li>
+<li>Link switch: used in access networks</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org3e97c8c" class="outline-3">
+<h3 id="org3e97c8c"><span class="section-number-3">7.3.</span> Access networks</h3>
+<div class="outline-text-3" id="text-7-3">
+<ul class="org-ul">
+<li>Home network</li>
+<li>Enterprise network</li>
+<li>Wireless networks (WiFi, Wide-Area 3g/4g/5g)</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgbba20d8" class="outline-3">
+<h3 id="orgbba20d8"><span class="section-number-3">7.4.</span> Network Core</h3>
+<div class="outline-text-3" id="text-7-4">
+<ul class="org-ul">
+<li>It is a mesh of packet switches (routers &amp; link layer switches) and links that interconnect the end systems</li>
+<li>Packet switching: hosts break application-layer messages into <b>packets</b>
+<ul class="org-ul">
+<li>Route packets from one router to the next across links on the path</li>
+<li>Each packet transmitted at full link capacity</li>
+</ul></li>
+</ul>
+</div>
+<div id="outline-container-org39a48b3" class="outline-4">
+<h4 id="org39a48b3">Routing Protocols</h4>
+<div class="outline-text-4" id="text-org39a48b3">
+<ul class="org-ul">
+<li>Determines source-destination route</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgad1c1dd" class="outline-4">
+<h4 id="orgad1c1dd">Forwarding Tables</h4>
+<div class="outline-text-4" id="text-orgad1c1dd">
+<ul class="org-ul">
+<li>Determines which output link to send the packet through in a router (uses route mapping)</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org9d7b225" class="outline-4">
+<h4 id="org9d7b225">Circuit Switching</h4>
+<div class="outline-text-4" id="text-org9d7b225">
+<ul class="org-ul">
+<li>Circuit switching is a method of communication where a dedicated physical path (circuit) is established between two endpoints for the entire duration of a communication session.
+<ul class="org-ul">
+<li>Constant performance</li>
+<li>No addressing per packet</li>
+<li>Dedicated resource</li>
+<li>Setup required: needs a fixed route</li>
+</ul></li>
+</ul>
+</div>
+<ul class="org-ul">
+<li><a id="orgb26c2b3"></a>FDM - frequency of the spectrum is divided between users<br />
+<div class="outline-text-5" id="text-orgb26c2b3">
+
+<div id="orge04174b" class="figure">
+<p><img src="images/Communication_Networks_and_The_Internet/2025-12-09_16-17-12_screenshot.png" alt="2025-12-09_16-17-12_screenshot.png" />
+</p>
+</div>
+</div>
+</li>
+<li><a id="orgc95ca5b"></a>TDM - time is divided into frames of fixed duration<br />
+<div class="outline-text-5" id="text-orgc95ca5b">
+
+<div id="orgab7659f" class="figure">
+<p><img src="images/Communication_Networks_and_The_Internet/2025-12-09_16-17-37_screenshot.png" alt="2025-12-09_16-17-37_screenshot.png" />
+</p>
+</div>
+</div>
+</li>
+</ul>
+</div>
+<div id="outline-container-org25767fc" class="outline-4">
+<h4 id="org25767fc">Packet Switching vs Circuit Switching</h4>
+<div class="outline-text-4" id="text-org25767fc">
+<ul class="org-ul">
+<li>Packet switching allows more users to use the network</li>
+<li>In circuit switching we have a fixed amount of users per link. So if the link is 1Mb/s and each user has 0.1Mb/s then some of it is wasted because not all users utilise the link.</li>
+<li>Packet switching is better for bursty data, resource sharing and is simpler to setup. However excessive congestion is possible.</li>
+<li>In packets switching how to provide a reliable bandwidth for audio and video? A: This issues is still unresolved.</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-org617a3d7" class="outline-3">
+<h3 id="org617a3d7"><span class="section-number-3">7.5.</span> Structure of the Internet</h3>
+<div class="outline-text-3" id="text-7-5">
+<ul class="org-ul">
+<li>The networks of networks and the roles of ISPs in all of it.</li>
+</ul>
+
+<div id="org2b22a48" class="figure">
+<p><img src="images/Communication_Networks_and_The_Internet/2025-12-09_16-30-24_screenshot.png" alt="2025-12-09_16-30-24_screenshot.png" />
+</p>
+</div>
+<ul class="org-ul">
+<li>So we have Tier 1 ISPs</li>
+<li>Then regional ISPs along with IXP</li>
+<li>Then local ISPs</li>
+</ul>
+
+<div id="orgba6798b" class="figure">
+<p><img src="images/Communication_Networks_and_The_Internet/2025-12-09_16-32-18_screenshot.png" alt="2025-12-09_16-32-18_screenshot.png" />
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org8ca7ff5" class="outline-3">
+<h3 id="org8ca7ff5"><span class="section-number-3">7.6.</span> Delay, loss and throughput</h3>
+<div class="outline-text-3" id="text-7-6">
+</div>
+<div id="outline-container-org7d8ffd7" class="outline-4">
+<h4 id="org7d8ffd7">General Info</h4>
+<div class="outline-text-4" id="text-org7d8ffd7">
+<ul class="org-ul">
+<li>Packet starts at source, travels through routers to destination - as it travels it suffers delay</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org46710d5" class="outline-4">
+<h4 id="org46710d5">Sending function</h4>
+<div class="outline-text-4" id="text-org46710d5">
+<ul class="org-ul">
+<li>Host breaks down the message sent into <code>packets</code> of length <code>L</code> and transmits them at the rate of <code>R</code>
+<ul class="org-ul">
+<li>Transmission rate aka: link capacity or link bandwidth</li>
+<li>Example: L = 7.5Mbits and R = 1.5Mbps, so the delay is 5sec</li>
+</ul></li>
+</ul>
+
+<div id="org6e7145f" class="figure">
+<p><img src="images/Communication_Networks_and_The_Internet/2025-12-09_15-58-22_screenshot.png" alt="2025-12-09_15-58-22_screenshot.png" />
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org64bae56" class="outline-4">
+<h4 id="org64bae56">Sources of delay</h4>
+<div class="outline-text-4" id="text-org64bae56">
+</div>
+<ul class="org-ul">
+<li><a id="org16db8a1"></a>Transmission: L/R<br /></li>
+<li><a id="org655bfee"></a>Propagation: Delay travelling over a distance (speed of light 250 000 km/s)<br /></li>
+<li><a id="orgc889250"></a>Nodal processing: usually less than a msec<br /></li>
+<li><a id="org507b679"></a>Queuing: time waiting at the output link for transmission. Depends on congestion of the router.<br />
+<div class="outline-text-5" id="text-org507b679">
+<ul class="org-ul">
+<li><code>La/R</code>: L - packet length, a - average packet arrival rate.</li>
+<li><code>La/R ~ 0</code>: small avg queuing delay</li>
+<li><code>La/R ~ 1</code>: large avg queuing delay</li>
+<li><code>La/R &gt; 1</code>: overload</li>
+<li>Packets arriving at a full queue are lost: aka <code>Packet Loss</code></li>
+<li>Lost packets may be re-transmitted by a previous node</li>
+</ul>
+</div>
+</li>
+<li><a id="org027b215"></a>Graphical Representation<br />
+<div class="outline-text-5" id="text-org027b215">
+
+<div id="org8468a08" class="figure">
+<p><img src="images/Communication_Networks_and_The_Internet/2025-12-09_16-36-05_screenshot.png" alt="2025-12-09_16-36-05_screenshot.png" />
+</p>
+</div>
+</div>
+</li>
+<li><a id="org365ce71"></a>Throughput<br />
+<div class="outline-text-5" id="text-org365ce71">
+<ul class="org-ul">
+<li>Usually, both the sender and the receiver are a bottleneck if their bandwidths differ</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org53e1bfa" class="outline-3">
+<h3 id="org53e1bfa"><span class="section-number-3">7.7.</span> Response Time (RTT)</h3>
+<div class="outline-text-3" id="text-7-7">
+<ul class="org-ul">
+<li>Round Trip Time (RTT): time for a small packet to travel from client to server and back</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-org3176c6c" class="outline-2">
+<h2 id="org3176c6c"><span class="section-number-2">8.</span> Network Model</h2>
+<div class="outline-text-2" id="text-8">
+</div>
+<div id="outline-container-org683ecd2" class="outline-3">
+<h3 id="org683ecd2"><span class="section-number-3">8.1.</span> Why Layering</h3>
+<div class="outline-text-3" id="text-8-1">
+<ul class="org-ul">
+<li>Helps dealing with a complex system. Networks are complex.</li>
+<li>Easier troubleshooting</li>
+<li>Allows identification and relationships between complex pieces</li>
+<li>One protocol per layer</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org9322b19" class="outline-3">
+<h3 id="org9322b19"><span class="section-number-3">8.2.</span> Example of Encapsulation and the Travel of a Message</h3>
+<div class="outline-text-3" id="text-8-2">
+
+<div id="org756f482" class="figure">
+<p><img src="images/Network_Model/2025-12-09_17-20-21_screenshot.png" alt="2025-12-09_17-20-21_screenshot.png" />
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org366d4d0" class="outline-3">
+<h3 id="org366d4d0"><span class="section-number-3">8.3.</span> Application Layer (7)</h3>
+<div class="outline-text-3" id="text-8-3">
+</div>
+<div id="outline-container-org913c7ba" class="outline-4">
+<h4 id="org913c7ba">Exists in</h4>
+<div class="outline-text-4" id="text-org913c7ba">
+<ul class="org-ul">
+<li>Software</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org2b0a9f0" class="outline-4">
+<h4 id="org2b0a9f0">Protocols</h4>
+<div class="outline-text-4" id="text-org2b0a9f0">
+<ul class="org-ul">
+<li>FTP, SMTP, HTTP</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org19e427f" class="outline-4">
+<h4 id="org19e427f">Container</h4>
+<div class="outline-text-4" id="text-org19e427f">
+<ul class="org-ul">
+<li>Raw Messages or Application Data Units</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org11a9e94" class="outline-4">
+<h4 id="org11a9e94">Role</h4>
+<div class="outline-text-4" id="text-org11a9e94">
+<ul class="org-ul">
+<li>Contains all protocols and methods that allow for process-to-process communication across an Internet Protocol (IP) network</li>
+<li>Uses the underlying transport layer protocols to establish a host-to-host connection</li>
+<li>Define type of messages exchanged: request, response</li>
+<li>Define message syntax</li>
+<li>Define message semantics</li>
+<li>Define rules of how processes send &amp; respond to messages
+<ul class="org-ul">
+<li>Open/Proprietary protocols</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgba0faf7" class="outline-4">
+<h4 id="orgba0faf7">Process Communication</h4>
+<div class="outline-text-4" id="text-orgba0faf7">
+<ul class="org-ul">
+<li>Process: program running within a host
+<ul class="org-ul">
+<li>Client process: process that initiates communication</li>
+<li>Server process: process that waits to be contacted</li>
+<li>P2P have both of the above</li>
+</ul></li>
+<li>Sockets: is a software interface, it is the API between the networks and an application
+<ul class="org-ul">
+<li>Processes send/receive messages via sockets</li>
+<li>Sockets are identified by a 4-tuple: (Src IP, Src Port, Dest IP, Dest Port)</li>
+<li>The entire 4-tuple is one <code>connection socket</code> in the OS</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org0962e5c" class="outline-4">
+<h4 id="org0962e5c">HTTP (pull)</h4>
+<div class="outline-text-4" id="text-org0962e5c">
+</div>
+<ul class="org-ul">
+<li><a id="orgabfe712"></a>HTTP Request Cycle (basic)<br />
+<div class="outline-text-5" id="text-orgabfe712">
+<ul class="org-ul">
+<li>Initiate TCP (create socket) to server to port 80</li>
+<li>Server accepts TCP connection from client</li>
+<li>HTTP messages exchanged between browser and server</li>
+<li>TCP connection closed</li>
+</ul>
+</div>
+</li>
+<li><a id="org00384ae"></a>Connection Type<br />
+<div class="outline-text-5" id="text-org00384ae">
+<ul class="org-ul">
+<li>Persistent: Multiple messages and objects over a single connection
+<ul class="org-ul">
+<li>HTTP RTT: 1 RTT for all objects</li>
+</ul></li>
+<li>Non-persistent: Every message and object over a new connection (wasteful)
+<ul class="org-ul">
+<li>HTTP RTT: 2RTT + file transmission time (one RTT for connection setup + one RTT for request)</li>
+<li>OS overhead for each TCP connection</li>
+<li>Parallel connections</li>
+</ul></li>
+</ul>
+</div>
+</li>
+<li><a id="orgd5a1161"></a>General Format<br />
+<div class="outline-text-5" id="text-orgd5a1161">
+
+<div id="org36a2a46" class="figure">
+<p><img src="images/Network_Model/2025-12-09_20-30-19_screenshot.png" alt="2025-12-09_20-30-19_screenshot.png" />
+</p>
+</div>
+</div>
+</li>
+</ul>
+</div>
+<div id="outline-container-org4b7a60d" class="outline-4">
+<h4 id="org4b7a60d">FTP</h4>
+<div class="outline-text-4" id="text-org4b7a60d">
+<ul class="org-ul">
+<li>Uses port 21 and is used for file transfers</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgb07a401" class="outline-4">
+<h4 id="orgb07a401">Email</h4>
+<div class="outline-text-4" id="text-orgb07a401">
+<ul class="org-ul">
+<li>Uses port 25 for client to server communication over TCP</li>
+</ul>
+</div>
+<ul class="org-ul">
+<li><a id="org015e28b"></a>Components<br />
+<div class="outline-text-5" id="text-org015e28b">
+<ul class="org-ul">
+<li>User Agent (UA)</li>
+<li>Mail Server
+<ul class="org-ul">
+<li>Mailbox: incoming message from user</li>
+<li>Message queue: messages to be sent to the user</li>
+</ul></li>
+<li>Simple Mail Transfer Protocol (SMTP) push type protocol</li>
+<li>POP3, IMAP, HTTP for retrieval</li>
+</ul>
+</div>
+</li>
+<li><a id="org189550f"></a>Three phase transfer<br />
+<div class="outline-text-5" id="text-org189550f">
+<ul class="org-ul">
+<li>Handshaking</li>
+<li>Transfer of messages</li>
+<li>Closure</li>
+</ul>
+</div>
+</li>
+<li><a id="org2772914"></a>Interaction<br />
+<div class="outline-text-5" id="text-org2772914">
+<ul class="org-ul">
+<li>Commands: ASCII text</li>
+<li>Response: status code and phrase</li>
+</ul>
+</div>
+</li>
+<li><a id="org9c08d46"></a>Messages in 7bit ASCII<br /></li>
+<li><a id="orgb4010d8"></a>Alice sends message to Bob<br />
+<div class="outline-text-5" id="text-orgb4010d8">
+<ol class="org-ol">
+<li>Alice uses UA to compose message "to" bob@school.edu</li>
+<li>Alice's UA sends message to her mail server; message placed in the message queue</li>
+<li>Client side of SMTP open opens TCP connection with Bob's mail server</li>
+<li>SMTP client sends Alice's message over the TCP connection</li>
+<li>Bob's mail server places the message in Bob's mailbox</li>
+<li>Bob invokes his user agent to read message</li>
+</ol>
+</div>
+</li>
+<li><a id="org5d23e68"></a>POP3<br />
+<div class="outline-text-5" id="text-org5d23e68">
+<ul class="org-ul">
+<li>Can use download-and-delete or download-and-keep</li>
+<li>Authorize with: <code>user</code> <code>pass</code></li>
+<li>Server response with: <code>+OK</code> or <code>-ERR</code></li>
+<li>Transaction phases: <code>list</code>, <code>rert</code>, <code>dele</code>, <code>quit</code></li>
+</ul>
+</div>
+</li>
+<li><a id="orgaf6b0c4"></a>IMAP<br />
+<div class="outline-text-5" id="text-orgaf6b0c4">
+<ul class="org-ul">
+<li>Keeps message at the server</li>
+<li>Allows to manipulate messages at the server</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div id="outline-container-org280b5e6" class="outline-4">
+<h4 id="org280b5e6">DNS</h4>
+<div class="outline-text-4" id="text-org280b5e6">
+<ul class="org-ul">
+<li>Records
+<ul class="org-ul">
+<li>A: name to IP pair</li>
+<li>NS: name to value (value is hostname of authoritative name server for this domain)</li>
+<li>CNAME: alias</li>
+<li>MX: mailserver</li>
+<li>Message example</li>
+</ul></li>
+</ul>
+
+<div id="orge4d064a" class="figure">
+<p><img src="images/Network_Model/2025-12-09_21-44-17_screenshot.png" alt="2025-12-09_21-44-17_screenshot.png" />
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org2b4a9ed" class="outline-4">
+<h4 id="org2b4a9ed">P2P</h4>
+<div class="outline-text-4" id="text-org2b4a9ed">
+</div>
+<ul class="org-ul">
+<li><a id="org1e84fe2"></a>Client-to-server file distribution<br />
+<div class="outline-text-5" id="text-org1e84fe2">
+<ul class="org-ul">
+<li>How much time to distribute file size F to N peers?</li>
+<li>Server
+<ul class="org-ul">
+<li>Time to send one copy F/u<sub>s</sub></li>
+<li>Time to send N copies: N * F/u<sub>s</sub></li>
+</ul></li>
+<li>Client
+<ul class="org-ul">
+<li>d<sub>min</sub> min client download rate</li>
+<li>min client download time: F / d<sub>min</sub></li>
+</ul></li>
+<li>Solution max (NF/u<sub>s</sub>, F/d<sub>min</sub>) (increases linearly with N)</li>
+</ul>
+</div>
+</li>
+<li><a id="org0cafab1"></a>Peer-to-peer<br />
+<div class="outline-text-5" id="text-org0cafab1">
+<ul class="org-ul">
+<li>Server
+<ul class="org-ul">
+<li>Time to send one copy F/u<sub>s</sub></li>
+</ul></li>
+<li>Client
+<ul class="org-ul">
+<li>min client download time: F/d<sub>min</sub></li>
+</ul></li>
+<li>Clients
+<ul class="org-ul">
+<li>max upload rate: u<sub>s</sub> + Σ u<sub>i</sub>  (upload server + sum of upload of peers)</li>
+</ul></li>
+<li>Solution max (F/U<sub>s</sub>, F/d<sub>min</sub>, NF/(u<sub>s</sub> + Σ u<sub>i</sub>)) (increases linearly with N, but so does the upload rate)</li>
+</ul>
+</div>
+</li>
+<li><a id="orgb77888c"></a>Outcome<br />
+<div class="outline-text-5" id="text-orgb77888c">
+
+<div id="orgeeeecb8" class="figure">
+<p><img src="images/Network_Model/2025-12-09_21-55-17_screenshot.png" alt="2025-12-09_21-55-17_screenshot.png" />
+</p>
+</div>
+</div>
+</li>
+</ul>
+</div>
+<div id="outline-container-org4b4b65f" class="outline-4">
+<h4 id="org4b4b65f">NETCONF</h4>
+<div class="outline-text-4" id="text-org4b4b65f">
+<ul class="org-ul">
+<li>Network Configuration Protocol is a network management protocol from the IETF (RFC 6241)</li>
+<li>It provides mechanisms to install, manipulate and delete the configuration of network devices</li>
+<li>Uses simple RPC based mechanisms, fully encrypted to facilitate communication between a client and a server</li>
+<li>NETCONF session is the logical connection between a network admin or a network configuration application and a network device</li>
+<li>Main Roles of NETCONF:
+<ul class="org-ul">
+<li>Remote configuration management of network devices</li>
+<li>Retrieving configuration and operational state</li>
+<li>Standardized and structured management</li>
+<li>Reliable, programmatic automation</li>
+</ul></li>
+</ul>
+
+<div id="org39d4bfb" class="figure">
+<p><img src="images/Network_Model/2025-12-09_22-03-54_screenshot.png" alt="2025-12-09_22-03-54_screenshot.png" />
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orgcbe6ec5" class="outline-3">
+<h3 id="orgcbe6ec5"><span class="section-number-3">8.4.</span> Presentation Layer (6)</h3>
+<div class="outline-text-3" id="text-8-4">
+</div>
+<div id="outline-container-org7d7a90e" class="outline-4">
+<h4 id="org7d7a90e">Exists in</h4>
+<div class="outline-text-4" id="text-org7d7a90e">
+<ul class="org-ul">
+<li>Software</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgb9c1bdd" class="outline-4">
+<h4 id="orgb9c1bdd">Protocols</h4>
+<div class="outline-text-4" id="text-orgb9c1bdd">
+<ul class="org-ul">
+<li>TLS / SSL, XDR, MIME, JPEG, PNG, ASCII, etc.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org59b4424" class="outline-4">
+<h4 id="org59b4424">Container</h4>
+<div class="outline-text-4" id="text-org59b4424">
+<ul class="org-ul">
+<li>Raw Messages or Application Data Units</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org1813d2f" class="outline-4">
+<h4 id="org1813d2f">Role</h4>
+<div class="outline-text-4" id="text-org1813d2f">
+<ul class="org-ul">
+<li>Interprets the data: encryption, compression, transformation.</li>
+<li>Encrypted TCP connection (e2e authentication and encryption) TLS / SSL</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-orgf929949" class="outline-3">
+<h3 id="orgf929949"><span class="section-number-3">8.5.</span> Session Layer (5)</h3>
+<div class="outline-text-3" id="text-8-5">
+</div>
+<div id="outline-container-orgcd84729" class="outline-4">
+<h4 id="orgcd84729">Exists in</h4>
+<div class="outline-text-4" id="text-orgcd84729">
+<ul class="org-ul">
+<li>Software</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org48404c2" class="outline-4">
+<h4 id="org48404c2">Protocols</h4>
+<div class="outline-text-4" id="text-org48404c2">
+<ul class="org-ul">
+<li>NetBIOS, RPC, PPTP, etc</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org39393b8" class="outline-4">
+<h4 id="org39393b8">Container</h4>
+<div class="outline-text-4" id="text-org39393b8">
+<ul class="org-ul">
+<li>Raw Messages or Application Data Units</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org9dcb654" class="outline-4">
+<h4 id="org9dcb654">Role</h4>
+<div class="outline-text-4" id="text-org9dcb654">
+<ul class="org-ul">
+<li>Responsible for establishing, maintaining and terminating a <code>session</code>.</li>
+<li><code>Session</code> synchronization</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-orgf721c96" class="outline-3">
+<h3 id="orgf721c96"><span class="section-number-3">8.6.</span> Transport Layer (4)</h3>
+<div class="outline-text-3" id="text-8-6">
+</div>
+<div id="outline-container-orgf536caf" class="outline-4">
+<h4 id="orgf536caf">Exists in</h4>
+<div class="outline-text-4" id="text-orgf536caf">
+<ul class="org-ul">
+<li>Software</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgc953178" class="outline-4">
+<h4 id="orgc953178">Protocols</h4>
+<div class="outline-text-4" id="text-orgc953178">
+<ul class="org-ul">
+<li>TCP, UDP</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org3a03cff" class="outline-4">
+<h4 id="org3a03cff">Container</h4>
+<div class="outline-text-4" id="text-org3a03cff">
+<ul class="org-ul">
+<li>Segment (TCP), Datagram (UDP)</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org109e8d1" class="outline-4">
+<h4 id="org109e8d1">Role</h4>
+<div class="outline-text-4" id="text-org109e8d1">
+<ul class="org-ul">
+<li>Process-to-process data transfer</li>
+<li>Provides end-to-end communications services for applications</li>
+<li>Logical communication between processes</li>
+<li>Transmission Control Protocol (TCP), User Datagram Protocol (UDP)</li>
+<li>May provide:
+<ul class="org-ul">
+<li>Data integrity</li>
+<li>Timing (may require low delay)</li>
+<li>Throughput (some apps require a minimum throughput, like video/audio)</li>
+<li>Security</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgeb01ea0" class="outline-4">
+<h4 id="orgeb01ea0">TCP</h4>
+<div class="outline-text-4" id="text-orgeb01ea0">
+<ul class="org-ul">
+<li>Reliable transport</li>
+<li>Flow control: sender won't overwhelm receiver</li>
+<li>Congestion control: throttle sender when network overloaded</li>
+<li>Does not provide: timing, minimum throughput guarantee, security</li>
+<li>Connection oriented transmission - guarantee of logical/physical connection</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org32f8964" class="outline-4">
+<h4 id="org32f8964">UDP</h4>
+<div class="outline-text-4" id="text-org32f8964">
+<ul class="org-ul">
+<li>Connectionless transmission - un-guaranteed - best effort policy</li>
+<li>No handshaking</li>
+<li>Does not provide: reliability, congestion control, flow control, timing, throughput, security or connection setup.</li>
+<li>Used for streaming and DNS lookups</li>
+<li>Reliability may be added at the application layer</li>
+</ul>
+
+<div id="orgfb79ccf" class="figure">
+<p><img src="images/Network_Model/2025-12-09_22-17-41_screenshot.png" alt="2025-12-09_22-17-41_screenshot.png" />
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orgbd3ecd5" class="outline-4">
+<h4 id="orgbd3ecd5">Multiplexing &amp; Demultiplexing</h4>
+<div class="outline-text-4" id="text-orgbd3ecd5">
+<ul class="org-ul">
+<li>Uses socket information (4-tuple) to uniquely identify segments when Multiplexing (sending)</li>
+<li>Demux, retrieve that segments and direct them based on the 4-tuple to the right process</li>
+<li>Webservers use different sockets for each connected client</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgc67af87" class="outline-4">
+<h4 id="orgc67af87">Reliable Transfer Protocols</h4>
+<div class="outline-text-4" id="text-orgc67af87">
+</div>
+<ul class="org-ul">
+<li><a id="org09b17b4"></a>Pipelining<br />
+<div class="outline-text-5" id="text-org09b17b4">
+<ul class="org-ul">
+<li>Sender allows multiple "in-flight" yet-to-be-acknowledged packets</li>
+<li>Basically: send multiple packets and receive multiple ACKs</li>
+</ul>
+
+<div id="org30a862f" class="figure">
+<p><img src="images/Network_Model/2025-12-09_22-30-06_screenshot.png" alt="2025-12-09_22-30-06_screenshot.png" />
+</p>
+</div>
+</div>
+</li>
+<li><a id="orga50606f"></a>Go-back-N (GBN) pipelining<br />
+<div class="outline-text-5" id="text-orga50606f">
+<ul class="org-ul">
+<li>Sender can have up to N unACKed packets in pipeline</li>
+<li>Receiver only sends cumulative ACK (doesn't ACK if there's a gap)</li>
+<li>Sender has timer for oldest unACKed packet. When timer expires re-transmit all unACKed packets.</li>
+</ul>
+
+<div id="org26641af" class="figure">
+<p><img src="images/Network_Model/2025-12-09_22-37-18_screenshot.png" alt="2025-12-09_22-37-18_screenshot.png" />
+</p>
+</div>
+</div>
+</li>
+<li><a id="orgf64ed41"></a>Selective Repeat (SR) pipelining<br />
+<div class="outline-text-5" id="text-orgf64ed41">
+<ul class="org-ul">
+<li>Sender can have up to N unACKed packets in pipeline</li>
+<li>Receiver sends individual ACK for each packet</li>
+<li>Sender maintains timer for each unACKed packet. When timer expires, re-transmit only that unACKed packet.</li>
+</ul>
+</div>
+</li>
+<li><a id="org1b0ce03"></a>TCP<br />
+<ul class="org-ul">
+<li><a id="org98287cd"></a>Info<br />
+<div class="outline-text-6" id="text-org98287cd">
+<ul class="org-ul">
+<li>Point-to-Point</li>
+<li>Reliable, in-order byte stream</li>
+<li>Pipelined: congestion and flow control</li>
+<li>Full duplex: bi-directional flow in same connection. MSS: max segment size</li>
+<li>Connection oriented: handshaking</li>
+<li>Flow controlled: sender will not overwhelm receiver</li>
+</ul>
+</div>
+</li>
+<li><a id="org21fcb79"></a>Segment Structure<br />
+<div class="outline-text-6" id="text-org21fcb79">
+<ul class="org-ul">
+<li>Sequence numbers: byte stream "number" of first byte in segment's data</li>
+<li>ACKs: sequence number of next byte expected from other side</li>
+<li>Cumulative ACK</li>
+</ul>
+
+<div id="org8b6ad04" class="figure">
+<p><img src="images/Network_Model/2025-12-09_22-48-13_screenshot.png" alt="2025-12-09_22-48-13_screenshot.png" />
+</p>
+</div>
+<ul class="org-ul">
+<li>Seq numbers and ACKs</li>
+</ul>
+
+<div id="org98eac02" class="figure">
+<p><img src="images/Network_Model/2025-12-09_22-52-15_screenshot.png" alt="2025-12-09_22-52-15_screenshot.png" />
+</p>
+</div>
+</div>
+</li>
+<li><a id="orgb68dd8b"></a>TCP and RTT<br />
+<div class="outline-text-6" id="text-orgb68dd8b">
+<ul class="org-ul">
+<li>Timeout value, needs to be longer than RTT! Too short = premature re-transmission, too long = slwo reaction to segment loss</li>
+<li>TCP sends a sample and continues to sample the RTT and adjusts it automatically</li>
+<li>It is an exponential weighted moving average</li>
+<li>Influence of past samples decreases expontentially fast</li>
+<li>Typical value of α = 0.125s</li>
+<li>EstimatedRTT = (1 - α) * EstimatedRTT + α * SampleRTT</li>
+<li>Timeout interval = EstimatedRTT + "safety margin"</li>
+<li>DeviationRTT = (1 - β) * DevRTT + β (SampleRTT - EstimatedRTT) (typically β = 0.25)</li>
+<li>Timeout interval = EstimatedRTT + 4*DevRTT (safety margin)</li>
+</ul>
+</div>
+</li>
+<li><a id="org1e8bb24"></a>TCP Re-transmission Scenarios<br />
+<div class="outline-text-6" id="text-org1e8bb24">
+
+<div id="org3104d1c" class="figure">
+<p><img src="images/Network_Model/2025-12-09_23-01-02_screenshot.png" alt="2025-12-09_23-01-02_screenshot.png" />
+</p>
+</div>
+</div>
+</li>
+<li><a id="org047d9f0"></a>Cumulative ACK<br />
+<div class="outline-text-6" id="text-org047d9f0">
+
+<div id="orga7bb15f" class="figure">
+<p><img src="images/Network_Model/2025-12-09_23-02-49_screenshot.png" alt="2025-12-09_23-02-49_screenshot.png" />
+</p>
+</div>
+</div>
+</li>
+<li><a id="orgb7ea241"></a>TCP Fast Re-transmit<br />
+<div class="outline-text-6" id="text-orgb7ea241">
+<ul class="org-ul">
+<li>If sender receives 3 ACKs for same data (triple duplicate ACK), resend unACKed segment with smallest seq number</li>
+</ul>
+
+<div id="org9e1dd14" class="figure">
+<p><img src="images/Network_Model/2025-12-09_23-04-34_screenshot.png" alt="2025-12-09_23-04-34_screenshot.png" />
+</p>
+</div>
+</div>
+</li>
+<li><a id="org0e9457e"></a>TCP Flow Control<br />
+<div class="outline-text-6" id="text-org0e9457e">
+<ul class="org-ul">
+<li>Receiver controls sender</li>
+<li>Won't overflow receiver by sending too much</li>
+<li>Receiver advertises free buffer space</li>
+</ul>
+</div>
+</li>
+<li><a id="org17f45dd"></a>Connection management<br />
+<div class="outline-text-6" id="text-org17f45dd">
+<ul class="org-ul">
+<li>Agree to establish connection: handshake</li>
+<li>3-way handshake</li>
+</ul>
+
+<div id="orgde3971d" class="figure">
+<p><img src="images/Network_Model/2025-12-09_23-09-08_screenshot.png" alt="2025-12-09_23-09-08_screenshot.png" />
+</p>
+</div>
+<ul class="org-ul">
+<li>Closing a connection</li>
+</ul>
+
+<div id="org3d880d1" class="figure">
+<p><img src="images/Network_Model/2025-12-09_23-11-18_screenshot.png" alt="2025-12-09_23-11-18_screenshot.png" />
+</p>
+</div>
+</div>
+</li>
+</ul>
+</li>
+<li><a id="org92dc707"></a>Congestion Control<br />
+<div class="outline-text-5" id="text-org92dc707">
+<ul class="org-ul">
+<li>Too many sources sending too much data too fast for the network to handle</li>
+<li>Causes lost packets and long delays</li>
+<li>AIMD: Additive Increase, Multiplicative Decrease</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org9434dfe" class="outline-3">
+<h3 id="org9434dfe"><span class="section-number-3">8.7.</span> Network Layer (3)</h3>
+<div class="outline-text-3" id="text-8-7">
+</div>
+<div id="outline-container-orga8a2e7b" class="outline-4">
+<h4 id="orga8a2e7b">Exists in</h4>
+<div class="outline-text-4" id="text-orga8a2e7b">
+<ul class="org-ul">
+<li>Router, 3rd layer switches, firewall</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org0222764" class="outline-4">
+<h4 id="org0222764">Protocols</h4>
+<div class="outline-text-4" id="text-org0222764">
+<ul class="org-ul">
+<li>IP and Routing Protocols</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org565f72b" class="outline-4">
+<h4 id="org565f72b">Container</h4>
+<div class="outline-text-4" id="text-org565f72b">
+<ul class="org-ul">
+<li>IP Packet (aka IP Datagram)</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orge767661" class="outline-4">
+<h4 id="orge767661">Role</h4>
+<div class="outline-text-4" id="text-orge767661">
+<ul class="org-ul">
+<li>Routing of datagrams from source to destination</li>
+<li>Logical communication between hosts</li>
+<li>IP is based on a set of protocols that are used to transport datagrams from a source host to a destination endpoint. Achieved by IP Addresses.</li>
+<li>Three basic functions:
+<ul class="org-ul">
+<li>For outgoing packets - select the next-hop host (gateway) and transmit packets to this host by passing it to an appropriate link layer implementation</li>
+<li>For incoming packets - capture packets and pass the packet payload up to the appropriate transport-layer protocol, if appropriate</li>
+<li>Error checking</li>
+</ul></li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-org1b05cdd" class="outline-3">
+<h3 id="org1b05cdd"><span class="section-number-3">8.8.</span> Data Link Layer (2)</h3>
+<div class="outline-text-3" id="text-8-8">
+</div>
+<div id="outline-container-org271c153" class="outline-4">
+<h4 id="org271c153">Exists in</h4>
+<div class="outline-text-4" id="text-org271c153">
+<ul class="org-ul">
+<li>Switches, bridges, NICs, wireless APs</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org2600394" class="outline-4">
+<h4 id="org2600394">Protocols</h4>
+<div class="outline-text-4" id="text-org2600394">
+<ul class="org-ul">
+<li>Ethernet, 802.11 (WiFi), PPP</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org98ad89d" class="outline-4">
+<h4 id="org98ad89d">Container</h4>
+<div class="outline-text-4" id="text-org98ad89d">
+<ul class="org-ul">
+<li>Frame</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org7d1164d" class="outline-4">
+<h4 id="org7d1164d">Role</h4>
+<div class="outline-text-4" id="text-org7d1164d">
+<ul class="org-ul">
+<li>Data transfer between neighboring network elements (sometimes link and physical are put together)</li>
+<li>Delivers the datagram to the next node along a route</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-org35ea918" class="outline-3">
+<h3 id="org35ea918"><span class="section-number-3">8.9.</span> Physical Layer (1)</h3>
+<div class="outline-text-3" id="text-8-9">
+</div>
+<div id="outline-container-orga099e61" class="outline-4">
+<h4 id="orga099e61">Exists in</h4>
+<div class="outline-text-4" id="text-orga099e61">
+<ul class="org-ul">
+<li>Cables, connectors, hubs</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgf624e6e" class="outline-4">
+<h4 id="orgf624e6e">Protocols</h4>
+<div class="outline-text-4" id="text-orgf624e6e">
+<ul class="org-ul">
+<li>Physical "bits on the wire"</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgaa3de96" class="outline-4">
+<h4 id="orgaa3de96">Role</h4>
+</div>
+</div>
+</div>
+<div id="outline-container-org1facbcd" class="outline-2">
+<h2 id="org1facbcd"><span class="section-number-2">9.</span> LAN, WAN, RAN, Wireless (5G)</h2>
+</div>
+<div id="outline-container-orgf337349" class="outline-2">
+<h2 id="orgf337349"><span class="section-number-2">10.</span> Multimedia Networking</h2>
+</div>
+<div id="outline-container-org33736f4" class="outline-2">
+<h2 id="org33736f4"><span class="section-number-2">11.</span> QoS, QoS Support, QoE</h2>
+</div>
+<div id="outline-container-org1b7debb" class="outline-2">
+<h2 id="org1b7debb"><span class="section-number-2">12.</span> Network Congestion</h2>
+</div>
+<div id="outline-container-org07095bc" class="outline-2">
+<h2 id="org07095bc"><span class="section-number-2">13.</span> Network Management, Traffic Engineering, Network-Application Performance</h2>
+</div>
+<div id="outline-container-orgc9de3ec" class="outline-2">
+<h2 id="orgc9de3ec"><span class="section-number-2">14.</span> Remove at the End</h2>
+<div class="outline-text-2" id="text-14">
 <script src="../assets/jquery-3.3.1.min.js"></script>
 <script src="../assets/notes.js"></script>
 </div>
@@ -356,7 +2798,7 @@ So then the next network available is the one after the previous broadcast, whic
 <div id="postamble" class="status">
 <p class="date">Date: 2025-11-13 Thu 15:26</p>
 <p class="author">Author: Damian Chrzanowski</p>
-<p class="date">Created: 2025-12-07 Sun 14:12</p>
+<p class="date">Created: 2025-12-10 Wed 18:31</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
