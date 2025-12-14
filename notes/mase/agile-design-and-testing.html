@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2025-12-07 Sun 14:11 -->
+<!-- 2025-12-14 Sun 18:44 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Agile Design and Testing</title>
@@ -204,30 +204,701 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org4ba6ed5">1. Scaffold for Parameterized Testing</a>
+<li><a href="#org9068249">1. Exam Questions Bank</a></li>
+<li><a href="#org025ad7b">2. Software Lifecycles and Fundamentals of Testing</a>
 <ul>
-<li><a href="#org3d98275">1.1. pom for jupiter and jupiter with params</a></li>
-<li><a href="#orgdcb7fd1">1.2. Using the MethodSource with an expected Throw</a></li>
-<li><a href="#orgc55042e">1.3. Using the MethodSource with an asssertEquals</a></li>
-<li><a href="#orgea5a32d">1.4. Using the CsvSource</a></li>
-<li><a href="#org52ea4e0">1.5. Using the CsvFileSource (put the CSVs in the main/resources directory)</a></li>
-<li><a href="#org4a4dea6">1.6. Using the ValueSource</a></li>
+<li><a href="#org017bbac">2.1. What is Software</a></li>
+<li><a href="#orgeddc959">2.2. What is Software Engineering</a></li>
+<li><a href="#org16309be">2.3. Why Software Fails?</a></li>
+<li><a href="#org2890521">2.4. Reliability</a></li>
+<li><a href="#orgdfd6f3f">2.5. Testing Triangle</a></li>
+<li><a href="#orgd0d394b">2.6. Software process</a></li>
+<li><a href="#orgacdf3d4">2.7. Testing process</a></li>
+<li><a href="#orgde2649c">2.8. What is testing</a></li>
+<li><a href="#org4e18321">2.9. Static vs Dynamic</a></li>
+<li><a href="#orgac92594">2.10. Seven Testing Principles</a></li>
+<li><a href="#org792077d">2.11. Verification vs Validation</a></li>
+<li><a href="#orga2c3401">2.12. Test Coverage</a></li>
+<li><a href="#org607932e">2.13. General testing process</a></li>
+<li><a href="#orga885d93">2.14. Test Design</a></li>
+<li><a href="#org6d466a1">2.15. Test Levels</a></li>
+<li><a href="#orgc6ef652">2.16. Test Types</a></li>
+<li><a href="#orge25ac66">2.17. Reviews</a></li>
 </ul>
 </li>
-<li><a href="#org25c47d0">2. Remove at the End</a></li>
+<li><a href="#org372cade">3. User Stories</a>
+<ul>
+<li><a href="#orge9bd8fa">3.1. Definition</a></li>
+<li><a href="#org5583a0c">3.2. INVEST</a></li>
+<li><a href="#org27c2337">3.3. Acceptance Criteria</a></li>
+<li><a href="#orge058bf6">3.4. Definition of Done</a></li>
+<li><a href="#orgefd69a7">3.5. Defining the User or Personas</a></li>
+<li><a href="#org93649c0">3.6. Special User Stories</a></li>
+</ul>
+</li>
+<li><a href="#orgc6a4b71">4. Agile Testing</a>
+<ul>
+<li><a href="#orgf826655">4.1. The Test Pyramid</a></li>
+<li><a href="#org419c7ef">4.2. Testing Quadrant</a></li>
+</ul>
+</li>
+<li><a href="#orgdaf7dc4">5. Design Patterns</a>
+<ul>
+<li><a href="#orgf2e5b23">5.1. Creational</a></li>
+<li><a href="#org34f6b3e">5.2. Structural</a></li>
+<li><a href="#org81bed04">5.3. Behavioral</a></li>
+<li><a href="#org09b5f2c">5.4. Anti-pattern</a></li>
+</ul>
+</li>
+<li><a href="#org4dc3650">6. Agile Design</a>
+<ul>
+<li><a href="#org0bfb012">6.1. Info</a></li>
+<li><a href="#orgea62336">6.2. Poor design (smells)</a></li>
+<li><a href="#org8e56659">6.3. Open-Closed Principle</a></li>
+<li><a href="#org49f106a">6.4. Liskov's Substitution Principles</a></li>
+<li><a href="#org51d4ae4">6.5. Single responsibility principle (SRP)</a></li>
+<li><a href="#orgc94d9f2">6.6. Dependency Inversion Principle (DIP)</a></li>
+<li><a href="#org8a2d873">6.7. Interface Segregation Principle (ISP)</a></li>
+</ul>
+</li>
+<li><a href="#orgf1a938e">7. McCabe's Cyclomatic Complexity</a>
+<ul>
+<li><a href="#orgdb43fa9">7.1. Definition</a></li>
+<li><a href="#orgfc20da9">7.2. Example Control Flow Graphs</a></li>
+</ul>
+</li>
+<li><a href="#org3c7f322">8. Scaffold for Parameterized Testing</a>
+<ul>
+<li><a href="#org8670efe">8.1. pom for jupiter and jupiter with params</a></li>
+<li><a href="#org69cf098">8.2. Using the MethodSource with an expected Throw</a></li>
+<li><a href="#orgc4ebd96">8.3. Using the MethodSource with an asssertEquals</a></li>
+<li><a href="#orgadb457e">8.4. Using the CsvSource</a></li>
+<li><a href="#orge3b0766">8.5. Using the CsvFileSource (put the CSVs in the main/resources directory)</a></li>
+<li><a href="#org9960f31">8.6. Using the ValueSource</a></li>
+</ul>
+</li>
+<li><a href="#orgdc68f35">9. Mockito</a>
+<ul>
+<li><a href="#orgf5bec85">9.1. Info</a></li>
+<li><a href="#org9cde1dc">9.2. Sample</a></li>
+<li><a href="#org6e539cb">9.3. Concrete Class</a></li>
+</ul>
+</li>
+<li><a href="#org5e6dc10">10. Remove at the End</a></li>
 </ul>
 </div>
 </div>
 <p>
 <a href="index.html">Home Page</a>
 </p>
-<div id="outline-container-org4ba6ed5" class="outline-2">
-<h2 id="org4ba6ed5"><span class="section-number-2">1.</span> Scaffold for Parameterized Testing</h2>
+<div id="outline-container-org9068249" class="outline-2">
+<h2 id="org9068249"><span class="section-number-2">1.</span> Exam Questions Bank</h2>
 <div class="outline-text-2" id="text-1">
+<ul class="org-ul">
+<li>(1x) Analyse a piece of code an point out why is it hard to test. CODE 1</li>
+<li>(1x) Propose a refactoring plan for the same piece of code as in CODE 1</li>
+<li>(1x) How would you use <code>mockito</code> to test CODE 1</li>
+<li>(1x) With regards to <code>mockito</code>: what is a <code>dummy</code>, <code>stub</code> and a <code>spy</code>? What is a <code>test double</code>?</li>
+<li>(1x) Why is a piece of given code challenging to test using <code>mockito</code>?</li>
+<li>(1x) From a list of test categorized them in terms of: <code>Unit Test</code>, <code>Integration Tests</code>, <code>UI/E2E Tests</code>. Explain reasoning.</li>
+<li>(1x) Purpose of the <code>Test Pyramid</code>. Importance to structure the tests according to the Pyramid.</li>
+<li>(1x) What is <code>Cucumber</code> and how does it fit with <code>BDD</code>?</li>
+<li>(1x) Write a <code>Cucumber DataTable</code> to achieve 100% <code>code and branch coverage</code></li>
+<li>(1x) Using <code>Selenium</code> and potential problems with selecting elements and exceptions thrown with it</li>
+<li>(2x) How many tests required to achieve <code>100% branch coverage</code> and <code>100% code coverage</code> in given code.</li>
+<li>(1x) Write a <code>parameterized test</code> with <code>CSVSource</code> to achieve <code>100% branch coverage</code></li>
+<li>(1x) Explain <code>Command Query Separation</code> (CQS)</li>
+<li>(3x) Draw a <code>control flow graph</code> for a specific piece of code. Use <code>E-N+2</code> to calculate the <code>cyclomatic complexity</code>.
+<ul class="org-ul">
+<li><code>Hybrid Flow Graph</code> used on one exam</li>
+</ul></li>
+<li>(1x) AI produced a user story, rewrite it using <code>INVEST</code> principles and add <code>Acceptance Tests</code>.</li>
+<li>(2x) What is <code>McCabe's Cyclomatic</code> number?</li>
+<li>(2x) Calculate <code>cyclomatic complexity</code> for a given code
+<ul class="org-ul">
+<li>(1x) Three different methods for calculating it, explain them</li>
+</ul></li>
+<li>(1x) Use <code>agile testing quadrants</code> to categorize a list of user stories</li>
+<li>(2x) Use <code>equivalence partitioning</code> and <code>BVA</code></li>
+<li>(1x) Explain <code>parameterized testing</code>. How do you use them in jUnit5?</li>
+<li>(1x) Using <code>SOLID</code> principles and evaluating code in terms of <code>SOLID</code>.</li>
+<li>(1x) Which <code>design pattern</code> is used in a given example? (here it is a singleton)</li>
+<li>(1x) Returning an error as a String, what is the problem with that?</li>
+<li>(1x) Break down <code>Epics</code> into <code>User Stories</code></li>
+<li>(1x) <code>Verification</code> vs <code>Validation</code></li>
+<li>(1x) <code>Static analysis</code>: what is it? what benefits it provides?</li>
+<li>(1x) Write user <code>acceptance criteria</code> for tests</li>
+<li>(1x) Re-write user stories based on <code>INVEST</code></li>
+<li>(1x) What is a <code>Dependency Inversion Principle</code>? Does a piece of given code comply to it?</li>
+<li>(1x) <code>!!!</code> Why testing can only detect the presence of errors and their absence?</li>
+<li>(1x) What is <code>Open-Close Principle</code>?</li>
+<li>(1x) Write a <code>state transition</code> sequence</li>
+</ul>
 </div>
-<div id="outline-container-org3d98275" class="outline-3">
-<h3 id="org3d98275"><span class="section-number-3">1.1.</span> pom for jupiter and jupiter with params</h3>
-<div class="outline-text-3" id="text-1-1">
+</div>
+<div id="outline-container-org025ad7b" class="outline-2">
+<h2 id="org025ad7b"><span class="section-number-2">2.</span> Software Lifecycles and Fundamentals of Testing</h2>
+<div class="outline-text-2" id="text-2">
+</div>
+<div id="outline-container-org017bbac" class="outline-3">
+<h3 id="org017bbac"><span class="section-number-3">2.1.</span> What is Software</h3>
+<div class="outline-text-3" id="text-2-1">
+<ul class="org-ul">
+<li>Computer programs and associated documentation (requirements, design models, user manuals)</li>
+<li>Bespoke or generic</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgeddc959" class="outline-3">
+<h3 id="orgeddc959"><span class="section-number-3">2.2.</span> What is Software Engineering</h3>
+<div class="outline-text-3" id="text-2-2">
+<ul class="org-ul">
+<li>Engineering discipline that is concerned with the aspect of software production</li>
+<li>Should adopt systematic and organised approach to software creation</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org16309be" class="outline-3">
+<h3 id="org16309be"><span class="section-number-3">2.3.</span> Why Software Fails?</h3>
+<div class="outline-text-3" id="text-2-3">
+<ul class="org-ul">
+<li>Error (leads to &gt;) Defect (causes an observed) Failure</li>
+<li>A person makes an error &gt; that creates a fault (defect) &gt; that causes a failure</li>
+<li>To avoid failure we must either avoid errors and fault or find and fix them</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org2890521" class="outline-3">
+<h3 id="org2890521"><span class="section-number-3">2.4.</span> Reliability</h3>
+<div class="outline-text-3" id="text-2-4">
+<ul class="org-ul">
+<li>Probability that software will not cause failures</li>
+<li>Extensive testing to prevent failures as soon as errors occur (at the beginning or the end of software creation)</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgdfd6f3f" class="outline-3">
+<h3 id="orgdfd6f3f"><span class="section-number-3">2.5.</span> Testing Triangle</h3>
+<div class="outline-text-3" id="text-2-5">
+<ul class="org-ul">
+<li>Time - Money - Quality, balance between</li>
+<li>Testing ensures functional and non-functional requirements are examined and defect reported</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgd0d394b" class="outline-3">
+<h3 id="orgd0d394b"><span class="section-number-3">2.6.</span> Software process</h3>
+<div class="outline-text-3" id="text-2-6">
+<ul class="org-ul">
+<li>Specification &gt; Development &gt; Validation &gt; Evolution</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgacdf3d4" class="outline-3">
+<h3 id="orgacdf3d4"><span class="section-number-3">2.7.</span> Testing process</h3>
+<div class="outline-text-3" id="text-2-7">
+</div>
+<div id="outline-container-orgc019335" class="outline-4">
+<h4 id="orgc019335">Diagram</h4>
+<div class="outline-text-4" id="text-orgc019335">
+
+<div id="org4a1c50d" class="figure">
+<p><img src="images/Software_Lifecycles_and_Fundamentals_of_Testing/2025-12-14_16-27-37_screenshot.png" alt="2025-12-14_16-27-37_screenshot.png" />
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orgaf95a85" class="outline-4">
+<h4 id="orgaf95a85">Planning</h4>
+<div class="outline-text-4" id="text-orgaf95a85">
+<ul class="org-ul">
+<li>Determine what will be tested</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgab14f47" class="outline-4">
+<h4 id="orgab14f47">Control</h4>
+<div class="outline-text-4" id="text-orgab14f47">
+<ul class="org-ul">
+<li>What to do when activities do not match up to plan</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org00a5936" class="outline-4">
+<h4 id="org00a5936">Analysis and Design</h4>
+<div class="outline-text-4" id="text-org00a5936">
+<ul class="org-ul">
+<li>Review requirements, architecture, interface specs, etc</li>
+<li>Analyse test conditions and input data</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org590767d" class="outline-4">
+<h4 id="org590767d">Implementation and Execution</h4>
+<div class="outline-text-4" id="text-org590767d">
+<ul class="org-ul">
+<li>Develop and prioritize test cases</li>
+<li>Running tests</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org1cf16ab" class="outline-4">
+<h4 id="org1cf16ab">Evaluation and reporting</h4>
+<div class="outline-text-4" id="text-org1cf16ab">
+<ul class="org-ul">
+<li>Checking if we succeeded, basically</li>
+<li>Write up results</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgf5233c7" class="outline-4">
+<h4 id="orgf5233c7">Closure</h4>
+<div class="outline-text-4" id="text-orgf5233c7">
+<ul class="org-ul">
+<li>Docs in order</li>
+<li>Close down env and infra</li>
+<li>Handover to maintenance team</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-orgde2649c" class="outline-3">
+<h3 id="orgde2649c"><span class="section-number-3">2.8.</span> What is testing</h3>
+<div class="outline-text-3" id="text-2-8">
+<ul class="org-ul">
+<li>Testing is a systematic exploration of a component with the aim of finding defects</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org4e18321" class="outline-3">
+<h3 id="org4e18321"><span class="section-number-3">2.9.</span> Static vs Dynamic</h3>
+<div class="outline-text-3" id="text-2-9">
+<ul class="org-ul">
+<li>Static testing is where code is not executed (e.g. specification document review)</li>
+<li>Dynamic testing is where code is ran with some test data</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgac92594" class="outline-3">
+<h3 id="orgac92594"><span class="section-number-3">2.10.</span> Seven Testing Principles</h3>
+<div class="outline-text-3" id="text-2-10">
+<ol class="org-ol">
+<li>Testing can only show the presence of bugs, not their absence</li>
+<li>Exhaustive testing is impossible</li>
+<li>Early Testing (late testing, especially under pressure is bad, also, the later the more expensive the fix)</li>
+<li>Defect Clustering (80% of problems found in 20% of modules)</li>
+<li>Pesticide Paradox (running the same test will not reveal new defects)</li>
+<li>Testing is context dependent (different tests for different needs)</li>
+<li>Absence of error fallacy (no errors does not means that they aren't there)</li>
+</ol>
+</div>
+</div>
+<div id="outline-container-org792077d" class="outline-3">
+<h3 id="org792077d"><span class="section-number-3">2.11.</span> Verification vs Validation</h3>
+<div class="outline-text-3" id="text-2-11">
+<ul class="org-ul">
+<li>Verification: are we building the right product? (process infused)
+<ul class="org-ul">
+<li>Software inspection</li>
+</ul></li>
+<li>Validation: are we building the product right? (requirements infused)
+<ul class="org-ul">
+<li>Software testing</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orga2c3401" class="outline-3">
+<h3 id="orga2c3401"><span class="section-number-3">2.12.</span> Test Coverage</h3>
+<div class="outline-text-3" id="text-2-12">
+</div>
+<div id="outline-container-orgea3c121" class="outline-4">
+<h4 id="orgea3c121">Info</h4>
+<div class="outline-text-4" id="text-orgea3c121">
+<ul class="org-ul">
+<li>Provides a quantitative assessment of the extent and quality of testing</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgc80b234" class="outline-4">
+<h4 id="orgc80b234">Black Box</h4>
+<div class="outline-text-4" id="text-orgc80b234">
+<ul class="org-ul">
+<li>The nitty gritty</li>
+<li>Equivalence Partitioning</li>
+<li>BVA</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org6b66346" class="outline-4">
+<h4 id="org6b66346">White Box</h4>
+<div class="outline-text-4" id="text-org6b66346">
+<ul class="org-ul">
+<li>Structural testing: branches, components, etc.</li>
+<li>Control Flow Graphs (CFG, uses number and circles to represent all "blocks"): models all execution of a method by describing control statements
+<ul class="org-ul">
+<li>Node: statement (sequenced). Use dummy nodes for things like while loops.</li>
+<li>Edge: transfer of control (e.g. IF, write the condition on the edge, remember the for loops have condition inside of them)</li>
+<li>Block: sequence of statements</li>
+</ul></li>
+</ul>
+</div>
+<ul class="org-ul">
+<li><a id="org6fe5996"></a>Example if<br />
+<div class="outline-text-5" id="text-org6fe5996">
+
+<div id="orgc013184" class="figure">
+<p><img src="images/Software_Lifecycles_and_Fundamentals_of_Testing/2025-12-14_17-03-18_screenshot.png" alt="2025-12-14_17-03-18_screenshot.png" />
+</p>
+</div>
+</div>
+</li>
+<li><a id="org393f7a6"></a>Example try/catch<br />
+<div class="outline-text-5" id="text-org393f7a6">
+
+<div id="org92b71f8" class="figure">
+<p><img src="images/Software_Lifecycles_and_Fundamentals_of_Testing/2025-12-14_17-05-57_screenshot.png" alt="2025-12-14_17-05-57_screenshot.png" />
+</p>
+</div>
+</div>
+</li>
+</ul>
+</div>
+<div id="outline-container-orgddb5e60" class="outline-4">
+<h4 id="orgddb5e60">Fundamental Three structures of code</h4>
+<div class="outline-text-4" id="text-orgddb5e60">
+<ul class="org-ul">
+<li>Sequence - statements one after another</li>
+<li>Selection (branching) - choice</li>
+<li>Iteration (looping)</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org9b3c935" class="outline-4">
+<h4 id="org9b3c935">Statement Coverage</h4>
+<div class="outline-text-4" id="text-org9b3c935">
+<ul class="org-ul">
+<li>Does not necessarily cover all paths, it merely executes all statements</li>
+<li>When using a flowchart we only need to check which statements are executed, not which paths are taken</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgb03d19f" class="outline-4">
+<h4 id="orgb03d19f">Branch Coverage</h4>
+</div>
+</div>
+<div id="outline-container-org607932e" class="outline-3">
+<h3 id="org607932e"><span class="section-number-3">2.13.</span> General testing process</h3>
+<div class="outline-text-3" id="text-2-13">
+<ul class="org-ul">
+<li>Requirements &gt; Design &gt; Code &gt; Test</li>
+<li>Incremental - add-on</li>
+<li>Iterative - re-do</li>
+<li>Problems with iterative: customer involvement, lack of docs, details may be lost if changes are not recorded</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orga885d93" class="outline-3">
+<h3 id="orga885d93"><span class="section-number-3">2.14.</span> Test Design</h3>
+<div class="outline-text-3" id="text-2-14">
+<ul class="org-ul">
+<li>Identify test conditions: an item or event that could be verified with testing</li>
+<li>Specify test cases: various inputs to test the event/component</li>
+<li>Specify test procedures: actions to take (given/when/then)</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org6d466a1" class="outline-3">
+<h3 id="org6d466a1"><span class="section-number-3">2.15.</span> Test Levels</h3>
+<div class="outline-text-3" id="text-2-15">
+<ul class="org-ul">
+<li>Unit: component
+<ul class="org-ul">
+<li>Arrange (setup), act (execute), assert (check)</li>
+</ul></li>
+<li>Integrating: component interaction</li>
+<li>System: E2E</li>
+<li>Acceptance: End user confidence and satisfaction</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgc6ef652" class="outline-3">
+<h3 id="orgc6ef652"><span class="section-number-3">2.16.</span> Test Types</h3>
+<div class="outline-text-3" id="text-2-16">
+<ul class="org-ul">
+<li>Functional: specific functionality, e.g. search feature (aka specification based testing)</li>
+<li>Non-functional: behavioural aspects (e.g. performance under load)</li>
+<li>Testing after code changes: always re-test after fixes are applied (retesting, confirmation testing). Unchanged software also needs to be tested (regression testing, "just in case" scenario)</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orge25ac66" class="outline-3">
+<h3 id="orge25ac66"><span class="section-number-3">2.17.</span> Reviews</h3>
+<div class="outline-text-3" id="text-2-17">
+</div>
+<div id="outline-container-org9850d56" class="outline-4">
+<h4 id="org9850d56">Types</h4>
+<div class="outline-text-4" id="text-org9850d56">
+<ul class="org-ul">
+<li>Informal</li>
+<li>Walk-through</li>
+<li>Technical Review</li>
+<li>Inspection</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org395c79b" class="outline-4">
+<h4 id="org395c79b">Objective</h4>
+<div class="outline-text-4" id="text-org395c79b">
+<ul class="org-ul">
+<li>Finding defects</li>
+<li>Gain understanding</li>
+<li>Generate discussion</li>
+<li>Decision making by consensus</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org41633dd" class="outline-4">
+<h4 id="org41633dd">Typically found during reviews</h4>
+<div class="outline-text-4" id="text-org41633dd">
+<ul class="org-ul">
+<li>Deviation from standards</li>
+<li>Requirements defects</li>
+<li>Design defects</li>
+<li>Insufficient maintainability</li>
+<li>Incorrect interface specs</li>
+<li>Proven an efficient and effective method for improving software</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org372cade" class="outline-2">
+<h2 id="org372cade"><span class="section-number-2">3.</span> User Stories</h2>
+<div class="outline-text-2" id="text-3">
+</div>
+<div id="outline-container-orge9bd8fa" class="outline-3">
+<h3 id="orge9bd8fa"><span class="section-number-3">3.1.</span> Definition</h3>
+<div class="outline-text-3" id="text-3-1">
+<ul class="org-ul">
+<li>A concise, written description of a piece of functionality that will be valuable to a use (or owner) of the software</li>
+<li>3Cs: Card, Conversation, Confirmation</li>
+<li>As a <code>role</code>, I want <code>goal</code>, so that <code>reason</code> (aka Who/What/Why)</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org5583a0c" class="outline-3">
+<h3 id="org5583a0c"><span class="section-number-3">3.2.</span> INVEST</h3>
+<div class="outline-text-3" id="text-3-2">
+<ul class="org-ul">
+<li>Independent</li>
+<li>Negotiable</li>
+<li>Valuable</li>
+<li>Estimatable</li>
+<li>Small</li>
+<li>Testable</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org27c2337" class="outline-3">
+<h3 id="org27c2337"><span class="section-number-3">3.3.</span> Acceptance Criteria</h3>
+<div class="outline-text-3" id="text-3-3">
+<ul class="org-ul">
+<li>Usually written in the Given &gt; When &gt; Then form</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orge058bf6" class="outline-3">
+<h3 id="orge058bf6"><span class="section-number-3">3.4.</span> Definition of Done</h3>
+<div class="outline-text-3" id="text-3-4">
+<ul class="org-ul">
+<li>What counts as a user story being done?</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgefd69a7" class="outline-3">
+<h3 id="orgefd69a7"><span class="section-number-3">3.5.</span> Defining the User or Personas</h3>
+<div class="outline-text-3" id="text-3-5">
+<ul class="org-ul">
+<li>Clearly define who is a user and what are the competency levels</li>
+<li>Personas are basically different users of the system, they describe who or what a specific user is</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org93649c0" class="outline-3">
+<h3 id="org93649c0"><span class="section-number-3">3.6.</span> Special User Stories</h3>
+<div class="outline-text-3" id="text-3-6">
+<ul class="org-ul">
+<li>Non-functional Stories</li>
+<li>Bug Stories</li>
+<li>Spike Stories (research)</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-orgc6a4b71" class="outline-2">
+<h2 id="orgc6a4b71"><span class="section-number-2">4.</span> Agile Testing</h2>
+<div class="outline-text-2" id="text-4">
+</div>
+<div id="outline-container-orgf826655" class="outline-3">
+<h3 id="orgf826655"><span class="section-number-3">4.1.</span> The Test Pyramid</h3>
+<div class="outline-text-3" id="text-4-1">
+
+<div id="org2128d0a" class="figure">
+<p><img src="images/Agile_Testing/2025-12-14_17-50-11_screenshot.png" alt="2025-12-14_17-50-11_screenshot.png" />
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org419c7ef" class="outline-3">
+<h3 id="org419c7ef"><span class="section-number-3">4.2.</span> Testing Quadrant</h3>
+<div class="outline-text-3" id="text-4-2">
+
+<div id="orgafba3a4" class="figure">
+<p><img src="images/Agile_Testing/2025-12-14_17-54-00_screenshot.png" alt="2025-12-14_17-54-00_screenshot.png" />
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orgdaf7dc4" class="outline-2">
+<h2 id="orgdaf7dc4"><span class="section-number-2">5.</span> Design Patterns</h2>
+<div class="outline-text-2" id="text-5">
+</div>
+<div id="outline-container-orgf2e5b23" class="outline-3">
+<h3 id="orgf2e5b23"><span class="section-number-3">5.1.</span> Creational</h3>
+<div class="outline-text-3" id="text-5-1">
+<ul class="org-ul">
+<li>Create objects for you</li>
+<li>Builder: used to construct complex objects that often require their own deps, etc.</li>
+<li>Factory: used to create instances, often with a specific setup in mind. Can be subtypes of an interface or a setup of a concrete class but with certain methods already called on it.</li>
+<li>Singleton</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org34f6b3e" class="outline-3">
+<h3 id="org34f6b3e"><span class="section-number-3">5.2.</span> Structural</h3>
+<div class="outline-text-3" id="text-5-2">
+<ul class="org-ul">
+<li>Compose groups of objects into larger structures</li>
+<li>DAO: Hides the implementation details. Enables transparent access to the data structure.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org81bed04" class="outline-3">
+<h3 id="org81bed04"><span class="section-number-3">5.3.</span> Behavioral</h3>
+<div class="outline-text-3" id="text-5-3">
+<ul class="org-ul">
+<li>Help to facilitate communication between objects</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org09b5f2c" class="outline-3">
+<h3 id="org09b5f2c"><span class="section-number-3">5.4.</span> Anti-pattern</h3>
+<div class="outline-text-3" id="text-5-4">
+<ul class="org-ul">
+<li>Reinventing the wheel in a bad way</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-org4dc3650" class="outline-2">
+<h2 id="org4dc3650"><span class="section-number-2">6.</span> Agile Design</h2>
+<div class="outline-text-2" id="text-6">
+</div>
+<div id="outline-container-org0bfb012" class="outline-3">
+<h3 id="org0bfb012"><span class="section-number-3">6.1.</span> Info</h3>
+<div class="outline-text-3" id="text-6-1">
+<ul class="org-ul">
+<li>Build software in small increments</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgea62336" class="outline-3">
+<h3 id="orgea62336"><span class="section-number-3">6.2.</span> Poor design (smells)</h3>
+<div class="outline-text-3" id="text-6-2">
+<ul class="org-ul">
+<li>Rigidity</li>
+<li>Fragility</li>
+<li>Immobility</li>
+<li>Viscosity</li>
+<li>Needless complexity</li>
+<li>Needless repetition</li>
+<li>Opacity</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org8e56659" class="outline-3">
+<h3 id="org8e56659"><span class="section-number-3">6.3.</span> Open-Closed Principle</h3>
+<div class="outline-text-3" id="text-6-3">
+<ul class="org-ul">
+<li>Modules/classes/functions should be open to extensions but closed for modifications. As in: it is ok to extend something, but don't modify the base (like Liskov).</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org49f106a" class="outline-3">
+<h3 id="org49f106a"><span class="section-number-3">6.4.</span> Liskov's Substitution Principles</h3>
+<div class="outline-text-3" id="text-6-4">
+<ul class="org-ul">
+<li>Subtypes must be suitable for their base types</li>
+<li>Basically the sub-type should not override the workings of the base to suite its own needs, you probably just have the wrong abstraction to begin with (or the whole system is not designed correctly)</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org51d4ae4" class="outline-3">
+<h3 id="org51d4ae4"><span class="section-number-3">6.5.</span> Single responsibility principle (SRP)</h3>
+</div>
+<div id="outline-container-orgc94d9f2" class="outline-3">
+<h3 id="orgc94d9f2"><span class="section-number-3">6.6.</span> Dependency Inversion Principle (DIP)</h3>
+<div class="outline-text-3" id="text-6-6">
+<ul class="org-ul">
+<li>High level modules should not depend on low level modules.</li>
+<li>Abstractions should not depend on details -&gt; details should depend on abstractions.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org8a2d873" class="outline-3">
+<h3 id="org8a2d873"><span class="section-number-3">6.7.</span> Interface Segregation Principle (ISP)</h3>
+<div class="outline-text-3" id="text-6-7">
+<ul class="org-ul">
+<li>Make many small interfaces, rather than one large one.</li>
+<li>Inherit from many interfaces rather than dependency inject only one or few. Especially when we're constructing a derived class.</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-orgf1a938e" class="outline-2">
+<h2 id="orgf1a938e"><span class="section-number-2">7.</span> McCabe's Cyclomatic Complexity</h2>
+<div class="outline-text-2" id="text-7">
+</div>
+<div id="outline-container-orgdb43fa9" class="outline-3">
+<h3 id="orgdb43fa9"><span class="section-number-3">7.1.</span> Definition</h3>
+<div class="outline-text-3" id="text-7-1">
+<ul class="org-ul">
+<li>Design related metric</li>
+<li>Uses control flow graphs to determine its complexity</li>
+<li><code>E - N + 2</code>, where E are edges and N are nodes. Basically it is <code>Branches + 1</code></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgfc20da9" class="outline-3">
+<h3 id="orgfc20da9"><span class="section-number-3">7.2.</span> Example Control Flow Graphs</h3>
+<div class="outline-text-3" id="text-7-2">
+
+<div id="orgcb0049a" class="figure">
+<p><img src="images/McCabe's_Cyclomatic_Complexity/2025-12-14_18-37-49_screenshot.png" alt="2025-12-14_18-37-49_screenshot.png" />
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org3c7f322" class="outline-2">
+<h2 id="org3c7f322"><span class="section-number-2">8.</span> Scaffold for Parameterized Testing</h2>
+<div class="outline-text-2" id="text-8">
+</div>
+<div id="outline-container-org8670efe" class="outline-3">
+<h3 id="org8670efe"><span class="section-number-3">8.1.</span> pom for jupiter and jupiter with params</h3>
+<div class="outline-text-3" id="text-8-1">
 <div class="org-src-container">
 <pre class="src src-xml"><span style="color: #bbc2cf; background-color: #131519;">&lt;</span><span style="color: #c678dd;">dependencies</span><span style="color: #bbc2cf; background-color: #131519;">&gt;</span>
   <span style="color: #bbc2cf; background-color: #131519;">&lt;</span><span style="color: #c678dd;">dependency</span><span style="color: #bbc2cf; background-color: #131519;">&gt;</span>
@@ -253,9 +924,9 @@
 </div>
 </div>
 </div>
-<div id="outline-container-orgdcb7fd1" class="outline-3">
-<h3 id="orgdcb7fd1"><span class="section-number-3">1.2.</span> Using the MethodSource with an expected Throw</h3>
-<div class="outline-text-3" id="text-1-2">
+<div id="outline-container-org69cf098" class="outline-3">
+<h3 id="org69cf098"><span class="section-number-3">8.2.</span> Using the MethodSource with an expected Throw</h3>
+<div class="outline-text-3" id="text-8-2">
 <div class="org-src-container">
 <pre class="src src-java"><span style="color: #bbc2cf;">@</span><span style="color: #51afef; font-weight: bold;">ParameterizedTest</span><span style="color: #fff0f5;">(</span>name = <span style="color: #98be65;">"All input prices: {0}"</span><span style="color: #fff0f5;">)</span>
 <span style="color: #bbc2cf;">@</span><span style="color: #51afef; font-weight: bold;">MethodSource</span><span style="color: #fff0f5;">(</span><span style="color: #98be65;">"provideShoppingInvalidInputArray"</span><span style="color: #fff0f5;">)</span>
@@ -263,25 +934,25 @@
 <span style="color: #ECBE7B;">void</span> <span style="color: #c678dd;">testShoppingInvalidInputArray</span><span style="color: #fff0f5;">(</span><span style="color: #ECBE7B;">double</span><span style="color: #c678dd;">[]</span> prices<span style="color: #fff0f5;">)</span> <span style="color: #fff0f5;">{</span>
 
     <span style="color: #ECBE7B;">IllegalArgumentException</span> exception = <span style="color: #c678dd;">assertThrows</span><span style="color: #c678dd;">(</span><span style="color: #ECBE7B;">IllegalArgumentException</span>.<span style="color: #51afef; font-style: italic;">class</span>,
-            <span style="color: #98be65;">()</span> -&gt; Shopping.<span style="color: #c678dd;">calculateFinalTotal</span><span style="color: #98be65;">(</span>prices, <span style="color: #a9a1e1;">false</span><span style="color: #98be65;">)</span><span style="color: #c678dd;">)</span>;
+                                                      <span style="color: #98be65;">()</span> -&gt; Shopping.<span style="color: #c678dd;">calculateFinalTotal</span><span style="color: #98be65;">(</span>prices, <span style="color: #a9a1e1;">false</span><span style="color: #98be65;">)</span><span style="color: #c678dd;">)</span>;
 
     <span style="color: #c678dd;">assertEquals</span><span style="color: #c678dd;">(</span><span style="color: #98be65;">"Five items are expected as the input array."</span>, exception.<span style="color: #c678dd;">getMessage</span><span style="color: #98be65;">()</span><span style="color: #c678dd;">)</span>;
 <span style="color: #fff0f5;">}</span>
 
 <span style="color: #51afef; font-style: italic;">static</span> <span style="color: #ECBE7B;">Stream</span><span style="color: #fff0f5;">&lt;</span><span style="color: #ECBE7B;">Arguments</span><span style="color: #fff0f5;">&gt;</span> <span style="color: #c678dd;">provideShoppingInvalidInputArray</span><span style="color: #fff0f5;">()</span> <span style="color: #fff0f5;">{</span>
     <span style="color: #51afef; font-style: italic;">return</span> Stream.<span style="color: #c678dd;">of</span><span style="color: #c678dd;">(</span>
-            Arguments.<span style="color: #c678dd;">of</span><span style="color: #98be65;">(</span><span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">double</span><span style="color: #00bfff;">[]</span> <span style="color: #00bfff;">{</span><span style="color: #da8548; font-weight: bold;">0</span>, <span style="color: #da8548; font-weight: bold;">0</span>, <span style="color: #da8548; font-weight: bold;">0</span>, <span style="color: #da8548; font-weight: bold;">0</span><span style="color: #00bfff;">}</span><span style="color: #98be65;">)</span>,  <span style="color: #5B6268;">// 4 items</span>
-            Arguments.<span style="color: #c678dd;">of</span><span style="color: #98be65;">(</span><span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">double</span><span style="color: #00bfff;">[]</span> <span style="color: #00bfff;">{</span><span style="color: #da8548; font-weight: bold;">2</span>, <span style="color: #da8548; font-weight: bold;">1</span>, <span style="color: #da8548; font-weight: bold;">0</span>, <span style="color: #da8548; font-weight: bold;">0</span>, <span style="color: #da8548; font-weight: bold;">0</span>, <span style="color: #da8548; font-weight: bold;">0</span><span style="color: #00bfff;">}</span><span style="color: #98be65;">)</span> <span style="color: #5B6268;">// 5 items</span>
-    <span style="color: #c678dd;">)</span>;
+                     Arguments.<span style="color: #c678dd;">of</span><span style="color: #98be65;">(</span><span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">double</span><span style="color: #00bfff;">[]</span> <span style="color: #00bfff;">{</span><span style="color: #da8548; font-weight: bold;">0</span>, <span style="color: #da8548; font-weight: bold;">0</span>, <span style="color: #da8548; font-weight: bold;">0</span>, <span style="color: #da8548; font-weight: bold;">0</span><span style="color: #00bfff;">}</span><span style="color: #98be65;">)</span>,  <span style="color: #5B6268;">// 4 items</span>
+                     Arguments.<span style="color: #c678dd;">of</span><span style="color: #98be65;">(</span><span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">double</span><span style="color: #00bfff;">[]</span> <span style="color: #00bfff;">{</span><span style="color: #da8548; font-weight: bold;">2</span>, <span style="color: #da8548; font-weight: bold;">1</span>, <span style="color: #da8548; font-weight: bold;">0</span>, <span style="color: #da8548; font-weight: bold;">0</span>, <span style="color: #da8548; font-weight: bold;">0</span>, <span style="color: #da8548; font-weight: bold;">0</span><span style="color: #00bfff;">}</span><span style="color: #98be65;">)</span> <span style="color: #5B6268;">// 5 items</span>
+                     <span style="color: #c678dd;">)</span>;
 <span style="color: #fff0f5;">}</span>
 
 </pre>
 </div>
 </div>
 </div>
-<div id="outline-container-orgc55042e" class="outline-3">
-<h3 id="orgc55042e"><span class="section-number-3">1.3.</span> Using the MethodSource with an asssertEquals</h3>
-<div class="outline-text-3" id="text-1-3">
+<div id="outline-container-orgc4ebd96" class="outline-3">
+<h3 id="orgc4ebd96"><span class="section-number-3">8.3.</span> Using the MethodSource with an asssertEquals</h3>
+<div class="outline-text-3" id="text-8-3">
 <div class="org-src-container">
 <pre class="src src-java"><span style="color: #bbc2cf;">@</span><span style="color: #51afef; font-weight: bold;">ParameterizedTest</span><span style="color: #fff0f5;">(</span>name = <span style="color: #98be65;">"Input prices: {0}, should be = {1}"</span><span style="color: #fff0f5;">)</span>
 <span style="color: #bbc2cf;">@</span><span style="color: #51afef; font-weight: bold;">MethodSource</span><span style="color: #fff0f5;">(</span><span style="color: #98be65;">"provideShoppingNonPriority"</span><span style="color: #fff0f5;">)</span>
@@ -292,44 +963,44 @@
 
 <span style="color: #51afef; font-style: italic;">static</span> <span style="color: #ECBE7B;">Stream</span><span style="color: #fff0f5;">&lt;</span><span style="color: #ECBE7B;">Arguments</span><span style="color: #fff0f5;">&gt;</span> <span style="color: #c678dd;">provideShoppingNonPriority</span><span style="color: #fff0f5;">()</span> <span style="color: #fff0f5;">{</span>
     <span style="color: #51afef; font-style: italic;">return</span> Stream.<span style="color: #c678dd;">of</span><span style="color: #c678dd;">(</span>
-            Arguments.<span style="color: #c678dd;">of</span><span style="color: #98be65;">(</span><span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">double</span><span style="color: #00bfff;">[]</span> <span style="color: #00bfff;">{</span><span style="color: #da8548; font-weight: bold;">0</span>, <span style="color: #da8548; font-weight: bold;">0</span>, <span style="color: #da8548; font-weight: bold;">0</span>, <span style="color: #da8548; font-weight: bold;">0</span>, <span style="color: #da8548; font-weight: bold;">0</span><span style="color: #00bfff;">}</span>, <span style="color: #da8548; font-weight: bold;">0.0</span><span style="color: #98be65;">)</span>,
-            Arguments.<span style="color: #c678dd;">of</span><span style="color: #98be65;">(</span><span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">double</span><span style="color: #00bfff;">[]</span> <span style="color: #00bfff;">{</span><span style="color: #da8548; font-weight: bold;">0.01</span>, <span style="color: #da8548; font-weight: bold;">0</span>, <span style="color: #da8548; font-weight: bold;">0</span>, <span style="color: #da8548; font-weight: bold;">0</span>, <span style="color: #da8548; font-weight: bold;">0</span><span style="color: #00bfff;">}</span>, <span style="color: #da8548; font-weight: bold;">0.01</span><span style="color: #98be65;">)</span>, <span style="color: #5B6268;">// 0.01</span>
+                     Arguments.<span style="color: #c678dd;">of</span><span style="color: #98be65;">(</span><span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">double</span><span style="color: #00bfff;">[]</span> <span style="color: #00bfff;">{</span><span style="color: #da8548; font-weight: bold;">0</span>, <span style="color: #da8548; font-weight: bold;">0</span>, <span style="color: #da8548; font-weight: bold;">0</span>, <span style="color: #da8548; font-weight: bold;">0</span>, <span style="color: #da8548; font-weight: bold;">0</span><span style="color: #00bfff;">}</span>, <span style="color: #da8548; font-weight: bold;">0.0</span><span style="color: #98be65;">)</span>,
+                     Arguments.<span style="color: #c678dd;">of</span><span style="color: #98be65;">(</span><span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">double</span><span style="color: #00bfff;">[]</span> <span style="color: #00bfff;">{</span><span style="color: #da8548; font-weight: bold;">0.01</span>, <span style="color: #da8548; font-weight: bold;">0</span>, <span style="color: #da8548; font-weight: bold;">0</span>, <span style="color: #da8548; font-weight: bold;">0</span>, <span style="color: #da8548; font-weight: bold;">0</span><span style="color: #00bfff;">}</span>, <span style="color: #da8548; font-weight: bold;">0.01</span><span style="color: #98be65;">)</span>, <span style="color: #5B6268;">// 0.01</span>
 
-            Arguments.<span style="color: #c678dd;">of</span><span style="color: #98be65;">(</span><span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">double</span><span style="color: #00bfff;">[]</span> <span style="color: #00bfff;">{</span><span style="color: #da8548; font-weight: bold;">20</span>, <span style="color: #da8548; font-weight: bold;">20</span>, <span style="color: #da8548; font-weight: bold;">9.99</span>, <span style="color: #da8548; font-weight: bold;">0</span>, <span style="color: #da8548; font-weight: bold;">0</span><span style="color: #00bfff;">}</span>, <span style="color: #da8548; font-weight: bold;">49.99</span><span style="color: #98be65;">)</span>, <span style="color: #5B6268;">// 49.99</span>
-            Arguments.<span style="color: #c678dd;">of</span><span style="color: #98be65;">(</span><span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">double</span><span style="color: #00bfff;">[]</span> <span style="color: #00bfff;">{</span><span style="color: #da8548; font-weight: bold;">20</span>, <span style="color: #da8548; font-weight: bold;">20</span>, <span style="color: #da8548; font-weight: bold;">10</span>, <span style="color: #da8548; font-weight: bold;">0</span>, <span style="color: #da8548; font-weight: bold;">0</span><span style="color: #00bfff;">}</span>, <span style="color: #da8548; font-weight: bold;">47.5</span><span style="color: #98be65;">)</span>, <span style="color: #5B6268;">// 50 = 47.5</span>
-            Arguments.<span style="color: #c678dd;">of</span><span style="color: #98be65;">(</span><span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">double</span><span style="color: #00bfff;">[]</span> <span style="color: #00bfff;">{</span><span style="color: #da8548; font-weight: bold;">20</span>, <span style="color: #da8548; font-weight: bold;">20</span>, <span style="color: #da8548; font-weight: bold;">10.01</span>, <span style="color: #da8548; font-weight: bold;">0</span>, <span style="color: #da8548; font-weight: bold;">0</span><span style="color: #00bfff;">}</span>, <span style="color: #da8548; font-weight: bold;">47.51</span><span style="color: #98be65;">)</span>, <span style="color: #5B6268;">// 50.01 = 47.51</span>
+                     Arguments.<span style="color: #c678dd;">of</span><span style="color: #98be65;">(</span><span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">double</span><span style="color: #00bfff;">[]</span> <span style="color: #00bfff;">{</span><span style="color: #da8548; font-weight: bold;">20</span>, <span style="color: #da8548; font-weight: bold;">20</span>, <span style="color: #da8548; font-weight: bold;">9.99</span>, <span style="color: #da8548; font-weight: bold;">0</span>, <span style="color: #da8548; font-weight: bold;">0</span><span style="color: #00bfff;">}</span>, <span style="color: #da8548; font-weight: bold;">49.99</span><span style="color: #98be65;">)</span>, <span style="color: #5B6268;">// 49.99</span>
+                     Arguments.<span style="color: #c678dd;">of</span><span style="color: #98be65;">(</span><span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">double</span><span style="color: #00bfff;">[]</span> <span style="color: #00bfff;">{</span><span style="color: #da8548; font-weight: bold;">20</span>, <span style="color: #da8548; font-weight: bold;">20</span>, <span style="color: #da8548; font-weight: bold;">10</span>, <span style="color: #da8548; font-weight: bold;">0</span>, <span style="color: #da8548; font-weight: bold;">0</span><span style="color: #00bfff;">}</span>, <span style="color: #da8548; font-weight: bold;">47.5</span><span style="color: #98be65;">)</span>, <span style="color: #5B6268;">// 50 = 47.5</span>
+                     Arguments.<span style="color: #c678dd;">of</span><span style="color: #98be65;">(</span><span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">double</span><span style="color: #00bfff;">[]</span> <span style="color: #00bfff;">{</span><span style="color: #da8548; font-weight: bold;">20</span>, <span style="color: #da8548; font-weight: bold;">20</span>, <span style="color: #da8548; font-weight: bold;">10.01</span>, <span style="color: #da8548; font-weight: bold;">0</span>, <span style="color: #da8548; font-weight: bold;">0</span><span style="color: #00bfff;">}</span>, <span style="color: #da8548; font-weight: bold;">47.51</span><span style="color: #98be65;">)</span>, <span style="color: #5B6268;">// 50.01 = 47.51</span>
 
-            Arguments.<span style="color: #c678dd;">of</span><span style="color: #98be65;">(</span><span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">double</span><span style="color: #00bfff;">[]</span> <span style="color: #00bfff;">{</span><span style="color: #da8548; font-weight: bold;">20</span>, <span style="color: #da8548; font-weight: bold;">20</span>, <span style="color: #da8548; font-weight: bold;">10</span>, <span style="color: #da8548; font-weight: bold;">40</span>, <span style="color: #da8548; font-weight: bold;">9.99</span><span style="color: #00bfff;">}</span>, <span style="color: #da8548; font-weight: bold;">94.99</span><span style="color: #98be65;">)</span>, <span style="color: #5B6268;">// 99.99 = 94.99</span>
-            Arguments.<span style="color: #c678dd;">of</span><span style="color: #98be65;">(</span><span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">double</span><span style="color: #00bfff;">[]</span> <span style="color: #00bfff;">{</span><span style="color: #da8548; font-weight: bold;">50</span>, <span style="color: #da8548; font-weight: bold;">50</span>, <span style="color: #da8548; font-weight: bold;">0</span>, <span style="color: #da8548; font-weight: bold;">0</span>, <span style="color: #da8548; font-weight: bold;">0</span><span style="color: #00bfff;">}</span>, <span style="color: #da8548; font-weight: bold;">90.0</span><span style="color: #98be65;">)</span>, <span style="color: #5B6268;">// 100 = 90</span>
-            Arguments.<span style="color: #c678dd;">of</span><span style="color: #98be65;">(</span><span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">double</span><span style="color: #00bfff;">[]</span> <span style="color: #00bfff;">{</span><span style="color: #da8548; font-weight: bold;">50</span>, <span style="color: #da8548; font-weight: bold;">50</span>, <span style="color: #da8548; font-weight: bold;">0.01</span>, <span style="color: #da8548; font-weight: bold;">0</span>, <span style="color: #da8548; font-weight: bold;">0</span><span style="color: #00bfff;">}</span>, <span style="color: #da8548; font-weight: bold;">90.0</span><span style="color: #98be65;">)</span>, <span style="color: #5B6268;">// 100.01 = 90</span>
+                     Arguments.<span style="color: #c678dd;">of</span><span style="color: #98be65;">(</span><span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">double</span><span style="color: #00bfff;">[]</span> <span style="color: #00bfff;">{</span><span style="color: #da8548; font-weight: bold;">20</span>, <span style="color: #da8548; font-weight: bold;">20</span>, <span style="color: #da8548; font-weight: bold;">10</span>, <span style="color: #da8548; font-weight: bold;">40</span>, <span style="color: #da8548; font-weight: bold;">9.99</span><span style="color: #00bfff;">}</span>, <span style="color: #da8548; font-weight: bold;">94.99</span><span style="color: #98be65;">)</span>, <span style="color: #5B6268;">// 99.99 = 94.99</span>
+                     Arguments.<span style="color: #c678dd;">of</span><span style="color: #98be65;">(</span><span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">double</span><span style="color: #00bfff;">[]</span> <span style="color: #00bfff;">{</span><span style="color: #da8548; font-weight: bold;">50</span>, <span style="color: #da8548; font-weight: bold;">50</span>, <span style="color: #da8548; font-weight: bold;">0</span>, <span style="color: #da8548; font-weight: bold;">0</span>, <span style="color: #da8548; font-weight: bold;">0</span><span style="color: #00bfff;">}</span>, <span style="color: #da8548; font-weight: bold;">90.0</span><span style="color: #98be65;">)</span>, <span style="color: #5B6268;">// 100 = 90</span>
+                     Arguments.<span style="color: #c678dd;">of</span><span style="color: #98be65;">(</span><span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">double</span><span style="color: #00bfff;">[]</span> <span style="color: #00bfff;">{</span><span style="color: #da8548; font-weight: bold;">50</span>, <span style="color: #da8548; font-weight: bold;">50</span>, <span style="color: #da8548; font-weight: bold;">0.01</span>, <span style="color: #da8548; font-weight: bold;">0</span>, <span style="color: #da8548; font-weight: bold;">0</span><span style="color: #00bfff;">}</span>, <span style="color: #da8548; font-weight: bold;">90.0</span><span style="color: #98be65;">)</span>, <span style="color: #5B6268;">// 100.01 = 90</span>
 
-            Arguments.<span style="color: #c678dd;">of</span><span style="color: #98be65;">(</span><span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">double</span><span style="color: #00bfff;">[]</span> <span style="color: #00bfff;">{</span><span style="color: #da8548; font-weight: bold;">50</span>, <span style="color: #da8548; font-weight: bold;">50</span>, <span style="color: #da8548; font-weight: bold;">99.99</span>, <span style="color: #da8548; font-weight: bold;">0</span>, <span style="color: #da8548; font-weight: bold;">0</span><span style="color: #00bfff;">}</span>, <span style="color: #da8548; font-weight: bold;">179.99</span><span style="color: #98be65;">)</span>, <span style="color: #5B6268;">// 199.99 = 179.99</span>
-            Arguments.<span style="color: #c678dd;">of</span><span style="color: #98be65;">(</span><span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">double</span><span style="color: #00bfff;">[]</span> <span style="color: #00bfff;">{</span><span style="color: #da8548; font-weight: bold;">50</span>, <span style="color: #da8548; font-weight: bold;">50</span>, <span style="color: #da8548; font-weight: bold;">50</span>, <span style="color: #da8548; font-weight: bold;">50</span>, <span style="color: #da8548; font-weight: bold;">0</span><span style="color: #00bfff;">}</span>, <span style="color: #da8548; font-weight: bold;">170.0</span><span style="color: #98be65;">)</span>, <span style="color: #5B6268;">// 200 = 170</span>
-            Arguments.<span style="color: #c678dd;">of</span><span style="color: #98be65;">(</span><span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">double</span><span style="color: #00bfff;">[]</span> <span style="color: #00bfff;">{</span><span style="color: #da8548; font-weight: bold;">50</span>, <span style="color: #da8548; font-weight: bold;">50</span>, <span style="color: #da8548; font-weight: bold;">50</span>, <span style="color: #da8548; font-weight: bold;">50.01</span>, <span style="color: #da8548; font-weight: bold;">0</span><span style="color: #00bfff;">}</span>, <span style="color: #da8548; font-weight: bold;">170.0</span><span style="color: #98be65;">)</span> <span style="color: #5B6268;">// 200.01 = 170.0</span>
-    <span style="color: #c678dd;">)</span>;
+                     Arguments.<span style="color: #c678dd;">of</span><span style="color: #98be65;">(</span><span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">double</span><span style="color: #00bfff;">[]</span> <span style="color: #00bfff;">{</span><span style="color: #da8548; font-weight: bold;">50</span>, <span style="color: #da8548; font-weight: bold;">50</span>, <span style="color: #da8548; font-weight: bold;">99.99</span>, <span style="color: #da8548; font-weight: bold;">0</span>, <span style="color: #da8548; font-weight: bold;">0</span><span style="color: #00bfff;">}</span>, <span style="color: #da8548; font-weight: bold;">179.99</span><span style="color: #98be65;">)</span>, <span style="color: #5B6268;">// 199.99 = 179.99</span>
+                     Arguments.<span style="color: #c678dd;">of</span><span style="color: #98be65;">(</span><span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">double</span><span style="color: #00bfff;">[]</span> <span style="color: #00bfff;">{</span><span style="color: #da8548; font-weight: bold;">50</span>, <span style="color: #da8548; font-weight: bold;">50</span>, <span style="color: #da8548; font-weight: bold;">50</span>, <span style="color: #da8548; font-weight: bold;">50</span>, <span style="color: #da8548; font-weight: bold;">0</span><span style="color: #00bfff;">}</span>, <span style="color: #da8548; font-weight: bold;">170.0</span><span style="color: #98be65;">)</span>, <span style="color: #5B6268;">// 200 = 170</span>
+                     Arguments.<span style="color: #c678dd;">of</span><span style="color: #98be65;">(</span><span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">double</span><span style="color: #00bfff;">[]</span> <span style="color: #00bfff;">{</span><span style="color: #da8548; font-weight: bold;">50</span>, <span style="color: #da8548; font-weight: bold;">50</span>, <span style="color: #da8548; font-weight: bold;">50</span>, <span style="color: #da8548; font-weight: bold;">50.01</span>, <span style="color: #da8548; font-weight: bold;">0</span><span style="color: #00bfff;">}</span>, <span style="color: #da8548; font-weight: bold;">170.0</span><span style="color: #98be65;">)</span> <span style="color: #5B6268;">// 200.01 = 170.0</span>
+                     <span style="color: #c678dd;">)</span>;
 <span style="color: #fff0f5;">}</span>
 
 </pre>
 </div>
 </div>
 </div>
-<div id="outline-container-orgea5a32d" class="outline-3">
-<h3 id="orgea5a32d"><span class="section-number-3">1.4.</span> Using the CsvSource</h3>
-<div class="outline-text-3" id="text-1-4">
+<div id="outline-container-orgadb457e" class="outline-3">
+<h3 id="orgadb457e"><span class="section-number-3">8.4.</span> Using the CsvSource</h3>
+<div class="outline-text-3" id="text-8-4">
 <div class="org-src-container">
 <pre class="src src-java"><span style="color: #bbc2cf;">@</span><span style="color: #51afef; font-weight: bold;">ParameterizedTest</span>
 <span style="color: #bbc2cf;">@</span><span style="color: #51afef; font-weight: bold;">CsvSource</span><span style="color: #fff0f5;">(</span>value= <span style="color: #c678dd;">{</span><span style="color: #98be65;">"10:F"</span>,<span style="color: #98be65;">"30:E"</span>,<span style="color: #98be65;">"45:D"</span>,<span style="color: #98be65;">"60:C"</span>,<span style="color: #98be65;">"75:B"</span>,<span style="color: #98be65;">"87:A"</span><span style="color: #c678dd;">}</span>,delimiter=<span style="color: #98be65;">':'</span><span style="color: #fff0f5;">)</span>
 <span style="color: #ECBE7B;">void</span> <span style="color: #c678dd;">testGrades</span><span style="color: #fff0f5;">(</span><span style="color: #ECBE7B;">int</span> gradeNum,<span style="color: #ECBE7B;">char</span> shouldBeGrade<span style="color: #fff0f5;">)</span> <span style="color: #fff0f5;">{</span>
-    <span style="color: #c678dd;">assertEquals</span><span style="color: #c678dd;">(</span>shouldBeGrade,studentGrade.<span style="color: #c678dd;">getGrade</span><span style="color: #98be65;">(</span>gradeNum<span style="color: #98be65;">)</span><span style="color: #c678dd;">)</span>;
+    <span style="color: #c678dd;">assertEquals</span><span style="color: #c678dd;">(</span>shouldBeGrade, studentGrade.<span style="color: #c678dd;">getGrade</span><span style="color: #98be65;">(</span>gradeNum<span style="color: #98be65;">)</span><span style="color: #c678dd;">)</span>;
 <span style="color: #fff0f5;">}</span>
 
 </pre>
 </div>
 </div>
 </div>
-<div id="outline-container-org52ea4e0" class="outline-3">
-<h3 id="org52ea4e0"><span class="section-number-3">1.5.</span> Using the CsvFileSource (put the CSVs in the main/resources directory)</h3>
-<div class="outline-text-3" id="text-1-5">
+<div id="outline-container-orge3b0766" class="outline-3">
+<h3 id="orge3b0766"><span class="section-number-3">8.5.</span> Using the CsvFileSource (put the CSVs in the main/resources directory)</h3>
+<div class="outline-text-3" id="text-8-5">
 <div class="org-src-container">
 <pre class="src src-java"><span style="color: #bbc2cf;">@</span><span style="color: #51afef; font-weight: bold;">ParameterizedTest</span><span style="color: #fff0f5;">(</span>name = <span style="color: #98be65;">"The year {0} should be {1}"</span><span style="color: #fff0f5;">)</span>
 <span style="color: #bbc2cf;">@</span><span style="color: #51afef; font-weight: bold;">CsvFileSource</span><span style="color: #fff0f5;">(</span>resources = <span style="color: #98be65;">"/leapyears.csv"</span><span style="color: #fff0f5;">)</span>
@@ -352,15 +1023,15 @@ The leapyears.csv file:
 </div>
 </div>
 </div>
-<div id="outline-container-org4a4dea6" class="outline-3">
-<h3 id="org4a4dea6"><span class="section-number-3">1.6.</span> Using the ValueSource</h3>
-<div class="outline-text-3" id="text-1-6">
+<div id="outline-container-org9960f31" class="outline-3">
+<h3 id="org9960f31"><span class="section-number-3">8.6.</span> Using the ValueSource</h3>
+<div class="outline-text-3" id="text-8-6">
 <div class="org-src-container">
 <pre class="src src-java"><span style="color: #bbc2cf;">@</span><span style="color: #51afef; font-weight: bold;">ParameterizedTest</span><span style="color: #fff0f5;">(</span>name = <span style="color: #98be65;">"Investment of {0} should be illegal"</span><span style="color: #fff0f5;">)</span>
 <span style="color: #bbc2cf;">@</span><span style="color: #51afef; font-weight: bold;">ValueSource</span><span style="color: #fff0f5;">(</span>ints= <span style="color: #c678dd;">{</span><span style="color: #da8548; font-weight: bold;">800</span>, <span style="color: #da8548; font-weight: bold;">999</span>, <span style="color: #da8548; font-weight: bold;">10001</span>, <span style="color: #da8548; font-weight: bold;">11000</span><span style="color: #c678dd;">}</span><span style="color: #fff0f5;">)</span>
 <span style="color: #ECBE7B;">void</span> <span style="color: #c678dd;">testExceptionThrowingInvestments</span><span style="color: #fff0f5;">(</span><span style="color: #ECBE7B;">int</span> investment<span style="color: #fff0f5;">)</span> <span style="color: #fff0f5;">{</span>
     <span style="color: #ECBE7B;">IllegalArgumentException</span> exception = <span style="color: #c678dd;">assertThrows</span><span style="color: #c678dd;">(</span><span style="color: #ECBE7B;">IllegalArgumentException</span>.<span style="color: #51afef; font-style: italic;">class</span>,
-            <span style="color: #98be65;">()</span> -&gt; InvestmentCalc.<span style="color: #c678dd;">calculateInvestment</span><span style="color: #98be65;">(</span>investment, <span style="color: #da8548; font-weight: bold;">4</span><span style="color: #98be65;">)</span><span style="color: #c678dd;">)</span>;
+                                                      <span style="color: #98be65;">()</span> -&gt; InvestmentCalc.<span style="color: #c678dd;">calculateInvestment</span><span style="color: #98be65;">(</span>investment, <span style="color: #da8548; font-weight: bold;">4</span><span style="color: #98be65;">)</span><span style="color: #c678dd;">)</span>;
 
     <span style="color: #c678dd;">assertEquals</span><span style="color: #c678dd;">(</span><span style="color: #98be65;">"Investment has to be between 1000 and 10 000. Given value: "</span> + investment, exception.<span style="color: #c678dd;">getMessage</span><span style="color: #98be65;">()</span><span style="color: #c678dd;">)</span>;
 <span style="color: #fff0f5;">}</span>
@@ -370,9 +1041,227 @@ The leapyears.csv file:
 </div>
 </div>
 </div>
-<div id="outline-container-org25c47d0" class="outline-2">
-<h2 id="org25c47d0"><span class="section-number-2">2.</span> Remove at the End</h2>
-<div class="outline-text-2" id="text-2">
+<div id="outline-container-orgdc68f35" class="outline-2">
+<h2 id="orgdc68f35"><span class="section-number-2">9.</span> Mockito</h2>
+<div class="outline-text-2" id="text-9">
+</div>
+<div id="outline-container-orgf5bec85" class="outline-3">
+<h3 id="orgf5bec85"><span class="section-number-3">9.1.</span> Info</h3>
+<div class="outline-text-3" id="text-9-1">
+<ul class="org-ul">
+<li>Dummy: The mock, it is the actual test-double. <code>mock(User.class)</code></li>
+<li>Stub: Just dummy data being passed in or returned, non-important to the outcome, also used to provide pre-defined responses to methods. <code>when &gt; thenReturn</code></li>
+<li>Spy: Used to verify if the real object does what it is supposed to do (a wrapper). It is exactly like a mock object, except it is wrapped around a real one. <code>spy(realObject)</code></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org9cde1dc" class="outline-3">
+<h3 id="org9cde1dc"><span class="section-number-3">9.2.</span> Sample</h3>
+<div class="outline-text-3" id="text-9-2">
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #51afef; font-style: italic;">class</span> <span style="color: #ECBE7B;">PayoutSchedulerTestMG</span> <span style="color: #fff0f5;">{</span>
+
+    <span style="color: #ECBE7B;">TransactionDAO</span> transactionDAO;
+    <span style="color: #ECBE7B;">MembershipDAO</span> membershipDAO;
+    <span style="color: #ECBE7B;">StripeService</span> stripeService;
+    <span style="color: #ECBE7B;">AuditLogger</span> auditLogger; <span style="color: #5B6268;">// Mock AuditLogger</span>
+    <span style="color: #ECBE7B;">List</span><span style="color: #c678dd;">&lt;</span><span style="color: #ECBE7B;">TransactionDto</span><span style="color: #c678dd;">&gt;</span> transactions;
+    <span style="color: #ECBE7B;">PayoutScheduler</span> payoutScheduler;
+
+    <span style="color: #5B6268;">// MG</span>
+    <span style="color: #bbc2cf;">@</span><span style="color: #51afef; font-weight: bold;">BeforeEach</span>
+    <span style="color: #ECBE7B;">void</span> <span style="color: #c678dd;">setup</span><span style="color: #c678dd;">()</span> <span style="color: #c678dd;">{</span>
+        transactionDAO = <span style="color: #c678dd;">mock</span><span style="color: #98be65;">(</span><span style="color: #ECBE7B;">TransactionDAO</span>.<span style="color: #51afef; font-style: italic;">class</span><span style="color: #98be65;">)</span>;
+        membershipDAO = <span style="color: #c678dd;">mock</span><span style="color: #98be65;">(</span><span style="color: #ECBE7B;">MembershipDAO</span>.<span style="color: #51afef; font-style: italic;">class</span><span style="color: #98be65;">)</span>;
+        stripeService = <span style="color: #c678dd;">mock</span><span style="color: #98be65;">(</span><span style="color: #ECBE7B;">StripeService</span>.<span style="color: #51afef; font-style: italic;">class</span><span style="color: #98be65;">)</span>;
+        auditLogger = <span style="color: #c678dd;">mock</span><span style="color: #98be65;">(</span><span style="color: #ECBE7B;">AuditLogger</span>.<span style="color: #51afef; font-style: italic;">class</span><span style="color: #98be65;">)</span>; <span style="color: #5B6268;">// Mock AuditLogger</span>
+        transactions = <span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">ArrayList</span><span style="color: #98be65;">&lt;&gt;()</span>;
+        payoutScheduler = <span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">PayoutScheduler</span><span style="color: #98be65;">(</span>transactionDAO, membershipDAO, stripeService, auditLogger<span style="color: #98be65;">)</span>;
+    <span style="color: #c678dd;">}</span>
+
+    <span style="color: #5B6268;">// MG</span>
+    <span style="color: #bbc2cf;">@</span><span style="color: #51afef; font-weight: bold;">Test</span> <span style="color: #5B6268;">// 1</span>
+    <span style="color: #ECBE7B;">void</span> <span style="color: #c678dd;">whenNoTransactionToProcessReturnsZero</span><span style="color: #c678dd;">()</span> <span style="color: #51afef; font-style: italic;">throws</span> <span style="color: #ECBE7B;">EduStreamDAOException</span>, <span style="color: #ECBE7B;">EduStreamStripeException</span>, <span style="color: #ECBE7B;">SQLException</span> <span style="color: #c678dd;">{</span>
+        <span style="color: #5B6268;">// Mock behavior: No transactions found</span>
+        <span style="color: #c678dd;">when</span><span style="color: #98be65;">(</span>transactionDAO.<span style="color: #c678dd;">retrieveUnprocessedTransactions</span><span style="color: #00bfff;">(</span><span style="color: #c678dd;">anyInt</span><span style="color: #4db5bd;">()</span><span style="color: #00bfff;">)</span><span style="color: #98be65;">)</span>.<span style="color: #c678dd;">thenReturn</span><span style="color: #98be65;">(</span><span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">ArrayList</span><span style="color: #00bfff;">&lt;&gt;()</span><span style="color: #98be65;">)</span>;
+        <span style="color: #5B6268;">// Call reconcile method</span>
+        <span style="color: #ECBE7B;">int</span> result = payoutScheduler.<span style="color: #c678dd;">reconcile</span><span style="color: #98be65;">(</span><span style="color: #da8548; font-weight: bold;">1</span><span style="color: #98be65;">)</span>;
+        <span style="color: #5B6268;">// Assert that 0 transactions were processed</span>
+        <span style="color: #c678dd;">assertEquals</span><span style="color: #98be65;">(</span><span style="color: #da8548; font-weight: bold;">0</span>, result<span style="color: #98be65;">)</span>;
+        <span style="color: #5B6268;">// Verify that transaction fetch was logged</span>
+        <span style="color: #c678dd;">verify</span><span style="color: #98be65;">(</span>auditLogger<span style="color: #98be65;">)</span>.<span style="color: #c678dd;">logTransactionFetch</span><span style="color: #98be65;">(</span><span style="color: #da8548; font-weight: bold;">1</span>, <span style="color: #da8548; font-weight: bold;">0</span><span style="color: #98be65;">)</span>;
+        <span style="color: #5B6268;">// verify that no getMembershipDetails was called</span>
+        <span style="color: #c678dd;">verify</span><span style="color: #98be65;">(</span>membershipDAO, <span style="color: #c678dd;">times</span><span style="color: #00bfff;">(</span><span style="color: #da8548; font-weight: bold;">0</span><span style="color: #00bfff;">)</span><span style="color: #98be65;">)</span>.<span style="color: #c678dd;">getMembershipDetails</span><span style="color: #98be65;">(</span><span style="color: #c678dd;">anyInt</span><span style="color: #00bfff;">()</span><span style="color: #98be65;">)</span>;
+        <span style="color: #5B6268;">// Verify no interaction with setPayoutDetails and sendPayout</span>
+        <span style="color: #c678dd;">verify</span><span style="color: #98be65;">(</span>membershipDAO, <span style="color: #c678dd;">never</span><span style="color: #00bfff;">()</span><span style="color: #98be65;">)</span>.<span style="color: #c678dd;">setPayoutDetails</span><span style="color: #98be65;">(</span><span style="color: #c678dd;">anyInt</span><span style="color: #00bfff;">()</span>, <span style="color: #c678dd;">any</span><span style="color: #00bfff;">()</span><span style="color: #98be65;">)</span>;
+        <span style="color: #c678dd;">verify</span><span style="color: #98be65;">(</span>stripeService, <span style="color: #c678dd;">never</span><span style="color: #00bfff;">()</span><span style="color: #98be65;">)</span>.<span style="color: #c678dd;">sendPayout</span><span style="color: #98be65;">(</span><span style="color: #c678dd;">any</span><span style="color: #00bfff;">()</span><span style="color: #98be65;">)</span>;
+        <span style="color: #5B6268;">// Verify no payout calculation or payout sent was logged</span>
+        <span style="color: #c678dd;">verify</span><span style="color: #98be65;">(</span>auditLogger, <span style="color: #c678dd;">never</span><span style="color: #00bfff;">()</span><span style="color: #98be65;">)</span>.<span style="color: #c678dd;">logPayoutCalculation</span><span style="color: #98be65;">(</span><span style="color: #c678dd;">anyInt</span><span style="color: #00bfff;">()</span>, <span style="color: #c678dd;">anyDouble</span><span style="color: #00bfff;">()</span><span style="color: #98be65;">)</span>;
+        <span style="color: #c678dd;">verify</span><span style="color: #98be65;">(</span>auditLogger, <span style="color: #c678dd;">never</span><span style="color: #00bfff;">()</span><span style="color: #98be65;">)</span>.<span style="color: #c678dd;">logPayoutSent</span><span style="color: #98be65;">(</span><span style="color: #c678dd;">anyInt</span><span style="color: #00bfff;">()</span>, <span style="color: #c678dd;">anyDouble</span><span style="color: #00bfff;">()</span><span style="color: #98be65;">)</span>;
+    <span style="color: #c678dd;">}</span>
+
+    <span style="color: #bbc2cf;">@</span><span style="color: #51afef; font-weight: bold;">Test</span> <span style="color: #5B6268;">// 2</span>
+    <span style="color: #ECBE7B;">void</span> <span style="color: #c678dd;">testEduStreamDAOException</span><span style="color: #c678dd;">()</span> <span style="color: #51afef; font-style: italic;">throws</span> <span style="color: #ECBE7B;">SQLException</span>, <span style="color: #ECBE7B;">EduStreamStripeException</span> <span style="color: #c678dd;">{</span>
+        <span style="color: #5B6268;">// Mock behavior: SQLException thrown</span>
+        <span style="color: #c678dd;">when</span><span style="color: #98be65;">(</span>transactionDAO.<span style="color: #c678dd;">retrieveUnprocessedTransactions</span><span style="color: #00bfff;">(</span><span style="color: #c678dd;">anyInt</span><span style="color: #4db5bd;">()</span><span style="color: #00bfff;">)</span><span style="color: #98be65;">)</span>.<span style="color: #c678dd;">thenThrow</span><span style="color: #98be65;">(</span><span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">SQLException</span><span style="color: #00bfff;">()</span><span style="color: #98be65;">)</span>;
+        <span style="color: #5B6268;">// Assert that the EduStreamDAOException is thrown with the correct message</span>
+        <span style="color: #ECBE7B;">EduStreamDAOException</span> exception = <span style="color: #c678dd;">assertThrows</span><span style="color: #98be65;">(</span><span style="color: #ECBE7B;">EduStreamDAOException</span>.<span style="color: #51afef; font-style: italic;">class</span>, <span style="color: #00bfff;">()</span> -&gt; <span style="color: #00bfff;">{</span>
+                payoutScheduler.<span style="color: #c678dd;">reconcile</span><span style="color: #4db5bd;">(</span><span style="color: #da8548; font-weight: bold;">1</span><span style="color: #4db5bd;">)</span>;
+            <span style="color: #00bfff;">}</span><span style="color: #98be65;">)</span>;
+        <span style="color: #c678dd;">assertEquals</span><span style="color: #98be65;">(</span><span style="color: #98be65;">"Error in connection to EduStream database"</span>, exception.<span style="color: #c678dd;">getMessage</span><span style="color: #00bfff;">()</span><span style="color: #98be65;">)</span>;
+        <span style="color: #c678dd;">verify</span><span style="color: #98be65;">(</span>auditLogger<span style="color: #98be65;">)</span>.<span style="color: #c678dd;">logPayoutFailure</span><span style="color: #98be65;">(</span><span style="color: #da8548; font-weight: bold;">1</span>, <span style="color: #98be65;">"Error in connection to EduStream database"</span><span style="color: #98be65;">)</span>;
+        <span style="color: #5B6268;">// Verify no interaction with setPayoutDetails and sendPayout</span>
+        <span style="color: #c678dd;">verify</span><span style="color: #98be65;">(</span>membershipDAO, <span style="color: #c678dd;">never</span><span style="color: #00bfff;">()</span><span style="color: #98be65;">)</span>.<span style="color: #c678dd;">setPayoutDetails</span><span style="color: #98be65;">(</span><span style="color: #c678dd;">anyInt</span><span style="color: #00bfff;">()</span>, <span style="color: #c678dd;">any</span><span style="color: #00bfff;">()</span><span style="color: #98be65;">)</span>;
+        <span style="color: #c678dd;">verify</span><span style="color: #98be65;">(</span>stripeService, <span style="color: #c678dd;">never</span><span style="color: #00bfff;">()</span><span style="color: #98be65;">)</span>.<span style="color: #c678dd;">sendPayout</span><span style="color: #98be65;">(</span><span style="color: #c678dd;">any</span><span style="color: #00bfff;">()</span><span style="color: #98be65;">)</span>;
+        <span style="color: #5B6268;">// Verify no payout calculation or payout sent was logged</span>
+        <span style="color: #c678dd;">verify</span><span style="color: #98be65;">(</span>auditLogger, <span style="color: #c678dd;">never</span><span style="color: #00bfff;">()</span><span style="color: #98be65;">)</span>.<span style="color: #c678dd;">logPayoutCalculation</span><span style="color: #98be65;">(</span><span style="color: #c678dd;">anyInt</span><span style="color: #00bfff;">()</span>, <span style="color: #c678dd;">anyDouble</span><span style="color: #00bfff;">()</span><span style="color: #98be65;">)</span>;
+        <span style="color: #c678dd;">verify</span><span style="color: #98be65;">(</span>auditLogger, <span style="color: #c678dd;">never</span><span style="color: #00bfff;">()</span><span style="color: #98be65;">)</span>.<span style="color: #c678dd;">logPayoutSent</span><span style="color: #98be65;">(</span><span style="color: #c678dd;">anyInt</span><span style="color: #00bfff;">()</span>, <span style="color: #c678dd;">anyDouble</span><span style="color: #00bfff;">()</span><span style="color: #98be65;">)</span>;
+    <span style="color: #c678dd;">}</span>
+
+    <span style="color: #bbc2cf;">@</span><span style="color: #51afef; font-weight: bold;">Test</span> <span style="color: #5B6268;">// 3</span>
+    <span style="color: #ECBE7B;">void</span> <span style="color: #c678dd;">whenOneTransactionToProcessReturnsOne</span><span style="color: #c678dd;">()</span> <span style="color: #51afef; font-style: italic;">throws</span> <span style="color: #ECBE7B;">EduStreamDAOException</span>, <span style="color: #ECBE7B;">EduStreamStripeException</span>, <span style="color: #ECBE7B;">SQLException</span> <span style="color: #c678dd;">{</span>
+        <span style="color: #5B6268;">// Create a single transaction</span>
+        transactions.<span style="color: #c678dd;">add</span><span style="color: #98be65;">(</span><span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">TransactionDto</span><span style="color: #00bfff;">(</span><span style="color: #da8548; font-weight: bold;">1</span>, <span style="color: #da8548; font-weight: bold;">100.0</span><span style="color: #00bfff;">)</span><span style="color: #98be65;">)</span>;
+        <span style="color: #5B6268;">// Mock behavior: One transaction found</span>
+        <span style="color: #c678dd;">when</span><span style="color: #98be65;">(</span>transactionDAO.<span style="color: #c678dd;">retrieveUnprocessedTransactions</span><span style="color: #00bfff;">(</span><span style="color: #c678dd;">anyInt</span><span style="color: #4db5bd;">()</span><span style="color: #00bfff;">)</span><span style="color: #98be65;">)</span>.<span style="color: #c678dd;">thenReturn</span><span style="color: #98be65;">(</span>transactions<span style="color: #98be65;">)</span>;
+        <span style="color: #5B6268;">// Mock membership details</span>
+        <span style="color: #c678dd;">when</span><span style="color: #98be65;">(</span>membershipDAO.<span style="color: #c678dd;">getMembershipDetails</span><span style="color: #00bfff;">(</span><span style="color: #c678dd;">anyInt</span><span style="color: #4db5bd;">()</span><span style="color: #00bfff;">)</span><span style="color: #98be65;">)</span>.<span style="color: #c678dd;">thenReturn</span><span style="color: #98be65;">(</span><span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">MembershipDto</span><span style="color: #00bfff;">(</span><span style="color: #da8548; font-weight: bold;">1</span>, <span style="color: #da8548; font-weight: bold;">0.1</span><span style="color: #00bfff;">)</span><span style="color: #98be65;">)</span>;
+        <span style="color: #5B6268;">// Call reconcile method</span>
+        <span style="color: #ECBE7B;">int</span> result = payoutScheduler.<span style="color: #c678dd;">reconcile</span><span style="color: #98be65;">(</span><span style="color: #da8548; font-weight: bold;">1</span><span style="color: #98be65;">)</span>;
+        <span style="color: #5B6268;">// Assert that 1 transaction was processed</span>
+        <span style="color: #c678dd;">assertEquals</span><span style="color: #98be65;">(</span><span style="color: #da8548; font-weight: bold;">1</span>, result<span style="color: #98be65;">)</span>;
+        <span style="color: #5B6268;">// Verify logging of transaction fetch and payout calculation</span>
+        <span style="color: #c678dd;">verify</span><span style="color: #98be65;">(</span>auditLogger<span style="color: #98be65;">)</span>.<span style="color: #c678dd;">logTransactionFetch</span><span style="color: #98be65;">(</span><span style="color: #da8548; font-weight: bold;">1</span>, <span style="color: #da8548; font-weight: bold;">1</span><span style="color: #98be65;">)</span>;
+        <span style="color: #c678dd;">verify</span><span style="color: #98be65;">(</span>auditLogger<span style="color: #98be65;">)</span>.<span style="color: #c678dd;">logPayoutCalculation</span><span style="color: #98be65;">(</span><span style="color: #da8548; font-weight: bold;">1</span>, <span style="color: #da8548; font-weight: bold;">90.0</span><span style="color: #98be65;">)</span>; <span style="color: #5B6268;">// 100 - 10% commission</span>
+        <span style="color: #c678dd;">verify</span><span style="color: #98be65;">(</span>auditLogger<span style="color: #98be65;">)</span>.<span style="color: #c678dd;">logPayoutSent</span><span style="color: #98be65;">(</span><span style="color: #da8548; font-weight: bold;">1</span>, <span style="color: #da8548; font-weight: bold;">90.0</span><span style="color: #98be65;">)</span>;
+        <span style="color: #5B6268;">// Verify interactions with setPayoutDetails and sendPayout</span>
+        <span style="color: #c678dd;">verify</span><span style="color: #98be65;">(</span>membershipDAO, <span style="color: #c678dd;">times</span><span style="color: #00bfff;">(</span><span style="color: #da8548; font-weight: bold;">1</span><span style="color: #00bfff;">)</span><span style="color: #98be65;">)</span>.<span style="color: #c678dd;">setPayoutDetails</span><span style="color: #98be65;">(</span><span style="color: #c678dd;">anyInt</span><span style="color: #00bfff;">()</span>, <span style="color: #c678dd;">any</span><span style="color: #00bfff;">(</span><span style="color: #ECBE7B;">PayoutDto</span>.<span style="color: #51afef; font-style: italic;">class</span><span style="color: #00bfff;">)</span><span style="color: #98be65;">)</span>;
+        <span style="color: #c678dd;">verify</span><span style="color: #98be65;">(</span>stripeService, <span style="color: #c678dd;">times</span><span style="color: #00bfff;">(</span><span style="color: #da8548; font-weight: bold;">1</span><span style="color: #00bfff;">)</span><span style="color: #98be65;">)</span>.<span style="color: #c678dd;">sendPayout</span><span style="color: #98be65;">(</span><span style="color: #c678dd;">any</span><span style="color: #00bfff;">(</span><span style="color: #ECBE7B;">PayoutDto</span>.<span style="color: #51afef; font-style: italic;">class</span><span style="color: #00bfff;">)</span><span style="color: #98be65;">)</span>;
+    <span style="color: #c678dd;">}</span>
+
+    <span style="color: #bbc2cf;">@</span><span style="color: #51afef; font-weight: bold;">Test</span> <span style="color: #5B6268;">// 4</span>
+    <span style="color: #ECBE7B;">void</span> <span style="color: #c678dd;">whenTwoTransactionsToProcessReturnsTwo</span><span style="color: #c678dd;">()</span> <span style="color: #51afef; font-style: italic;">throws</span> <span style="color: #ECBE7B;">EduStreamDAOException</span>, <span style="color: #ECBE7B;">EduStreamStripeException</span>, <span style="color: #ECBE7B;">SQLException</span> <span style="color: #c678dd;">{</span>
+        <span style="color: #5B6268;">// Create two transactions</span>
+        transactions.<span style="color: #c678dd;">add</span><span style="color: #98be65;">(</span><span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">TransactionDto</span><span style="color: #00bfff;">(</span><span style="color: #da8548; font-weight: bold;">1</span>, <span style="color: #da8548; font-weight: bold;">100.0</span><span style="color: #00bfff;">)</span><span style="color: #98be65;">)</span>; <span style="color: #5B6268;">// First transaction of 100.0</span>
+        transactions.<span style="color: #c678dd;">add</span><span style="color: #98be65;">(</span><span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">TransactionDto</span><span style="color: #00bfff;">(</span><span style="color: #da8548; font-weight: bold;">1</span>, <span style="color: #da8548; font-weight: bold;">200.0</span><span style="color: #00bfff;">)</span><span style="color: #98be65;">)</span>; <span style="color: #5B6268;">// Second transaction of 200.0</span>
+        <span style="color: #5B6268;">// Mock behavior: Two transactions returned</span>
+        <span style="color: #c678dd;">when</span><span style="color: #98be65;">(</span>transactionDAO.<span style="color: #c678dd;">retrieveUnprocessedTransactions</span><span style="color: #00bfff;">(</span><span style="color: #c678dd;">anyInt</span><span style="color: #4db5bd;">()</span><span style="color: #00bfff;">)</span><span style="color: #98be65;">)</span>.<span style="color: #c678dd;">thenReturn</span><span style="color: #98be65;">(</span>transactions<span style="color: #98be65;">)</span>;
+        <span style="color: #5B6268;">// Mock membership details (e.g., 10% commission rate)</span>
+        <span style="color: #c678dd;">when</span><span style="color: #98be65;">(</span>membershipDAO.<span style="color: #c678dd;">getMembershipDetails</span><span style="color: #00bfff;">(</span><span style="color: #c678dd;">anyInt</span><span style="color: #4db5bd;">()</span><span style="color: #00bfff;">)</span><span style="color: #98be65;">)</span>.<span style="color: #c678dd;">thenReturn</span><span style="color: #98be65;">(</span><span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">MembershipDto</span><span style="color: #00bfff;">(</span><span style="color: #da8548; font-weight: bold;">1</span>, <span style="color: #da8548; font-weight: bold;">0.1</span><span style="color: #00bfff;">)</span><span style="color: #98be65;">)</span>;
+        <span style="color: #5B6268;">// Call reconcile method for educator with ID 1</span>
+        <span style="color: #ECBE7B;">int</span> result = payoutScheduler.<span style="color: #c678dd;">reconcile</span><span style="color: #98be65;">(</span><span style="color: #da8548; font-weight: bold;">1</span><span style="color: #98be65;">)</span>;
+        <span style="color: #5B6268;">// Assert that 2 transactions were processed</span>
+        <span style="color: #c678dd;">assertEquals</span><span style="color: #98be65;">(</span><span style="color: #da8548; font-weight: bold;">2</span>, result<span style="color: #98be65;">)</span>;
+        <span style="color: #5B6268;">// Verify logging of transaction fetch</span>
+        <span style="color: #c678dd;">verify</span><span style="color: #98be65;">(</span>auditLogger<span style="color: #98be65;">)</span>.<span style="color: #c678dd;">logTransactionFetch</span><span style="color: #98be65;">(</span><span style="color: #da8548; font-weight: bold;">1</span>, <span style="color: #da8548; font-weight: bold;">2</span><span style="color: #98be65;">)</span>;
+        <span style="color: #5B6268;">// Verify that payout calculation is logged (total payout: 100 + 200, minus 10%</span>
+        <span style="color: #5B6268;">// commission)</span>
+        <span style="color: #c678dd;">verify</span><span style="color: #98be65;">(</span>auditLogger<span style="color: #98be65;">)</span>.<span style="color: #c678dd;">logPayoutCalculation</span><span style="color: #98be65;">(</span><span style="color: #da8548; font-weight: bold;">1</span>, <span style="color: #da8548; font-weight: bold;">270.0</span><span style="color: #98be65;">)</span>; <span style="color: #5B6268;">// 300 - 10% commission = 270.0</span>
+        <span style="color: #5B6268;">// Verify that payout was sent to Stripe</span>
+        <span style="color: #c678dd;">verify</span><span style="color: #98be65;">(</span>auditLogger<span style="color: #98be65;">)</span>.<span style="color: #c678dd;">logPayoutSent</span><span style="color: #98be65;">(</span><span style="color: #da8548; font-weight: bold;">1</span>, <span style="color: #da8548; font-weight: bold;">270.0</span><span style="color: #98be65;">)</span>;
+        <span style="color: #5B6268;">// Verify that MembershipDAO setPayoutDetails is called with the correct payout</span>
+        <span style="color: #c678dd;">verify</span><span style="color: #98be65;">(</span>membershipDAO, <span style="color: #c678dd;">times</span><span style="color: #00bfff;">(</span><span style="color: #da8548; font-weight: bold;">1</span><span style="color: #00bfff;">)</span><span style="color: #98be65;">)</span>.<span style="color: #c678dd;">setPayoutDetails</span><span style="color: #98be65;">(</span><span style="color: #c678dd;">anyInt</span><span style="color: #00bfff;">()</span>, <span style="color: #c678dd;">any</span><span style="color: #00bfff;">(</span><span style="color: #ECBE7B;">PayoutDto</span>.<span style="color: #51afef; font-style: italic;">class</span><span style="color: #00bfff;">)</span><span style="color: #98be65;">)</span>;
+        <span style="color: #c678dd;">verify</span><span style="color: #98be65;">(</span>stripeService, <span style="color: #c678dd;">times</span><span style="color: #00bfff;">(</span><span style="color: #da8548; font-weight: bold;">1</span><span style="color: #00bfff;">)</span><span style="color: #98be65;">)</span>.<span style="color: #c678dd;">sendPayout</span><span style="color: #98be65;">(</span><span style="color: #c678dd;">any</span><span style="color: #00bfff;">(</span><span style="color: #ECBE7B;">PayoutDto</span>.<span style="color: #51afef; font-style: italic;">class</span><span style="color: #00bfff;">)</span><span style="color: #98be65;">)</span>;
+    <span style="color: #c678dd;">}</span>
+
+    <span style="color: #bbc2cf;">@</span><span style="color: #51afef; font-weight: bold;">Test</span> <span style="color: #5B6268;">// 5</span>
+    <span style="color: #ECBE7B;">void</span> <span style="color: #c678dd;">testEduStreamStripeException</span><span style="color: #c678dd;">()</span> <span style="color: #51afef; font-style: italic;">throws</span> <span style="color: #ECBE7B;">SQLException</span>, <span style="color: #ECBE7B;">EduStreamStripeException</span> <span style="color: #c678dd;">{</span>
+        <span style="color: #5B6268;">// Create a single transaction</span>
+        transactions.<span style="color: #c678dd;">add</span><span style="color: #98be65;">(</span><span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">TransactionDto</span><span style="color: #00bfff;">(</span><span style="color: #da8548; font-weight: bold;">1</span>, <span style="color: #da8548; font-weight: bold;">100.0</span><span style="color: #00bfff;">)</span><span style="color: #98be65;">)</span>;
+        <span style="color: #5B6268;">// Mock behavior: One transaction found</span>
+        <span style="color: #c678dd;">when</span><span style="color: #98be65;">(</span>transactionDAO.<span style="color: #c678dd;">retrieveUnprocessedTransactions</span><span style="color: #00bfff;">(</span><span style="color: #c678dd;">anyInt</span><span style="color: #4db5bd;">()</span><span style="color: #00bfff;">)</span><span style="color: #98be65;">)</span>.<span style="color: #c678dd;">thenReturn</span><span style="color: #98be65;">(</span>transactions<span style="color: #98be65;">)</span>;
+        <span style="color: #5B6268;">// Mock membership details</span>
+        <span style="color: #c678dd;">when</span><span style="color: #98be65;">(</span>membershipDAO.<span style="color: #c678dd;">getMembershipDetails</span><span style="color: #00bfff;">(</span><span style="color: #c678dd;">anyInt</span><span style="color: #4db5bd;">()</span><span style="color: #00bfff;">)</span><span style="color: #98be65;">)</span>.<span style="color: #c678dd;">thenReturn</span><span style="color: #98be65;">(</span><span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">MembershipDto</span><span style="color: #00bfff;">(</span><span style="color: #da8548; font-weight: bold;">1</span>, <span style="color: #da8548; font-weight: bold;">0.1</span><span style="color: #00bfff;">)</span><span style="color: #98be65;">)</span>;
+        <span style="color: #5B6268;">// Mock behavior: StripeService throws an exception</span>
+        <span style="color: #c678dd;">doThrow</span><span style="color: #98be65;">(</span><span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">EduStreamStripeException</span><span style="color: #00bfff;">(</span><span style="color: #98be65;">"Stripe Payment Error"</span><span style="color: #00bfff;">)</span><span style="color: #98be65;">)</span>.<span style="color: #c678dd;">when</span><span style="color: #98be65;">(</span>stripeService<span style="color: #98be65;">)</span>
+            .<span style="color: #c678dd;">sendPayout</span><span style="color: #98be65;">(</span><span style="color: #c678dd;">any</span><span style="color: #00bfff;">(</span><span style="color: #ECBE7B;">PayoutDto</span>.<span style="color: #51afef; font-style: italic;">class</span><span style="color: #00bfff;">)</span><span style="color: #98be65;">)</span>;
+        <span style="color: #5B6268;">// Assert that EduStreamStripeException is thrown with the correct message</span>
+        <span style="color: #ECBE7B;">EduStreamStripeException</span> exception = <span style="color: #c678dd;">assertThrows</span><span style="color: #98be65;">(</span><span style="color: #ECBE7B;">EduStreamStripeException</span>.<span style="color: #51afef; font-style: italic;">class</span>, <span style="color: #00bfff;">()</span> -&gt; <span style="color: #00bfff;">{</span>
+                payoutScheduler.<span style="color: #c678dd;">reconcile</span><span style="color: #4db5bd;">(</span><span style="color: #da8548; font-weight: bold;">1</span><span style="color: #4db5bd;">)</span>;
+            <span style="color: #00bfff;">}</span><span style="color: #98be65;">)</span>;
+        <span style="color: #c678dd;">assertEquals</span><span style="color: #98be65;">(</span><span style="color: #98be65;">"Stripe Payment Error"</span>, exception.<span style="color: #c678dd;">getMessage</span><span style="color: #00bfff;">()</span><span style="color: #98be65;">)</span>;
+        <span style="color: #5B6268;">// Verify logging of transaction fetch and payout calculation, but log failure</span>
+        <span style="color: #5B6268;">// when Stripe error occurs</span>
+        <span style="color: #c678dd;">verify</span><span style="color: #98be65;">(</span>auditLogger<span style="color: #98be65;">)</span>.<span style="color: #c678dd;">logTransactionFetch</span><span style="color: #98be65;">(</span><span style="color: #da8548; font-weight: bold;">1</span>, <span style="color: #da8548; font-weight: bold;">1</span><span style="color: #98be65;">)</span>;
+        <span style="color: #c678dd;">verify</span><span style="color: #98be65;">(</span>auditLogger<span style="color: #98be65;">)</span>.<span style="color: #c678dd;">logPayoutCalculation</span><span style="color: #98be65;">(</span><span style="color: #da8548; font-weight: bold;">1</span>, <span style="color: #da8548; font-weight: bold;">90.0</span><span style="color: #98be65;">)</span>; <span style="color: #5B6268;">// 100 - 10% commission</span>
+        <span style="color: #c678dd;">verify</span><span style="color: #98be65;">(</span>auditLogger<span style="color: #98be65;">)</span>.<span style="color: #c678dd;">logPayoutFailure</span><span style="color: #98be65;">(</span><span style="color: #da8548; font-weight: bold;">1</span>, <span style="color: #98be65;">"Stripe Error: Stripe Payment Error"</span><span style="color: #98be65;">)</span>;
+        <span style="color: #5B6268;">// Verify that setPayoutDetails is not called</span>
+        <span style="color: #c678dd;">verify</span><span style="color: #98be65;">(</span>membershipDAO, <span style="color: #c678dd;">never</span><span style="color: #00bfff;">()</span><span style="color: #98be65;">)</span>.<span style="color: #c678dd;">setPayoutDetails</span><span style="color: #98be65;">(</span><span style="color: #c678dd;">anyInt</span><span style="color: #00bfff;">()</span>, <span style="color: #c678dd;">any</span><span style="color: #00bfff;">(</span><span style="color: #ECBE7B;">PayoutDto</span>.<span style="color: #51afef; font-style: italic;">class</span><span style="color: #00bfff;">)</span><span style="color: #98be65;">)</span>;
+    <span style="color: #c678dd;">}</span>
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org6e539cb" class="outline-3">
+<h3 id="org6e539cb"><span class="section-number-3">9.3.</span> Concrete Class</h3>
+<div class="outline-text-3" id="text-9-3">
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #51afef; font-style: italic;">public</span> <span style="color: #51afef; font-style: italic;">class</span> <span style="color: #ECBE7B;">PayoutScheduler</span> <span style="color: #fff0f5;">{</span>
+
+    <span style="color: #51afef; font-style: italic;">private</span> <span style="color: #ECBE7B;">TransactionDAO</span> transactionDAO;
+    <span style="color: #51afef; font-style: italic;">private</span> <span style="color: #ECBE7B;">MembershipDAO</span> membershipDAO;
+    <span style="color: #51afef; font-style: italic;">private</span> <span style="color: #ECBE7B;">StripeService</span> stripeService;
+    <span style="color: #51afef; font-style: italic;">private</span> <span style="color: #ECBE7B;">AuditLogger</span> auditLogger; <span style="color: #5B6268;">// New addition</span>
+
+    <span style="color: #51afef; font-style: italic;">public</span> <span style="color: #ECBE7B;">PayoutScheduler</span><span style="color: #c678dd;">(</span><span style="color: #ECBE7B;">TransactionDAO</span> transactionDAO, <span style="color: #ECBE7B;">MembershipDAO</span> membershipDAO, <span style="color: #ECBE7B;">StripeService</span> stripeService, <span style="color: #ECBE7B;">AuditLogger</span> auditLogger<span style="color: #c678dd;">)</span> <span style="color: #c678dd;">{</span>
+        <span style="color: #51afef; font-style: italic;">this</span>.transactionDAO = transactionDAO;
+        <span style="color: #51afef; font-style: italic;">this</span>.membershipDAO = membershipDAO;
+        <span style="color: #51afef; font-style: italic;">this</span>.stripeService = stripeService;
+        <span style="color: #51afef; font-style: italic;">this</span>.auditLogger = auditLogger; <span style="color: #5B6268;">// New addition</span>
+    <span style="color: #c678dd;">}</span>
+
+    <span style="color: #51afef; font-style: italic;">public</span> <span style="color: #ECBE7B;">int</span> <span style="color: #c678dd;">reconcile</span><span style="color: #c678dd;">(</span><span style="color: #ECBE7B;">int</span> educatorId<span style="color: #c678dd;">)</span> <span style="color: #51afef; font-style: italic;">throws</span> <span style="color: #ECBE7B;">EduStreamDAOException</span>, <span style="color: #ECBE7B;">EduStreamStripeException</span> <span style="color: #c678dd;">{</span>
+        <span style="color: #51afef; font-style: italic;">try</span> <span style="color: #98be65;">{</span>
+            <span style="color: #5B6268;">// Retrieve all transactions for the last 30 days</span>
+            <span style="color: #ECBE7B;">List</span><span style="color: #00bfff;">&lt;</span><span style="color: #ECBE7B;">TransactionDto</span><span style="color: #00bfff;">&gt;</span> transactions = transactionDAO.<span style="color: #c678dd;">retrieveUnprocessedTransactions</span><span style="color: #00bfff;">(</span>educatorId<span style="color: #00bfff;">)</span>;
+            auditLogger.<span style="color: #c678dd;">logTransactionFetch</span><span style="color: #00bfff;">(</span>educatorId, transactions.<span style="color: #c678dd;">size</span><span style="color: #4db5bd;">()</span><span style="color: #00bfff;">)</span>; <span style="color: #5B6268;">// Log transaction fetch</span>
+
+            <span style="color: #51afef; font-style: italic;">if</span> <span style="color: #00bfff;">(</span>transactions.<span style="color: #c678dd;">isEmpty</span><span style="color: #4db5bd;">()</span><span style="color: #00bfff;">)</span> <span style="color: #00bfff;">{</span>
+                <span style="color: #51afef; font-style: italic;">return</span> <span style="color: #da8548; font-weight: bold;">0</span>; <span style="color: #5B6268;">// No transactions to process</span>
+            <span style="color: #00bfff;">}</span>
+
+            <span style="color: #5B6268;">// Retrieve membership info</span>
+            <span style="color: #ECBE7B;">MembershipDto</span> membership = membershipDAO.<span style="color: #c678dd;">getMembershipDetails</span><span style="color: #00bfff;">(</span>educatorId<span style="color: #00bfff;">)</span>;
+            <span style="color: #ECBE7B;">double</span> commissionRate = membership.<span style="color: #c678dd;">getCommissionRate</span><span style="color: #00bfff;">()</span>;
+
+            <span style="color: #5B6268;">// Calculate total payout (apply commission)</span>
+            <span style="color: #ECBE7B;">double</span> totalAmount = <span style="color: #da8548; font-weight: bold;">0</span>;
+            <span style="color: #51afef; font-style: italic;">for</span> <span style="color: #00bfff;">(</span><span style="color: #ECBE7B;">TransactionDto</span> transaction : transactions<span style="color: #00bfff;">)</span> <span style="color: #00bfff;">{</span>
+                totalAmount += transaction.<span style="color: #c678dd;">getAmount</span><span style="color: #4db5bd;">()</span> * <span style="color: #4db5bd;">(</span><span style="color: #da8548; font-weight: bold;">1</span> - commissionRate<span style="color: #4db5bd;">)</span>;
+            <span style="color: #00bfff;">}</span>
+
+            auditLogger.<span style="color: #c678dd;">logPayoutCalculation</span><span style="color: #00bfff;">(</span>educatorId, totalAmount<span style="color: #00bfff;">)</span>; <span style="color: #5B6268;">// Log payout calculation</span>
+
+            <span style="color: #5B6268;">// Create payout details</span>
+            <span style="color: #ECBE7B;">PayoutDto</span> payoutDto = <span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">PayoutDto</span><span style="color: #00bfff;">(</span>educatorId, totalAmount<span style="color: #00bfff;">)</span>;
+
+            <span style="color: #5B6268;">// Send payout details to Stripe</span>
+            stripeService.<span style="color: #c678dd;">sendPayout</span><span style="color: #00bfff;">(</span>payoutDto<span style="color: #00bfff;">)</span>;
+            auditLogger.<span style="color: #c678dd;">logPayoutSent</span><span style="color: #00bfff;">(</span>educatorId, totalAmount<span style="color: #00bfff;">)</span>; <span style="color: #5B6268;">// Log payout sent</span>
+
+            <span style="color: #5B6268;">// Store payout information</span>
+            membershipDAO.<span style="color: #c678dd;">setPayoutDetails</span><span style="color: #00bfff;">(</span>educatorId, payoutDto<span style="color: #00bfff;">)</span>;
+
+            <span style="color: #51afef; font-style: italic;">return</span> transactions.<span style="color: #c678dd;">size</span><span style="color: #00bfff;">()</span>;
+
+        <span style="color: #98be65;">}</span> <span style="color: #51afef; font-style: italic;">catch</span> <span style="color: #98be65;">(</span><span style="color: #ECBE7B;">SQLException</span> e<span style="color: #98be65;">)</span> <span style="color: #98be65;">{</span>
+            auditLogger.<span style="color: #c678dd;">logPayoutFailure</span><span style="color: #00bfff;">(</span>educatorId, <span style="color: #98be65;">"Error in connection to EduStream database"</span><span style="color: #00bfff;">)</span>; <span style="color: #5B6268;">// Log failure due to SQLException</span>
+            <span style="color: #51afef; font-style: italic;">throw</span> <span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">EduStreamDAOException</span><span style="color: #00bfff;">(</span><span style="color: #98be65;">"Error in connection to EduStream database"</span><span style="color: #00bfff;">)</span>;
+        <span style="color: #98be65;">}</span> <span style="color: #51afef; font-style: italic;">catch</span> <span style="color: #98be65;">(</span><span style="color: #ECBE7B;">EduStreamStripeException</span> e<span style="color: #98be65;">)</span> <span style="color: #98be65;">{</span>
+            auditLogger.<span style="color: #c678dd;">logPayoutFailure</span><span style="color: #00bfff;">(</span>educatorId, <span style="color: #98be65;">"Stripe Error: "</span> + e.<span style="color: #c678dd;">getMessage</span><span style="color: #4db5bd;">()</span><span style="color: #00bfff;">)</span>; <span style="color: #5B6268;">// Log failure due to Stripe exception</span>
+            <span style="color: #51afef; font-style: italic;">throw</span> e;
+        <span style="color: #98be65;">}</span>
+    <span style="color: #c678dd;">}</span>
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org5e6dc10" class="outline-2">
+<h2 id="org5e6dc10"><span class="section-number-2">10.</span> Remove at the End</h2>
+<div class="outline-text-2" id="text-10">
 <script src="../assets/jquery-3.3.1.min.js"></script>
 <script src="../assets/notes.js"></script>
 </div>
@@ -381,7 +1270,7 @@ The leapyears.csv file:
 <div id="postamble" class="status">
 <p class="date">Date: 2025-10-16 Thu 09:32</p>
 <p class="author">Author: Damian Chrzanowski</p>
-<p class="date">Created: 2025-12-07 Sun 14:11</p>
+<p class="date">Created: 2025-12-14 Sun 18:44</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
