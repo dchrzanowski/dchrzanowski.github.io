@@ -213,18 +213,18 @@
    - Needless complexity
    - Needless repetition
    - Opacity
+** Single responsibility principle (SRP)
 ** Open-Closed Principle
    - Modules/classes/functions should be open to extensions but closed for modifications. As in: it is ok to extend something, but don't modify the base (like Liskov).
 ** Liskov's Substitution Principles
    - Subtypes must be suitable for their base types
    - Basically the sub-type should not override the workings of the base to suite its own needs, you probably just have the wrong abstraction to begin with (or the whole system is not designed correctly)
-** Single responsibility principle (SRP)
-** Dependency Inversion Principle (DIP)
-   - High level modules should not depend on low level modules.
-   - Abstractions should not depend on details -> details should depend on abstractions.
 ** Interface Segregation Principle (ISP)
    - Make many small interfaces, rather than one large one.
    - Inherit from many interfaces rather than dependency inject only one or few. Especially when we're constructing a derived class.
+** Dependency Inversion Principle (DIP)
+   - High level modules should not depend on low level modules.
+   - Abstractions should not depend on details -> details should depend on abstractions.
 * McCabe's Cyclomatic Complexity
 ** Definition
    - Design related metric
@@ -232,6 +232,38 @@
    - =E - N + 2=, where E are edges and N are nodes. Basically it is ~Branches + 1~
 ** Example Control Flow Graphs
    [[file:images/McCabe's_Cyclomatic_Complexity/2025-12-14_18-37-49_screenshot.png]]
+* Cucumber and BDD
+** Cucumber
+   - A testing framework: It bridges the gap between non-technical stakeholders (like business analysts) and developers by letting everyone understand requirements in plain language.
+   - Language-agnostic: While it originally used Ruby, now it supports multiple programming languages such as Java, JavaScript, Python, and more.
+   - Executable specifications: The scenarios written in Cucumber can be run as automated tests, ensuring the software behaves as intended.
+*** Example
+    #+begin_verse
+Feature: User login
+
+  Scenario: Successful login with valid credentials
+    Given the user is on the login page
+    When the user enters valid credentials
+    And clicks the login button
+    Then the user should be redirected to the dashboard
+    #+end_verse
+*** DataTable
+    #+begin_verse
+Scenario: Add multiple users
+  Given the following users exist:
+    | Name       | Email               | Role      |
+    | Alice      | alice@example.com   | Admin     |
+    | Bob        | bob@example.com     | User      |
+    | Charlie    | charlie@example.com | Manager   |
+    #+end_verse
+** BDD
+   - You define the behavior of software in terms of expected outcomes, not implementation.
+   - Scenarios are written in plain language, understandable by all stakeholders.
+   - Tests are created based on these behavior specifications.
+** Cucumber and BDD
+   - It allows writing requirements in plain English (or any supported language), making them accessible to non-developers.
+   - The same scenarios serve as both documentation and automated tests, keeping behavior consistent.
+   - Encourages collaboration between developers, testers, and business stakeholders, which is the core principle of BDD.
 * Scaffold for Parameterized Testing
 ** pom for jupiter and jupiter with params
    #+begin_src xml
