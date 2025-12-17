@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2025-12-07 Sun 14:11 -->
+<!-- 2025-12-17 Wed 22:28 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Computer Architecture And Cloud Services</title>
@@ -204,46 +204,702 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org7621118">1. Intro</a></li>
-<li><a href="#org965b1a1">2. Exam</a></li>
-<li><a href="#orgbca2093">3. Exams (3 out of 4)</a></li>
-<li><a href="#orgaff0737">4. Remove at the End</a></li>
+<li><a href="#orga6ca2a7">1. Exam Questions Bank</a></li>
+<li><a href="#orgcd84801">2. Answers to Questions</a>
+<ul>
+<li><a href="#orgedce1ec">2.1. How admin can enable two users to copy files between each other, but restrict others from doing so?</a></li>
+<li><a href="#orgd032967">2.2. What is pipelining and performance effects</a></li>
+<li><a href="#org1675970">2.3. In Computer Architecture, what do the terms ‘structure’ and ‘function’ refer to? In addition, list and describe 3 logical computer architecture structures?</a></li>
+<li><a href="#org4ef2f1b">2.4. Architecture vs Organization</a></li>
+<li><a href="#orgcc6fd2d">2.5. Briefly describe the purpose of the following registers: IR, PC, MAR, MBR, I/OAR and I/OBR.</a></li>
+<li><a href="#org8e5175a">2.6. Calculate MIPS for a 2.5GHz CPU with 4 CPI vs Upgrade of the same CPU but with 5 pipelines and 2.0GHz</a></li>
+<li><a href="#org77fb06c">2.7. Ways to avoid race conditions</a></li>
+<li><a href="#orgab4ddac">2.8. Peterson's solution and preemptive vs non-preemptive.</a></li>
+<li><a href="#org84e0042">2.9. If students working at individual PCs in a computer laboratory send their files to be printed by a server which spools the files on its hard disk. Under what conditions may a deadlock occur if the disk space for the print spool is limited? How may the deadlock be avoided?</a></li>
+<li><a href="#orgbb7d075">2.10. Paging vs Segmentation</a></li>
+<li><a href="#org87c38ef">2.11. How is a page fault managed</a></li>
+<li><a href="#org1ad0a7c">2.12. <code>GPUs</code> and <code>GPGPUs</code> as an example of <code>multicore</code>. What are GPUs good for?</a></li>
+<li><a href="#orgd8f4513">2.13. CISC vs RISV. Experiencing <code>Semantic Gap</code></a></li>
+<li><a href="#org67b9645">2.14. Fix a piece of code that has a potential <code>race condition</code></a></li>
+<li><a href="#orgec57d45">2.15. With regards to CPUs: What is <code>paging</code>, <code>page faults</code>, <code>page thrashing</code>? CPU performance impacts.</a></li>
+<li><a href="#orgca7d4d5">2.16. What is <code>Symmetric Multiprocessing</code> (SMP) and <code>Clustering</code>? With regards to <code>high-performance</code> <code>multiprocessor</code> configurations. Compare scalability and availability.</a></li>
+<li><a href="#org2d0a0fb">2.17. Is <code>deadlock</code> possible when <code>two processes</code> use <code>three individual</code> resources when <code>one process</code> requires a <code>maximum of two resources</code>?</a></li>
+<li><a href="#orgd6106d0">2.18. <code>Load time</code> of 64KB <code>program</code> when seek time is 10ms, rotation time of 10ms and tracks hold 32KB. When 2KB <code>page size</code> and when 4KB page size.</a></li>
+<li><a href="#orge252fb5">2.19. Two <code>CPUs</code> with <code>two threads</code> each load programs P0, P1 and P2, initialised at 5ms, 10ms and 20m. How long to <code>complete execution</code>?</a></li>
+<li><a href="#org9868ca7">2.20. <code>Disk access to a sector</code> time with 15000 RPM, 8ms seek time and 500 sectors per track.</a></li>
+<li><a href="#org6998e46">2.21. Define <code>cloud computing</code> and <code>five key components</code> associated with it.</a></li>
+<li><a href="#org03f074a">2.22. Describe the <code>CSA</code> Open Certification Framework.</a></li>
+<li><a href="#org4593bef">2.23. Describe <code>RAIDs</code> 0 to 5 with regards to: <code>read/write performance</code> and <code>reliability</code></a></li>
+<li><a href="#org7cd96f5">2.24. What is the { SPI Model }?. Compare traditional with <code>IaaS</code>, <code>PaaS</code> and <code>SaaS</code></a></li>
+<li><a href="#org70189b0">2.25. How to ensure that an <code>authorized employee</code> can <code>access certain data</code>? Is it possible to provide <code>absolute protection</code>?</a></li>
+<li><a href="#org515ff53">2.26. What is and what are the problems with <code>converging Cloud Computing and IoT</code>?</a></li>
+<li><a href="#org5595dc8">2.27. Using the CSA's <code>STAR</code>, calculate <code>trust proportion t</code>, <code>certainty c</code> and if needed <code>trust value E</code></a></li>
+</ul>
+</li>
+<li><a href="#org8fd9ccf">3. Intro</a></li>
+<li><a href="#orga376e74">4. Remove at the End</a></li>
 </ul>
 </div>
 </div>
 <p>
 <a href="index.html">Home Page</a>
 </p>
-<div id="outline-container-org7621118" class="outline-2">
-<h2 id="org7621118"><span class="section-number-2">1.</span> Intro</h2>
+<div id="outline-container-orga6ca2a7" class="outline-2">
+<h2 id="orga6ca2a7"><span class="section-number-2">1.</span> Exam Questions Bank</h2>
+<div class="outline-text-2" id="text-1">
+<ul class="org-ul">
+<li>(1x) How admin can enable two users to copy files between each other, but restrict others from doing so?</li>
+<li>(1x) <code>GPUs</code> and <code>GPGPUs</code> as an example of <code>multicore</code>. What are GPUs good for?</li>
+<li>(1x) CISC vs RISV. Experiencing <code>Semantic Gap</code></li>
+<li>(1x) Fix a piece of code that has a potential <code>race condition</code></li>
+<li>(1x) With regards to CPUs: What is <code>paging</code>, <code>page faults</code>, <code>page thrashing</code>? CPU performance impacts.</li>
+<li>(1x) What is <code>Symmetric Multiprocessing</code> (SMP) and <code>Clustering</code>? With regards to <code>high-performance</code> <code>multiprocessor</code> configurations. Compare scalability and availability.</li>
+<li>(1x) Is <code>deadlock</code> possible when <code>two processes</code> use <code>three individual</code> resources when <code>one process</code> requires a <code>maximum of two resources</code>?</li>
+<li>(1x) <code>Load time</code> of 64KB <code>program</code> when seek time is 10ms, rotation time of 10ms and tracks hold 32KB. When 2KB <code>page size</code> and when 4KB page size.</li>
+<li>(1x) Two <code>CPUs</code> with <code>two threads</code> each load programs P0, P1 and P2, initialised at 5ms, 10ms and 20m. How long to <code>complete execution</code>?</li>
+<li>(1x) <code>Disk access to a sector</code> time with 15000 RPM, 8ms seek time and 500 sectors per track.</li>
+<li>(1x) Define <code>cloud computing</code> and <code>five key components</code> associated with it.</li>
+<li>(1x) Describe the <code>CSA</code> Open Certification Framework.
+<ul class="org-ul">
+<li>(1x) Also what can cloud provide do to <code>prevent data loss</code>?</li>
+<li>(1x) What can be done to prevent a <code>security breach</code>?</li>
+</ul></li>
+<li>(1x) Describe <code>RAIDs</code> 0 to 5 with regards to: <code>read/write performance</code> and <code>reliability</code></li>
+<li>(1x) What is the { SPI Model }?. Compare traditional with <code>IaaS</code>, <code>PaaS</code> and <code>SaaS</code></li>
+<li>(1x) How to ensure that an <code>authorized employee</code> can <code>access certain data</code>? Is it possible to provide <code>absolute protection</code>?</li>
+<li>(1x) What is and what are the problems with <code>converging Cloud Computing and IoT</code>?</li>
+<li>(1x) Using the CSA's <code>STAR</code>, calculate <code>trust proportion t</code>, <code>certainty c</code> and if needed <code>trust value E</code></li>
+</ul>
 </div>
-<div id="outline-container-org965b1a1" class="outline-2">
-<h2 id="org965b1a1"><span class="section-number-2">2.</span> Exam</h2>
+</div>
+<div id="outline-container-orgcd84801" class="outline-2">
+<h2 id="orgcd84801"><span class="section-number-2">2.</span> Answers to Questions</h2>
 <div class="outline-text-2" id="text-2">
+</div>
+<div id="outline-container-orgedce1ec" class="outline-3">
+<h3 id="orgedce1ec"><span class="section-number-3">2.1.</span> How admin can enable two users to copy files between each other, but restrict others from doing so?</h3>
+<div class="outline-text-3" id="text-2-1">
 <ul class="org-ul">
-<li>Evaluating cloud security (+ equations) come up on the exam</li>
-<li>IoT cloud architecture</li>
+<li>Create a shared group:
+<ul class="org-ul">
+<li>sudo groupadd designers</li>
+<li>sudo usermod -aG designers user1</li>
+<li>sudo usermod -aG designers user2</li>
+</ul></li>
+<li>Change the group ownership of each user's home dir:
+<ul class="org-ul">
+<li>sudo chgrp designers /home/user1</li>
+<li>sudo chgrp designers /home/user2</li>
+</ul></li>
+<li>Set directory permissions
+<ul class="org-ul">
+<li>sudo chmod 770 /homs/user1 (full access for user and grou, 0 for outside)</li>
+<li>sudo chmod 770 /homs/user2</li>
+</ul></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgbca2093" class="outline-2">
-<h2 id="orgbca2093"><span class="section-number-2">3.</span> Exams (3 out of 4)</h2>
-<div class="outline-text-2" id="text-3">
+<div id="outline-container-orgd032967" class="outline-3">
+<h3 id="orgd032967"><span class="section-number-3">2.2.</span> What is pipelining and performance effects</h3>
+<div class="outline-text-3" id="text-2-2">
 <ul class="org-ul">
-<li>ex: compare say two cloud providers</li>
-<li>architecture vs cloud, should be a 50/50 split between these</li>
-<li>SPI model, attributes of cloud, cloud vs soa, (all in the past papers)</li>
-<li>How to assess cloud providers (STAR)</li>
-<li>cisc vs risc</li>
-<li>resource ownership, deadlock, race conditions</li>
-<li>pipelining</li>
-<li>clustering vs smp</li>
-<li>RAID</li>
+<li>Starting to execute a second instruction before the first one is completed</li>
+<li>So each of the stages below works on a different instruction at the same time</li>
+<li>Stages of CPU execution:
+<ul class="org-ul">
+<li>Fetch</li>
+<li>Decode</li>
+<li>Execute</li>
+<li>Memory</li>
+<li>Write-back</li>
+</ul></li>
+<li>So as an example the CPU can perform a fetch while the execute is still running and thus speeding up the processing drastically.</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgaff0737" class="outline-2">
-<h2 id="orgaff0737"><span class="section-number-2">4.</span> Remove at the End</h2>
+<div id="outline-container-org1675970" class="outline-3">
+<h3 id="org1675970"><span class="section-number-3">2.3.</span> In Computer Architecture, what do the terms ‘structure’ and ‘function’ refer to? In addition, list and describe 3 logical computer architecture structures?</h3>
+<div class="outline-text-3" id="text-2-3">
+<ul class="org-ul">
+<li>Structure is the way in which components relate to each other
+<ul class="org-ul">
+<li>BIOS</li>
+<li>CPU</li>
+<li>Memory Volatile/Permanent</li>
+<li>I/O</li>
+<li>Communication channels (e.g. USB)</li>
+<li>Bus</li>
+</ul></li>
+<li>Function is the operation of individual components as part of the structure
+<ul class="org-ul">
+<li>Data processing</li>
+<li>Data storage</li>
+<li>Data movement</li>
+<li>Control of each of the above</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org4ef2f1b" class="outline-3">
+<h3 id="org4ef2f1b"><span class="section-number-3">2.4.</span> Architecture vs Organization</h3>
+<div class="outline-text-3" id="text-2-4">
+<ul class="org-ul">
+<li>Arch: is those attributes visible to the programmer: instruction set, I/O mechanisms, etc.</li>
+<li>Org: is how features are implemented: control signals, interfaces, memory technology, etc.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgcc6fd2d" class="outline-3">
+<h3 id="orgcc6fd2d"><span class="section-number-3">2.5.</span> Briefly describe the purpose of the following registers: IR, PC, MAR, MBR, I/OAR and I/OBR.</h3>
+<div class="outline-text-3" id="text-2-5">
+<ul class="org-ul">
+<li>IR: Instruction Register: holds the current instruction that the CPU is executing</li>
+<li>PC: Program Counter: holds the address of next instruction to fetch</li>
+<li>MAR: Memory Address Register: specify the address in memory for the next read or write</li>
+<li>MBR: Memory Buffer Register: contains the data to be written into memory or data retrieved from memory</li>
+<li>I/OAR: Input/Output address register: specify a particular IO device</li>
+<li>I/OBR: Input/Output buffer register: exchange data with a particular IO device</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org8e5175a" class="outline-3">
+<h3 id="org8e5175a"><span class="section-number-3">2.6.</span> Calculate MIPS for a 2.5GHz CPU with 4 CPI vs Upgrade of the same CPU but with 5 pipelines and 2.0GHz</h3>
+<div class="outline-text-3" id="text-2-6">
+</div>
+<div id="outline-container-orga895b46" class="outline-4">
+<h4 id="orga895b46">MIPS Calculation</h4>
+<div class="outline-text-4" id="text-orga895b46">
+<p class="verse">
+<code>MIPS = MHz/CPI</code><br />
+</p>
+</div>
+</div>
+<div id="outline-container-org7958650" class="outline-4">
+<h4 id="org7958650">Non-pipelined</h4>
+<div class="outline-text-4" id="text-org7958650">
+<ul class="org-ul">
+<li>2500MHz/4 = 625 MIPS</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org5df2ad6" class="outline-4">
+<h4 id="org5df2ad6">Fully Pipeplined (does Fetch/Decode/Execute/Memory/Write) in 1 cycle</h4>
+<div class="outline-text-4" id="text-org5df2ad6">
+<ul class="org-ul">
+<li>2000MHz/1 = 2000 MIPS</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-org77fb06c" class="outline-3">
+<h3 id="org77fb06c"><span class="section-number-3">2.7.</span> Ways to avoid race conditions</h3>
+<div class="outline-text-3" id="text-2-7">
+<ol class="org-ol">
+<li>Mutual Exclusion (Locks / Mutexes/ Semaphores): one thread at a time</li>
+<li>Critical Section: Protect a critical section of code with a lock</li>
+<li>Atomic operations: Usage of operations that cannot be interrupted mid-execution</li>
+<li>Avoid shared state: design programs to use <code>local copies</code> or message passing instead of sharing data directly</li>
+</ol>
+</div>
+</div>
+<div id="outline-container-orgab4ddac" class="outline-3">
+<h3 id="orgab4ddac"><span class="section-number-3">2.8.</span> Peterson's solution and preemptive vs non-preemptive.</h3>
+<div class="outline-text-3" id="text-2-8">
+<ul class="org-ul">
+<li>It's easy to explain with the code bit, two processes can safely share a critical section</li>
+<li><code>Preemptive scheduling</code> allows a process to be interrupted at any time. It works with Peterson's because there is no timing, it depends on a shared variable, so even if interrupted it guarantees mutual exclusion.</li>
+<li><code>Non-preemptive scheduling</code>, a process runs until it blocks or yields. The waiting loop ensures that even without forced switching, entering or leaving is respected.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org84e0042" class="outline-3">
+<h3 id="org84e0042"><span class="section-number-3">2.9.</span> If students working at individual PCs in a computer laboratory send their files to be printed by a server which spools the files on its hard disk. Under what conditions may a deadlock occur if the disk space for the print spool is limited? How may the deadlock be avoided?</h3>
+<div class="outline-text-3" id="text-2-9">
+</div>
+<div id="outline-container-org3196031" class="outline-4">
+<h4 id="org3196031">Problem</h4>
+<div class="outline-text-4" id="text-org3196031">
+<p class="verse">
+Mutual exclusion<br />
+Disk blocks used for the print spool are exclusive resources.<br />
+<br />
+Hold and wait<br />
+A print job may have already spooled some of its file to disk and is waiting for more disk space to finish spooling.<br />
+<br />
+No preemption<br />
+The spooler cannot easily take back disk blocks already allocated to a partially spooled job.<br />
+<br />
+Circular wait<br />
+Example scenario:<br />
+The spool disk has space for 10 MB.<br />
+Job A needs 6 MB, Job B needs 6 MB.<br />
+Job A spools 5 MB and waits for 1 MB more.<br />
+Job B spools the remaining 5 MB and waits for 1 MB more.<br />
+Disk is full; both jobs wait forever.<br />
+Neither job can finish and release space → deadlock.<br />
+</p>
+</div>
+</div>
+<div id="outline-container-org068eced" class="outline-4">
+<h4 id="org068eced">Solution</h4>
+<div class="outline-text-4" id="text-org068eced">
+<p class="verse">
+1. Request All Resources at Once<br />
+Require a job to have enough free disk space for the entire file before spooling begins.<br />
+If sufficient space is not available, the job waits without allocating any space.<br />
+Eliminates hold and wait.<br />
+<br />
+2. Limit the Number of Concurrent Spooling Jobs<br />
+Allow only a fixed number of jobs to spool at once, based on disk capacity.<br />
+Prevents circular wait.<br />
+<br />
+3. Disk Space Quotas or Reservation<br />
+Reserve disk space equal to the file size before spooling starts.<br />
+Commonly used in real print spoolers.<br />
+<br />
+4. Use Streaming Instead of Full Spooling<br />
+Stream jobs directly to the printer when possible.<br />
+Reduces reliance on disk space.<br />
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orgbb7d075" class="outline-3">
+<h3 id="orgbb7d075"><span class="section-number-3">2.10.</span> Paging vs Segmentation</h3>
+<div class="outline-text-3" id="text-2-10">
+</div>
+<div id="outline-container-org14760cb" class="outline-4">
+<h4 id="org14760cb">Paging</h4>
+<div class="outline-text-4" id="text-org14760cb">
+<ul class="org-ul">
+<li>Paging divides memory into fixed-sized blocks (physical &amp; logical)</li>
+<li>Each process has its own page table. OS checks whether a page belongs to a process before allowing access.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgd05375a" class="outline-4">
+<h4 id="orgd05375a">Segmentation</h4>
+<div class="outline-text-4" id="text-orgd05375a">
+<ul class="org-ul">
+<li>Divides memory into variable-sized logical units such as code, stack, heap, functions or arrays.</li>
+<li>Each segment has a base address and a limit</li>
+<li>Protection is achieved using <code>segment descriptors</code>, which define access rights to each segment.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgda112cc" class="outline-4">
+<h4 id="orgda112cc">Info Table</h4>
+<div class="outline-text-4" id="text-orgda112cc">
+
+<div id="org18a215a" class="figure">
+<p><img src="images/Answers_to_Questions/2025-12-17_21-52-00_screenshot.png" alt="2025-12-17_21-52-00_screenshot.png" />
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org87c38ef" class="outline-3">
+<h3 id="org87c38ef"><span class="section-number-3">2.11.</span> How is a page fault managed</h3>
+<div class="outline-text-3" id="text-2-11">
+<ol class="org-ol">
+<li>Process attempts memory access. The OS checks memory and it is not in the RAM.</li>
+<li>Interrup to OS</li>
+<li>OS locates the required page in the SWAP or on disk</li>
+<li>Frame selection</li>
+<li>Load the page into the frame</li>
+<li>Restart instruction</li>
+</ol>
+</div>
+</div>
+<div id="outline-container-org1ad0a7c" class="outline-3">
+<h3 id="org1ad0a7c"><span class="section-number-3">2.12.</span> <code>GPUs</code> and <code>GPGPUs</code> as an example of <code>multicore</code>. What are GPUs good for?</h3>
+<div class="outline-text-3" id="text-2-12">
+<ul class="org-ul">
+<li>GPU is a core designed to perform parallel operations of graphics data</li>
+<li>GPUs perform parallel operations on multiple sets of data, especially good for vectors</li>
+<li>They are an example of multicore because GPUs themselves contain many computational units</li>
+<li>GPGPU - using GPUs for general purpose (GP)</li>
+<li>GPUs are good for: graphics processing, video processing, vector-style computations (image, video, simulations, large data sets)</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgd8f4513" class="outline-3">
+<h3 id="orgd8f4513"><span class="section-number-3">2.13.</span> CISC vs RISV. Experiencing <code>Semantic Gap</code></h3>
+<div class="outline-text-3" id="text-2-13">
+</div>
+<div id="outline-container-org249d86c" class="outline-4">
+<h4 id="org249d86c">CISC (Complex Instruction Set Computer)</h4>
+<div class="outline-text-4" id="text-org249d86c">
+<ul class="org-ul">
+<li>CISC: large complex instruction sets, intended to close the "semantic gap" to resemble a high-level language</li>
+<li>Perform significant work per instruction, higher cycles per instruction, higher period per instruction</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgac66839" class="outline-4">
+<h4 id="orgac66839">RISC (Reduced Instruction Set Computer)</h4>
+<div class="outline-text-4" id="text-orgac66839">
+<ul class="org-ul">
+<li>RISC: simple instructions, low cycles per instructions and uniform instruction formats</li>
+<li>Requires more instructions per program, but instructions are faster</li>
+<li>Focuses on:
+<ul class="org-ul">
+<li>Many registers</li>
+<li>Simple addressing modes</li>
+<li>Pipeline-friendly design</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org967fcfd" class="outline-4">
+<h4 id="org967fcfd">Semantic Gap</h4>
+<div class="outline-text-4" id="text-org967fcfd">
+<ul class="org-ul">
+<li>CISC addresses the problem, bridging the gap between between high-level languages and instructions sets, but that increased compiler complexity</li>
+<li>Bridging the gap was achieved by creating larger instruction sets.</li>
+<li>Also adding microcode to implement complex sequences "in hardware" to ease compiler work</li>
+<li>Other solutions bring compiler complexity, so addressing this problem via hardware (instruction + microcode) allows for smaller complexity and faster execution</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-org67b9645" class="outline-3">
+<h3 id="org67b9645"><span class="section-number-3">2.14.</span> Fix a piece of code that has a potential <code>race condition</code></h3>
+<div class="outline-text-3" id="text-2-14">
+</div>
+<div id="outline-container-org91cafb4" class="outline-4">
+<h4 id="org91cafb4">Problem</h4>
+<div class="outline-text-4" id="text-org91cafb4">
+<ul class="org-ul">
+<li>The problem is race condition</li>
+<li>Two threads will run concurrently and you cannot fully predict the order of execution</li>
+<li>Causes lost updates, non-atomic operation</li>
+<li>Solution, add: synchronized to the method signature (easiest solution)</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgddd2379" class="outline-4">
+<h4 id="orgddd2379">Implementing a Runner</h4>
+<div class="outline-text-4" id="text-orgddd2379">
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #51afef; font-style: italic;">public</span> <span style="color: #51afef; font-style: italic;">class</span> <span style="color: #ECBE7B;">BankRunner</span> <span style="color: #fff0f5;">{</span>
+    <span style="color: #51afef; font-style: italic;">public</span> <span style="color: #51afef; font-style: italic;">static</span> <span style="color: #ECBE7B;">void</span> <span style="color: #c678dd;">main</span><span style="color: #c678dd;">(</span><span style="color: #ECBE7B;">String</span> <span style="color: #98be65;">[]</span> args<span style="color: #c678dd;">)</span> <span style="color: #c678dd;">{</span>
+        <span style="color: #ECBE7B;">BankAccount</span> acc = <span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">BankAccount</span><span style="color: #98be65;">()</span>;
+
+        <span style="color: #5B6268;">// thread 1 deposist</span>
+        <span style="color: #ECBE7B;">Runnable</span> depositTask = <span style="color: #98be65;">()</span> -&gt; <span style="color: #98be65;">{</span>
+            <span style="color: #51afef; font-style: italic;">for</span> <span style="color: #00bfff;">(</span><span style="color: #ECBE7B;">int</span> i = <span style="color: #da8548; font-weight: bold;">0</span>; i &lt; <span style="color: #da8548; font-weight: bold;">5</span>; i++<span style="color: #00bfff;">)</span> <span style="color: #00bfff;">{</span>
+                acc.<span style="color: #c678dd;">deposit</span><span style="color: #4db5bd;">(</span><span style="color: #da8548; font-weight: bold;">20</span><span style="color: #4db5bd;">)</span>;
+            <span style="color: #00bfff;">}</span>
+        <span style="color: #98be65;">}</span>
+
+        <span style="color: #ECBE7B;">Runnable</span> withdrawTask = <span style="color: #98be65;">()</span> -&gt; <span style="color: #98be65;">{</span>
+            <span style="color: #51afef; font-style: italic;">for</span> <span style="color: #00bfff;">(</span><span style="color: #ECBE7B;">int</span> i = <span style="color: #da8548; font-weight: bold;">0</span>; i &lt; <span style="color: #da8548; font-weight: bold;">5</span>; i++<span style="color: #00bfff;">)</span> <span style="color: #00bfff;">{</span>
+                acc.<span style="color: #c678dd;">withdraw</span><span style="color: #4db5bd;">(</span><span style="color: #da8548; font-weight: bold;">20</span><span style="color: #4db5bd;">)</span>;
+            <span style="color: #00bfff;">}</span>
+        <span style="color: #98be65;">}</span>
+
+        <span style="color: #ECBE7B;">Thread</span> t1 = <span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">Thread</span><span style="color: #98be65;">(</span>depositTask<span style="color: #98be65;">)</span>;
+        <span style="color: #ECBE7B;">Thread</span> t2 = <span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">Thread</span><span style="color: #98be65;">(</span>withdrawTask<span style="color: #98be65;">)</span>;
+
+        t1.<span style="color: #c678dd;">start</span><span style="color: #98be65;">()</span>;
+        t2.<span style="color: #c678dd;">start</span><span style="color: #98be65;">()</span>;
+
+        <span style="color: #51afef; font-style: italic;">try</span> <span style="color: #98be65;">{</span>
+            t1.<span style="color: #c678dd;">join</span><span style="color: #00bfff;">()</span>;
+            t2.<span style="color: #c678dd;">join</span><span style="color: #00bfff;">()</span>;
+        <span style="color: #98be65;">}</span> <span style="color: #51afef; font-style: italic;">catch</span> <span style="color: #98be65;">(</span><span style="color: #ECBE7B;">Exception</span> e<span style="color: #98be65;">)</span> <span style="color: #98be65;">{</span>
+
+        <span style="color: #98be65;">}</span>
+
+        System.out.<span style="color: #c678dd;">println</span><span style="color: #98be65;">(</span><span style="color: #98be65;">"Final balance = "</span> + acc.<span style="color: #c678dd;">getBalance</span><span style="color: #00bfff;">()</span><span style="color: #98be65;">)</span>;
+    <span style="color: #c678dd;">}</span>
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orgec57d45" class="outline-3">
+<h3 id="orgec57d45"><span class="section-number-3">2.15.</span> With regards to CPUs: What is <code>paging</code>, <code>page faults</code>, <code>page thrashing</code>? CPU performance impacts.</h3>
+<div class="outline-text-3" id="text-2-15">
+<ul class="org-ul">
+<li><code>Paging</code> is an OS mechanism that maps physical memory to virtual memory</li>
+<li><code>Page Fault</code> occurs when a program accesses virtual memory, but it points to an empty area of RAM (might have to be recovered from disk) or it is simply not loaded
+<ul class="org-ul">
+<li>Accessing I/O (disk) to recover a page fault is a very slow operation</li>
+</ul></li>
+<li><code>Page Thrashing</code> occurs when the system swaps pages around due to a small memory size. This generally takes place when too many programs compete for too little RAM (can lead to using the SWAP)</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgca7d4d5" class="outline-3">
+<h3 id="orgca7d4d5"><span class="section-number-3">2.16.</span> What is <code>Symmetric Multiprocessing</code> (SMP) and <code>Clustering</code>? With regards to <code>high-performance</code> <code>multiprocessor</code> configurations. Compare scalability and availability.</h3>
+<div class="outline-text-3" id="text-2-16">
+<ul class="org-ul">
+<li>SMP: System has <code>multiple processors</code> and share <code>one main memory</code> and run one OS. The OS schedules threads across all processors.
+<ul class="org-ul">
+<li>Great performance if work can be done in parallel</li>
+<li>If 1 cpu fails the work can continue (availability)</li>
+<li>Supports incremental growth (add more processors)</li>
+</ul></li>
+<li>Clustering: Whole computers (nodes) working together as one system.
+<ul class="org-ul">
+<li>Each node has its own CPU, Memory, OS, etc.</li>
+<li>Great scalability (just keep on adding more computers)</li>
+<li>Very high availability (one PC failure is no problem at all)</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org2d0a0fb" class="outline-3">
+<h3 id="org2d0a0fb"><span class="section-number-3">2.17.</span> Is <code>deadlock</code> possible when <code>two processes</code> use <code>three individual</code> resources when <code>one process</code> requires a <code>maximum of two resources</code>?</h3>
+<div class="outline-text-3" id="text-2-17">
+</div>
+<div id="outline-container-org31eb118" class="outline-4">
+<h4 id="org31eb118">Deadlock concepts</h4>
+<div class="outline-text-4" id="text-org31eb118">
+<ul class="org-ul">
+<li>Deadlock is possible when all four of these are present, however preventing at least one of these prevents deadlock.</li>
+<li>Mutual exclusion: Some resources can be used by only one process at a time.</li>
+<li>Hold and wait: A process holds at least one resource while waiting to acquire additional resources.</li>
+<li>No preemption: Resources cannot be forcibly taken from a process; they must be released voluntarily.</li>
+<li>Circular wait: A set of processes exists where each process is waiting for a resource held by the next process in a cycle.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org783bea8" class="outline-4">
+<h4 id="org783bea8">Answer to the question</h4>
+<div class="outline-text-4" id="text-org783bea8">
+<ul class="org-ul">
+<li>Each process needs at most 2 resources, and there are 3 identical resources total. In the worst case, both processes each hold 1 resource (using 2 total), leaving 1 free resource. One of the processes can then acquire this remaining resource, reach its maximum of 2, complete, and release its resources. This prevents circular wait, so deadlock cannot occur.</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-orgd6106d0" class="outline-3">
+<h3 id="orgd6106d0"><span class="section-number-3">2.18.</span> <code>Load time</code> of 64KB <code>program</code> when seek time is 10ms, rotation time of 10ms and tracks hold 32KB. When 2KB <code>page size</code> and when 4KB page size.</h3>
+<div class="outline-text-3" id="text-2-18">
+<ul class="org-ul">
+<li>To load one track it takes 10ms + 5ms (avg rotational latency) to find it = 15ms "per sweep"</li>
+<li>Load speed is 32KB in 10ms (one full track is 32KB and a full rotation is 10ms). So we can load 3.2KB/ms</li>
+<li>We have a 64KB program
+<ul class="org-ul">
+<li>2KB page it is 32 sweeps:
+<ul class="org-ul">
+<li>Transfer = 2KB / 3.2KB/ms = 0.625ms + 10 + 5 = 15.625ms = 32 * 15.625ms = 500ms</li>
+</ul></li>
+<li>4KB page is is 16 sweeps:
+<ul class="org-ul">
+<li>Transfer = 4KB / 3.2KB/ms = 1.25ms + 10 + 5 = 16.25ms = 16 * 16.25ms = 260ms</li>
+</ul></li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orge252fb5" class="outline-3">
+<h3 id="orge252fb5"><span class="section-number-3">2.19.</span> Two <code>CPUs</code> with <code>two threads</code> each load programs P0, P1 and P2, initialised at 5ms, 10ms and 20m. How long to <code>complete execution</code>?</h3>
+<div class="outline-text-3" id="text-2-19">
+<ul class="org-ul">
+<li>This is trivial</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org9868ca7" class="outline-3">
+<h3 id="org9868ca7"><span class="section-number-3">2.20.</span> <code>Disk access to a sector</code> time with 15000 RPM, 8ms seek time and 500 sectors per track.</h3>
+<div class="outline-text-3" id="text-2-20">
+<ul class="org-ul">
+<li>Average Access Time = SeekTime + Average Rotational Delay + Transfer Time</li>
+<li>15 000 RPM = 60 000ms / 15 000 = 4ms per rotation</li>
+<li>Avg Rotational Delay (half a rotation) = 4 / 2 = 2ms</li>
+<li>Transfer time = 4ms / 500 = 0.008ms (the amount of time it takes for one sector to pass under the head)</li>
+<li>Avg Access Time = 8ms + 2ms + 0.008ms = 10.008 ms</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org6998e46" class="outline-3">
+<h3 id="org6998e46"><span class="section-number-3">2.21.</span> Define <code>cloud computing</code> and <code>five key components</code> associated with it.</h3>
+<div class="outline-text-3" id="text-2-21">
+</div>
+<div id="outline-container-org84f71e9" class="outline-4">
+<h4 id="org84f71e9">Definition</h4>
+<div class="outline-text-4" id="text-org84f71e9">
+<ul class="org-ul">
+<li><code>Cloud computing</code>: is a model that provides on-demand, scalable, virtualized services (SPIs) delivered over the Internet with elastic resource allocation and a pay-as-you-use pricing.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org277b628" class="outline-4">
+<h4 id="org277b628">Five Key Components</h4>
+<div class="outline-text-4" id="text-org277b628">
+<ul class="org-ul">
+<li>Virtualization: virtual servers, hypervisors ,virtual memory</li>
+<li>Elasticity/Scalability: automatically scale to handle variable workloads</li>
+<li>Service Models (SaaS, PaaS, IaaS)(SPI): SPI model is central to cloud architecture</li>
+<li>Storage Virtualization: Storage is abstracted, is scalable and is distributed.</li>
+<li>Network Virtualization: Virtual routers and switches manage cloud networking</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org6930f63" class="outline-4">
+<h4 id="org6930f63">Cloud Solution</h4>
+<div class="outline-text-4" id="text-org6930f63">
+<ul class="org-ul">
+<li>Hybrid: part of the data in a private cloud and the streaming solution in a public cloud (for better scalability)</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-org03f074a" class="outline-3">
+<h3 id="org03f074a"><span class="section-number-3">2.22.</span> Describe the <code>CSA</code> Open Certification Framework.</h3>
+<div class="outline-text-3" id="text-2-22">
+</div>
+<div id="outline-container-org0813cf5" class="outline-4">
+<h4 id="org0813cf5">Description</h4>
+<div class="outline-text-4" id="text-org0813cf5">
+<ul class="org-ul">
+<li>An industry initiative to allow global, accredited, trusted certification of cloud providers</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgdf148c4" class="outline-4">
+<h4 id="orgdf148c4">Four Initiatives Are</h4>
+<div class="outline-text-4" id="text-orgdf148c4">
+<ul class="org-ul">
+<li>Cloud Controls Matrix (CCM): Detailed set of security controls</li>
+<li>Consensus Assessments Initiative (CAI/CAIQ): Providers answer questions about their security with a via a questionnaire (STAR)</li>
+<li>Cloud Audit: Standardized methods for auditing cloud services</li>
+<li>CoudTrust Protocol (CTP): Mechanism for customers to obtain transparency about security and privacy practices</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org2e1c390" class="outline-4">
+<h4 id="org2e1c390">Also what can cloud provide do to <code>prevent data loss</code>?</h4>
+<div class="outline-text-4" id="text-org2e1c390">
+<ul class="org-ul">
+<li>Security Controls</li>
+<li>Backup &amp; Contingency Systems</li>
+<li>Migration &amp; Redundancy</li>
+<li>Data Isolation</li>
+<li>Understanding Sensitive Data</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgacc814c" class="outline-4">
+<h4 id="orgacc814c">What can be done to prevent a <code>security breach</code>?</h4>
+<div class="outline-text-4" id="text-orgacc814c">
+<ul class="org-ul">
+<li>Backup Systems</li>
+<li>Contingency Plans</li>
+<li>Professional Staff</li>
+<li>Audit logs, monitoring tools</li>
+<li>Risk Management practices</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-org4593bef" class="outline-3">
+<h3 id="org4593bef"><span class="section-number-3">2.23.</span> Describe <code>RAIDs</code> 0 to 5 with regards to: <code>read/write performance</code> and <code>reliability</code></h3>
+<div class="outline-text-3" id="text-2-23">
+<ul class="org-ul">
+<li>0: Striping</li>
+<li>1: Mirroring</li>
+<li>2: ECC Striping</li>
+<li>3: Striping + Single Parity Disk</li>
+<li>4: Block Striping + Single Parity Disk</li>
+<li><p>
+5: Block Striping + Distributed Parity
+</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">RAID</th>
+<th scope="col" class="org-left">Read</th>
+<th scope="col" class="org-left">Write</th>
+<th scope="col" class="org-left">Reliability</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">0 (Striping)</td>
+<td class="org-left">Fast</td>
+<td class="org-left">Fast</td>
+<td class="org-left">None</td>
+</tr>
+
+<tr>
+<td class="org-left">1 (Mirroring)</td>
+<td class="org-left">Very good</td>
+<td class="org-left">Slow (dupe writes)</td>
+<td class="org-left">Excellent</td>
+</tr>
+
+<tr>
+<td class="org-left">2 (ECC Striping)</td>
+<td class="org-left">High</td>
+<td class="org-left">High</td>
+<td class="org-left">Good (ECC)</td>
+</tr>
+
+<tr>
+<td class="org-left">3 (Striping SPD)</td>
+<td class="org-left">Very high</td>
+<td class="org-left">Moderate</td>
+<td class="org-left">Good</td>
+</tr>
+
+<tr>
+<td class="org-left">4 (Block Striping SPD)</td>
+<td class="org-left">Good</td>
+<td class="org-left">Poor (parity bottle)</td>
+<td class="org-left">Good</td>
+</tr>
+
+<tr>
+<td class="org-left">5 (Block Striping DP)</td>
+<td class="org-left">Very good</td>
+<td class="org-left">Good</td>
+<td class="org-left">Good</td>
+</tr>
+</tbody>
+</table></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org7cd96f5" class="outline-3">
+<h3 id="org7cd96f5"><span class="section-number-3">2.24.</span> What is the { SPI Model }?. Compare traditional with <code>IaaS</code>, <code>PaaS</code> and <code>SaaS</code></h3>
+</div>
+<div id="outline-container-org70189b0" class="outline-3">
+<h3 id="org70189b0"><span class="section-number-3">2.25.</span> How to ensure that an <code>authorized employee</code> can <code>access certain data</code>? Is it possible to provide <code>absolute protection</code>?</h3>
+</div>
+<div id="outline-container-org515ff53" class="outline-3">
+<h3 id="org515ff53"><span class="section-number-3">2.26.</span> What is and what are the problems with <code>converging Cloud Computing and IoT</code>?</h3>
+</div>
+<div id="outline-container-org5595dc8" class="outline-3">
+<h3 id="org5595dc8"><span class="section-number-3">2.27.</span> Using the CSA's <code>STAR</code>, calculate <code>trust proportion t</code>, <code>certainty c</code> and if needed <code>trust value E</code></h3>
+<div class="outline-text-3" id="text-2-27">
+</div>
+<div id="outline-container-orge3a99e2" class="outline-4">
+<h4 id="orge3a99e2">Definition: Security, Trust &amp; Assurance Registry (STAR)</h4>
+</div>
+</div>
+</div>
+<div id="outline-container-org8fd9ccf" class="outline-2">
+<h2 id="org8fd9ccf"><span class="section-number-2">3.</span> Intro</h2>
+</div>
+<div id="outline-container-orga376e74" class="outline-2">
+<h2 id="orga376e74"><span class="section-number-2">4.</span> Remove at the End</h2>
 <div class="outline-text-2" id="text-4">
 <script src="../assets/jquery-3.3.1.min.js"></script>
 <script src="../assets/notes.js"></script>
@@ -253,7 +909,7 @@
 <div id="postamble" class="status">
 <p class="date">Date: 2025-12-07 Sun 13:51</p>
 <p class="author">Author: Damian Chrzanowski</p>
-<p class="date">Created: 2025-12-07 Sun 14:11</p>
+<p class="date">Created: 2025-12-17 Wed 22:28</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
