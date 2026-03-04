@@ -144,7 +144,7 @@
      boolean noneNegative = numbers.stream()
              .noneMatch(n -> n < 0);
    #+end_src
-** Joining Stings
+** Joining Strings
    #+begin_src java
      List<String> words = List.of("Java", "Streams", "API");
 
@@ -247,6 +247,15 @@
 
      System.out.println(grouped);
      // {false=[Bob, Charlie], true=[Alice, Anna]}
+   #+end_src
+** Grouping with Summing
+   #+begin_src java
+     Map<String, Integer> salesInCountries = brandSales.entrySet().stream()
+             .collect(Collectors.groupingBy(
+                     make -> brandInCountry.get(make.getKey()),
+                     Collectors.summingInt(make -> make.getValue())
+             ));
+
    #+end_src
 ** Mapping Values Only (Keep Keys)
    #+begin_src java
