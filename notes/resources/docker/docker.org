@@ -116,6 +116,26 @@
 
 * Sample Setup
 
+** Running an image in detached mode with restart always and port mapping
+   - Here we're starting a postgres db server
+   - Port mapping: 5432
+   - Restart: always
+   - Name as: test-postgres
+   - Name and pass as: root
+   - Image: postgres
+   #+begin_src sh
+   docker run --name test-postgres --restart always -p 5432:5432 -e POSTGRES_PASSWORD=root -e POSTGRES_USER=root -d postgres
+   #+end_src
+   - Here we're starting a mysql db server
+   - Port mapping: 3306
+   - Restart: always
+   - Name as: test-mysql
+   - Pass as: root
+   - Image: mysql
+   #+begin_src sh
+   docker run --name test-mysql --restart always -p 3306:3306 -e MYSQL_ROOT_PASSWORD=root -d mysql:9.4
+   #+end_src
+
 ** Sample Dockerfile
    - The ~Dockerfile~ itself
    #+BEGIN_SRC dockerfile
