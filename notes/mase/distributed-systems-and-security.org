@@ -1,0 +1,26 @@
+#+TITLE: Distributed Systems And Security
+#+DATE: [2026-01-12 Mon 14:14]
+#+AUTHOR: Damian Chrzanowski
+#+EMAIL: pjdamian.chrzanowski@gmail.com
+#+OPTIONS: TOC:2 num:2
+#+HTML_HEAD: <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="../assets/org.css"/>
+#+HTML_HEAD: <link rel="icon" href="../assets/favicon.ico">
+[[file:index.org][Home Page]]
+* Start
+* Security
+** What is Security
+** Authorisation vs Authentication
+** Accountability vs Availability
+** Uses of Random Passwords
+*** Also: Cryptographically safe random numbers
+*** Random number generation
+    - Big'ish topic
+** LCG - Linear Congruential Generator
+** LFSR - Linear Feedback Shift Register
+
+* Remove at the End
+  #+BEGIN_EXPORT html
+  <script src="../assets/jquery-3.3.1.min.js"></script>
+  <script src="../assets/notes.js"></script>
+  #+END_EXPORT

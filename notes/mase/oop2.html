@@ -1,0 +1,1046 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2026-03-04 Wed 20:03 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>OOP2</title>
+<meta name="author" content="Damian Chrzanowski" />
+<meta name="generator" content="Org Mode" />
+<style type="text/css">
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { }
+</style>
+<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="../assets/org.css"/>
+<link rel="icon" href="../assets/favicon.ico">
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">OOP2</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#orgc874eaf">1. Stream Gatherers</a>
+<ul>
+<li><a href="#org6465d47">1.1. Example on gatherer</a></li>
+<li><a href="#orgefb7a8c">1.2. Common Gatherers</a></li>
+</ul>
+</li>
+<li><a href="#org510b05c">2. Stream Basics</a>
+<ul>
+<li><a href="#org0888373">2.1. Sum</a></li>
+<li><a href="#org55d596e">2.2. Average</a></li>
+<li><a href="#orgb38a663">2.3. Sorting</a></li>
+<li><a href="#orgb817d8a">2.4. Filtering</a></li>
+<li><a href="#orgb1167d6">2.5. Map</a></li>
+<li><a href="#org475a029">2.6. Min/Max</a></li>
+<li><a href="#org18c3681">2.7. Count</a></li>
+<li><a href="#org8c28050">2.8. Distinct</a></li>
+<li><a href="#org6c7aee7">2.9. Limit/Skip</a></li>
+<li><a href="#org095c2ba">2.10. Collect to Map</a></li>
+<li><a href="#orgd90d4db">2.11. Grouping</a></li>
+<li><a href="#org37d6f7a">2.12. Any / All / None Match</a></li>
+<li><a href="#org57f94c9">2.13. Joining Stings</a></li>
+<li><a href="#org566d391">2.14. Peek (debugging)</a></li>
+</ul>
+</li>
+<li><a href="#org720e5de">3. Map to Map basics</a>
+<ul>
+<li><a href="#orgcf43872">3.1. Stream into a Map</a></li>
+<li><a href="#org169d53e">3.2. Object to Map</a></li>
+<li><a href="#orgabe1e3a">3.3. Duplicate Keys</a></li>
+<li><a href="#orgbfa2b0f">3.4. Map to Map</a></li>
+<li><a href="#orgfc4f566">3.5. Grouping into a Map 1 (by first letter)</a></li>
+<li><a href="#org3efe90e">3.6. Grouping into a Map 2 (has starting letter "A")</a></li>
+<li><a href="#orga7e3428">3.7. Mapping Values Only (Keep Keys)</a></li>
+</ul>
+</li>
+<li><a href="#orge2ac800">4. Records</a>
+<ul>
+<li><a href="#org44fa5d5">4.1. Example</a></li>
+<li><a href="#org5513346">4.2. Validate inside of the constructor</a></li>
+<li><a href="#orgb39a511">4.3. Custom Methods</a></li>
+<li><a href="#org928bbc5">4.4. Static Fields and Methods</a></li>
+<li><a href="#orgad49307">4.5. Implementing Interfaces</a></li>
+</ul>
+</li>
+<li><a href="#orgad3501b">5. Generics</a>
+<ul>
+<li><a href="#org1db3c78">5.1. Common Naming Conventions</a></li>
+<li><a href="#org61edb5f">5.2. Class example</a></li>
+<li><a href="#org7448f96">5.3. Method example</a></li>
+<li><a href="#orgee5fc8e">5.4. Bounded Generics</a></li>
+<li><a href="#org6de1efd">5.5. Generics in Lambdas</a></li>
+</ul>
+</li>
+<li><a href="#orge8043fd">6. Scoped Values</a>
+<ul>
+<li><a href="#org3889866">6.1. Basic Example Of Scoped Values</a></li>
+<li><a href="#org053a8e5">6.2. Nested Scoped Values</a></li>
+<li><a href="#orgfa21fea">6.3. Using Scoped Values with Virtual Threads</a></li>
+<li><a href="#org23ae6d4">6.4. Scoped Values with Structured Concurrency</a></li>
+<li><a href="#orgd62393a">6.5. Using call() Instead of run()</a></li>
+</ul>
+</li>
+<li><a href="#org2a930ae">7. Flexible Constructor Bodies</a>
+<ul>
+<li><a href="#orgb793c63">7.1. Concept</a></li>
+</ul>
+</li>
+<li><a href="#org9126ed2">8. Compact Source Files</a>
+<ul>
+<li><a href="#org30086e8">8.1. Allow behaviour like in a modern language, no need for a class around main</a></li>
+<li><a href="#orgdd7a0b3">8.2. Something like this is also now allowed</a></li>
+</ul>
+</li>
+<li><a href="#orgd30d0fd">9. Remove at the End</a></li>
+</ul>
+</div>
+</div>
+<p>
+<a href="index.html">Home Page</a>
+</p>
+<div id="outline-container-orgc874eaf" class="outline-2">
+<h2 id="orgc874eaf"><span class="section-number-2">1.</span> Stream Gatherers</h2>
+<div class="outline-text-2" id="text-1">
+</div>
+<div id="outline-container-org6465d47" class="outline-3">
+<h3 id="org6465d47"><span class="section-number-3">1.1.</span> Example on gatherer</h3>
+<div class="outline-text-3" id="text-1-1">
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #ECBE7B;">var</span> windows = Stream.<span style="color: #c678dd;">of</span><span style="color: #fff0f5;">(</span><span style="color: #da8548; font-weight: bold;">1</span>, <span style="color: #da8548; font-weight: bold;">2</span>, <span style="color: #da8548; font-weight: bold;">3</span>, <span style="color: #da8548; font-weight: bold;">4</span>, <span style="color: #da8548; font-weight: bold;">5</span><span style="color: #fff0f5;">)</span>
+        .<span style="color: #c678dd;">gather</span><span style="color: #fff0f5;">(</span>Gatherers.<span style="color: #c678dd;">windowSliding</span><span style="color: #c678dd;">(</span><span style="color: #da8548; font-weight: bold;">3</span><span style="color: #c678dd;">)</span><span style="color: #fff0f5;">)</span>.<span style="color: #c678dd;">toList</span><span style="color: #fff0f5;">()</span>;
+
+System.out.<span style="color: #c678dd;">println</span><span style="color: #fff0f5;">(</span>windows<span style="color: #fff0f5;">)</span>;
+<span style="color: #5B6268;">// [[1, 2, 3], [2, 3, 4], [3, 4, 5]]</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgefb7a8c" class="outline-3">
+<h3 id="orgefb7a8c"><span class="section-number-3">1.2.</span> Common Gatherers</h3>
+<div class="outline-text-3" id="text-1-2">
+<ul class="org-ul">
+<li><code>fold</code>: stateful reduction that continues the stream</li>
+<li><code>mapConcurrent</code>: concurrent mapping</li>
+<li><code>scan</code>: running accumulation</li>
+<li><code>windowFixed</code>: non-overlapping batches</li>
+<li><code>windowSliding</code>: sliding windows</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-org510b05c" class="outline-2">
+<h2 id="org510b05c"><span class="section-number-2">2.</span> Stream Basics</h2>
+<div class="outline-text-2" id="text-2">
+</div>
+<div id="outline-container-org0888373" class="outline-3">
+<h3 id="org0888373"><span class="section-number-3">2.1.</span> Sum</h3>
+<div class="outline-text-3" id="text-2-1">
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #51afef; font-style: italic;">import</span> java.util.*;
+<span style="color: #51afef; font-style: italic;">import</span> java.util.stream.*;
+
+<span style="color: #ECBE7B;">List</span><span style="color: #fff0f5;">&lt;</span><span style="color: #ECBE7B;">Integer</span><span style="color: #fff0f5;">&gt;</span> numbers = List.<span style="color: #c678dd;">of</span><span style="color: #fff0f5;">(</span><span style="color: #da8548; font-weight: bold;">5</span>, <span style="color: #da8548; font-weight: bold;">2</span>, <span style="color: #da8548; font-weight: bold;">9</span>, <span style="color: #da8548; font-weight: bold;">1</span>, <span style="color: #da8548; font-weight: bold;">7</span><span style="color: #fff0f5;">)</span>;
+
+<span style="color: #ECBE7B;">int</span> sum = numbers.<span style="color: #c678dd;">stream</span><span style="color: #fff0f5;">()</span>
+        .<span style="color: #c678dd;">mapToInt</span><span style="color: #fff0f5;">(</span>Integer::intValue<span style="color: #fff0f5;">)</span>
+        .<span style="color: #c678dd;">sum</span><span style="color: #fff0f5;">()</span>;
+
+<span style="color: #5B6268;">// same but using reduce</span>
+<span style="color: #ECBE7B;">int</span> sum = numbers.<span style="color: #c678dd;">stream</span><span style="color: #fff0f5;">()</span>
+        .<span style="color: #c678dd;">reduce</span><span style="color: #fff0f5;">(</span><span style="color: #da8548; font-weight: bold;">0</span>, Integer::sum<span style="color: #fff0f5;">)</span>;
+
+System.out.<span style="color: #c678dd;">println</span><span style="color: #fff0f5;">(</span>sum<span style="color: #fff0f5;">)</span>; <span style="color: #5B6268;">// 24</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org55d596e" class="outline-3">
+<h3 id="org55d596e"><span class="section-number-3">2.2.</span> Average</h3>
+<div class="outline-text-3" id="text-2-2">
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #ECBE7B;">double</span> avg = numbers.<span style="color: #c678dd;">stream</span><span style="color: #fff0f5;">()</span>
+        .<span style="color: #c678dd;">mapToInt</span><span style="color: #fff0f5;">(</span>Integer::intValue<span style="color: #fff0f5;">)</span>
+        .<span style="color: #c678dd;">average</span><span style="color: #fff0f5;">()</span>
+        .<span style="color: #c678dd;">orElse</span><span style="color: #fff0f5;">(</span><span style="color: #da8548; font-weight: bold;">0</span><span style="color: #fff0f5;">)</span>;
+
+System.out.<span style="color: #c678dd;">println</span><span style="color: #fff0f5;">(</span>avg<span style="color: #fff0f5;">)</span>; <span style="color: #5B6268;">// 4.8</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgb38a663" class="outline-3">
+<h3 id="orgb38a663"><span class="section-number-3">2.3.</span> Sorting</h3>
+<div class="outline-text-3" id="text-2-3">
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #5B6268;">// ascending</span>
+<span style="color: #ECBE7B;">List</span><span style="color: #fff0f5;">&lt;</span><span style="color: #ECBE7B;">Integer</span><span style="color: #fff0f5;">&gt;</span> sorted = numbers.<span style="color: #c678dd;">stream</span><span style="color: #fff0f5;">()</span>
+        .<span style="color: #c678dd;">sorted</span><span style="color: #fff0f5;">()</span>
+        .<span style="color: #c678dd;">toList</span><span style="color: #fff0f5;">()</span>;
+
+<span style="color: #5B6268;">// descending</span>
+<span style="color: #ECBE7B;">List</span><span style="color: #fff0f5;">&lt;</span><span style="color: #ECBE7B;">Integer</span><span style="color: #fff0f5;">&gt;</span> sortedDesc = numbers.<span style="color: #c678dd;">stream</span><span style="color: #fff0f5;">()</span>
+        .<span style="color: #c678dd;">sorted</span><span style="color: #fff0f5;">(</span>Comparator.<span style="color: #c678dd;">reverseOrder</span><span style="color: #c678dd;">()</span><span style="color: #fff0f5;">)</span>
+        .<span style="color: #c678dd;">toList</span><span style="color: #fff0f5;">()</span>;
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgb817d8a" class="outline-3">
+<h3 id="orgb817d8a"><span class="section-number-3">2.4.</span> Filtering</h3>
+<div class="outline-text-3" id="text-2-4">
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #ECBE7B;">List</span><span style="color: #fff0f5;">&lt;</span><span style="color: #ECBE7B;">Integer</span><span style="color: #fff0f5;">&gt;</span> evens = numbers.<span style="color: #c678dd;">stream</span><span style="color: #fff0f5;">()</span>
+        .<span style="color: #c678dd;">filter</span><span style="color: #fff0f5;">(</span>n -&gt; n % <span style="color: #da8548; font-weight: bold;">2</span> == <span style="color: #da8548; font-weight: bold;">0</span><span style="color: #fff0f5;">)</span>
+        .<span style="color: #c678dd;">toList</span><span style="color: #fff0f5;">()</span>;
+
+System.out.<span style="color: #c678dd;">println</span><span style="color: #fff0f5;">(</span>evens<span style="color: #fff0f5;">)</span>; <span style="color: #5B6268;">// [2]</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgb1167d6" class="outline-3">
+<h3 id="orgb1167d6"><span class="section-number-3">2.5.</span> Map</h3>
+<div class="outline-text-3" id="text-2-5">
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #ECBE7B;">List</span><span style="color: #fff0f5;">&lt;</span><span style="color: #ECBE7B;">Integer</span><span style="color: #fff0f5;">&gt;</span> squared = numbers.<span style="color: #c678dd;">stream</span><span style="color: #fff0f5;">()</span>
+        .<span style="color: #c678dd;">map</span><span style="color: #fff0f5;">(</span>n -&gt; n * n<span style="color: #fff0f5;">)</span>
+        .<span style="color: #c678dd;">toList</span><span style="color: #fff0f5;">()</span>;
+
+System.out.<span style="color: #c678dd;">println</span><span style="color: #fff0f5;">(</span>squared<span style="color: #fff0f5;">)</span>; <span style="color: #5B6268;">// [25, 4, 81, 1, 49]</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org475a029" class="outline-3">
+<h3 id="org475a029"><span class="section-number-3">2.6.</span> Min/Max</h3>
+<div class="outline-text-3" id="text-2-6">
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #ECBE7B;">int</span> max = numbers.<span style="color: #c678dd;">stream</span><span style="color: #fff0f5;">()</span>
+        .<span style="color: #c678dd;">max</span><span style="color: #fff0f5;">(</span>Integer::compareTo<span style="color: #fff0f5;">)</span>
+        .<span style="color: #c678dd;">orElseThrow</span><span style="color: #fff0f5;">()</span>;
+
+<span style="color: #ECBE7B;">int</span> min = numbers.<span style="color: #c678dd;">stream</span><span style="color: #fff0f5;">()</span>
+        .<span style="color: #c678dd;">min</span><span style="color: #fff0f5;">(</span>Integer::compareTo<span style="color: #fff0f5;">)</span>
+        .<span style="color: #c678dd;">orElseThrow</span><span style="color: #fff0f5;">()</span>;
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org18c3681" class="outline-3">
+<h3 id="org18c3681"><span class="section-number-3">2.7.</span> Count</h3>
+<div class="outline-text-3" id="text-2-7">
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #ECBE7B;">long</span> count = numbers.<span style="color: #c678dd;">stream</span><span style="color: #fff0f5;">()</span>
+        .<span style="color: #c678dd;">filter</span><span style="color: #fff0f5;">(</span>n -&gt; n &gt; <span style="color: #da8548; font-weight: bold;">3</span><span style="color: #fff0f5;">)</span>
+        .<span style="color: #c678dd;">count</span><span style="color: #fff0f5;">()</span>;
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org8c28050" class="outline-3">
+<h3 id="org8c28050"><span class="section-number-3">2.8.</span> Distinct</h3>
+<div class="outline-text-3" id="text-2-8">
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #ECBE7B;">List</span><span style="color: #fff0f5;">&lt;</span><span style="color: #ECBE7B;">Integer</span><span style="color: #fff0f5;">&gt;</span> distinct = Stream.<span style="color: #c678dd;">of</span><span style="color: #fff0f5;">(</span><span style="color: #da8548; font-weight: bold;">1</span>,<span style="color: #da8548; font-weight: bold;">2</span>,<span style="color: #da8548; font-weight: bold;">2</span>,<span style="color: #da8548; font-weight: bold;">3</span>,<span style="color: #da8548; font-weight: bold;">3</span>,<span style="color: #da8548; font-weight: bold;">3</span><span style="color: #fff0f5;">)</span>
+        .<span style="color: #c678dd;">distinct</span><span style="color: #fff0f5;">()</span>
+        .<span style="color: #c678dd;">toList</span><span style="color: #fff0f5;">()</span>;
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org6c7aee7" class="outline-3">
+<h3 id="org6c7aee7"><span class="section-number-3">2.9.</span> Limit/Skip</h3>
+<div class="outline-text-3" id="text-2-9">
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #ECBE7B;">List</span><span style="color: #fff0f5;">&lt;</span><span style="color: #ECBE7B;">Integer</span><span style="color: #fff0f5;">&gt;</span> first3 = numbers.<span style="color: #c678dd;">stream</span><span style="color: #fff0f5;">()</span>
+        .<span style="color: #c678dd;">limit</span><span style="color: #fff0f5;">(</span><span style="color: #da8548; font-weight: bold;">3</span><span style="color: #fff0f5;">)</span>
+        .<span style="color: #c678dd;">toList</span><span style="color: #fff0f5;">()</span>;
+
+<span style="color: #ECBE7B;">List</span><span style="color: #fff0f5;">&lt;</span><span style="color: #ECBE7B;">Integer</span><span style="color: #fff0f5;">&gt;</span> skip2 = numbers.<span style="color: #c678dd;">stream</span><span style="color: #fff0f5;">()</span>
+        .<span style="color: #c678dd;">skip</span><span style="color: #fff0f5;">(</span><span style="color: #da8548; font-weight: bold;">2</span><span style="color: #fff0f5;">)</span>
+        .<span style="color: #c678dd;">toList</span><span style="color: #fff0f5;">()</span>;
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org095c2ba" class="outline-3">
+<h3 id="org095c2ba"><span class="section-number-3">2.10.</span> Collect to Map</h3>
+<div class="outline-text-3" id="text-2-10">
+<div class="org-src-container">
+<pre class="src src-java">record Person<span style="color: #fff0f5;">(</span><span style="color: #ECBE7B;">String</span> name, <span style="color: #ECBE7B;">int</span> age<span style="color: #fff0f5;">)</span> <span style="color: #fff0f5;">{}</span>
+
+<span style="color: #ECBE7B;">List</span><span style="color: #fff0f5;">&lt;</span><span style="color: #ECBE7B;">Person</span><span style="color: #fff0f5;">&gt;</span> people = List.<span style="color: #c678dd;">of</span><span style="color: #fff0f5;">(</span>
+        <span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">Person</span><span style="color: #c678dd;">(</span><span style="color: #98be65;">"Alice"</span>, <span style="color: #da8548; font-weight: bold;">30</span><span style="color: #c678dd;">)</span>,
+        <span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">Person</span><span style="color: #c678dd;">(</span><span style="color: #98be65;">"Bob"</span>, <span style="color: #da8548; font-weight: bold;">25</span><span style="color: #c678dd;">)</span>
+<span style="color: #fff0f5;">)</span>;
+
+<span style="color: #ECBE7B;">Map</span><span style="color: #fff0f5;">&lt;</span><span style="color: #ECBE7B;">String</span>, <span style="color: #ECBE7B;">Integer</span><span style="color: #fff0f5;">&gt;</span> map = people.<span style="color: #c678dd;">stream</span><span style="color: #fff0f5;">()</span>
+        .<span style="color: #c678dd;">collect</span><span style="color: #fff0f5;">(</span>Collectors.<span style="color: #c678dd;">toMap</span><span style="color: #c678dd;">(</span>
+                Person::name,
+                Person::age
+        <span style="color: #c678dd;">)</span><span style="color: #fff0f5;">)</span>;
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgd90d4db" class="outline-3">
+<h3 id="orgd90d4db"><span class="section-number-3">2.11.</span> Grouping</h3>
+<div class="outline-text-3" id="text-2-11">
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #ECBE7B;">Map</span><span style="color: #fff0f5;">&lt;</span><span style="color: #ECBE7B;">Integer</span>, <span style="color: #ECBE7B;">List</span><span style="color: #c678dd;">&lt;</span><span style="color: #ECBE7B;">Person</span><span style="color: #c678dd;">&gt;</span><span style="color: #fff0f5;">&gt;</span> byAge = people.<span style="color: #c678dd;">stream</span><span style="color: #fff0f5;">()</span>
+        .<span style="color: #c678dd;">collect</span><span style="color: #fff0f5;">(</span>Collectors.<span style="color: #c678dd;">groupingBy</span><span style="color: #c678dd;">(</span>Person::age<span style="color: #c678dd;">)</span><span style="color: #fff0f5;">)</span>;
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org37d6f7a" class="outline-3">
+<h3 id="org37d6f7a"><span class="section-number-3">2.12.</span> Any / All / None Match</h3>
+<div class="outline-text-3" id="text-2-12">
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #ECBE7B;">boolean</span> anyEven = numbers.<span style="color: #c678dd;">stream</span><span style="color: #fff0f5;">()</span>
+        .<span style="color: #c678dd;">anyMatch</span><span style="color: #fff0f5;">(</span>n -&gt; n % <span style="color: #da8548; font-weight: bold;">2</span> == <span style="color: #da8548; font-weight: bold;">0</span><span style="color: #fff0f5;">)</span>;
+
+<span style="color: #ECBE7B;">boolean</span> allPositive = numbers.<span style="color: #c678dd;">stream</span><span style="color: #fff0f5;">()</span>
+        .<span style="color: #c678dd;">allMatch</span><span style="color: #fff0f5;">(</span>n -&gt; n &gt; <span style="color: #da8548; font-weight: bold;">0</span><span style="color: #fff0f5;">)</span>;
+
+<span style="color: #ECBE7B;">boolean</span> noneNegative = numbers.<span style="color: #c678dd;">stream</span><span style="color: #fff0f5;">()</span>
+        .<span style="color: #c678dd;">noneMatch</span><span style="color: #fff0f5;">(</span>n -&gt; n &lt; <span style="color: #da8548; font-weight: bold;">0</span><span style="color: #fff0f5;">)</span>;
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org57f94c9" class="outline-3">
+<h3 id="org57f94c9"><span class="section-number-3">2.13.</span> Joining Stings</h3>
+<div class="outline-text-3" id="text-2-13">
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #ECBE7B;">List</span><span style="color: #fff0f5;">&lt;</span><span style="color: #ECBE7B;">String</span><span style="color: #fff0f5;">&gt;</span> words = List.<span style="color: #c678dd;">of</span><span style="color: #fff0f5;">(</span><span style="color: #98be65;">"Java"</span>, <span style="color: #98be65;">"Streams"</span>, <span style="color: #98be65;">"API"</span><span style="color: #fff0f5;">)</span>;
+
+<span style="color: #ECBE7B;">String</span> result = words.<span style="color: #c678dd;">stream</span><span style="color: #fff0f5;">()</span>
+        .<span style="color: #c678dd;">collect</span><span style="color: #fff0f5;">(</span>Collectors.<span style="color: #c678dd;">joining</span><span style="color: #c678dd;">(</span><span style="color: #98be65;">", "</span><span style="color: #c678dd;">)</span><span style="color: #fff0f5;">)</span>;
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org566d391" class="outline-3">
+<h3 id="org566d391"><span class="section-number-3">2.14.</span> Peek (debugging)</h3>
+<div class="outline-text-3" id="text-2-14">
+<div class="org-src-container">
+<pre class="src src-java">numbers.<span style="color: #c678dd;">stream</span><span style="color: #fff0f5;">()</span>
+        .<span style="color: #c678dd;">filter</span><span style="color: #fff0f5;">(</span>n -&gt; n &gt; <span style="color: #da8548; font-weight: bold;">3</span><span style="color: #fff0f5;">)</span>
+        .<span style="color: #c678dd;">peek</span><span style="color: #fff0f5;">(</span>System.out::println<span style="color: #fff0f5;">)</span>
+        .<span style="color: #c678dd;">toList</span><span style="color: #fff0f5;">()</span>;
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org720e5de" class="outline-2">
+<h2 id="org720e5de"><span class="section-number-2">3.</span> Map to Map basics</h2>
+<div class="outline-text-2" id="text-3">
+</div>
+<div id="outline-container-orgcf43872" class="outline-3">
+<h3 id="orgcf43872"><span class="section-number-3">3.1.</span> Stream into a Map</h3>
+<div class="outline-text-3" id="text-3-1">
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #ECBE7B;">List</span><span style="color: #fff0f5;">&lt;</span><span style="color: #ECBE7B;">String</span><span style="color: #fff0f5;">&gt;</span> names = List.<span style="color: #c678dd;">of</span><span style="color: #fff0f5;">(</span><span style="color: #98be65;">"Alice"</span>, <span style="color: #98be65;">"Bob"</span>, <span style="color: #98be65;">"Charlie"</span><span style="color: #fff0f5;">)</span>;
+
+<span style="color: #ECBE7B;">Map</span><span style="color: #fff0f5;">&lt;</span><span style="color: #ECBE7B;">String</span>, <span style="color: #ECBE7B;">Integer</span><span style="color: #fff0f5;">&gt;</span> nameLengthMap =
+    names.<span style="color: #c678dd;">stream</span><span style="color: #fff0f5;">()</span>
+    .<span style="color: #c678dd;">collect</span><span style="color: #fff0f5;">(</span>Collectors.<span style="color: #c678dd;">toMap</span><span style="color: #c678dd;">(</span>
+                              name -&gt; name,
+                              name -&gt; name.<span style="color: #c678dd;">length</span><span style="color: #98be65;">()</span>
+                              <span style="color: #c678dd;">)</span><span style="color: #fff0f5;">)</span>;
+
+System.out.<span style="color: #c678dd;">println</span><span style="color: #fff0f5;">(</span>nameLengthMap<span style="color: #fff0f5;">)</span>;
+<span style="color: #5B6268;">// {Bob=3, Alice=5, Charlie=7}</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org169d53e" class="outline-3">
+<h3 id="org169d53e"><span class="section-number-3">3.2.</span> Object to Map</h3>
+<div class="outline-text-3" id="text-3-2">
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #ECBE7B;">List</span><span style="color: #fff0f5;">&lt;</span><span style="color: #ECBE7B;">Person</span><span style="color: #fff0f5;">&gt;</span> people = List.<span style="color: #c678dd;">of</span><span style="color: #fff0f5;">(</span>
+                              <span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">Person</span><span style="color: #c678dd;">(</span><span style="color: #98be65;">"1"</span>, <span style="color: #98be65;">"Alice"</span>, <span style="color: #da8548; font-weight: bold;">30</span><span style="color: #c678dd;">)</span>,
+                              <span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">Person</span><span style="color: #c678dd;">(</span><span style="color: #98be65;">"2"</span>, <span style="color: #98be65;">"Bob"</span>, <span style="color: #da8548; font-weight: bold;">25</span><span style="color: #c678dd;">)</span>
+                              <span style="color: #fff0f5;">)</span>;
+
+<span style="color: #ECBE7B;">Map</span><span style="color: #fff0f5;">&lt;</span><span style="color: #ECBE7B;">String</span>, <span style="color: #ECBE7B;">Integer</span><span style="color: #fff0f5;">&gt;</span> ageMap = people.<span style="color: #c678dd;">stream</span><span style="color: #fff0f5;">()</span>
+    .<span style="color: #c678dd;">collect</span><span style="color: #fff0f5;">(</span>Collectors.<span style="color: #c678dd;">toMap</span><span style="color: #c678dd;">(</span>
+                              Person::getName,
+                              Person::getAge
+                              <span style="color: #c678dd;">)</span><span style="color: #fff0f5;">)</span>;
+
+System.out.<span style="color: #c678dd;">println</span><span style="color: #fff0f5;">(</span>ageMap<span style="color: #fff0f5;">)</span>;
+<span style="color: #5B6268;">// {Bob=25, Alice=30}</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgabe1e3a" class="outline-3">
+<h3 id="orgabe1e3a"><span class="section-number-3">3.3.</span> Duplicate Keys</h3>
+<div class="outline-text-3" id="text-3-3">
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #ECBE7B;">List</span><span style="color: #fff0f5;">&lt;</span><span style="color: #ECBE7B;">String</span><span style="color: #fff0f5;">&gt;</span> names = List.<span style="color: #c678dd;">of</span><span style="color: #fff0f5;">(</span><span style="color: #98be65;">"Alice"</span>, <span style="color: #98be65;">"Bob"</span>, <span style="color: #98be65;">"Alice"</span><span style="color: #fff0f5;">)</span>;
+
+<span style="color: #ECBE7B;">Map</span><span style="color: #fff0f5;">&lt;</span><span style="color: #ECBE7B;">String</span>, <span style="color: #ECBE7B;">Integer</span><span style="color: #fff0f5;">&gt;</span> map =
+    names.<span style="color: #c678dd;">stream</span><span style="color: #fff0f5;">()</span>
+         .<span style="color: #c678dd;">collect</span><span style="color: #fff0f5;">(</span>Collectors.<span style="color: #c678dd;">toMap</span><span style="color: #c678dd;">(</span>
+             name -&gt; name,
+             name -&gt; <span style="color: #da8548; font-weight: bold;">1</span>,
+             <span style="color: #98be65;">(</span>existing, replacement<span style="color: #98be65;">)</span> -&gt; existing + replacement
+         <span style="color: #c678dd;">)</span><span style="color: #fff0f5;">)</span>;
+
+System.out.<span style="color: #c678dd;">println</span><span style="color: #fff0f5;">(</span>map<span style="color: #fff0f5;">)</span>;
+<span style="color: #5B6268;">// {Alice=2, Bob=1}</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgbfa2b0f" class="outline-3">
+<h3 id="orgbfa2b0f"><span class="section-number-3">3.4.</span> Map to Map</h3>
+<div class="outline-text-3" id="text-3-4">
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #ECBE7B;">Map</span><span style="color: #fff0f5;">&lt;</span><span style="color: #ECBE7B;">String</span>, <span style="color: #ECBE7B;">Integer</span><span style="color: #fff0f5;">&gt;</span> original = Map.<span style="color: #c678dd;">of</span><span style="color: #fff0f5;">(</span>
+        <span style="color: #98be65;">"Alice"</span>, <span style="color: #da8548; font-weight: bold;">30</span>,
+        <span style="color: #98be65;">"Bob"</span>, <span style="color: #da8548; font-weight: bold;">25</span>
+<span style="color: #fff0f5;">)</span>;
+
+<span style="color: #ECBE7B;">Map</span><span style="color: #fff0f5;">&lt;</span><span style="color: #ECBE7B;">String</span>, <span style="color: #ECBE7B;">String</span><span style="color: #fff0f5;">&gt;</span> transformed =
+        original.<span style="color: #c678dd;">entrySet</span><span style="color: #fff0f5;">()</span>
+                .<span style="color: #c678dd;">stream</span><span style="color: #fff0f5;">()</span>
+                .<span style="color: #c678dd;">collect</span><span style="color: #fff0f5;">(</span>Collectors.<span style="color: #c678dd;">toMap</span><span style="color: #c678dd;">(</span>
+                        entry -&gt; entry.<span style="color: #c678dd;">getKey</span><span style="color: #98be65;">()</span>.<span style="color: #c678dd;">toUpperCase</span><span style="color: #98be65;">()</span>,
+                        entry -&gt; <span style="color: #98be65;">"Age: "</span> + entry.<span style="color: #c678dd;">getValue</span><span style="color: #98be65;">()</span>
+                <span style="color: #c678dd;">)</span><span style="color: #fff0f5;">)</span>;
+
+System.out.<span style="color: #c678dd;">println</span><span style="color: #fff0f5;">(</span>transformed<span style="color: #fff0f5;">)</span>;
+<span style="color: #5B6268;">// {ALICE=Age: 30, BOB=Age: 25}</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgfc4f566" class="outline-3">
+<h3 id="orgfc4f566"><span class="section-number-3">3.5.</span> Grouping into a Map 1 (by first letter)</h3>
+<div class="outline-text-3" id="text-3-5">
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #ECBE7B;">List</span><span style="color: #fff0f5;">&lt;</span><span style="color: #ECBE7B;">String</span><span style="color: #fff0f5;">&gt;</span> names = List.<span style="color: #c678dd;">of</span><span style="color: #fff0f5;">(</span><span style="color: #98be65;">"Alice"</span>, <span style="color: #98be65;">"Bob"</span>, <span style="color: #98be65;">"Charlie"</span>, <span style="color: #98be65;">"Anna"</span><span style="color: #fff0f5;">)</span>;
+
+<span style="color: #ECBE7B;">Map</span><span style="color: #fff0f5;">&lt;</span><span style="color: #ECBE7B;">Character</span>, <span style="color: #ECBE7B;">List</span><span style="color: #c678dd;">&lt;</span><span style="color: #ECBE7B;">String</span><span style="color: #c678dd;">&gt;</span><span style="color: #fff0f5;">&gt;</span> grouped =
+        names.<span style="color: #c678dd;">stream</span><span style="color: #fff0f5;">()</span>
+                .<span style="color: #c678dd;">collect</span><span style="color: #fff0f5;">(</span>Collectors.<span style="color: #c678dd;">groupingBy</span><span style="color: #c678dd;">(</span>
+                        name -&gt; name.<span style="color: #c678dd;">charAt</span><span style="color: #98be65;">(</span><span style="color: #da8548; font-weight: bold;">0</span><span style="color: #98be65;">)</span>
+                <span style="color: #c678dd;">)</span><span style="color: #fff0f5;">)</span>;
+
+System.out.<span style="color: #c678dd;">println</span><span style="color: #fff0f5;">(</span>grouped<span style="color: #fff0f5;">)</span>;
+<span style="color: #5B6268;">// {A=[Alice, Anna], B=[Bob], C=[Charlie]}</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org3efe90e" class="outline-3">
+<h3 id="org3efe90e"><span class="section-number-3">3.6.</span> Grouping into a Map 2 (has starting letter "A")</h3>
+<div class="outline-text-3" id="text-3-6">
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #ECBE7B;">List</span><span style="color: #fff0f5;">&lt;</span><span style="color: #ECBE7B;">String</span><span style="color: #fff0f5;">&gt;</span> names = List.<span style="color: #c678dd;">of</span><span style="color: #fff0f5;">(</span><span style="color: #98be65;">"Alice"</span>, <span style="color: #98be65;">"Bob"</span>, <span style="color: #98be65;">"Charlie"</span>, <span style="color: #98be65;">"Anna"</span><span style="color: #fff0f5;">)</span>;
+
+<span style="color: #ECBE7B;">Map</span><span style="color: #fff0f5;">&lt;</span><span style="color: #ECBE7B;">Boolean</span>, <span style="color: #ECBE7B;">List</span><span style="color: #c678dd;">&lt;</span><span style="color: #ECBE7B;">String</span><span style="color: #c678dd;">&gt;</span><span style="color: #fff0f5;">&gt;</span> grouped =
+        names.<span style="color: #c678dd;">stream</span><span style="color: #fff0f5;">()</span>
+                .<span style="color: #c678dd;">collect</span><span style="color: #fff0f5;">(</span>Collectors.<span style="color: #c678dd;">groupingBy</span><span style="color: #c678dd;">(</span>
+                        name -&gt; name.<span style="color: #c678dd;">startsWith</span><span style="color: #98be65;">(</span><span style="color: #98be65;">"A"</span><span style="color: #98be65;">)</span>
+                <span style="color: #c678dd;">)</span><span style="color: #fff0f5;">)</span>;
+
+System.out.<span style="color: #c678dd;">println</span><span style="color: #fff0f5;">(</span>grouped<span style="color: #fff0f5;">)</span>;
+<span style="color: #5B6268;">// {false=[Bob, Charlie], true=[Alice, Anna]}</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orga7e3428" class="outline-3">
+<h3 id="orga7e3428"><span class="section-number-3">3.7.</span> Mapping Values Only (Keep Keys)</h3>
+<div class="outline-text-3" id="text-3-7">
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #ECBE7B;">Map</span><span style="color: #fff0f5;">&lt;</span><span style="color: #ECBE7B;">String</span>, <span style="color: #ECBE7B;">Integer</span><span style="color: #fff0f5;">&gt;</span> scores = Map.<span style="color: #c678dd;">of</span><span style="color: #fff0f5;">(</span>
+    <span style="color: #98be65;">"Alice"</span>, <span style="color: #da8548; font-weight: bold;">80</span>,
+    <span style="color: #98be65;">"Bob"</span>, <span style="color: #da8548; font-weight: bold;">90</span>
+<span style="color: #fff0f5;">)</span>;
+
+<span style="color: #ECBE7B;">Map</span><span style="color: #fff0f5;">&lt;</span><span style="color: #ECBE7B;">String</span>, <span style="color: #ECBE7B;">Integer</span><span style="color: #fff0f5;">&gt;</span> boosted =
+    scores.<span style="color: #c678dd;">entrySet</span><span style="color: #fff0f5;">()</span>
+          .<span style="color: #c678dd;">stream</span><span style="color: #fff0f5;">()</span>
+          .<span style="color: #c678dd;">collect</span><span style="color: #fff0f5;">(</span>Collectors.<span style="color: #c678dd;">toMap</span><span style="color: #c678dd;">(</span>
+              Map.Entry::getKey,
+              entry -&gt; entry.<span style="color: #c678dd;">getValue</span><span style="color: #98be65;">()</span> + <span style="color: #da8548; font-weight: bold;">10</span>
+          <span style="color: #c678dd;">)</span><span style="color: #fff0f5;">)</span>;
+
+System.out.<span style="color: #c678dd;">println</span><span style="color: #fff0f5;">(</span>boosted<span style="color: #fff0f5;">)</span>;
+<span style="color: #5B6268;">// {Alice=90, Bob=100}</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orge2ac800" class="outline-2">
+<h2 id="orge2ac800"><span class="section-number-2">4.</span> Records</h2>
+<div class="outline-text-2" id="text-4">
+</div>
+<div id="outline-container-org44fa5d5" class="outline-3">
+<h3 id="org44fa5d5"><span class="section-number-3">4.1.</span> Example</h3>
+<div class="outline-text-3" id="text-4-1">
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #51afef; font-style: italic;">public</span> record Person<span style="color: #fff0f5;">(</span><span style="color: #ECBE7B;">String</span> name, <span style="color: #ECBE7B;">int</span> age<span style="color: #fff0f5;">)</span> <span style="color: #fff0f5;">{}</span>
+<span style="color: #ECBE7B;">Person</span> p = <span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">Person</span><span style="color: #fff0f5;">(</span><span style="color: #98be65;">"Alice"</span>, <span style="color: #da8548; font-weight: bold;">30</span><span style="color: #fff0f5;">)</span>;
+System.out.<span style="color: #c678dd;">println</span><span style="color: #fff0f5;">(</span>p.name<span style="color: #fff0f5;">)</span>
+System.out.<span style="color: #c678dd;">println</span><span style="color: #fff0f5;">(</span>p.age<span style="color: #fff0f5;">)</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org5513346" class="outline-3">
+<h3 id="org5513346"><span class="section-number-3">4.2.</span> Validate inside of the constructor</h3>
+<div class="outline-text-3" id="text-4-2">
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #51afef; font-style: italic;">public</span> record Person<span style="color: #fff0f5;">(</span><span style="color: #ECBE7B;">String</span> name, <span style="color: #ECBE7B;">int</span> age<span style="color: #fff0f5;">)</span> <span style="color: #fff0f5;">{</span>
+
+    <span style="color: #51afef; font-style: italic;">public</span> Person <span style="color: #c678dd;">{</span>
+        <span style="color: #51afef; font-style: italic;">if</span> <span style="color: #98be65;">(</span>age &lt; <span style="color: #da8548; font-weight: bold;">0</span><span style="color: #98be65;">)</span> <span style="color: #98be65;">{</span>
+            <span style="color: #51afef; font-style: italic;">throw</span> <span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">IllegalArgumentException</span><span style="color: #00bfff;">(</span><span style="color: #98be65;">"Age cannot be negative"</span><span style="color: #00bfff;">)</span>;
+        <span style="color: #98be65;">}</span>
+    <span style="color: #c678dd;">}</span>
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgb39a511" class="outline-3">
+<h3 id="orgb39a511"><span class="section-number-3">4.3.</span> Custom Methods</h3>
+<div class="outline-text-3" id="text-4-3">
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #51afef; font-style: italic;">public</span> record Rectangle<span style="color: #fff0f5;">(</span><span style="color: #ECBE7B;">double</span> width, <span style="color: #ECBE7B;">double</span> height<span style="color: #fff0f5;">)</span> <span style="color: #fff0f5;">{</span>
+
+    <span style="color: #51afef; font-style: italic;">public</span> <span style="color: #ECBE7B;">double</span> <span style="color: #c678dd;">area</span><span style="color: #c678dd;">()</span> <span style="color: #c678dd;">{</span>
+        <span style="color: #51afef; font-style: italic;">return</span> width * height;
+    <span style="color: #c678dd;">}</span>
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org928bbc5" class="outline-3">
+<h3 id="org928bbc5"><span class="section-number-3">4.4.</span> Static Fields and Methods</h3>
+<div class="outline-text-3" id="text-4-4">
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #51afef; font-style: italic;">public</span> record MathConstants<span style="color: #fff0f5;">(</span><span style="color: #ECBE7B;">double</span> value<span style="color: #fff0f5;">)</span> <span style="color: #fff0f5;">{</span>
+
+    <span style="color: #51afef; font-style: italic;">public</span> <span style="color: #51afef; font-style: italic;">static</span> <span style="color: #51afef; font-style: italic;">final</span> <span style="color: #ECBE7B;">double</span> <span style="color: #a9a1e1;">PI</span> = <span style="color: #da8548; font-weight: bold;">3.14159</span>;
+
+    <span style="color: #51afef; font-style: italic;">public</span> <span style="color: #51afef; font-style: italic;">static</span> <span style="color: #ECBE7B;">MathConstants</span> <span style="color: #c678dd;">of</span><span style="color: #c678dd;">(</span><span style="color: #ECBE7B;">double</span> v<span style="color: #c678dd;">)</span> <span style="color: #c678dd;">{</span>
+        <span style="color: #51afef; font-style: italic;">return</span> <span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">MathConstants</span><span style="color: #98be65;">(</span>v<span style="color: #98be65;">)</span>;
+    <span style="color: #c678dd;">}</span>
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgad49307" class="outline-3">
+<h3 id="orgad49307"><span class="section-number-3">4.5.</span> Implementing Interfaces</h3>
+<div class="outline-text-3" id="text-4-5">
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #51afef; font-style: italic;">public</span> record User<span style="color: #fff0f5;">(</span><span style="color: #ECBE7B;">String</span> username<span style="color: #fff0f5;">)</span> <span style="color: #51afef; font-style: italic;">implements</span> <span style="color: #ECBE7B;">Comparable</span><span style="color: #fff0f5;">&lt;</span><span style="color: #ECBE7B;">User</span><span style="color: #fff0f5;">&gt;</span> <span style="color: #fff0f5;">{</span>
+
+    <span style="color: #bbc2cf;">@</span><span style="color: #51afef; font-weight: bold;">Override</span>
+    <span style="color: #51afef; font-style: italic;">public</span> <span style="color: #ECBE7B;">int</span> <span style="color: #c678dd;">compareTo</span><span style="color: #c678dd;">(</span><span style="color: #ECBE7B;">User</span> other<span style="color: #c678dd;">)</span> <span style="color: #c678dd;">{</span>
+        <span style="color: #51afef; font-style: italic;">return</span> <span style="color: #51afef; font-style: italic;">this</span>.username.<span style="color: #c678dd;">compareTo</span><span style="color: #98be65;">(</span>other.username<span style="color: #98be65;">)</span>;
+    <span style="color: #c678dd;">}</span>
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orgad3501b" class="outline-2">
+<h2 id="orgad3501b"><span class="section-number-2">5.</span> Generics</h2>
+<div class="outline-text-2" id="text-5">
+</div>
+<div id="outline-container-org1db3c78" class="outline-3">
+<h3 id="org1db3c78"><span class="section-number-3">5.1.</span> Common Naming Conventions</h3>
+<div class="outline-text-3" id="text-5-1">
+<ul class="org-ul">
+<li><code>T</code>: Type</li>
+<li><code>E</code>: Element</li>
+<li><code>K</code>: Key</li>
+<li><code>V</code>: Value</li>
+<li><code>R</code>: Return type</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org61edb5f" class="outline-3">
+<h3 id="org61edb5f"><span class="section-number-3">5.2.</span> Class example</h3>
+<div class="outline-text-3" id="text-5-2">
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #51afef; font-style: italic;">class</span> <span style="color: #ECBE7B;">Box</span><span style="color: #fff0f5;">&lt;</span><span style="color: #ECBE7B;">T</span><span style="color: #fff0f5;">&gt;</span> <span style="color: #fff0f5;">{</span>
+    <span style="color: #51afef; font-style: italic;">private</span> <span style="color: #ECBE7B;">T</span> value;
+
+    <span style="color: #51afef; font-style: italic;">public</span> <span style="color: #ECBE7B;">void</span> <span style="color: #c678dd;">set</span><span style="color: #c678dd;">(</span><span style="color: #ECBE7B;">T</span> value<span style="color: #c678dd;">)</span> <span style="color: #c678dd;">{</span>
+        <span style="color: #51afef; font-style: italic;">this</span>.value = value;
+    <span style="color: #c678dd;">}</span>
+
+    <span style="color: #51afef; font-style: italic;">public</span> <span style="color: #ECBE7B;">T</span> <span style="color: #c678dd;">get</span><span style="color: #c678dd;">()</span> <span style="color: #c678dd;">{</span>
+        <span style="color: #51afef; font-style: italic;">return</span> value;
+    <span style="color: #c678dd;">}</span>
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org7448f96" class="outline-3">
+<h3 id="org7448f96"><span class="section-number-3">5.3.</span> Method example</h3>
+<div class="outline-text-3" id="text-5-3">
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #51afef; font-style: italic;">public</span> <span style="color: #51afef; font-style: italic;">static</span> <span style="color: #fff0f5;">&lt;</span><span style="color: #ECBE7B;">T</span><span style="color: #fff0f5;">&gt;</span> <span style="color: #ECBE7B;">void</span> <span style="color: #c678dd;">printArray</span><span style="color: #fff0f5;">(</span><span style="color: #ECBE7B;">T</span><span style="color: #c678dd;">[]</span> arr<span style="color: #fff0f5;">)</span> <span style="color: #fff0f5;">{</span>
+    <span style="color: #51afef; font-style: italic;">for</span> <span style="color: #c678dd;">(</span><span style="color: #ECBE7B;">T</span> item : arr<span style="color: #c678dd;">)</span> <span style="color: #c678dd;">{</span>
+        System.out.<span style="color: #c678dd;">println</span><span style="color: #98be65;">(</span>item<span style="color: #98be65;">)</span>;
+    <span style="color: #c678dd;">}</span>
+<span style="color: #fff0f5;">}</span>
+
+<span style="color: #5B6268;">// usage</span>
+<span style="color: #ECBE7B;">Integer</span><span style="color: #fff0f5;">[]</span> nums = <span style="color: #fff0f5;">{</span><span style="color: #da8548; font-weight: bold;">1</span>,<span style="color: #da8548; font-weight: bold;">2</span>,<span style="color: #da8548; font-weight: bold;">3</span><span style="color: #fff0f5;">}</span>;
+<span style="color: #ECBE7B;">String</span><span style="color: #fff0f5;">[]</span> words = <span style="color: #fff0f5;">{</span><span style="color: #98be65;">"a"</span>,<span style="color: #98be65;">"b"</span><span style="color: #fff0f5;">}</span>;
+
+<span style="color: #c678dd;">printArray</span><span style="color: #fff0f5;">(</span>nums<span style="color: #fff0f5;">)</span>;
+<span style="color: #c678dd;">printArray</span><span style="color: #fff0f5;">(</span>words<span style="color: #fff0f5;">)</span>;
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgee5fc8e" class="outline-3">
+<h3 id="orgee5fc8e"><span class="section-number-3">5.4.</span> Bounded Generics</h3>
+<div class="outline-text-3" id="text-5-4">
+</div>
+<div id="outline-container-orgce5eefc" class="outline-4">
+<h4 id="orgce5eefc">Upper Bound</h4>
+<div class="outline-text-4" id="text-orgce5eefc">
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #fff0f5;">&lt;</span><span style="color: #ECBE7B;">T</span> <span style="color: #51afef; font-style: italic;">extends</span> <span style="color: #ECBE7B;">Number</span><span style="color: #fff0f5;">&gt;</span>
+
+<span style="color: #ECBE7B;">public</span> <span style="color: #c678dd;">static</span> double sum<span style="color: #fff0f5;">(</span><span style="color: #ECBE7B;">List</span><span style="color: #c678dd;">&lt;</span>? <span style="color: #51afef; font-style: italic;">extends</span> <span style="color: #ECBE7B;">Number</span><span style="color: #c678dd;">&gt;</span> numbers<span style="color: #fff0f5;">)</span> <span style="color: #fff0f5;">{</span>
+    <span style="color: #ECBE7B;">double</span> total = <span style="color: #da8548; font-weight: bold;">0</span>;
+    <span style="color: #51afef; font-style: italic;">for</span> <span style="color: #c678dd;">(</span><span style="color: #ECBE7B;">Number</span> n : numbers<span style="color: #c678dd;">)</span> <span style="color: #c678dd;">{</span>
+        total += n.<span style="color: #c678dd;">doubleValue</span><span style="color: #98be65;">()</span>;
+    <span style="color: #c678dd;">}</span>
+    <span style="color: #51afef; font-style: italic;">return</span> total;
+<span style="color: #fff0f5;">}</span>
+
+<span style="color: #5B6268;">// usage</span>
+<span style="color: #ECBE7B;">List</span><span style="color: #fff0f5;">&lt;</span><span style="color: #ECBE7B;">Integer</span><span style="color: #fff0f5;">&gt;</span> ints = List.<span style="color: #c678dd;">of</span><span style="color: #fff0f5;">(</span><span style="color: #da8548; font-weight: bold;">1</span>,<span style="color: #da8548; font-weight: bold;">2</span>,<span style="color: #da8548; font-weight: bold;">3</span><span style="color: #fff0f5;">)</span>;
+<span style="color: #ECBE7B;">List</span><span style="color: #fff0f5;">&lt;</span><span style="color: #ECBE7B;">Double</span><span style="color: #fff0f5;">&gt;</span> doubles = List.<span style="color: #c678dd;">of</span><span style="color: #fff0f5;">(</span><span style="color: #da8548; font-weight: bold;">1.2</span>, <span style="color: #da8548; font-weight: bold;">2.3</span><span style="color: #fff0f5;">)</span>;
+
+<span style="color: #c678dd;">sum</span><span style="color: #fff0f5;">(</span>ints<span style="color: #fff0f5;">)</span>;
+<span style="color: #c678dd;">sum</span><span style="color: #fff0f5;">(</span>doubles<span style="color: #fff0f5;">)</span>;
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orga91fa9e" class="outline-4">
+<h4 id="orga91fa9e">Lower Bound</h4>
+<div class="outline-text-4" id="text-orga91fa9e">
+<ul class="org-ul">
+<li>Use <code>super</code> instead of <code>extends</code></li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-org6de1efd" class="outline-3">
+<h3 id="org6de1efd"><span class="section-number-3">5.5.</span> Generics in Lambdas</h3>
+<div class="outline-text-3" id="text-5-5">
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #ECBE7B;">Function</span><span style="color: #fff0f5;">&lt;</span><span style="color: #ECBE7B;">T</span>,<span style="color: #ECBE7B;">R</span><span style="color: #fff0f5;">&gt;</span>  <span style="color: #5B6268;">// T &#8594; R</span>
+Predicate<span style="color: #fff0f5;">&lt;</span><span style="color: #ECBE7B;">T</span><span style="color: #fff0f5;">&gt;</span>   <span style="color: #5B6268;">// T &#8594; boolean</span>
+<span style="color: #ECBE7B;">Consumer</span><span style="color: #fff0f5;">&lt;</span><span style="color: #ECBE7B;">T</span><span style="color: #fff0f5;">&gt;</span>    <span style="color: #5B6268;">// T &#8594; void</span>
+Supplier<span style="color: #fff0f5;">&lt;</span><span style="color: #a9a1e1;">T</span><span style="color: #fff0f5;">&gt;</span>    <span style="color: #5B6268;">// () &#8594; T</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orge8043fd" class="outline-2">
+<h2 id="orge8043fd"><span class="section-number-2">6.</span> Scoped Values</h2>
+<div class="outline-text-2" id="text-6">
+</div>
+<div id="outline-container-org3889866" class="outline-3">
+<h3 id="org3889866"><span class="section-number-3">6.1.</span> Basic Example Of Scoped Values</h3>
+<div class="outline-text-3" id="text-6-1">
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #51afef; font-style: italic;">import</span> java.lang.ScopedValue;
+
+<span style="color: #51afef; font-style: italic;">public</span> <span style="color: #51afef; font-style: italic;">class</span> <span style="color: #ECBE7B;">ScopedValueExample</span> <span style="color: #fff0f5;">{</span>
+
+    <span style="color: #51afef; font-style: italic;">private</span> <span style="color: #51afef; font-style: italic;">static</span> <span style="color: #51afef; font-style: italic;">final</span> <span style="color: #ECBE7B;">ScopedValue</span><span style="color: #c678dd;">&lt;</span><span style="color: #ECBE7B;">String</span><span style="color: #c678dd;">&gt;</span> <span style="color: #a9a1e1;">USER</span> = ScopedValue.<span style="color: #c678dd;">newInstance</span><span style="color: #c678dd;">()</span>;
+
+    <span style="color: #51afef; font-style: italic;">public</span> <span style="color: #51afef; font-style: italic;">static</span> <span style="color: #ECBE7B;">void</span> <span style="color: #c678dd;">main</span><span style="color: #c678dd;">(</span><span style="color: #ECBE7B;">String</span><span style="color: #98be65;">[]</span> args<span style="color: #c678dd;">)</span> <span style="color: #c678dd;">{</span>
+
+        ScopedValue.<span style="color: #c678dd;">where</span><span style="color: #98be65;">(</span><span style="color: #a9a1e1;">USER</span>, <span style="color: #98be65;">"Alice"</span><span style="color: #98be65;">)</span>.<span style="color: #c678dd;">run</span><span style="color: #98be65;">(</span><span style="color: #00bfff;">()</span> -&gt; <span style="color: #00bfff;">{</span>
+            <span style="color: #c678dd;">greet</span><span style="color: #4db5bd;">()</span>;
+        <span style="color: #00bfff;">}</span><span style="color: #98be65;">)</span>;
+
+        <span style="color: #5B6268;">// Outside scope &#8211; would throw exception</span>
+        <span style="color: #5B6268;">// System.out.println(USER.get());</span>
+    <span style="color: #c678dd;">}</span>
+
+    <span style="color: #51afef; font-style: italic;">static</span> <span style="color: #ECBE7B;">void</span> <span style="color: #c678dd;">greet</span><span style="color: #c678dd;">()</span> <span style="color: #c678dd;">{</span>
+        System.out.<span style="color: #c678dd;">println</span><span style="color: #98be65;">(</span><span style="color: #98be65;">"Hello "</span> + <span style="color: #a9a1e1;">USER</span>.<span style="color: #c678dd;">get</span><span style="color: #00bfff;">()</span><span style="color: #98be65;">)</span>;
+    <span style="color: #c678dd;">}</span>
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org053a8e5" class="outline-3">
+<h3 id="org053a8e5"><span class="section-number-3">6.2.</span> Nested Scoped Values</h3>
+<div class="outline-text-3" id="text-6-2">
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #51afef; font-style: italic;">private</span> <span style="color: #51afef; font-style: italic;">static</span> <span style="color: #51afef; font-style: italic;">final</span> <span style="color: #ECBE7B;">ScopedValue</span><span style="color: #fff0f5;">&lt;</span><span style="color: #ECBE7B;">String</span><span style="color: #fff0f5;">&gt;</span> <span style="color: #a9a1e1;">USER</span> = ScopedValue.<span style="color: #c678dd;">newInstance</span><span style="color: #fff0f5;">()</span>;
+
+<span style="color: #51afef; font-style: italic;">public</span> <span style="color: #51afef; font-style: italic;">static</span> <span style="color: #ECBE7B;">void</span> <span style="color: #c678dd;">main</span><span style="color: #fff0f5;">(</span><span style="color: #ECBE7B;">String</span><span style="color: #c678dd;">[]</span> args<span style="color: #fff0f5;">)</span> <span style="color: #fff0f5;">{</span>
+
+    ScopedValue.<span style="color: #c678dd;">where</span><span style="color: #c678dd;">(</span><span style="color: #a9a1e1;">USER</span>, <span style="color: #98be65;">"Alice"</span><span style="color: #c678dd;">)</span>.<span style="color: #c678dd;">run</span><span style="color: #c678dd;">(</span><span style="color: #98be65;">()</span> -&gt; <span style="color: #98be65;">{</span>
+
+        System.out.<span style="color: #c678dd;">println</span><span style="color: #00bfff;">(</span><span style="color: #a9a1e1;">USER</span>.<span style="color: #c678dd;">get</span><span style="color: #4db5bd;">()</span><span style="color: #00bfff;">)</span>; <span style="color: #5B6268;">// Alice</span>
+
+        ScopedValue.<span style="color: #c678dd;">where</span><span style="color: #00bfff;">(</span><span style="color: #a9a1e1;">USER</span>, <span style="color: #98be65;">"Bob"</span><span style="color: #00bfff;">)</span>.<span style="color: #c678dd;">run</span><span style="color: #00bfff;">(</span><span style="color: #4db5bd;">()</span> -&gt; <span style="color: #4db5bd;">{</span>
+            System.out.<span style="color: #c678dd;">println</span><span style="color: #32cd32;">(</span><span style="color: #a9a1e1;">USER</span>.<span style="color: #c678dd;">get</span><span style="color: #c678dd;">()</span><span style="color: #32cd32;">)</span>; <span style="color: #5B6268;">// Bob</span>
+        <span style="color: #4db5bd;">}</span><span style="color: #00bfff;">)</span>;
+
+        System.out.<span style="color: #c678dd;">println</span><span style="color: #00bfff;">(</span><span style="color: #a9a1e1;">USER</span>.<span style="color: #c678dd;">get</span><span style="color: #4db5bd;">()</span><span style="color: #00bfff;">)</span>; <span style="color: #5B6268;">// Alice again</span>
+    <span style="color: #98be65;">}</span><span style="color: #c678dd;">)</span>;
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgfa21fea" class="outline-3">
+<h3 id="orgfa21fea"><span class="section-number-3">6.3.</span> Using Scoped Values with Virtual Threads</h3>
+<div class="outline-text-3" id="text-6-3">
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #51afef; font-style: italic;">import</span> java.lang.ScopedValue;
+
+<span style="color: #51afef; font-style: italic;">public</span> <span style="color: #51afef; font-style: italic;">class</span> <span style="color: #ECBE7B;">VirtualThreadExample</span> <span style="color: #fff0f5;">{</span>
+
+    <span style="color: #51afef; font-style: italic;">private</span> <span style="color: #51afef; font-style: italic;">static</span> <span style="color: #51afef; font-style: italic;">final</span> <span style="color: #ECBE7B;">ScopedValue</span><span style="color: #c678dd;">&lt;</span><span style="color: #ECBE7B;">String</span><span style="color: #c678dd;">&gt;</span> <span style="color: #a9a1e1;">REQUEST_ID</span> = ScopedValue.<span style="color: #c678dd;">newInstance</span><span style="color: #c678dd;">()</span>;
+
+    <span style="color: #51afef; font-style: italic;">public</span> <span style="color: #51afef; font-style: italic;">static</span> <span style="color: #ECBE7B;">void</span> <span style="color: #c678dd;">main</span><span style="color: #c678dd;">(</span><span style="color: #ECBE7B;">String</span><span style="color: #98be65;">[]</span> args<span style="color: #c678dd;">)</span> <span style="color: #c678dd;">{</span>
+
+        ScopedValue.<span style="color: #c678dd;">where</span><span style="color: #98be65;">(</span><span style="color: #a9a1e1;">REQUEST_ID</span>, <span style="color: #98be65;">"REQ-123"</span><span style="color: #98be65;">)</span>.<span style="color: #c678dd;">run</span><span style="color: #98be65;">(</span><span style="color: #00bfff;">()</span> -&gt; <span style="color: #00bfff;">{</span>
+
+            Thread.<span style="color: #c678dd;">startVirtualThread</span><span style="color: #4db5bd;">(</span><span style="color: #32cd32;">()</span> -&gt; <span style="color: #32cd32;">{</span>
+                System.out.<span style="color: #c678dd;">println</span><span style="color: #c678dd;">(</span><span style="color: #98be65;">"Request: "</span> + <span style="color: #a9a1e1;">REQUEST_ID</span>.<span style="color: #c678dd;">get</span><span style="color: #98be65;">()</span><span style="color: #c678dd;">)</span>;
+            <span style="color: #32cd32;">}</span><span style="color: #4db5bd;">)</span>;
+        <span style="color: #00bfff;">}</span><span style="color: #98be65;">)</span>;
+    <span style="color: #c678dd;">}</span>
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org23ae6d4" class="outline-3">
+<h3 id="org23ae6d4"><span class="section-number-3">6.4.</span> Scoped Values with Structured Concurrency</h3>
+<div class="outline-text-3" id="text-6-4">
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #51afef; font-style: italic;">import</span> java.lang.ScopedValue;
+<span style="color: #51afef; font-style: italic;">import</span> java.util.concurrent.StructuredTaskScope;
+
+<span style="color: #51afef; font-style: italic;">public</span> <span style="color: #51afef; font-style: italic;">class</span> <span style="color: #ECBE7B;">StructuredExample</span> <span style="color: #fff0f5;">{</span>
+
+    <span style="color: #51afef; font-style: italic;">private</span> <span style="color: #51afef; font-style: italic;">static</span> <span style="color: #51afef; font-style: italic;">final</span> <span style="color: #ECBE7B;">ScopedValue</span><span style="color: #c678dd;">&lt;</span><span style="color: #ECBE7B;">String</span><span style="color: #c678dd;">&gt;</span> <span style="color: #a9a1e1;">USER</span> = ScopedValue.<span style="color: #c678dd;">newInstance</span><span style="color: #c678dd;">()</span>;
+
+    <span style="color: #51afef; font-style: italic;">public</span> <span style="color: #51afef; font-style: italic;">static</span> <span style="color: #ECBE7B;">void</span> <span style="color: #c678dd;">main</span><span style="color: #c678dd;">(</span><span style="color: #ECBE7B;">String</span><span style="color: #98be65;">[]</span> args<span style="color: #c678dd;">)</span> <span style="color: #51afef; font-style: italic;">throws</span> <span style="color: #ECBE7B;">Exception</span> <span style="color: #c678dd;">{</span>
+
+        ScopedValue.<span style="color: #c678dd;">where</span><span style="color: #98be65;">(</span><span style="color: #a9a1e1;">USER</span>, <span style="color: #98be65;">"Alice"</span><span style="color: #98be65;">)</span>.<span style="color: #c678dd;">run</span><span style="color: #98be65;">(</span><span style="color: #00bfff;">()</span> -&gt; <span style="color: #00bfff;">{</span>
+
+            <span style="color: #51afef; font-style: italic;">try</span> <span style="color: #4db5bd;">(</span><span style="color: #ECBE7B;">var</span> scope = <span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">StructuredTaskScope</span>.<span style="color: #ECBE7B;">ShutdownOnFailure</span><span style="color: #32cd32;">()</span><span style="color: #4db5bd;">)</span> <span style="color: #4db5bd;">{</span>
+
+                scope.<span style="color: #c678dd;">fork</span><span style="color: #32cd32;">(</span><span style="color: #c678dd;">()</span> -&gt; <span style="color: #c678dd;">{</span>
+                    <span style="color: #51afef; font-style: italic;">return</span> <span style="color: #98be65;">"Task1 sees "</span> + <span style="color: #a9a1e1;">USER</span>.<span style="color: #c678dd;">get</span><span style="color: #98be65;">()</span>;
+                <span style="color: #c678dd;">}</span><span style="color: #32cd32;">)</span>;
+
+                scope.<span style="color: #c678dd;">fork</span><span style="color: #32cd32;">(</span><span style="color: #c678dd;">()</span> -&gt; <span style="color: #c678dd;">{</span>
+                    <span style="color: #51afef; font-style: italic;">return</span> <span style="color: #98be65;">"Task2 sees "</span> + <span style="color: #a9a1e1;">USER</span>.<span style="color: #c678dd;">get</span><span style="color: #98be65;">()</span>;
+                <span style="color: #c678dd;">}</span><span style="color: #32cd32;">)</span>;
+
+                scope.<span style="color: #c678dd;">join</span><span style="color: #32cd32;">()</span>;
+                scope.<span style="color: #c678dd;">throwIfFailed</span><span style="color: #32cd32;">()</span>;
+            <span style="color: #4db5bd;">}</span>
+        <span style="color: #00bfff;">}</span><span style="color: #98be65;">)</span>;
+    <span style="color: #c678dd;">}</span>
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgd62393a" class="outline-3">
+<h3 id="orgd62393a"><span class="section-number-3">6.5.</span> Using call() Instead of run()</h3>
+<div class="outline-text-3" id="text-6-5">
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #ECBE7B;">String</span> result = ScopedValue.<span style="color: #c678dd;">where</span><span style="color: #fff0f5;">(</span><span style="color: #a9a1e1;">USER</span>, <span style="color: #98be65;">"Alice"</span><span style="color: #fff0f5;">)</span>
+        .<span style="color: #c678dd;">call</span><span style="color: #fff0f5;">(</span><span style="color: #c678dd;">()</span> -&gt; <span style="color: #98be65;">"Hello "</span> + <span style="color: #a9a1e1;">USER</span>.<span style="color: #c678dd;">get</span><span style="color: #c678dd;">()</span><span style="color: #fff0f5;">)</span>;
+
+System.out.<span style="color: #c678dd;">println</span><span style="color: #fff0f5;">(</span>result<span style="color: #fff0f5;">)</span>;
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org2a930ae" class="outline-2">
+<h2 id="org2a930ae"><span class="section-number-2">7.</span> Flexible Constructor Bodies</h2>
+<div class="outline-text-2" id="text-7">
+</div>
+<div id="outline-container-orgb793c63" class="outline-3">
+<h3 id="orgb793c63"><span class="section-number-3">7.1.</span> Concept</h3>
+<div class="outline-text-3" id="text-7-1">
+<ul class="org-ul">
+<li>It is now possible to:
+<ul class="org-ul">
+<li>Have a <code>super()</code> call after some validation is done on the params passed through the constructor and the same applies to a call to <code>this()</code></li>
+<li>Can also log with System.out before a call to super or this</li>
+<li><b>Not allowed</b>: access to instance attributes (members)</li>
+</ul></li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-org9126ed2" class="outline-2">
+<h2 id="org9126ed2"><span class="section-number-2">8.</span> Compact Source Files</h2>
+<div class="outline-text-2" id="text-8">
+</div>
+<div id="outline-container-org30086e8" class="outline-3">
+<h3 id="org30086e8"><span class="section-number-3">8.1.</span> Allow behaviour like in a modern language, no need for a class around main</h3>
+<div class="outline-text-3" id="text-8-1">
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #ECBE7B;">void</span> <span style="color: #c678dd;">main</span><span style="color: #fff0f5;">()</span> <span style="color: #fff0f5;">{</span>
+    System.out.<span style="color: #c678dd;">println</span><span style="color: #c678dd;">(</span><span style="color: #98be65;">"Hello, world!"</span><span style="color: #c678dd;">)</span>;
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgdd7a0b3" class="outline-3">
+<h3 id="orgdd7a0b3"><span class="section-number-3">8.2.</span> Something like this is also now allowed</h3>
+<div class="outline-text-3" id="text-8-2">
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #ECBE7B;">int</span> base = <span style="color: #da8548; font-weight: bold;">10</span>;
+
+<span style="color: #ECBE7B;">void</span> <span style="color: #c678dd;">main</span><span style="color: #fff0f5;">()</span> <span style="color: #fff0f5;">{</span>
+    <span style="color: #c678dd;">greet</span><span style="color: #c678dd;">(</span><span style="color: #98be65;">"Alice"</span><span style="color: #c678dd;">)</span>;
+<span style="color: #fff0f5;">}</span>
+
+<span style="color: #ECBE7B;">void</span> <span style="color: #c678dd;">greet</span><span style="color: #fff0f5;">(</span><span style="color: #ECBE7B;">String</span> name<span style="color: #fff0f5;">)</span> <span style="color: #fff0f5;">{</span>
+    System.out.<span style="color: #c678dd;">println</span><span style="color: #c678dd;">(</span>name + <span style="color: #98be65;">" has base "</span> + base<span style="color: #c678dd;">)</span>;
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orgd30d0fd" class="outline-2">
+<h2 id="orgd30d0fd"><span class="section-number-2">9.</span> Remove at the End</h2>
+<div class="outline-text-2" id="text-9">
+<script src="../assets/jquery-3.3.1.min.js"></script>
+<script src="../assets/notes.js"></script>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="date">Date: 2026-03-04 Wed 18:31</p>
+<p class="author">Author: Damian Chrzanowski</p>
+<p class="date">Created: 2026-03-04 Wed 20:03</p>
+<p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

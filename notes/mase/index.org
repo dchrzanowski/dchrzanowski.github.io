@@ -21,6 +21,10 @@
 
 [[file:comp-arch-and-cloud.org][Computer Architecture and Cloud Services]]
 
+[[file:distributed-systems-and-security.org][Distributed Systems And Security]]
+
+[[file:oop2.org][OOP 2]]
+
 #+BEGIN_EXPORT html
 <script src="../assets/jquery-3.3.1.min.js"></script>
 <script src="../assets/notes.js"></script>

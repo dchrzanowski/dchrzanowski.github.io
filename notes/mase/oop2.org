@@ -1,0 +1,515 @@
+#+TITLE: OOP2
+#+DATE: [2026-03-04 Wed 18:31]
+#+AUTHOR: Damian Chrzanowski
+#+EMAIL: pjdamian.chrzanowski@gmail.com
+#+OPTIONS: TOC:2 num:2
+#+HTML_HEAD: <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="../assets/org.css"/>
+#+HTML_HEAD: <link rel="icon" href="../assets/favicon.ico">
+#+latex_header: \hypersetup{colorlinks=true,linkcolor=black}
+#+latex_header: \usepackage[margin=0.5in]{geometry}
+#+latex_header: \usepackage[scaled]{helvet} \renewcommand\familydefault{\sfdefault}
+#+LATEX_HEADER: \usepackage[scaled=0.9]{inconsolata}
+[[file:index.org][Home Page]]
+* Stream Gatherers
+** Example on gatherer
+   #+begin_src java
+     var windows = Stream.of(1, 2, 3, 4, 5)
+             .gather(Gatherers.windowSliding(3)).toList();
+
+     System.out.println(windows);
+     // [[1, 2, 3], [2, 3, 4], [3, 4, 5]]
+   #+end_src
+** Common Gatherers
+   - ~fold~: stateful reduction that continues the stream
+   - ~mapConcurrent~: concurrent mapping
+   - ~scan~: running accumulation
+   - ~windowFixed~: non-overlapping batches
+   - ~windowSliding~: sliding windows
+* Stream Basics
+** Sum
+   #+begin_src java
+     import java.util.*;
+     import java.util.stream.*;
+
+     List<Integer> numbers = List.of(5, 2, 9, 1, 7);
+
+     int sum = numbers.stream()
+             .mapToInt(Integer::intValue)
+             .sum();
+
+     // same but using reduce
+     int sum = numbers.stream()
+             .reduce(0, Integer::sum);
+
+     System.out.println(sum); // 24
+   #+end_src
+** Average
+   #+begin_src java
+     double avg = numbers.stream()
+             .mapToInt(Integer::intValue)
+             .average()
+             .orElse(0);
+
+     System.out.println(avg); // 4.8
+   #+end_src
+** Sorting
+   #+begin_src java
+     // ascending
+     List<Integer> sorted = numbers.stream()
+             .sorted()
+             .toList();
+
+     // descending
+     List<Integer> sortedDesc = numbers.stream()
+             .sorted(Comparator.reverseOrder())
+             .toList();
+   #+end_src
+** Filtering
+   #+begin_src java
+     List<Integer> evens = numbers.stream()
+             .filter(n -> n % 2 == 0)
+             .toList();
+
+     System.out.println(evens); // [2]
+   #+end_src
+** Map
+   #+begin_src java
+     List<Integer> squared = numbers.stream()
+             .map(n -> n * n)
+             .toList();
+
+     System.out.println(squared); // [25, 4, 81, 1, 49]
+   #+end_src
+** Min/Max
+   #+begin_src java
+     int max = numbers.stream()
+             .max(Integer::compareTo)
+             .orElseThrow();
+
+     int min = numbers.stream()
+             .min(Integer::compareTo)
+             .orElseThrow();
+   #+end_src
+** Count
+   #+begin_src java
+     long count = numbers.stream()
+             .filter(n -> n > 3)
+             .count();
+   #+end_src
+** Distinct
+   #+begin_src java
+     List<Integer> distinct = Stream.of(1,2,2,3,3,3)
+             .distinct()
+             .toList();
+   #+end_src
+** Limit/Skip
+   #+begin_src java
+     List<Integer> first3 = numbers.stream()
+             .limit(3)
+             .toList();
+
+     List<Integer> skip2 = numbers.stream()
+             .skip(2)
+             .toList();
+   #+end_src
+** Collect to Map
+   #+begin_src java
+     record Person(String name, int age) {}
+
+     List<Person> people = List.of(
+             new Person("Alice", 30),
+             new Person("Bob", 25)
+     );
+
+     Map<String, Integer> map = people.stream()
+             .collect(Collectors.toMap(
+                     Person::name,
+                     Person::age
+             ));
+   #+end_src
+** Grouping
+   #+begin_src java
+     Map<Integer, List<Person>> byAge = people.stream()
+             .collect(Collectors.groupingBy(Person::age));
+   #+end_src
+** Any / All / None Match
+   #+begin_src java
+     boolean anyEven = numbers.stream()
+             .anyMatch(n -> n % 2 == 0);
+
+     boolean allPositive = numbers.stream()
+             .allMatch(n -> n > 0);
+
+     boolean noneNegative = numbers.stream()
+             .noneMatch(n -> n < 0);
+   #+end_src
+** Joining Stings
+   #+begin_src java
+     List<String> words = List.of("Java", "Streams", "API");
+
+     String result = words.stream()
+             .collect(Collectors.joining(", "));
+   #+end_src
+** Peek (debugging)
+   #+begin_src java
+     numbers.stream()
+             .filter(n -> n > 3)
+             .peek(System.out::println)
+             .toList();
+   #+end_src
+* Map to Map basics
+** Stream into a Map
+   #+begin_src java
+     List<String> names = List.of("Alice", "Bob", "Charlie");
+
+     Map<String, Integer> nameLengthMap =
+         names.stream()
+         .collect(Collectors.toMap(
+                                   name -> name,
+                                   name -> name.length()
+                                   ));
+
+     System.out.println(nameLengthMap);
+     // {Bob=3, Alice=5, Charlie=7}
+   #+end_src
+** Object to Map
+   #+begin_src java
+     List<Person> people = List.of(
+                                   new Person("1", "Alice", 30),
+                                   new Person("2", "Bob", 25)
+                                   );
+
+     Map<String, Integer> ageMap = people.stream()
+         .collect(Collectors.toMap(
+                                   Person::getName,
+                                   Person::getAge
+                                   ));
+
+     System.out.println(ageMap);
+     // {Bob=25, Alice=30}
+   #+end_src
+** Duplicate Keys
+   #+begin_src java
+     List<String> names = List.of("Alice", "Bob", "Alice");
+
+     Map<String, Integer> map =
+         names.stream()
+              .collect(Collectors.toMap(
+                  name -> name,
+                  name -> 1,
+                  (existing, replacement) -> existing + replacement
+              ));
+
+     System.out.println(map);
+     // {Alice=2, Bob=1}
+   #+end_src
+** Map to Map
+   #+begin_src java
+     Map<String, Integer> original = Map.of(
+             "Alice", 30,
+             "Bob", 25
+     );
+
+     Map<String, String> transformed =
+             original.entrySet()
+                     .stream()
+                     .collect(Collectors.toMap(
+                             entry -> entry.getKey().toUpperCase(),
+                             entry -> "Age: " + entry.getValue()
+                     ));
+
+     System.out.println(transformed);
+     // {ALICE=Age: 30, BOB=Age: 25}
+   #+end_src
+** Grouping into a Map 1 (by first letter)
+   #+begin_src java
+     List<String> names = List.of("Alice", "Bob", "Charlie", "Anna");
+
+     Map<Character, List<String>> grouped =
+             names.stream()
+                     .collect(Collectors.groupingBy(
+                             name -> name.charAt(0)
+                     ));
+
+     System.out.println(grouped);
+     // {A=[Alice, Anna], B=[Bob], C=[Charlie]}
+   #+end_src
+** Grouping into a Map 2 (has starting letter "A")
+   #+begin_src java
+     List<String> names = List.of("Alice", "Bob", "Charlie", "Anna");
+
+     Map<Boolean, List<String>> grouped =
+             names.stream()
+                     .collect(Collectors.groupingBy(
+                             name -> name.startsWith("A")
+                     ));
+
+     System.out.println(grouped);
+     // {false=[Bob, Charlie], true=[Alice, Anna]}
+   #+end_src
+** Mapping Values Only (Keep Keys)
+   #+begin_src java
+     Map<String, Integer> scores = Map.of(
+         "Alice", 80,
+         "Bob", 90
+     );
+
+     Map<String, Integer> boosted =
+         scores.entrySet()
+               .stream()
+               .collect(Collectors.toMap(
+                   Map.Entry::getKey,
+                   entry -> entry.getValue() + 10
+               ));
+
+     System.out.println(boosted);
+     // {Alice=90, Bob=100}
+   #+end_src
+* Records
+** Example
+   #+begin_src java
+     public record Person(String name, int age) {}
+     Person p = new Person("Alice", 30);
+     System.out.println(p.name)
+     System.out.println(p.age)
+   #+end_src
+** Validate inside of the constructor
+   #+begin_src java
+     public record Person(String name, int age) {
+
+         public Person {
+             if (age < 0) {
+                 throw new IllegalArgumentException("Age cannot be negative");
+             }
+         }
+     }
+   #+end_src
+** Custom Methods
+   #+begin_src java
+     public record Rectangle(double width, double height) {
+
+         public double area() {
+             return width * height;
+         }
+     }
+   #+end_src
+** Static Fields and Methods
+   #+begin_src java
+     public record MathConstants(double value) {
+
+         public static final double PI = 3.14159;
+
+         public static MathConstants of(double v) {
+             return new MathConstants(v);
+         }
+     }
+   #+end_src
+** Implementing Interfaces
+   #+begin_src java
+     public record User(String username) implements Comparable<User> {
+
+         @Override
+         public int compareTo(User other) {
+             return this.username.compareTo(other.username);
+         }
+     }
+   #+end_src
+* Generics
+** Common Naming Conventions
+   - ~T~: Type
+   - ~E~: Element
+   - ~K~: Key
+   - ~V~: Value
+   - ~R~: Return type
+** Class example
+  #+begin_src java
+    class Box<T> {
+        private T value;
+
+        public void set(T value) {
+            this.value = value;
+        }
+
+        public T get() {
+            return value;
+        }
+    }
+  #+end_src
+** Method example
+   #+begin_src java
+     public static <T> void printArray(T[] arr) {
+         for (T item : arr) {
+             System.out.println(item);
+         }
+     }
+
+     // usage
+     Integer[] nums = {1,2,3};
+     String[] words = {"a","b"};
+
+     printArray(nums);
+     printArray(words);
+   #+end_src
+** Bounded Generics
+*** Upper Bound
+   #+begin_src java
+     <T extends Number>
+
+     public static double sum(List<? extends Number> numbers) {
+         double total = 0;
+         for (Number n : numbers) {
+             total += n.doubleValue();
+         }
+         return total;
+     }
+
+     // usage
+     List<Integer> ints = List.of(1,2,3);
+     List<Double> doubles = List.of(1.2, 2.3);
+
+     sum(ints);
+     sum(doubles);
+   #+end_src
+*** Lower Bound
+    - Use ~super~ instead of ~extends~
+** Generics in Lambdas
+   #+begin_src java
+     Function<T,R>  // T → R
+     Predicate<T>   // T → boolean
+     Consumer<T>    // T → void
+     Supplier<T>    // () → T
+   #+end_src
+
+* Scoped Values
+** Basic Example Of Scoped Values
+   #+begin_src java
+    import java.lang.ScopedValue;
+
+    public class ScopedValueExample {
+
+        private static final ScopedValue<String> USER = ScopedValue.newInstance();
+
+        public static void main(String[] args) {
+
+            ScopedValue.where(USER, "Alice").run(() -> {
+                greet();
+            });
+
+            // Outside scope – would throw exception
+            // System.out.println(USER.get());
+        }
+
+        static void greet() {
+            System.out.println("Hello " + USER.get());
+        }
+    }
+   #+end_src
+** Nested Scoped Values
+   #+begin_src java
+    private static final ScopedValue<String> USER = ScopedValue.newInstance();
+
+    public static void main(String[] args) {
+
+        ScopedValue.where(USER, "Alice").run(() -> {
+
+            System.out.println(USER.get()); // Alice
+
+            ScopedValue.where(USER, "Bob").run(() -> {
+                System.out.println(USER.get()); // Bob
+            });
+
+            System.out.println(USER.get()); // Alice again
+        });
+    }
+   #+end_src
+** Using Scoped Values with Virtual Threads
+  #+begin_src java
+    import java.lang.ScopedValue;
+
+    public class VirtualThreadExample {
+
+        private static final ScopedValue<String> REQUEST_ID = ScopedValue.newInstance();
+
+        public static void main(String[] args) {
+
+            ScopedValue.where(REQUEST_ID, "REQ-123").run(() -> {
+
+                Thread.startVirtualThread(() -> {
+                    System.out.println("Request: " + REQUEST_ID.get());
+                });
+            });
+        }
+    }
+  #+end_src
+** Scoped Values with Structured Concurrency
+   #+begin_src java
+     import java.lang.ScopedValue;
+     import java.util.concurrent.StructuredTaskScope;
+
+     public class StructuredExample {
+
+         private static final ScopedValue<String> USER = ScopedValue.newInstance();
+
+         public static void main(String[] args) throws Exception {
+
+             ScopedValue.where(USER, "Alice").run(() -> {
+
+                 try (var scope = new StructuredTaskScope.ShutdownOnFailure()) {
+
+                     scope.fork(() -> {
+                         return "Task1 sees " + USER.get();
+                     });
+
+                     scope.fork(() -> {
+                         return "Task2 sees " + USER.get();
+                     });
+
+                     scope.join();
+                     scope.throwIfFailed();
+                 }
+             });
+         }
+     }
+   #+end_src
+** Using call() Instead of run()
+   #+begin_src java
+     String result = ScopedValue.where(USER, "Alice")
+             .call(() -> "Hello " + USER.get());
+
+     System.out.println(result);
+   #+end_src
+* Flexible Constructor Bodies
+** Concept
+   - It is now possible to:
+     - Have a ~super()~ call after some validation is done on the params passed through the constructor and the same applies to a call to ~this()~
+     - Can also log with System.out before a call to super or this
+     - *Not allowed*: access to instance attributes (members)
+* Compact Source Files
+** Allow behaviour like in a modern language, no need for a class around main
+   #+begin_src java
+     void main() {
+         System.out.println("Hello, world!");
+     }
+   #+end_src
+** Something like this is also now allowed
+   #+begin_src java
+     int base = 10;
+
+     void main() {
+         greet("Alice");
+     }
+
+     void greet(String name) {
+         System.out.println(name + " has base " + base);
+     }
+   #+end_src
+
+
+
+
+* Remove at the End
+  #+BEGIN_EXPORT html
+  <script src="../assets/jquery-3.3.1.min.js"></script>
+  <script src="../assets/notes.js"></script>
+  #+END_EXPORT
