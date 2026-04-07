@@ -1,0 +1,1045 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2026-04-07 Tue 21:01 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>CICD Testing</title>
+<meta name="author" content="Damian Chrzanowski" />
+<meta name="generator" content="Org Mode" />
+<style type="text/css">
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { }
+</style>
+<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="../assets/org.css"/>
+<link rel="icon" href="../assets/favicon.ico">
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">CICD Testing</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#orgc4369c2">1. jUnit</a>
+<ul>
+<li><a href="#org36d995e">1.1. Car Example</a></li>
+<li><a href="#org1b20529">1.2. Employee Example</a></li>
+</ul>
+</li>
+<li><a href="#org8626cb6">2. MockMvc/Mockito</a>
+<ul>
+<li><a href="#org21c7b1b">2.1. Car Example</a></li>
+<li><a href="#orgea27a5c">2.2. Employee Example</a></li>
+<li><a href="#orgf39b1b8">2.3. MockMvc whole body test</a></li>
+<li><a href="#orgd490881">2.4. MockMvc Common Status Checks</a></li>
+<li><a href="#org1927aa2">2.5. MockMvc Cheatsheet</a></li>
+</ul>
+</li>
+<li><a href="#orgd857030">3. RestTemplate</a>
+<ul>
+<li><a href="#org243a50b">3.1. Car Example</a></li>
+<li><a href="#orga023856">3.2. GET example</a></li>
+<li><a href="#org750e7ad">3.3. POST example</a></li>
+<li><a href="#orga69eab5">3.4. Adding headers</a></li>
+<li><a href="#org7f7fe0c">3.5. PUT example</a></li>
+<li><a href="#orgb080bca">3.6. DELETE example</a></li>
+<li><a href="#org5e15ed1">3.7. Small Cheatsheet</a></li>
+<li><a href="#org861646e">3.8. MIME Type and Body Checks</a></li>
+<li><a href="#orgd14edc7">3.9. For DTOs</a></li>
+</ul>
+</li>
+<li><a href="#org5bf7d85">4. Karate</a>
+<ul>
+<li><a href="#orgf4c2077">4.1. Setup</a></li>
+<li><a href="#org0627694">4.2. Example test (api-test.feature)</a></li>
+<li><a href="#org2b44814">4.3. More example tests</a></li>
+</ul>
+</li>
+<li><a href="#orgcd93b09">5. Remove at the End</a></li>
+</ul>
+</div>
+</div>
+<p>
+<a href="index.html">Home Page</a>
+</p>
+<div id="outline-container-orgc4369c2" class="outline-2">
+<h2 id="orgc4369c2"><span class="section-number-2">1.</span> jUnit</h2>
+<div class="outline-text-2" id="text-1">
+</div>
+<div id="outline-container-org36d995e" class="outline-3">
+<h3 id="org36d995e"><span class="section-number-3">1.1.</span> Car Example</h3>
+<div class="outline-text-3" id="text-1-1">
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #51afef; font-style: italic;">class</span> <span style="color: #ECBE7B;">ErrorValidationTest</span> <span style="color: #fff0f5;">{</span>
+    <span style="color: #ECBE7B;">ErrorValidation</span> errorValidation;
+    <span style="color: #ECBE7B;">Car</span> car;
+
+    <span style="color: #bbc2cf;">@</span><span style="color: #51afef; font-weight: bold;">BeforeEach</span>
+    <span style="color: #ECBE7B;">void</span> <span style="color: #c678dd;">setUp</span><span style="color: #c678dd;">()</span> <span style="color: #c678dd;">{</span>
+        errorValidation = <span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">ErrorValidation</span><span style="color: #98be65;">()</span>;
+        car = <span style="color: #c678dd;">buildCar</span><span style="color: #98be65;">()</span>;
+    <span style="color: #c678dd;">}</span>
+
+    <span style="color: #bbc2cf;">@</span><span style="color: #51afef; font-weight: bold;">Test</span>
+    <span style="color: #ECBE7B;">void</span> <span style="color: #c678dd;">testMakeAndModelAllowed</span><span style="color: #c678dd;">()</span> <span style="color: #c678dd;">{</span>
+        <span style="color: #5B6268;">//test checkMakeAndModelNotAllowed</span>
+        car = <span style="color: #c678dd;">buildCar</span><span style="color: #98be65;">()</span>;
+        <span style="color: #c678dd;">assertFalse</span><span style="color: #98be65;">(</span>errorValidation.<span style="color: #c678dd;">checkMakeAndModelNotAllowed</span><span style="color: #00bfff;">(</span>car<span style="color: #00bfff;">)</span><span style="color: #98be65;">)</span>;
+    <span style="color: #c678dd;">}</span>
+
+    <span style="color: #bbc2cf;">@</span><span style="color: #51afef; font-weight: bold;">Test</span>
+    <span style="color: #ECBE7B;">void</span> <span style="color: #c678dd;">testMakeNotAllowed</span><span style="color: #c678dd;">()</span> <span style="color: #c678dd;">{</span>
+        <span style="color: #5B6268;">//test checkMakeAndModelNotAllowed</span>
+        car = <span style="color: #c678dd;">buildCar</span><span style="color: #98be65;">()</span>;
+        car.<span style="color: #c678dd;">setMake</span><span style="color: #98be65;">(</span><span style="color: #98be65;">""</span><span style="color: #98be65;">)</span>;
+        <span style="color: #c678dd;">assertTrue</span><span style="color: #98be65;">(</span>errorValidation.<span style="color: #c678dd;">checkMakeAndModelNotAllowed</span><span style="color: #00bfff;">(</span>car<span style="color: #00bfff;">)</span><span style="color: #98be65;">)</span>;
+    <span style="color: #c678dd;">}</span>
+
+    <span style="color: #bbc2cf;">@</span><span style="color: #51afef; font-weight: bold;">Test</span>
+    <span style="color: #ECBE7B;">void</span> <span style="color: #c678dd;">testMakeAllowedModelNotAllowed</span><span style="color: #c678dd;">()</span> <span style="color: #c678dd;">{</span>
+        <span style="color: #5B6268;">//test checkMakeAndModelNotAllowed</span>
+        car = <span style="color: #c678dd;">buildCar</span><span style="color: #98be65;">()</span>;
+        car.<span style="color: #c678dd;">setModel</span><span style="color: #98be65;">(</span><span style="color: #98be65;">""</span><span style="color: #98be65;">)</span>;
+        <span style="color: #c678dd;">assertTrue</span> <span style="color: #98be65;">(</span>errorValidation.<span style="color: #c678dd;">checkMakeAndModelNotAllowed</span><span style="color: #00bfff;">(</span>car<span style="color: #00bfff;">)</span><span style="color: #98be65;">)</span>;
+    <span style="color: #c678dd;">}</span>
+
+    <span style="color: #bbc2cf;">@</span><span style="color: #51afef; font-weight: bold;">Test</span>
+    <span style="color: #ECBE7B;">void</span> <span style="color: #c678dd;">testValidCarYear</span><span style="color: #c678dd;">()</span> <span style="color: #c678dd;">{</span>
+        <span style="color: #5B6268;">//test yearOK</span>
+        car= <span style="color: #c678dd;">buildCar</span><span style="color: #98be65;">()</span>;
+        <span style="color: #c678dd;">assertFalse</span> <span style="color: #98be65;">(</span>errorValidation.<span style="color: #c678dd;">yearNotOK</span><span style="color: #00bfff;">(</span>car<span style="color: #00bfff;">)</span><span style="color: #98be65;">)</span>;
+    <span style="color: #c678dd;">}</span>
+
+    <span style="color: #bbc2cf;">@</span><span style="color: #51afef; font-weight: bold;">Test</span>
+    <span style="color: #ECBE7B;">void</span> <span style="color: #c678dd;">testInValidCarYear</span><span style="color: #c678dd;">()</span> <span style="color: #c678dd;">{</span>
+        <span style="color: #5B6268;">//test yearNotOK - too old</span>
+        car= <span style="color: #c678dd;">buildCar</span><span style="color: #98be65;">()</span>;
+        car.<span style="color: #c678dd;">setYear</span><span style="color: #98be65;">(</span><span style="color: #da8548; font-weight: bold;">2019</span><span style="color: #98be65;">)</span>;
+        <span style="color: #c678dd;">assertTrue</span> <span style="color: #98be65;">(</span>errorValidation.<span style="color: #c678dd;">yearNotOK</span><span style="color: #00bfff;">(</span>car<span style="color: #00bfff;">)</span><span style="color: #98be65;">)</span>;
+
+    <span style="color: #c678dd;">}</span>
+
+    <span style="color: #ECBE7B;">Car</span> <span style="color: #c678dd;">buildCar</span><span style="color: #c678dd;">()</span> <span style="color: #c678dd;">{</span>
+        <span style="color: #ECBE7B;">Car</span> car = <span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">Car</span><span style="color: #98be65;">()</span>;
+        car.<span style="color: #c678dd;">setMake</span><span style="color: #98be65;">(</span><span style="color: #98be65;">"Mercedes"</span><span style="color: #98be65;">)</span>;
+        car.<span style="color: #c678dd;">setModel</span><span style="color: #98be65;">(</span><span style="color: #98be65;">"E220"</span><span style="color: #98be65;">)</span>;
+        car.<span style="color: #c678dd;">setYear</span><span style="color: #98be65;">(</span><span style="color: #da8548; font-weight: bold;">2021</span><span style="color: #98be65;">)</span>;
+        car.<span style="color: #c678dd;">setColor</span><span style="color: #98be65;">(</span><span style="color: #98be65;">"blue"</span><span style="color: #98be65;">)</span>;
+        <span style="color: #51afef; font-style: italic;">return</span> car;
+    <span style="color: #c678dd;">}</span>
+
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org1b20529" class="outline-3">
+<h3 id="org1b20529"><span class="section-number-3">1.2.</span> Employee Example</h3>
+<div class="outline-text-3" id="text-1-2">
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #51afef; font-style: italic;">class</span> <span style="color: #ECBE7B;">ErrorValidationTest</span> <span style="color: #fff0f5;">{</span>
+    <span style="color: #ECBE7B;">ErrorValidation</span> errorValidation;
+    <span style="color: #ECBE7B;">Employee</span> employee;
+
+    <span style="color: #bbc2cf;">@</span><span style="color: #51afef; font-weight: bold;">BeforeEach</span>
+    <span style="color: #ECBE7B;">void</span> <span style="color: #c678dd;">setUp</span><span style="color: #c678dd;">()</span> <span style="color: #c678dd;">{</span>
+        errorValidation = <span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">ErrorValidation</span><span style="color: #98be65;">()</span>;
+        employee = <span style="color: #c678dd;">buildEmployee</span><span style="color: #98be65;">()</span>;
+    <span style="color: #c678dd;">}</span>
+
+    <span style="color: #bbc2cf;">@</span><span style="color: #51afef; font-weight: bold;">Test</span>
+    <span style="color: #ECBE7B;">void</span> <span style="color: #c678dd;">testAllFieldsValid</span><span style="color: #c678dd;">()</span> <span style="color: #c678dd;">{</span>
+        <span style="color: #c678dd;">assertFalse</span><span style="color: #98be65;">(</span>errorValidation.<span style="color: #c678dd;">emptyFields</span><span style="color: #00bfff;">(</span>employee<span style="color: #00bfff;">)</span><span style="color: #98be65;">)</span>;
+    <span style="color: #c678dd;">}</span>
+
+    <span style="color: #bbc2cf;">@</span><span style="color: #51afef; font-weight: bold;">Test</span>
+    <span style="color: #ECBE7B;">void</span> <span style="color: #c678dd;">testEmptyFieldFirstName</span><span style="color: #c678dd;">()</span> <span style="color: #c678dd;">{</span>
+        employee.<span style="color: #c678dd;">setFirstName</span><span style="color: #98be65;">(</span><span style="color: #98be65;">""</span><span style="color: #98be65;">)</span>;
+        <span style="color: #c678dd;">assertTrue</span><span style="color: #98be65;">(</span>errorValidation.<span style="color: #c678dd;">emptyFields</span><span style="color: #00bfff;">(</span>employee<span style="color: #00bfff;">)</span><span style="color: #98be65;">)</span>;
+    <span style="color: #c678dd;">}</span>
+
+    <span style="color: #bbc2cf;">@</span><span style="color: #51afef; font-weight: bold;">Test</span>
+    <span style="color: #ECBE7B;">void</span> <span style="color: #c678dd;">testValidAge</span><span style="color: #c678dd;">()</span> <span style="color: #c678dd;">{</span>
+        <span style="color: #c678dd;">assertFalse</span><span style="color: #98be65;">(</span>errorValidation.<span style="color: #c678dd;">invalidAge</span><span style="color: #00bfff;">(</span>employee<span style="color: #00bfff;">)</span><span style="color: #98be65;">)</span>;
+    <span style="color: #c678dd;">}</span>
+
+    <span style="color: #bbc2cf;">@</span><span style="color: #51afef; font-weight: bold;">Test</span>
+    <span style="color: #ECBE7B;">void</span> <span style="color: #c678dd;">testEmptyFieldLastName</span><span style="color: #c678dd;">()</span> <span style="color: #c678dd;">{</span>
+        employee.<span style="color: #c678dd;">setLastName</span><span style="color: #98be65;">(</span><span style="color: #98be65;">""</span><span style="color: #98be65;">)</span>;
+        <span style="color: #c678dd;">assertTrue</span><span style="color: #98be65;">(</span>errorValidation.<span style="color: #c678dd;">emptyFields</span><span style="color: #00bfff;">(</span>employee<span style="color: #00bfff;">)</span><span style="color: #98be65;">)</span>;
+    <span style="color: #c678dd;">}</span>
+
+    <span style="color: #bbc2cf;">@</span><span style="color: #51afef; font-weight: bold;">Test</span>
+    <span style="color: #ECBE7B;">void</span> <span style="color: #c678dd;">testEmptyFieldEmail</span><span style="color: #c678dd;">()</span> <span style="color: #c678dd;">{</span>
+        employee.<span style="color: #c678dd;">setEmailAddress</span><span style="color: #98be65;">(</span><span style="color: #98be65;">""</span><span style="color: #98be65;">)</span>;
+        <span style="color: #c678dd;">assertTrue</span><span style="color: #98be65;">(</span>errorValidation.<span style="color: #c678dd;">emptyFields</span><span style="color: #00bfff;">(</span>employee<span style="color: #00bfff;">)</span><span style="color: #98be65;">)</span>;
+    <span style="color: #c678dd;">}</span>
+
+    <span style="color: #bbc2cf;">@</span><span style="color: #51afef; font-weight: bold;">Test</span>
+    <span style="color: #ECBE7B;">void</span> <span style="color: #c678dd;">testInvalidAgeLow</span><span style="color: #c678dd;">()</span> <span style="color: #c678dd;">{</span>
+        employee.<span style="color: #c678dd;">setAge</span><span style="color: #98be65;">(</span><span style="color: #da8548; font-weight: bold;">17</span><span style="color: #98be65;">)</span>;
+        <span style="color: #c678dd;">assertTrue</span><span style="color: #98be65;">(</span>errorValidation.<span style="color: #c678dd;">invalidAge</span><span style="color: #00bfff;">(</span>employee<span style="color: #00bfff;">)</span><span style="color: #98be65;">)</span>;
+    <span style="color: #c678dd;">}</span>
+
+    <span style="color: #bbc2cf;">@</span><span style="color: #51afef; font-weight: bold;">Test</span>
+    <span style="color: #ECBE7B;">void</span> <span style="color: #c678dd;">testInvalidAgeHigh</span><span style="color: #c678dd;">()</span> <span style="color: #c678dd;">{</span>
+        employee.<span style="color: #c678dd;">setAge</span><span style="color: #98be65;">(</span><span style="color: #da8548; font-weight: bold;">66</span><span style="color: #98be65;">)</span>;
+        <span style="color: #c678dd;">assertTrue</span><span style="color: #98be65;">(</span>errorValidation.<span style="color: #c678dd;">invalidAge</span><span style="color: #00bfff;">(</span>employee<span style="color: #00bfff;">)</span><span style="color: #98be65;">)</span>;
+    <span style="color: #c678dd;">}</span>
+
+    <span style="color: #ECBE7B;">Employee</span> <span style="color: #c678dd;">buildEmployee</span><span style="color: #c678dd;">()</span> <span style="color: #c678dd;">{</span>
+        <span style="color: #ECBE7B;">Employee</span> employee = <span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">Employee</span><span style="color: #98be65;">()</span>;
+        employee.<span style="color: #c678dd;">setAge</span><span style="color: #98be65;">(</span><span style="color: #da8548; font-weight: bold;">20</span><span style="color: #98be65;">)</span>;
+        employee.<span style="color: #c678dd;">setFirstName</span><span style="color: #98be65;">(</span><span style="color: #98be65;">"Joe"</span><span style="color: #98be65;">)</span>;
+        employee.<span style="color: #c678dd;">setLastName</span><span style="color: #98be65;">(</span><span style="color: #98be65;">"Bloggs"</span><span style="color: #98be65;">)</span>;
+        employee.<span style="color: #c678dd;">setEmailAddress</span><span style="color: #98be65;">(</span><span style="color: #98be65;">"joe@gmail.com"</span><span style="color: #98be65;">)</span>;
+        <span style="color: #51afef; font-style: italic;">return</span> employee;
+    <span style="color: #c678dd;">}</span>
+
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org8626cb6" class="outline-2">
+<h2 id="org8626cb6"><span class="section-number-2">2.</span> MockMvc/Mockito</h2>
+<div class="outline-text-2" id="text-2">
+</div>
+<div id="outline-container-org21c7b1b" class="outline-3">
+<h3 id="org21c7b1b"><span class="section-number-3">2.1.</span> Car Example</h3>
+<div class="outline-text-3" id="text-2-1">
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #bbc2cf;">@</span><span style="color: #51afef; font-weight: bold;">SpringBootTest</span>
+<span style="color: #bbc2cf;">@</span><span style="color: #51afef; font-weight: bold;">AutoConfigureMockMvc</span>
+<span style="color: #51afef; font-style: italic;">class</span> <span style="color: #ECBE7B;">CarControllerTest</span> <span style="color: #fff0f5;">{</span>
+
+    <span style="color: #bbc2cf;">@</span><span style="color: #51afef; font-weight: bold;">Autowired</span>
+    <span style="color: #ECBE7B;">CarController</span> carController;
+
+    <span style="color: #bbc2cf;">@</span><span style="color: #51afef; font-weight: bold;">MockBean</span> <span style="color: #5B6268;">// or @InjectMock</span>
+    <span style="color: #ECBE7B;">CarService</span> carService;
+
+    <span style="color: #bbc2cf;">@</span><span style="color: #51afef; font-weight: bold;">Captor</span>
+    <span style="color: #ECBE7B;">ArgumentCaptor</span><span style="color: #c678dd;">&lt;</span><span style="color: #ECBE7B;">Car</span><span style="color: #c678dd;">&gt;</span> captor;
+
+    <span style="color: #bbc2cf;">@</span><span style="color: #51afef; font-weight: bold;">Autowired</span>
+    <span style="color: #51afef; font-style: italic;">private</span> <span style="color: #ECBE7B;">MockMvc</span> mockMvc;
+
+    <span style="color: #bbc2cf;">@</span><span style="color: #51afef; font-weight: bold;">Test</span>
+    <span style="color: #51afef; font-style: italic;">public</span> <span style="color: #ECBE7B;">void</span> <span style="color: #c678dd;">addCarTestSuccess</span><span style="color: #c678dd;">()</span> <span style="color: #51afef; font-style: italic;">throws</span> <span style="color: #ECBE7B;">Exception</span>
+    <span style="color: #c678dd;">{</span>
+        <span style="color: #5B6268;">// testing addCar method</span>
+        <span style="color: #ECBE7B;">Car</span> car = <span style="color: #c678dd;">buildCar</span><span style="color: #98be65;">()</span>;
+        <span style="color: #ECBE7B;">ObjectMapper</span> map =<span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">ObjectMapper</span><span style="color: #98be65;">()</span>;
+        <span style="color: #ECBE7B;">String</span> jsonString = map.<span style="color: #c678dd;">writeValueAsString</span><span style="color: #98be65;">(</span>car<span style="color: #98be65;">)</span>;
+        <span style="color: #5B6268;">//mock the service layer</span>
+        <span style="color: #c678dd;">when</span><span style="color: #98be65;">(</span>carService.<span style="color: #c678dd;">createCar</span><span style="color: #00bfff;">(</span>car<span style="color: #00bfff;">)</span><span style="color: #98be65;">)</span>.<span style="color: #c678dd;">thenReturn</span><span style="color: #98be65;">(</span>car<span style="color: #98be65;">)</span>;
+        <span style="color: #5B6268;">// test for HttpStatus.CREATED</span>
+        <span style="color: #5B6268;">// test car object returned has correct values</span>
+        <span style="color: #51afef; font-style: italic;">this</span>.mockMvc.<span style="color: #c678dd;">perform</span><span style="color: #98be65;">(</span><span style="color: #c678dd;">post</span><span style="color: #00bfff;">(</span><span style="color: #98be65;">"/api/cars"</span><span style="color: #00bfff;">)</span>.<span style="color: #c678dd;">contentType</span><span style="color: #00bfff;">(</span>MediaType.<span style="color: #a9a1e1;">APPLICATION_JSON</span><span style="color: #00bfff;">)</span>
+                             .<span style="color: #c678dd;">content</span><span style="color: #00bfff;">(</span>jsonString<span style="color: #00bfff;">)</span><span style="color: #98be65;">)</span>.<span style="color: #c678dd;">andDo</span><span style="color: #98be65;">(</span><span style="color: #c678dd;">print</span><span style="color: #00bfff;">()</span><span style="color: #98be65;">)</span>.<span style="color: #c678dd;">andExpect</span><span style="color: #98be65;">(</span><span style="color: #c678dd;">status</span><span style="color: #00bfff;">()</span>.<span style="color: #c678dd;">isCreated</span><span style="color: #00bfff;">()</span><span style="color: #98be65;">)</span>;
+
+    <span style="color: #c678dd;">}</span>
+
+    <span style="color: #bbc2cf;">@</span><span style="color: #51afef; font-weight: bold;">Test</span>
+    <span style="color: #51afef; font-style: italic;">public</span> <span style="color: #ECBE7B;">void</span> <span style="color: #c678dd;">addCarTestFail</span><span style="color: #c678dd;">()</span> <span style="color: #51afef; font-style: italic;">throws</span> <span style="color: #ECBE7B;">CarValidationException</span>
+    <span style="color: #c678dd;">{</span>
+        <span style="color: #5B6268;">// testing addCar method</span>
+        <span style="color: #ECBE7B;">Car</span> car = <span style="color: #c678dd;">buildCar</span><span style="color: #98be65;">()</span>;
+        <span style="color: #c678dd;">when</span><span style="color: #98be65;">(</span>carService.<span style="color: #c678dd;">createCar</span><span style="color: #00bfff;">(</span>car<span style="color: #00bfff;">)</span><span style="color: #98be65;">)</span>.<span style="color: #c678dd;">thenThrow</span><span style="color: #98be65;">(</span><span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">CarValidationException</span><span style="color: #00bfff;">(</span>ErrorMessages.<span style="color: #a9a1e1;">INVALID_MAKE_MODEL</span>.<span style="color: #c678dd;">getMsg</span><span style="color: #4db5bd;">()</span><span style="color: #00bfff;">)</span><span style="color: #98be65;">)</span>;
+        <span style="color: #5B6268;">//mock the service layer - exception INVALID_MAKE_MODEL</span>
+        <span style="color: #5B6268;">// test for HttpStatus.BAD_REQUEST</span>
+        <span style="color: #ECBE7B;">ResponseEntity</span> <span style="color: #98be65;">&lt;</span><span style="color: #ECBE7B;">ErrorMessage</span><span style="color: #98be65;">&gt;</span> response = carController.<span style="color: #c678dd;">addCar</span><span style="color: #98be65;">(</span>car<span style="color: #98be65;">)</span>;
+        <span style="color: #5B6268;">// test returned errormessage is correct</span>
+        <span style="color: #c678dd;">assertEquals</span><span style="color: #98be65;">(</span>HttpStatus.<span style="color: #a9a1e1;">BAD_REQUEST</span>, response.<span style="color: #c678dd;">getStatusCode</span><span style="color: #00bfff;">()</span><span style="color: #98be65;">)</span>;
+        <span style="color: #c678dd;">assertEquals</span><span style="color: #98be65;">(</span>ErrorMessages.<span style="color: #a9a1e1;">INVALID_MAKE_MODEL</span>.<span style="color: #c678dd;">getMsg</span><span style="color: #00bfff;">()</span>, response.<span style="color: #c678dd;">getBody</span><span style="color: #00bfff;">()</span>.<span style="color: #c678dd;">getErrorMessage</span><span style="color: #00bfff;">()</span><span style="color: #98be65;">)</span>;
+    <span style="color: #c678dd;">}</span>
+
+
+    <span style="color: #ECBE7B;">Car</span> <span style="color: #c678dd;">buildCar</span><span style="color: #c678dd;">()</span> <span style="color: #c678dd;">{</span>
+        <span style="color: #ECBE7B;">Car</span> car = <span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">Car</span><span style="color: #98be65;">()</span>;
+        car.<span style="color: #c678dd;">setMake</span><span style="color: #98be65;">(</span><span style="color: #98be65;">"Mercedes"</span><span style="color: #98be65;">)</span>;
+        car.<span style="color: #c678dd;">setModel</span><span style="color: #98be65;">(</span><span style="color: #98be65;">"E220"</span><span style="color: #98be65;">)</span>;
+        car.<span style="color: #c678dd;">setYear</span><span style="color: #98be65;">(</span><span style="color: #da8548; font-weight: bold;">2021</span><span style="color: #98be65;">)</span>;
+        car.<span style="color: #c678dd;">setColor</span><span style="color: #98be65;">(</span><span style="color: #98be65;">"blue"</span><span style="color: #98be65;">)</span>;
+        <span style="color: #51afef; font-style: italic;">return</span> car;
+    <span style="color: #c678dd;">}</span>
+
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgea27a5c" class="outline-3">
+<h3 id="orgea27a5c"><span class="section-number-3">2.2.</span> Employee Example</h3>
+<div class="outline-text-3" id="text-2-2">
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #bbc2cf;">@</span><span style="color: #51afef; font-weight: bold;">SpringBootTest</span>
+<span style="color: #bbc2cf;">@</span><span style="color: #51afef; font-weight: bold;">AutoConfigureMockMvc</span>
+<span style="color: #51afef; font-style: italic;">class</span> <span style="color: #ECBE7B;">EmployeeControllerTest</span> <span style="color: #fff0f5;">{</span>
+
+    <span style="color: #bbc2cf;">@</span><span style="color: #51afef; font-weight: bold;">Autowired</span>
+    <span style="color: #ECBE7B;">EmployeeController</span> employeeController;
+
+    <span style="color: #bbc2cf;">@</span><span style="color: #51afef; font-weight: bold;">MockBean</span>
+    <span style="color: #ECBE7B;">EmployeeService</span> employeeService;
+
+    <span style="color: #bbc2cf;">@</span><span style="color: #51afef; font-weight: bold;">Test</span>
+    <span style="color: #51afef; font-style: italic;">public</span> <span style="color: #ECBE7B;">void</span> <span style="color: #c678dd;">addEmployeeTestSuccess</span><span style="color: #c678dd;">()</span> <span style="color: #51afef; font-style: italic;">throws</span> <span style="color: #ECBE7B;">EmployeeValidationException</span>
+    <span style="color: #c678dd;">{</span>
+        <span style="color: #ECBE7B;">Employee</span> employee = <span style="color: #c678dd;">buildEmployee</span><span style="color: #98be65;">()</span>;
+        <span style="color: #ECBE7B;">Employee</span> savedEmployee = <span style="color: #c678dd;">buildEmployee</span><span style="color: #98be65;">()</span>;
+        savedEmployee.<span style="color: #c678dd;">setId</span><span style="color: #98be65;">(</span><span style="color: #da8548; font-weight: bold;">1L</span><span style="color: #98be65;">)</span>;
+        <span style="color: #5B6268;">//Mock the createEmployee method in the Service Layer</span>
+        <span style="color: #c678dd;">when</span><span style="color: #98be65;">(</span>employeeService.<span style="color: #c678dd;">createEmployee</span><span style="color: #00bfff;">(</span>employee<span style="color: #00bfff;">)</span><span style="color: #98be65;">)</span>.<span style="color: #c678dd;">thenReturn</span><span style="color: #98be65;">(</span>savedEmployee<span style="color: #98be65;">)</span>;
+        <span style="color: #5B6268;">//call addEmployee method in the controller</span>
+        <span style="color: #ECBE7B;">ResponseEntity</span> response    =employeeController.<span style="color: #c678dd;">addEmployee</span><span style="color: #98be65;">(</span>employee<span style="color: #98be65;">)</span>;
+        <span style="color: #5B6268;">//test the httpstatus code return is "CREATED"</span>
+        <span style="color: #c678dd;">assertEquals</span><span style="color: #98be65;">(</span>response.<span style="color: #c678dd;">getStatusCode</span><span style="color: #00bfff;">()</span>,HttpStatus.<span style="color: #a9a1e1;">CREATED</span><span style="color: #98be65;">)</span>;
+        <span style="color: #5B6268;">//test the details for the employee object in the message body is correct</span>
+        <span style="color: #ECBE7B;">Employee</span> employeeAdded= <span style="color: #98be65;">(</span><span style="color: #ECBE7B;">Employee</span><span style="color: #98be65;">)</span> response.<span style="color: #c678dd;">getBody</span><span style="color: #98be65;">()</span>;
+        employeeAdded.<span style="color: #c678dd;">getId</span><span style="color: #98be65;">()</span>;
+        <span style="color: #c678dd;">assertEquals</span><span style="color: #98be65;">(</span><span style="color: #da8548; font-weight: bold;">1L</span>,employeeAdded.<span style="color: #c678dd;">getId</span><span style="color: #00bfff;">()</span><span style="color: #98be65;">)</span>;
+        <span style="color: #c678dd;">assertTrue</span><span style="color: #98be65;">(</span>employeeAdded.<span style="color: #c678dd;">equals</span><span style="color: #00bfff;">(</span>savedEmployee<span style="color: #00bfff;">)</span><span style="color: #98be65;">)</span>;
+
+    <span style="color: #c678dd;">}</span>
+
+    <span style="color: #bbc2cf;">@</span><span style="color: #51afef; font-weight: bold;">Test</span>
+    <span style="color: #51afef; font-style: italic;">public</span> <span style="color: #ECBE7B;">void</span> <span style="color: #c678dd;">addEmployeeTestFail</span><span style="color: #c678dd;">()</span> <span style="color: #51afef; font-style: italic;">throws</span> <span style="color: #ECBE7B;">EmployeeValidationException</span>
+    <span style="color: #c678dd;">{</span>
+        <span style="color: #ECBE7B;">Employee</span> employee = <span style="color: #c678dd;">buildEmployee</span><span style="color: #98be65;">()</span>;
+        <span style="color: #5B6268;">//Mock the createEmployee method to throw an EmployeeValidationException with EMPTY_FIELDS method</span>
+        <span style="color: #c678dd;">when</span><span style="color: #98be65;">(</span>employeeService.<span style="color: #c678dd;">createEmployee</span><span style="color: #00bfff;">(</span>employee<span style="color: #00bfff;">)</span><span style="color: #98be65;">)</span>.<span style="color: #c678dd;">thenThrow</span><span style="color: #98be65;">(</span><span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">EmployeeValidationException</span><span style="color: #00bfff;">(</span>ErrorMessages.<span style="color: #a9a1e1;">EMPTY_FIELDS</span>.<span style="color: #c678dd;">getMsg</span><span style="color: #4db5bd;">()</span><span style="color: #00bfff;">)</span><span style="color: #98be65;">)</span>;
+        <span style="color: #5B6268;">//call the addEmployee method in the controller</span>
+        <span style="color: #ECBE7B;">ResponseEntity</span> response    =employeeController.<span style="color: #c678dd;">addEmployee</span><span style="color: #98be65;">(</span>employee<span style="color: #98be65;">)</span>;
+        <span style="color: #5B6268;">//test that the response is "BAD_REQUEST"</span>
+        <span style="color: #c678dd;">assertEquals</span><span style="color: #98be65;">(</span>response.<span style="color: #c678dd;">getStatusCode</span><span style="color: #00bfff;">()</span>,HttpStatus.<span style="color: #a9a1e1;">BAD_REQUEST</span><span style="color: #98be65;">)</span>;
+        <span style="color: #5B6268;">//tests that the correct error mesage is received in the request body</span>
+        <span style="color: #ECBE7B;">ErrorMessage</span> errorMsg= <span style="color: #98be65;">(</span><span style="color: #ECBE7B;">ErrorMessage</span><span style="color: #98be65;">)</span> response.<span style="color: #c678dd;">getBody</span><span style="color: #98be65;">()</span>;
+        <span style="color: #c678dd;">assertEquals</span><span style="color: #98be65;">(</span>ErrorMessages.<span style="color: #a9a1e1;">EMPTY_FIELDS</span>.<span style="color: #c678dd;">getMsg</span><span style="color: #00bfff;">()</span>,errorMsg.<span style="color: #c678dd;">getErrorMessage</span><span style="color: #00bfff;">()</span><span style="color: #98be65;">)</span>;
+
+    <span style="color: #c678dd;">}</span>
+
+
+    <span style="color: #ECBE7B;">Employee</span> <span style="color: #c678dd;">buildEmployee</span><span style="color: #c678dd;">()</span> <span style="color: #c678dd;">{</span>
+        <span style="color: #ECBE7B;">Employee</span> employee = <span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">Employee</span><span style="color: #98be65;">()</span>;
+        employee.<span style="color: #c678dd;">setAge</span><span style="color: #98be65;">(</span><span style="color: #da8548; font-weight: bold;">20</span><span style="color: #98be65;">)</span>;
+        employee.<span style="color: #c678dd;">setFirstName</span><span style="color: #98be65;">(</span><span style="color: #98be65;">"Joe"</span><span style="color: #98be65;">)</span>;
+        employee.<span style="color: #c678dd;">setLastName</span><span style="color: #98be65;">(</span><span style="color: #98be65;">"Bloggs"</span><span style="color: #98be65;">)</span>;
+        employee.<span style="color: #c678dd;">setEmailAddress</span><span style="color: #98be65;">(</span><span style="color: #98be65;">"Joe@gmail.com"</span><span style="color: #98be65;">)</span>;
+        <span style="color: #51afef; font-style: italic;">return</span> employee;
+    <span style="color: #c678dd;">}</span>
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgf39b1b8" class="outline-3">
+<h3 id="orgf39b1b8"><span class="section-number-3">2.3.</span> MockMvc whole body test</h3>
+<div class="outline-text-3" id="text-2-3">
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #bbc2cf;">@</span><span style="color: #51afef; font-weight: bold;">Test</span>
+<span style="color: #ECBE7B;">void</span> <span style="color: #c678dd;">getUser_assertExactJsonBody</span><span style="color: #fff0f5;">()</span> <span style="color: #51afef; font-style: italic;">throws</span> <span style="color: #ECBE7B;">Exception</span> <span style="color: #fff0f5;">{</span>
+    mockMvc.<span style="color: #c678dd;">perform</span><span style="color: #c678dd;">(</span><span style="color: #c678dd;">get</span><span style="color: #98be65;">(</span><span style="color: #98be65;">"/api/users/1"</span><span style="color: #98be65;">)</span>
+            .<span style="color: #c678dd;">accept</span><span style="color: #98be65;">(</span>MediaType.<span style="color: #a9a1e1;">APPLICATION_JSON</span><span style="color: #98be65;">)</span><span style="color: #c678dd;">)</span>
+        .<span style="color: #c678dd;">andExpect</span><span style="color: #c678dd;">(</span><span style="color: #c678dd;">status</span><span style="color: #98be65;">()</span>.<span style="color: #c678dd;">isOk</span><span style="color: #98be65;">()</span><span style="color: #c678dd;">)</span>
+        .<span style="color: #c678dd;">andExpect</span><span style="color: #c678dd;">(</span><span style="color: #c678dd;">content</span><span style="color: #98be65;">()</span>.<span style="color: #c678dd;">json</span><span style="color: #98be65;">(</span><span style="color: #98be65;">"""
+            </span><span style="color: #00bfff;">{</span><span style="color: #98be65;">
+              "id": 1,
+              "name": "Alice",
+              "email": "alice@example.com"
+            </span><span style="color: #00bfff;">}</span><span style="color: #98be65;">
+            """</span><span style="color: #98be65;">)</span><span style="color: #c678dd;">)</span>;
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgd490881" class="outline-3">
+<h3 id="orgd490881"><span class="section-number-3">2.4.</span> MockMvc Common Status Checks</h3>
+<div class="outline-text-3" id="text-2-4">
+<div class="org-src-container">
+<pre class="src src-java">.<span style="color: #c678dd;">andExpect</span><span style="color: #fff0f5;">(</span><span style="color: #c678dd;">status</span><span style="color: #c678dd;">()</span>.<span style="color: #c678dd;">isOk</span><span style="color: #c678dd;">()</span><span style="color: #fff0f5;">)</span>;                  <span style="color: #5B6268;">// 200</span>
+.<span style="color: #c678dd;">andExpect</span><span style="color: #fff0f5;">(</span><span style="color: #c678dd;">status</span><span style="color: #c678dd;">()</span>.<span style="color: #c678dd;">isCreated</span><span style="color: #c678dd;">()</span><span style="color: #fff0f5;">)</span>;             <span style="color: #5B6268;">// 201</span>
+.<span style="color: #c678dd;">andExpect</span><span style="color: #fff0f5;">(</span><span style="color: #c678dd;">status</span><span style="color: #c678dd;">()</span>.<span style="color: #c678dd;">isNoContent</span><span style="color: #c678dd;">()</span><span style="color: #fff0f5;">)</span>;           <span style="color: #5B6268;">// 204</span>
+.<span style="color: #c678dd;">andExpect</span><span style="color: #fff0f5;">(</span><span style="color: #c678dd;">status</span><span style="color: #c678dd;">()</span>.<span style="color: #c678dd;">isBadRequest</span><span style="color: #c678dd;">()</span><span style="color: #fff0f5;">)</span>;          <span style="color: #5B6268;">// 400</span>
+.<span style="color: #c678dd;">andExpect</span><span style="color: #fff0f5;">(</span><span style="color: #c678dd;">status</span><span style="color: #c678dd;">()</span>.<span style="color: #c678dd;">isNotFound</span><span style="color: #c678dd;">()</span><span style="color: #fff0f5;">)</span>;            <span style="color: #5B6268;">// 404</span>
+.<span style="color: #c678dd;">andExpect</span><span style="color: #fff0f5;">(</span><span style="color: #c678dd;">status</span><span style="color: #c678dd;">()</span>.<span style="color: #c678dd;">isNotAcceptable</span><span style="color: #c678dd;">()</span><span style="color: #fff0f5;">)</span>;       <span style="color: #5B6268;">// 406</span>
+.<span style="color: #c678dd;">andExpect</span><span style="color: #fff0f5;">(</span><span style="color: #c678dd;">status</span><span style="color: #c678dd;">()</span>.<span style="color: #c678dd;">isUnsupportedMediaType</span><span style="color: #c678dd;">()</span><span style="color: #fff0f5;">)</span>;<span style="color: #5B6268;">// 415</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org1927aa2" class="outline-3">
+<h3 id="org1927aa2"><span class="section-number-3">2.5.</span> MockMvc Cheatsheet</h3>
+<div class="outline-text-3" id="text-2-5">
+<div class="org-src-container">
+<pre class="src src-java">mockMvc.<span style="color: #c678dd;">perform</span><span style="color: #fff0f5;">(</span><span style="color: #c678dd;">get</span><span style="color: #c678dd;">(</span><span style="color: #98be65;">"/api/items/1"</span><span style="color: #c678dd;">)</span>.<span style="color: #c678dd;">accept</span><span style="color: #c678dd;">(</span>MediaType.<span style="color: #a9a1e1;">APPLICATION_JSON</span><span style="color: #c678dd;">)</span><span style="color: #fff0f5;">)</span>
+    .<span style="color: #c678dd;">andExpect</span><span style="color: #fff0f5;">(</span><span style="color: #c678dd;">status</span><span style="color: #c678dd;">()</span>.<span style="color: #c678dd;">isOk</span><span style="color: #c678dd;">()</span><span style="color: #fff0f5;">)</span>
+    .<span style="color: #c678dd;">andExpect</span><span style="color: #fff0f5;">(</span><span style="color: #c678dd;">content</span><span style="color: #c678dd;">()</span>.<span style="color: #c678dd;">contentTypeCompatibleWith</span><span style="color: #c678dd;">(</span>MediaType.<span style="color: #a9a1e1;">APPLICATION_JSON</span><span style="color: #c678dd;">)</span><span style="color: #fff0f5;">)</span>
+    .<span style="color: #c678dd;">andExpect</span><span style="color: #fff0f5;">(</span><span style="color: #c678dd;">jsonPath</span><span style="color: #c678dd;">(</span><span style="color: #98be65;">"$.id"</span><span style="color: #c678dd;">)</span>.<span style="color: #c678dd;">value</span><span style="color: #c678dd;">(</span><span style="color: #da8548; font-weight: bold;">1</span><span style="color: #c678dd;">)</span><span style="color: #fff0f5;">)</span>;
+
+mockMvc.<span style="color: #c678dd;">perform</span><span style="color: #fff0f5;">(</span><span style="color: #c678dd;">post</span><span style="color: #c678dd;">(</span><span style="color: #98be65;">"/api/items"</span><span style="color: #c678dd;">)</span>
+        .<span style="color: #c678dd;">contentType</span><span style="color: #c678dd;">(</span>MediaType.<span style="color: #a9a1e1;">APPLICATION_JSON</span><span style="color: #c678dd;">)</span>
+        .<span style="color: #c678dd;">accept</span><span style="color: #c678dd;">(</span>MediaType.<span style="color: #a9a1e1;">APPLICATION_JSON</span><span style="color: #c678dd;">)</span>
+        .<span style="color: #c678dd;">content</span><span style="color: #c678dd;">(</span><span style="color: #98be65;">"""{"name":"Item A"}"""</span><span style="color: #c678dd;">)</span><span style="color: #fff0f5;">)</span>
+    .<span style="color: #c678dd;">andExpect</span><span style="color: #fff0f5;">(</span><span style="color: #c678dd;">status</span><span style="color: #c678dd;">()</span>.<span style="color: #c678dd;">isCreated</span><span style="color: #c678dd;">()</span><span style="color: #fff0f5;">)</span>
+    .<span style="color: #c678dd;">andExpect</span><span style="color: #fff0f5;">(</span><span style="color: #c678dd;">jsonPath</span><span style="color: #c678dd;">(</span><span style="color: #98be65;">"$.name"</span><span style="color: #c678dd;">)</span>.<span style="color: #c678dd;">value</span><span style="color: #c678dd;">(</span><span style="color: #98be65;">"Item A"</span><span style="color: #c678dd;">)</span><span style="color: #fff0f5;">)</span>;
+
+mockMvc.<span style="color: #c678dd;">perform</span><span style="color: #fff0f5;">(</span><span style="color: #c678dd;">put</span><span style="color: #c678dd;">(</span><span style="color: #98be65;">"/api/items/1"</span><span style="color: #c678dd;">)</span>
+        .<span style="color: #c678dd;">contentType</span><span style="color: #c678dd;">(</span>MediaType.<span style="color: #a9a1e1;">APPLICATION_JSON</span><span style="color: #c678dd;">)</span>
+        .<span style="color: #c678dd;">content</span><span style="color: #c678dd;">(</span><span style="color: #98be65;">"""{"name":"Updated"}"""</span><span style="color: #c678dd;">)</span><span style="color: #fff0f5;">)</span>
+    .<span style="color: #c678dd;">andExpect</span><span style="color: #fff0f5;">(</span><span style="color: #c678dd;">status</span><span style="color: #c678dd;">()</span>.<span style="color: #c678dd;">isOk</span><span style="color: #c678dd;">()</span><span style="color: #fff0f5;">)</span>
+    .<span style="color: #c678dd;">andExpect</span><span style="color: #fff0f5;">(</span><span style="color: #c678dd;">jsonPath</span><span style="color: #c678dd;">(</span><span style="color: #98be65;">"$.name"</span><span style="color: #c678dd;">)</span>.<span style="color: #c678dd;">value</span><span style="color: #c678dd;">(</span><span style="color: #98be65;">"Updated"</span><span style="color: #c678dd;">)</span><span style="color: #fff0f5;">)</span>;
+
+mockMvc.<span style="color: #c678dd;">perform</span><span style="color: #fff0f5;">(</span><span style="color: #c678dd;">delete</span><span style="color: #c678dd;">(</span><span style="color: #98be65;">"/api/items/1"</span><span style="color: #c678dd;">)</span><span style="color: #fff0f5;">)</span>
+    .<span style="color: #c678dd;">andExpect</span><span style="color: #fff0f5;">(</span><span style="color: #c678dd;">status</span><span style="color: #c678dd;">()</span>.<span style="color: #c678dd;">isNoContent</span><span style="color: #c678dd;">()</span><span style="color: #fff0f5;">)</span>;
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orgd857030" class="outline-2">
+<h2 id="orgd857030"><span class="section-number-2">3.</span> RestTemplate</h2>
+<div class="outline-text-2" id="text-3">
+</div>
+<div id="outline-container-org243a50b" class="outline-3">
+<h3 id="org243a50b"><span class="section-number-3">3.1.</span> Car Example</h3>
+<div class="outline-text-3" id="text-3-1">
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #bbc2cf;">@</span><span style="color: #51afef; font-weight: bold;">SpringBootTest</span><span style="color: #fff0f5;">(</span>webEnvironment = SpringBootTest.WebEnvironment.<span style="color: #a9a1e1;">RANDOM_PORT</span><span style="color: #fff0f5;">)</span>
+<span style="color: #5B6268;">// Not necessary to use random port</span>
+<span style="color: #51afef; font-style: italic;">class</span> <span style="color: #ECBE7B;">CarAppIT</span> <span style="color: #fff0f5;">{</span>
+
+    <span style="color: #5B6268;">// or @LocalServerPort</span>
+    <span style="color: #bbc2cf;">@</span><span style="color: #51afef; font-weight: bold;">Value</span><span style="color: #c678dd;">(</span>value=<span style="color: #98be65;">"${local.server.port}"</span><span style="color: #c678dd;">)</span>
+    <span style="color: #51afef; font-style: italic;">private</span> <span style="color: #ECBE7B;">int</span> port;
+    <span style="color: #5B6268;">//To Do Define instance variables</span>
+    <span style="color: #ECBE7B;">TestRestTemplate</span> restTemplate;
+    <span style="color: #ECBE7B;">HttpHeaders</span> headers;
+
+
+    <span style="color: #bbc2cf;">@</span><span style="color: #51afef; font-weight: bold;">BeforeEach</span>
+    <span style="color: #51afef; font-style: italic;">public</span> <span style="color: #ECBE7B;">void</span> <span style="color: #c678dd;">setup</span><span style="color: #c678dd;">()</span> <span style="color: #c678dd;">{</span>
+        <span style="color: #5B6268;">//TO DO</span>
+        restTemplate =<span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">TestRestTemplate</span><span style="color: #98be65;">()</span>;
+        headers = <span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">HttpHeaders</span><span style="color: #98be65;">()</span>;
+        headers.<span style="color: #c678dd;">setContentType</span><span style="color: #98be65;">(</span>MediaType.<span style="color: #a9a1e1;">APPLICATION_JSON</span><span style="color: #98be65;">)</span>;
+    <span style="color: #c678dd;">}</span>
+
+    <span style="color: #bbc2cf;">@</span><span style="color: #51afef; font-weight: bold;">Test</span>
+    <span style="color: #bbc2cf;">@</span><span style="color: #51afef; font-weight: bold;">Sql</span><span style="color: #c678dd;">(</span><span style="color: #98be65;">{</span><span style="color: #98be65;">"/import.sql"</span><span style="color: #98be65;">}</span><span style="color: #c678dd;">)</span>
+    <span style="color: #51afef; font-style: italic;">public</span> <span style="color: #ECBE7B;">void</span> <span style="color: #c678dd;">addCarSuccessIntTest</span><span style="color: #c678dd;">()</span>
+    <span style="color: #c678dd;">{</span>
+
+        <span style="color: #5B6268;">//use restTeplate to post a car object with valid values</span>
+        <span style="color: #ECBE7B;">Car</span> car = <span style="color: #c678dd;">buildCar</span><span style="color: #98be65;">()</span>;
+        <span style="color: #ECBE7B;">HttpEntity</span><span style="color: #98be65;">&lt;</span><span style="color: #ECBE7B;">Car</span><span style="color: #98be65;">&gt;</span> request = <span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">HttpEntity</span><span style="color: #98be65;">&lt;&gt;(</span>car,headers<span style="color: #98be65;">)</span>;
+        <span style="color: #5B6268;">//test that  HttpStatus.CREATED is returned</span>
+        <span style="color: #ECBE7B;">ResponseEntity</span><span style="color: #98be65;">&lt;</span><span style="color: #ECBE7B;">String</span><span style="color: #98be65;">&gt;</span>     response =      restTemplate.<span style="color: #c678dd;">postForEntity</span><span style="color: #98be65;">(</span><span style="color: #98be65;">"http://localhost:"</span>+port+<span style="color: #98be65;">"/api/cars"</span>, request, <span style="color: #ECBE7B;">String</span>.<span style="color: #51afef; font-style: italic;">class</span><span style="color: #98be65;">)</span>;
+        <span style="color: #c678dd;">assertEquals</span><span style="color: #98be65;">(</span>HttpStatus.<span style="color: #a9a1e1;">CREATED</span>, response.<span style="color: #c678dd;">getStatusCode</span><span style="color: #00bfff;">()</span><span style="color: #98be65;">)</span>;
+    <span style="color: #c678dd;">}</span>
+
+    <span style="color: #bbc2cf;">@</span><span style="color: #51afef; font-weight: bold;">Test</span>
+    <span style="color: #bbc2cf;">@</span><span style="color: #51afef; font-weight: bold;">Sql</span><span style="color: #c678dd;">(</span><span style="color: #98be65;">{</span><span style="color: #98be65;">"/import.sql"</span><span style="color: #98be65;">}</span><span style="color: #c678dd;">)</span>
+    <span style="color: #51afef; font-style: italic;">public</span> <span style="color: #ECBE7B;">void</span> <span style="color: #c678dd;">addCarInvalidYearTest</span><span style="color: #c678dd;">()</span>
+    <span style="color: #c678dd;">{</span>
+        <span style="color: #ECBE7B;">Car</span> car = <span style="color: #c678dd;">buildCar</span><span style="color: #98be65;">()</span>;
+        car.<span style="color: #c678dd;">setYear</span><span style="color: #98be65;">(</span><span style="color: #da8548; font-weight: bold;">2014</span><span style="color: #98be65;">)</span>;
+        <span style="color: #5B6268;">//use restTeplate to post a car object with year too low e.g. 2014</span>
+        <span style="color: #ECBE7B;">HttpEntity</span><span style="color: #98be65;">&lt;</span><span style="color: #ECBE7B;">Car</span><span style="color: #98be65;">&gt;</span> request = <span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">HttpEntity</span><span style="color: #98be65;">&lt;&gt;(</span>car,headers<span style="color: #98be65;">)</span>;
+        <span style="color: #ECBE7B;">ResponseEntity</span><span style="color: #98be65;">&lt;</span><span style="color: #ECBE7B;">String</span><span style="color: #98be65;">&gt;</span>     response =      restTemplate.<span style="color: #c678dd;">postForEntity</span><span style="color: #98be65;">(</span><span style="color: #98be65;">"http://localhost:"</span>+port+<span style="color: #98be65;">"/api/cars"</span>, request, <span style="color: #ECBE7B;">String</span>.<span style="color: #51afef; font-style: italic;">class</span><span style="color: #98be65;">)</span>;
+        <span style="color: #c678dd;">assertEquals</span><span style="color: #98be65;">(</span>HttpStatus.<span style="color: #a9a1e1;">BAD_REQUEST</span>, response.<span style="color: #c678dd;">getStatusCode</span><span style="color: #00bfff;">()</span><span style="color: #98be65;">)</span>;
+        <span style="color: #5B6268;">//test that  HttpStatus.BAD_REQUEST is returned</span>
+    <span style="color: #c678dd;">}</span>
+
+    <span style="color: #bbc2cf;">@</span><span style="color: #51afef; font-weight: bold;">Test</span>
+    <span style="color: #bbc2cf;">@</span><span style="color: #51afef; font-weight: bold;">Sql</span><span style="color: #c678dd;">(</span><span style="color: #98be65;">{</span><span style="color: #98be65;">"/import.sql"</span><span style="color: #98be65;">}</span><span style="color: #c678dd;">)</span>
+
+    <span style="color: #51afef; font-style: italic;">public</span> <span style="color: #ECBE7B;">void</span> <span style="color: #c678dd;">addCarInvalidMakeTest</span><span style="color: #c678dd;">()</span>
+    <span style="color: #c678dd;">{</span>
+        <span style="color: #5B6268;">//use restTeplate to post a car object with invalid make e.g. "Ford"</span>
+        <span style="color: #5B6268;">//test that  HttpStatus.BAD_REQUEST is returned</span>
+        <span style="color: #ECBE7B;">Car</span> car = <span style="color: #c678dd;">buildCar</span><span style="color: #98be65;">()</span>;
+        car.<span style="color: #c678dd;">setMake</span><span style="color: #98be65;">(</span><span style="color: #98be65;">"Ford"</span><span style="color: #98be65;">)</span>;
+        <span style="color: #ECBE7B;">HttpEntity</span><span style="color: #98be65;">&lt;</span><span style="color: #ECBE7B;">Car</span><span style="color: #98be65;">&gt;</span> request = <span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">HttpEntity</span><span style="color: #98be65;">&lt;&gt;(</span>car,headers<span style="color: #98be65;">)</span>;
+        <span style="color: #ECBE7B;">ResponseEntity</span><span style="color: #98be65;">&lt;</span><span style="color: #ECBE7B;">String</span><span style="color: #98be65;">&gt;</span>     response =      restTemplate.<span style="color: #c678dd;">postForEntity</span><span style="color: #98be65;">(</span><span style="color: #98be65;">"http://localhost:"</span>+port+<span style="color: #98be65;">"/api/cars"</span>, request, <span style="color: #ECBE7B;">String</span>.<span style="color: #51afef; font-style: italic;">class</span><span style="color: #98be65;">)</span>;
+        <span style="color: #c678dd;">assertEquals</span><span style="color: #98be65;">(</span>HttpStatus.<span style="color: #a9a1e1;">BAD_REQUEST</span>, response.<span style="color: #c678dd;">getStatusCode</span><span style="color: #00bfff;">()</span><span style="color: #98be65;">)</span>;
+
+    <span style="color: #c678dd;">}</span>
+
+    <span style="color: #bbc2cf;">@</span><span style="color: #51afef; font-weight: bold;">Test</span>
+    <span style="color: #bbc2cf;">@</span><span style="color: #51afef; font-weight: bold;">Sql</span><span style="color: #c678dd;">(</span><span style="color: #98be65;">{</span><span style="color: #98be65;">"/import.sql"</span><span style="color: #98be65;">}</span><span style="color: #c678dd;">)</span>
+    <span style="color: #51afef; font-style: italic;">public</span> <span style="color: #ECBE7B;">void</span> <span style="color: #c678dd;">addCarInvalidModelTest</span><span style="color: #c678dd;">()</span>
+    <span style="color: #c678dd;">{</span>
+        <span style="color: #5B6268;">//use restTeplate to post a car object with valid make but invalid model e.g. C180</span>
+        <span style="color: #5B6268;">//test that  HttpStatus.BAD_REQUEST is returned</span>
+        <span style="color: #ECBE7B;">Car</span> car = <span style="color: #c678dd;">buildCar</span><span style="color: #98be65;">()</span>;
+        car.<span style="color: #c678dd;">setMake</span><span style="color: #98be65;">(</span><span style="color: #98be65;">"C180"</span><span style="color: #98be65;">)</span>;
+        <span style="color: #ECBE7B;">HttpEntity</span><span style="color: #98be65;">&lt;</span><span style="color: #ECBE7B;">Car</span><span style="color: #98be65;">&gt;</span> request = <span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">HttpEntity</span><span style="color: #98be65;">&lt;&gt;(</span>car,headers<span style="color: #98be65;">)</span>;
+        <span style="color: #ECBE7B;">ResponseEntity</span><span style="color: #98be65;">&lt;</span><span style="color: #ECBE7B;">String</span><span style="color: #98be65;">&gt;</span>     response =      restTemplate.<span style="color: #c678dd;">postForEntity</span><span style="color: #98be65;">(</span><span style="color: #98be65;">"http://localhost:"</span>+port+<span style="color: #98be65;">"/api/cars"</span>, request, <span style="color: #ECBE7B;">String</span>.<span style="color: #51afef; font-style: italic;">class</span><span style="color: #98be65;">)</span>;
+        <span style="color: #c678dd;">assertEquals</span><span style="color: #98be65;">(</span>HttpStatus.<span style="color: #a9a1e1;">BAD_REQUEST</span>, response.<span style="color: #c678dd;">getStatusCode</span><span style="color: #00bfff;">()</span><span style="color: #98be65;">)</span>;
+
+    <span style="color: #c678dd;">}</span>
+
+
+
+    <span style="color: #ECBE7B;">Car</span> <span style="color: #c678dd;">buildCar</span><span style="color: #c678dd;">()</span> <span style="color: #c678dd;">{</span>
+        <span style="color: #ECBE7B;">Car</span> car = <span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">Car</span><span style="color: #98be65;">()</span>;
+        car.<span style="color: #c678dd;">setMake</span><span style="color: #98be65;">(</span><span style="color: #98be65;">"Mercedes"</span><span style="color: #98be65;">)</span>;
+        car.<span style="color: #c678dd;">setModel</span><span style="color: #98be65;">(</span><span style="color: #98be65;">"E220"</span><span style="color: #98be65;">)</span>;
+        car.<span style="color: #c678dd;">setYear</span><span style="color: #98be65;">(</span><span style="color: #da8548; font-weight: bold;">2021</span><span style="color: #98be65;">)</span>;
+        car.<span style="color: #c678dd;">setColor</span><span style="color: #98be65;">(</span><span style="color: #98be65;">"blue"</span><span style="color: #98be65;">)</span>;
+        <span style="color: #51afef; font-style: italic;">return</span> car;
+    <span style="color: #c678dd;">}</span>
+
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orga023856" class="outline-3">
+<h3 id="orga023856"><span class="section-number-3">3.2.</span> GET example</h3>
+<div class="outline-text-3" id="text-3-2">
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #51afef; font-style: italic;">import</span> org.springframework.stereotype.Service;
+<span style="color: #51afef; font-style: italic;">import</span> org.springframework.web.client.RestTemplate;
+
+<span style="color: #bbc2cf;">@</span><span style="color: #51afef; font-weight: bold;">Service</span>
+<span style="color: #51afef; font-style: italic;">public</span> <span style="color: #51afef; font-style: italic;">class</span> <span style="color: #ECBE7B;">UserService</span> <span style="color: #fff0f5;">{</span>
+
+    <span style="color: #51afef; font-style: italic;">private</span> <span style="color: #51afef; font-style: italic;">final</span> <span style="color: #ECBE7B;">RestTemplate</span> restTemplate;
+
+    <span style="color: #51afef; font-style: italic;">public</span> <span style="color: #ECBE7B;">UserService</span><span style="color: #c678dd;">(</span><span style="color: #ECBE7B;">RestTemplate</span> restTemplate<span style="color: #c678dd;">)</span> <span style="color: #c678dd;">{</span>
+        <span style="color: #51afef; font-style: italic;">this</span>.restTemplate = restTemplate;
+    <span style="color: #c678dd;">}</span>
+
+    <span style="color: #51afef; font-style: italic;">public</span> <span style="color: #ECBE7B;">UserDto</span> <span style="color: #c678dd;">getUserById</span><span style="color: #c678dd;">(</span><span style="color: #ECBE7B;">Long</span> id<span style="color: #c678dd;">)</span> <span style="color: #c678dd;">{</span>
+        <span style="color: #ECBE7B;">String</span> url = <span style="color: #98be65;">"https://jsonplaceholder.typicode.com/users/{id}"</span>;
+        <span style="color: #51afef; font-style: italic;">return</span> restTemplate.<span style="color: #c678dd;">getForObject</span><span style="color: #98be65;">(</span>url, <span style="color: #ECBE7B;">UserDto</span>.<span style="color: #51afef; font-style: italic;">class</span>, id<span style="color: #98be65;">)</span>;
+    <span style="color: #c678dd;">}</span>
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org750e7ad" class="outline-3">
+<h3 id="org750e7ad"><span class="section-number-3">3.3.</span> POST example</h3>
+<div class="outline-text-3" id="text-3-3">
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #51afef; font-style: italic;">import</span> org.springframework.stereotype.Service;
+<span style="color: #51afef; font-style: italic;">import</span> org.springframework.web.client.RestTemplate;
+
+<span style="color: #bbc2cf;">@</span><span style="color: #51afef; font-weight: bold;">Service</span>
+<span style="color: #51afef; font-style: italic;">public</span> <span style="color: #51afef; font-style: italic;">class</span> <span style="color: #ECBE7B;">CreatePostService</span> <span style="color: #fff0f5;">{</span>
+
+    <span style="color: #51afef; font-style: italic;">private</span> <span style="color: #51afef; font-style: italic;">final</span> <span style="color: #ECBE7B;">RestTemplate</span> restTemplate;
+
+    <span style="color: #51afef; font-style: italic;">public</span> <span style="color: #ECBE7B;">CreatePostService</span><span style="color: #c678dd;">(</span><span style="color: #ECBE7B;">RestTemplate</span> restTemplate<span style="color: #c678dd;">)</span> <span style="color: #c678dd;">{</span>
+        <span style="color: #51afef; font-style: italic;">this</span>.restTemplate = restTemplate;
+    <span style="color: #c678dd;">}</span>
+
+    <span style="color: #51afef; font-style: italic;">public</span> <span style="color: #ECBE7B;">PostResponse</span> <span style="color: #c678dd;">createPost</span><span style="color: #c678dd;">()</span> <span style="color: #c678dd;">{</span>
+        <span style="color: #ECBE7B;">String</span> url = <span style="color: #98be65;">"https://jsonplaceholder.typicode.com/posts"</span>;
+
+        <span style="color: #ECBE7B;">PostRequest</span> request = <span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">PostRequest</span><span style="color: #98be65;">()</span>;
+        request.<span style="color: #c678dd;">setTitle</span><span style="color: #98be65;">(</span><span style="color: #98be65;">"Hello"</span><span style="color: #98be65;">)</span>;
+        request.<span style="color: #c678dd;">setBody</span><span style="color: #98be65;">(</span><span style="color: #98be65;">"Created from Spring Boot"</span><span style="color: #98be65;">)</span>;
+        request.<span style="color: #c678dd;">setUserId</span><span style="color: #98be65;">(</span><span style="color: #da8548; font-weight: bold;">1L</span><span style="color: #98be65;">)</span>;
+
+        <span style="color: #51afef; font-style: italic;">return</span> restTemplate.<span style="color: #c678dd;">postForObject</span><span style="color: #98be65;">(</span>url, request, <span style="color: #ECBE7B;">PostResponse</span>.<span style="color: #51afef; font-style: italic;">class</span><span style="color: #98be65;">)</span>;
+    <span style="color: #c678dd;">}</span>
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orga69eab5" class="outline-3">
+<h3 id="orga69eab5"><span class="section-number-3">3.4.</span> Adding headers</h3>
+<div class="outline-text-3" id="text-3-4">
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #51afef; font-style: italic;">import</span> org.springframework.http.*;
+<span style="color: #51afef; font-style: italic;">import</span> org.springframework.stereotype.Service;
+<span style="color: #51afef; font-style: italic;">import</span> org.springframework.web.client.RestTemplate;
+
+<span style="color: #bbc2cf;">@</span><span style="color: #51afef; font-weight: bold;">Service</span>
+<span style="color: #51afef; font-style: italic;">public</span> <span style="color: #51afef; font-style: italic;">class</span> <span style="color: #ECBE7B;">HeaderExampleService</span> <span style="color: #fff0f5;">{</span>
+
+    <span style="color: #51afef; font-style: italic;">private</span> <span style="color: #51afef; font-style: italic;">final</span> <span style="color: #ECBE7B;">RestTemplate</span> restTemplate;
+
+    <span style="color: #51afef; font-style: italic;">public</span> <span style="color: #ECBE7B;">HeaderExampleService</span><span style="color: #c678dd;">(</span><span style="color: #ECBE7B;">RestTemplate</span> restTemplate<span style="color: #c678dd;">)</span> <span style="color: #c678dd;">{</span>
+        <span style="color: #51afef; font-style: italic;">this</span>.restTemplate = restTemplate;
+    <span style="color: #c678dd;">}</span>
+
+    <span style="color: #51afef; font-style: italic;">public</span> <span style="color: #ECBE7B;">String</span> <span style="color: #c678dd;">getWithHeaders</span><span style="color: #c678dd;">()</span> <span style="color: #c678dd;">{</span>
+        <span style="color: #ECBE7B;">String</span> url = <span style="color: #98be65;">"https://api.example.com/data"</span>;
+
+        <span style="color: #ECBE7B;">HttpHeaders</span> headers = <span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">HttpHeaders</span><span style="color: #98be65;">()</span>;
+        headers.<span style="color: #c678dd;">setBearerAuth</span><span style="color: #98be65;">(</span><span style="color: #98be65;">"your-token-here"</span><span style="color: #98be65;">)</span>;
+        headers.<span style="color: #c678dd;">setContentType</span><span style="color: #98be65;">(</span>MediaType.<span style="color: #a9a1e1;">APPLICATION_JSON</span><span style="color: #98be65;">)</span>;
+
+        <span style="color: #ECBE7B;">HttpEntity</span><span style="color: #98be65;">&lt;</span><span style="color: #ECBE7B;">Void</span><span style="color: #98be65;">&gt;</span> entity = <span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">HttpEntity</span><span style="color: #98be65;">&lt;&gt;(</span>headers<span style="color: #98be65;">)</span>;
+        <span style="color: #5B6268;">// or when PUTting HttpEntity&lt;SomeObj&gt; entity = new HttpEntity&lt;&gt;(somObj, headers);</span>
+
+        <span style="color: #ECBE7B;">ResponseEntity</span><span style="color: #98be65;">&lt;</span><span style="color: #ECBE7B;">String</span><span style="color: #98be65;">&gt;</span> response = restTemplate.<span style="color: #c678dd;">exchange</span><span style="color: #98be65;">(</span>
+                url,
+                HttpMethod.<span style="color: #a9a1e1;">GET</span>,
+                entity,
+                <span style="color: #ECBE7B;">String</span>.<span style="color: #51afef; font-style: italic;">class</span>
+        <span style="color: #98be65;">)</span>;
+
+        <span style="color: #51afef; font-style: italic;">return</span> response.<span style="color: #c678dd;">getBody</span><span style="color: #98be65;">()</span>;
+    <span style="color: #c678dd;">}</span>
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org7f7fe0c" class="outline-3">
+<h3 id="org7f7fe0c"><span class="section-number-3">3.5.</span> PUT example</h3>
+<div class="outline-text-3" id="text-3-5">
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #51afef; font-style: italic;">import</span> org.springframework.http.HttpEntity;
+<span style="color: #51afef; font-style: italic;">import</span> org.springframework.http.HttpMethod;
+<span style="color: #51afef; font-style: italic;">import</span> org.springframework.http.ResponseEntity;
+<span style="color: #51afef; font-style: italic;">import</span> org.springframework.stereotype.Service;
+<span style="color: #51afef; font-style: italic;">import</span> org.springframework.web.client.RestTemplate;
+
+<span style="color: #bbc2cf;">@</span><span style="color: #51afef; font-weight: bold;">Service</span>
+<span style="color: #51afef; font-style: italic;">public</span> <span style="color: #51afef; font-style: italic;">class</span> <span style="color: #ECBE7B;">UpdateUserService</span> <span style="color: #fff0f5;">{</span>
+
+    <span style="color: #51afef; font-style: italic;">private</span> <span style="color: #51afef; font-style: italic;">final</span> <span style="color: #ECBE7B;">RestTemplate</span> restTemplate;
+
+    <span style="color: #51afef; font-style: italic;">public</span> <span style="color: #ECBE7B;">UpdateUserService</span><span style="color: #c678dd;">(</span><span style="color: #ECBE7B;">RestTemplate</span> restTemplate<span style="color: #c678dd;">)</span> <span style="color: #c678dd;">{</span>
+        <span style="color: #51afef; font-style: italic;">this</span>.restTemplate = restTemplate;
+    <span style="color: #c678dd;">}</span>
+
+    <span style="color: #51afef; font-style: italic;">public</span> <span style="color: #ECBE7B;">void</span> <span style="color: #c678dd;">updateUser</span><span style="color: #c678dd;">(</span><span style="color: #ECBE7B;">Long</span> id<span style="color: #c678dd;">)</span> <span style="color: #c678dd;">{</span>
+        <span style="color: #ECBE7B;">String</span> url = <span style="color: #98be65;">"https://api.example.com/users/{id}"</span>;
+
+        <span style="color: #ECBE7B;">UserDto</span> request = <span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">UserDto</span><span style="color: #98be65;">()</span>;
+        request.<span style="color: #c678dd;">setName</span><span style="color: #98be65;">(</span><span style="color: #98be65;">"Updated Name"</span><span style="color: #98be65;">)</span>;
+        request.<span style="color: #c678dd;">setEmail</span><span style="color: #98be65;">(</span><span style="color: #98be65;">"updated@example.com"</span><span style="color: #98be65;">)</span>;
+
+        <span style="color: #ECBE7B;">HttpEntity</span><span style="color: #98be65;">&lt;</span><span style="color: #ECBE7B;">UserDto</span><span style="color: #98be65;">&gt;</span> entity = <span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">HttpEntity</span><span style="color: #98be65;">&lt;&gt;(</span>request<span style="color: #98be65;">)</span>;
+
+        <span style="color: #ECBE7B;">ResponseEntity</span><span style="color: #98be65;">&lt;</span><span style="color: #ECBE7B;">Void</span><span style="color: #98be65;">&gt;</span> response = restTemplate.<span style="color: #c678dd;">exchange</span><span style="color: #98be65;">(</span>
+                url,
+                HttpMethod.<span style="color: #a9a1e1;">PUT</span>,
+                entity,
+                <span style="color: #ECBE7B;">Void</span>.<span style="color: #51afef; font-style: italic;">class</span>,
+                id
+        <span style="color: #98be65;">)</span>;
+
+        System.out.<span style="color: #c678dd;">println</span><span style="color: #98be65;">(</span>response.<span style="color: #c678dd;">getStatusCode</span><span style="color: #00bfff;">()</span><span style="color: #98be65;">)</span>;
+    <span style="color: #c678dd;">}</span>
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgb080bca" class="outline-3">
+<h3 id="orgb080bca"><span class="section-number-3">3.6.</span> DELETE example</h3>
+<div class="outline-text-3" id="text-3-6">
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #51afef; font-style: italic;">import</span> org.springframework.stereotype.Service;
+<span style="color: #51afef; font-style: italic;">import</span> org.springframework.web.client.RestTemplate;
+
+<span style="color: #bbc2cf;">@</span><span style="color: #51afef; font-weight: bold;">Service</span>
+<span style="color: #51afef; font-style: italic;">public</span> <span style="color: #51afef; font-style: italic;">class</span> <span style="color: #ECBE7B;">DeleteUserService</span> <span style="color: #fff0f5;">{</span>
+
+    <span style="color: #51afef; font-style: italic;">private</span> <span style="color: #51afef; font-style: italic;">final</span> <span style="color: #ECBE7B;">RestTemplate</span> restTemplate;
+
+    <span style="color: #51afef; font-style: italic;">public</span> <span style="color: #ECBE7B;">DeleteUserService</span><span style="color: #c678dd;">(</span><span style="color: #ECBE7B;">RestTemplate</span> restTemplate<span style="color: #c678dd;">)</span> <span style="color: #c678dd;">{</span>
+        <span style="color: #51afef; font-style: italic;">this</span>.restTemplate = restTemplate;
+    <span style="color: #c678dd;">}</span>
+
+    <span style="color: #51afef; font-style: italic;">public</span> <span style="color: #ECBE7B;">void</span> <span style="color: #c678dd;">deleteUser</span><span style="color: #c678dd;">(</span><span style="color: #ECBE7B;">Long</span> id<span style="color: #c678dd;">)</span> <span style="color: #c678dd;">{</span>
+        <span style="color: #ECBE7B;">String</span> url = <span style="color: #98be65;">"https://api.example.com/users/{id}"</span>;
+        restTemplate.<span style="color: #c678dd;">delete</span><span style="color: #98be65;">(</span>url, id<span style="color: #98be65;">)</span>;
+    <span style="color: #c678dd;">}</span>
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org5e15ed1" class="outline-3">
+<h3 id="org5e15ed1"><span class="section-number-3">3.7.</span> Small Cheatsheet</h3>
+<div class="outline-text-3" id="text-3-7">
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #ECBE7B;">ResponseEntity</span><span style="color: #fff0f5;">&lt;</span><span style="color: #ECBE7B;">String</span><span style="color: #fff0f5;">&gt;</span> getResp =
+        rest.<span style="color: #c678dd;">getForEntity</span><span style="color: #fff0f5;">(</span><span style="color: #98be65;">"/api/users/1"</span>, <span style="color: #ECBE7B;">String</span>.<span style="color: #51afef; font-style: italic;">class</span><span style="color: #fff0f5;">)</span>;
+<span style="color: #c678dd;">assertThat</span><span style="color: #fff0f5;">(</span>getResp.<span style="color: #c678dd;">getStatusCode</span><span style="color: #c678dd;">()</span><span style="color: #fff0f5;">)</span>.<span style="color: #c678dd;">isEqualTo</span><span style="color: #fff0f5;">(</span>HttpStatus.<span style="color: #a9a1e1;">OK</span><span style="color: #fff0f5;">)</span>;
+<span style="color: #c678dd;">assertThat</span><span style="color: #fff0f5;">(</span>getResp.<span style="color: #c678dd;">getBody</span><span style="color: #c678dd;">()</span><span style="color: #fff0f5;">)</span>.<span style="color: #c678dd;">contains</span><span style="color: #fff0f5;">(</span><span style="color: #98be65;">"\"id\":1"</span><span style="color: #fff0f5;">)</span>;
+
+<span style="color: #ECBE7B;">HttpHeaders</span> headers = <span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">HttpHeaders</span><span style="color: #fff0f5;">()</span>;
+headers.<span style="color: #c678dd;">setContentType</span><span style="color: #fff0f5;">(</span>MediaType.<span style="color: #a9a1e1;">APPLICATION_JSON</span><span style="color: #fff0f5;">)</span>;
+headers.<span style="color: #c678dd;">setAccept</span><span style="color: #fff0f5;">(</span>List.<span style="color: #c678dd;">of</span><span style="color: #c678dd;">(</span>MediaType.<span style="color: #a9a1e1;">APPLICATION_JSON</span><span style="color: #c678dd;">)</span><span style="color: #fff0f5;">)</span>;
+
+<span style="color: #ECBE7B;">HttpEntity</span><span style="color: #fff0f5;">&lt;</span><span style="color: #ECBE7B;">String</span><span style="color: #fff0f5;">&gt;</span> postReq = <span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">HttpEntity</span><span style="color: #fff0f5;">&lt;&gt;(</span><span style="color: #98be65;">"""
+    </span><span style="color: #c678dd;">{</span><span style="color: #98be65;">"name":"Charlie","email":"charlie@example.com"</span><span style="color: #c678dd;">}</span><span style="color: #98be65;">
+"""</span>, headers<span style="color: #fff0f5;">)</span>;
+
+<span style="color: #ECBE7B;">ResponseEntity</span><span style="color: #fff0f5;">&lt;</span><span style="color: #ECBE7B;">String</span><span style="color: #fff0f5;">&gt;</span> postResp =
+        rest.<span style="color: #c678dd;">postForEntity</span><span style="color: #fff0f5;">(</span><span style="color: #98be65;">"/api/users"</span>, postReq, <span style="color: #ECBE7B;">String</span>.<span style="color: #51afef; font-style: italic;">class</span><span style="color: #fff0f5;">)</span>;
+<span style="color: #c678dd;">assertThat</span><span style="color: #fff0f5;">(</span>postResp.<span style="color: #c678dd;">getStatusCode</span><span style="color: #c678dd;">()</span><span style="color: #fff0f5;">)</span>.<span style="color: #c678dd;">isEqualTo</span><span style="color: #fff0f5;">(</span>HttpStatus.<span style="color: #a9a1e1;">CREATED</span><span style="color: #fff0f5;">)</span>;
+<span style="color: #c678dd;">assertThat</span><span style="color: #fff0f5;">(</span>postResp.<span style="color: #c678dd;">getBody</span><span style="color: #c678dd;">()</span><span style="color: #fff0f5;">)</span>.<span style="color: #c678dd;">contains</span><span style="color: #fff0f5;">(</span><span style="color: #98be65;">"\"name\":\"Charlie\""</span><span style="color: #fff0f5;">)</span>;
+
+<span style="color: #ECBE7B;">HttpEntity</span><span style="color: #fff0f5;">&lt;</span><span style="color: #ECBE7B;">String</span><span style="color: #fff0f5;">&gt;</span> putReq = <span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">HttpEntity</span><span style="color: #fff0f5;">&lt;&gt;(</span><span style="color: #98be65;">"""
+    </span><span style="color: #c678dd;">{</span><span style="color: #98be65;">"name":"Updated","email":"updated@example.com"</span><span style="color: #c678dd;">}</span><span style="color: #98be65;">
+"""</span>, headers<span style="color: #fff0f5;">)</span>;
+
+<span style="color: #ECBE7B;">ResponseEntity</span><span style="color: #fff0f5;">&lt;</span><span style="color: #ECBE7B;">String</span><span style="color: #fff0f5;">&gt;</span> putResp = rest.<span style="color: #c678dd;">exchange</span><span style="color: #fff0f5;">(</span>
+        <span style="color: #98be65;">"/api/users/1"</span>, HttpMethod.<span style="color: #a9a1e1;">PUT</span>, putReq, <span style="color: #ECBE7B;">String</span>.<span style="color: #51afef; font-style: italic;">class</span><span style="color: #fff0f5;">)</span>;
+<span style="color: #c678dd;">assertThat</span><span style="color: #fff0f5;">(</span>putResp.<span style="color: #c678dd;">getStatusCode</span><span style="color: #c678dd;">()</span><span style="color: #fff0f5;">)</span>.<span style="color: #c678dd;">isEqualTo</span><span style="color: #fff0f5;">(</span>HttpStatus.<span style="color: #a9a1e1;">OK</span><span style="color: #fff0f5;">)</span>;
+
+<span style="color: #ECBE7B;">ResponseEntity</span><span style="color: #fff0f5;">&lt;</span><span style="color: #ECBE7B;">Void</span><span style="color: #fff0f5;">&gt;</span> deleteResp = rest.<span style="color: #c678dd;">exchange</span><span style="color: #fff0f5;">(</span>
+        <span style="color: #98be65;">"/api/users/1"</span>, HttpMethod.<span style="color: #a9a1e1;">DELETE</span>, <span style="color: #a9a1e1;">null</span>, <span style="color: #ECBE7B;">Void</span>.<span style="color: #51afef; font-style: italic;">class</span><span style="color: #fff0f5;">)</span>;
+<span style="color: #c678dd;">assertThat</span><span style="color: #fff0f5;">(</span>deleteResp.<span style="color: #c678dd;">getStatusCode</span><span style="color: #c678dd;">()</span><span style="color: #fff0f5;">)</span>.<span style="color: #c678dd;">isEqualTo</span><span style="color: #fff0f5;">(</span>HttpStatus.<span style="color: #a9a1e1;">NO_CONTENT</span><span style="color: #fff0f5;">)</span>;
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org861646e" class="outline-3">
+<h3 id="org861646e"><span class="section-number-3">3.8.</span> MIME Type and Body Checks</h3>
+<div class="outline-text-3" id="text-3-8">
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #c678dd;">assertThat</span><span style="color: #fff0f5;">(</span>response.<span style="color: #c678dd;">getHeaders</span><span style="color: #c678dd;">()</span>.<span style="color: #c678dd;">getContentType</span><span style="color: #c678dd;">()</span><span style="color: #fff0f5;">)</span>
+        .<span style="color: #c678dd;">isCompatibleWith</span><span style="color: #fff0f5;">(</span>MediaType.<span style="color: #a9a1e1;">APPLICATION_JSON</span><span style="color: #fff0f5;">)</span>;
+
+<span style="color: #c678dd;">assertThat</span><span style="color: #fff0f5;">(</span>response.<span style="color: #c678dd;">getBody</span><span style="color: #c678dd;">()</span><span style="color: #fff0f5;">)</span>.<span style="color: #c678dd;">contains</span><span style="color: #fff0f5;">(</span><span style="color: #98be65;">"\"name\":\"Alice\""</span><span style="color: #fff0f5;">)</span>;
+<span style="color: #c678dd;">assertThat</span><span style="color: #fff0f5;">(</span>response.<span style="color: #c678dd;">getBody</span><span style="color: #c678dd;">()</span><span style="color: #fff0f5;">)</span>.<span style="color: #c678dd;">contains</span><span style="color: #fff0f5;">(</span><span style="color: #98be65;">"\"email\":\"alice@example.com\""</span><span style="color: #fff0f5;">)</span>;
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgd14edc7" class="outline-3">
+<h3 id="orgd14edc7"><span class="section-number-3">3.9.</span> For DTOs</h3>
+<div class="outline-text-3" id="text-3-9">
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #ECBE7B;">ResponseEntity</span><span style="color: #fff0f5;">&lt;</span><span style="color: #ECBE7B;">UserDto</span><span style="color: #fff0f5;">&gt;</span> response =
+        rest.<span style="color: #c678dd;">getForEntity</span><span style="color: #fff0f5;">(</span><span style="color: #98be65;">"/api/users/1"</span>, <span style="color: #ECBE7B;">UserDto</span>.<span style="color: #51afef; font-style: italic;">class</span><span style="color: #fff0f5;">)</span>;
+
+<span style="color: #c678dd;">assertThat</span><span style="color: #fff0f5;">(</span>response.<span style="color: #c678dd;">getStatusCode</span><span style="color: #c678dd;">()</span><span style="color: #fff0f5;">)</span>.<span style="color: #c678dd;">isEqualTo</span><span style="color: #fff0f5;">(</span>HttpStatus.<span style="color: #a9a1e1;">OK</span><span style="color: #fff0f5;">)</span>;
+<span style="color: #c678dd;">assertThat</span><span style="color: #fff0f5;">(</span>response.<span style="color: #c678dd;">getBody</span><span style="color: #c678dd;">()</span>.<span style="color: #c678dd;">id</span><span style="color: #c678dd;">()</span><span style="color: #fff0f5;">)</span>.<span style="color: #c678dd;">isEqualTo</span><span style="color: #fff0f5;">(</span><span style="color: #da8548; font-weight: bold;">1L</span><span style="color: #fff0f5;">)</span>;
+<span style="color: #c678dd;">assertThat</span><span style="color: #fff0f5;">(</span>response.<span style="color: #c678dd;">getBody</span><span style="color: #c678dd;">()</span>.<span style="color: #c678dd;">name</span><span style="color: #c678dd;">()</span><span style="color: #fff0f5;">)</span>.<span style="color: #c678dd;">isEqualTo</span><span style="color: #fff0f5;">(</span><span style="color: #98be65;">"Alice"</span><span style="color: #fff0f5;">)</span>;
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org5bf7d85" class="outline-2">
+<h2 id="org5bf7d85"><span class="section-number-2">4.</span> Karate</h2>
+<div class="outline-text-2" id="text-4">
+</div>
+<div id="outline-container-orgf4c2077" class="outline-3">
+<h3 id="orgf4c2077"><span class="section-number-3">4.1.</span> Setup</h3>
+<div class="outline-text-3" id="text-4-1">
+<ul class="org-ul">
+<li>Dependency</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-xml"><span style="color: #bbc2cf; background-color: #131519;">&lt;</span><span style="color: #c678dd;">dependency</span><span style="color: #bbc2cf; background-color: #131519;">&gt;</span>
+  <span style="color: #bbc2cf; background-color: #131519;">&lt;</span><span style="color: #c678dd;">groupId</span><span style="color: #bbc2cf; background-color: #131519;">&gt;</span><span style="color: #bbc2cf; background-color: #131519;">com.intuit.karate</span><span style="color: #bbc2cf; background-color: #131519;">&lt;</span><span style="color: #bbc2cf; background-color: #131519;">/</span><span style="color: #c678dd;">groupId</span><span style="color: #bbc2cf; background-color: #131519;">&gt;</span>
+  <span style="color: #bbc2cf; background-color: #131519;">&lt;</span><span style="color: #c678dd;">artifactId</span><span style="color: #bbc2cf; background-color: #131519;">&gt;</span><span style="color: #bbc2cf; background-color: #131519;">karate-junit5</span><span style="color: #bbc2cf; background-color: #131519;">&lt;</span><span style="color: #bbc2cf; background-color: #131519;">/</span><span style="color: #c678dd;">artifactId</span><span style="color: #bbc2cf; background-color: #131519;">&gt;</span>
+  <span style="color: #bbc2cf; background-color: #131519;">&lt;</span><span style="color: #c678dd;">version</span><span style="color: #bbc2cf; background-color: #131519;">&gt;</span><span style="color: #bbc2cf; background-color: #131519;">1.4.1</span><span style="color: #bbc2cf; background-color: #131519;">&lt;</span><span style="color: #bbc2cf; background-color: #131519;">/</span><span style="color: #c678dd;">version</span><span style="color: #bbc2cf; background-color: #131519;">&gt;</span>
+  <span style="color: #bbc2cf; background-color: #131519;">&lt;</span><span style="color: #c678dd;">scope</span><span style="color: #bbc2cf; background-color: #131519;">&gt;</span><span style="color: #bbc2cf; background-color: #131519;">test</span><span style="color: #bbc2cf; background-color: #131519;">&lt;</span><span style="color: #bbc2cf; background-color: #131519;">/</span><span style="color: #c678dd;">scope</span><span style="color: #bbc2cf; background-color: #131519;">&gt;</span>
+<span style="color: #bbc2cf; background-color: #131519;">&lt;</span><span style="color: #bbc2cf; background-color: #131519;">/</span><span style="color: #c678dd;">dependency</span><span style="color: #bbc2cf; background-color: #131519;">&gt;</span>
+</pre>
+</div>
+<ul class="org-ul">
+<li>Under <code>src/test/resources/features</code>, add an <code>api-test.feature</code> file</li>
+<li>Add a test runner @ <code>src/test/java/TestRunner.java</code></li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #51afef; font-style: italic;">import</span> com.intuit.karate.junit5.Karate;
+<span style="color: #51afef; font-style: italic;">class</span> <span style="color: #ECBE7B;">TestRunner</span> <span style="color: #fff0f5;">{</span>
+    <span style="color: #bbc2cf;">@</span><span style="color: #ECBE7B;">Karate</span>.Test
+        <span style="color: #ECBE7B;">Karate</span> <span style="color: #c678dd;">runTests</span><span style="color: #c678dd;">()</span> <span style="color: #c678dd;">{</span>
+        <span style="color: #51afef; font-style: italic;">return</span> Karate.<span style="color: #c678dd;">run</span><span style="color: #98be65;">(</span><span style="color: #98be65;">"classpath:features"</span><span style="color: #98be65;">)</span>;
+    <span style="color: #c678dd;">}</span>
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+<ul class="org-ul">
+<li>Run the tests with <code>mvn test</code></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org0627694" class="outline-3">
+<h3 id="org0627694"><span class="section-number-3">4.2.</span> Example test (api-test.feature)</h3>
+<div class="outline-text-3" id="text-4-2">
+<div class="org-src-container">
+<pre class="src src-gherkin">Feature: API Testing
+
+Scenario: Verify user endpoint
+
+Given url <span style="color: #98be65;">'https://reqres.in/api/users/2'</span>
+When method GET
+Then status <span style="color: #da8548; font-weight: bold;">200</span>
+And match response.data.id == <span style="color: #da8548; font-weight: bold;">2</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org2b44814" class="outline-3">
+<h3 id="org2b44814"><span class="section-number-3">4.3.</span> More example tests</h3>
+<div class="outline-text-3" id="text-4-3">
+<ul class="org-ul">
+<li>Get books</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-gherkin">Feature: Book API tests
+
+Background:
+  * url baseUrl
+
+Scenario: Get one book
+  Given path <span style="color: #98be65;">'api'</span>, <span style="color: #98be65;">'books'</span>, <span style="color: #da8548; font-weight: bold;">1</span>
+  When method get
+  Then status <span style="color: #da8548; font-weight: bold;">200</span>
+  And match response ==
+    <span style="color: #98be65;">"""
+    {
+      id: 1,
+      title: 'Spring in Action'
+    }
+    """</span>
+</pre>
+</div>
+<ul class="org-ul">
+<li>Post book</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-gherkin">Scenario: Create a book
+  * <span style="color: #51afef; font-style: italic;">def</span> newBook =
+    <span style="color: #98be65;">"""
+    {
+      id: 2,
+      title: 'Karate for APIs'
+    }
+    """</span>
+
+  Given path <span style="color: #98be65;">'api'</span>, <span style="color: #98be65;">'books'</span>
+  And request newBook
+  When method post
+  Then status <span style="color: #da8548; font-weight: bold;">201</span>
+  And match response.id == <span style="color: #da8548; font-weight: bold;">2</span>
+  And match response.title == <span style="color: #98be65;">'Karate for APIs'</span>
+</pre>
+</div>
+<ul class="org-ul">
+<li>Partial json validation</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-gherkin">Scenario: Partial match
+  Given path <span style="color: #98be65;">'api'</span>, <span style="color: #98be65;">'books'</span>, <span style="color: #da8548; font-weight: bold;">1</span>
+  When method get
+  Then status <span style="color: #da8548; font-weight: bold;">200</span>
+  And match response contains { id: <span style="color: #da8548; font-weight: bold;">1</span>, title: '<span style="color: #5B6268;">#string' }</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orgcd93b09" class="outline-2">
+<h2 id="orgcd93b09"><span class="section-number-2">5.</span> Remove at the End</h2>
+<div class="outline-text-2" id="text-5">
+<script src="../assets/jquery-3.3.1.min.js"></script>
+<script src="../assets/notes.js"></script>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="date">Date: 2026-03-17 Tue 11:46</p>
+<p class="author">Author: Damian Chrzanowski</p>
+<p class="date">Created: 2026-04-07 Tue 21:01</p>
+<p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

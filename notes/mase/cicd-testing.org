@@ -1,0 +1,674 @@
+#+TITLE: CICD Testing
+#+DATE: [2026-03-17 Tue 11:46]
+#+AUTHOR: Damian Chrzanowski
+#+EMAIL: pjdamian.chrzanowski@gmail.com
+#+OPTIONS: TOC:2 num:2
+#+HTML_HEAD: <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="../assets/org.css"/>
+#+HTML_HEAD: <link rel="icon" href="../assets/favicon.ico">
+#+latex_header: \hypersetup{colorlinks=true,linkcolor=black}
+#+latex_header: \usepackage[margin=0.5in]{geometry}
+#+latex_header: \usepackage[scaled]{helvet} \renewcommand\familydefault{\sfdefault}
+[[file:index.org][Home Page]]
+* jUnit
+** Car Example
+   #+begin_src java
+     class ErrorValidationTest {
+         ErrorValidation errorValidation;
+         Car car;
+
+         @BeforeEach
+         void setUp() {
+             errorValidation = new ErrorValidation();
+             car = buildCar();
+         }
+
+         @Test
+         void testMakeAndModelAllowed() {
+             //test checkMakeAndModelNotAllowed
+             car = buildCar();
+             assertFalse(errorValidation.checkMakeAndModelNotAllowed(car));
+         }
+
+         @Test
+         void testMakeNotAllowed() {
+             //test checkMakeAndModelNotAllowed
+             car = buildCar();
+             car.setMake("");
+             assertTrue(errorValidation.checkMakeAndModelNotAllowed(car));
+         }
+
+         @Test
+         void testMakeAllowedModelNotAllowed() {
+             //test checkMakeAndModelNotAllowed
+             car = buildCar();
+             car.setModel("");
+             assertTrue (errorValidation.checkMakeAndModelNotAllowed(car));
+         }
+
+         @Test
+         void testValidCarYear() {
+             //test yearOK
+             car= buildCar();
+             assertFalse (errorValidation.yearNotOK(car));
+         }
+
+         @Test
+         void testInValidCarYear() {
+             //test yearNotOK - too old
+             car= buildCar();
+             car.setYear(2019);
+             assertTrue (errorValidation.yearNotOK(car));
+
+         }
+
+         Car buildCar() {
+             Car car = new Car();
+             car.setMake("Mercedes");
+             car.setModel("E220");
+             car.setYear(2021);
+             car.setColor("blue");
+             return car;
+         }
+
+     }
+   #+end_src
+** Employee Example
+   #+begin_src java
+     class ErrorValidationTest {
+         ErrorValidation errorValidation;
+         Employee employee;
+
+         @BeforeEach
+         void setUp() {
+             errorValidation = new ErrorValidation();
+             employee = buildEmployee();
+         }
+
+         @Test
+         void testAllFieldsValid() {
+             assertFalse(errorValidation.emptyFields(employee));
+         }
+
+         @Test
+         void testEmptyFieldFirstName() {
+             employee.setFirstName("");
+             assertTrue(errorValidation.emptyFields(employee));
+         }
+
+         @Test
+         void testValidAge() {
+             assertFalse(errorValidation.invalidAge(employee));
+         }
+
+         @Test
+         void testEmptyFieldLastName() {
+             employee.setLastName("");
+             assertTrue(errorValidation.emptyFields(employee));
+         }
+
+         @Test
+         void testEmptyFieldEmail() {
+             employee.setEmailAddress("");
+             assertTrue(errorValidation.emptyFields(employee));
+         }
+
+         @Test
+         void testInvalidAgeLow() {
+             employee.setAge(17);
+             assertTrue(errorValidation.invalidAge(employee));
+         }
+
+         @Test
+         void testInvalidAgeHigh() {
+             employee.setAge(66);
+             assertTrue(errorValidation.invalidAge(employee));
+         }
+
+         Employee buildEmployee() {
+             Employee employee = new Employee();
+             employee.setAge(20);
+             employee.setFirstName("Joe");
+             employee.setLastName("Bloggs");
+             employee.setEmailAddress("joe@gmail.com");
+             return employee;
+         }
+
+     }
+   #+end_src
+* MockMvc/Mockito
+** Car Example
+   #+begin_src java
+     @SpringBootTest
+     @AutoConfigureMockMvc
+     class CarControllerTest {
+
+         @Autowired
+         CarController carController;
+
+         @MockBean // or @InjectMock
+         CarService carService;
+
+         @Captor
+         ArgumentCaptor<Car> captor;
+
+         @Autowired
+         private MockMvc mockMvc;
+
+         @Test
+         public void addCarTestSuccess() throws Exception
+         {
+             // testing addCar method
+             Car car = buildCar();
+             ObjectMapper map =new ObjectMapper();
+             String jsonString = map.writeValueAsString(car);
+             //mock the service layer
+             when(carService.createCar(car)).thenReturn(car);
+             // test for HttpStatus.CREATED
+             // test car object returned has correct values
+             this.mockMvc.perform(post("/api/cars").contentType(MediaType.APPLICATION_JSON)
+                                  .content(jsonString)).andDo(print()).andExpect(status().isCreated());
+
+         }
+
+         @Test
+         public void addCarTestFail() throws CarValidationException
+         {
+             // testing addCar method
+             Car car = buildCar();
+             when(carService.createCar(car)).thenThrow(new CarValidationException(ErrorMessages.INVALID_MAKE_MODEL.getMsg()));
+             //mock the service layer - exception INVALID_MAKE_MODEL
+             // test for HttpStatus.BAD_REQUEST
+             ResponseEntity <ErrorMessage> response = carController.addCar(car);
+             // test returned errormessage is correct
+             assertEquals(HttpStatus.BAD_REQUEST, response.getStatusCode());
+             assertEquals(ErrorMessages.INVALID_MAKE_MODEL.getMsg(), response.getBody().getErrorMessage());
+         }
+
+
+         Car buildCar() {
+             Car car = new Car();
+             car.setMake("Mercedes");
+             car.setModel("E220");
+             car.setYear(2021);
+             car.setColor("blue");
+             return car;
+         }
+
+     }
+   #+end_src
+** Employee Example
+   #+begin_src java
+     @SpringBootTest
+     @AutoConfigureMockMvc
+     class EmployeeControllerTest {
+
+         @Autowired
+         EmployeeController employeeController;
+
+         @MockBean
+         EmployeeService employeeService;
+
+         @Test
+         public void addEmployeeTestSuccess() throws EmployeeValidationException
+         {
+             Employee employee = buildEmployee();
+             Employee savedEmployee = buildEmployee();
+             savedEmployee.setId(1L);
+             //Mock the createEmployee method in the Service Layer
+             when(employeeService.createEmployee(employee)).thenReturn(savedEmployee);
+             //call addEmployee method in the controller
+             ResponseEntity response    =employeeController.addEmployee(employee);
+             //test the httpstatus code return is "CREATED"
+             assertEquals(response.getStatusCode(),HttpStatus.CREATED);
+             //test the details for the employee object in the message body is correct
+             Employee employeeAdded= (Employee) response.getBody();
+             employeeAdded.getId();
+             assertEquals(1L,employeeAdded.getId());
+             assertTrue(employeeAdded.equals(savedEmployee));
+
+         }
+
+         @Test
+         public void addEmployeeTestFail() throws EmployeeValidationException
+         {
+             Employee employee = buildEmployee();
+             //Mock the createEmployee method to throw an EmployeeValidationException with EMPTY_FIELDS method
+             when(employeeService.createEmployee(employee)).thenThrow(new EmployeeValidationException(ErrorMessages.EMPTY_FIELDS.getMsg()));
+             //call the addEmployee method in the controller
+             ResponseEntity response    =employeeController.addEmployee(employee);
+             //test that the response is "BAD_REQUEST"
+             assertEquals(response.getStatusCode(),HttpStatus.BAD_REQUEST);
+             //tests that the correct error mesage is received in the request body
+             ErrorMessage errorMsg= (ErrorMessage) response.getBody();
+             assertEquals(ErrorMessages.EMPTY_FIELDS.getMsg(),errorMsg.getErrorMessage());
+
+         }
+
+
+         Employee buildEmployee() {
+             Employee employee = new Employee();
+             employee.setAge(20);
+             employee.setFirstName("Joe");
+             employee.setLastName("Bloggs");
+             employee.setEmailAddress("Joe@gmail.com");
+             return employee;
+         }
+     }
+   #+end_src
+** MockMvc whole body test
+   #+begin_src java
+     @Test
+     void getUser_assertExactJsonBody() throws Exception {
+         mockMvc.perform(get("/api/users/1")
+                 .accept(MediaType.APPLICATION_JSON))
+             .andExpect(status().isOk())
+             .andExpect(content().json("""
+                 {
+                   "id": 1,
+                   "name": "Alice",
+                   "email": "alice@example.com"
+                 }
+                 """));
+     }
+   #+end_src
+** MockMvc Common Status Checks
+   #+begin_src java
+     .andExpect(status().isOk());                  // 200
+     .andExpect(status().isCreated());             // 201
+     .andExpect(status().isNoContent());           // 204
+     .andExpect(status().isBadRequest());          // 400
+     .andExpect(status().isNotFound());            // 404
+     .andExpect(status().isNotAcceptable());       // 406
+     .andExpect(status().isUnsupportedMediaType());// 415
+   #+end_src
+** MockMvc Cheatsheet
+   #+begin_src java
+     mockMvc.perform(get("/api/items/1").accept(MediaType.APPLICATION_JSON))
+         .andExpect(status().isOk())
+         .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
+         .andExpect(jsonPath("$.id").value(1));
+
+     mockMvc.perform(post("/api/items")
+             .contentType(MediaType.APPLICATION_JSON)
+             .accept(MediaType.APPLICATION_JSON)
+             .content("""{"name":"Item A"}"""))
+         .andExpect(status().isCreated())
+         .andExpect(jsonPath("$.name").value("Item A"));
+
+     mockMvc.perform(put("/api/items/1")
+             .contentType(MediaType.APPLICATION_JSON)
+             .content("""{"name":"Updated"}"""))
+         .andExpect(status().isOk())
+         .andExpect(jsonPath("$.name").value("Updated"));
+
+     mockMvc.perform(delete("/api/items/1"))
+         .andExpect(status().isNoContent());
+   #+end_src
+* RestTemplate
+** Car Example
+   #+begin_src java
+     @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+     // Not necessary to use random port
+     class CarAppIT {
+
+         // or @LocalServerPort
+         @Value(value="${local.server.port}")
+         private int port;
+         //To Do Define instance variables
+         TestRestTemplate restTemplate;
+         HttpHeaders headers;
+
+
+         @BeforeEach
+         public void setup() {
+             //TO DO
+             restTemplate =new TestRestTemplate();
+             headers = new HttpHeaders();
+             headers.setContentType(MediaType.APPLICATION_JSON);
+         }
+
+         @Test
+         @Sql({"/import.sql"})
+         public void addCarSuccessIntTest()
+         {
+
+             //use restTeplate to post a car object with valid values
+             Car car = buildCar();
+             HttpEntity<Car> request = new HttpEntity<>(car,headers);
+             //test that  HttpStatus.CREATED is returned
+             ResponseEntity<String>     response =      restTemplate.postForEntity("http://localhost:"+port+"/api/cars", request, String.class);
+             assertEquals(HttpStatus.CREATED, response.getStatusCode());
+         }
+
+         @Test
+         @Sql({"/import.sql"})
+         public void addCarInvalidYearTest()
+         {
+             Car car = buildCar();
+             car.setYear(2014);
+             //use restTeplate to post a car object with year too low e.g. 2014
+             HttpEntity<Car> request = new HttpEntity<>(car,headers);
+             ResponseEntity<String>     response =      restTemplate.postForEntity("http://localhost:"+port+"/api/cars", request, String.class);
+             assertEquals(HttpStatus.BAD_REQUEST, response.getStatusCode());
+             //test that  HttpStatus.BAD_REQUEST is returned
+         }
+
+         @Test
+         @Sql({"/import.sql"})
+
+         public void addCarInvalidMakeTest()
+         {
+             //use restTeplate to post a car object with invalid make e.g. "Ford"
+             //test that  HttpStatus.BAD_REQUEST is returned
+             Car car = buildCar();
+             car.setMake("Ford");
+             HttpEntity<Car> request = new HttpEntity<>(car,headers);
+             ResponseEntity<String>     response =      restTemplate.postForEntity("http://localhost:"+port+"/api/cars", request, String.class);
+             assertEquals(HttpStatus.BAD_REQUEST, response.getStatusCode());
+
+         }
+
+         @Test
+         @Sql({"/import.sql"})
+         public void addCarInvalidModelTest()
+         {
+             //use restTeplate to post a car object with valid make but invalid model e.g. C180
+             //test that  HttpStatus.BAD_REQUEST is returned
+             Car car = buildCar();
+             car.setMake("C180");
+             HttpEntity<Car> request = new HttpEntity<>(car,headers);
+             ResponseEntity<String>     response =      restTemplate.postForEntity("http://localhost:"+port+"/api/cars", request, String.class);
+             assertEquals(HttpStatus.BAD_REQUEST, response.getStatusCode());
+
+         }
+
+
+
+         Car buildCar() {
+             Car car = new Car();
+             car.setMake("Mercedes");
+             car.setModel("E220");
+             car.setYear(2021);
+             car.setColor("blue");
+             return car;
+         }
+
+     }
+   #+end_src
+** GET example
+   #+begin_src java
+     import org.springframework.stereotype.Service;
+     import org.springframework.web.client.RestTemplate;
+
+     @Service
+     public class UserService {
+
+         private final RestTemplate restTemplate;
+
+         public UserService(RestTemplate restTemplate) {
+             this.restTemplate = restTemplate;
+         }
+
+         public UserDto getUserById(Long id) {
+             String url = "https://jsonplaceholder.typicode.com/users/{id}";
+             return restTemplate.getForObject(url, UserDto.class, id);
+         }
+     }
+   #+end_src
+** POST example
+   #+begin_src java
+     import org.springframework.stereotype.Service;
+     import org.springframework.web.client.RestTemplate;
+
+     @Service
+     public class CreatePostService {
+
+         private final RestTemplate restTemplate;
+
+         public CreatePostService(RestTemplate restTemplate) {
+             this.restTemplate = restTemplate;
+         }
+
+         public PostResponse createPost() {
+             String url = "https://jsonplaceholder.typicode.com/posts";
+
+             PostRequest request = new PostRequest();
+             request.setTitle("Hello");
+             request.setBody("Created from Spring Boot");
+             request.setUserId(1L);
+
+             return restTemplate.postForObject(url, request, PostResponse.class);
+         }
+     }
+   #+end_src
+** Adding headers
+   #+begin_src java
+     import org.springframework.http.*;
+     import org.springframework.stereotype.Service;
+     import org.springframework.web.client.RestTemplate;
+
+     @Service
+     public class HeaderExampleService {
+
+         private final RestTemplate restTemplate;
+
+         public HeaderExampleService(RestTemplate restTemplate) {
+             this.restTemplate = restTemplate;
+         }
+
+         public String getWithHeaders() {
+             String url = "https://api.example.com/data";
+
+             HttpHeaders headers = new HttpHeaders();
+             headers.setBearerAuth("your-token-here");
+             headers.setContentType(MediaType.APPLICATION_JSON);
+
+             HttpEntity<Void> entity = new HttpEntity<>(headers);
+             // or when PUTting HttpEntity<SomeObj> entity = new HttpEntity<>(somObj, headers);
+
+             ResponseEntity<String> response = restTemplate.exchange(
+                     url,
+                     HttpMethod.GET,
+                     entity,
+                     String.class
+             );
+
+             return response.getBody();
+         }
+     }
+   #+end_src
+** PUT example
+   #+begin_src java
+     import org.springframework.http.HttpEntity;
+     import org.springframework.http.HttpMethod;
+     import org.springframework.http.ResponseEntity;
+     import org.springframework.stereotype.Service;
+     import org.springframework.web.client.RestTemplate;
+
+     @Service
+     public class UpdateUserService {
+
+         private final RestTemplate restTemplate;
+
+         public UpdateUserService(RestTemplate restTemplate) {
+             this.restTemplate = restTemplate;
+         }
+
+         public void updateUser(Long id) {
+             String url = "https://api.example.com/users/{id}";
+
+             UserDto request = new UserDto();
+             request.setName("Updated Name");
+             request.setEmail("updated@example.com");
+
+             HttpEntity<UserDto> entity = new HttpEntity<>(request);
+
+             ResponseEntity<Void> response = restTemplate.exchange(
+                     url,
+                     HttpMethod.PUT,
+                     entity,
+                     Void.class,
+                     id
+             );
+
+             System.out.println(response.getStatusCode());
+         }
+     }
+   #+end_src
+** DELETE example
+   #+begin_src java
+     import org.springframework.stereotype.Service;
+     import org.springframework.web.client.RestTemplate;
+
+     @Service
+     public class DeleteUserService {
+
+         private final RestTemplate restTemplate;
+
+         public DeleteUserService(RestTemplate restTemplate) {
+             this.restTemplate = restTemplate;
+         }
+
+         public void deleteUser(Long id) {
+             String url = "https://api.example.com/users/{id}";
+             restTemplate.delete(url, id);
+         }
+     }
+   #+end_src
+** Small Cheatsheet
+   #+begin_src java
+     ResponseEntity<String> getResp =
+             rest.getForEntity("/api/users/1", String.class);
+     assertThat(getResp.getStatusCode()).isEqualTo(HttpStatus.OK);
+     assertThat(getResp.getBody()).contains("\"id\":1");
+
+     HttpHeaders headers = new HttpHeaders();
+     headers.setContentType(MediaType.APPLICATION_JSON);
+     headers.setAccept(List.of(MediaType.APPLICATION_JSON));
+
+     HttpEntity<String> postReq = new HttpEntity<>("""
+         {"name":"Charlie","email":"charlie@example.com"}
+     """, headers);
+
+     ResponseEntity<String> postResp =
+             rest.postForEntity("/api/users", postReq, String.class);
+     assertThat(postResp.getStatusCode()).isEqualTo(HttpStatus.CREATED);
+     assertThat(postResp.getBody()).contains("\"name\":\"Charlie\"");
+
+     HttpEntity<String> putReq = new HttpEntity<>("""
+         {"name":"Updated","email":"updated@example.com"}
+     """, headers);
+
+     ResponseEntity<String> putResp = rest.exchange(
+             "/api/users/1", HttpMethod.PUT, putReq, String.class);
+     assertThat(putResp.getStatusCode()).isEqualTo(HttpStatus.OK);
+
+     ResponseEntity<Void> deleteResp = rest.exchange(
+             "/api/users/1", HttpMethod.DELETE, null, Void.class);
+     assertThat(deleteResp.getStatusCode()).isEqualTo(HttpStatus.NO_CONTENT);
+   #+end_src
+** MIME Type and Body Checks
+   #+begin_src java
+assertThat(response.getHeaders().getContentType())
+        .isCompatibleWith(MediaType.APPLICATION_JSON);
+
+assertThat(response.getBody()).contains("\"name\":\"Alice\"");
+assertThat(response.getBody()).contains("\"email\":\"alice@example.com\"");
+   #+end_src
+** For DTOs
+   #+begin_src java
+     ResponseEntity<UserDto> response =
+             rest.getForEntity("/api/users/1", UserDto.class);
+
+     assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
+     assertThat(response.getBody().id()).isEqualTo(1L);
+     assertThat(response.getBody().name()).isEqualTo("Alice");
+   #+end_src
+* Karate
+** Setup
+   - Dependency
+   #+begin_src xml
+     <dependency>
+       <groupId>com.intuit.karate</groupId>
+       <artifactId>karate-junit5</artifactId>
+       <version>1.4.1</version>
+       <scope>test</scope>
+     </dependency>
+   #+end_src
+   - Under ~src/test/resources/features~, add an ~api-test.feature~ file
+   - Add a test runner @ ~src/test/java/TestRunner.java~
+   #+begin_src java
+     import com.intuit.karate.junit5.Karate;
+     class TestRunner {
+         @Karate.Test
+             Karate runTests() {
+             return Karate.run("classpath:features");
+         }
+     }
+   #+end_src
+   - Run the tests with ~mvn test~
+** Example test (api-test.feature)
+   #+begin_src gherkin
+     Feature: API Testing
+
+     Scenario: Verify user endpoint
+
+     Given url 'https://reqres.in/api/users/2'
+     When method GET
+     Then status 200
+     And match response.data.id == 2
+   #+end_src
+** More example tests
+   - Get books
+   #+begin_src gherkin
+     Feature: Book API tests
+
+     Background:
+       * url baseUrl
+
+     Scenario: Get one book
+       Given path 'api', 'books', 1
+       When method get
+       Then status 200
+       And match response ==
+         """
+         {
+           id: 1,
+           title: 'Spring in Action'
+         }
+         """
+   #+end_src
+   - Post book
+   #+begin_src gherkin
+     Scenario: Create a book
+       * def newBook =
+         """
+         {
+           id: 2,
+           title: 'Karate for APIs'
+         }
+         """
+
+       Given path 'api', 'books'
+       And request newBook
+       When method post
+       Then status 201
+       And match response.id == 2
+       And match response.title == 'Karate for APIs'
+   #+end_src
+   - Partial json validation
+   #+begin_src gherkin
+     Scenario: Partial match
+       Given path 'api', 'books', 1
+       When method get
+       Then status 200
+       And match response contains { id: 1, title: '#string' }
+   #+end_src
+
+
+* Remove at the End
+  #+BEGIN_EXPORT html
+  <script src="../assets/jquery-3.3.1.min.js"></script>
+  <script src="../assets/notes.js"></script>
+  #+END_EXPORT

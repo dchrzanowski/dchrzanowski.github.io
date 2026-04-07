@@ -1,0 +1,1405 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2026-04-07 Tue 21:01 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>CICD</title>
+<meta name="author" content="Damian Chrzanowski" />
+<meta name="generator" content="Org Mode" />
+<style type="text/css">
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { }
+</style>
+<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="../assets/org.css"/>
+<link rel="icon" href="../assets/favicon.ico">
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">CICD</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#orgab4ac35">1. Exam Questions</a>
+<ul>
+<li><a href="#orga2e787d">1.1. Propose a branching and merging model with diagrams in <code>git</code></a></li>
+<li><a href="#org9dd0bd6">1.2. Challenges of <code>CI/CD in rapid deployment</code> in a cloud native env</a></li>
+<li><a href="#org65ff612">1.3. System administration, deployment, <code>DevOps in general</code>, Ansible for scaffolding, etc.</a></li>
+<li><a href="#orga2f85b3">1.4. Describe what <code>Jenkins</code> does with regards to <code>CI/CD</code></a></li>
+<li><a href="#org62f3a01">1.5. 2x <code>Testing pyramid</code></a></li>
+<li><a href="#orgaa0a1ea">1.6. 2x <code>Docker</code>, why was it made and what purposes does it serve?</a></li>
+<li><a href="#org95aa434">1.7. 2x <code>Lifecycle of a Docker</code> container from creation to termination.</a></li>
+<li><a href="#org0b45678">1.8. 3x Where does <code>SonarQube</code> fit into the CI/CD pipeline</a></li>
+<li><a href="#org06a8eb5">1.9. 3x Mitigate a <code>vulnerability</code> detected by <code>SonarQube</code></a></li>
+<li><a href="#org0e94393">1.10. <code>SonarQube</code> maintainability ratings</a></li>
+<li><a href="#org57b7906">1.11. 3x Diff between <code>Cyclomatic and Cognitive Complexity</code>. Calculate both for a given code.</a></li>
+<li><a href="#org33b6cc2">1.12. Primary purpose of <code>plugins</code> in <code>Maven</code>. What are the two main types?</a></li>
+<li><a href="#org66fffc3">1.13. Issues with <code>@Autowired</code>, use dep injection instead</a></li>
+<li><a href="#orga4e536b">1.14. How <code>git</code> stores and manages changes in a repo</a></li>
+<li><a href="#org76f03fc">1.15. 2x Show steps with a <code>diagram</code> of a series of <code>git</code> commands</a></li>
+<li><a href="#org3441ebe">1.16. <code>RestTemplate</code> vs <code>Karate</code> compare and contrast</a></li>
+<li><a href="#org4177ff3">1.17. <code>Cucumber</code> in BDD with <code>Example Mapping</code></a></li>
+<li><a href="#org4b326c0">1.18. Advantages of using <code>mocks</code> and mockito</a></li>
+<li><a href="#org364f7b8">1.19. Maven's Project Object Model (<code>pom</code>)</a></li>
+<li><a href="#org4f24ade">1.20. <code>TDD</code> and steps involved</a></li>
+<li><a href="#org77d16eb">1.21. TDD vs BDD</a></li>
+<li><a href="#orgd1afcb5">1.22. Example Gherkin</a></li>
+</ul>
+</li>
+<li><a href="#org66d7d40">2. Common Questions</a>
+<ul>
+<li><a href="#org1310a60">2.1. What is a Deployment Pipeline?</a></li>
+<li><a href="#orgf6addaf">2.2. CI vs CD</a></li>
+<li><a href="#orgfa55275">2.3. Common SDLC steps</a></li>
+<li><a href="#org195a1b8">2.4. Git terminology</a></li>
+<li><a href="#org6cacf0c">2.5. Branching strat:</a></li>
+<li><a href="#org7937c43">2.6. Docker</a></li>
+<li><a href="#org364d888">2.7. Sonar Qube/Lint</a></li>
+<li><a href="#orgc6535ea">2.8. Bugs, vulnerabilities, code smells</a></li>
+<li><a href="#org8fd1ee8">2.9. Quality metrics</a></li>
+<li><a href="#org653b6e7">2.10. Seven Axis of Quality</a></li>
+<li><a href="#org2f3ffe2">2.11. Complexities</a></li>
+<li><a href="#orgafd2119">2.12. Unit Testing Phases</a></li>
+<li><a href="#orgdd0ba36">2.13. Test Design Categories</a></li>
+<li><a href="#org1a0d63b">2.14. Testing with Mocks</a></li>
+<li><a href="#orga22b83f">2.15. Test Driven Development (TDD)</a></li>
+<li><a href="#org07373f6">2.16. Cost of changing code</a></li>
+<li><a href="#orgda86a60">2.17. Build Systems</a></li>
+<li><a href="#org09e63a2">2.18. User Stories</a></li>
+<li><a href="#orgcfbce06">2.19. SCRUM</a></li>
+</ul>
+</li>
+<li><a href="#org277b1c3">3. Remove at the End</a></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgab4ac35" class="outline-2">
+<h2 id="orgab4ac35"><span class="section-number-2">1.</span> Exam Questions</h2>
+<div class="outline-text-2" id="text-1">
+</div>
+<div id="outline-container-orga2e787d" class="outline-3">
+<h3 id="orga2e787d"><span class="section-number-3">1.1.</span> Propose a branching and merging model with diagrams in <code>git</code></h3>
+</div>
+<div id="outline-container-org9dd0bd6" class="outline-3">
+<h3 id="org9dd0bd6"><span class="section-number-3">1.2.</span> Challenges of <code>CI/CD in rapid deployment</code> in a cloud native env</h3>
+<div class="outline-text-3" id="text-1-2">
+<ul class="org-ul">
+<li>Build stability (frequent changes are a challenging contributor)</li>
+<li>Code quality (same as above)</li>
+<li>Testing</li>
+<li>Test coverage and design</li>
+<li>Technical debt</li>
+<li>Code complexity</li>
+<li>CI/CD can be complex to setup</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org65ff612" class="outline-3">
+<h3 id="org65ff612"><span class="section-number-3">1.3.</span> System administration, deployment, <code>DevOps in general</code>, Ansible for scaffolding, etc.</h3>
+<div class="outline-text-3" id="text-1-3">
+<p class="verse">
+Use Terraform to create servers/networks/cloud resources (reliably and declaratively), use Ansible to configure the services/networks/servers/resources (reliably and declaratively, install software and configure it, deploy).<br />
+<br />
+Terraform builds the house, Ansible furnishes it.<br />
+</p>
+<ul class="org-ul">
+<li>Deployment pipeline</li>
+<li>CI CD CD</li>
+<li>Reduced downtime in deployment</li>
+<li>Use build and CI tools (Maven and Jenkins)</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orga2f85b3" class="outline-3">
+<h3 id="orga2f85b3"><span class="section-number-3">1.4.</span> Describe what <code>Jenkins</code> does with regards to <code>CI/CD</code></h3>
+<div class="outline-text-3" id="text-1-4">
+<ol class="org-ol">
+<li>Automation of Build Process</li>
+<li>CI</li>
+<li>Automated Testing</li>
+<li>CD/D</li>
+<li>Integration with tools (Git/Maven/Sonar)</li>
+</ol>
+</div>
+</div>
+<div id="outline-container-org62f3a01" class="outline-3">
+<h3 id="org62f3a01"><span class="section-number-3">1.5.</span> 2x <code>Testing pyramid</code></h3>
+<div class="outline-text-3" id="text-1-5">
+<ul class="org-ul">
+<li>Overview</li>
+<li>Layers</li>
+<li>Balance and proportions</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgaa0a1ea" class="outline-3">
+<h3 id="orgaa0a1ea"><span class="section-number-3">1.6.</span> 2x <code>Docker</code>, why was it made and what purposes does it serve?</h3>
+<div class="outline-text-3" id="text-1-6">
+<ul class="org-ul">
+<li>Lightweight and efficient way to package and run applications consistently across environments</li>
+<li>Perfect for microservices architecture</li>
+<li>Reduced overhead compared to traditional virtualisation methods</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org95aa434" class="outline-3">
+<h3 id="org95aa434"><span class="section-number-3">1.7.</span> 2x <code>Lifecycle of a Docker</code> container from creation to termination.</h3>
+<div class="outline-text-3" id="text-1-7">
+<ul class="org-ul">
+<li><code>docker create</code>: Created container</li>
+<li><code>docker start</code>, <code>docker run</code>: Run a container. Application inside is running</li>
+<li><code>docker pause</code>, <code>docker unpause</code>: Pause container (optional)</li>
+<li><code>docker stop</code>: Stop execution of container and the application within</li>
+<li><code>docker rm</code>: Permanently delete the container</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org0b45678" class="outline-3">
+<h3 id="org0b45678"><span class="section-number-3">1.8.</span> 3x Where does <code>SonarQube</code> fit into the CI/CD pipeline</h3>
+<div class="outline-text-3" id="text-1-8">
+<ul class="org-ul">
+<li>After the build stage, in the <code>static code analysis stage</code></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org06a8eb5" class="outline-3">
+<h3 id="org06a8eb5"><span class="section-number-3">1.9.</span> 3x Mitigate a <code>vulnerability</code> detected by <code>SonarQube</code></h3>
+</div>
+<div id="outline-container-org0e94393" class="outline-3">
+<h3 id="org0e94393"><span class="section-number-3">1.10.</span> <code>SonarQube</code> maintainability ratings</h3>
+<div class="outline-text-3" id="text-1-10">
+</div>
+<div id="outline-container-org9096519" class="outline-4">
+<h4 id="org9096519">Explanation</h4>
+<div class="outline-text-4" id="text-org9096519">
+<ul class="org-ul">
+<li>Is the value of the tech debt ratio. Compares the tech debt on a project to the cost it would take to rewrite it from scratch.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org6e8e197" class="outline-4">
+<h4 id="org6e8e197">Reliability Ratings</h4>
+<div class="outline-text-4" id="text-org6e8e197">
+<ul class="org-ul">
+<li>&lt;5% A rating (also mean 0 bugs)</li>
+<li>6% - 10 % B rating (also means 1 minor bug)</li>
+<li>11% - 20%  C rating (also means 1 major bug)</li>
+<li>21% - 50%  D rating (also means 1 critical bug)</li>
+<li>&gt;50%  E rating (also means 1 blocker bug)</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgfdbedf2" class="outline-4">
+<h4 id="orgfdbedf2">Security Ratings</h4>
+<div class="outline-text-4" id="text-orgfdbedf2">
+<ul class="org-ul">
+<li>&lt;5% A rating (also mean 0 vulnerabilities)</li>
+<li>6% - 10 % B rating (also means 1 minor vulnerability)</li>
+<li>11% - 20%  C rating (also means 1 major vulnerability)</li>
+<li>21% - 50%  D rating (also means 1 critical vulnerability)</li>
+<li>&gt;50%  E rating (also means 1 blocker vulnerability)</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-org57b7906" class="outline-3">
+<h3 id="org57b7906"><span class="section-number-3">1.11.</span> 3x Diff between <code>Cyclomatic and Cognitive Complexity</code>. Calculate both for a given code.</h3>
+</div>
+<div id="outline-container-org33b6cc2" class="outline-3">
+<h3 id="org33b6cc2"><span class="section-number-3">1.12.</span> Primary purpose of <code>plugins</code> in <code>Maven</code>. What are the two main types?</h3>
+<div class="outline-text-3" id="text-1-12">
+<ul class="org-ul">
+<li><code>Build plugins</code>: such as <code>maven-compiler-plugin</code>, defined in the <code>&lt;build&gt;</code>, used in the lifecycles (compile, test, package, etc.)</li>
+<li><code>Reporting plugins</code>: such as <code>maven-surefire-report-plugin</code></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org66fffc3" class="outline-3">
+<h3 id="org66fffc3"><span class="section-number-3">1.13.</span> Issues with <code>@Autowired</code>, use dep injection instead</h3>
+<div class="outline-text-3" id="text-1-13">
+<ul class="org-ul">
+<li>Creates a <code>tight coupling</code></li>
+<li>Use dependency injection (DI) via constructor injection</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orga4e536b" class="outline-3">
+<h3 id="orga4e536b"><span class="section-number-3">1.14.</span> How <code>git</code> stores and manages changes in a repo</h3>
+<div class="outline-text-3" id="text-1-14">
+</div>
+<div id="outline-container-orgf1fb3ce" class="outline-4">
+<h4 id="orgf1fb3ce">General</h4>
+<div class="outline-text-4" id="text-orgf1fb3ce">
+<ul class="org-ul">
+<li>Snapshots vs Differences: git stores snapshots, differences are evaluated in real time when needed. If a file has not changed, Git simply references the previous version instead of storing it again.</li>
+<li>Objects in git db: <code>commit</code> (msg, author, parent, pointer to a tree), <code>tree</code> (file structure), <code>blob</code> (file data)</li>
+<li>Role of SHA-1: unique identification of each object (commit)</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgbf19e06" class="outline-4">
+<h4 id="orgbf19e06">What happens when</h4>
+<div class="outline-text-4" id="text-orgbf19e06">
+<ul class="org-ul">
+<li>Branch: new pointer to an existing commit</li>
+<li>Checkout: changes where the <code>HEAD</code> is pointing to</li>
+<li>Merge: Combines histories, if they are diverged then a merge commit is created</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-org76f03fc" class="outline-3">
+<h3 id="org76f03fc"><span class="section-number-3">1.15.</span> 2x Show steps with a <code>diagram</code> of a series of <code>git</code> commands</h3>
+</div>
+<div id="outline-container-org3441ebe" class="outline-3">
+<h3 id="org3441ebe"><span class="section-number-3">1.16.</span> <code>RestTemplate</code> vs <code>Karate</code> compare and contrast</h3>
+<div class="outline-text-3" id="text-1-16">
+<ul class="org-ul">
+<li>Learning Curve:
+<ul class="org-ul">
+<li>Karate: simple, uses readable syntax via Cucumber</li>
+<li>RestTemplate: Steeper learning curve, developer oriented</li>
+</ul></li>
+<li>Support for BDD:
+<ul class="org-ul">
+<li>Karate: Strong BDD support via Cucumber/Gherkin</li>
+<li>RestTemplate: uses standard java code, so not supported by BDD natively</li>
+</ul></li>
+<li>Syntax and Test Writing:
+<ul class="org-ul">
+<li>Karate: Simple readable syntax, no boilerplate, easy to write and maintain, suitable for devs and QA engineers</li>
+<li>RestTemplate: requires java knowledge, more verbose and technical, more control but less readable</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org4177ff3" class="outline-3">
+<h3 id="org4177ff3"><span class="section-number-3">1.17.</span> <code>Cucumber</code> in BDD with <code>Example Mapping</code></h3>
+<div class="outline-text-3" id="text-1-17">
+</div>
+<div id="outline-container-orgc549622" class="outline-4">
+<h4 id="orgc549622">Benefits of <code>Example Mapping</code></h4>
+<div class="outline-text-4" id="text-orgc549622">
+<ul class="org-ul">
+<li>Improves shared understanding of requirements</li>
+<li>Helps define acceptance criteria early</li>
+<li>Makes it easier to create test scenarios</li>
+<li>Reduces ambiguity before development and testing</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgb7ed3d0" class="outline-4">
+<h4 id="orgb7ed3d0">Mapping is carried out in a trivial way, just include invalid options as well</h4>
+</div>
+</div>
+<div id="outline-container-org4b326c0" class="outline-3">
+<h3 id="org4b326c0"><span class="section-number-3">1.18.</span> Advantages of using <code>mocks</code> and mockito</h3>
+</div>
+<div id="outline-container-org364f7b8" class="outline-3">
+<h3 id="org364f7b8"><span class="section-number-3">1.19.</span> Maven's Project Object Model (<code>pom</code>)</h3>
+<div class="outline-text-3" id="text-1-19">
+<ul class="org-ul">
+<li>POM: The Maven POM (pom.xml) is the central file used to define and manage a project. It identifies artifacts through coordinates, specifies packaging, supports modules, defines reusable properties, and manages dependencies with scopes such as test,provided and runtime. This makes Maven a powerful tool for building and managing Java projects.</li>
+<li>Lifecycles:
+<ul class="org-ul">
+<li><code>validate</code> (pom check and deps check)</li>
+<li><code>compile</code></li>
+<li><code>test</code></li>
+<li><code>package</code> (depending on the type, this phase could produce either a <code>jar</code> or a <code>war</code>)</li>
+<li><code>install</code></li>
+</ul></li>
+<li>Identification of artifacts
+<ul class="org-ul">
+<li><code>groupId</code></li>
+<li><code>artifactId</code></li>
+<li><code>version</code></li>
+</ul></li>
+<li>Packaging
+<ul class="org-ul">
+<li><code>jar/war</code></li>
+</ul></li>
+<li>Modules
+<ul class="org-ul">
+<li>Project split up into sub-modules with their own POM files</li>
+</ul></li>
+<li>Properties
+<ul class="org-ul">
+<li>project version values</li>
+<li>Java version values</li>
+<li>plugin version values, plugin settings</li>
+</ul></li>
+<li>Dep management, including scope. Three common scope types.
+<ul class="org-ul">
+<li>adding dependencies into the POM as <code>&lt;dependency&gt;</code></li>
+<li>dependency scope: test, provided, runtime (only at runtime)</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org4f24ade" class="outline-3">
+<h3 id="org4f24ade"><span class="section-number-3">1.20.</span> <code>TDD</code> and steps involved</h3>
+</div>
+<div id="outline-container-org77d16eb" class="outline-3">
+<h3 id="org77d16eb"><span class="section-number-3">1.21.</span> TDD vs BDD</h3>
+<div class="outline-text-3" id="text-1-21">
+</div>
+<div id="outline-container-org3f3a0a9" class="outline-4">
+<h4 id="org3f3a0a9">TDD</h4>
+<div class="outline-text-4" id="text-org3f3a0a9">
+<ul class="org-ul">
+<li>Focuses on writing unit tests before code</li>
+<li>Uses a cycle: write tests &gt; write code &gt; refactor</li>
+<li>Tests are written from a developer perspective</li>
+<li>Focus is on verifying correctness of code</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org331e406" class="outline-4">
+<h4 id="org331e406">BDD</h4>
+<div class="outline-text-4" id="text-org331e406">
+<ul class="org-ul">
+<li>Focuses on describing behaviour from a user's perspective</li>
+<li>Uses <code>Give-When-Then</code> format</li>
+<li>Tests are written in a readable, natural language style</li>
+<li>Emphasises collaboration between developers, testers and business stakeholders</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org43eceb5" class="outline-4">
+<h4 id="org43eceb5">Advantages of BDD</h4>
+<div class="outline-text-4" id="text-org43eceb5">
+<ul class="org-ul">
+<li>Requirements are expressed as clear scenarios</li>
+<li>Both technical and non-technical team members can understand requirements</li>
+<li>Reduces ambiguity and ensures the system behaves as expected</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org5646ec8" class="outline-4">
+<h4 id="org5646ec8">Summary</h4>
+<div class="outline-text-4" id="text-org5646ec8">
+<ul class="org-ul">
+<li>TDD focuses on testing code correctness, while BDD focuses on system behaviour. The key advantage of BDD is clearer communication and requirements understanding.</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-orgd1afcb5" class="outline-3">
+<h3 id="orgd1afcb5"><span class="section-number-3">1.22.</span> Example Gherkin</h3>
+<div class="outline-text-3" id="text-1-22">
+<div class="org-src-container">
+<pre class="src src-gherkin">Feature: Calculator addition
+
+Scenario Outline: Add multiple numbers
+  Given I have numbers <span style="color: #a9a1e1;">&lt;a&gt; and &lt;b&gt;</span>
+  When I add them
+  Then the result should be <span style="color: #a9a1e1;">&lt;result&gt;</span>
+
+Examples:
+  <span style="color: #98be65;">| a |</span> b <span style="color: #98be65;">| result |</span>
+  <span style="color: #98be65;">| 2 |</span> <span style="color: #da8548; font-weight: bold;">3</span> <span style="color: #98be65;">| 5      |</span>
+  <span style="color: #98be65;">| 4 |</span> <span style="color: #da8548; font-weight: bold;">6</span> <span style="color: #98be65;">| 10     |</span>
+  <span style="color: #98be65;">| 1 |</span> <span style="color: #da8548; font-weight: bold;">9</span> <span style="color: #98be65;">| 10     |</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org66d7d40" class="outline-2">
+<h2 id="org66d7d40"><span class="section-number-2">2.</span> Common Questions</h2>
+<div class="outline-text-2" id="text-2">
+</div>
+<div id="outline-container-org1310a60" class="outline-3">
+<h3 id="org1310a60"><span class="section-number-3">2.1.</span> What is a Deployment Pipeline?</h3>
+<div class="outline-text-3" id="text-2-1">
+<ul class="org-ul">
+<li>Is an automated manifestation of your process for getting software from version control into the hands of your users.</li>
+<li>DevOps diagrams with CI/CD</li>
+</ul>
+
+<div id="org76f147b" class="figure">
+<p><img src="images/Common_Questions/2026-04-07_16-35-00_screenshot.png" alt="2026-04-07_16-35-00_screenshot.png" />
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orgf6addaf" class="outline-3">
+<h3 id="orgf6addaf"><span class="section-number-3">2.2.</span> CI vs CD</h3>
+<div class="outline-text-3" id="text-2-2">
+<ul class="org-ul">
+<li>CI: practice of software development that helps the team to integrate their code multiple times a day seamlessly
+<ul class="org-ul">
+<li>Pros: detects problems as early as possible</li>
+</ul></li>
+<li>CB (build): Process of automating the creation of a software build and running tests on it</li>
+<li>CD: Practice of moving software changes into production efficiently, quickly and safely.</li>
+</ul>
+</div>
+<div id="outline-container-org805357f" class="outline-4">
+<h4 id="org805357f">Graph</h4>
+<div class="outline-text-4" id="text-org805357f">
+<ul class="org-ul">
+<li>commit &gt; build &gt; unit test &gt; deploy &gt; test &gt; prod deploy</li>
+<li>CI: code &gt; build &gt; test</li>
+<li>CD (delivery): code &gt; build &gt; test &gt; release</li>
+<li>CD (deploy): code &gt; build &gt; test &gt; release &gt; deploy</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-orgfa55275" class="outline-3">
+<h3 id="orgfa55275"><span class="section-number-3">2.3.</span> Common SDLC steps</h3>
+<div class="outline-text-3" id="text-2-3">
+<ul class="org-ul">
+<li>Requirements</li>
+<li>System/Software design</li>
+<li>Implementation + testing</li>
+<li>Integration + system testing</li>
+<li>Operation and Maintenance</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org195a1b8" class="outline-3">
+<h3 id="org195a1b8"><span class="section-number-3">2.4.</span> Git terminology</h3>
+<div class="outline-text-3" id="text-2-4">
+<ul class="org-ul">
+<li>Snapshot: a commit object</li>
+<li>Commit object:
+<ul class="org-ul">
+<li>Set of files</li>
+<li>Reference to the parent commit object</li>
+<li>Unique SHA-1</li>
+</ul></li>
+<li>How git stores info:</li>
+</ul>
+
+<div id="orgf102f6d" class="figure">
+<p><img src="images/Common_Questions/2026-04-07_16-51-20_screenshot.png" alt="2026-04-07_16-51-20_screenshot.png" />
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org6cacf0c" class="outline-3">
+<h3 id="org6cacf0c"><span class="section-number-3">2.5.</span> Branching strat:</h3>
+<div class="outline-text-3" id="text-2-5">
+<ul class="org-ul">
+<li>Main branches: master(main), develop(dev)</li>
+<li>Supporting branches:
+<ul class="org-ul">
+<li>feature branches: (branch and merge into/from dev)</li>
+<li>release branches: from dev, prep release, any final fixes, etc.</li>
+<li>hotfix branches: (branch from master merge into master)</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org7937c43" class="outline-3">
+<h3 id="org7937c43"><span class="section-number-3">2.6.</span> Docker</h3>
+<div class="outline-text-3" id="text-2-6">
+<ul class="org-ul">
+<li>is a software tech that provides containers</li>
+<li>OS level virtualisation that adds an additional layer of abstraction and automation</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org364d888" class="outline-3">
+<h3 id="org364d888"><span class="section-number-3">2.7.</span> Sonar Qube/Lint</h3>
+<div class="outline-text-3" id="text-2-7">
+<ul class="org-ul">
+<li>CI: Continuous Inspection</li>
+<li>Checks:
+<ul class="org-ul">
+<li>Code/block dupes</li>
+<li>Coding standards</li>
+<li>Code coverage</li>
+<li>Code complexity</li>
+<li>Comments</li>
+<li>Bugs</li>
+<li>Security vulnerabilities</li>
+</ul></li>
+<li>SonarLint is ran as realtime analysis during coding inside of an IDE</li>
+<li>SonarQube is ran after the tests are carried out so that quality and testing metrics can be extracted</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgc6535ea" class="outline-3">
+<h3 id="orgc6535ea"><span class="section-number-3">2.8.</span> Bugs, vulnerabilities, code smells</h3>
+<div class="outline-text-3" id="text-2-8">
+<ul class="org-ul">
+<li>Bugs: code that is demonstrably wrong and yields unexpected behaviour</li>
+<li>Vulnerability: code that is potentially vulnerably to hacks or exploits</li>
+<li>Code smells: Surface indications that there might be a deeper problem. Poor coding practices, that do not cause immediate issues.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org8fd1ee8" class="outline-3">
+<h3 id="org8fd1ee8"><span class="section-number-3">2.9.</span> Quality metrics</h3>
+<div class="outline-text-3" id="text-2-9">
+<ul class="org-ul">
+<li>Size metric: lines of code, classes, functions, files</li>
+<li>Test metrics: unit tests, lines covered, branches covered</li>
+<li>Complexity: cyclomatic, cognitive</li>
+<li>Duplications: duplicated lines/blocks</li>
+<li>Technical debt</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org653b6e7" class="outline-3">
+<h3 id="org653b6e7"><span class="section-number-3">2.10.</span> Seven Axis of Quality</h3>
+<div class="outline-text-3" id="text-2-10">
+<ul class="org-ul">
+<li>Potential bugs</li>
+<li>Coding rules</li>
+<li>Tests</li>
+<li>Duplications</li>
+<li>Comments</li>
+<li>Architecture and design</li>
+<li>Complexity</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org2f3ffe2" class="outline-3">
+<h3 id="org2f3ffe2"><span class="section-number-3">2.11.</span> Complexities</h3>
+<div class="outline-text-3" id="text-2-11">
+<ul class="org-ul">
+<li>Cyclomatic (branching)</li>
+</ul>
+
+<div id="org79b71e0" class="figure">
+<p><img src="images/Common_Questions/2026-04-07_19-00-19_screenshot.png" alt="2026-04-07_19-00-19_screenshot.png" />
+</p>
+</div>
+<ul class="org-ul">
+<li>Cognitive: increment when there is a <b>break</b> in the <b>linear flow</b> of the code.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgafd2119" class="outline-3">
+<h3 id="orgafd2119"><span class="section-number-3">2.12.</span> Unit Testing Phases</h3>
+<div class="outline-text-3" id="text-2-12">
+<ol class="org-ol">
+<li>Arrange (setup of vars, classes, etc.)</li>
+<li>Act (execute code)</li>
+<li>Assert (check correctness)</li>
+</ol>
+</div>
+</div>
+<div id="outline-container-orgdd0ba36" class="outline-3">
+<h3 id="orgdd0ba36"><span class="section-number-3">2.13.</span> Test Design Categories</h3>
+<div class="outline-text-3" id="text-2-13">
+<ul class="org-ul">
+<li>Derived from the <code>spec or model</code> of system (black-box techniques).
+<ul class="org-ul">
+<li>Equivalence partitioning</li>
+<li>Border value analysis (BVA)</li>
+<li>Decision table testing (branch coverage, basically)</li>
+</ul></li>
+<li>Derived from structure of the component or the system, aka structure-based or white-box testing.</li>
+<li>Derived from the tester's experience or knowledge of systems, aka experience-based tests.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org1a0d63b" class="outline-3">
+<h3 id="org1a0d63b"><span class="section-number-3">2.14.</span> Testing with Mocks</h3>
+<div class="outline-text-3" id="text-2-14">
+</div>
+<div id="outline-container-org98333b4" class="outline-4">
+<h4 id="org98333b4">Components</h4>
+<div class="outline-text-4" id="text-org98333b4">
+<ul class="org-ul">
+<li>Test class</li>
+<li>System Under Test (SUT)</li>
+<li>Depended on Components (DOCs)</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org4f08c8f" class="outline-4">
+<h4 id="org4f08c8f">Info</h4>
+<div class="outline-text-4" id="text-org4f08c8f">
+<ul class="org-ul">
+<li>Dummy: The mock, it is the actual test-double. <code>mock(User.class)</code></li>
+<li>Stub: Just dummy data being passed in or returned, non-important to the outcome, also used to provide pre-defined responses to methods. <code>when &gt; thenReturn</code></li>
+<li>Spy (<code>verify().someMethod(obj)</code>): Used to verify if the real object does what it is supposed to do (a wrapper). It is exactly like a mock object, except it is wrapped around a real one. <code>spy(realObject)</code></li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-orga22b83f" class="outline-3">
+<h3 id="orga22b83f"><span class="section-number-3">2.15.</span> Test Driven Development (TDD)</h3>
+<div class="outline-text-3" id="text-2-15">
+<ul class="org-ul">
+<li>Is an approach to program development in which you inter-leave testing and code development.</li>
+<li>Tests are written before code. Passing the tests is the critical aim.</li>
+<li>Phases:
+<ul class="org-ul">
+<li>Identify requirements</li>
+<li>Write tests for the requirements</li>
+<li>Run the tests and see them fail</li>
+<li>Implement functionality and re-run tests until completed</li>
+<li>Move onto the next requirement</li>
+</ul></li>
+<li>General cycle:
+<ol class="org-ol">
+<li>Write failing tests (red)</li>
+<li>Write code, pass tests (green)</li>
+<li>Refactor (and repeat) (blue)</li>
+</ol></li>
+<li>Benefits:
+<ul class="org-ul">
+<li>Code coverage</li>
+<li>Regression testing</li>
+<li>Simplified debugging</li>
+<li>System documentation</li>
+</ul></li>
+<li>Rules:
+<ol class="org-ol">
+<li>Not allowed code, unless it is to pass a test (lolz)</li>
+<li>Not allowed to write any more of a unit test than is sufficient to fail</li>
+<li>Not allowed to write more code than there is to pass one test that we're working on</li>
+</ol></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org07373f6" class="outline-3">
+<h3 id="org07373f6"><span class="section-number-3">2.16.</span> Cost of changing code</h3>
+<div class="outline-text-3" id="text-2-16">
+
+<div id="org0bf8ddc" class="figure">
+<p><img src="images/Common_Questions/2026-04-07_19-30-40_screenshot.png" alt="2026-04-07_19-30-40_screenshot.png" />
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orgda86a60" class="outline-3">
+<h3 id="orgda86a60"><span class="section-number-3">2.17.</span> Build Systems</h3>
+<div class="outline-text-3" id="text-2-17">
+<ul class="org-ul">
+<li>Generally: transform one form (input) into another (output)</li>
+<li>Requirements of build tools:
+<ul class="org-ul">
+<li>Dependency Management</li>
+<li>Versioning: dev, dev env, testing stage, prod stage</li>
+<li>Compile code and build output</li>
+<li>Execute tests, produce reports</li>
+<li>Run quality checks</li>
+<li>Build/deploy/release</li>
+<li>Transfer files</li>
+<li>Scripting capabalities</li>
+<li>Cross-platform</li>
+<li>IDE support</li>
+<li>Docs</li>
+</ul></li>
+<li>Maven project:
+<ul class="org-ul">
+<li>POM: contains all that is needed to build a project, as well as coordinates:
+<ul class="org-ul">
+<li>groupId: identification, such as com.tus</li>
+<li>artifact: unique name of the project</li>
+</ul></li>
+<li>Dependency manager: uses coordinates to manage deps, e.g.: groupId junit, artifactid junit, version 1.42, scope test</li>
+<li>Project lifecycles
+<ul class="org-ul">
+<li>clean, prepare-resources, compile, package, test, verify, install, etc.</li>
+<li>Typical:
+<ul class="org-ul">
+<li><code>validate</code>: check pom.xml</li>
+<li><code>compile</code>: compile the source</li>
+<li><code>test</code>: run unit tests</li>
+<li><code>package</code>: create jar/war/&#x2026;</li>
+<li><code>verify</code>: verify package, run integration tests</li>
+<li><code>install</code>: public package to local repo</li>
+<li><code>deploy</code>: public package to remote repo</li>
+</ul></li>
+<li>Phases and Goals: Phases are sequential (eg. <code>install</code> runs compile, test, package, verify and install). Goals are added via plugins and carry out additional work in the lifecycles.</li>
+</ul></li>
+<li>Plugins</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org09e63a2" class="outline-3">
+<h3 id="org09e63a2"><span class="section-number-3">2.18.</span> User Stories</h3>
+<div class="outline-text-3" id="text-2-18">
+</div>
+<div id="outline-container-org612cbea" class="outline-4">
+<h4 id="org612cbea">Definition</h4>
+<div class="outline-text-4" id="text-org612cbea">
+<ul class="org-ul">
+<li>A concise, written description of a piece of functionality that will be valuable to a use (or owner) of the software</li>
+<li>3Cs: Card, Conversation, Confirmation</li>
+<li>As a <code>role</code>, I want <code>goal</code>, so that <code>reason</code> (aka Who/What/Why)</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org908861b" class="outline-4">
+<h4 id="org908861b">INVEST</h4>
+<div class="outline-text-4" id="text-org908861b">
+<ul class="org-ul">
+<li>Independent</li>
+<li>Negotiable</li>
+<li>Valuable</li>
+<li>Estimatable</li>
+<li>Small</li>
+<li>Testable</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgb8b2709" class="outline-4">
+<h4 id="orgb8b2709">Acceptance Criteria</h4>
+<div class="outline-text-4" id="text-orgb8b2709">
+<ul class="org-ul">
+<li>Usually written in the Given &gt; When &gt; Then form</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org6b02cfc" class="outline-4">
+<h4 id="org6b02cfc">Definition of Done</h4>
+<div class="outline-text-4" id="text-org6b02cfc">
+<ul class="org-ul">
+<li>What counts as a user story being done?</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org7cb2903" class="outline-4">
+<h4 id="org7cb2903">Defining the User or Personas</h4>
+<div class="outline-text-4" id="text-org7cb2903">
+<ul class="org-ul">
+<li>Clearly define who is a user and what are the competency levels</li>
+<li>Personas are basically different users of the system, they describe who or what a specific user is</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org565366a" class="outline-4">
+<h4 id="org565366a">Special User Stories</h4>
+<div class="outline-text-4" id="text-org565366a">
+<ul class="org-ul">
+<li>Non-functional Stories</li>
+<li>Bug Stories</li>
+<li>Spike Stories (research)</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-orgcfbce06" class="outline-3">
+<h3 id="orgcfbce06"><span class="section-number-3">2.19.</span> SCRUM</h3>
+<div class="outline-text-3" id="text-2-19">
+</div>
+<div id="outline-container-orgadb3058" class="outline-4">
+<h4 id="orgadb3058">Definition</h4>
+<div class="outline-text-4" id="text-orgadb3058">
+<p class="verse">
+Scrum is a lightweight framework that helps people, teams and organizations generate value through adaptive solutions for complex problems.<br />
+</p>
+</div>
+</div>
+<div id="outline-container-org1acfef4" class="outline-4">
+<h4 id="org1acfef4">Scrum requires a Scrum Master to foster an environment where:</h4>
+<div class="outline-text-4" id="text-org1acfef4">
+<ul class="org-ul">
+<li>A Product Owner orders the work for a complex problem into a Product Backlog.</li>
+<li>The Scrum Team runs a selection of the work into an Increment of value during a Sprint.</li>
+<li>The Scrum Team and its stakeholders inspect the results and adjust for the next Sprint.</li>
+<li>Repeat</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org624203c" class="outline-4">
+<h4 id="org624203c">Scrum is simple</h4>
+<div class="outline-text-4" id="text-org624203c">
+<ul class="org-ul">
+<li>Framework is purposefully incomplete</li>
+<li>Is built upon the collective intelligence of the people using it</li>
+<li>Rather than providing detailed instructions, the rules provide guidelines</li>
+<li>Wraps around existing practices or renders them obsolete</li>
+<li>Makes relative efficacy of current management, environment and work techniques; so that improvements can be made</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgee78c53" class="outline-4">
+<h4 id="orgee78c53">Scrum Theory</h4>
+<div class="outline-text-4" id="text-orgee78c53">
+<ul class="org-ul">
+<li>Founded on empiricism and lean thinking
+<ul class="org-ul">
+<li>Empiricism asserts that knowledge comes from experience and decisions are made based on what is observed</li>
+<li>Lean thinking reduces waste and focuses on essentials</li>
+</ul></li>
+<li>Employs an iterative, incremental approach to optimize predictability and to control risk</li>
+<li>Combines four formal events for inspection and adaptation within a containing event: The Sprint.
+<ul class="org-ul">
+<li>Sprint Planning</li>
+<li>Daily Scrum</li>
+<li>Sprint Review</li>
+<li>Sprint Retrospective</li>
+</ul></li>
+<li>Sprint events work because they implement empirical pillars of Scrum: transparency, inspection and adaptation</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org97e0110" class="outline-4">
+<h4 id="org97e0110">Pillars Of Scrum</h4>
+<div class="outline-text-4" id="text-org97e0110">
+</div>
+<ul class="org-ul">
+<li><a id="org721eeb4"></a>Transparency<br />
+<div class="outline-text-5" id="text-org721eeb4">
+<ul class="org-ul">
+<li>The process and the work must be visible to those performing the work as well as the ones receiving the work</li>
+<li>Artifacts that have low transparency can lead to decisions that diminish value and increase risk</li>
+<li>Enables Inspection</li>
+<li>Inspection without transparency is misleading and wasteful</li>
+</ul>
+</div>
+</li>
+<li><a id="org275bd26"></a>Inspection<br />
+<div class="outline-text-5" id="text-org275bd26">
+<ul class="org-ul">
+<li>Scrum artifacts and the progress towards agreed goals must be inspected frequently and diligently to detect potentially undesirable variance or problems.</li>
+<li>To help with inspection, Scrum provides cadence in the form of its five events</li>
+<li>Inspection enables Adaptation. Inspection without Adaptation is considered pointless.</li>
+<li>Scrum events are designed to provoke change.</li>
+</ul>
+</div>
+</li>
+<li><a id="org58c5dcf"></a>Adaptation<br />
+<div class="outline-text-5" id="text-org58c5dcf">
+<ul class="org-ul">
+<li>If any aspects of a process deviate outside acceptable limits or if the result is not acceptable, the process being applied or materials used must be adjusted.</li>
+<li>Adjust as soon as possible to minimize further deviation</li>
+<li>Adaptation is difficult if the people involved aren't empowered or self-managing.</li>
+<li>Scrum team is supposed to adapt the moment it learns of anything via inspection</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div id="outline-container-org0a14b8f" class="outline-4">
+<h4 id="org0a14b8f">Scrum Values</h4>
+<div class="outline-text-4" id="text-org0a14b8f">
+<ul class="org-ul">
+<li><b>Commitment</b>, <b>Focus</b>, <b>Openness</b>, <b>Respect</b>, <b>Courage</b></li>
+<li>The team commits to achieve a goal and support each other</li>
+<li>Focus on the work of the Sprint to make the best possible progress</li>
+<li>Team and the stakeholders are open the work and the challenges</li>
+<li>Respect each other to be capable and independent</li>
+<li><p>
+Have the courage to work through tough problems and do the right thing
+</p>
+<p class="verse">
+The above values are utilised by the team and people they work with. If applied well the pillars of transparency, inspection and adaptation come to life building trust.<br />
+</p></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgb49a4c9" class="outline-4">
+<h4 id="orgb49a4c9">Scrum Team</h4>
+<div class="outline-text-4" id="text-orgb49a4c9">
+</div>
+<ul class="org-ul">
+<li><a id="orgda3531d"></a>Consists of a small team, generally:<br />
+<div class="outline-text-5" id="text-orgda3531d">
+<ul class="org-ul">
+<li>One Scrum Master</li>
+<li>One Product Owner</li>
+<li>Developers</li>
+<li>No sub-teams and no hierarchies</li>
+<li>Cohesive unit of professionals focused on the one objective: Product Goal</li>
+<li>Typically 10 or fewer people</li>
+<li>Usually smaller teams work better, communicate better and are more productive</li>
+<li>Too large a team should perhaps split into own Scrum Teams with the same focus on the same product: share same Product Goal, Product Backlog and Product Owner.</li>
+</ul>
+</div>
+</li>
+<li><a id="org055a307"></a>Team is cross-functional<br />
+<div class="outline-text-5" id="text-org055a307">
+<ul class="org-ul">
+<li>Each member has the skills necessary to create value during each Sprint</li>
+</ul>
+</div>
+</li>
+<li><a id="org7754788"></a>Self-managing<br />
+<div class="outline-text-5" id="text-org7754788">
+<ul class="org-ul">
+<li>Internally decide who does what, when and how.</li>
+</ul>
+</div>
+</li>
+<li><a id="orgccc24b4"></a>Responsible for all product-related activities<br />
+<div class="outline-text-5" id="text-orgccc24b4">
+<ul class="org-ul">
+<li>Stakeholder collaboration</li>
+<li>Verification</li>
+<li>Maintenance</li>
+<li>Operation</li>
+<li>Experimentation</li>
+<li>Research and Development</li>
+<li>Anything else that might be required</li>
+</ul>
+</div>
+</li>
+<li><a id="org0468b09"></a>Accountability<br />
+<div class="outline-text-5" id="text-org0468b09">
+<ul class="org-ul">
+<li>Accountable for creating a value, useful Increment every Sprint</li>
+<li>Three specific accountabilities within the Scrum Team
+<ul class="org-ul">
+<li>The Developers</li>
+<li>The Product Owner</li>
+<li>The Scrum Master</li>
+</ul></li>
+</ul>
+</div>
+</li>
+<li><a id="org0fcf534"></a>Developers<br />
+<div class="outline-text-5" id="text-org0fcf534">
+<ul class="org-ul">
+<li>Are the people that are committed to creating any aspect of usable Increment each Sprint</li>
+<li>The skills necessary may be broad and vary depending on the domain</li>
+<li>But are always accountable for:
+<ul class="org-ul">
+<li>Creating a plan for the Sprint, the Sprint Backlog</li>
+<li>Instilling quality by following the Definition of Done</li>
+<li>Adapting their plan each day toward the Sprint Goal</li>
+<li>Holding each other accountable as professionals</li>
+</ul></li>
+</ul>
+</div>
+</li>
+<li><a id="orgf1360b9"></a>Product Owner<br />
+<div class="outline-text-5" id="text-orgf1360b9">
+<ul class="org-ul">
+<li>Accountable for maximising the value of the product resulting from the work of the Scrum Team</li>
+<li>Accountable for effective Product Backlog management, which includes:
+<ul class="org-ul">
+<li>Developing and explicitly communicating the Product Goal</li>
+<li>Creating and clearly communicating Product Backlog items</li>
+<li>Ordering Product Backlog items</li>
+<li>Ensuring Product Backlog is transparent, visible and understood</li>
+</ul></li>
+<li>The Product Owner may delegate his tasks to others, but is held accountable nonetheless</li>
+<li>The decisions of the Product Owner are transparent via the Product Backlog and through inspectable Increment at the Sprint Review</li>
+<li>If anyone wants to change the Product Backlog they need to convince the Product Owner to do so</li>
+</ul>
+</div>
+</li>
+<li><a id="orgc815049"></a>Scrum Master<br />
+<div class="outline-text-5" id="text-orgc815049">
+<ul class="org-ul">
+<li>Accountable for establishing Scrum as defined by the Guide</li>
+<li>Help everyone understand Scrum and its practices and theories, both withing a team and the organisation</li>
+<li>Is accountable for the team's effectiveness. This is achieved by improving the team's practices within the Scrum framework</li>
+<li>Are true leaders who serve the Team and the organisation</li>
+<li>Some ways how Scrum Masters serve the team:
+<ul class="org-ul">
+<li>Coaching in self-management and cross-functionality</li>
+<li>Help the team in creating high-value Increments that meet DoD</li>
+<li>Remove impediments to the team's progress</li>
+<li>Ensure all Scrum events take place and are positive, productive and kept within a timebox</li>
+</ul></li>
+<li>The Scrum Master serves the Product Owner:
+<ul class="org-ul">
+<li>Help with techniques for better Product Goal definitions and Product Backlog management</li>
+<li>Help understand the need for clear and concise Product Backlog items</li>
+<li>Help in establishing empirical product planning for a complex environment</li>
+<li>Facilitate stakeholder collaboration as requested or when needed</li>
+</ul></li>
+<li>The Scrum Master serves the organisation:
+<ul class="org-ul">
+<li>Lead, train and coach the org in Scrum adoption</li>
+<li>Plan and advise Scrum implementations within the org</li>
+<li>Help employees and stakeholder understand and enact an empirical approach for complex work</li>
+<li>Remove barriers between stakeholders and the Scrum Team</li>
+</ul></li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div id="outline-container-org0c841de" class="outline-4">
+<h4 id="org0c841de">Scrum Events</h4>
+<div class="outline-text-4" id="text-org0c841de">
+<ul class="org-ul">
+<li>Events exist to create regularity and to minimize meetings not defined in Scrum</li>
+<li>Failure to operate any events results in a lost opportunity to inspect and adapt</li>
+</ul>
+</div>
+<ul class="org-ul">
+<li><a id="orge2be634"></a>The Sprint<br />
+<div class="outline-text-5" id="text-orge2be634">
+<ul class="org-ul">
+<li>Is the heartbeat of Scrum</li>
+<li>Fixed length, usually a month</li>
+<li>New one starts immediately after the conclusion of the previous Sprint</li>
+<li>All the work that is necessary to achieve the Product Goal (Sprint Planning, Daily Scrums, Sprint Review, Sprint Retrospective) happen within Sprints</li>
+<li>During the Sprint:
+<ul class="org-ul">
+<li>No changes are made to endanger the Sprint Goal</li>
+<li>Quality does not decrease</li>
+<li>Product Backlog is refined as needed</li>
+<li>Scope may be clarified and negotiated with the Product Owner as more is learned</li>
+</ul></li>
+<li>Sprints enable predictability by ensuring inspection and adaptation of progress toward a Product Goal at least once a month</li>
+<li>Shorter sprints can be employed to encourage faster learning, however, longer sprints can stray away from the over goal, the Sprint Goal</li>
+<li>Each Sprint can be considered a mini-project (and now this whole thing makes much more sense)</li>
+<li>Various practices exist to forecast progress: burn-downs, burn-ups, cumulative flow, etc.
+<ul class="org-ul">
+<li>However, remember that in complex environments what will happen is unknown. Only what has happened may be used for future decision making (empiricism).</li>
+</ul></li>
+<li>Sprint may be cancelled if the Spring Goal becomes obsolete. Only the Product Owner has the authority to do so.</li>
+</ul>
+</div>
+</li>
+<li><a id="org491c517"></a>Sprint Planning<br />
+<div class="outline-text-5" id="text-org491c517">
+<ul class="org-ul">
+<li>Initiates the Sprint by laying out the work to be performed for the Sprint</li>
+<li>Is created by the entire Scrum Team</li>
+<li>PO ensures attendees are prepared to discuss most important PB items and how they map to the Product Goal</li>
+<li>The team may invite other people to provide advice</li>
+<li>Sprint Planning addresses the following topics:
+<ul class="org-ul">
+<li>Why is this Sprint Valuable? - Sprint Goal must be finalized at the end of Sprint Planning, so the PO proposes how to increase value and utility in the Current Sprint, then the team collaborates to define a Sprint Goal. The Sprint Goal communicates why the Goal is valuable.</li>
+<li>What can be Done this Sprint? - PO and the Devs discuss which items from the PB to include in the Sprint. The items may be refined during this process by the team (increases understanding and confidence of what is being done). Selecting items may be hard but empiricism helps as time goes by.</li>
+<li>How will the chosen work get done? - Each item from PB is planned by the Devs to create an Increment that meets the DoD. Often this is accomplished by decomposing an item into tasks/sub-tasks. This is purely at the discretion of the Devs on how they approach this process. No one tells the Devs how to turn PB items into Increments of value.</li>
+</ul></li>
+<li>The timebox for planning is usually 8 hours in a one-month Sprint. For shorter sprints it is less than that.</li>
+<li>The Sprint Goal, PB's items selected for the Sprint and the Delivery Plan of said items are together referred to as the: Sprint Backlog</li>
+</ul>
+</div>
+</li>
+<li><a id="orgf9c12d1"></a>Daily Scrum<br />
+<div class="outline-text-5" id="text-orgf9c12d1">
+<ul class="org-ul">
+<li>Goal is to inspect progress towards the Sprint Goal and adapt the Sprint Backlog if necessary (adjust the upcoming planned work)</li>
+<li>Is a 15-minute event for the Developers of the Scrum Team</li>
+<li>Is usually held at the same time and place every working day of the Sprint</li>
+<li>If the PO or Scrum Master are actively working on items from the Sprint Backlog they participate as Devs</li>
+<li>Devs select whatever structure and technique they want, for as long as their Daily Scrum focuses on progress towards the Sprint Goal and produces an actionable plan for the next day (create focus and improves self-management)</li>
+<li>General goals:
+<ul class="org-ul">
+<li>Improve communication</li>
+<li>Identify impediments</li>
+<li>Promote quick decision making</li>
+<li>Eliminate needs for other meetings (hopefully), however, if necessary other meetings happen throughout the day for more detailed discussions and plan adjustments</li>
+</ul></li>
+</ul>
+</div>
+</li>
+<li><a id="orge1ce2c3"></a>Sprint Review<br />
+<div class="outline-text-5" id="text-orge1ce2c3">
+<ul class="org-ul">
+<li>Inspect the outcome of the Sprint, determine future adaptations</li>
+<li>Present results to key stakeholders and progress towards the Product Goal (discuss progress as well)</li>
+<li>Team and stakeholders discuss what was accomplished in the Sprint and what has changed</li>
+<li>Based on all the information provided a discussion ensues on what to do next</li>
+<li>Product Backlog may be adjusted to meet new opportunities</li>
+<li>Is a working session and should not be a simple presentation</li>
+<li>Is the second to last event, usually timeboxed to 4 hours for a one-month Sprint, less for shorter Sprints.</li>
+</ul>
+</div>
+</li>
+<li><a id="orga4662b3"></a>Sprint Retrospective<br />
+<div class="outline-text-5" id="text-orga4662b3">
+<ul class="org-ul">
+<li>Purpose: Plan ways to increase quality and effectiveness</li>
+<li>Scrum Team inspects how the last Sprint went with regards to: Individuals, Interactions, Processes, Tools and the Definition of Done.</li>
+<li>Identify assumptions and explore their origins</li>
+<li>Scrum Team discusses what went well during the Sprint, what problems were encountered and how the problems were solved (or not solved)</li>
+<li>Scrum Team identifies most helpful changes to improve the way forward. Most impactful improvements are addressed as soon as possible.</li>
+<li>Retrospective concludes the Sprint, timeboxed to three hours for a one-month Sprint, less for shorter sprints.</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div id="outline-container-org47f5b1a" class="outline-4">
+<h4 id="org47f5b1a">Scrum Artifacts</h4>
+<div class="outline-text-4" id="text-org47f5b1a">
+<ul class="org-ul">
+<li>Represent work of value</li>
+<li>Designed to maximise transparency of key information</li>
+<li>Each artifact contains a commitment to ensure it provides information that enhances transparency and focus, this transparency and focus' progress can then be measured</li>
+</ul>
+</div>
+<ul class="org-ul">
+<li><a id="orgcd6f9c1"></a>Product Backlog<br />
+<div class="outline-text-5" id="text-orgcd6f9c1">
+<ul class="org-ul">
+<li>Emergent, ordered list of what is needed to create and improve the product.</li>
+<li>Single source of work for the Scrum Team</li>
+<li>Any item from the Backlog that can be done within a single Sprint is considered "ready" for Sprint Planning</li>
+<li>Product Backlog refinement or grooming is the act of breaking down items into more precise items</li>
+<li>It is an ongoing process that adds details, descriptions, order and size</li>
+<li>Devs are responsible for the sizing</li>
+<li>PO may influence the Devs by helping understand items and select trade-offs</li>
+</ul>
+</div>
+<ul class="org-ul">
+<li><a id="org11aee90"></a>Commitment: Product Goal<br />
+<div class="outline-text-6" id="text-org11aee90">
+<ul class="org-ul">
+<li>Describes a future state of the product which can serve as the target for the Scrum Team to plan against.</li>
+<li>The Product Goal is in the Product Backlog</li>
+<li>Is the long-term objective for the Scrum Team. Fulfil (or abandon) an objective before taking on the next</li>
+</ul>
+</div>
+</li>
+</ul>
+</li>
+<li><a id="orgae42547"></a>Sprint Backlog<br />
+<div class="outline-text-5" id="text-orgae42547">
+<ul class="org-ul">
+<li>Composed of the Sprint Goal (the: why)</li>
+<li>The set of PB items selected for the Sprint (the: what)</li>
+<li>Actionable plan for delivering an Increment (the: how)</li>
+<li>The Sprint Backlog is a plan by and for the Developers</li>
+<li>Is a high-visibility real-time picture of the work that the Devs plan to accomplish during the Sprint to achieve the Sprint Goal</li>
+<li>Update the Backlog when more things are learned about the work</li>
+<li>Should have enough detail that can be discussed during the Daily Scrum</li>
+</ul>
+</div>
+<ul class="org-ul">
+<li><a id="org7d85cb4"></a>Commitment: Sprint Goal<br />
+<div class="outline-text-6" id="text-org7d85cb4">
+<ul class="org-ul">
+<li>Single objective of the Sprint</li>
+<li>Commitment by the Devs, but has flexibility in terms of the exact work needed to accomplish the goal</li>
+<li>Creates coherence and focus. The whole team is on the same page and work together towards the same goal.</li>
+<li>Is created during Sprint Planning and added to the Sprint Backlog</li>
+<li>As Devs work they keep the Sprint Goal in mind</li>
+<li>If the work turns out more difficult, they collaborate with the PO to negotiate the scope and hopefully achieve the Sprint Goal still</li>
+</ul>
+</div>
+</li>
+</ul>
+</li>
+<li><a id="org6e76aef"></a>Increment<br />
+<div class="outline-text-5" id="text-org6e76aef">
+<ul class="org-ul">
+<li>Is a concrete stepping stone towards the Product Goal</li>
+<li>Each is additive with the previous one and thoroughly verified to ensure that all Increments work together</li>
+<li>In order to provide value and Increment must be usable</li>
+<li>Multiple Increments may be created within a Sprint</li>
+<li>Increments may be presented to stakeholders sooner, Sprint Review does not need to be solely that moment</li>
+<li>Work cannot be considered part of an Increment unless it meets the Definition of Done</li>
+</ul>
+</div>
+<ul class="org-ul">
+<li><a id="orgaf1316c"></a>Commitment: Definition of Done<br />
+<div class="outline-text-6" id="text-orgaf1316c">
+<ul class="org-ul">
+<li>Is a formal description of the state of an Increment when it meets the quality measures required for the product</li>
+<li>When a Product Backlog item meets the Definition of Done, an Increment is made</li>
+<li>DoD creates transparency. so that everyone understands what kind of work is necessary to complete a work item to create an Increment.</li>
+<li>If a PB item does not meet the DoD it cannot be released or even presented at the Sprint Review. It goes back to the PB.</li>
+<li>DoD may be an organizational standard, so then all Scrum Teams follow that standard. Otherwise the Scrum Team creates their own DoD appropriate for the product.</li>
+<li>Devs are required to conform with DoD. If multiple teams work on a single product they all share the same DoD.</li>
+</ul>
+</div>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-org277b1c3" class="outline-2">
+<h2 id="org277b1c3"><span class="section-number-2">3.</span> Remove at the End</h2>
+<div class="outline-text-2" id="text-3">
+<script src="../assets/jquery-3.3.1.min.js"></script>
+<script src="../assets/notes.js"></script>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="date">Date: 2026-04-07 Tue 15:56</p>
+<p class="author">Author: Damian Chrzanowski</p>
+<p class="date">Created: 2026-04-07 Tue 21:01</p>
+<p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

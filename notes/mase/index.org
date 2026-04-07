@@ -25,6 +25,10 @@
 
 [[file:oop2.org][OOP 2]]
 
+[[file:cicd-testing.org][CI/CD Testing]]
+
+[[file:cicd.org][CI/CD]]
+
 #+BEGIN_EXPORT html
 <script src="../assets/jquery-3.3.1.min.js"></script>
 <script src="../assets/notes.js"></script>
