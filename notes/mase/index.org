@@ -27,11 +27,8 @@
 
 [[file:cicd-testing.org][CI/CD Testing]]
 
-<<<<<<< HEAD
 [[file:cicd.org][CI/CD]]
 
-=======
->>>>>>> 7d9796e739431e9dc37155c33fc9066b8997f695
 #+BEGIN_EXPORT html
 <script src="../assets/jquery-3.3.1.min.js"></script>
 <script src="../assets/notes.js"></script>

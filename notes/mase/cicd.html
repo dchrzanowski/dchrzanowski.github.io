@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-04-07 Tue 21:01 -->
+<!-- 2026-04-07 Tue 21:04 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>CICD</title>
@@ -204,68 +204,68 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgab4ac35">1. Exam Questions</a>
+<li><a href="#org612e6e8">1. Exam Questions</a>
 <ul>
-<li><a href="#orga2e787d">1.1. Propose a branching and merging model with diagrams in <code>git</code></a></li>
-<li><a href="#org9dd0bd6">1.2. Challenges of <code>CI/CD in rapid deployment</code> in a cloud native env</a></li>
-<li><a href="#org65ff612">1.3. System administration, deployment, <code>DevOps in general</code>, Ansible for scaffolding, etc.</a></li>
-<li><a href="#orga2f85b3">1.4. Describe what <code>Jenkins</code> does with regards to <code>CI/CD</code></a></li>
-<li><a href="#org62f3a01">1.5. 2x <code>Testing pyramid</code></a></li>
-<li><a href="#orgaa0a1ea">1.6. 2x <code>Docker</code>, why was it made and what purposes does it serve?</a></li>
-<li><a href="#org95aa434">1.7. 2x <code>Lifecycle of a Docker</code> container from creation to termination.</a></li>
-<li><a href="#org0b45678">1.8. 3x Where does <code>SonarQube</code> fit into the CI/CD pipeline</a></li>
-<li><a href="#org06a8eb5">1.9. 3x Mitigate a <code>vulnerability</code> detected by <code>SonarQube</code></a></li>
-<li><a href="#org0e94393">1.10. <code>SonarQube</code> maintainability ratings</a></li>
-<li><a href="#org57b7906">1.11. 3x Diff between <code>Cyclomatic and Cognitive Complexity</code>. Calculate both for a given code.</a></li>
-<li><a href="#org33b6cc2">1.12. Primary purpose of <code>plugins</code> in <code>Maven</code>. What are the two main types?</a></li>
-<li><a href="#org66fffc3">1.13. Issues with <code>@Autowired</code>, use dep injection instead</a></li>
-<li><a href="#orga4e536b">1.14. How <code>git</code> stores and manages changes in a repo</a></li>
-<li><a href="#org76f03fc">1.15. 2x Show steps with a <code>diagram</code> of a series of <code>git</code> commands</a></li>
-<li><a href="#org3441ebe">1.16. <code>RestTemplate</code> vs <code>Karate</code> compare and contrast</a></li>
-<li><a href="#org4177ff3">1.17. <code>Cucumber</code> in BDD with <code>Example Mapping</code></a></li>
-<li><a href="#org4b326c0">1.18. Advantages of using <code>mocks</code> and mockito</a></li>
-<li><a href="#org364f7b8">1.19. Maven's Project Object Model (<code>pom</code>)</a></li>
-<li><a href="#org4f24ade">1.20. <code>TDD</code> and steps involved</a></li>
-<li><a href="#org77d16eb">1.21. TDD vs BDD</a></li>
-<li><a href="#orgd1afcb5">1.22. Example Gherkin</a></li>
+<li><a href="#orgd6a6feb">1.1. Propose a branching and merging model with diagrams in <code>git</code></a></li>
+<li><a href="#orgdf970ad">1.2. Challenges of <code>CI/CD in rapid deployment</code> in a cloud native env</a></li>
+<li><a href="#org2925bbb">1.3. System administration, deployment, <code>DevOps in general</code>, Ansible for scaffolding, etc.</a></li>
+<li><a href="#org226c672">1.4. Describe what <code>Jenkins</code> does with regards to <code>CI/CD</code></a></li>
+<li><a href="#orgca357cb">1.5. 2x <code>Testing pyramid</code></a></li>
+<li><a href="#orgf0b8e19">1.6. 2x <code>Docker</code>, why was it made and what purposes does it serve?</a></li>
+<li><a href="#org8e55023">1.7. 2x <code>Lifecycle of a Docker</code> container from creation to termination.</a></li>
+<li><a href="#orgd2018e8">1.8. 3x Where does <code>SonarQube</code> fit into the CI/CD pipeline</a></li>
+<li><a href="#orgbccc40e">1.9. 3x Mitigate a <code>vulnerability</code> detected by <code>SonarQube</code></a></li>
+<li><a href="#org47e5f7c">1.10. <code>SonarQube</code> maintainability ratings</a></li>
+<li><a href="#org4a45324">1.11. 3x Diff between <code>Cyclomatic and Cognitive Complexity</code>. Calculate both for a given code.</a></li>
+<li><a href="#orga415a5d">1.12. Primary purpose of <code>plugins</code> in <code>Maven</code>. What are the two main types?</a></li>
+<li><a href="#orgd1f4d81">1.13. Issues with <code>@Autowired</code>, use dep injection instead</a></li>
+<li><a href="#org0a39744">1.14. How <code>git</code> stores and manages changes in a repo</a></li>
+<li><a href="#org964eae3">1.15. 2x Show steps with a <code>diagram</code> of a series of <code>git</code> commands</a></li>
+<li><a href="#orgce09a5d">1.16. <code>RestTemplate</code> vs <code>Karate</code> compare and contrast</a></li>
+<li><a href="#org97f0368">1.17. <code>Cucumber</code> in BDD with <code>Example Mapping</code></a></li>
+<li><a href="#orgc211e68">1.18. Advantages of using <code>mocks</code> and mockito</a></li>
+<li><a href="#org46332b4">1.19. Maven's Project Object Model (<code>pom</code>)</a></li>
+<li><a href="#orgde48a9b">1.20. <code>TDD</code> and steps involved</a></li>
+<li><a href="#org1171a9a">1.21. TDD vs BDD</a></li>
+<li><a href="#orgc6f5ddc">1.22. Example Gherkin</a></li>
 </ul>
 </li>
-<li><a href="#org66d7d40">2. Common Questions</a>
+<li><a href="#org62cfa3d">2. Common Questions</a>
 <ul>
-<li><a href="#org1310a60">2.1. What is a Deployment Pipeline?</a></li>
-<li><a href="#orgf6addaf">2.2. CI vs CD</a></li>
-<li><a href="#orgfa55275">2.3. Common SDLC steps</a></li>
-<li><a href="#org195a1b8">2.4. Git terminology</a></li>
-<li><a href="#org6cacf0c">2.5. Branching strat:</a></li>
-<li><a href="#org7937c43">2.6. Docker</a></li>
-<li><a href="#org364d888">2.7. Sonar Qube/Lint</a></li>
-<li><a href="#orgc6535ea">2.8. Bugs, vulnerabilities, code smells</a></li>
-<li><a href="#org8fd1ee8">2.9. Quality metrics</a></li>
-<li><a href="#org653b6e7">2.10. Seven Axis of Quality</a></li>
-<li><a href="#org2f3ffe2">2.11. Complexities</a></li>
-<li><a href="#orgafd2119">2.12. Unit Testing Phases</a></li>
-<li><a href="#orgdd0ba36">2.13. Test Design Categories</a></li>
-<li><a href="#org1a0d63b">2.14. Testing with Mocks</a></li>
-<li><a href="#orga22b83f">2.15. Test Driven Development (TDD)</a></li>
-<li><a href="#org07373f6">2.16. Cost of changing code</a></li>
-<li><a href="#orgda86a60">2.17. Build Systems</a></li>
-<li><a href="#org09e63a2">2.18. User Stories</a></li>
-<li><a href="#orgcfbce06">2.19. SCRUM</a></li>
+<li><a href="#org32c163e">2.1. What is a Deployment Pipeline?</a></li>
+<li><a href="#org20639da">2.2. CI vs CD</a></li>
+<li><a href="#orgb35b526">2.3. Common SDLC steps</a></li>
+<li><a href="#org9dc4a68">2.4. Git terminology</a></li>
+<li><a href="#org046dcf5">2.5. Branching strat:</a></li>
+<li><a href="#org08f6949">2.6. Docker</a></li>
+<li><a href="#orgf6ed3ce">2.7. Sonar Qube/Lint</a></li>
+<li><a href="#orga6d74f0">2.8. Bugs, vulnerabilities, code smells</a></li>
+<li><a href="#org9065318">2.9. Quality metrics</a></li>
+<li><a href="#org10bdc29">2.10. Seven Axis of Quality</a></li>
+<li><a href="#org9488e62">2.11. Complexities</a></li>
+<li><a href="#org051cae7">2.12. Unit Testing Phases</a></li>
+<li><a href="#org358dbe3">2.13. Test Design Categories</a></li>
+<li><a href="#org36251fa">2.14. Testing with Mocks</a></li>
+<li><a href="#orga20522b">2.15. Test Driven Development (TDD)</a></li>
+<li><a href="#org54e1782">2.16. Cost of changing code</a></li>
+<li><a href="#org8ff5783">2.17. Build Systems</a></li>
+<li><a href="#org158a437">2.18. User Stories</a></li>
+<li><a href="#orga6429fd">2.19. SCRUM</a></li>
 </ul>
 </li>
-<li><a href="#org277b1c3">3. Remove at the End</a></li>
+<li><a href="#orgeca2590">3. Remove at the End</a></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgab4ac35" class="outline-2">
-<h2 id="orgab4ac35"><span class="section-number-2">1.</span> Exam Questions</h2>
+<div id="outline-container-org612e6e8" class="outline-2">
+<h2 id="org612e6e8"><span class="section-number-2">1.</span> Exam Questions</h2>
 <div class="outline-text-2" id="text-1">
 </div>
-<div id="outline-container-orga2e787d" class="outline-3">
-<h3 id="orga2e787d"><span class="section-number-3">1.1.</span> Propose a branching and merging model with diagrams in <code>git</code></h3>
+<div id="outline-container-orgd6a6feb" class="outline-3">
+<h3 id="orgd6a6feb"><span class="section-number-3">1.1.</span> Propose a branching and merging model with diagrams in <code>git</code></h3>
 </div>
-<div id="outline-container-org9dd0bd6" class="outline-3">
-<h3 id="org9dd0bd6"><span class="section-number-3">1.2.</span> Challenges of <code>CI/CD in rapid deployment</code> in a cloud native env</h3>
+<div id="outline-container-orgdf970ad" class="outline-3">
+<h3 id="orgdf970ad"><span class="section-number-3">1.2.</span> Challenges of <code>CI/CD in rapid deployment</code> in a cloud native env</h3>
 <div class="outline-text-3" id="text-1-2">
 <ul class="org-ul">
 <li>Build stability (frequent changes are a challenging contributor)</li>
@@ -278,8 +278,8 @@
 </ul>
 </div>
 </div>
-<div id="outline-container-org65ff612" class="outline-3">
-<h3 id="org65ff612"><span class="section-number-3">1.3.</span> System administration, deployment, <code>DevOps in general</code>, Ansible for scaffolding, etc.</h3>
+<div id="outline-container-org2925bbb" class="outline-3">
+<h3 id="org2925bbb"><span class="section-number-3">1.3.</span> System administration, deployment, <code>DevOps in general</code>, Ansible for scaffolding, etc.</h3>
 <div class="outline-text-3" id="text-1-3">
 <p class="verse">
 Use Terraform to create servers/networks/cloud resources (reliably and declaratively), use Ansible to configure the services/networks/servers/resources (reliably and declaratively, install software and configure it, deploy).<br />
@@ -294,8 +294,8 @@ Terraform builds the house, Ansible furnishes it.<br />
 </ul>
 </div>
 </div>
-<div id="outline-container-orga2f85b3" class="outline-3">
-<h3 id="orga2f85b3"><span class="section-number-3">1.4.</span> Describe what <code>Jenkins</code> does with regards to <code>CI/CD</code></h3>
+<div id="outline-container-org226c672" class="outline-3">
+<h3 id="org226c672"><span class="section-number-3">1.4.</span> Describe what <code>Jenkins</code> does with regards to <code>CI/CD</code></h3>
 <div class="outline-text-3" id="text-1-4">
 <ol class="org-ol">
 <li>Automation of Build Process</li>
@@ -306,8 +306,8 @@ Terraform builds the house, Ansible furnishes it.<br />
 </ol>
 </div>
 </div>
-<div id="outline-container-org62f3a01" class="outline-3">
-<h3 id="org62f3a01"><span class="section-number-3">1.5.</span> 2x <code>Testing pyramid</code></h3>
+<div id="outline-container-orgca357cb" class="outline-3">
+<h3 id="orgca357cb"><span class="section-number-3">1.5.</span> 2x <code>Testing pyramid</code></h3>
 <div class="outline-text-3" id="text-1-5">
 <ul class="org-ul">
 <li>Overview</li>
@@ -316,8 +316,8 @@ Terraform builds the house, Ansible furnishes it.<br />
 </ul>
 </div>
 </div>
-<div id="outline-container-orgaa0a1ea" class="outline-3">
-<h3 id="orgaa0a1ea"><span class="section-number-3">1.6.</span> 2x <code>Docker</code>, why was it made and what purposes does it serve?</h3>
+<div id="outline-container-orgf0b8e19" class="outline-3">
+<h3 id="orgf0b8e19"><span class="section-number-3">1.6.</span> 2x <code>Docker</code>, why was it made and what purposes does it serve?</h3>
 <div class="outline-text-3" id="text-1-6">
 <ul class="org-ul">
 <li>Lightweight and efficient way to package and run applications consistently across environments</li>
@@ -326,8 +326,8 @@ Terraform builds the house, Ansible furnishes it.<br />
 </ul>
 </div>
 </div>
-<div id="outline-container-org95aa434" class="outline-3">
-<h3 id="org95aa434"><span class="section-number-3">1.7.</span> 2x <code>Lifecycle of a Docker</code> container from creation to termination.</h3>
+<div id="outline-container-org8e55023" class="outline-3">
+<h3 id="org8e55023"><span class="section-number-3">1.7.</span> 2x <code>Lifecycle of a Docker</code> container from creation to termination.</h3>
 <div class="outline-text-3" id="text-1-7">
 <ul class="org-ul">
 <li><code>docker create</code>: Created container</li>
@@ -338,32 +338,32 @@ Terraform builds the house, Ansible furnishes it.<br />
 </ul>
 </div>
 </div>
-<div id="outline-container-org0b45678" class="outline-3">
-<h3 id="org0b45678"><span class="section-number-3">1.8.</span> 3x Where does <code>SonarQube</code> fit into the CI/CD pipeline</h3>
+<div id="outline-container-orgd2018e8" class="outline-3">
+<h3 id="orgd2018e8"><span class="section-number-3">1.8.</span> 3x Where does <code>SonarQube</code> fit into the CI/CD pipeline</h3>
 <div class="outline-text-3" id="text-1-8">
 <ul class="org-ul">
 <li>After the build stage, in the <code>static code analysis stage</code></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org06a8eb5" class="outline-3">
-<h3 id="org06a8eb5"><span class="section-number-3">1.9.</span> 3x Mitigate a <code>vulnerability</code> detected by <code>SonarQube</code></h3>
+<div id="outline-container-orgbccc40e" class="outline-3">
+<h3 id="orgbccc40e"><span class="section-number-3">1.9.</span> 3x Mitigate a <code>vulnerability</code> detected by <code>SonarQube</code></h3>
 </div>
-<div id="outline-container-org0e94393" class="outline-3">
-<h3 id="org0e94393"><span class="section-number-3">1.10.</span> <code>SonarQube</code> maintainability ratings</h3>
+<div id="outline-container-org47e5f7c" class="outline-3">
+<h3 id="org47e5f7c"><span class="section-number-3">1.10.</span> <code>SonarQube</code> maintainability ratings</h3>
 <div class="outline-text-3" id="text-1-10">
 </div>
-<div id="outline-container-org9096519" class="outline-4">
-<h4 id="org9096519">Explanation</h4>
-<div class="outline-text-4" id="text-org9096519">
+<div id="outline-container-orgb8a3a74" class="outline-4">
+<h4 id="orgb8a3a74">Explanation</h4>
+<div class="outline-text-4" id="text-orgb8a3a74">
 <ul class="org-ul">
 <li>Is the value of the tech debt ratio. Compares the tech debt on a project to the cost it would take to rewrite it from scratch.</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org6e8e197" class="outline-4">
-<h4 id="org6e8e197">Reliability Ratings</h4>
-<div class="outline-text-4" id="text-org6e8e197">
+<div id="outline-container-orgc807952" class="outline-4">
+<h4 id="orgc807952">Reliability Ratings</h4>
+<div class="outline-text-4" id="text-orgc807952">
 <ul class="org-ul">
 <li>&lt;5% A rating (also mean 0 bugs)</li>
 <li>6% - 10 % B rating (also means 1 minor bug)</li>
@@ -373,9 +373,9 @@ Terraform builds the house, Ansible furnishes it.<br />
 </ul>
 </div>
 </div>
-<div id="outline-container-orgfdbedf2" class="outline-4">
-<h4 id="orgfdbedf2">Security Ratings</h4>
-<div class="outline-text-4" id="text-orgfdbedf2">
+<div id="outline-container-org5700c92" class="outline-4">
+<h4 id="org5700c92">Security Ratings</h4>
+<div class="outline-text-4" id="text-org5700c92">
 <ul class="org-ul">
 <li>&lt;5% A rating (also mean 0 vulnerabilities)</li>
 <li>6% - 10 % B rating (also means 1 minor vulnerability)</li>
@@ -386,11 +386,11 @@ Terraform builds the house, Ansible furnishes it.<br />
 </div>
 </div>
 </div>
-<div id="outline-container-org57b7906" class="outline-3">
-<h3 id="org57b7906"><span class="section-number-3">1.11.</span> 3x Diff between <code>Cyclomatic and Cognitive Complexity</code>. Calculate both for a given code.</h3>
+<div id="outline-container-org4a45324" class="outline-3">
+<h3 id="org4a45324"><span class="section-number-3">1.11.</span> 3x Diff between <code>Cyclomatic and Cognitive Complexity</code>. Calculate both for a given code.</h3>
 </div>
-<div id="outline-container-org33b6cc2" class="outline-3">
-<h3 id="org33b6cc2"><span class="section-number-3">1.12.</span> Primary purpose of <code>plugins</code> in <code>Maven</code>. What are the two main types?</h3>
+<div id="outline-container-orga415a5d" class="outline-3">
+<h3 id="orga415a5d"><span class="section-number-3">1.12.</span> Primary purpose of <code>plugins</code> in <code>Maven</code>. What are the two main types?</h3>
 <div class="outline-text-3" id="text-1-12">
 <ul class="org-ul">
 <li><code>Build plugins</code>: such as <code>maven-compiler-plugin</code>, defined in the <code>&lt;build&gt;</code>, used in the lifecycles (compile, test, package, etc.)</li>
@@ -398,8 +398,8 @@ Terraform builds the house, Ansible furnishes it.<br />
 </ul>
 </div>
 </div>
-<div id="outline-container-org66fffc3" class="outline-3">
-<h3 id="org66fffc3"><span class="section-number-3">1.13.</span> Issues with <code>@Autowired</code>, use dep injection instead</h3>
+<div id="outline-container-orgd1f4d81" class="outline-3">
+<h3 id="orgd1f4d81"><span class="section-number-3">1.13.</span> Issues with <code>@Autowired</code>, use dep injection instead</h3>
 <div class="outline-text-3" id="text-1-13">
 <ul class="org-ul">
 <li>Creates a <code>tight coupling</code></li>
@@ -407,13 +407,13 @@ Terraform builds the house, Ansible furnishes it.<br />
 </ul>
 </div>
 </div>
-<div id="outline-container-orga4e536b" class="outline-3">
-<h3 id="orga4e536b"><span class="section-number-3">1.14.</span> How <code>git</code> stores and manages changes in a repo</h3>
+<div id="outline-container-org0a39744" class="outline-3">
+<h3 id="org0a39744"><span class="section-number-3">1.14.</span> How <code>git</code> stores and manages changes in a repo</h3>
 <div class="outline-text-3" id="text-1-14">
 </div>
-<div id="outline-container-orgf1fb3ce" class="outline-4">
-<h4 id="orgf1fb3ce">General</h4>
-<div class="outline-text-4" id="text-orgf1fb3ce">
+<div id="outline-container-org040ce5a" class="outline-4">
+<h4 id="org040ce5a">General</h4>
+<div class="outline-text-4" id="text-org040ce5a">
 <ul class="org-ul">
 <li>Snapshots vs Differences: git stores snapshots, differences are evaluated in real time when needed. If a file has not changed, Git simply references the previous version instead of storing it again.</li>
 <li>Objects in git db: <code>commit</code> (msg, author, parent, pointer to a tree), <code>tree</code> (file structure), <code>blob</code> (file data)</li>
@@ -421,9 +421,9 @@ Terraform builds the house, Ansible furnishes it.<br />
 </ul>
 </div>
 </div>
-<div id="outline-container-orgbf19e06" class="outline-4">
-<h4 id="orgbf19e06">What happens when</h4>
-<div class="outline-text-4" id="text-orgbf19e06">
+<div id="outline-container-org6a069f2" class="outline-4">
+<h4 id="org6a069f2">What happens when</h4>
+<div class="outline-text-4" id="text-org6a069f2">
 <ul class="org-ul">
 <li>Branch: new pointer to an existing commit</li>
 <li>Checkout: changes where the <code>HEAD</code> is pointing to</li>
@@ -432,11 +432,11 @@ Terraform builds the house, Ansible furnishes it.<br />
 </div>
 </div>
 </div>
-<div id="outline-container-org76f03fc" class="outline-3">
-<h3 id="org76f03fc"><span class="section-number-3">1.15.</span> 2x Show steps with a <code>diagram</code> of a series of <code>git</code> commands</h3>
+<div id="outline-container-org964eae3" class="outline-3">
+<h3 id="org964eae3"><span class="section-number-3">1.15.</span> 2x Show steps with a <code>diagram</code> of a series of <code>git</code> commands</h3>
 </div>
-<div id="outline-container-org3441ebe" class="outline-3">
-<h3 id="org3441ebe"><span class="section-number-3">1.16.</span> <code>RestTemplate</code> vs <code>Karate</code> compare and contrast</h3>
+<div id="outline-container-orgce09a5d" class="outline-3">
+<h3 id="orgce09a5d"><span class="section-number-3">1.16.</span> <code>RestTemplate</code> vs <code>Karate</code> compare and contrast</h3>
 <div class="outline-text-3" id="text-1-16">
 <ul class="org-ul">
 <li>Learning Curve:
@@ -457,13 +457,13 @@ Terraform builds the house, Ansible furnishes it.<br />
 </ul>
 </div>
 </div>
-<div id="outline-container-org4177ff3" class="outline-3">
-<h3 id="org4177ff3"><span class="section-number-3">1.17.</span> <code>Cucumber</code> in BDD with <code>Example Mapping</code></h3>
+<div id="outline-container-org97f0368" class="outline-3">
+<h3 id="org97f0368"><span class="section-number-3">1.17.</span> <code>Cucumber</code> in BDD with <code>Example Mapping</code></h3>
 <div class="outline-text-3" id="text-1-17">
 </div>
-<div id="outline-container-orgc549622" class="outline-4">
-<h4 id="orgc549622">Benefits of <code>Example Mapping</code></h4>
-<div class="outline-text-4" id="text-orgc549622">
+<div id="outline-container-org33a0305" class="outline-4">
+<h4 id="org33a0305">Benefits of <code>Example Mapping</code></h4>
+<div class="outline-text-4" id="text-org33a0305">
 <ul class="org-ul">
 <li>Improves shared understanding of requirements</li>
 <li>Helps define acceptance criteria early</li>
@@ -472,15 +472,15 @@ Terraform builds the house, Ansible furnishes it.<br />
 </ul>
 </div>
 </div>
-<div id="outline-container-orgb7ed3d0" class="outline-4">
-<h4 id="orgb7ed3d0">Mapping is carried out in a trivial way, just include invalid options as well</h4>
+<div id="outline-container-org2da2aa3" class="outline-4">
+<h4 id="org2da2aa3">Mapping is carried out in a trivial way, just include invalid options as well</h4>
 </div>
 </div>
-<div id="outline-container-org4b326c0" class="outline-3">
-<h3 id="org4b326c0"><span class="section-number-3">1.18.</span> Advantages of using <code>mocks</code> and mockito</h3>
+<div id="outline-container-orgc211e68" class="outline-3">
+<h3 id="orgc211e68"><span class="section-number-3">1.18.</span> Advantages of using <code>mocks</code> and mockito</h3>
 </div>
-<div id="outline-container-org364f7b8" class="outline-3">
-<h3 id="org364f7b8"><span class="section-number-3">1.19.</span> Maven's Project Object Model (<code>pom</code>)</h3>
+<div id="outline-container-org46332b4" class="outline-3">
+<h3 id="org46332b4"><span class="section-number-3">1.19.</span> Maven's Project Object Model (<code>pom</code>)</h3>
 <div class="outline-text-3" id="text-1-19">
 <ul class="org-ul">
 <li>POM: The Maven POM (pom.xml) is the central file used to define and manage a project. It identifies artifacts through coordinates, specifies packaging, supports modules, defines reusable properties, and manages dependencies with scopes such as test,provided and runtime. This makes Maven a powerful tool for building and managing Java projects.</li>
@@ -520,16 +520,16 @@ Terraform builds the house, Ansible furnishes it.<br />
 </ul>
 </div>
 </div>
-<div id="outline-container-org4f24ade" class="outline-3">
-<h3 id="org4f24ade"><span class="section-number-3">1.20.</span> <code>TDD</code> and steps involved</h3>
+<div id="outline-container-orgde48a9b" class="outline-3">
+<h3 id="orgde48a9b"><span class="section-number-3">1.20.</span> <code>TDD</code> and steps involved</h3>
 </div>
-<div id="outline-container-org77d16eb" class="outline-3">
-<h3 id="org77d16eb"><span class="section-number-3">1.21.</span> TDD vs BDD</h3>
+<div id="outline-container-org1171a9a" class="outline-3">
+<h3 id="org1171a9a"><span class="section-number-3">1.21.</span> TDD vs BDD</h3>
 <div class="outline-text-3" id="text-1-21">
 </div>
-<div id="outline-container-org3f3a0a9" class="outline-4">
-<h4 id="org3f3a0a9">TDD</h4>
-<div class="outline-text-4" id="text-org3f3a0a9">
+<div id="outline-container-orgb029e29" class="outline-4">
+<h4 id="orgb029e29">TDD</h4>
+<div class="outline-text-4" id="text-orgb029e29">
 <ul class="org-ul">
 <li>Focuses on writing unit tests before code</li>
 <li>Uses a cycle: write tests &gt; write code &gt; refactor</li>
@@ -538,9 +538,9 @@ Terraform builds the house, Ansible furnishes it.<br />
 </ul>
 </div>
 </div>
-<div id="outline-container-org331e406" class="outline-4">
-<h4 id="org331e406">BDD</h4>
-<div class="outline-text-4" id="text-org331e406">
+<div id="outline-container-org9f9a12c" class="outline-4">
+<h4 id="org9f9a12c">BDD</h4>
+<div class="outline-text-4" id="text-org9f9a12c">
 <ul class="org-ul">
 <li>Focuses on describing behaviour from a user's perspective</li>
 <li>Uses <code>Give-When-Then</code> format</li>
@@ -549,9 +549,9 @@ Terraform builds the house, Ansible furnishes it.<br />
 </ul>
 </div>
 </div>
-<div id="outline-container-org43eceb5" class="outline-4">
-<h4 id="org43eceb5">Advantages of BDD</h4>
-<div class="outline-text-4" id="text-org43eceb5">
+<div id="outline-container-org2cb25e8" class="outline-4">
+<h4 id="org2cb25e8">Advantages of BDD</h4>
+<div class="outline-text-4" id="text-org2cb25e8">
 <ul class="org-ul">
 <li>Requirements are expressed as clear scenarios</li>
 <li>Both technical and non-technical team members can understand requirements</li>
@@ -559,17 +559,17 @@ Terraform builds the house, Ansible furnishes it.<br />
 </ul>
 </div>
 </div>
-<div id="outline-container-org5646ec8" class="outline-4">
-<h4 id="org5646ec8">Summary</h4>
-<div class="outline-text-4" id="text-org5646ec8">
+<div id="outline-container-orgafb2890" class="outline-4">
+<h4 id="orgafb2890">Summary</h4>
+<div class="outline-text-4" id="text-orgafb2890">
 <ul class="org-ul">
 <li>TDD focuses on testing code correctness, while BDD focuses on system behaviour. The key advantage of BDD is clearer communication and requirements understanding.</li>
 </ul>
 </div>
 </div>
 </div>
-<div id="outline-container-orgd1afcb5" class="outline-3">
-<h3 id="orgd1afcb5"><span class="section-number-3">1.22.</span> Example Gherkin</h3>
+<div id="outline-container-orgc6f5ddc" class="outline-3">
+<h3 id="orgc6f5ddc"><span class="section-number-3">1.22.</span> Example Gherkin</h3>
 <div class="outline-text-3" id="text-1-22">
 <div class="org-src-container">
 <pre class="src src-gherkin">Feature: Calculator addition
@@ -589,26 +589,26 @@ Examples:
 </div>
 </div>
 </div>
-<div id="outline-container-org66d7d40" class="outline-2">
-<h2 id="org66d7d40"><span class="section-number-2">2.</span> Common Questions</h2>
+<div id="outline-container-org62cfa3d" class="outline-2">
+<h2 id="org62cfa3d"><span class="section-number-2">2.</span> Common Questions</h2>
 <div class="outline-text-2" id="text-2">
 </div>
-<div id="outline-container-org1310a60" class="outline-3">
-<h3 id="org1310a60"><span class="section-number-3">2.1.</span> What is a Deployment Pipeline?</h3>
+<div id="outline-container-org32c163e" class="outline-3">
+<h3 id="org32c163e"><span class="section-number-3">2.1.</span> What is a Deployment Pipeline?</h3>
 <div class="outline-text-3" id="text-2-1">
 <ul class="org-ul">
 <li>Is an automated manifestation of your process for getting software from version control into the hands of your users.</li>
 <li>DevOps diagrams with CI/CD</li>
 </ul>
 
-<div id="org76f147b" class="figure">
+<div id="org772cf0e" class="figure">
 <p><img src="images/Common_Questions/2026-04-07_16-35-00_screenshot.png" alt="2026-04-07_16-35-00_screenshot.png" />
 </p>
 </div>
 </div>
 </div>
-<div id="outline-container-orgf6addaf" class="outline-3">
-<h3 id="orgf6addaf"><span class="section-number-3">2.2.</span> CI vs CD</h3>
+<div id="outline-container-org20639da" class="outline-3">
+<h3 id="org20639da"><span class="section-number-3">2.2.</span> CI vs CD</h3>
 <div class="outline-text-3" id="text-2-2">
 <ul class="org-ul">
 <li>CI: practice of software development that helps the team to integrate their code multiple times a day seamlessly
@@ -619,9 +619,9 @@ Examples:
 <li>CD: Practice of moving software changes into production efficiently, quickly and safely.</li>
 </ul>
 </div>
-<div id="outline-container-org805357f" class="outline-4">
-<h4 id="org805357f">Graph</h4>
-<div class="outline-text-4" id="text-org805357f">
+<div id="outline-container-orgf51c2d1" class="outline-4">
+<h4 id="orgf51c2d1">Graph</h4>
+<div class="outline-text-4" id="text-orgf51c2d1">
 <ul class="org-ul">
 <li>commit &gt; build &gt; unit test &gt; deploy &gt; test &gt; prod deploy</li>
 <li>CI: code &gt; build &gt; test</li>
@@ -631,8 +631,8 @@ Examples:
 </div>
 </div>
 </div>
-<div id="outline-container-orgfa55275" class="outline-3">
-<h3 id="orgfa55275"><span class="section-number-3">2.3.</span> Common SDLC steps</h3>
+<div id="outline-container-orgb35b526" class="outline-3">
+<h3 id="orgb35b526"><span class="section-number-3">2.3.</span> Common SDLC steps</h3>
 <div class="outline-text-3" id="text-2-3">
 <ul class="org-ul">
 <li>Requirements</li>
@@ -643,8 +643,8 @@ Examples:
 </ul>
 </div>
 </div>
-<div id="outline-container-org195a1b8" class="outline-3">
-<h3 id="org195a1b8"><span class="section-number-3">2.4.</span> Git terminology</h3>
+<div id="outline-container-org9dc4a68" class="outline-3">
+<h3 id="org9dc4a68"><span class="section-number-3">2.4.</span> Git terminology</h3>
 <div class="outline-text-3" id="text-2-4">
 <ul class="org-ul">
 <li>Snapshot: a commit object</li>
@@ -657,14 +657,14 @@ Examples:
 <li>How git stores info:</li>
 </ul>
 
-<div id="orgf102f6d" class="figure">
+<div id="org5e465b7" class="figure">
 <p><img src="images/Common_Questions/2026-04-07_16-51-20_screenshot.png" alt="2026-04-07_16-51-20_screenshot.png" />
 </p>
 </div>
 </div>
 </div>
-<div id="outline-container-org6cacf0c" class="outline-3">
-<h3 id="org6cacf0c"><span class="section-number-3">2.5.</span> Branching strat:</h3>
+<div id="outline-container-org046dcf5" class="outline-3">
+<h3 id="org046dcf5"><span class="section-number-3">2.5.</span> Branching strat:</h3>
 <div class="outline-text-3" id="text-2-5">
 <ul class="org-ul">
 <li>Main branches: master(main), develop(dev)</li>
@@ -677,8 +677,8 @@ Examples:
 </ul>
 </div>
 </div>
-<div id="outline-container-org7937c43" class="outline-3">
-<h3 id="org7937c43"><span class="section-number-3">2.6.</span> Docker</h3>
+<div id="outline-container-org08f6949" class="outline-3">
+<h3 id="org08f6949"><span class="section-number-3">2.6.</span> Docker</h3>
 <div class="outline-text-3" id="text-2-6">
 <ul class="org-ul">
 <li>is a software tech that provides containers</li>
@@ -686,8 +686,8 @@ Examples:
 </ul>
 </div>
 </div>
-<div id="outline-container-org364d888" class="outline-3">
-<h3 id="org364d888"><span class="section-number-3">2.7.</span> Sonar Qube/Lint</h3>
+<div id="outline-container-orgf6ed3ce" class="outline-3">
+<h3 id="orgf6ed3ce"><span class="section-number-3">2.7.</span> Sonar Qube/Lint</h3>
 <div class="outline-text-3" id="text-2-7">
 <ul class="org-ul">
 <li>CI: Continuous Inspection</li>
@@ -706,8 +706,8 @@ Examples:
 </ul>
 </div>
 </div>
-<div id="outline-container-orgc6535ea" class="outline-3">
-<h3 id="orgc6535ea"><span class="section-number-3">2.8.</span> Bugs, vulnerabilities, code smells</h3>
+<div id="outline-container-orga6d74f0" class="outline-3">
+<h3 id="orga6d74f0"><span class="section-number-3">2.8.</span> Bugs, vulnerabilities, code smells</h3>
 <div class="outline-text-3" id="text-2-8">
 <ul class="org-ul">
 <li>Bugs: code that is demonstrably wrong and yields unexpected behaviour</li>
@@ -716,8 +716,8 @@ Examples:
 </ul>
 </div>
 </div>
-<div id="outline-container-org8fd1ee8" class="outline-3">
-<h3 id="org8fd1ee8"><span class="section-number-3">2.9.</span> Quality metrics</h3>
+<div id="outline-container-org9065318" class="outline-3">
+<h3 id="org9065318"><span class="section-number-3">2.9.</span> Quality metrics</h3>
 <div class="outline-text-3" id="text-2-9">
 <ul class="org-ul">
 <li>Size metric: lines of code, classes, functions, files</li>
@@ -728,8 +728,8 @@ Examples:
 </ul>
 </div>
 </div>
-<div id="outline-container-org653b6e7" class="outline-3">
-<h3 id="org653b6e7"><span class="section-number-3">2.10.</span> Seven Axis of Quality</h3>
+<div id="outline-container-org10bdc29" class="outline-3">
+<h3 id="org10bdc29"><span class="section-number-3">2.10.</span> Seven Axis of Quality</h3>
 <div class="outline-text-3" id="text-2-10">
 <ul class="org-ul">
 <li>Potential bugs</li>
@@ -742,14 +742,14 @@ Examples:
 </ul>
 </div>
 </div>
-<div id="outline-container-org2f3ffe2" class="outline-3">
-<h3 id="org2f3ffe2"><span class="section-number-3">2.11.</span> Complexities</h3>
+<div id="outline-container-org9488e62" class="outline-3">
+<h3 id="org9488e62"><span class="section-number-3">2.11.</span> Complexities</h3>
 <div class="outline-text-3" id="text-2-11">
 <ul class="org-ul">
 <li>Cyclomatic (branching)</li>
 </ul>
 
-<div id="org79b71e0" class="figure">
+<div id="org35f2fbf" class="figure">
 <p><img src="images/Common_Questions/2026-04-07_19-00-19_screenshot.png" alt="2026-04-07_19-00-19_screenshot.png" />
 </p>
 </div>
@@ -758,8 +758,8 @@ Examples:
 </ul>
 </div>
 </div>
-<div id="outline-container-orgafd2119" class="outline-3">
-<h3 id="orgafd2119"><span class="section-number-3">2.12.</span> Unit Testing Phases</h3>
+<div id="outline-container-org051cae7" class="outline-3">
+<h3 id="org051cae7"><span class="section-number-3">2.12.</span> Unit Testing Phases</h3>
 <div class="outline-text-3" id="text-2-12">
 <ol class="org-ol">
 <li>Arrange (setup of vars, classes, etc.)</li>
@@ -768,8 +768,8 @@ Examples:
 </ol>
 </div>
 </div>
-<div id="outline-container-orgdd0ba36" class="outline-3">
-<h3 id="orgdd0ba36"><span class="section-number-3">2.13.</span> Test Design Categories</h3>
+<div id="outline-container-org358dbe3" class="outline-3">
+<h3 id="org358dbe3"><span class="section-number-3">2.13.</span> Test Design Categories</h3>
 <div class="outline-text-3" id="text-2-13">
 <ul class="org-ul">
 <li>Derived from the <code>spec or model</code> of system (black-box techniques).
@@ -783,13 +783,13 @@ Examples:
 </ul>
 </div>
 </div>
-<div id="outline-container-org1a0d63b" class="outline-3">
-<h3 id="org1a0d63b"><span class="section-number-3">2.14.</span> Testing with Mocks</h3>
+<div id="outline-container-org36251fa" class="outline-3">
+<h3 id="org36251fa"><span class="section-number-3">2.14.</span> Testing with Mocks</h3>
 <div class="outline-text-3" id="text-2-14">
 </div>
-<div id="outline-container-org98333b4" class="outline-4">
-<h4 id="org98333b4">Components</h4>
-<div class="outline-text-4" id="text-org98333b4">
+<div id="outline-container-org20d3367" class="outline-4">
+<h4 id="org20d3367">Components</h4>
+<div class="outline-text-4" id="text-org20d3367">
 <ul class="org-ul">
 <li>Test class</li>
 <li>System Under Test (SUT)</li>
@@ -797,9 +797,9 @@ Examples:
 </ul>
 </div>
 </div>
-<div id="outline-container-org4f08c8f" class="outline-4">
-<h4 id="org4f08c8f">Info</h4>
-<div class="outline-text-4" id="text-org4f08c8f">
+<div id="outline-container-orgc4e42cc" class="outline-4">
+<h4 id="orgc4e42cc">Info</h4>
+<div class="outline-text-4" id="text-orgc4e42cc">
 <ul class="org-ul">
 <li>Dummy: The mock, it is the actual test-double. <code>mock(User.class)</code></li>
 <li>Stub: Just dummy data being passed in or returned, non-important to the outcome, also used to provide pre-defined responses to methods. <code>when &gt; thenReturn</code></li>
@@ -808,8 +808,8 @@ Examples:
 </div>
 </div>
 </div>
-<div id="outline-container-orga22b83f" class="outline-3">
-<h3 id="orga22b83f"><span class="section-number-3">2.15.</span> Test Driven Development (TDD)</h3>
+<div id="outline-container-orga20522b" class="outline-3">
+<h3 id="orga20522b"><span class="section-number-3">2.15.</span> Test Driven Development (TDD)</h3>
 <div class="outline-text-3" id="text-2-15">
 <ul class="org-ul">
 <li>Is an approach to program development in which you inter-leave testing and code development.</li>
@@ -844,18 +844,18 @@ Examples:
 </ul>
 </div>
 </div>
-<div id="outline-container-org07373f6" class="outline-3">
-<h3 id="org07373f6"><span class="section-number-3">2.16.</span> Cost of changing code</h3>
+<div id="outline-container-org54e1782" class="outline-3">
+<h3 id="org54e1782"><span class="section-number-3">2.16.</span> Cost of changing code</h3>
 <div class="outline-text-3" id="text-2-16">
 
-<div id="org0bf8ddc" class="figure">
+<div id="org686bb9c" class="figure">
 <p><img src="images/Common_Questions/2026-04-07_19-30-40_screenshot.png" alt="2026-04-07_19-30-40_screenshot.png" />
 </p>
 </div>
 </div>
 </div>
-<div id="outline-container-orgda86a60" class="outline-3">
-<h3 id="orgda86a60"><span class="section-number-3">2.17.</span> Build Systems</h3>
+<div id="outline-container-org8ff5783" class="outline-3">
+<h3 id="org8ff5783"><span class="section-number-3">2.17.</span> Build Systems</h3>
 <div class="outline-text-3" id="text-2-17">
 <ul class="org-ul">
 <li>Generally: transform one form (input) into another (output)</li>
@@ -901,13 +901,13 @@ Examples:
 </ul>
 </div>
 </div>
-<div id="outline-container-org09e63a2" class="outline-3">
-<h3 id="org09e63a2"><span class="section-number-3">2.18.</span> User Stories</h3>
+<div id="outline-container-org158a437" class="outline-3">
+<h3 id="org158a437"><span class="section-number-3">2.18.</span> User Stories</h3>
 <div class="outline-text-3" id="text-2-18">
 </div>
-<div id="outline-container-org612cbea" class="outline-4">
-<h4 id="org612cbea">Definition</h4>
-<div class="outline-text-4" id="text-org612cbea">
+<div id="outline-container-org6989ffb" class="outline-4">
+<h4 id="org6989ffb">Definition</h4>
+<div class="outline-text-4" id="text-org6989ffb">
 <ul class="org-ul">
 <li>A concise, written description of a piece of functionality that will be valuable to a use (or owner) of the software</li>
 <li>3Cs: Card, Conversation, Confirmation</li>
@@ -915,9 +915,9 @@ Examples:
 </ul>
 </div>
 </div>
-<div id="outline-container-org908861b" class="outline-4">
-<h4 id="org908861b">INVEST</h4>
-<div class="outline-text-4" id="text-org908861b">
+<div id="outline-container-orge3d8f4c" class="outline-4">
+<h4 id="orge3d8f4c">INVEST</h4>
+<div class="outline-text-4" id="text-orge3d8f4c">
 <ul class="org-ul">
 <li>Independent</li>
 <li>Negotiable</li>
@@ -928,34 +928,34 @@ Examples:
 </ul>
 </div>
 </div>
-<div id="outline-container-orgb8b2709" class="outline-4">
-<h4 id="orgb8b2709">Acceptance Criteria</h4>
-<div class="outline-text-4" id="text-orgb8b2709">
+<div id="outline-container-org4d986b5" class="outline-4">
+<h4 id="org4d986b5">Acceptance Criteria</h4>
+<div class="outline-text-4" id="text-org4d986b5">
 <ul class="org-ul">
 <li>Usually written in the Given &gt; When &gt; Then form</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org6b02cfc" class="outline-4">
-<h4 id="org6b02cfc">Definition of Done</h4>
-<div class="outline-text-4" id="text-org6b02cfc">
+<div id="outline-container-org7506cae" class="outline-4">
+<h4 id="org7506cae">Definition of Done</h4>
+<div class="outline-text-4" id="text-org7506cae">
 <ul class="org-ul">
 <li>What counts as a user story being done?</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org7cb2903" class="outline-4">
-<h4 id="org7cb2903">Defining the User or Personas</h4>
-<div class="outline-text-4" id="text-org7cb2903">
+<div id="outline-container-org15f4d3a" class="outline-4">
+<h4 id="org15f4d3a">Defining the User or Personas</h4>
+<div class="outline-text-4" id="text-org15f4d3a">
 <ul class="org-ul">
 <li>Clearly define who is a user and what are the competency levels</li>
 <li>Personas are basically different users of the system, they describe who or what a specific user is</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org565366a" class="outline-4">
-<h4 id="org565366a">Special User Stories</h4>
-<div class="outline-text-4" id="text-org565366a">
+<div id="outline-container-orge88227f" class="outline-4">
+<h4 id="orge88227f">Special User Stories</h4>
+<div class="outline-text-4" id="text-orge88227f">
 <ul class="org-ul">
 <li>Non-functional Stories</li>
 <li>Bug Stories</li>
@@ -964,21 +964,21 @@ Examples:
 </div>
 </div>
 </div>
-<div id="outline-container-orgcfbce06" class="outline-3">
-<h3 id="orgcfbce06"><span class="section-number-3">2.19.</span> SCRUM</h3>
+<div id="outline-container-orga6429fd" class="outline-3">
+<h3 id="orga6429fd"><span class="section-number-3">2.19.</span> SCRUM</h3>
 <div class="outline-text-3" id="text-2-19">
 </div>
-<div id="outline-container-orgadb3058" class="outline-4">
-<h4 id="orgadb3058">Definition</h4>
-<div class="outline-text-4" id="text-orgadb3058">
+<div id="outline-container-org9a89219" class="outline-4">
+<h4 id="org9a89219">Definition</h4>
+<div class="outline-text-4" id="text-org9a89219">
 <p class="verse">
 Scrum is a lightweight framework that helps people, teams and organizations generate value through adaptive solutions for complex problems.<br />
 </p>
 </div>
 </div>
-<div id="outline-container-org1acfef4" class="outline-4">
-<h4 id="org1acfef4">Scrum requires a Scrum Master to foster an environment where:</h4>
-<div class="outline-text-4" id="text-org1acfef4">
+<div id="outline-container-org9559f8f" class="outline-4">
+<h4 id="org9559f8f">Scrum requires a Scrum Master to foster an environment where:</h4>
+<div class="outline-text-4" id="text-org9559f8f">
 <ul class="org-ul">
 <li>A Product Owner orders the work for a complex problem into a Product Backlog.</li>
 <li>The Scrum Team runs a selection of the work into an Increment of value during a Sprint.</li>
@@ -987,9 +987,9 @@ Scrum is a lightweight framework that helps people, teams and organizations gene
 </ul>
 </div>
 </div>
-<div id="outline-container-org624203c" class="outline-4">
-<h4 id="org624203c">Scrum is simple</h4>
-<div class="outline-text-4" id="text-org624203c">
+<div id="outline-container-org2cb464d" class="outline-4">
+<h4 id="org2cb464d">Scrum is simple</h4>
+<div class="outline-text-4" id="text-org2cb464d">
 <ul class="org-ul">
 <li>Framework is purposefully incomplete</li>
 <li>Is built upon the collective intelligence of the people using it</li>
@@ -999,9 +999,9 @@ Scrum is a lightweight framework that helps people, teams and organizations gene
 </ul>
 </div>
 </div>
-<div id="outline-container-orgee78c53" class="outline-4">
-<h4 id="orgee78c53">Scrum Theory</h4>
-<div class="outline-text-4" id="text-orgee78c53">
+<div id="outline-container-orgf69980e" class="outline-4">
+<h4 id="orgf69980e">Scrum Theory</h4>
+<div class="outline-text-4" id="text-orgf69980e">
 <ul class="org-ul">
 <li>Founded on empiricism and lean thinking
 <ul class="org-ul">
@@ -1020,13 +1020,13 @@ Scrum is a lightweight framework that helps people, teams and organizations gene
 </ul>
 </div>
 </div>
-<div id="outline-container-org97e0110" class="outline-4">
-<h4 id="org97e0110">Pillars Of Scrum</h4>
-<div class="outline-text-4" id="text-org97e0110">
+<div id="outline-container-orgc75ea51" class="outline-4">
+<h4 id="orgc75ea51">Pillars Of Scrum</h4>
+<div class="outline-text-4" id="text-orgc75ea51">
 </div>
 <ul class="org-ul">
-<li><a id="org721eeb4"></a>Transparency<br />
-<div class="outline-text-5" id="text-org721eeb4">
+<li><a id="orga8eb31d"></a>Transparency<br />
+<div class="outline-text-5" id="text-orga8eb31d">
 <ul class="org-ul">
 <li>The process and the work must be visible to those performing the work as well as the ones receiving the work</li>
 <li>Artifacts that have low transparency can lead to decisions that diminish value and increase risk</li>
@@ -1035,8 +1035,8 @@ Scrum is a lightweight framework that helps people, teams and organizations gene
 </ul>
 </div>
 </li>
-<li><a id="org275bd26"></a>Inspection<br />
-<div class="outline-text-5" id="text-org275bd26">
+<li><a id="org9ea48b5"></a>Inspection<br />
+<div class="outline-text-5" id="text-org9ea48b5">
 <ul class="org-ul">
 <li>Scrum artifacts and the progress towards agreed goals must be inspected frequently and diligently to detect potentially undesirable variance or problems.</li>
 <li>To help with inspection, Scrum provides cadence in the form of its five events</li>
@@ -1045,8 +1045,8 @@ Scrum is a lightweight framework that helps people, teams and organizations gene
 </ul>
 </div>
 </li>
-<li><a id="org58c5dcf"></a>Adaptation<br />
-<div class="outline-text-5" id="text-org58c5dcf">
+<li><a id="orgabc92be"></a>Adaptation<br />
+<div class="outline-text-5" id="text-orgabc92be">
 <ul class="org-ul">
 <li>If any aspects of a process deviate outside acceptable limits or if the result is not acceptable, the process being applied or materials used must be adjusted.</li>
 <li>Adjust as soon as possible to minimize further deviation</li>
@@ -1057,9 +1057,9 @@ Scrum is a lightweight framework that helps people, teams and organizations gene
 </li>
 </ul>
 </div>
-<div id="outline-container-org0a14b8f" class="outline-4">
-<h4 id="org0a14b8f">Scrum Values</h4>
-<div class="outline-text-4" id="text-org0a14b8f">
+<div id="outline-container-org02715d2" class="outline-4">
+<h4 id="org02715d2">Scrum Values</h4>
+<div class="outline-text-4" id="text-org02715d2">
 <ul class="org-ul">
 <li><b>Commitment</b>, <b>Focus</b>, <b>Openness</b>, <b>Respect</b>, <b>Courage</b></li>
 <li>The team commits to achieve a goal and support each other</li>
@@ -1075,13 +1075,13 @@ The above values are utilised by the team and people they work with. If applied 
 </ul>
 </div>
 </div>
-<div id="outline-container-orgb49a4c9" class="outline-4">
-<h4 id="orgb49a4c9">Scrum Team</h4>
-<div class="outline-text-4" id="text-orgb49a4c9">
+<div id="outline-container-orga1d1f7e" class="outline-4">
+<h4 id="orga1d1f7e">Scrum Team</h4>
+<div class="outline-text-4" id="text-orga1d1f7e">
 </div>
 <ul class="org-ul">
-<li><a id="orgda3531d"></a>Consists of a small team, generally:<br />
-<div class="outline-text-5" id="text-orgda3531d">
+<li><a id="org80abfa4"></a>Consists of a small team, generally:<br />
+<div class="outline-text-5" id="text-org80abfa4">
 <ul class="org-ul">
 <li>One Scrum Master</li>
 <li>One Product Owner</li>
@@ -1094,22 +1094,22 @@ The above values are utilised by the team and people they work with. If applied 
 </ul>
 </div>
 </li>
-<li><a id="org055a307"></a>Team is cross-functional<br />
-<div class="outline-text-5" id="text-org055a307">
+<li><a id="org6af1c38"></a>Team is cross-functional<br />
+<div class="outline-text-5" id="text-org6af1c38">
 <ul class="org-ul">
 <li>Each member has the skills necessary to create value during each Sprint</li>
 </ul>
 </div>
 </li>
-<li><a id="org7754788"></a>Self-managing<br />
-<div class="outline-text-5" id="text-org7754788">
+<li><a id="orgd0dc655"></a>Self-managing<br />
+<div class="outline-text-5" id="text-orgd0dc655">
 <ul class="org-ul">
 <li>Internally decide who does what, when and how.</li>
 </ul>
 </div>
 </li>
-<li><a id="orgccc24b4"></a>Responsible for all product-related activities<br />
-<div class="outline-text-5" id="text-orgccc24b4">
+<li><a id="orge4b6964"></a>Responsible for all product-related activities<br />
+<div class="outline-text-5" id="text-orge4b6964">
 <ul class="org-ul">
 <li>Stakeholder collaboration</li>
 <li>Verification</li>
@@ -1121,8 +1121,8 @@ The above values are utilised by the team and people they work with. If applied 
 </ul>
 </div>
 </li>
-<li><a id="org0468b09"></a>Accountability<br />
-<div class="outline-text-5" id="text-org0468b09">
+<li><a id="orgb4db799"></a>Accountability<br />
+<div class="outline-text-5" id="text-orgb4db799">
 <ul class="org-ul">
 <li>Accountable for creating a value, useful Increment every Sprint</li>
 <li>Three specific accountabilities within the Scrum Team
@@ -1134,8 +1134,8 @@ The above values are utilised by the team and people they work with. If applied 
 </ul>
 </div>
 </li>
-<li><a id="org0fcf534"></a>Developers<br />
-<div class="outline-text-5" id="text-org0fcf534">
+<li><a id="org6d3deab"></a>Developers<br />
+<div class="outline-text-5" id="text-org6d3deab">
 <ul class="org-ul">
 <li>Are the people that are committed to creating any aspect of usable Increment each Sprint</li>
 <li>The skills necessary may be broad and vary depending on the domain</li>
@@ -1149,8 +1149,8 @@ The above values are utilised by the team and people they work with. If applied 
 </ul>
 </div>
 </li>
-<li><a id="orgf1360b9"></a>Product Owner<br />
-<div class="outline-text-5" id="text-orgf1360b9">
+<li><a id="orgb0b7f8d"></a>Product Owner<br />
+<div class="outline-text-5" id="text-orgb0b7f8d">
 <ul class="org-ul">
 <li>Accountable for maximising the value of the product resulting from the work of the Scrum Team</li>
 <li>Accountable for effective Product Backlog management, which includes:
@@ -1166,8 +1166,8 @@ The above values are utilised by the team and people they work with. If applied 
 </ul>
 </div>
 </li>
-<li><a id="orgc815049"></a>Scrum Master<br />
-<div class="outline-text-5" id="text-orgc815049">
+<li><a id="orgbfecae0"></a>Scrum Master<br />
+<div class="outline-text-5" id="text-orgbfecae0">
 <ul class="org-ul">
 <li>Accountable for establishing Scrum as defined by the Guide</li>
 <li>Help everyone understand Scrum and its practices and theories, both withing a team and the organisation</li>
@@ -1199,17 +1199,17 @@ The above values are utilised by the team and people they work with. If applied 
 </li>
 </ul>
 </div>
-<div id="outline-container-org0c841de" class="outline-4">
-<h4 id="org0c841de">Scrum Events</h4>
-<div class="outline-text-4" id="text-org0c841de">
+<div id="outline-container-org1ee28dd" class="outline-4">
+<h4 id="org1ee28dd">Scrum Events</h4>
+<div class="outline-text-4" id="text-org1ee28dd">
 <ul class="org-ul">
 <li>Events exist to create regularity and to minimize meetings not defined in Scrum</li>
 <li>Failure to operate any events results in a lost opportunity to inspect and adapt</li>
 </ul>
 </div>
 <ul class="org-ul">
-<li><a id="orge2be634"></a>The Sprint<br />
-<div class="outline-text-5" id="text-orge2be634">
+<li><a id="org9221df5"></a>The Sprint<br />
+<div class="outline-text-5" id="text-org9221df5">
 <ul class="org-ul">
 <li>Is the heartbeat of Scrum</li>
 <li>Fixed length, usually a month</li>
@@ -1233,8 +1233,8 @@ The above values are utilised by the team and people they work with. If applied 
 </ul>
 </div>
 </li>
-<li><a id="org491c517"></a>Sprint Planning<br />
-<div class="outline-text-5" id="text-org491c517">
+<li><a id="orgeecf30d"></a>Sprint Planning<br />
+<div class="outline-text-5" id="text-orgeecf30d">
 <ul class="org-ul">
 <li>Initiates the Sprint by laying out the work to be performed for the Sprint</li>
 <li>Is created by the entire Scrum Team</li>
@@ -1251,8 +1251,8 @@ The above values are utilised by the team and people they work with. If applied 
 </ul>
 </div>
 </li>
-<li><a id="orgf9c12d1"></a>Daily Scrum<br />
-<div class="outline-text-5" id="text-orgf9c12d1">
+<li><a id="org2d787fb"></a>Daily Scrum<br />
+<div class="outline-text-5" id="text-org2d787fb">
 <ul class="org-ul">
 <li>Goal is to inspect progress towards the Sprint Goal and adapt the Sprint Backlog if necessary (adjust the upcoming planned work)</li>
 <li>Is a 15-minute event for the Developers of the Scrum Team</li>
@@ -1269,8 +1269,8 @@ The above values are utilised by the team and people they work with. If applied 
 </ul>
 </div>
 </li>
-<li><a id="orge1ce2c3"></a>Sprint Review<br />
-<div class="outline-text-5" id="text-orge1ce2c3">
+<li><a id="org574d635"></a>Sprint Review<br />
+<div class="outline-text-5" id="text-org574d635">
 <ul class="org-ul">
 <li>Inspect the outcome of the Sprint, determine future adaptations</li>
 <li>Present results to key stakeholders and progress towards the Product Goal (discuss progress as well)</li>
@@ -1282,8 +1282,8 @@ The above values are utilised by the team and people they work with. If applied 
 </ul>
 </div>
 </li>
-<li><a id="orga4662b3"></a>Sprint Retrospective<br />
-<div class="outline-text-5" id="text-orga4662b3">
+<li><a id="orgf478e51"></a>Sprint Retrospective<br />
+<div class="outline-text-5" id="text-orgf478e51">
 <ul class="org-ul">
 <li>Purpose: Plan ways to increase quality and effectiveness</li>
 <li>Scrum Team inspects how the last Sprint went with regards to: Individuals, Interactions, Processes, Tools and the Definition of Done.</li>
@@ -1296,9 +1296,9 @@ The above values are utilised by the team and people they work with. If applied 
 </li>
 </ul>
 </div>
-<div id="outline-container-org47f5b1a" class="outline-4">
-<h4 id="org47f5b1a">Scrum Artifacts</h4>
-<div class="outline-text-4" id="text-org47f5b1a">
+<div id="outline-container-org0f64ca3" class="outline-4">
+<h4 id="org0f64ca3">Scrum Artifacts</h4>
+<div class="outline-text-4" id="text-org0f64ca3">
 <ul class="org-ul">
 <li>Represent work of value</li>
 <li>Designed to maximise transparency of key information</li>
@@ -1306,8 +1306,8 @@ The above values are utilised by the team and people they work with. If applied 
 </ul>
 </div>
 <ul class="org-ul">
-<li><a id="orgcd6f9c1"></a>Product Backlog<br />
-<div class="outline-text-5" id="text-orgcd6f9c1">
+<li><a id="org5257386"></a>Product Backlog<br />
+<div class="outline-text-5" id="text-org5257386">
 <ul class="org-ul">
 <li>Emergent, ordered list of what is needed to create and improve the product.</li>
 <li>Single source of work for the Scrum Team</li>
@@ -1319,8 +1319,8 @@ The above values are utilised by the team and people they work with. If applied 
 </ul>
 </div>
 <ul class="org-ul">
-<li><a id="org11aee90"></a>Commitment: Product Goal<br />
-<div class="outline-text-6" id="text-org11aee90">
+<li><a id="orgee7da37"></a>Commitment: Product Goal<br />
+<div class="outline-text-6" id="text-orgee7da37">
 <ul class="org-ul">
 <li>Describes a future state of the product which can serve as the target for the Scrum Team to plan against.</li>
 <li>The Product Goal is in the Product Backlog</li>
@@ -1330,8 +1330,8 @@ The above values are utilised by the team and people they work with. If applied 
 </li>
 </ul>
 </li>
-<li><a id="orgae42547"></a>Sprint Backlog<br />
-<div class="outline-text-5" id="text-orgae42547">
+<li><a id="orgcf01878"></a>Sprint Backlog<br />
+<div class="outline-text-5" id="text-orgcf01878">
 <ul class="org-ul">
 <li>Composed of the Sprint Goal (the: why)</li>
 <li>The set of PB items selected for the Sprint (the: what)</li>
@@ -1343,8 +1343,8 @@ The above values are utilised by the team and people they work with. If applied 
 </ul>
 </div>
 <ul class="org-ul">
-<li><a id="org7d85cb4"></a>Commitment: Sprint Goal<br />
-<div class="outline-text-6" id="text-org7d85cb4">
+<li><a id="orgce7607a"></a>Commitment: Sprint Goal<br />
+<div class="outline-text-6" id="text-orgce7607a">
 <ul class="org-ul">
 <li>Single objective of the Sprint</li>
 <li>Commitment by the Devs, but has flexibility in terms of the exact work needed to accomplish the goal</li>
@@ -1357,8 +1357,8 @@ The above values are utilised by the team and people they work with. If applied 
 </li>
 </ul>
 </li>
-<li><a id="org6e76aef"></a>Increment<br />
-<div class="outline-text-5" id="text-org6e76aef">
+<li><a id="orgd621a94"></a>Increment<br />
+<div class="outline-text-5" id="text-orgd621a94">
 <ul class="org-ul">
 <li>Is a concrete stepping stone towards the Product Goal</li>
 <li>Each is additive with the previous one and thoroughly verified to ensure that all Increments work together</li>
@@ -1369,8 +1369,8 @@ The above values are utilised by the team and people they work with. If applied 
 </ul>
 </div>
 <ul class="org-ul">
-<li><a id="orgaf1316c"></a>Commitment: Definition of Done<br />
-<div class="outline-text-6" id="text-orgaf1316c">
+<li><a id="orgbbe6d77"></a>Commitment: Definition of Done<br />
+<div class="outline-text-6" id="text-orgbbe6d77">
 <ul class="org-ul">
 <li>Is a formal description of the state of an Increment when it meets the quality measures required for the product</li>
 <li>When a Product Backlog item meets the Definition of Done, an Increment is made</li>
@@ -1387,8 +1387,8 @@ The above values are utilised by the team and people they work with. If applied 
 </div>
 </div>
 </div>
-<div id="outline-container-org277b1c3" class="outline-2">
-<h2 id="org277b1c3"><span class="section-number-2">3.</span> Remove at the End</h2>
+<div id="outline-container-orgeca2590" class="outline-2">
+<h2 id="orgeca2590"><span class="section-number-2">3.</span> Remove at the End</h2>
 <div class="outline-text-2" id="text-3">
 <script src="../assets/jquery-3.3.1.min.js"></script>
 <script src="../assets/notes.js"></script>
@@ -1398,7 +1398,7 @@ The above values are utilised by the team and people they work with. If applied 
 <div id="postamble" class="status">
 <p class="date">Date: 2026-04-07 Tue 15:56</p>
 <p class="author">Author: Damian Chrzanowski</p>
-<p class="date">Created: 2026-04-07 Tue 21:01</p>
+<p class="date">Created: 2026-04-07 Tue 21:04</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
