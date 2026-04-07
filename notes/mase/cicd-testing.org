@@ -136,7 +136,11 @@
 
      }
    #+end_src
+<<<<<<< HEAD
 * MockMvc/Mockito
+=======
+* MockMvc
+>>>>>>> 7d9796e739431e9dc37155c33fc9066b8997f695
 ** Car Example
    #+begin_src java
      @SpringBootTest
@@ -256,6 +260,7 @@
          }
      }
    #+end_src
+<<<<<<< HEAD
 ** MockMvc whole body test
    #+begin_src java
      @Test
@@ -305,6 +310,8 @@
      mockMvc.perform(delete("/api/items/1"))
          .andExpect(status().isNoContent());
    #+end_src
+=======
+>>>>>>> 7d9796e739431e9dc37155c33fc9066b8997f695
 * RestTemplate
 ** Car Example
    #+begin_src java
@@ -536,6 +543,7 @@
          }
      }
    #+end_src
+<<<<<<< HEAD
 ** Small Cheatsheet
    #+begin_src java
      ResponseEntity<String> getResp =
@@ -585,6 +593,8 @@ assertThat(response.getBody()).contains("\"email\":\"alice@example.com\"");
      assertThat(response.getBody().id()).isEqualTo(1L);
      assertThat(response.getBody().name()).isEqualTo("Alice");
    #+end_src
+=======
+>>>>>>> 7d9796e739431e9dc37155c33fc9066b8997f695
 * Karate
 ** Setup
    - Dependency
