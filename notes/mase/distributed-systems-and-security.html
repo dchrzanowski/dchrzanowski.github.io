@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-03-04 Wed 20:05 -->
+<!-- 2026-04-12 Sun 22:48 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Distributed Systems And Security</title>
@@ -204,65 +204,659 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org0ac152f">1. Start</a></li>
-<li><a href="#orga0d9bd1">2. Security</a>
+<li><a href="#orgf162704">1. Exam Questions</a>
 <ul>
-<li><a href="#org9604d3f">2.1. What is Security</a></li>
-<li><a href="#orge549ee0">2.2. Authorisation vs Authentication</a></li>
-<li><a href="#org353ef66">2.3. Accountability vs Availability</a></li>
-<li><a href="#orge2c77ff">2.4. Uses of Random Passwords</a></li>
-<li><a href="#org0b89c72">2.5. LCG - Linear Congruential Generator</a></li>
-<li><a href="#org63bc028">2.6. LFSR - Linear Feedback Shift Register</a></li>
+<li><a href="#org38cb08e">1.1. What is a <code>Cryptographic Function</code>? Four properties of it</a></li>
+<li><a href="#org609bbdb">1.2. Diff between <code>pseudo</code> random and <code>truly random</code> RNG. Outline <code>SHA1PRNG</code> algo. How to <code>seed</code> pseudo rng?</a></li>
+<li><a href="#org6c840a3">1.3. Diffie-Hellman</a></li>
+<li><a href="#org84f6c8b">1.4. What is a <code>one-time pad</code>? How does a <code>stream cipher</code> work?</a></li>
+<li><a href="#org233358e">1.5. What is a block cipher? What are "modes of operation" and why are they important? Outline CBC.</a></li>
+<li><a href="#org19eea41">1.6. What is a <code>Hashed Message Authentication Code</code> (<code>HMAC</code>) for a message? What does it enable the receiver to do? What is the typical use case?</a></li>
+<li><a href="#org9fa1f7a">1.7. Procedure of <code>calculating a HMAC</code>. Inner and outer <code>padded keys</code>. Draw diagram.</a></li>
+<li><a href="#org92893e9">1.8. Salted hash passwords. Adaptive one-way function.</a></li>
+<li><a href="#org2ac81e7">1.9. Naively applying a <code>block cipher to each block</code> of a message in turn? What is the solution? Explain the procedure.</a></li>
+<li><a href="#org10db8ef">1.10. <code>Digital Signatures</code></a></li>
+<li><a href="#org63f000a">1.11. What is a <code>Digital Cert</code></a></li>
+<li><a href="#org8e8ef62">1.12. Keystore vs Truststore</a></li>
+<li><a href="#org6409888">1.13. 2008 Rogue CA Cert attack. Hash collision attack, describe it.</a></li>
+<li><a href="#org0ded36c">1.14. <code>Messaging services</code>. Give four advantages of messaging services compared to distributed objects.</a></li>
+<li><a href="#org1f103d7">1.15. <code>Sharding</code> in mongodb</a></li>
+<li><a href="#org84afd77">1.16. <code>User sessions</code> in a <code>distributed systems</code>, what are the issues?</a></li>
+<li><a href="#orgab3dfd7">1.17. SSH 1.0</a></li>
+<li><a href="#orgae48a84">1.18. Perfect forward secrecy</a></li>
+<li><a href="#org670a12c">1.19. Difference between a Queue and a Topic in JMS</a></li>
+<li><a href="#org4e3e931">1.20. Twitter auth</a></li>
+<li><a href="#orgd3ef431">1.21. Types of firewalls</a></li>
+<li><a href="#orge564eb6">1.22. Messaging system advantages</a></li>
+<li><a href="#org7bfb0b9">1.23. Java</a></li>
 </ul>
 </li>
-<li><a href="#org43aa81b">3. Remove at the End</a></li>
+<li><a href="#org3882f54">2. Security</a>
+<ul>
+<li><a href="#org5aec8ad">2.1. What is Security</a></li>
+<li><a href="#org20b0056">2.2. Authorisation vs Authentication</a></li>
+<li><a href="#org20e3fc4">2.3. Accountability vs Availability</a></li>
+<li><a href="#org572ef58">2.4. Uses of Random Passwords</a></li>
+<li><a href="#org5d20c42">2.5. LCG - Linear Congruential Generator</a></li>
+<li><a href="#orgedd4b79">2.6. LFSR - Linear Feedback Shift Register</a></li>
+</ul>
+</li>
+<li><a href="#orgb2eb37c">3. Remove at the End</a></li>
 </ul>
 </div>
 </div>
 <p>
 <a href="index.html">Home Page</a>
 </p>
-<div id="outline-container-org0ac152f" class="outline-2">
-<h2 id="org0ac152f"><span class="section-number-2">1.</span> Start</h2>
+<div id="outline-container-orgf162704" class="outline-2">
+<h2 id="orgf162704"><span class="section-number-2">1.</span> Exam Questions</h2>
+<div class="outline-text-2" id="text-1">
 </div>
-<div id="outline-container-orga0d9bd1" class="outline-2">
-<h2 id="orga0d9bd1"><span class="section-number-2">2.</span> Security</h2>
+<div id="outline-container-org38cb08e" class="outline-3">
+<h3 id="org38cb08e"><span class="section-number-3">1.1.</span> What is a <code>Cryptographic Function</code>? Four properties of it</h3>
+<div class="outline-text-3" id="text-1-1">
+<ul class="org-ul">
+<li>Takes an input data of arbitrary size and produces a fixed-size output called a hash (or digest). One single change in the input completely changes the output.</li>
+<li>Properties:
+<ul class="org-ul">
+<li>Efficient to compute: Easy to compute hash</li>
+<li>Pre-image resistance: Cannot find the input msg from the hash</li>
+<li>Second pre-image resistance: Any change to input changes the hash</li>
+<li>Collision resistance: Cannot find two different input msgs with the same hash</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org609bbdb" class="outline-3">
+<h3 id="org609bbdb"><span class="section-number-3">1.2.</span> Diff between <code>pseudo</code> random and <code>truly random</code> RNG. Outline <code>SHA1PRNG</code> algo. How to <code>seed</code> pseudo rng?</h3>
+<div class="outline-text-3" id="text-1-2">
+<ul class="org-ul">
+<li><code>Truly random</code> comes from physical processes</li>
+<li><code>Pseudo random</code> come from an algorithm that generates numbers and for a given seed the same sequence of numbers is generated.</li>
+<li><code>SHA1PRNG</code>:
+<ul class="org-ul">
+<li>Gets a true random using entropy source</li>
+<li>Repeatedly hashes the seed to get a stream of random-looking bytes. With every request the seed is hashed again and a new internal state emerges.</li>
+<li>Concatenates with a 64bit increment</li>
+<li>Applies SHA-1 hash to produce output</li>
+</ul></li>
+<li>Correct way to <code>seed</code>:
+<ul class="org-ul">
+<li>Should be seeded from a true random value (entropy source, like user interaction with pc)</li>
+<li>A cryptographically secure PRNG must be seeded from a source of true randomness.</li>
+</ul></li>
+<li><code>CSPRNG</code>:
+<ul class="org-ul">
+<li>Cryptographically secure PRNG, however, do not compromise the seed!</li>
+</ul></li>
+<li>Linux Sources:
+<ul class="org-ul">
+<li>/dev/random: true random generator</li>
+<li>/dev/urandom: cryptographically secure pseudo-random generator</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org6c840a3" class="outline-3">
+<h3 id="org6c840a3"><span class="section-number-3">1.3.</span> Diffie-Hellman</h3>
+<div class="outline-text-3" id="text-1-3">
+<ul class="org-ul">
+<li>The main public values:
+<ul class="org-ul">
+<li>a prime number <code>p</code></li>
+<li>a base <code>g</code></li>
+</ul></li>
+<li>Step 1: Choose secret values
+<ul class="org-ul">
+<li>Each side chooses a random number: first side <code>a</code> and second side <code>b</code></li>
+</ul></li>
+<li>Step 2: Calculate public values
+<ul class="org-ul">
+<li>First side: <code>A = g^a mod p</code></li>
+<li>Second side: <code>B = g^b mod p</code></li>
+</ul></li>
+<li>Step 3: Exchange values
+<ul class="org-ul">
+<li>Send A and B over the network</li>
+</ul></li>
+<li>Step 4: Calculate shared secret
+<ul class="org-ul">
+<li>First side: <code>S = B^a mod p</code></li>
+<li>Second side: <code>S = A^b mod p</code></li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org84f6c8b" class="outline-3">
+<h3 id="org84f6c8b"><span class="section-number-3">1.4.</span> What is a <code>one-time pad</code>? How does a <code>stream cipher</code> work?</h3>
+<div class="outline-text-3" id="text-1-4">
+<ul class="org-ul">
+<li>One-time pad:
+<ul class="org-ul">
+<li>The key is the same length as the message</li>
+<li>Encryption is done via XOR</li>
+<li><code>c = k XOR m</code>, <code>m = k XOR c</code></li>
+<li>Why not practical: the key must be the same length as the message, the key can only be used once, impractical for real systems.</li>
+</ul></li>
+<li>Stream cipher:
+<ul class="org-ul">
+<li>Replaces the key with a <code>pseudo-random key</code> stream</li>
+<li>Uses a <code>PRNG</code> (pseudo RNG)</li>
+<li>Injects a secret key seed into a long key stream generator</li>
+<li>The message is XORed with this key stream = <code>c = k XOR m</code></li>
+<li>A stream cipher does not have perfect secrecy</li>
+<li>It is reversible</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org233358e" class="outline-3">
+<h3 id="org233358e"><span class="section-number-3">1.5.</span> What is a block cipher? What are "modes of operation" and why are they important? Outline CBC.</h3>
+<div class="outline-text-3" id="text-1-5">
+<ul class="org-ul">
+<li>Cipher Block Chaining <a href="#org2ac81e7">(CBC)</a> explained in another question</li>
+<li>Block cipher takes a given block (say 128 bits) and with a given key it produces ciphertext (the output)
+<ul class="org-ul">
+<li>It is deterministic, because the same key and the same input will always produce the same output (AES is one of the examples here)</li>
+</ul></li>
+<li>Modes of operation, e.g.: ECB, CBC</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org19eea41" class="outline-3">
+<h3 id="org19eea41"><span class="section-number-3">1.6.</span> What is a <code>Hashed Message Authentication Code</code> (<code>HMAC</code>) for a message? What does it enable the receiver to do? What is the typical use case?</h3>
+<div class="outline-text-3" id="text-1-6">
+<ul class="org-ul">
+<li>A HMAC is generated by concatenating a message (input) with a secret to produce a hash (the HMAC).</li>
+<li>The sender computes a HMAC of the message along with the shared secret key. The receiver the receives the message and the HMAC and also computes its own HMAC and compares them. When the HMACs are the same then:
+<ul class="org-ul">
+<li><code>The integrity</code> is sound: the message was not tampered with</li>
+<li><code>The authentication</code> is sound: the receiver knows that only someone with a shared key could produce a valid HMAC.</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org9fa1f7a" class="outline-3">
+<h3 id="org9fa1f7a"><span class="section-number-3">1.7.</span> Procedure of <code>calculating a HMAC</code>. Inner and outer <code>padded keys</code>. Draw diagram.</h3>
+<div class="outline-text-3" id="text-1-7">
+<ul class="org-ul">
+<li>Diagram</li>
+</ul>
+
+<div id="org33bc9b9" class="figure">
+<p><img src="images/Exam_Questions/2026-04-12_14-46-52_screenshot.png" alt="2026-04-12_14-46-52_screenshot.png" />
+</p>
+</div>
+<p class="verse">
+&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;K (key)<br />
+&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;|<br />
+&#xa0;&#xa0;&#xa0;------------&#x2013;&#x2014;<br />
+&#xa0;&#xa0;&#xa0;|               |<br />
+pad/XOR         pad/XOR<br />
+with ipad       with opad<br />
+&#xa0;&#xa0;&#xa0;|               |<br />
+K ⊕ ipad        K ⊕ opad<br />
+&#xa0;&#xa0;&#xa0;|               |<br />
+&#xa0;&#xa0;&#xa0;|        -----------&#x2013;&#x2014;<br />
+&#xa0;&#xa0;&#xa0;|        |              |<br />
+&#xa0;&#xa0;&#xa0;|     concatenate       |<br />
+&#xa0;&#xa0;&#xa0;|        |              |<br />
+&#xa0;&#xa0;&#xa0;|    inner hash         |<br />
+&#xa0;&#xa0;&#xa0;|   H(K⊕ipad || m)      |<br />
+&#xa0;&#xa0;&#xa0;|        |              |<br />
+&#xa0;&#xa0;&#xa0;---&#x2013;&#x2014;&gt;|---------&#x2013;&#x2014;|<br />
+&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;|<br />
+&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;concatenate<br />
+&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;|<br />
+&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;H(K⊕opad || inner)<br />
+&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;|<br />
+&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;HMAC<br />
+</p>
+<ul class="org-ul">
+<li>Procedure:
+<ul class="org-ul">
+<li>Prepare a key: if key is longer than the hash block size -&gt; hash it, otherwise pad it with zeroes (prevent length extension attacks)</li>
+<li>Create padded keys</li>
+<li>Compute inner hash</li>
+<li>Compute final HMAC</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org92893e9" class="outline-3">
+<h3 id="org92893e9"><span class="section-number-3">1.8.</span> Salted hash passwords. Adaptive one-way function.</h3>
+<div class="outline-text-3" id="text-1-8">
+<ul class="org-ul">
+<li><code>Salt</code> is added to the hash so that two same passwords don't have the same hash and thus be reversible.</li>
+<li><code>Adaptiven one-way function</code>, works one way, so the password cannot be reversed. Also it's computing power can be adjusted so that the time taken is intentionally small (stops brute forcing quickly).</li>
+</ul>
+</div>
+<div id="outline-container-org64160e1" class="outline-4">
+<h4 id="org64160e1">Key stretching</h4>
+<div class="outline-text-4" id="text-org64160e1">
+<ul class="org-ul">
+<li>Hashing the passwords many times in a loop, often used to apply the salt many times.</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-org2ac81e7" class="outline-3">
+<h3 id="org2ac81e7"><span class="section-number-3">1.9.</span> Naively applying a <code>block cipher to each block</code> of a message in turn? What is the solution? Explain the procedure.</h3>
+<div class="outline-text-3" id="text-1-9">
+<ul class="org-ul">
+<li>The problem is that a pattern can be discovered if the produced cipher repeats.</li>
+<li>Solutions:
+<ul class="org-ul">
+<li>Electronic Code Book (ECB) is the standard and is not suitable (applies the same cipher on each block)</li>
+<li>Cipher Block Chaining (<code>CBC</code>), each block depends on the previous one, removes the repetition problem.</li>
+</ul></li>
+<li><code>ECB</code>:
+<img src="images/Exam_Questions/2026-04-12_22-20-36_screenshot.png" alt="2026-04-12_22-20-36_screenshot.png" /></li>
+<li><p>
+<code>CBC</code>:
+</p>
+<ul class="org-ul">
+<li>Uses XOR to combine with the previous block to produce a new cipher</li>
+<li>On the first block it uses Initialisation Vector (<code>IV</code>)</li>
+<li>Encrypt: start with a random IV value, mix first block with IV, then lock (produce first block), next block -&gt; mix with previous block, then lock</li>
+<li>Decrypt: first unmix the IV on the first block, then unlock, on the next block unmix using the data from the first block, then unlock</li>
+</ul>
+
+<div id="org98d2adf" class="figure">
+<p><img src="images/Exam_Questions/2026-04-12_21-14-51_screenshot.png" alt="2026-04-12_21-14-51_screenshot.png" />
+</p>
+</div></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org10db8ef" class="outline-3">
+<h3 id="org10db8ef"><span class="section-number-3">1.10.</span> <code>Digital Signatures</code></h3>
+<div class="outline-text-3" id="text-1-10">
+<ul class="org-ul">
+<li>Diagram</li>
+</ul>
+
+<div id="org4dd3f48" class="figure">
+<p><img src="images/Exam_Questions/2026-04-12_15-06-37_screenshot.png" alt="2026-04-12_15-06-37_screenshot.png" />
+</p>
+</div>
+<ul class="org-ul">
+<li>Creation: take the messsage and compute with a one-way hash. The hash is then encrypted using the sender's private key (that is the digital signature). Sender sends the message and the digital signature.</li>
+<li>Verification: receiver computes the hash of the received msg. Decrypt the digital signature using the public key. Compare the hash values of the message.</li>
+<li>Setup: each user must have a pub/pri key pair.</li>
+<li>Guarantees: Authentication and Integrity</li>
+<li>Client side steps:
+<ul class="org-ul">
+<li>In short: Verify digital cert (sig check), extract pub key, verify digital sig</li>
+<li>Cert Signature Verification</li>
+<li>Cert Chain Validation</li>
+<li>Validity period check</li>
+<li>Domain name check</li>
+<li>Revocation check</li>
+<li>Key usage &amp; extensions check</li>
+<li>Public key validation</li>
+<li>Sign verification in handshake</li>
+</ul></li>
+<li><code>Confidentiality</code> is achieved via diffie-hellman so that all data can be encrypted in-between. Alternatively, use session key exchange.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org63f000a" class="outline-3">
+<h3 id="org63f000a"><span class="section-number-3">1.11.</span> What is a <code>Digital Cert</code></h3>
+<div class="outline-text-3" id="text-1-11">
+<ul class="org-ul">
+<li>A <code>digital cert</code> is a structure that binds a name to a public key. Is issued by the cert authority (<code>CA</code>), which is trusted.</li>
+<li>The cert contains:
+<ul class="org-ul">
+<li>Name of the owner</li>
+<li>Public Key</li>
+<li>Name of the CA</li>
+<li>Other details such as validity and digital signature of the CA</li>
+</ul></li>
+<li>Usage in HTTPS:
+<ul class="org-ul">
+<li>Server sends a digital cert</li>
+<li>Client verifies the cert against CA, client uses the PUB key to verify that the server indeed has the private key (otherwise it would not work)</li>
+<li>Client gets the PUB key from the cert</li>
+<li>Client uses the PUB key for secure communication with the server.</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org8e8ef62" class="outline-3">
+<h3 id="org8e8ef62"><span class="section-number-3">1.12.</span> Keystore vs Truststore</h3>
+<div class="outline-text-3" id="text-1-12">
+<ul class="org-ul">
+<li>Keystore: stores private keys and certificates, used by servers</li>
+<li>Truststore: stores certificates of CAs, used by clients</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org6409888" class="outline-3">
+<h3 id="org6409888"><span class="section-number-3">1.13.</span> 2008 Rogue CA Cert attack. Hash collision attack, describe it.</h3>
+<div class="outline-text-3" id="text-1-13">
+<ul class="org-ul">
+<li>Was based on the MD5 collision</li>
+<li>Attackers created two different certs that had the same hash
+<ul class="org-ul">
+<li>One was <code>end-user cert</code></li>
+<li>The other was <code>intermediate CA cert</code></li>
+</ul></li>
+<li>Attackers used the end-user cert to get it signed legitimately, then copied it onto the intermediate CA cert which made the new cert valid. This allowed the attackers to issue invalid certs that appeared as valid and trusted by the CA.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org0ded36c" class="outline-3">
+<h3 id="org0ded36c"><span class="section-number-3">1.14.</span> <code>Messaging services</code>. Give four advantages of messaging services compared to distributed objects.</h3>
+<div class="outline-text-3" id="text-1-14">
+<ul class="org-ul">
+<li>A messaging service is a <code>Message Oriented Middleware (MOM)</code> where communication is done by sending <b>asynchronous messages</b>.</li>
+<li>Pros of messaging:
+<ul class="org-ul">
+<li>Decoupling: processes communicate via a separate service, not directly</li>
+<li>Redundancy: no loss of data, it stays until it is received (unless configured otherwise)</li>
+<li>Scalability: easy to add/remove services</li>
+<li>Elasticity &amp; Spikability: increase in traffic is just done via holding onto messages</li>
+<li>Resilience: If a component fails, the messages stay until the service comes back up (so that it can receive messages for it)</li>
+<li>Delivery Guarantees: msgs will be processed eventually.</li>
+<li>Ordering guarantees: processed in order, generally FIFO</li>
+<li>Buffering: queues act as buffers</li>
+<li>Understanding data flow: Message queues can be used as metrics to identify inefficient parts of the system</li>
+<li>Async communication: msgs can be processed later, it adds flexibility</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org1f103d7" class="outline-3">
+<h3 id="org1f103d7"><span class="section-number-3">1.15.</span> <code>Sharding</code> in mongodb</h3>
+<div class="outline-text-3" id="text-1-15">
+<ul class="org-ul">
+<li>Diagram
+<img src="images/Exam_Questions/2026-04-12_15-29-16_screenshot.png" alt="2026-04-12_15-29-16_screenshot.png" />
+<ul class="org-ul">
+<li>Sharding: is used to split very large data, then each server (a shard) stores data for its own defined shard (date range? id range? shards are defined based on data)</li>
+<li>Architecture:
+<ul class="org-ul">
+<li>client -&gt; mongos (router) -&gt; mongod (shards) | mongod (config servers, stores metadata about the distribution of the data)</li>
+</ul></li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org84afd77" class="outline-3">
+<h3 id="org84afd77"><span class="section-number-3">1.16.</span> <code>User sessions</code> in a <code>distributed systems</code>, what are the issues?</h3>
+<div class="outline-text-3" id="text-1-16">
+<ul class="org-ul">
+<li>Use something like memcached or redis to store user sessions, so that information is distributed across the server instances.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgab3dfd7" class="outline-3">
+<h3 id="orgab3dfd7"><span class="section-number-3">1.17.</span> SSH 1.0</h3>
+<div class="outline-text-3" id="text-1-17">
+<ul class="org-ul">
+<li>Operation:
+<ul class="org-ul">
+<li>Client connects to server</li>
+<li>Server sends: public key + temp pub key</li>
+<li>Client:
+<ul class="org-ul">
+<li>Generates a symmetric session key</li>
+<li>Encrypts the key with pub key + temp pub key from server</li>
+<li>Sends the encrypted symm key back</li>
+</ul></li>
+<li>Server
+<ul class="org-ul">
+<li>Decrypts the key using pub + temp key</li>
+</ul></li>
+<li>From now communication is symmetrically encrypted</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgae48a84" class="outline-3">
+<h3 id="orgae48a84"><span class="section-number-3">1.18.</span> Perfect forward secrecy</h3>
+<div class="outline-text-3" id="text-1-18">
+<ul class="org-ul">
+<li>Future compromise of keys does not allow the decryption of past data.</li>
+<li>For SSH 1.0 this is achieved by the usage of the temporary key, which is destroyed after a session.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org670a12c" class="outline-3">
+<h3 id="org670a12c"><span class="section-number-3">1.19.</span> Difference between a Queue and a Topic in JMS</h3>
+<div class="outline-text-3" id="text-1-19">
+<ul class="org-ul">
+<li>Queue: uses a queue system in which each message is received once by one of the receivers only
+<ul class="org-ul">
+<li>Suitable for: task distribution</li>
+</ul></li>
+<li>Topic: publishes a message to a topic and all subscribers to said topic receive it
+<ul class="org-ul">
+<li>Suitable for: broadcasting messages to multiple clients, notifications, updates, etc.</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org4e3e931" class="outline-3">
+<h3 id="org4e3e931"><span class="section-number-3">1.20.</span> Twitter auth</h3>
+<div class="outline-text-3" id="text-1-20">
+<ul class="org-ul">
+<li>Client requests auth: gets back <code>ID</code> and <code>Secret Key</code></li>
+<li>When the client needs to auth via API it sends the ID, the message and HMAC calced with the secret key.
+<ul class="org-ul">
+<li>The server then looks up the secret key via the ID, calculates the HMAC and compares.</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgd3ef431" class="outline-3">
+<h3 id="orgd3ef431"><span class="section-number-3">1.21.</span> Types of firewalls</h3>
+<div class="outline-text-3" id="text-1-21">
+<ul class="org-ul">
+<li><code>Packet Filtering Firewall</code>:
+<ul class="org-ul">
+<li>Checks packets at a basic level</li>
+<li>IP address, port numbers, protocol</li>
+</ul></li>
+<li><code>Application (Proxy) Firewall</code>
+<ul class="org-ul">
+<li>Works at a higher level</li>
+<li>Looks at http requests and works between the client and the server, usually software level</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orge564eb6" class="outline-3">
+<h3 id="orge564eb6"><span class="section-number-3">1.22.</span> Messaging system advantages</h3>
+<div class="outline-text-3" id="text-1-22">
+<ul class="org-ul">
+<li>Sudden spike: uses buffering to solve it</li>
+<li>Sustained spike: can easily add more services to deal with the queues, the queue itself can be scaled (increased) to accommodate the increased traffic</li>
+<li>Reliability: Messages remain in the system if a process fails, messages may need ACKs for certain systems</li>
+<li>Ease of development: decoupling, provides independence and the many advantages of it.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org7bfb0b9" class="outline-3">
+<h3 id="org7bfb0b9"><span class="section-number-3">1.23.</span> Java</h3>
+<div class="outline-text-3" id="text-1-23">
+</div>
+<div id="outline-container-orgc8181f2" class="outline-4">
+<h4 id="orgc8181f2">Server to client TCP/IP</h4>
+<div class="outline-text-4" id="text-orgc8181f2">
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #ECBE7B;">ServerSocket</span> ss = <span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">ServerSocket</span><span style="color: #fff0f5;">(</span><span style="color: #da8548; font-weight: bold;">2000</span><span style="color: #fff0f5;">)</span>;
+<span style="color: #5B6268;">// Create a server socket listening on port 2000</span>
+
+<span style="color: #51afef; font-style: italic;">while</span> <span style="color: #fff0f5;">(</span><span style="color: #a9a1e1;">true</span><span style="color: #fff0f5;">)</span> <span style="color: #fff0f5;">{</span>
+    <span style="color: #5B6268;">// Loop forever to handle multiple clients</span>
+
+    <span style="color: #ECBE7B;">Socket</span> s = ss.<span style="color: #c678dd;">accept</span><span style="color: #c678dd;">()</span>;
+    <span style="color: #5B6268;">// Wait (block) until a client connects</span>
+
+    <span style="color: #ECBE7B;">InputStream</span> in = s.<span style="color: #c678dd;">getInputStream</span><span style="color: #c678dd;">()</span>;
+    <span style="color: #5B6268;">// Get input stream from client</span>
+
+    <span style="color: #ECBE7B;">Scanner</span> r = <span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">Scanner</span><span style="color: #c678dd;">(</span>in<span style="color: #c678dd;">)</span>;
+    <span style="color: #5B6268;">// Wrap input stream to read text (String)</span>
+
+    <span style="color: #ECBE7B;">OutputStream</span> o = s.<span style="color: #c678dd;">getOutputStream</span><span style="color: #c678dd;">()</span>;
+    <span style="color: #5B6268;">// Get output stream to send data to client</span>
+
+    <span style="color: #ECBE7B;">PrintWriter</span> p = <span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">PrintWriter</span><span style="color: #c678dd;">(</span>o<span style="color: #c678dd;">)</span>;
+    <span style="color: #5B6268;">// Wrap output stream to send text</span>
+
+    <span style="color: #ECBE7B;">String</span> inputLine = r.<span style="color: #c678dd;">nextLine</span><span style="color: #c678dd;">()</span>;
+    <span style="color: #5B6268;">// Read request (String) from client</span>
+
+    p.<span style="color: #c678dd;">println</span><span style="color: #c678dd;">(</span><span style="color: #98be65;">"Hello "</span> + inputLine + <span style="color: #98be65;">" from Server"</span><span style="color: #c678dd;">)</span>;
+    <span style="color: #5B6268;">// Send response back to client</span>
+
+    p.<span style="color: #c678dd;">close</span><span style="color: #c678dd;">()</span>;
+    <span style="color: #5B6268;">// Close connection (also flushes data)</span>
+<span style="color: #fff0f5;">}</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org75c6841" class="outline-4">
+<h4 id="org75c6841">Client to server TCP/IP</h4>
+<div class="outline-text-4" id="text-org75c6841">
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #ECBE7B;">InetAddress</span> inet = InetAddress.<span style="color: #c678dd;">getByName</span><span style="color: #fff0f5;">(</span><span style="color: #98be65;">"localhost"</span><span style="color: #fff0f5;">)</span>;
+<span style="color: #5B6268;">// Get IP address of server (localhost)</span>
+
+<span style="color: #ECBE7B;">Socket</span> s = <span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">Socket</span><span style="color: #fff0f5;">(</span>inet, <span style="color: #da8548; font-weight: bold;">2000</span><span style="color: #fff0f5;">)</span>;
+<span style="color: #5B6268;">// Connect to server on port 2000</span>
+
+<span style="color: #ECBE7B;">OutputStream</span> o = s.<span style="color: #c678dd;">getOutputStream</span><span style="color: #fff0f5;">()</span>;
+<span style="color: #5B6268;">// Get output stream to send data</span>
+
+<span style="color: #ECBE7B;">PrintWriter</span> p = <span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">PrintWriter</span><span style="color: #fff0f5;">(</span>o<span style="color: #fff0f5;">)</span>;
+<span style="color: #5B6268;">// Wrap output stream to send text</span>
+
+<span style="color: #ECBE7B;">InputStream</span> in = s.<span style="color: #c678dd;">getInputStream</span><span style="color: #fff0f5;">()</span>;
+<span style="color: #5B6268;">// Get input stream to receive data</span>
+
+<span style="color: #ECBE7B;">Scanner</span> r = <span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">Scanner</span><span style="color: #fff0f5;">(</span>in<span style="color: #fff0f5;">)</span>;
+<span style="color: #5B6268;">// Wrap input stream to read text</span>
+
+p.<span style="color: #c678dd;">println</span><span style="color: #fff0f5;">(</span><span style="color: #98be65;">"John"</span><span style="color: #fff0f5;">)</span>;
+<span style="color: #5B6268;">// Send request (String) to server</span>
+
+p.<span style="color: #c678dd;">flush</span><span style="color: #fff0f5;">()</span>;
+<span style="color: #5B6268;">// Force data to be sent (important in TCP)</span>
+
+<span style="color: #ECBE7B;">String</span> response = r.<span style="color: #c678dd;">nextLine</span><span style="color: #fff0f5;">()</span>;
+<span style="color: #5B6268;">// Read response from server</span>
+
+System.out.<span style="color: #c678dd;">println</span><span style="color: #fff0f5;">(</span>response<span style="color: #fff0f5;">)</span>;
+<span style="color: #5B6268;">// Print server reply</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgcf03ebf" class="outline-4">
+<h4 id="orgcf03ebf">Server to client UDP</h4>
+<div class="outline-text-4" id="text-orgcf03ebf">
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #5B6268;">// create socket on port 2000</span>
+<span style="color: #ECBE7B;">DatagramSocket</span> socket = <span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">DatagramSocket</span><span style="color: #fff0f5;">(</span><span style="color: #da8548; font-weight: bold;">2000</span><span style="color: #fff0f5;">)</span>;
+
+<span style="color: #5B6268;">// buffer for incoming data</span>
+<span style="color: #ECBE7B;">byte</span><span style="color: #fff0f5;">[]</span> buf = <span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">byte</span><span style="color: #fff0f5;">[</span><span style="color: #da8548; font-weight: bold;">1024</span><span style="color: #fff0f5;">]</span>;
+
+<span style="color: #ECBE7B;">DatagramPacket</span> receivePacket = <span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">DatagramPacket</span><span style="color: #fff0f5;">(</span>buf, buf.length<span style="color: #fff0f5;">)</span>;
+
+<span style="color: #5B6268;">// blocking call to receive datagram</span>
+socket.<span style="color: #c678dd;">receive</span><span style="color: #fff0f5;">(</span>receivePacket<span style="color: #fff0f5;">)</span>;
+
+<span style="color: #5B6268;">// get client address</span>
+<span style="color: #ECBE7B;">InetAddress</span> inetAddress = receivePacket.<span style="color: #c678dd;">getAddress</span><span style="color: #fff0f5;">()</span>;
+
+<span style="color: #5B6268;">// get client port</span>
+<span style="color: #ECBE7B;">int</span> port = receivePacket.<span style="color: #c678dd;">getPort</span><span style="color: #fff0f5;">()</span>;
+
+<span style="color: #5B6268;">// extract message</span>
+<span style="color: #ECBE7B;">String</span> message = <span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">String</span><span style="color: #fff0f5;">(</span>receivePacket.<span style="color: #c678dd;">getData</span><span style="color: #c678dd;">()</span>, <span style="color: #da8548; font-weight: bold;">0</span>, receivePacket.<span style="color: #c678dd;">getLength</span><span style="color: #c678dd;">()</span><span style="color: #fff0f5;">)</span>;
+
+<span style="color: #5B6268;">// server replies with:</span>
+<span style="color: #ECBE7B;">String</span> reply = <span style="color: #98be65;">"Hello "</span> + message;
+buf = reply.<span style="color: #c678dd;">getBytes</span><span style="color: #fff0f5;">()</span>;
+
+<span style="color: #ECBE7B;">DatagramPacket</span> sendPacket = <span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">DatagramPacket</span><span style="color: #fff0f5;">(</span>buf, buf.length, inetAddress, port<span style="color: #fff0f5;">)</span>;
+<span style="color: #5B6268;">// use client address and port</span>
+
+socket.<span style="color: #c678dd;">send</span><span style="color: #fff0f5;">(</span>sendPacket<span style="color: #fff0f5;">)</span>;
+<span style="color: #5B6268;">// send reply back</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org40aab7f" class="outline-4">
+<h4 id="org40aab7f">Client to server UDP</h4>
+<div class="outline-text-4" id="text-org40aab7f">
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #5B6268;">// create socket on a port</span>
+<span style="color: #ECBE7B;">DatagramSocket</span> socket = <span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">DatagramSocket</span><span style="color: #fff0f5;">(</span><span style="color: #da8548; font-weight: bold;">2012</span><span style="color: #fff0f5;">)</span>;
+
+<span style="color: #ECBE7B;">String</span> name = <span style="color: #98be65;">"paul"</span>;
+<span style="color: #5B6268;">// convert message to bytes</span>
+<span style="color: #ECBE7B;">byte</span><span style="color: #fff0f5;">[]</span> buf = name.<span style="color: #c678dd;">getBytes</span><span style="color: #fff0f5;">()</span>;
+
+<span style="color: #5B6268;">// get server address</span>
+<span style="color: #ECBE7B;">InetAddress</span> inetAddress = InetAddress.<span style="color: #c678dd;">getByName</span><span style="color: #fff0f5;">(</span><span style="color: #98be65;">"localhost"</span><span style="color: #fff0f5;">)</span>;
+
+<span style="color: #5B6268;">// create packet with data, address and port</span>
+<span style="color: #ECBE7B;">DatagramPacket</span> packet = <span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">DatagramPacket</span><span style="color: #fff0f5;">(</span>buf, buf.length, inetAddress, <span style="color: #da8548; font-weight: bold;">2000</span><span style="color: #fff0f5;">)</span>;
+
+<span style="color: #5B6268;">// send datagram to server</span>
+socket.<span style="color: #c678dd;">send</span><span style="color: #fff0f5;">(</span>packet<span style="color: #fff0f5;">)</span>;
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org3882f54" class="outline-2">
+<h2 id="org3882f54"><span class="section-number-2">2.</span> Security</h2>
 <div class="outline-text-2" id="text-2">
 </div>
-<div id="outline-container-org9604d3f" class="outline-3">
-<h3 id="org9604d3f"><span class="section-number-3">2.1.</span> What is Security</h3>
+<div id="outline-container-org5aec8ad" class="outline-3">
+<h3 id="org5aec8ad"><span class="section-number-3">2.1.</span> What is Security</h3>
 </div>
-<div id="outline-container-orge549ee0" class="outline-3">
-<h3 id="orge549ee0"><span class="section-number-3">2.2.</span> Authorisation vs Authentication</h3>
+<div id="outline-container-org20b0056" class="outline-3">
+<h3 id="org20b0056"><span class="section-number-3">2.2.</span> Authorisation vs Authentication</h3>
 </div>
-<div id="outline-container-org353ef66" class="outline-3">
-<h3 id="org353ef66"><span class="section-number-3">2.3.</span> Accountability vs Availability</h3>
+<div id="outline-container-org20e3fc4" class="outline-3">
+<h3 id="org20e3fc4"><span class="section-number-3">2.3.</span> Accountability vs Availability</h3>
 </div>
-<div id="outline-container-orge2c77ff" class="outline-3">
-<h3 id="orge2c77ff"><span class="section-number-3">2.4.</span> Uses of Random Passwords</h3>
+<div id="outline-container-org572ef58" class="outline-3">
+<h3 id="org572ef58"><span class="section-number-3">2.4.</span> Uses of Random Passwords</h3>
 <div class="outline-text-3" id="text-2-4">
 </div>
-<div id="outline-container-org4df1992" class="outline-4">
-<h4 id="org4df1992">Also: Cryptographically safe random numbers</h4>
+<div id="outline-container-orgbfbaee4" class="outline-4">
+<h4 id="orgbfbaee4">Also: Cryptographically safe random numbers</h4>
 </div>
-<div id="outline-container-orgff17823" class="outline-4">
-<h4 id="orgff17823">Random number generation</h4>
-<div class="outline-text-4" id="text-orgff17823">
+<div id="outline-container-org0db25ca" class="outline-4">
+<h4 id="org0db25ca">Random number generation</h4>
+<div class="outline-text-4" id="text-org0db25ca">
 <ul class="org-ul">
 <li>Big'ish topic</li>
 </ul>
 </div>
 </div>
 </div>
-<div id="outline-container-org0b89c72" class="outline-3">
-<h3 id="org0b89c72"><span class="section-number-3">2.5.</span> LCG - Linear Congruential Generator</h3>
+<div id="outline-container-org5d20c42" class="outline-3">
+<h3 id="org5d20c42"><span class="section-number-3">2.5.</span> LCG - Linear Congruential Generator</h3>
 </div>
-<div id="outline-container-org63bc028" class="outline-3">
-<h3 id="org63bc028"><span class="section-number-3">2.6.</span> LFSR - Linear Feedback Shift Register</h3>
+<div id="outline-container-orgedd4b79" class="outline-3">
+<h3 id="orgedd4b79"><span class="section-number-3">2.6.</span> LFSR - Linear Feedback Shift Register</h3>
 </div>
 </div>
-<div id="outline-container-org43aa81b" class="outline-2">
-<h2 id="org43aa81b"><span class="section-number-2">3.</span> Remove at the End</h2>
+<div id="outline-container-orgb2eb37c" class="outline-2">
+<h2 id="orgb2eb37c"><span class="section-number-2">3.</span> Remove at the End</h2>
 <div class="outline-text-2" id="text-3">
 <script src="../assets/jquery-3.3.1.min.js"></script>
 <script src="../assets/notes.js"></script>
@@ -272,7 +866,7 @@
 <div id="postamble" class="status">
 <p class="date">Date: 2026-01-12 Mon 14:14</p>
 <p class="author">Author: Damian Chrzanowski</p>
-<p class="date">Created: 2026-03-04 Wed 20:05</p>
+<p class="date">Created: 2026-04-12 Sun 22:48</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
