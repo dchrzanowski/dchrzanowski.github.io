@@ -118,6 +118,7 @@ K ⊕ ipad        K ⊕ opad
      - Electronic Code Book (ECB) is the standard and is not suitable (applies the same cipher on each block)
      - Cipher Block Chaining (~CBC~), each block depends on the previous one, removes the repetition problem.
    - ~ECB~:
+     - Diagram:
      [[file:images/Exam_Questions/2026-04-12_22-20-36_screenshot.png]]
    - ~CBC~:
      - Uses XOR to combine with the previous block to produce a new cipher
