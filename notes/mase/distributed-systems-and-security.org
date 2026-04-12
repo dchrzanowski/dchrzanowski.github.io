@@ -74,7 +74,7 @@
 ** Procedure of ~calculating a HMAC~. Inner and outer ~padded keys~. Draw diagram.
    - Diagram
    [[file:images/Exam_Questions/2026-04-12_14-46-52_screenshot.png]]
-   #+begin_verse
+   #+begin_src
         K (key)
           |
    -----------------
@@ -98,7 +98,7 @@ K ⊕ ipad        K ⊕ opad
      H(K⊕opad || inner)
             |
           HMAC
-   #+end_verse
+   #+end_src
    - Procedure:
      - Prepare a key: if key is longer than the hash block size -> hash it, otherwise pad it with zeroes (prevent length extension attacks)
      - Create padded keys

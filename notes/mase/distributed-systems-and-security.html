@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-04-12 Sun 22:48 -->
+<!-- 2026-04-12 Sun 22:52 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Distributed Systems And Security</title>
@@ -204,56 +204,56 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgf162704">1. Exam Questions</a>
+<li><a href="#orgd1a127c">1. Exam Questions</a>
 <ul>
-<li><a href="#org38cb08e">1.1. What is a <code>Cryptographic Function</code>? Four properties of it</a></li>
-<li><a href="#org609bbdb">1.2. Diff between <code>pseudo</code> random and <code>truly random</code> RNG. Outline <code>SHA1PRNG</code> algo. How to <code>seed</code> pseudo rng?</a></li>
-<li><a href="#org6c840a3">1.3. Diffie-Hellman</a></li>
-<li><a href="#org84f6c8b">1.4. What is a <code>one-time pad</code>? How does a <code>stream cipher</code> work?</a></li>
-<li><a href="#org233358e">1.5. What is a block cipher? What are "modes of operation" and why are they important? Outline CBC.</a></li>
-<li><a href="#org19eea41">1.6. What is a <code>Hashed Message Authentication Code</code> (<code>HMAC</code>) for a message? What does it enable the receiver to do? What is the typical use case?</a></li>
-<li><a href="#org9fa1f7a">1.7. Procedure of <code>calculating a HMAC</code>. Inner and outer <code>padded keys</code>. Draw diagram.</a></li>
-<li><a href="#org92893e9">1.8. Salted hash passwords. Adaptive one-way function.</a></li>
-<li><a href="#org2ac81e7">1.9. Naively applying a <code>block cipher to each block</code> of a message in turn? What is the solution? Explain the procedure.</a></li>
-<li><a href="#org10db8ef">1.10. <code>Digital Signatures</code></a></li>
-<li><a href="#org63f000a">1.11. What is a <code>Digital Cert</code></a></li>
-<li><a href="#org8e8ef62">1.12. Keystore vs Truststore</a></li>
-<li><a href="#org6409888">1.13. 2008 Rogue CA Cert attack. Hash collision attack, describe it.</a></li>
-<li><a href="#org0ded36c">1.14. <code>Messaging services</code>. Give four advantages of messaging services compared to distributed objects.</a></li>
-<li><a href="#org1f103d7">1.15. <code>Sharding</code> in mongodb</a></li>
-<li><a href="#org84afd77">1.16. <code>User sessions</code> in a <code>distributed systems</code>, what are the issues?</a></li>
-<li><a href="#orgab3dfd7">1.17. SSH 1.0</a></li>
-<li><a href="#orgae48a84">1.18. Perfect forward secrecy</a></li>
-<li><a href="#org670a12c">1.19. Difference between a Queue and a Topic in JMS</a></li>
-<li><a href="#org4e3e931">1.20. Twitter auth</a></li>
-<li><a href="#orgd3ef431">1.21. Types of firewalls</a></li>
-<li><a href="#orge564eb6">1.22. Messaging system advantages</a></li>
-<li><a href="#org7bfb0b9">1.23. Java</a></li>
+<li><a href="#orgf0a221f">1.1. What is a <code>Cryptographic Function</code>? Four properties of it</a></li>
+<li><a href="#orgc76bec3">1.2. Diff between <code>pseudo</code> random and <code>truly random</code> RNG. Outline <code>SHA1PRNG</code> algo. How to <code>seed</code> pseudo rng?</a></li>
+<li><a href="#orge1c77ea">1.3. Diffie-Hellman</a></li>
+<li><a href="#orgf136e04">1.4. What is a <code>one-time pad</code>? How does a <code>stream cipher</code> work?</a></li>
+<li><a href="#org869c688">1.5. What is a block cipher? What are "modes of operation" and why are they important? Outline CBC.</a></li>
+<li><a href="#orga282a30">1.6. What is a <code>Hashed Message Authentication Code</code> (<code>HMAC</code>) for a message? What does it enable the receiver to do? What is the typical use case?</a></li>
+<li><a href="#orgfedec59">1.7. Procedure of <code>calculating a HMAC</code>. Inner and outer <code>padded keys</code>. Draw diagram.</a></li>
+<li><a href="#orgb7c2d23">1.8. Salted hash passwords. Adaptive one-way function.</a></li>
+<li><a href="#org2bca3cd">1.9. Naively applying a <code>block cipher to each block</code> of a message in turn? What is the solution? Explain the procedure.</a></li>
+<li><a href="#orge246e8b">1.10. <code>Digital Signatures</code></a></li>
+<li><a href="#orgfc619ad">1.11. What is a <code>Digital Cert</code></a></li>
+<li><a href="#org3c30a9e">1.12. Keystore vs Truststore</a></li>
+<li><a href="#org6fbf5a4">1.13. 2008 Rogue CA Cert attack. Hash collision attack, describe it.</a></li>
+<li><a href="#org7e6ab43">1.14. <code>Messaging services</code>. Give four advantages of messaging services compared to distributed objects.</a></li>
+<li><a href="#orge023f47">1.15. <code>Sharding</code> in mongodb</a></li>
+<li><a href="#orgbfa49fd">1.16. <code>User sessions</code> in a <code>distributed systems</code>, what are the issues?</a></li>
+<li><a href="#org8aa7de5">1.17. SSH 1.0</a></li>
+<li><a href="#orgebe44e7">1.18. Perfect forward secrecy</a></li>
+<li><a href="#org7f37905">1.19. Difference between a Queue and a Topic in JMS</a></li>
+<li><a href="#org118318e">1.20. Twitter auth</a></li>
+<li><a href="#orgc70281c">1.21. Types of firewalls</a></li>
+<li><a href="#org847fdfb">1.22. Messaging system advantages</a></li>
+<li><a href="#org7ff1051">1.23. Java</a></li>
 </ul>
 </li>
-<li><a href="#org3882f54">2. Security</a>
+<li><a href="#orgeede731">2. Security</a>
 <ul>
-<li><a href="#org5aec8ad">2.1. What is Security</a></li>
-<li><a href="#org20b0056">2.2. Authorisation vs Authentication</a></li>
-<li><a href="#org20e3fc4">2.3. Accountability vs Availability</a></li>
-<li><a href="#org572ef58">2.4. Uses of Random Passwords</a></li>
-<li><a href="#org5d20c42">2.5. LCG - Linear Congruential Generator</a></li>
-<li><a href="#orgedd4b79">2.6. LFSR - Linear Feedback Shift Register</a></li>
+<li><a href="#orgf6dd92f">2.1. What is Security</a></li>
+<li><a href="#org0787070">2.2. Authorisation vs Authentication</a></li>
+<li><a href="#orgb6d0584">2.3. Accountability vs Availability</a></li>
+<li><a href="#org3e89a2e">2.4. Uses of Random Passwords</a></li>
+<li><a href="#org631b250">2.5. LCG - Linear Congruential Generator</a></li>
+<li><a href="#orgc026022">2.6. LFSR - Linear Feedback Shift Register</a></li>
 </ul>
 </li>
-<li><a href="#orgb2eb37c">3. Remove at the End</a></li>
+<li><a href="#orgdeb8cc0">3. Remove at the End</a></li>
 </ul>
 </div>
 </div>
 <p>
 <a href="index.html">Home Page</a>
 </p>
-<div id="outline-container-orgf162704" class="outline-2">
-<h2 id="orgf162704"><span class="section-number-2">1.</span> Exam Questions</h2>
+<div id="outline-container-orgd1a127c" class="outline-2">
+<h2 id="orgd1a127c"><span class="section-number-2">1.</span> Exam Questions</h2>
 <div class="outline-text-2" id="text-1">
 </div>
-<div id="outline-container-org38cb08e" class="outline-3">
-<h3 id="org38cb08e"><span class="section-number-3">1.1.</span> What is a <code>Cryptographic Function</code>? Four properties of it</h3>
+<div id="outline-container-orgf0a221f" class="outline-3">
+<h3 id="orgf0a221f"><span class="section-number-3">1.1.</span> What is a <code>Cryptographic Function</code>? Four properties of it</h3>
 <div class="outline-text-3" id="text-1-1">
 <ul class="org-ul">
 <li>Takes an input data of arbitrary size and produces a fixed-size output called a hash (or digest). One single change in the input completely changes the output.</li>
@@ -267,8 +267,8 @@
 </ul>
 </div>
 </div>
-<div id="outline-container-org609bbdb" class="outline-3">
-<h3 id="org609bbdb"><span class="section-number-3">1.2.</span> Diff between <code>pseudo</code> random and <code>truly random</code> RNG. Outline <code>SHA1PRNG</code> algo. How to <code>seed</code> pseudo rng?</h3>
+<div id="outline-container-orgc76bec3" class="outline-3">
+<h3 id="orgc76bec3"><span class="section-number-3">1.2.</span> Diff between <code>pseudo</code> random and <code>truly random</code> RNG. Outline <code>SHA1PRNG</code> algo. How to <code>seed</code> pseudo rng?</h3>
 <div class="outline-text-3" id="text-1-2">
 <ul class="org-ul">
 <li><code>Truly random</code> comes from physical processes</li>
@@ -297,8 +297,8 @@
 </ul>
 </div>
 </div>
-<div id="outline-container-org6c840a3" class="outline-3">
-<h3 id="org6c840a3"><span class="section-number-3">1.3.</span> Diffie-Hellman</h3>
+<div id="outline-container-orge1c77ea" class="outline-3">
+<h3 id="orge1c77ea"><span class="section-number-3">1.3.</span> Diffie-Hellman</h3>
 <div class="outline-text-3" id="text-1-3">
 <ul class="org-ul">
 <li>The main public values:
@@ -327,8 +327,8 @@
 </ul>
 </div>
 </div>
-<div id="outline-container-org84f6c8b" class="outline-3">
-<h3 id="org84f6c8b"><span class="section-number-3">1.4.</span> What is a <code>one-time pad</code>? How does a <code>stream cipher</code> work?</h3>
+<div id="outline-container-orgf136e04" class="outline-3">
+<h3 id="orgf136e04"><span class="section-number-3">1.4.</span> What is a <code>one-time pad</code>? How does a <code>stream cipher</code> work?</h3>
 <div class="outline-text-3" id="text-1-4">
 <ul class="org-ul">
 <li>One-time pad:
@@ -350,11 +350,11 @@
 </ul>
 </div>
 </div>
-<div id="outline-container-org233358e" class="outline-3">
-<h3 id="org233358e"><span class="section-number-3">1.5.</span> What is a block cipher? What are "modes of operation" and why are they important? Outline CBC.</h3>
+<div id="outline-container-org869c688" class="outline-3">
+<h3 id="org869c688"><span class="section-number-3">1.5.</span> What is a block cipher? What are "modes of operation" and why are they important? Outline CBC.</h3>
 <div class="outline-text-3" id="text-1-5">
 <ul class="org-ul">
-<li>Cipher Block Chaining <a href="#org2ac81e7">(CBC)</a> explained in another question</li>
+<li>Cipher Block Chaining <a href="#org2bca3cd">(CBC)</a> explained in another question</li>
 <li>Block cipher takes a given block (say 128 bits) and with a given key it produces ciphertext (the output)
 <ul class="org-ul">
 <li>It is deterministic, because the same key and the same input will always produce the same output (AES is one of the examples here)</li>
@@ -363,8 +363,8 @@
 </ul>
 </div>
 </div>
-<div id="outline-container-org19eea41" class="outline-3">
-<h3 id="org19eea41"><span class="section-number-3">1.6.</span> What is a <code>Hashed Message Authentication Code</code> (<code>HMAC</code>) for a message? What does it enable the receiver to do? What is the typical use case?</h3>
+<div id="outline-container-orga282a30" class="outline-3">
+<h3 id="orga282a30"><span class="section-number-3">1.6.</span> What is a <code>Hashed Message Authentication Code</code> (<code>HMAC</code>) for a message? What does it enable the receiver to do? What is the typical use case?</h3>
 <div class="outline-text-3" id="text-1-6">
 <ul class="org-ul">
 <li>A HMAC is generated by concatenating a message (input) with a secret to produce a hash (the HMAC).</li>
@@ -376,42 +376,43 @@
 </ul>
 </div>
 </div>
-<div id="outline-container-org9fa1f7a" class="outline-3">
-<h3 id="org9fa1f7a"><span class="section-number-3">1.7.</span> Procedure of <code>calculating a HMAC</code>. Inner and outer <code>padded keys</code>. Draw diagram.</h3>
+<div id="outline-container-orgfedec59" class="outline-3">
+<h3 id="orgfedec59"><span class="section-number-3">1.7.</span> Procedure of <code>calculating a HMAC</code>. Inner and outer <code>padded keys</code>. Draw diagram.</h3>
 <div class="outline-text-3" id="text-1-7">
 <ul class="org-ul">
 <li>Diagram</li>
 </ul>
 
-<div id="org33bc9b9" class="figure">
+<div id="orga5e565f" class="figure">
 <p><img src="images/Exam_Questions/2026-04-12_14-46-52_screenshot.png" alt="2026-04-12_14-46-52_screenshot.png" />
 </p>
 </div>
-<p class="verse">
-&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;K (key)<br />
-&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;|<br />
-&#xa0;&#xa0;&#xa0;------------&#x2013;&#x2014;<br />
-&#xa0;&#xa0;&#xa0;|               |<br />
-pad/XOR         pad/XOR<br />
-with ipad       with opad<br />
-&#xa0;&#xa0;&#xa0;|               |<br />
-K ⊕ ipad        K ⊕ opad<br />
-&#xa0;&#xa0;&#xa0;|               |<br />
-&#xa0;&#xa0;&#xa0;|        -----------&#x2013;&#x2014;<br />
-&#xa0;&#xa0;&#xa0;|        |              |<br />
-&#xa0;&#xa0;&#xa0;|     concatenate       |<br />
-&#xa0;&#xa0;&#xa0;|        |              |<br />
-&#xa0;&#xa0;&#xa0;|    inner hash         |<br />
-&#xa0;&#xa0;&#xa0;|   H(K⊕ipad || m)      |<br />
-&#xa0;&#xa0;&#xa0;|        |              |<br />
-&#xa0;&#xa0;&#xa0;---&#x2013;&#x2014;&gt;|---------&#x2013;&#x2014;|<br />
-&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;|<br />
-&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;concatenate<br />
-&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;|<br />
-&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;H(K⊕opad || inner)<br />
-&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;|<br />
-&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;HMAC<br />
-</p>
+<div class="org-src-container">
+<pre class="src src-nil">        K (key)
+          |
+   -----------------
+   |               |
+pad/XOR         pad/XOR
+with ipad       with opad
+   |               |
+K ⊕ ipad        K ⊕ opad
+   |               |
+   |        ----------------
+   |        |              |
+   |     concatenate       |
+   |        |              |
+   |    inner hash         |
+   |   H(K⊕ipad || m)      |
+   |        |              |
+   --------&gt;|--------------|
+            |
+     concatenate
+            |
+     H(K⊕opad || inner)
+            |
+          HMAC
+</pre>
+</div>
 <ul class="org-ul">
 <li>Procedure:
 <ul class="org-ul">
@@ -423,25 +424,25 @@ K ⊕ ipad        K ⊕ opad<br />
 </ul>
 </div>
 </div>
-<div id="outline-container-org92893e9" class="outline-3">
-<h3 id="org92893e9"><span class="section-number-3">1.8.</span> Salted hash passwords. Adaptive one-way function.</h3>
+<div id="outline-container-orgb7c2d23" class="outline-3">
+<h3 id="orgb7c2d23"><span class="section-number-3">1.8.</span> Salted hash passwords. Adaptive one-way function.</h3>
 <div class="outline-text-3" id="text-1-8">
 <ul class="org-ul">
 <li><code>Salt</code> is added to the hash so that two same passwords don't have the same hash and thus be reversible.</li>
 <li><code>Adaptiven one-way function</code>, works one way, so the password cannot be reversed. Also it's computing power can be adjusted so that the time taken is intentionally small (stops brute forcing quickly).</li>
 </ul>
 </div>
-<div id="outline-container-org64160e1" class="outline-4">
-<h4 id="org64160e1">Key stretching</h4>
-<div class="outline-text-4" id="text-org64160e1">
+<div id="outline-container-org4ee77ed" class="outline-4">
+<h4 id="org4ee77ed">Key stretching</h4>
+<div class="outline-text-4" id="text-org4ee77ed">
 <ul class="org-ul">
 <li>Hashing the passwords many times in a loop, often used to apply the salt many times.</li>
 </ul>
 </div>
 </div>
 </div>
-<div id="outline-container-org2ac81e7" class="outline-3">
-<h3 id="org2ac81e7"><span class="section-number-3">1.9.</span> Naively applying a <code>block cipher to each block</code> of a message in turn? What is the solution? Explain the procedure.</h3>
+<div id="outline-container-org2bca3cd" class="outline-3">
+<h3 id="org2bca3cd"><span class="section-number-3">1.9.</span> Naively applying a <code>block cipher to each block</code> of a message in turn? What is the solution? Explain the procedure.</h3>
 <div class="outline-text-3" id="text-1-9">
 <ul class="org-ul">
 <li>The problem is that a pattern can be discovered if the produced cipher repeats.</li>
@@ -462,21 +463,21 @@ K ⊕ ipad        K ⊕ opad<br />
 <li>Decrypt: first unmix the IV on the first block, then unlock, on the next block unmix using the data from the first block, then unlock</li>
 </ul>
 
-<div id="org98d2adf" class="figure">
+<div id="org6a76666" class="figure">
 <p><img src="images/Exam_Questions/2026-04-12_21-14-51_screenshot.png" alt="2026-04-12_21-14-51_screenshot.png" />
 </p>
 </div></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org10db8ef" class="outline-3">
-<h3 id="org10db8ef"><span class="section-number-3">1.10.</span> <code>Digital Signatures</code></h3>
+<div id="outline-container-orge246e8b" class="outline-3">
+<h3 id="orge246e8b"><span class="section-number-3">1.10.</span> <code>Digital Signatures</code></h3>
 <div class="outline-text-3" id="text-1-10">
 <ul class="org-ul">
 <li>Diagram</li>
 </ul>
 
-<div id="org4dd3f48" class="figure">
+<div id="org44bc229" class="figure">
 <p><img src="images/Exam_Questions/2026-04-12_15-06-37_screenshot.png" alt="2026-04-12_15-06-37_screenshot.png" />
 </p>
 </div>
@@ -501,8 +502,8 @@ K ⊕ ipad        K ⊕ opad<br />
 </ul>
 </div>
 </div>
-<div id="outline-container-org63f000a" class="outline-3">
-<h3 id="org63f000a"><span class="section-number-3">1.11.</span> What is a <code>Digital Cert</code></h3>
+<div id="outline-container-orgfc619ad" class="outline-3">
+<h3 id="orgfc619ad"><span class="section-number-3">1.11.</span> What is a <code>Digital Cert</code></h3>
 <div class="outline-text-3" id="text-1-11">
 <ul class="org-ul">
 <li>A <code>digital cert</code> is a structure that binds a name to a public key. Is issued by the cert authority (<code>CA</code>), which is trusted.</li>
@@ -523,8 +524,8 @@ K ⊕ ipad        K ⊕ opad<br />
 </ul>
 </div>
 </div>
-<div id="outline-container-org8e8ef62" class="outline-3">
-<h3 id="org8e8ef62"><span class="section-number-3">1.12.</span> Keystore vs Truststore</h3>
+<div id="outline-container-org3c30a9e" class="outline-3">
+<h3 id="org3c30a9e"><span class="section-number-3">1.12.</span> Keystore vs Truststore</h3>
 <div class="outline-text-3" id="text-1-12">
 <ul class="org-ul">
 <li>Keystore: stores private keys and certificates, used by servers</li>
@@ -532,8 +533,8 @@ K ⊕ ipad        K ⊕ opad<br />
 </ul>
 </div>
 </div>
-<div id="outline-container-org6409888" class="outline-3">
-<h3 id="org6409888"><span class="section-number-3">1.13.</span> 2008 Rogue CA Cert attack. Hash collision attack, describe it.</h3>
+<div id="outline-container-org6fbf5a4" class="outline-3">
+<h3 id="org6fbf5a4"><span class="section-number-3">1.13.</span> 2008 Rogue CA Cert attack. Hash collision attack, describe it.</h3>
 <div class="outline-text-3" id="text-1-13">
 <ul class="org-ul">
 <li>Was based on the MD5 collision</li>
@@ -546,8 +547,8 @@ K ⊕ ipad        K ⊕ opad<br />
 </ul>
 </div>
 </div>
-<div id="outline-container-org0ded36c" class="outline-3">
-<h3 id="org0ded36c"><span class="section-number-3">1.14.</span> <code>Messaging services</code>. Give four advantages of messaging services compared to distributed objects.</h3>
+<div id="outline-container-org7e6ab43" class="outline-3">
+<h3 id="org7e6ab43"><span class="section-number-3">1.14.</span> <code>Messaging services</code>. Give four advantages of messaging services compared to distributed objects.</h3>
 <div class="outline-text-3" id="text-1-14">
 <ul class="org-ul">
 <li>A messaging service is a <code>Message Oriented Middleware (MOM)</code> where communication is done by sending <b>asynchronous messages</b>.</li>
@@ -567,8 +568,8 @@ K ⊕ ipad        K ⊕ opad<br />
 </ul>
 </div>
 </div>
-<div id="outline-container-org1f103d7" class="outline-3">
-<h3 id="org1f103d7"><span class="section-number-3">1.15.</span> <code>Sharding</code> in mongodb</h3>
+<div id="outline-container-orge023f47" class="outline-3">
+<h3 id="orge023f47"><span class="section-number-3">1.15.</span> <code>Sharding</code> in mongodb</h3>
 <div class="outline-text-3" id="text-1-15">
 <ul class="org-ul">
 <li>Diagram
@@ -583,16 +584,16 @@ K ⊕ ipad        K ⊕ opad<br />
 </ul>
 </div>
 </div>
-<div id="outline-container-org84afd77" class="outline-3">
-<h3 id="org84afd77"><span class="section-number-3">1.16.</span> <code>User sessions</code> in a <code>distributed systems</code>, what are the issues?</h3>
+<div id="outline-container-orgbfa49fd" class="outline-3">
+<h3 id="orgbfa49fd"><span class="section-number-3">1.16.</span> <code>User sessions</code> in a <code>distributed systems</code>, what are the issues?</h3>
 <div class="outline-text-3" id="text-1-16">
 <ul class="org-ul">
 <li>Use something like memcached or redis to store user sessions, so that information is distributed across the server instances.</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgab3dfd7" class="outline-3">
-<h3 id="orgab3dfd7"><span class="section-number-3">1.17.</span> SSH 1.0</h3>
+<div id="outline-container-org8aa7de5" class="outline-3">
+<h3 id="org8aa7de5"><span class="section-number-3">1.17.</span> SSH 1.0</h3>
 <div class="outline-text-3" id="text-1-17">
 <ul class="org-ul">
 <li>Operation:
@@ -614,8 +615,8 @@ K ⊕ ipad        K ⊕ opad<br />
 </ul>
 </div>
 </div>
-<div id="outline-container-orgae48a84" class="outline-3">
-<h3 id="orgae48a84"><span class="section-number-3">1.18.</span> Perfect forward secrecy</h3>
+<div id="outline-container-orgebe44e7" class="outline-3">
+<h3 id="orgebe44e7"><span class="section-number-3">1.18.</span> Perfect forward secrecy</h3>
 <div class="outline-text-3" id="text-1-18">
 <ul class="org-ul">
 <li>Future compromise of keys does not allow the decryption of past data.</li>
@@ -623,8 +624,8 @@ K ⊕ ipad        K ⊕ opad<br />
 </ul>
 </div>
 </div>
-<div id="outline-container-org670a12c" class="outline-3">
-<h3 id="org670a12c"><span class="section-number-3">1.19.</span> Difference between a Queue and a Topic in JMS</h3>
+<div id="outline-container-org7f37905" class="outline-3">
+<h3 id="org7f37905"><span class="section-number-3">1.19.</span> Difference between a Queue and a Topic in JMS</h3>
 <div class="outline-text-3" id="text-1-19">
 <ul class="org-ul">
 <li>Queue: uses a queue system in which each message is received once by one of the receivers only
@@ -638,8 +639,8 @@ K ⊕ ipad        K ⊕ opad<br />
 </ul>
 </div>
 </div>
-<div id="outline-container-org4e3e931" class="outline-3">
-<h3 id="org4e3e931"><span class="section-number-3">1.20.</span> Twitter auth</h3>
+<div id="outline-container-org118318e" class="outline-3">
+<h3 id="org118318e"><span class="section-number-3">1.20.</span> Twitter auth</h3>
 <div class="outline-text-3" id="text-1-20">
 <ul class="org-ul">
 <li>Client requests auth: gets back <code>ID</code> and <code>Secret Key</code></li>
@@ -650,8 +651,8 @@ K ⊕ ipad        K ⊕ opad<br />
 </ul>
 </div>
 </div>
-<div id="outline-container-orgd3ef431" class="outline-3">
-<h3 id="orgd3ef431"><span class="section-number-3">1.21.</span> Types of firewalls</h3>
+<div id="outline-container-orgc70281c" class="outline-3">
+<h3 id="orgc70281c"><span class="section-number-3">1.21.</span> Types of firewalls</h3>
 <div class="outline-text-3" id="text-1-21">
 <ul class="org-ul">
 <li><code>Packet Filtering Firewall</code>:
@@ -667,8 +668,8 @@ K ⊕ ipad        K ⊕ opad<br />
 </ul>
 </div>
 </div>
-<div id="outline-container-orge564eb6" class="outline-3">
-<h3 id="orge564eb6"><span class="section-number-3">1.22.</span> Messaging system advantages</h3>
+<div id="outline-container-org847fdfb" class="outline-3">
+<h3 id="org847fdfb"><span class="section-number-3">1.22.</span> Messaging system advantages</h3>
 <div class="outline-text-3" id="text-1-22">
 <ul class="org-ul">
 <li>Sudden spike: uses buffering to solve it</li>
@@ -678,13 +679,13 @@ K ⊕ ipad        K ⊕ opad<br />
 </ul>
 </div>
 </div>
-<div id="outline-container-org7bfb0b9" class="outline-3">
-<h3 id="org7bfb0b9"><span class="section-number-3">1.23.</span> Java</h3>
+<div id="outline-container-org7ff1051" class="outline-3">
+<h3 id="org7ff1051"><span class="section-number-3">1.23.</span> Java</h3>
 <div class="outline-text-3" id="text-1-23">
 </div>
-<div id="outline-container-orgc8181f2" class="outline-4">
-<h4 id="orgc8181f2">Server to client TCP/IP</h4>
-<div class="outline-text-4" id="text-orgc8181f2">
+<div id="outline-container-orgb38e2f4" class="outline-4">
+<h4 id="orgb38e2f4">Server to client TCP/IP</h4>
+<div class="outline-text-4" id="text-orgb38e2f4">
 <div class="org-src-container">
 <pre class="src src-java"><span style="color: #ECBE7B;">ServerSocket</span> ss = <span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">ServerSocket</span><span style="color: #fff0f5;">(</span><span style="color: #da8548; font-weight: bold;">2000</span><span style="color: #fff0f5;">)</span>;
 <span style="color: #5B6268;">// Create a server socket listening on port 2000</span>
@@ -720,9 +721,9 @@ K ⊕ ipad        K ⊕ opad<br />
 </div>
 </div>
 </div>
-<div id="outline-container-org75c6841" class="outline-4">
-<h4 id="org75c6841">Client to server TCP/IP</h4>
-<div class="outline-text-4" id="text-org75c6841">
+<div id="outline-container-org03d88ef" class="outline-4">
+<h4 id="org03d88ef">Client to server TCP/IP</h4>
+<div class="outline-text-4" id="text-org03d88ef">
 <div class="org-src-container">
 <pre class="src src-java"><span style="color: #ECBE7B;">InetAddress</span> inet = InetAddress.<span style="color: #c678dd;">getByName</span><span style="color: #fff0f5;">(</span><span style="color: #98be65;">"localhost"</span><span style="color: #fff0f5;">)</span>;
 <span style="color: #5B6268;">// Get IP address of server (localhost)</span>
@@ -757,9 +758,9 @@ System.out.<span style="color: #c678dd;">println</span><span style="color: #fff0
 </div>
 </div>
 </div>
-<div id="outline-container-orgcf03ebf" class="outline-4">
-<h4 id="orgcf03ebf">Server to client UDP</h4>
-<div class="outline-text-4" id="text-orgcf03ebf">
+<div id="outline-container-org7bc6680" class="outline-4">
+<h4 id="org7bc6680">Server to client UDP</h4>
+<div class="outline-text-4" id="text-org7bc6680">
 <div class="org-src-container">
 <pre class="src src-java"><span style="color: #5B6268;">// create socket on port 2000</span>
 <span style="color: #ECBE7B;">DatagramSocket</span> socket = <span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">DatagramSocket</span><span style="color: #fff0f5;">(</span><span style="color: #da8548; font-weight: bold;">2000</span><span style="color: #fff0f5;">)</span>;
@@ -794,9 +795,9 @@ socket.<span style="color: #c678dd;">send</span><span style="color: #fff0f5;">(<
 </div>
 </div>
 </div>
-<div id="outline-container-org40aab7f" class="outline-4">
-<h4 id="org40aab7f">Client to server UDP</h4>
-<div class="outline-text-4" id="text-org40aab7f">
+<div id="outline-container-org718c0cc" class="outline-4">
+<h4 id="org718c0cc">Client to server UDP</h4>
+<div class="outline-text-4" id="text-org718c0cc">
 <div class="org-src-container">
 <pre class="src src-java"><span style="color: #5B6268;">// create socket on a port</span>
 <span style="color: #ECBE7B;">DatagramSocket</span> socket = <span style="color: #51afef; font-style: italic;">new</span> <span style="color: #ECBE7B;">DatagramSocket</span><span style="color: #fff0f5;">(</span><span style="color: #da8548; font-weight: bold;">2012</span><span style="color: #fff0f5;">)</span>;
@@ -819,44 +820,44 @@ socket.<span style="color: #c678dd;">send</span><span style="color: #fff0f5;">(<
 </div>
 </div>
 </div>
-<div id="outline-container-org3882f54" class="outline-2">
-<h2 id="org3882f54"><span class="section-number-2">2.</span> Security</h2>
+<div id="outline-container-orgeede731" class="outline-2">
+<h2 id="orgeede731"><span class="section-number-2">2.</span> Security</h2>
 <div class="outline-text-2" id="text-2">
 </div>
-<div id="outline-container-org5aec8ad" class="outline-3">
-<h3 id="org5aec8ad"><span class="section-number-3">2.1.</span> What is Security</h3>
+<div id="outline-container-orgf6dd92f" class="outline-3">
+<h3 id="orgf6dd92f"><span class="section-number-3">2.1.</span> What is Security</h3>
 </div>
-<div id="outline-container-org20b0056" class="outline-3">
-<h3 id="org20b0056"><span class="section-number-3">2.2.</span> Authorisation vs Authentication</h3>
+<div id="outline-container-org0787070" class="outline-3">
+<h3 id="org0787070"><span class="section-number-3">2.2.</span> Authorisation vs Authentication</h3>
 </div>
-<div id="outline-container-org20e3fc4" class="outline-3">
-<h3 id="org20e3fc4"><span class="section-number-3">2.3.</span> Accountability vs Availability</h3>
+<div id="outline-container-orgb6d0584" class="outline-3">
+<h3 id="orgb6d0584"><span class="section-number-3">2.3.</span> Accountability vs Availability</h3>
 </div>
-<div id="outline-container-org572ef58" class="outline-3">
-<h3 id="org572ef58"><span class="section-number-3">2.4.</span> Uses of Random Passwords</h3>
+<div id="outline-container-org3e89a2e" class="outline-3">
+<h3 id="org3e89a2e"><span class="section-number-3">2.4.</span> Uses of Random Passwords</h3>
 <div class="outline-text-3" id="text-2-4">
 </div>
-<div id="outline-container-orgbfbaee4" class="outline-4">
-<h4 id="orgbfbaee4">Also: Cryptographically safe random numbers</h4>
+<div id="outline-container-org5cb1b61" class="outline-4">
+<h4 id="org5cb1b61">Also: Cryptographically safe random numbers</h4>
 </div>
-<div id="outline-container-org0db25ca" class="outline-4">
-<h4 id="org0db25ca">Random number generation</h4>
-<div class="outline-text-4" id="text-org0db25ca">
+<div id="outline-container-orgaca845e" class="outline-4">
+<h4 id="orgaca845e">Random number generation</h4>
+<div class="outline-text-4" id="text-orgaca845e">
 <ul class="org-ul">
 <li>Big'ish topic</li>
 </ul>
 </div>
 </div>
 </div>
-<div id="outline-container-org5d20c42" class="outline-3">
-<h3 id="org5d20c42"><span class="section-number-3">2.5.</span> LCG - Linear Congruential Generator</h3>
+<div id="outline-container-org631b250" class="outline-3">
+<h3 id="org631b250"><span class="section-number-3">2.5.</span> LCG - Linear Congruential Generator</h3>
 </div>
-<div id="outline-container-orgedd4b79" class="outline-3">
-<h3 id="orgedd4b79"><span class="section-number-3">2.6.</span> LFSR - Linear Feedback Shift Register</h3>
+<div id="outline-container-orgc026022" class="outline-3">
+<h3 id="orgc026022"><span class="section-number-3">2.6.</span> LFSR - Linear Feedback Shift Register</h3>
 </div>
 </div>
-<div id="outline-container-orgb2eb37c" class="outline-2">
-<h2 id="orgb2eb37c"><span class="section-number-2">3.</span> Remove at the End</h2>
+<div id="outline-container-orgdeb8cc0" class="outline-2">
+<h2 id="orgdeb8cc0"><span class="section-number-2">3.</span> Remove at the End</h2>
 <div class="outline-text-2" id="text-3">
 <script src="../assets/jquery-3.3.1.min.js"></script>
 <script src="../assets/notes.js"></script>
@@ -866,7 +867,7 @@ socket.<span style="color: #c678dd;">send</span><span style="color: #fff0f5;">(<
 <div id="postamble" class="status">
 <p class="date">Date: 2026-01-12 Mon 14:14</p>
 <p class="author">Author: Damian Chrzanowski</p>
-<p class="date">Created: 2026-04-12 Sun 22:48</p>
+<p class="date">Created: 2026-04-12 Sun 22:52</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
