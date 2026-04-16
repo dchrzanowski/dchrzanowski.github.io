@@ -31,6 +31,9 @@
 
 [[file:distributed-systems-and-security.org][Distributed Systems and Security]]
 
+[[file:self-mgmt-and-teamwork.org][Self Management & Teamwork]]
+
+
 #+BEGIN_EXPORT html
 <script src="../assets/jquery-3.3.1.min.js"></script>
 <script src="../assets/notes.js"></script>
